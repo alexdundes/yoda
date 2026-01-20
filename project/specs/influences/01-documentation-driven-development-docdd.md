@@ -1,17 +1,17 @@
 # Documentation-Driven Development (DocDD)
 
-## O que e
+## What it is
 
-Abordagem em que a documentacao e escrita antes da implementacao e serve como contrato do comportamento esperado.
+An approach where documentation is written before implementation and serves as the contract for expected behavior.
 
-## Por que inspira o YODA
+## Why it inspires YODA
 
-- Reforca a ideia de documentacao como fonte de verdade.
-- Obriga clareza de requisitos antes de escrever codigo.
-- Facilita alinhamento entre humanos e agentes, pois a doc e o ponto de partida.
+- Reinforces documentation as the source of truth.
+- Forces clarity of requirements before writing code.
+- Aligns humans and agents because the doc is the starting point.
 
-## Como aparece no YODA
+## How it appears in YODA
 
-- A issue em Markdown nasce antes da implementacao.
-- A IA executa apenas o que esta documentado.
-- Ajustes no codigo exigem atualizar a documentacao.
+- The issue in Markdown is created before implementation.
+- The AI executes only what is documented.
+- Changes in code require updates to documentation.

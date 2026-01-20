@@ -1,25 +1,25 @@
-# Document-first, YAML e Markdown
+# Document-first, YAML, and Markdown
 
 ## Document-first
 
-- A documentacao antecede a implementacao.
-- O codigo e consequencia do que foi documentado.
-- A IA deve obedecer a documentacao e nao a conversa solta.
+- Documentation comes before implementation.
+- Code is the consequence of what is documented.
+- The AI must follow the documentation, not loose conversation.
 
 ## YAML
 
-- Usado para metadados e estruturas que precisam ser lidas por scripts.
-- Exemplo: backlog em TODO.dev.yaml, configuracoes de agentes.
-- Facilita automacao e consultas estruturadas.
+- Used for metadata and structures that scripts must read.
+- Example: backlog in TODO.dev.yaml, agent configuration.
+- Enables automation and structured queries.
 
 ## Markdown
 
-- Usado para texto livre e rico.
-- Exemplo: issues em Markdown (um arquivo por issue), specs de UI, explicacoes de negocio.
-- E a camada principal de leitura para humanos e IA.
+- Used for rich free text.
+- Example: issues in Markdown (one file per issue), UI specs, business explanations.
+- It is the main reading layer for humans and AI.
 
-## Direcao adotada
+## Adopted direction
 
-- YAML como fonte de verdade para metadados.
-- Markdown como narrativa e detalhes.
-- Scripts geram esqueletos e mantem consistencia.
+- YAML as source of truth for metadata.
+- Markdown for narrative and details.
+- Scripts generate skeletons and keep consistency.

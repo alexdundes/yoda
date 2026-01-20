@@ -1,16 +1,16 @@
 # ADR (Architecture Decision Records)
 
-## O que e
+## What it is
 
-Registro estruturado de decisoes arquiteturais: contexto, opcoes, decisao e consequencias.
+A structured record of architectural decisions: context, options, decision, and consequences.
 
-## Por que inspira o YODA
+## Why it inspires YODA
 
-- Mantem memoria tecnica e racional das escolhas.
-- Evita retrabalho e discussoes repetidas.
-- Ajuda agentes e humanos a entender o por que das restricoes.
+- Keeps technical memory and rationale for choices.
+- Avoids rework and repeated debates.
+- Helps agents and humans understand the reason for constraints.
 
-## Como aparece no YODA
+## How it appears in YODA
 
-- Issues podem referenciar ADRs relevantes.
-- Decisoes importantes ficam versionadas e rastreaveis.
+- Issues can reference relevant ADRs.
+- Important decisions are versioned and traceable.

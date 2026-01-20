@@ -1,16 +1,16 @@
-# Design-First / Contract-First para APIs
+# Design-First / Contract-First for APIs
 
-## O que e
+## What it is
 
-Abordagem em que o contrato da API (OpenAPI, GraphQL SDL, gRPC) e definido antes da implementacao.
+An approach where the API contract (OpenAPI, GraphQL SDL, gRPC) is defined before implementation.
 
-## Por que inspira o YODA
+## Why it inspires YODA
 
-- Separa decisao de interface da execucao tecnica.
-- Reduz ambiguidades e retrabalho entre front e back.
-- Permite que agentes usem contratos como fonte precisa.
+- Separates interface decisions from technical execution.
+- Reduces ambiguity and rework between front and back.
+- Allows agents to use contracts as precise sources.
 
-## Como aparece no YODA
+## How it appears in YODA
 
-- Contratos podem ser citados na issue como entrada obrigatoria.
-- O fluxo incentiva definir interfaces antes do codigo.
+- Contracts can be cited in the issue as mandatory inputs.
+- The flow encourages defining interfaces before code.

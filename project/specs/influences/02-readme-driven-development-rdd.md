@@ -1,16 +1,16 @@
 # README-Driven Development (RDD)
 
-## O que e
+## What it is
 
-Pratica de escrever o README do projeto antes do codigo, garantindo uma visao clara de objetivo, uso e limites.
+Practice of writing the project README before code, ensuring a clear view of purpose, usage, and limits.
 
-## Por que inspira o YODA
+## Why it inspires YODA
 
-- Cria um ponto de entrada simples para humanos e agentes.
-- Forca o projeto a explicar seu valor e fluxo antes da implementacao.
-- Ajuda no onboarding e na padronizacao de contexto.
+- Creates a simple entry point for humans and agents.
+- Forces the project to explain its value and flow before implementation.
+- Helps onboarding and context standardization.
 
-## Como aparece no YODA
+## How it appears in YODA
 
-- A documentacao de entrada orienta o agente com contexto zero.
-- README e usado como artefato inicial para entendimento rapido.
+- The entry documentation guides the agent with zero context.
+- README is used as the initial artifact for quick understanding.

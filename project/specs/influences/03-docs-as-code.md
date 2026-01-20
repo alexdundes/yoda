@@ -1,17 +1,17 @@
 # Docs-as-Code
 
-## O que e
+## What it is
 
-Filosofia que trata documentacao como codigo: versionamento em Git, revisoes, testes e padroes de qualidade.
+A philosophy that treats documentation like code: versioning in Git, reviews, tests, and quality standards.
 
-## Por que inspira o YODA
+## Why it inspires YODA
 
-- Documentacao passa a ter o mesmo rigor do codigo.
-- Facilita auditoria e rastreabilidade das decisoes.
-- Mantem contexto vivo junto do repositório.
+- Documentation receives the same rigor as code.
+- Enables auditing and traceability of decisions.
+- Keeps living context inside the repository.
 
-## Como aparece no YODA
+## How it appears in YODA
 
-- Todas as issues e artefatos vivem no repo.
-- Mudancas em documentacao seguem o mesmo fluxo de PRs e revisoes.
-- Scripts ajudam a manter consistencia dos arquivos.
+- All issues and artifacts live in the repo.
+- Documentation changes follow the same PR and review flow.
+- Scripts help keep files consistent.

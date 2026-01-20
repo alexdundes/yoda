@@ -1,16 +1,16 @@
-# Agentic Design Patterns (referencia)
+# Agentic Design Patterns (reference)
 
-## Descricao
+## Description
 
-O livro Agentic Design Patterns organiza padroes recorrentes para construir sistemas agentic com LLMs. Ele funciona como um catalogo de boas praticas para planejamento, uso de ferramentas, colaboracao entre agentes e controle de qualidade.
+The book Agentic Design Patterns organizes recurring patterns for building agentic systems with LLMs. It serves as a catalog of best practices for planning, tool use, collaboration among agents, and quality control.
 
-## Relevancia para o YODA
+## Relevance to YODA
 
-- Ajuda a dar vocabulário para os fluxos do YODA.
-- Reforca padroes como planejamento, roteamento, reflexao, multi-agente e human-in-the-loop.
-- Serve como base para evoluir scripts e playbooks do YODA.
+- Helps provide vocabulary for YODA flows.
+- Reinforces patterns such as planning, routing, reflection, multi-agent, and human-in-the-loop.
+- Serves as a basis to evolve YODA scripts and playbooks.
 
-## Uso sugerido
+## Suggested use
 
-- Mapear padroes para artefatos do YODA (issues em Markdown, TODO, scripts).
-- Adotar apenas os padroes que fazem sentido para o projeto.
+- Map patterns to YODA artifacts (issues in Markdown, TODO, scripts).
+- Adopt only the patterns that make sense for the project.

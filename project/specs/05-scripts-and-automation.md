@@ -1,0 +1,35 @@
+# Scripts and automation
+
+## Objective
+
+Standardize repetitive tasks and reduce the need for manual edits.
+
+## Location and language
+
+- Folder: yoda/scripts
+- Language: Python
+- Rule: the .py file name is the command name
+
+## Minimum scripts (v1)
+
+- init.py: creates the minimum YODA Framework structure
+- TODO.dev.yaml maintenance scripts (list, update, reorder, etc.)
+- scripts to present TODO.dev.yaml in a friendly format for humans and agents
+- log scripts (when applicable) to record flow events
+- pending resolution script (updates pending -> defined status and clears pending_reason)
+
+## Logs
+
+- Framework standard: one log per issue at yoda/logs/dev-id-slug.yaml
+- Exception in this project (meta-implementation): logs in Markdown, one per issue, at yoda/logs/dev-id-slug.md
+
+## Principles
+
+- Scripts are the official way to change metadata.
+- The human or orchestrator executes the commands.
+
+## Benefits
+
+- Consistent structure.
+- Fewer errors when handling metadata.
+- Easier auditing and reproducibility.

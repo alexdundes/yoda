@@ -1,16 +1,16 @@
 # Literate Programming / Notebooks
 
-## O que e
+## What it is
 
-Estilo de documentacao onde texto e codigo coexistem, comum em notebooks de exploracao e prototipos.
+A documentation style where text and code coexist, common in exploration and prototype notebooks.
 
-## Por que inspira o YODA
+## Why it inspires YODA
 
-- Valoriza narrativa, contexto e entendimento do problema.
-- Ajuda em exploracoes tecnicas antes da implementacao definitiva.
-- Facilita explicar raciocinio para humanos e agentes.
+- Values narrative, context, and understanding of the problem.
+- Helps technical exploration before definitive implementation.
+- Makes reasoning easier to explain to humans and agents.
 
-## Como aparece no YODA
+## How it appears in YODA
 
-- Pode ser usado como etapa de exploracao antes de formalizar uma issue.
-- Serve como apoio para regras de negocio ou calculos complexos.
+- Can be used as an exploration step before formalizing an issue.
+- Serves as support for business rules or complex calculations.

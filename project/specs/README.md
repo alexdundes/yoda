@@ -1,29 +1,29 @@
-# YODA Framework - Specs (ptBR)
+# YODA Framework - Specs (en)
 
-Este README organiza os topicos discutidos ate aqui. Cada topico possui um arquivo dedicado nesta mesma pasta.
+This README organizes the topics discussed so far. Each topic has a dedicated file in this folder.
 
-## Topicos
+## Topics
 
-1. Visao geral e principios do YODA Framework
-   - arquivo: 01-visao-geral-yoda.md
-2. YODA Flow (ciclo estudar -> documentar -> implementar -> avaliar)
-   - arquivo: 02-yoda-flow-processo.md
-3. Document-first, YAML e Markdown (papel de cada um)
-   - arquivo: 03-document-first-yaml-markdown.md
-4. TODO.dev.yaml e issues em Markdown (metadados centralizados)
-   - arquivo: 04-todo-yaml-issues-md.md
-5. Scripts e automacao (yoda/scripts, python)
-   - arquivo: 05-scripts-automacao.md
-6. Playbook do agente e regras de operacao
-   - arquivo: 06-playbook-agente.md
-7. Entrada do agente e arquivos raiz (yoda/yoda.md, AGENTS.md, gemini.md)
-   - arquivo: 07-entrada-agente-arquivo-raiz.md
-8. MCP no YODA Framework (integracao de ferramentas)
-   - arquivo: 08-mcp-no-yoda.md
-9. Identidade visual e logotipo (favicon simples)
-   - arquivo: 09-identidade-visual-logotipo.md
-10. Abordagens e referencias (DocDD, Docs-as-Code, RDD, ADR, etc.)
-    - arquivo: 10-abordagens-e-referencias.md
-    - pasta: influences/ (um arquivo por inspiracao)
-11. Agentic Design Patterns (referencia conceitual)
-    - arquivo: 11-agentic-design-patterns.md
+1. YODA Framework overview and principles
+   - file: 01-yoda-overview.md
+2. YODA Flow (cycle: study -> document -> implement -> evaluate)
+   - file: 02-yoda-flow-process.md
+3. Document-first, YAML, and Markdown (role of each)
+   - file: 03-document-first-yaml-markdown.md
+4. TODO.dev.yaml and issues in Markdown (centralized metadata)
+   - file: 04-todo-dev-yaml-issues.md
+5. Scripts and automation (yoda/scripts, python)
+   - file: 05-scripts-and-automation.md
+6. Agent playbook and operating rules
+   - file: 06-agent-playbook.md
+7. Agent entry and root files (yoda/yoda.md, AGENTS.md, gemini.md)
+   - file: 07-agent-entry-and-root-file.md
+8. MCP in the YODA Framework (tool integration)
+   - file: 08-mcp-in-yoda.md
+9. Visual identity and logo (simple favicon)
+   - file: 09-visual-identity-logo.md
+10. Approaches and references (DocDD, Docs-as-Code, RDD, ADR, etc.)
+    - file: 10-approaches-and-references.md
+    - folder: influences/ (one file per influence)
+11. Agentic Design Patterns (conceptual reference)
+    - file: 11-agentic-design-patterns.md

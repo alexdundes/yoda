@@ -1,0 +1,41 @@
+# YODA Flow (process)
+
+## Base cycle
+
+YODA Flow is the standard work cycle of the framework:
+
+1) Study
+2) Document
+3) Implement
+4) Evaluate and iterate
+
+## Step details
+
+### 1) Study
+
+- Open conversation between human and AI.
+- Focus on understanding context, rules, and constraints.
+- No formal deliverables are produced in this step.
+- At the end, the AI is ready to document an issue (Markdown file).
+
+### 2) Document
+
+- The AI creates or updates the issue Markdown file based on what was discussed.
+- The human reviews and corrects the text to remove ambiguity.
+- The issue (Markdown file) becomes the official contract for implementation.
+
+### 3) Implement
+
+- The AI implements only what is defined in the issue Markdown file.
+- If something changes, return to the Document step and update the issue Markdown file.
+
+### 4) Evaluate and iterate
+
+- The human validates the result.
+- The AI fixes code and documentation based on feedback.
+- At the end, the issue receives a summary of what was done and a suggested commit message.
+
+## Notes
+
+- The cycle is designed to be iterative and not waterfall.
+- Lightweight process: it does not include the Study step; the AI follows the preliminary issue directly.
