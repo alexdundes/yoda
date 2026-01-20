@@ -1,5 +1,7 @@
 # YODA Framework
 
+![YODA Framework Logo](yoda/favicons/yoda-light.svg)
+
 > **YODA Framework — YAML-Oriented Documentation & Agents**  
 > Um framework document-first onde a documentacao em YAML/Markdown e a fonte de verdade para humanos, scripts e IA agentica.
 
