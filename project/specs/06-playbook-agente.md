@@ -31,6 +31,7 @@ Definir como a IA deve agir no YODA Framework em cada etapa do fluxo.
 - Sugerir mensagem de commit ao final.
 - Incluir o texto do commit na issue e exibir em tela.
 - Registrar log do ciclo em yoda/logs/dev-id-slug.yaml.
+- Excecao neste projeto (meta-implementacao): usar yoda/logs/dev-id-slug.md.
 - Se surgir impedimento, marcar status como pending e registrar o motivo no TODO.dev.yaml; usar o script de resolucao de pendencia quando liberado.
 
 ## Regras gerais

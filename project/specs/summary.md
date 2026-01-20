@@ -18,6 +18,7 @@ This file records decisions and known open points captured so far.
 - Name: use "YODA Framework" as the primary name (with the Y linked to YAML).
 - Scripts: live in yoda/scripts, written in Python, file name is the command; init.py is mandatory.
 - Logs: one YAML log per issue at yoda/logs/dev-id-slug.yaml.
+- Meta-implementation exception: logs in Markdown at yoda/logs/dev-id-slug.md.
 - Commit: include the commit message text inside the issue and show it to the user.
 
 ## Open decisions (not finalized)

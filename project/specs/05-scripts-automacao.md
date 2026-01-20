@@ -20,7 +20,8 @@ Padronizar tarefas repetitivas e reduzir a necessidade de edicoes manuais.
 
 ## Logs
 
-- Arquivo de log por issue: yoda/logs/dev-id-slug.yaml
+- Padrao do framework: log por issue em yoda/logs/dev-id-slug.yaml
+- Excecao neste projeto (meta-implementacao): logs em Markdown, um por issue, em yoda/logs/dev-id-slug.md
 
 ## Principios
 
