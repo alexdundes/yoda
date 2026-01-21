@@ -6,13 +6,13 @@ Este arquivo e o TODO em Markdown (substituto temporario do TODO.dev.yaml) para 
 
 ### A-001 - Criar yoda/yoda.md (entrada do agente)
 - Descricao: definir as instrucoes do agente YODA para este repositorio.
-- Status: to-do
+- Status: do-it
 - Prioridade: 10
 - Dependencias: nenhuma
 
 ### A-002 - Formalizar template de issue (normal e lightweight)
 - Descricao: garantir que os templates em yoda/templates/ estejam alinhados com as specs.
-- Status: to-do
+- Status: do-it
 - Prioridade: 9
 - Dependencias: A-001
 

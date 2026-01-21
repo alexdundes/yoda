@@ -38,11 +38,16 @@
 <!-- AGENT: Add technical notes, constraints, or decisions needed to implement. -->
 
 ## Tests
-<!-- AGENT: Describe tests to be added or updated. If not applicable, say so. -->
+<!-- AGENT: Describe tests to be added or updated. If not applicable, write \"Not applicable\". -->
 
 ## Risks and edge cases
 <!-- AGENT: List risks, edge cases, or failure scenarios to consider. -->
 - 
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the final commit message. -->
+<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
+First line: conventional commit message.
+Body:
+Issue: <ID>
+Path: <issue path>
+-->

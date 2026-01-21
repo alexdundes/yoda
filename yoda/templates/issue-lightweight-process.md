@@ -17,4 +17,9 @@
 - [ ] 
 
 ## Result log
-<!-- AGENT: After implementation, write a short summary and the final commit message. -->
+<!-- AGENT: After implementation, write a short summary and include the commit message using this format:
+First line: conventional commit message.
+Body:
+Issue: <ID>
+Path: <issue path>
+-->

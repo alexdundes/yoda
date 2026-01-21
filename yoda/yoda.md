@@ -34,6 +34,11 @@ This project does not have YODA scripts yet. Until they exist:
 - Implement only what is documented in the issue.
 - If a blocker is found, mark the issue as pending and record the reason in the TODO.
 - Logs for this project are in Markdown: yoda/logs/dev-id-slug.md.
+- Commit format:
+  - First line: conventional commit message.
+  - Body:
+    - Issue: <ID>
+    - Path: <issue path>
 
 ## Notes
 

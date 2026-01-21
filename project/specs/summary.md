@@ -19,7 +19,11 @@ This file records decisions and known open points captured so far.
 - Scripts: live in yoda/scripts, written in Python, file name is the command; init.py is mandatory.
 - Logs: one YAML log per issue at yoda/logs/dev-id-slug.yaml.
 - Meta-implementation exception: logs in Markdown at yoda/logs/dev-id-slug.md.
-- Commit: include the commit message text inside the issue and show it to the user.
+- Commit: include the commit message text inside the issue and show it to the user using this format:
+  - First line: conventional commit message.
+  - Body:
+    - Issue: <ID>
+    - Path: <issue path>
 
 ## Open decisions (not finalized)
 

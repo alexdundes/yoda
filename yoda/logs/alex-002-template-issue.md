@@ -1,7 +1,8 @@
 # Log - alex-002-template-issue
 
 ## Status
-- status: to-do
+- status: do-it
 
 ## Registro
-- (sem entradas)
+- 2026-01-21 18:46:15: Issue criada em yoda/project/issues/alex-002-template-issue.md
+- 2026-01-21 18:50:30: Templates revisados e alinhados com as specs
