@@ -57,7 +57,10 @@ Not applicable.
 - If templates diverge from specs, agents may follow inconsistent rules.
 
 ## Result log
-Updated yoda/templates/issue.md and yoda/templates/issue-lightweight-process.md to align with specs, including explicit commit message formatting and test notes.
+Updated yoda/templates/issue.md and yoda/templates/issue-lightweight-process.md to align with specs, including explicit commit formatting and test notes. Added the commit format requirement in yoda/yoda.md and specs.
 
 Commit:
-docs(templates): refine issue templates for agent instructions
+docs(templates): standardize commit format instructions
+
+Issue: A-002
+Path: yoda/project/issues/alex-002-template-issue.md
