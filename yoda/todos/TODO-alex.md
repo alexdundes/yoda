@@ -24,7 +24,7 @@ Este arquivo e o TODO em Markdown (substituto temporario do TODO.dev.yaml) para 
 
 ### A-004 - Definir comandos e scripts v1 (especificacao)
 - Descricao: listar a interface dos scripts minimos (init.py, manutencao TODO, logs, resolucao de pendencia).
-- Status: to-do
+- Status: do-it
 - Prioridade: 8
 - Dependencias: A-001
 
