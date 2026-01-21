@@ -127,6 +127,13 @@ O YODA espera scripts leves que:
 Os scripts ficam em `yoda/scripts`, sao feitos em Python e o nome do arquivo e o comando (ex.: `init.py`).
 Logs do ciclo ficam em `yoda/logs/dev-id-slug.yaml`.
 
+## Formato de commit
+
+- Primeira linha: conventional commit message.
+- Corpo:
+  - Issue: <ID>
+  - Path: <issue path>
+
 Detalhes de CLI e tooling ficam intencionalmente abertos nesta fase.
 
 ## Escopo e posicionamento

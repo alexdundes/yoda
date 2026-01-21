@@ -36,7 +36,7 @@ Este arquivo e o TODO em Markdown (substituto temporario do TODO.dev.yaml) para 
 
 ### A-006 - Consolidar README.md e summary.md com esta implementacao
 - Descricao: alinhar README e summary com o estado final das specs e do TODO.
-- Status: to-do
+- Status: do-it
 - Prioridade: 6
 - Dependencias: A-001, A-003
 
