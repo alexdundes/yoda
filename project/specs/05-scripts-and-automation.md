@@ -20,8 +20,7 @@ Standardize repetitive tasks and reduce the need for manual edits.
 
 ## Logs
 
-- Framework standard: one log per issue at yoda/logs/dev-id-slug.yaml
-- Exception in this project (meta-implementation): logs in Markdown, one per issue, at yoda/logs/dev-id-slug.md
+- One log per issue at yoda/logs/dev-id-slug.yaml
 
 ## Principles
 

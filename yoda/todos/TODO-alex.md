@@ -1,6 +1,6 @@
 # TODO-alex
 
-Este arquivo e o TODO em Markdown (substituto temporario do TODO.dev.yaml) para o projeto de meta-implementacao do YODA Framework.
+Este arquivo e o TODO em Markdown (substituto temporario do TODO.dev.yaml) para esta implementacao do YODA Framework.
 
 ## Backlog (ordem de execucao)
 
@@ -18,7 +18,7 @@ Este arquivo e o TODO em Markdown (substituto temporario do TODO.dev.yaml) para 
 
 ### A-003 - Estrutura minima do YODA Framework
 - Descricao: documentar a estrutura base do YODA (pastas e arquivos padrao).
-- Status: to-do
+- Status: do-it
 - Prioridade: 8
 - Dependencias: A-001
 
@@ -34,7 +34,7 @@ Este arquivo e o TODO em Markdown (substituto temporario do TODO.dev.yaml) para 
 - Prioridade: 7
 - Dependencias: A-002
 
-### A-006 - Consolidar README.md e summary.md com a meta-implementacao
+### A-006 - Consolidar README.md e summary.md com esta implementacao
 - Descricao: alinhar README e summary com o estado final das specs e do TODO.
 - Status: to-do
 - Prioridade: 6

@@ -36,7 +36,6 @@ Define how the AI should act in the YODA Framework at each stage of the flow.
   - Issue: <ID>
   - Path: <issue path>
 - Record the cycle log at yoda/logs/dev-id-slug.yaml.
-- Exception in this project (meta-implementation): use yoda/logs/dev-id-slug.md.
 - If a blocker arises, mark status as pending and record the reason in TODO.dev.yaml; use the pending resolution script when unblocked.
 
 ## General rules

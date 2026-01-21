@@ -7,7 +7,7 @@ This file is the root entry for agents in this repository. It defines how to ent
 When the user indicates they want to enter YODA Flow, the agent must:
 
 1) Confirm entry into YODA Flow.
-2) Load the TODO for the current developer (temporary: yoda/todos/TODO-alex.md).
+2) Load the TODO for the current developer (this implementation: yoda/todos/TODO-alex.md).
 3) Select the highest-priority issue without dependencies.
 4) Follow the YODA Flow for that issue.
 
@@ -19,9 +19,9 @@ Example natural entry phrase:
 - project/specs/ is the source of truth for the framework and this project.
 - The issue Markdown file is the source of truth for the current task.
 
-## TODO (temporary)
+## TODO (this implementation)
 
-This project does not have YODA scripts yet. Until they exist:
+This implementation does not have YODA scripts yet. Until they exist:
 
 - Use yoda/todos/TODO-alex.md as the TODO source.
 - Do not edit TODO-alex.md directly unless the user requests it.
