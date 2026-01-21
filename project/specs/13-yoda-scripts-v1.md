@@ -28,6 +28,44 @@ Outputs:
 
 ---
 
+### issue_add.py
+
+Purpose:
+- Create a new issue entry in TODO.dev.yaml and generate the issue Markdown from the template.
+
+Behavior (minimum):
+- Generate the next sequential id.
+- Create TODO.dev.yaml entry with basic fields.
+- Create the issue Markdown file from the template.
+- Fill basic fields in the template (id, title, summary) based on agent-provided inputs.
+
+Inputs:
+- Title, description or summary, labels, priority, agent, entrypoints.
+
+Outputs:
+- Updated TODO.dev.yaml and new issue Markdown file.
+
+---
+
+### issue_render.py
+
+Purpose:
+- Render or re-render an issue Markdown file from the template.
+
+Behavior (minimum):
+- Load the issue data from TODO.dev.yaml or provided inputs.
+- Apply the selected template.
+- Preserve or re-apply required fields (id, title, summary).
+
+Inputs:
+- Issue id.
+- Template path (optional).
+
+Outputs:
+- Updated issue Markdown file.
+
+---
+
 ### todo_list.py
 
 Purpose:

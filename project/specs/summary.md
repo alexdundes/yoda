@@ -17,7 +17,7 @@ This file records decisions and known open points captured so far.
 - Simplicity: keep the flow scriptable and avoid unnecessary complexity in formats.
 - Name: use "YODA Framework" as the primary name (with the Y linked to YAML).
 - Scripts: live in yoda/scripts, written in Python, file name is the command; init.py is mandatory.
-- Scripts v1 include issue_add.py to create TODO entries and issue Markdown from templates using basic fields.
+- Scripts v1 include issue_add.py to create TODO entries and issue Markdown from templates using basic fields, and issue_render.py to re-render issue Markdown from templates.
 - Logs: one YAML log per issue at yoda/logs/dev-id-slug.yaml.
 - Commit: include the commit message text inside the issue and show it to the user using this format:
   - First line: conventional commit message.
