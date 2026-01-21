@@ -1,0 +1,28 @@
+mode: bootstrap
+
+source_of_truth:
+  framework_specs: project/specs
+
+implementation_root: yoda
+
+bootstrap:
+  todo:
+    format: markdown
+    glob: yoda/todos/TODO-*.md
+  logs:
+    format: markdown
+    glob: yoda/logs/*.md
+
+target:
+  todo:
+    format: yaml
+    pattern: yoda/todos/TODO.<dev>.yaml
+  logs:
+    format: yaml
+    pattern: yoda/logs/<dev>-<id>-<slug>.yaml
+
+conflict_resolution_order:
+  - REPO_INTENT.md
+  - yoda/yoda.md
+  - project/specs
+  - current_issue_file
