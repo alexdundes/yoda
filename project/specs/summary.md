@@ -11,7 +11,7 @@ This file records decisions and known open points captured so far.
 - Issues location and naming: issues live in yoda/project/issues/ and follow dev-id-slug.md.
 - Issue identification: ID appears in the Markdown title.
 - Metadata schema basics: id, title, slug, description, entrypoints, status, priority, labels, agent, depends_on, pending_reason, created_at, updated_at.
-- Status values: to-do, doing, do-it, pending (pending = blocker recorded in pending_reason).
+- Status values: to-do, doing, done, pending (pending = blocker recorded in pending_reason).
 - Agent entry file: yoda/yoda.md, with AGENTS.md or gemini.md pointing to it.
 - Process light: skip the Study step and follow the preliminary issue.
 - Simplicity: keep the flow scriptable and avoid unnecessary complexity in formats.

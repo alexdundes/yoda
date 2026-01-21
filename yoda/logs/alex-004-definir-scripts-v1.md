@@ -1,7 +1,7 @@
 # Log - alex-004-definir-scripts-v1
 
 ## Status
-- status: do-it
+- status: done
 
 ## Registro
 - 2026-01-21 19:17:35: [alex-004] Issue criada em yoda/project/issues/alex-004-definir-scripts-v1.md

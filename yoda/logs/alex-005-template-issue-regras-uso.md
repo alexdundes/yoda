@@ -1,7 +1,7 @@
 # Log - alex-005-template-issue-regras-uso
 
 ## Status
-- status: do-it
+- status: done
 
 ## Registro
 - 2026-01-21 19:26:26: [alex-005] Issue criada em yoda/project/issues/alex-005-template-issue-regras-uso.md

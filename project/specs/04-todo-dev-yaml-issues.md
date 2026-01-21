@@ -38,12 +38,12 @@ Each issue item must contain:
 - entrypoints: array of objects with:
   - path: file path (issue or other artifact)
   - type: entrypoint type (issue, code, other in the future)
-- status: to-do | doing | do-it | pending
+- status: to-do | doing | done | pending
 - priority: 0 to 10 (10 = highest priority)
 - labels: list of labels
 - agent: Human | Codex | Antigravity | ...
 - depends_on: list of ids
-- pending_reason: reason for pending (when status = pending)
+- pending_reason: reason for pending (required when status = pending)
 - created_at, updated_at
 
 Note: there is no owner, because each dev has their own TODO.
@@ -52,8 +52,14 @@ Note: there is no owner, because each dev has their own TODO.
 
 - to-do: created, not started yet
 - doing: started in the YODA Flow for the issue
-- do-it: YODA Flow cycle finished
+- done: YODA Flow cycle finished
 - pending: blocker identified during YODA Flow; record the reason in pending_reason and keep on stand-by until resolved
+
+## State machine
+
+- to-do -> doing -> done
+- Any state can transition to pending
+- pending -> to-do or doing (via pending_resolve.py)
 
 ## Benefits
 
@@ -72,3 +78,66 @@ The issue Markdown file must have a minimal identifier to link to TODO.dev.yaml,
 
 - The AI must not edit TODO.dev.yaml directly; it must call scripts.
 - The AI can freely edit the issue text.
+
+## Ordering rule (deterministic)
+
+todo_next.py must select the next issue using:
+
+1) priority (desc)
+2) position in the YAML list (top to bottom)
+
+## Minimal example (TODO.dev.yaml)
+
+```yaml
+developer: alex
+updated_at: "2026-01-21 19:40:50"
+
+issues:
+  - id: alex-001
+    title: Create yoda/yoda.md
+    slug: criar-yoda-yoda-md
+    description: Define root agent instructions for this repository.
+    status: doing
+    priority: 10
+    labels: [yoda, bootstrap]
+    agent: Human
+    depends_on: []
+    entrypoints:
+      - path: yoda/yoda.md
+        type: issue
+      - path: project/specs/07-agent-entry-and-root-file.md
+        type: issue
+    created_at: "2026-01-21 18:46:15"
+    updated_at: "2026-01-21 18:46:15"
+
+  - id: alex-002
+    title: Issue templates usage guide
+    slug: template-issue-regras-uso
+    description: Document how agents should use issue templates.
+    status: to-do
+    priority: 8
+    labels: [templates, docs]
+    agent: Codex
+    depends_on: [alex-001]
+    entrypoints:
+      - path: yoda/templates/issue.md
+        type: issue
+    created_at: "2026-01-21 19:26:26"
+    updated_at: "2026-01-21 19:26:26"
+
+  - id: alex-003
+    title: Define scripts v1 interface
+    slug: definir-scripts-v1
+    description: Specify the v1 scripts interface and behavior.
+    status: pending
+    pending_reason: "Waiting for consensus on script naming."
+    priority: 7
+    labels: [scripts, v1]
+    agent: Antigravity
+    depends_on: [alex-001]
+    entrypoints:
+      - path: project/specs/13-yoda-scripts-v1.md
+        type: issue
+    created_at: "2026-01-21 19:17:35"
+    updated_at: "2026-01-21 19:17:35"
+```

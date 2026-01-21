@@ -109,6 +109,7 @@ Purpose:
 
 Behavior (minimum):
 - Select highest priority issue without dependencies.
+- Tie-breaker: position in the YAML list (top to bottom).
 - Skip issues with pending status.
 
 Inputs:

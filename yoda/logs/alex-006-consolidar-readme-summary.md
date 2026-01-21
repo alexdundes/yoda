@@ -1,7 +1,7 @@
 # Log - alex-006-consolidar-readme-summary
 
 ## Status
-- status: do-it
+- status: done
 
 ## Registro
 - 2026-01-21 19:36:32: [alex-006] Issue criada em yoda/project/issues/alex-006-consolidar-readme-summary.md
