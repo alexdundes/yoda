@@ -27,3 +27,9 @@ This README organizes the topics discussed so far. Each topic has a dedicated fi
     - folder: influences/ (one file per influence)
 11. Agentic Design Patterns (conceptual reference)
     - file: 11-agentic-design-patterns.md
+12. YODA minimum structure
+    - file: 12-yoda-structure.md
+13. YODA scripts v1 specification
+    - file: 13-yoda-scripts-v1.md
+14. Issue templates usage guide
+    - file: 14-issue-templates-usage.md

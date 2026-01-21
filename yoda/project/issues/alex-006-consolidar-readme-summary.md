@@ -4,7 +4,7 @@
 Align the main README and specs summary with the current implementation state and latest decisions.
 
 ## Context
-We updated specs and created additional documents in yoda/project/specs. The main README and project/specs/summary.md should stay consistent with the latest rules and artifacts.
+We updated specs and created additional documents in project/specs. The main README and project/specs/summary.md should stay consistent with the latest rules and artifacts.
 
 ## Objective
 Review and update README.md and project/specs/summary.md to reflect the current decisions and artifacts.

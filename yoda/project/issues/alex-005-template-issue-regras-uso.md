@@ -49,7 +49,7 @@ Not applicable.
 - Incorrect use of templates can lead to inconsistent issues.
 
 ## Result log
-Created yoda/project/specs/issue-templates-usage.md with rules for template selection, script-driven creation, and commit format.
+Created project/specs/14-issue-templates-usage.md with rules for template selection, script-driven creation, and commit format.
 
 Commit:
 docs(yoda): add issue template usage guide

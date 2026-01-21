@@ -50,7 +50,7 @@ Not applicable.
 - Undefined interfaces may block implementation later.
 
 ## Result log
-Created yoda/project/specs/yoda-scripts-v1.md with the v1 script interface and expected behavior.
+Created project/specs/13-yoda-scripts-v1.md with the v1 script interface and expected behavior.
 
 Commit:
 docs(yoda): specify scripts v1 interface

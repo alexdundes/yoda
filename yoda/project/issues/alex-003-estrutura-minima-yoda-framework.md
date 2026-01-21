@@ -51,7 +51,7 @@ Not applicable.
 - Inconsistent structure may break future scripts.
 
 ## Result log
-Created yoda/project/specs/yoda-structure.md with the minimum folder and file structure and path purposes.
+Created project/specs/12-yoda-structure.md with the minimum folder and file structure and path purposes.
 
 Commit:
 docs(yoda): document minimum project structure
