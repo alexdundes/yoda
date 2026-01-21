@@ -4,6 +4,8 @@ This README organizes the topics discussed so far. Each topic has a dedicated fi
 
 ## Topics
 
+0. Conventions (normative language and shared rules)
+   - file: 00-conventions.md
 1. YODA Framework overview and principles
    - file: 01-yoda-overview.md
 2. YODA Flow (cycle: study -> document -> implement -> evaluate)

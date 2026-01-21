@@ -90,7 +90,7 @@ todo_next.py must select the next issue using:
 
 ```yaml
 developer: alex
-updated_at: "2026-01-21 19:40:50"
+updated_at: "2026-01-21T19:40:50-03:00"
 
 issues:
   - id: alex-001
@@ -107,8 +107,8 @@ issues:
         type: issue
       - path: project/specs/07-agent-entry-and-root-file.md
         type: issue
-    created_at: "2026-01-21 18:46:15"
-    updated_at: "2026-01-21 18:46:15"
+    created_at: "2026-01-21T18:46:15-03:00"
+    updated_at: "2026-01-21T18:46:15-03:00"
 
   - id: alex-002
     title: Issue templates usage guide
@@ -122,8 +122,8 @@ issues:
     entrypoints:
       - path: yoda/templates/issue.md
         type: issue
-    created_at: "2026-01-21 19:26:26"
-    updated_at: "2026-01-21 19:26:26"
+    created_at: "2026-01-21T19:26:26-03:00"
+    updated_at: "2026-01-21T19:26:26-03:00"
 
   - id: alex-003
     title: Define scripts v1 interface
@@ -138,6 +138,6 @@ issues:
     entrypoints:
       - path: project/specs/13-yoda-scripts-v1.md
         type: issue
-    created_at: "2026-01-21 19:17:35"
-    updated_at: "2026-01-21 19:17:35"
+    created_at: "2026-01-21T19:17:35-03:00"
+    updated_at: "2026-01-21T19:17:35-03:00"
 ```
