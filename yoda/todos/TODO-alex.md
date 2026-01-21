@@ -30,7 +30,7 @@ Este arquivo e o TODO em Markdown (substituto temporario do TODO.dev.yaml) para 
 
 ### A-005 - Template de issue (regras e uso)
 - Descricao: documentar como o agente deve criar e preencher issues a partir dos templates.
-- Status: to-do
+- Status: do-it
 - Prioridade: 7
 - Dependencias: A-002
 
