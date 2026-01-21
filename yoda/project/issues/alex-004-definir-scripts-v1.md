@@ -1,4 +1,4 @@
-# A-004 - Definir comandos e scripts v1 (especificacao)
+# alex-004 - Definir comandos e scripts v1 (especificacao)
 
 ## Summary
 Define the v1 script interface for YODA: names, purpose, and expected behavior for each command.
@@ -29,7 +29,7 @@ Document the v1 script interface: required commands, inputs, outputs, and the mi
 - [ ] Each script has a clear, minimal description of behavior.
 
 ## Dependencies
-- A-001
+- alex-001
 
 ## Entry points
 - path: project/specs/05-scripts-and-automation.md
@@ -55,5 +55,5 @@ Created project/specs/13-yoda-scripts-v1.md with the v1 script interface and exp
 Commit:
 docs(yoda): specify scripts v1 interface
 
-Issue: A-004
+Issue: alex-004
 Path: yoda/project/issues/alex-004-definir-scripts-v1.md

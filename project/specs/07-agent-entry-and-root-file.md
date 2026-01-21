@@ -19,4 +19,4 @@ There is no consensus among agent tools about which file to read (AGENTS.md, gem
 1) User starts the agent with zero context.
 2) User types a natural phrase indicating entering YODA Flow and taking the highest-priority issue without dependencies.
 3) Agent reads yoda/yoda.md.
-4) Agent loads the corresponding TODO.dev.yaml and follows the flow.
+4) Agent loads the corresponding TODO.dev.yaml, selects the highest-priority issue without dependencies using the canonical id, and follows the flow.

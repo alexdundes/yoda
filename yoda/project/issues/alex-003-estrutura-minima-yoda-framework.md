@@ -1,4 +1,4 @@
-# A-003 - Estrutura minima do YODA Framework
+# alex-003 - Estrutura minima do YODA Framework
 
 ## Summary
 Define and document the minimum folder and file structure for a YODA Framework project.
@@ -28,7 +28,7 @@ Produce a clear description of the minimum structure, including required paths a
 - [ ] Paths are explicit and unambiguous.
 
 ## Dependencies
-- A-001
+- alex-001
 
 ## Entry points
 - path: project/specs/01-yoda-overview.md
@@ -56,5 +56,5 @@ Created project/specs/12-yoda-structure.md with the minimum folder and file stru
 Commit:
 docs(yoda): document minimum project structure
 
-Issue: A-003
+Issue: alex-003
 Path: yoda/project/issues/alex-003-estrutura-minima-yoda-framework.md

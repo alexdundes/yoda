@@ -1,5 +1,5 @@
 # [ID] - [TITLE]
-<!-- AGENT: Replace [ID] with the sequential issue id (from TODO.dev.yaml) and [TITLE] with the issue title. -->
+<!-- AGENT: Replace [ID] with the canonical issue id (dev-id, e.g., alex-001) from TODO.dev.yaml and [TITLE] with the issue title. -->
 
 ## Summary
 <!-- AGENT: Provide a short summary of the problem and the intended change (2-4 sentences). -->

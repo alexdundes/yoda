@@ -1,4 +1,4 @@
-# A-006 - Consolidar README.md e summary.md com esta implementacao
+# alex-006 - Consolidar README.md e summary.md com esta implementacao
 
 ## Summary
 Align the main README and specs summary with the current implementation state and latest decisions.
@@ -25,7 +25,7 @@ Review and update README.md and project/specs/summary.md to reflect the current 
 - [ ] README.md and project/specs/summary.md are consistent with current specs.
 
 ## Dependencies
-- A-005
+- alex-005
 
 ## Entry points
 - path: README.md
@@ -50,5 +50,5 @@ Aligned README.md with current specs by adding the commit format section.
 Commit:
 docs(readme): align commit format section
 
-Issue: A-006
+Issue: alex-006
 Path: yoda/project/issues/alex-006-consolidar-readme-summary.md

@@ -1,4 +1,4 @@
-# A-005 - Template de issue (regras e uso)
+# alex-005 - Template de issue (regras e uso)
 
 ## Summary
 Document how agents should create and fill issues using the templates under yoda/templates/.
@@ -29,7 +29,7 @@ Create a usage guide for the issue templates that is aligned with the specs and 
 - [ ] Guidance is actionable for agents.
 
 ## Dependencies
-- A-002
+- alex-002
 
 ## Entry points
 - path: yoda/templates/issue.md
@@ -54,5 +54,5 @@ Created project/specs/14-issue-templates-usage.md with rules for template select
 Commit:
 docs(yoda): add issue template usage guide
 
-Issue: A-005
+Issue: alex-005
 Path: yoda/project/issues/alex-005-template-issue-regras-uso.md

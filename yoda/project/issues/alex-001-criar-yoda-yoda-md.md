@@ -1,4 +1,4 @@
-# A-001 - Criar yoda/yoda.md
+# alex-001 - Criar yoda/yoda.md
 
 ## Summary
 Criar o arquivo raiz de instrucoes do agente em yoda/yoda.md para este repositorio. O objetivo e definir como o agente entra no YODA Flow e qual fonte de verdade deve ler antes de agir.

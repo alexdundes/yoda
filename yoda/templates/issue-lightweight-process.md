@@ -1,5 +1,5 @@
 # [ID] - [TITLE]
-<!-- AGENT: Replace [ID] and [TITLE]. -->
+<!-- AGENT: Replace [ID] with the canonical issue id (dev-id, e.g., alex-001) and [TITLE] with the issue title. -->
 
 ## Summary
 <!-- AGENT: One short paragraph describing what to build or change. -->

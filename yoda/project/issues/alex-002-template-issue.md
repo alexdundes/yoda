@@ -1,4 +1,4 @@
-# A-002 - Formalizar template de issue (normal e lightweight)
+# alex-002 - Formalizar template de issue (normal e lightweight)
 
 ## Summary
 Align the issue templates in yoda/templates/ with the current specs and usage rules, ensuring they are ready for agents to use.
@@ -32,7 +32,7 @@ Review, adjust, and finalize the issue templates to match the YODA specs and pro
 - [ ] No conflicts with current specs.
 
 ## Dependencies
-- A-001
+- alex-001
 
 ## Entry points
 - path: yoda/templates/issue.md
@@ -62,5 +62,5 @@ Updated yoda/templates/issue.md and yoda/templates/issue-lightweight-process.md 
 Commit:
 docs(templates): standardize commit format instructions
 
-Issue: A-002
+Issue: alex-002
 Path: yoda/project/issues/alex-002-template-issue.md
