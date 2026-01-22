@@ -11,7 +11,7 @@ When the user indicates they want to enter YODA Flow, the agent must:
    - --dev <slug> flag
    - YODA_DEV environment variable
    - Ask the user
-3) Load the TODO for the current developer (this implementation: yoda/todos/TODO-alex.md).
+3) Load yoda/todos/TODO-<slug>.md (bootstrap); fallback to yoda/todos/TODO-alex.md if missing.
 4) Select the highest-priority issue without dependencies.
 5) Follow the YODA Flow for that issue.
 

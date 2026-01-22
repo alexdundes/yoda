@@ -21,7 +21,7 @@ target:
     format: yaml
     pattern: yoda/logs/<dev>-<id>-<slug>.yaml
 
-conflict_resolution_order:
+agent_entry_order: # reading order, not semantic authority
   - REPO_INTENT.md
   - yoda/yoda.md
   - project/specs
