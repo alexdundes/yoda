@@ -1,6 +1,6 @@
 # TODO-alex
 
-Este arquivo e o TODO em Markdown (substituto temporario do TODO.<dev>.yaml) para esta implementacao do YODA Framework.
+Este arquivo e o TODO em Markdown (substituto temporario do `TODO.<dev>.yaml`) para esta implementacao do YODA Framework.
 project/specs/ e a fonte da verdade do framework futuro; yoda/ e a implementacao em construcao.
 Enquanto os scripts nao existem, usamos Markdown para TODOs e logs nesta meta-implementacao.
 Leia REPO_INTENT.md para o contexto do repositorio.
@@ -43,8 +43,8 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 - Prioridade: 6
 - Dependencias: alex-001, alex-003
 
-### alex-007 - Schema formal do TODO.<dev>.yaml
-- Descricao: definir schema validavel do TODO.<dev>.yaml (tipos, obrigatorios, enums, constraints) com exemplos.
+### alex-007 - Schema formal do `TODO.<dev>.yaml`
+- Descricao: definir schema validavel do `TODO.<dev>.yaml` (tipos, obrigatorios, enums, constraints) com exemplos.
 - Status: to-do
 - Prioridade: 9
 - Dependencias: nenhuma
@@ -98,7 +98,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 - Dependencias: nenhuma
 
 ### alex-016 - Alinhar entrada do agente com TODO no bootstrap
-- Descricao: explicitar nas specs a regra de fallback para TODO.<dev>.md no bootstrap e a transicao para YAML.
+- Descricao: explicitar nas specs a regra de fallback para `TODO.<dev>.md` no bootstrap e a transicao para YAML.
 - Status: to-do
 - Prioridade: 7
 - Dependencias: nenhuma
@@ -161,4 +161,4 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 - Cada item acima deve gerar um arquivo de issue em yoda/project/issues/.
 - A partir da primeira issue, seguir o YODA Flow.
-- Este TODO.md sera substituido por TODO.<dev>.yaml quando os scripts existirem.
+- Este TODO.md sera substituido por `TODO.<dev>.yaml` quando os scripts existirem.

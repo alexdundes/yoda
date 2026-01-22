@@ -22,8 +22,8 @@ Agent tools do not agree on which file to read (AGENTS.md, gemini.md, etc.).
    - Example: "Vamos entrar no YODA Flow e pegar a issue prioritaria sem dependencias."
 3) Agent reads yoda/yoda.md.
 4) Agent resolves the developer slug in this order:
-   - --dev <slug> flag (preferred when available)
+   - --dev `<slug>` flag (preferred when available)
    - YODA_DEV environment variable
    - Ask the user (fallback)
    - Slug format: lowercase ASCII, digits, and hyphens only; must start with a letter; no spaces.
-5) Agent loads TODO.<dev>.yaml, selects the highest-priority issue without dependencies using the canonical id, and follows the flow.
+5) Agent loads `TODO.<dev>.yaml`, selects the highest-priority issue without dependencies using the canonical id, and follows the flow.

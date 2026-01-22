@@ -38,16 +38,16 @@ Deliverables per phase are defined in project/specs/02-yoda-flow-process.md and 
 - Commit format must be:
 - First line: conventional commit message.
 - Body:
-  - Issue: <ID>
-  - Path: <issue path>
+  - Issue: `<ID>`
+  - Path: `<issue path>`
 - Record the cycle log at yoda/logs/dev-id-slug.yaml.
-- If a blocker arises, mark status as pending and record the reason in TODO.<dev>.yaml; use the pending resolution script when unblocked.
+- If a blocker arises, mark status as pending and record the reason in `TODO.<dev>.yaml`; use the pending resolution script when unblocked.
 - Deliverable: result log updated, commit suggestion written, TODO status updated, log entry recorded.
 
 ## General rules
 
 - Always keep the issue (Markdown file) as the source of truth.
-- Never edit TODO.<dev>.yaml directly.
+- Never edit `TODO.<dev>.yaml` directly.
 - Prefer questions when there is ambiguity.
 - If the issue is ambiguous, return to Document before coding.
 - Do not invent files or paths; verify the repo structure first.

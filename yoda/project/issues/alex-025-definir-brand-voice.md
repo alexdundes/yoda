@@ -41,7 +41,7 @@ None
   type: other
 
 ## Implementation notes
-- Keep terms consistent with existing references like "YODA Flow" and "TODO.<dev>.yaml".
+- Keep terms consistent with existing references like "YODA Flow" and `TODO.<dev>.yaml`.
 
 ## Tests
 Not applicable.
@@ -66,3 +66,6 @@ Follow-up: tightened language in specs overview and document-first guidance.
 Follow-up: tightened language across remaining specs files.
 Follow-up: tightened language in YODA structure and influence reference docs.
 Follow-up: removed soft adjectives in specs index and YAML docs.
+Follow-up: wrapped `<dev>` terms in inline code to avoid Markdown tag parsing.
+Follow-up: documented inline-code rule for angle-bracket tokens in conventions.
+Follow-up: added inline-code reminder for `<...>` placeholders in issue templates.

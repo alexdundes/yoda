@@ -4,14 +4,14 @@ This document defines the minimum script interface for YODA v1. Scripts live in 
 
 ## Naming
 
-- Script path: yoda/scripts/<name>.py
-- Command name: <name>.py
+- Script path: yoda/scripts/`<name>.py`
+- Command name: `<name>.py`
 
 ## Developer selection
 
 Scripts that read TODO files MUST resolve the developer slug using:
 
-1) --dev <slug> flag
+1) --dev `<slug>` flag
 2) YODA_DEV environment variable
 3) Interactive prompt when not defined
 
@@ -43,11 +43,11 @@ Outputs:
 ### issue_add.py
 
 Purpose:
-- Create a new issue entry in TODO.<dev>.yaml and generate the issue Markdown from the template.
+- Create a new issue entry in `TODO.<dev>.yaml` and generate the issue Markdown from the template.
 
 Behavior (minimum):
 - Generate the next sequential id.
-- Create TODO.<dev>.yaml entry with basic fields.
+- Create `TODO.<dev>.yaml` entry with basic fields.
 - Create the issue Markdown file from the template.
 - Fill basic fields in the template (id, title, summary) based on agent-provided inputs.
 
@@ -55,7 +55,7 @@ Inputs:
 - Title, description or summary, labels, priority, agent, entrypoints.
 
 Outputs:
-- Updated TODO.<dev>.yaml and new issue Markdown file.
+- Updated `TODO.<dev>.yaml` and new issue Markdown file.
 
 ---
 
@@ -65,7 +65,7 @@ Purpose:
 - Render or re-render an issue Markdown file from the template.
 
 Behavior (minimum):
-- Load the issue data from TODO.<dev>.yaml or provided inputs.
+- Load the issue data from `TODO.<dev>.yaml` or provided inputs.
 - Apply the selected template.
 - Preserve or re-apply required fields (id, title, summary).
 
@@ -81,15 +81,15 @@ Outputs:
 ### todo_list.py
 
 Purpose:
-- List TODO items from TODO.<dev>.yaml.
+- List TODO items from `TODO.<dev>.yaml`.
 
 Behavior (minimum):
 - Filter by status, priority, agent, or labels.
 - Output a human-readable summary and a machine-friendly list.
 
 Inputs:
-- TODO file path (default: TODO.<dev>.yaml).
-- --dev <slug> (optional, see Developer selection).
+- TODO file path (default: `TODO.<dev>.yaml`).
+- --dev `<slug>` (optional, see Developer selection).
 - Optional filters.
 
 Outputs:
@@ -100,7 +100,7 @@ Outputs:
 ### todo_update.py
 
 Purpose:
-- Update TODO.<dev>.yaml fields.
+- Update `TODO.<dev>.yaml` fields.
 
 Behavior (minimum):
 - Update status, priority, labels, depends_on, pending_reason.
@@ -109,10 +109,10 @@ Behavior (minimum):
 Inputs:
 - Issue id.
 - Field updates (flags or key=value).
-- --dev <slug> (optional, see Developer selection).
+- --dev `<slug>` (optional, see Developer selection).
 
 Outputs:
-- Updated TODO.<dev>.yaml.
+- Updated `TODO.<dev>.yaml`.
 
 ---
 
@@ -128,7 +128,7 @@ Behavior (minimum):
 
 Inputs:
 - TODO file path.
-- --dev <slug> (optional, see Developer selection).
+- --dev `<slug>` (optional, see Developer selection).
 
 Outputs:
 - Issue id and path.
@@ -146,10 +146,10 @@ Behavior (minimum):
 
 Inputs:
 - Issue id and target position.
-- --dev <slug> (optional, see Developer selection).
+- --dev `<slug>` (optional, see Developer selection).
 
 Outputs:
-- Updated TODO.<dev>.yaml.
+- Updated `TODO.<dev>.yaml`.
 
 ---
 
@@ -166,10 +166,10 @@ Behavior (minimum):
 Inputs:
 - Issue id.
 - New status.
-- --dev <slug> (optional, see Developer selection).
+- --dev `<slug>` (optional, see Developer selection).
 
 Outputs:
-- Updated TODO.<dev>.yaml.
+- Updated `TODO.<dev>.yaml`.
 
 ---
 

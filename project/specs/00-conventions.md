@@ -42,8 +42,9 @@ Terminology rules:
 - "YODA Framework" is the primary name; "YODA" is allowed after first mention.
 - "YODA Flow" is the official name of the cycle; phases are Study, Document, Implement, Evaluate.
 - Use "issue" for a unit of work; avoid "ticket" or "task" as the primary label.
-- "TODO.<dev>.yaml" is the canonical TODO file; mention TODO.<dev>.md only as a bootstrap exception.
+- `TODO.<dev>.yaml` is the canonical TODO file; mention `TODO.<dev>.md` only as a bootstrap exception.
 - Use "agent" for automated/AI actors and "script" for CLI automation in yoda/scripts.
+- Tokens with angle brackets (example: `TODO.<dev>.yaml`) must use inline code in prose to avoid Markdown tag parsing.
 
 ## Notes
 

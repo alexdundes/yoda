@@ -17,7 +17,7 @@ This guide explains how agents and scripts should create and fill issue files us
 Issues are created by a script (issue_add.py). The script must:
 
 1) Generate the next sequential id.
-2) Add the issue entry to TODO.<dev>.yaml.
+2) Add the issue entry to `TODO.<dev>.yaml`.
 3) Create the issue Markdown file from the selected template.
 4) Fill the basic fields using agent-provided inputs (id, title, summary, labels, priority, entrypoints).
 
@@ -54,8 +54,8 @@ The commit text in Result log must follow this format:
 
 First line: conventional commit message.
 Body:
-Issue: <ID>
-Path: <issue path>
+Issue: `<ID>`
+Path: `<issue path>`
 
 Example:
 

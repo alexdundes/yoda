@@ -1,5 +1,5 @@
 # [ID] - [TITLE]
-<!-- AGENT: Replace [ID] with the canonical issue id (dev-id, e.g., alex-001) from TODO.<dev>.yaml and [TITLE] with the issue title. -->
+<!-- AGENT: Replace [ID] with the canonical issue id (dev-id, e.g., alex-001) from `TODO.<dev>.yaml` and [TITLE] with the issue title. Keep any <...> placeholders wrapped in inline code when used in prose. -->
 
 ## Summary
 <!-- AGENT: Provide a short summary of the problem and the intended change (2-4 sentences). -->
@@ -48,7 +48,7 @@
 <!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
 First line: conventional commit message.
 Body:
-Issue: <ID>
-Path: <issue path>
+Issue: `<ID>`
+Path: `<issue path>`
 -->
 <!-- AGENT: In this repo's meta-implementation, logs are Markdown (yoda/logs/dev-id-slug.md) until scripts exist. -->

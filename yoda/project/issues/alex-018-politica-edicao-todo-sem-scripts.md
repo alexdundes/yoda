@@ -4,7 +4,7 @@
 Clarify how TODO updates are handled when scripts are not yet available in the meta-implementation.
 
 ## Context
-Specs say agents must never edit TODO.<dev>.yaml directly and should use scripts, but the meta-implementation has no scripts yet and uses Markdown TODOs. The spec should define how to proceed during bootstrap.
+Specs say agents must never edit `TODO.<dev>.yaml` directly and should use scripts, but the meta-implementation has no scripts yet and uses Markdown TODOs. The spec should define how to proceed during bootstrap.
 
 ## Objective
 Document the bootstrap rule for TODO updates before scripts exist, while keeping YAML and scripts as the canonical future behavior.

@@ -13,9 +13,9 @@ Standardize repetitive tasks and reduce the need for manual edits.
 ## Minimum scripts (v1)
 
 - init.py: creates the minimum YODA Framework structure
-- issue_add.py: adds an issue to TODO.<dev>.yaml and generates the issue Markdown from the template using basic fields provided by the agent
-- TODO.<dev>.yaml maintenance scripts (list, update, reorder, etc.)
-- scripts to present TODO.<dev>.yaml in a human-readable format for humans and agents
+- issue_add.py: adds an issue to `TODO.<dev>.yaml` and generates the issue Markdown from the template using basic fields provided by the agent
+- `TODO.<dev>.yaml` maintenance scripts (list, update, reorder, etc.)
+- scripts to present `TODO.<dev>.yaml` in a human-readable format for humans and agents
 - log scripts to record flow events
 - pending resolution script (sets status from pending and clears pending_reason)
 

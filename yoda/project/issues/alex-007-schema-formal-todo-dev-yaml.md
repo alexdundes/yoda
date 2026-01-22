@@ -1,16 +1,16 @@
-# alex-007 - Define TODO.<dev>.yaml formal schema
+# alex-007 - Define `TODO.<dev>.yaml` formal schema
 
 ## Summary
-Define a validatable schema for TODO.<dev>.yaml, including field types, required keys, enums, and constraints. The schema must be explicit enough to support future validation tooling. This removes ambiguity for agents and scripts.
+Define a validatable schema for `TODO.<dev>.yaml`, including field types, required keys, enums, and constraints. The schema must be explicit enough to support future validation tooling. This removes ambiguity for agents and scripts.
 
 ## Context
-The framework defines TODO.<dev>.yaml as the canonical metadata source, but a formal schema has not been finalized. Without it, scripts and agents may diverge in expectations.
+The framework defines `TODO.<dev>.yaml` as the canonical metadata source, but a formal schema has not been finalized. Without it, scripts and agents may diverge in expectations.
 
 ## Objective
-Specify the formal TODO.<dev>.yaml schema and document it in the canonical specs.
+Specify the formal `TODO.<dev>.yaml` schema and document it in the canonical specs.
 
 ## Scope
-- Define required fields, types, and constraints for TODO.<dev>.yaml.
+- Define required fields, types, and constraints for `TODO.<dev>.yaml`.
 - Provide a canonical example aligned with the schema.
 - Update relevant specs to reflect the finalized schema.
 
@@ -24,7 +24,7 @@ Specify the formal TODO.<dev>.yaml schema and document it in the canonical specs
 - Canonical specs include the final schema.
 
 ## Acceptance criteria
-- [ ] TODO.<dev>.yaml formal schema is documented in canonical specs.
+- [ ] `TODO.<dev>.yaml` formal schema is documented in canonical specs.
 - [ ] Example reflects the finalized schema.
 
 ## Dependencies

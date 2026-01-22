@@ -14,3 +14,6 @@
 - 2026-01-22T10:38:01-03:00: [alex-025] Especificacoes restantes ajustadas para voz mais clara e pragmatica
 - 2026-01-22T10:40:03-03:00: [alex-025] Estrutura minima e influencias ajustadas para voz mais clara e pragmatica
 - 2026-01-22T10:41:06-03:00: [alex-025] Ajustes finais para remover adjetivos suaves nas specs
+- 2026-01-22T10:56:50-03:00: [alex-025] `<dev>` envolvido em inline code para evitar parsing de tag no Markdown
+- 2026-01-22T10:59:05-03:00: [alex-025] Regra de inline code para tokens com `<>` registrada nas conventions
+- 2026-01-22T11:03:27-03:00: [alex-025] Templates atualizados com lembrete para inline code em placeholders `<...>`

@@ -58,8 +58,8 @@ O objetivo:
 ### 2. YAML como camada de controle
 
 - YAML e usado para representar:
-  - TODO.<dev>.yaml por pessoa (backlog e metadados)
-  - Metadados de issues (no TODO.<dev>.yaml)
+  - `TODO.<dev>.yaml` por pessoa (backlog e metadados)
+  - Metadados de issues (no `TODO.<dev>.yaml`)
   - Flows de agentes (quem faz o que, em qual ordem)
   - Configuracoes de contexto (escopos, tenants, ambientes)
 - Scripts e IAs leem esses YAMLs para:
@@ -75,7 +75,7 @@ O objetivo:
   - Escrever issues em linguagem natural
   - Manuais e guias
 - Uma issue pode ter:
-  - Metadados centralizados no TODO.<dev>.yaml
+  - Metadados centralizados no `TODO.<dev>.yaml`
   - Descricao detalhada em um arquivo `.md` separado
 
 ### 4. IA como copiloto, nao como oraculo
@@ -129,7 +129,7 @@ Scripts podem gerar esqueletos Markdown a partir do YAML e produzir resumos para
 
 O YODA espera scripts leves que:
 
-- leiam TODO.<dev>.yaml e gerem Markdown ou resumos para IA
+- leiam `TODO.<dev>.yaml` e gerem Markdown ou resumos para IA
 - validem estrutura e status dos itens
 - padronizem a estrutura do projeto antes de humanos ou agentes editarem
 
@@ -141,8 +141,8 @@ Nesta meta-implementacao, usamos `yoda/logs/dev-id-slug.md` ate os scripts exist
 
 - Primeira linha: conventional commit message.
 - Corpo:
-  - Issue: <ID>
-  - Path: <issue path>
+  - Issue: `<ID>`
+  - Path: `<issue path>`
 
 Detalhes de CLI e tooling ficam intencionalmente abertos nesta fase.
 

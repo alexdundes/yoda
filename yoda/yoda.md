@@ -8,10 +8,10 @@ When the user indicates they want to enter YODA Flow, the agent must:
 
 1) Confirm entry into YODA Flow.
 2) Resolve developer slug in this order:
-   - --dev <slug> flag
+   - --dev `<slug>` flag
    - YODA_DEV environment variable
    - Ask the user
-3) Load yoda/todos/TODO.<slug>.md (bootstrap); fallback to yoda/todos/TODO.alex.md if missing.
+3) Load yoda/todos/TODO.`<slug>`.md (bootstrap); fallback to yoda/todos/TODO.alex.md if missing.
 4) Select the highest-priority issue without dependencies.
 5) Follow the YODA Flow for that issue.
 
@@ -36,17 +36,17 @@ Slug format:
 - This repository is a meta-implementation that uses the provisional specs to build the framework itself.
 - yoda/ is the in-progress implementation of that framework and can lag behind the specs while we validate them.
 - While scripts do not exist, this repo temporarily uses Markdown for TODOs and logs:
-  - TODOs: yoda/todos/TODO.<dev>.md
+  - TODOs: `yoda/todos/TODO.<dev>.md`
   - Logs: yoda/logs/dev-id-slug.md
 
 ## TODO (this implementation)
 
 This implementation does not have YODA scripts yet. Until they exist:
 
-- Use yoda/todos/TODO.<slug>.md as the TODO source.
-- If TODO.<slug>.md is missing, fallback to yoda/todos/TODO.alex.md.
+- Use yoda/todos/TODO.`<slug>`.md as the TODO source.
+- If TODO.`<slug>`.md is missing, fallback to yoda/todos/TODO.alex.md.
 - Do not edit TODO files directly unless the user requests it.
-- A future migration will replace this with TODO.<dev>.yaml and scripts.
+- A future migration will replace this with `TODO.<dev>.yaml` and scripts.
  - The future framework expects YAML TODOs and YAML logs; this repo stays on Markdown until scripts exist.
 
 ## Flow rules
@@ -67,8 +67,8 @@ This implementation does not have YODA scripts yet. Until they exist:
 - Commit format:
   - First line: conventional commit message.
   - Body:
-    - Issue: <ID>
-    - Path: <issue path>
+    - Issue: `<ID>`
+    - Path: `<issue path>`
 
 ## Notes
 

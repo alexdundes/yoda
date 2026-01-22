@@ -12,7 +12,7 @@ Definir o arquivo yoda/yoda.md com instrucoes claras para um agente com contexto
 ## Scope
 - Criar o arquivo yoda/yoda.md.
 - Incluir instrucoes basicas de entrada no YODA Flow.
-- Descrever a regra de leitura do TODO.alex.md (excecao temporaria) e a migracao futura para TODO.<dev>.yaml.
+- Descrever a regra de leitura do TODO.alex.md (excecao temporaria) e a migracao futura para `TODO.<dev>.yaml`.
 
 ## Out of scope
 - Implementar scripts do YODA.

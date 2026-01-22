@@ -1,4 +1,4 @@
-# TODO.<dev>.yaml and issues in Markdown
+# `TODO.<dev>.yaml` and issues in Markdown
 
 ## Objective
 
@@ -6,9 +6,9 @@ Separate backlog metadata from rich issue descriptions.
 
 ## Preferred direction
 
-- One TODO per person, in the format TODO.<dev>.yaml (dev = developer slug).
+- One TODO per person, in the format `TODO.<dev>.yaml` (dev = developer slug).
 - Each issue has its own Markdown file in yoda/project/issues/.
-- TODO.<dev>.yaml references the path of each issue Markdown file.
+- `TODO.<dev>.yaml` references the path of each issue Markdown file.
 - Issue files contain only free text (context, criteria, notes).
 - A script creates the issue and the initial Markdown skeleton.
 
@@ -33,7 +33,7 @@ Separate backlog metadata from rich issue descriptions.
 - IDs are unique across the repo (not only within a single TODO).
 - Optional human alias (example: A-001) is allowed only if a fixed prefix map exists per developer.
 
-## Minimal schema for TODO.<dev>.yaml
+## Minimal schema for `TODO.<dev>.yaml`
 
 Each issue item must contain:
 
@@ -71,18 +71,18 @@ Note: there is no owner; each dev has their own TODO.
 
 - Single source of truth for work state.
 - Bulk operations are straightforward (list, filter, reorder).
-- Token savings by sending only TODO.<dev>.yaml for planning.
+- Token savings by sending only `TODO.<dev>.yaml` for planning.
 - Markdown stays free for narrative detail.
 
 ## Minimal identifier
 
-The issue Markdown file must have a minimal identifier to link to TODO.<dev>.yaml, for example:
+The issue Markdown file must have a minimal identifier to link to `TODO.<dev>.yaml`, for example:
 
 - Use the ID in the Markdown title.
 
 ## Notes
 
-- The AI must not edit TODO.<dev>.yaml directly; it must call scripts.
+- The AI must not edit `TODO.<dev>.yaml` directly; it must call scripts.
 - The AI can freely edit the issue text.
 
 ## Ordering rule (deterministic)
@@ -92,7 +92,7 @@ todo_next.py must select the next issue using:
 1) priority (desc)
 2) position in the YAML list (top to bottom)
 
-## Minimal example (TODO.<dev>.yaml)
+## Minimal example (`TODO.<dev>.yaml`)
 
 ```yaml
 developer: alex

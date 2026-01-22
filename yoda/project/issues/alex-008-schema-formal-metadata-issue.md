@@ -39,7 +39,7 @@ None
   type: issue
 
 ## Implementation notes
-- Keep the schema consistent with TODO.<dev>.yaml metadata expectations.
+- Keep the schema consistent with `TODO.<dev>.yaml` metadata expectations.
 
 ## Tests
 Not applicable.

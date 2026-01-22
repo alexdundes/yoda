@@ -33,5 +33,5 @@ Defines the minimum folder and file structure for a YODA Framework project.
 
 ## Notes
 
-- In the general framework, TODOs are YAML (TODO.<dev>.yaml).
+- In the general framework, TODOs are YAML (`TODO.<dev>.yaml`).
 - In this meta-implementation, TODOs are Markdown until scripts exist.
