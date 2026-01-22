@@ -92,8 +92,8 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 - Dependencias: alex-007
 
 ### alex-015 - Resolver decisoes em aberto do summary
-- Descricao: fechar as decisoes em aberto listadas em project/specs/summary.md e registrar os resultados nas specs canonicas.
-- Status: to-do
+- Descricao: desdobrado em alex-019..alex-025 para resolver cada decisao em aberto separadamente.
+- Status: done
 - Prioridade: 8
 - Dependencias: nenhuma
 
@@ -111,6 +111,48 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-018 - Definir politica de edicao de TODO sem scripts
 - Descricao: definir a excecao para edicao manual de TODO no bootstrap, mantendo scripts como regra futura.
+- Status: to-do
+- Prioridade: 7
+- Dependencias: nenhuma
+
+### alex-019 - Definir politica de tooling (obrigatorio vs opcional)
+- Descricao: definir se o tooling do YODA e mandatorio ou recomendado e registrar nas specs.
+- Status: to-do
+- Prioridade: 7
+- Dependencias: nenhuma
+
+### alex-020 - Definir audiencia e posicionamento oficial
+- Descricao: decidir a audiencia primaria (solo, equipes, consultorias, SaaS) e refletir nas specs.
+- Status: to-do
+- Prioridade: 7
+- Dependencias: nenhuma
+
+### alex-021 - Definir entregaveis minimos por fase do YODA Flow
+- Descricao: especificar artefatos minimos de Study, Document, Implement, Evaluate.
+- Status: to-do
+- Prioridade: 7
+- Dependencias: nenhuma
+
+### alex-022 - Definir campos adicionais do schema de metadados
+- Descricao: decidir campos obrigatorios adicionais alem do baseline e atualizar as specs.
+- Status: to-do
+- Prioridade: 7
+- Dependencias: nenhuma
+
+### alex-023 - Definir limites de escopo (out-of-scope)
+- Descricao: listar explicitamente o que o framework nao cobre (CI/CD, arquitetura, RH etc.).
+- Status: to-do
+- Prioridade: 7
+- Dependencias: nenhuma
+
+### alex-024 - Definir politicas de stack profiles
+- Descricao: decidir entre modelo generico unico vs perfis por stack e documentar.
+- Status: to-do
+- Prioridade: 7
+- Dependencias: nenhuma
+
+### alex-025 - Definir brand voice e terminologia
+- Descricao: estabelecer tom e termos oficiais do framework nas docs.
 - Status: to-do
 - Prioridade: 7
 - Dependencias: nenhuma

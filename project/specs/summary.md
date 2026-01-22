@@ -33,8 +33,6 @@ This file records decisions and known open points captured so far.
 - Audience: official positioning (solo devs vs teams/consultancies vs SaaS/multi-tenant).
 - Flow deliverables: minimum required artifacts per phase.
 - Metadata schema: any additional required fields beyond the basics.
-- Scripts v1: exact CLI interface and command list beyond init.py and TODO maintenance/display.
 - Scope boundaries: explicit out-of-scope items (CI/CD, architecture standards, PM, HR, etc.).
 - Stack profiles: generic-only or profiles per stack (web/data/backend).
 - Brand voice: guideline for tone and terminology.
-- Issue template: file location and required sections.
