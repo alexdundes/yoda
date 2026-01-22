@@ -12,26 +12,25 @@ Document the bootstrap rule for TODO updates before scripts exist, while keeping
 ## Scope
 - Define a bootstrap exception for manual TODO updates.
 - Keep the canonical rule that scripts are required once available.
+- Document the exception in the dedicated bootstrap specs file.
 
 ## Out of scope
 - Implementing the scripts.
 - Changing TODO schemas.
 
 ## Requirements
-- Specs describe the bootstrap exception for TODO updates.
+- Bootstrap specs describe the exception for manual TODO updates.
 - Canonical rule remains script-based updates for YAML.
 
 ## Acceptance criteria
-- [ ] project/specs/06-agent-playbook.md mentions the bootstrap TODO update exception.
-- [ ] project/specs/04-todo-dev-yaml-issues.md clarifies the bootstrap constraint.
+- [ ] Bootstrap specs are documented in a separate file that explains the bootstrap concept.
+- [ ] Bootstrap specs include the manual TODO update exception.
 
 ## Dependencies
 None
 
 ## Entry points
-- path: project/specs/06-agent-playbook.md
-  type: issue
-- path: project/specs/04-todo-dev-yaml-issues.md
+- path: project/specs/15-bootstrap.md
   type: issue
 
 ## Implementation notes
@@ -44,3 +43,10 @@ Not applicable.
 - Without an explicit exception, agents may be blocked from maintaining the TODO.
 
 ## Result log
+Documented the manual TODO update exception in the bootstrap specs file.
+
+Commit:
+docs(specs): allow manual TODO updates in bootstrap
+
+Issue: alex-018
+Path: yoda/project/issues/alex-018-politica-edicao-todo-sem-scripts.md

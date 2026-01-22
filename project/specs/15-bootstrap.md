@@ -14,6 +14,7 @@ Bootstrap is a temporary documentation-only mode for the YODA Framework meta-imp
 - Use Markdown logs at `yoda/logs/dev-id-slug.md` instead of YAML logs.
 - Agent entry checks for `TODO.<dev>.md` when YAML is not available.
 - Scripts are optional during bootstrap and may be missing.
+- Manual updates to `TODO.<dev>.md` are allowed in bootstrap, but YAML updates must use scripts once available.
 
 ## Exit and removal
 

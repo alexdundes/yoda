@@ -111,7 +111,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-018 - Definir politica de edicao de TODO sem scripts
 - Descricao: definir a excecao para edicao manual de TODO no bootstrap, mantendo scripts como regra futura.
-- Status: to-do
+- Status: done
 - Prioridade: 7
 - Dependencias: nenhuma
 
