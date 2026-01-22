@@ -39,11 +39,11 @@ Outputs:
 ### issue_add.py
 
 Purpose:
-- Create a new issue entry in TODO.dev.yaml and generate the issue Markdown from the template.
+- Create a new issue entry in TODO.<dev>.yaml and generate the issue Markdown from the template.
 
 Behavior (minimum):
 - Generate the next sequential id.
-- Create TODO.dev.yaml entry with basic fields.
+- Create TODO.<dev>.yaml entry with basic fields.
 - Create the issue Markdown file from the template.
 - Fill basic fields in the template (id, title, summary) based on agent-provided inputs.
 
@@ -51,7 +51,7 @@ Inputs:
 - Title, description or summary, labels, priority, agent, entrypoints.
 
 Outputs:
-- Updated TODO.dev.yaml and new issue Markdown file.
+- Updated TODO.<dev>.yaml and new issue Markdown file.
 
 ---
 
@@ -61,7 +61,7 @@ Purpose:
 - Render or re-render an issue Markdown file from the template.
 
 Behavior (minimum):
-- Load the issue data from TODO.dev.yaml or provided inputs.
+- Load the issue data from TODO.<dev>.yaml or provided inputs.
 - Apply the selected template.
 - Preserve or re-apply required fields (id, title, summary).
 
@@ -77,7 +77,7 @@ Outputs:
 ### todo_list.py
 
 Purpose:
-- List TODO items from TODO.dev.yaml.
+- List TODO items from TODO.<dev>.yaml.
 
 Behavior (minimum):
 - Filter by status, priority, agent, or labels.
@@ -96,7 +96,7 @@ Outputs:
 ### todo_update.py
 
 Purpose:
-- Update TODO.dev.yaml fields.
+- Update TODO.<dev>.yaml fields.
 
 Behavior (minimum):
 - Update status, priority, labels, depends_on, pending_reason.
@@ -108,7 +108,7 @@ Inputs:
 - --dev <slug> (optional, see Developer selection).
 
 Outputs:
-- Updated TODO.dev.yaml.
+- Updated TODO.<dev>.yaml.
 
 ---
 
@@ -145,7 +145,7 @@ Inputs:
 - --dev <slug> (optional, see Developer selection).
 
 Outputs:
-- Updated TODO.dev.yaml.
+- Updated TODO.<dev>.yaml.
 
 ---
 
@@ -165,7 +165,7 @@ Inputs:
 - --dev <slug> (optional, see Developer selection).
 
 Outputs:
-- Updated TODO.dev.yaml.
+- Updated TODO.<dev>.yaml.
 
 ---
 

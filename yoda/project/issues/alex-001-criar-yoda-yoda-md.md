@@ -12,7 +12,7 @@ Definir o arquivo yoda/yoda.md com instrucoes claras para um agente com contexto
 ## Scope
 - Criar o arquivo yoda/yoda.md.
 - Incluir instrucoes basicas de entrada no YODA Flow.
-- Descrever a regra de leitura do TODO-alex.md (excecao temporaria) e a migracao futura para TODO.dev.yaml.
+- Descrever a regra de leitura do TODO.alex.md (excecao temporaria) e a migracao futura para TODO.<dev>.yaml.
 
 ## Out of scope
 - Implementar scripts do YODA.
@@ -22,7 +22,7 @@ Definir o arquivo yoda/yoda.md com instrucoes claras para um agente com contexto
 ## Requirements
 - Deve existir uma secao de "Entrada" indicando a frase natural para iniciar o YODA Flow.
 - Deve existir uma secao de "Fonte de verdade" apontando para project/specs.
-- Deve existir uma secao de "TODO" indicando o uso temporario de yoda/todos/TODO-alex.md.
+- Deve existir uma secao de "TODO" indicando o uso temporario de yoda/todos/TODO.alex.md.
 - Deve deixar claro que a issue prioritaria sem dependencias deve ser selecionada.
 
 ## Acceptance criteria
@@ -37,7 +37,7 @@ None
   type: issue
 - path: project/specs/04-todo-dev-yaml-issues.md
   type: issue
-- path: yoda/todos/TODO-alex.md
+- path: yoda/todos/TODO.alex.md
   type: issue
 
 ## Implementation notes
@@ -49,11 +49,11 @@ None
 Nao aplicavel.
 
 ## Risks and edge cases
-- Se o agente nao encontrar TODO-alex.md, deve perguntar ao usuario qual TODO usar.
+- Se o agente nao encontrar TODO.alex.md, deve perguntar ao usuario qual TODO usar.
 - Se houver dependencias na issue prioritaria, deve pular para a proxima sem dependencias.
 
 ## Result log
-Criado o arquivo yoda/yoda.md com instrucoes de entrada, fontes de verdade, uso temporario do TODO-alex.md, regras do fluxo e tratamento de pendencias.
+Criado o arquivo yoda/yoda.md com instrucoes de entrada, fontes de verdade, uso temporario do TODO.alex.md, regras do fluxo e tratamento de pendencias.
 
 Sugestao de commit:
 docs(yoda): add root agent instructions

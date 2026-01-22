@@ -4,7 +4,7 @@
 Define the v1 script interface for YODA: names, purpose, and expected behavior for each command.
 
 ## Context
-The specs require scripts to manage TODO.dev.yaml, logs, and initialization. We need a concrete list of v1 commands and their responsibilities to guide future implementation.
+The specs require scripts to manage TODO.<dev>.yaml, logs, and initialization. We need a concrete list of v1 commands and their responsibilities to guide future implementation.
 
 ## Objective
 Document the v1 script interface: required commands, inputs, outputs, and the minimal behavior expected from each.

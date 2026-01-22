@@ -7,7 +7,7 @@ This file records decisions and known open points captured so far.
 - Scope: YODA Framework is not just documentation. It is a document-first way of working plus scripts that operationalize the flow (generate, consult, validate docs and tasks).
 - Documentation structure: prefer more YAML metadata and use scripts (Python) that generate Markdown optimized for AI consumption and human review.
 - YODA Flow: the core cycle is study -> document -> implement -> evaluate/iterate.
-- Artifacts direction: one TODO per developer (TODO.dev.yaml) and one Markdown file per issue for richer free-form descriptions, with scripts generating the issue skeleton.
+- Artifacts direction: one TODO per developer (TODO.<dev>.yaml) and one Markdown file per issue for richer free-form descriptions, with scripts generating the issue skeleton.
 - Issues location and naming: issues live in yoda/project/issues/ and follow dev-id-slug.md.
 - Issue identification: ID appears in the Markdown title.
 - Metadata schema basics: id, title, slug, description, entrypoints, status, priority, labels, agent, depends_on, pending_reason, created_at, updated_at.

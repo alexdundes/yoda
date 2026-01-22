@@ -11,7 +11,7 @@ When the user indicates they want to enter YODA Flow, the agent must:
    - --dev <slug> flag
    - YODA_DEV environment variable
    - Ask the user
-3) Load yoda/todos/TODO-<slug>.md (bootstrap); fallback to yoda/todos/TODO-alex.md if missing.
+3) Load yoda/todos/TODO.<slug>.md (bootstrap); fallback to yoda/todos/TODO.alex.md if missing.
 4) Select the highest-priority issue without dependencies.
 5) Follow the YODA Flow for that issue.
 
@@ -28,9 +28,10 @@ Example natural entry phrase:
 
 This implementation does not have YODA scripts yet. Until they exist:
 
-- Use yoda/todos/TODO-alex.md as the TODO source.
-- Do not edit TODO-alex.md directly unless the user requests it.
-- A future migration will replace this with TODO.dev.yaml and scripts.
+- Use yoda/todos/TODO.<slug>.md as the TODO source.
+- If TODO.<slug>.md is missing, fallback to yoda/todos/TODO.alex.md.
+- Do not edit TODO files directly unless the user requests it.
+- A future migration will replace this with TODO.<dev>.yaml and scripts.
 
 ## Flow rules
 
