@@ -23,3 +23,9 @@
 - YAML as source of truth for metadata.
 - Markdown for narrative and details.
 - Scripts generate skeletons and keep consistency.
+ 
+## Guardrails
+
+- If the issue is ambiguous, return to Document before coding.
+- Do not invent files or paths; verify the repo structure first.
+- Any change to project/specs must be tracked by an issue.

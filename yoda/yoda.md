@@ -41,6 +41,9 @@ This implementation does not have YODA scripts yet. Until they exist:
 - Logs for this project are in Markdown: yoda/logs/dev-id-slug.md.
 - Log entries should include the canonical issue id (dev-id) in the message.
 - Status names: to-do -> doing -> done; any state can transition to pending.
+- If the issue is ambiguous, return to Document before coding.
+- Do not invent files or paths; verify the repo structure first.
+- Any change to project/specs must be tracked by an issue.
 - Commit format:
   - First line: conventional commit message.
   - Body:
