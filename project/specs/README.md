@@ -43,3 +43,5 @@ This README organizes the topics discussed so far. Each topic has a dedicated fi
     - file: 14-issue-templates-usage.md
 15. Bootstrap (temporary)
     - file: 15-bootstrap.md
+16. Out of scope (v1)
+    - file: 16-out-of-scope.md

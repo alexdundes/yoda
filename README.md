@@ -150,7 +150,8 @@ Detalhes de CLI e tooling ficam intencionalmente abertos nesta fase.
 
 Audiencia primaria: solo devs (1 humano + 1 agente) usando o YODA Flow.  
 Posicionamento: framework de apoio ao desenvolvimento assistido por IA, com issues versionadas junto ao codigo do projeto.  
-Escopo: framework de processos de uso geral para quem precisa de maior controle no desenvolvimento apoiado por agente.
+Escopo: framework de processos de uso geral para quem precisa de maior controle no desenvolvimento apoiado por agente.  
+Limites de escopo (v1) estao definidos em `project/specs/16-out-of-scope.md`.
 
 Detalhes de implementacao (CI/CD, padroes de arquitetura, etc.) ficam fora deste README e sao definidos por projeto.
 

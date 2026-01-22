@@ -48,3 +48,10 @@ Not applicable.
 - If too broad, the list may conflict with existing expectations in specs.
 
 ## Result log
+Defined v1 out-of-scope boundaries in a dedicated spec file and updated summary/README references.
+
+Commit:
+docs(specs): define out-of-scope boundaries
+
+Issue: alex-023
+Path: yoda/project/issues/alex-023-definir-limites-escopo.md

@@ -141,7 +141,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-023 - Definir limites de escopo (out-of-scope)
 - Descricao: listar explicitamente o que o framework nao cobre (CI/CD, arquitetura, RH etc.).
-- Status: to-do
+- Status: done
 - Prioridade: 7
 - Dependencias: nenhuma
 
