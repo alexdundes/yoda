@@ -2,11 +2,11 @@
 
 ## What it is
 
-A documentation style where text and code coexist, common in exploration and prototype notebooks.
+Documentation style where text and code coexist, common in exploration and prototype notebooks.
 
 ## Why it inspires YODA
 
-- Values narrative, context, and understanding of the problem.
+- Values narrative, context, and problem understanding.
 - Helps technical exploration before definitive implementation.
 - Makes reasoning easier to explain to humans and agents.
 

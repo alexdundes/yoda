@@ -14,7 +14,7 @@ This README organizes the topics discussed so far. Each topic has a dedicated fi
    - file: 00-conventions.md
 1. YODA Framework overview and principles
    - file: 01-yoda-overview.md
-2. YODA Flow (cycle: study -> document -> implement -> evaluate)
+2. YODA Flow (cycle: Study -> Document -> Implement -> Evaluate)
    - file: 02-yoda-flow-process.md
 3. Document-first, YAML, and Markdown (role of each)
    - file: 03-document-first-yaml-markdown.md
@@ -28,7 +28,7 @@ This README organizes the topics discussed so far. Each topic has a dedicated fi
    - file: 07-agent-entry-and-root-file.md
 8. MCP in the YODA Framework (tool integration)
    - file: 08-mcp-in-yoda.md
-9. Visual identity and logo (simple favicon)
+9. Visual identity and logo (minimal favicon)
    - file: 09-visual-identity-logo.md
 10. Approaches and references (DocDD, Docs-as-Code, RDD, ADR, etc.)
     - file: 10-approaches-and-references.md

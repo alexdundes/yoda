@@ -2,7 +2,7 @@
 
 ## What it is
 
-An approach where documentation is written before implementation and serves as the contract for expected behavior.
+Write documentation before implementation; it acts as the contract for expected behavior.
 
 ## Why it inspires YODA
 

@@ -2,13 +2,13 @@
 
 ## What it is
 
-A philosophy that treats documentation like code: versioning in Git, reviews, tests, and quality standards.
+Treat documentation like code: versioning in Git, reviews, tests, and quality standards.
 
 ## Why it inspires YODA
 
 - Documentation receives the same rigor as code.
 - Enables auditing and traceability of decisions.
-- Keeps living context inside the repository.
+- Keeps living context in the repository.
 
 ## How it appears in YODA
 

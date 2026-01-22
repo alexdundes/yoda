@@ -1,6 +1,6 @@
 # YODA Framework - Minimum Structure
 
-This document defines the minimum folder and file structure for a YODA Framework project.
+Defines the minimum folder and file structure for a YODA Framework project.
 
 ## Required structure
 
@@ -26,7 +26,7 @@ This document defines the minimum folder and file structure for a YODA Framework
 - yoda/yoda.md: root entry for agents in this repository.
 - yoda/templates/: issue templates used by agents.
 - yoda/scripts/: scripts that manage TODOs, logs, and scaffolding.
-- yoda/logs/: per-issue logs (YAML by default).
+- yoda/logs/: one log per issue (YAML by default).
 - yoda/todos/: canonical TODO storage (YAML by default; bootstrap may use Markdown).
 - yoda/project/issues/: issue files, one per issue, named dev-id-slug.md.
 - project/specs/: official specs and decision source of truth.

@@ -23,8 +23,27 @@ The following keywords are to be interpreted as in RFC 2119:
 ## Source of truth precedence
 
 - For framework definition, project/specs is the source of truth.
-- For a task, the issue Markdown file is the source of truth over conversation.
+- For a unit of work, the issue Markdown file is the source of truth over conversation.
 - If templates conflict with specs, specs MUST win.
+
+## Brand voice and terminology
+
+Voice guidelines:
+
+- Be clear, technical, and pragmatic.
+- Prefer short sentences and active voice.
+- Avoid marketing language, hype, or vague adjectives.
+- Use normative keywords only for true requirements.
+- Canonical specs and issue templates are written in English.
+- Localized docs are allowed, but keep key terms in English.
+
+Terminology rules:
+
+- "YODA Framework" is the primary name; "YODA" is allowed after first mention.
+- "YODA Flow" is the official name of the cycle; phases are Study, Document, Implement, Evaluate.
+- Use "issue" for a unit of work; avoid "ticket" or "task" as the primary label.
+- "TODO.<dev>.yaml" is the canonical TODO file; mention TODO.<dev>.md only as a bootstrap exception.
+- Use "agent" for automated/AI actors and "script" for CLI automation in yoda/scripts.
 
 ## Notes
 

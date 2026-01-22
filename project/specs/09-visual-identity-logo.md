@@ -20,4 +20,4 @@
 
 ## Goal
 
-Communicate: documentation + YAML/YODA + simplicity and clarity.
+Communicate documentation + YAML/YODA + simplicity and clarity.

@@ -2,14 +2,14 @@
 
 ## Objective
 
-Separate the backlog and metadata from the rich issue descriptions.
+Separate backlog metadata from rich issue descriptions.
 
 ## Preferred direction
 
 - One TODO per person, in the format TODO.<dev>.yaml (dev = developer slug).
 - Each issue has its own Markdown file in yoda/project/issues/.
 - TODO.<dev>.yaml references the path of each issue Markdown file.
-- Issue files contain only free description (context, criteria, notes).
+- Issue files contain only free text (context, criteria, notes).
 - A script creates the issue and the initial Markdown skeleton.
 
 ## Location and naming
@@ -52,7 +52,7 @@ Each issue item must contain:
 - pending_reason: reason for pending (required when status = pending)
 - created_at, updated_at
 
-Note: there is no owner, because each dev has their own TODO.
+Note: there is no owner; each dev has their own TODO.
 
 ## Status (definitions)
 
@@ -70,9 +70,9 @@ Note: there is no owner, because each dev has their own TODO.
 ## Benefits
 
 - Single source of truth for work state.
-- Bulk operations are simple (list, filter, reorder).
+- Bulk operations are straightforward (list, filter, reorder).
 - Token savings by sending only TODO.<dev>.yaml for planning.
-- Markdown free for high-quality writing.
+- Markdown stays free for narrative detail.
 
 ## Minimal identifier
 

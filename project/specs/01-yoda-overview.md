@@ -2,7 +2,7 @@
 
 ## Definition
 
-The YODA Framework is a document-first approach to AI-assisted development. It organizes collaboration between humans and agents using structured documentation and automation, with a focus on consistency, repeatability, and traceability.
+ The YODA Framework is a document-first approach to AI-assisted development. It organizes collaboration between humans and agents using structured documentation and automation, focused on consistency, repeatability, and traceability.
 
 ## Acronym
 
@@ -18,4 +18,4 @@ YODA = YAML-Oriented Documentation & Agents
 
 ## Goal
 
-Create an environment where human and AI work follow a shared flow, with clear patterns for artifacts, scripts, and process.
+Create an environment where humans and AI follow a shared flow, with clear patterns for artifacts, scripts, and process.

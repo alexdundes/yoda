@@ -66,5 +66,5 @@ Path: yoda/project/issues/alex-005-template-issue-regras-uso.md
 
 ## Notes
 
-- Templates are designed to be agent-friendly and must remain consistent with project/specs.
+- Templates are designed to be agent-ready and must remain consistent with project/specs.
 - If the template lacks required information, update project/specs first.

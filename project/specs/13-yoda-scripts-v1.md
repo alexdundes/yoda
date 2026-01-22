@@ -13,7 +13,7 @@ Scripts that read TODO files MUST resolve the developer slug using:
 
 1) --dev <slug> flag
 2) YODA_DEV environment variable
-3) Interactive prompt if not defined
+3) Interactive prompt when not defined
 
 Slug format:
 - Lowercase ASCII, digits, and hyphens only.
@@ -85,7 +85,7 @@ Purpose:
 
 Behavior (minimum):
 - Filter by status, priority, agent, or labels.
-- Output a human-friendly summary and a machine-friendly list.
+- Output a human-readable summary and a machine-friendly list.
 
 Inputs:
 - TODO file path (default: TODO.<dev>.yaml).
@@ -192,4 +192,4 @@ Outputs:
 
 - Scripts must avoid destructive actions without explicit user confirmation.
 - Scripts should fail loudly on missing paths or invalid data.
-- Output formats should be simple and consistent for agents.
+- Output formats should be minimal and consistent for agents.

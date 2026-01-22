@@ -27,7 +27,7 @@ Slug format:
 ## Source of truth
 
 - project/specs/ is the source of truth for the framework and this project.
-- The issue Markdown file is the source of truth for the current task.
+- The issue Markdown file is the source of truth for the current issue.
 - If there is a conflict between project/specs and yoda/, assume yoda/ is in bootstrap and do not migrate formats without an explicit issue.
 
 ## Meta-implementation exception (this repo)

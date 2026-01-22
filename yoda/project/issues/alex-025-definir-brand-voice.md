@@ -50,3 +50,19 @@ Not applicable.
 - Overly strict guidelines could limit contributions from different audiences.
 
 ## Result log
+Defined brand voice and terminology in canonical specs, closed the decision in the summary, and removed the open status entry from README.md.
+
+Commit:
+docs(specs): define brand voice and terminology
+
+Issue: alex-025
+Path: yoda/project/issues/alex-025-definir-brand-voice.md
+
+Follow-up: aligned YODA Flow phase naming in specs README and summary.
+Follow-up: standardized phase naming in README and YODA Flow process spec.
+Follow-up: replaced "task" wording with "issue" where it implied the unit of work.
+Follow-up: tightened README phrasing to match the brand voice (clear, technical, pragmatic).
+Follow-up: tightened language in specs overview and document-first guidance.
+Follow-up: tightened language across remaining specs files.
+Follow-up: tightened language in YODA structure and influence reference docs.
+Follow-up: removed soft adjectives in specs index and YAML docs.

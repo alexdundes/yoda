@@ -6,28 +6,28 @@
 </picture>
 
 > **YODA Framework — YAML-Oriented Documentation & Agents**  
-> Um framework document-first onde a documentacao em YAML/Markdown e a fonte de verdade para humanos, scripts e IA agentica.
+> Framework document-first: documentacao em YAML/Markdown como fonte de verdade para humanos, scripts e IA.
 
 ## O que e o YODA Framework?
 
-O **YODA Framework** e uma forma de organizar projetos (codigo, documentacao e automacoes) em torno de tres ideias:
+O **YODA Framework** organiza projetos (codigo, documentacao e automacoes) em torno de tres ideias:
 
 1. **Documentacao como fonte de verdade**  
-   Antes do codigo, existe um documento que descreve o que deve ser feito, por que e em qual ordem.
+   Antes do codigo, um documento descreve o que fazer, por que e em qual ordem.
 
 2. **YAML como camada estrutural**  
    Arquivos YAML mantem o estado estruturado do projeto: TODOs, issues, flows, agentes e contextos.  
    Sao legiveis por humanos, scripts e IAs.
 
 3. **Agentes e flows que agem sobre a documentacao**  
-   Ferramentas (scripts, CLIs, IAs) leem esses arquivos, tomam decisoes e produzem/atualizam codigo e docs.  
-   A IA nao adivinha o contexto: ela le do YODA.
+   Ferramentas (scripts, CLIs, IAs) leem esses arquivos, decidem e atualizam codigo e docs.  
+   A IA le o contexto no YODA.
 
-O objetivo e criar um ambiente em que:
+O objetivo:
 
-- Humanos escrevem/ajustam a visao do projeto em arquivos simples.
+- Humanos escrevem e ajustam a visao do projeto em arquivos simples.
 - Agentes (IAs, CLIs, scripts) usam essa visao como input confiavel.
-- O fluxo de trabalho fique repetivel, auditavel e compartilhavel.
+- O fluxo de trabalho permanece repetivel, auditavel e compartilhavel.
 
 ## Por que o nome YODA?
 
@@ -36,13 +36,13 @@ O objetivo e criar um ambiente em que:
 > **YODA = YAML-Oriented Documentation & Agents**
 
 - **Y - YAML**  
-  O projeto e YAML-first: boa parte do estado operacional esta em arquivos `.yaml`.
+  O projeto e YAML-first: o estado operacional fica em arquivos `.yaml`.
 
 - **O - Oriented**  
-  Tudo e orientado por esses arquivos, mas sem limitar o framework a apenas YAML.
+  Tudo e orientado por esses arquivos, sem limitar o framework a apenas YAML.
 
 - **D - Documentation**  
-  A documentacao e o centro da arquitetura. Codigo e agentes giram em torno dela.
+  A documentacao e o centro. Codigo e agentes giram em torno dela.
 
 - **A - Agents**  
   IAs, scripts, CLIs ou servicos que leem/alteram os docs e executam acoes.
@@ -65,7 +65,7 @@ O objetivo e criar um ambiente em que:
 - Scripts e IAs leem esses YAMLs para:
   - Gerar/atualizar Markdown
   - Sugerir codigo
-  - Orquestrar tarefas
+  - Orquestrar issues
 
 ### 3. Markdown como camada narrativa
 
@@ -80,35 +80,35 @@ O objetivo e criar um ambiente em que:
 
 ### 4. IA como copiloto, nao como oraculo
 
-- A IA nao inventa o contexto; ela le do YODA.
-- O YODA Framework organiza o contexto (docs + YAML) e fornece instrucoes claras de como ler e escrever nesses arquivos.
+- A IA nao inventa contexto; ela le do YODA.
+- O YODA Framework organiza o contexto (docs + YAML) e define como ler e escrever nesses arquivos.
 - Isso reduz alucinacoes e aumenta repetibilidade e auditabilidade.
 
 ### 5. Multi-agente, multi-ferramenta
 
 - O YODA nao depende de um unico agente ou modelo.
-- Voce pode ter agentes especialistas (backend, frontend, docs), todos lendo/escrevendo estruturas padronizadas.
+- Voce pode ter agentes especialistas (backend, frontend, docs), todos lendo e escrevendo estruturas padronizadas.
 
 ## YODA Flow
 
 O ciclo basico e:
 
-1) Estudar: entender o contexto e as restricoes.  
-2) Documentar: capturar intencao e estrutura em YAML/Markdown.  
-3) Implementar: executar com base no plano documentado.  
-4) Avaliar e iterar: validar resultados e refinar os docs.
+1) Study (Estudar): entender o contexto e as restricoes.  
+2) Document (Documentar): capturar intencao e estrutura em YAML/Markdown.  
+3) Implement (Implementar): executar com base no plano documentado.  
+4) Evaluate (Avaliar): validar resultados e refinar os docs (iterar quando necessario).
 
-O YODA Flow foi desenhado para ser simples, repetivel e scriptavel.
+O YODA Flow e simples, repetivel e scriptavel.
 
 ## Artefatos e fonte de verdade
 
-A direcao atual define um backlog YAML por pessoa como fonte canonica de metadados, com Markdown oferecendo detalhe rico.
+A direcao atual define um backlog YAML por pessoa como fonte canonica de metadados, com Markdown para detalhe narrativo.
 
 - `TODO.<dev>.yaml` guarda metadados estruturados, ordem de execucao e contexto de planejamento.
 - Issues ficam em `yoda/project/issues/dev-id-slug.md` (um arquivo por issue).
 - O arquivo Markdown da issue usa o ID no titulo.
 
-Scripts podem gerar esqueletos Markdown a partir do YAML e produzir resumos amigaveis para IA quando necessario.
+Scripts podem gerar esqueletos Markdown a partir do YAML e produzir resumos para IA quando necessario.
 
 ## Estado atual desta meta-implementacao
 
@@ -162,5 +162,4 @@ O framework esta em definicao ativa. Decisoes em aberto (ver project/specs/summa
 - Campos adicionais de metadados (issue: yoda/project/issues/alex-022-definir-campos-schema-metadados.md)
 - Limites de escopo (out-of-scope) (issue: yoda/project/issues/alex-023-definir-limites-escopo.md)
 - Stack profiles (issue: yoda/project/issues/alex-024-definir-stack-profiles.md)
-- Brand voice (issue: yoda/project/issues/alex-025-definir-brand-voice.md)
 MCP esta previsto como implementacao futura (v2).

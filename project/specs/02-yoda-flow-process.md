@@ -7,7 +7,7 @@ YODA Flow is the standard work cycle of the framework:
 1) Study
 2) Document
 3) Implement
-4) Evaluate and iterate
+4) Evaluate
 
 ## Step details
 
@@ -29,7 +29,7 @@ YODA Flow is the standard work cycle of the framework:
 - The AI implements only what is defined in the issue Markdown file.
 - If something changes, return to the Document step and update the issue Markdown file.
 
-### 4) Evaluate and iterate
+### 4) Evaluate
 
 - The human validates the result.
 - The AI fixes code and documentation based on feedback.

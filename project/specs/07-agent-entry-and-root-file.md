@@ -2,7 +2,7 @@
 
 ## Problem
 
-There is no consensus among agent tools about which file to read (AGENTS.md, gemini.md, etc.).
+Agent tools do not agree on which file to read (AGENTS.md, gemini.md, etc.).
 
 ## YODA proposal
 

@@ -2,7 +2,7 @@
 
 ## Description
 
-The book Agentic Design Patterns organizes recurring patterns for building agentic systems with LLMs. It serves as a catalog of best practices for planning, tool use, collaboration among agents, and quality control.
+The book Agentic Design Patterns organizes recurring patterns for building agentic systems with LLMs. It is a catalog of best practices for planning, tool use, collaboration among agents, and quality control.
 
 ## Relevance to YODA
 

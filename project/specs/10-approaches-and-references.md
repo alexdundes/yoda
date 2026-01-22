@@ -17,6 +17,6 @@
 - ADRs record technical decisions.
 - Notebooks can be used for exploration and prototypes.
 
-## Detail per influence
+## Details per influence
 
 The details of each influence are in project/specs/influences/ (one file per topic).

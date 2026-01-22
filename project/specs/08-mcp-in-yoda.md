@@ -2,7 +2,7 @@
 
 ## What is MCP
 
-Model Context Protocol (MCP) is a protocol for connecting agents to external tools and data.
+Model Context Protocol (MCP) connects agents to external tools and data.
 
 ## Fit in YODA (future)
 

@@ -2,7 +2,7 @@
 
 ## Objective
 
-Define how the AI should act in the YODA Framework at each stage of the flow.
+Define how the AI acts in the YODA Framework at each stage of the flow.
 
 ## Phases
 
@@ -18,7 +18,7 @@ Deliverables per phase are defined in project/specs/02-yoda-flow-process.md and 
 ### Document
 
 - Create or update the issue Markdown file.
-- Generate a skeleton via script, if available.
+- Generate a skeleton via script when available.
 - Prioritize clarity, scope, and criteria.
 - Deliverable: issue updated with acceptance criteria checkboxes.
 
@@ -34,7 +34,7 @@ Deliverables per phase are defined in project/specs/02-yoda-flow-process.md and 
 - Receive human feedback.
 - Fix code and update the issue Markdown file.
 - Suggest a commit message at the end.
-- Include the commit text in the issue and show it on screen.
+- Include the commit text in the issue and show it to the user.
 - Commit format must be:
 - First line: conventional commit message.
 - Body:
