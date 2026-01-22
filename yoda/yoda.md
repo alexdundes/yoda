@@ -42,6 +42,7 @@ This implementation does not have YODA scripts yet. Until they exist:
 - Logs for this project are in Markdown: yoda/logs/dev-id-slug.md.
 - Log entries should include the canonical issue id (dev-id) in the message.
 - Status names: to-do -> doing -> done; any state can transition to pending.
+- Log timestamps should use ISO 8601 with Brasilia offset (e.g., 2026-01-21T19:40:50-03:00).
 - If the issue is ambiguous, return to Document before coding.
 - Do not invent files or paths; verify the repo structure first.
 - Any change to project/specs must be tracked by an issue.

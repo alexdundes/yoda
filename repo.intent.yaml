@@ -8,7 +8,7 @@ implementation_root: yoda
 bootstrap:
   todo:
     format: markdown
-    glob: yoda/todos/TODO-*.md
+    glob: yoda/todos/TODO.*.md
   logs:
     format: markdown
     glob: yoda/logs/*.md
