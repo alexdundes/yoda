@@ -7,6 +7,14 @@ This document defines the minimum script interface for YODA v1. Scripts live in 
 - Script path: yoda/scripts/<name>.py
 - Command name: <name>.py
 
+## Developer selection
+
+Scripts that read TODO files MUST resolve the developer slug using:
+
+1) --dev <slug> flag
+2) YODA_DEV environment variable
+3) Interactive prompt if not defined
+
 ## Required scripts
 
 ### init.py
@@ -77,6 +85,7 @@ Behavior (minimum):
 
 Inputs:
 - TODO file path (default: TODO.<dev>.yaml).
+- --dev <slug> (optional, see Developer selection).
 - Optional filters.
 
 Outputs:
@@ -96,6 +105,7 @@ Behavior (minimum):
 Inputs:
 - Issue id.
 - Field updates (flags or key=value).
+- --dev <slug> (optional, see Developer selection).
 
 Outputs:
 - Updated TODO.dev.yaml.
@@ -114,6 +124,7 @@ Behavior (minimum):
 
 Inputs:
 - TODO file path.
+- --dev <slug> (optional, see Developer selection).
 
 Outputs:
 - Issue id and path.
@@ -131,6 +142,7 @@ Behavior (minimum):
 
 Inputs:
 - Issue id and target position.
+- --dev <slug> (optional, see Developer selection).
 
 Outputs:
 - Updated TODO.dev.yaml.
@@ -150,6 +162,7 @@ Behavior (minimum):
 Inputs:
 - Issue id.
 - New status.
+- --dev <slug> (optional, see Developer selection).
 
 Outputs:
 - Updated TODO.dev.yaml.

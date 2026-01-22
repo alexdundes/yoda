@@ -7,9 +7,13 @@ This file is the root entry for agents in this repository. It defines how to ent
 When the user indicates they want to enter YODA Flow, the agent must:
 
 1) Confirm entry into YODA Flow.
-2) Load the TODO for the current developer (this implementation: yoda/todos/TODO-alex.md).
-3) Select the highest-priority issue without dependencies.
-4) Follow the YODA Flow for that issue.
+2) Resolve developer slug in this order:
+   - --dev <slug> flag
+   - YODA_DEV environment variable
+   - Ask the user
+3) Load the TODO for the current developer (this implementation: yoda/todos/TODO-alex.md).
+4) Select the highest-priority issue without dependencies.
+5) Follow the YODA Flow for that issue.
 
 Example natural entry phrase:
 "Vamos entrar no YODA Flow e pegar a issue prioritaria sem dependencias."
