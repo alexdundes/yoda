@@ -1,6 +1,7 @@
 # TODO-alex
 
 Este arquivo e o TODO em Markdown (substituto temporario do TODO.<dev>.yaml) para esta implementacao do YODA Framework.
+Leia REPO_INTENT.md para o contexto do repositorio.
 
 ## Backlog (ordem de execucao)
 
