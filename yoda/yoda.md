@@ -33,7 +33,8 @@ Slug format:
 ## Meta-implementation exception (this repo)
 
 - project/specs/ describes the future YODA Framework and is the canonical reference.
-- yoda/ is the in-progress implementation of that framework and can lag behind the specs.
+- This repository is a meta-implementation that uses the provisional specs to build the framework itself.
+- yoda/ is the in-progress implementation of that framework and can lag behind the specs while we validate them.
 - While scripts do not exist, this repo temporarily uses Markdown for TODOs and logs:
   - TODOs: yoda/todos/TODO.<dev>.md
   - Logs: yoda/logs/dev-id-slug.md
@@ -46,6 +47,7 @@ This implementation does not have YODA scripts yet. Until they exist:
 - If TODO.<slug>.md is missing, fallback to yoda/todos/TODO.alex.md.
 - Do not edit TODO files directly unless the user requests it.
 - A future migration will replace this with TODO.<dev>.yaml and scripts.
+ - The future framework expects YAML TODOs and YAML logs; this repo stays on Markdown until scripts exist.
 
 ## Flow rules
 

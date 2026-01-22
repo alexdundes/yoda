@@ -91,6 +91,30 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 - Prioridade: 6
 - Dependencias: alex-007
 
+### alex-015 - Resolver decisoes em aberto do summary
+- Descricao: fechar as decisoes em aberto listadas em project/specs/summary.md e registrar os resultados nas specs canonicas.
+- Status: to-do
+- Prioridade: 8
+- Dependencias: nenhuma
+
+### alex-016 - Alinhar entrada do agente com TODO no bootstrap
+- Descricao: explicitar nas specs a regra de fallback para TODO.<dev>.md no bootstrap e a transicao para YAML.
+- Status: to-do
+- Prioridade: 7
+- Dependencias: nenhuma
+
+### alex-017 - Definir formato de logs no bootstrap vs framework
+- Descricao: documentar nas specs a excecao de logs em Markdown no bootstrap e a regra canonica de YAML.
+- Status: to-do
+- Prioridade: 7
+- Dependencias: nenhuma
+
+### alex-018 - Definir politica de edicao de TODO sem scripts
+- Descricao: definir a excecao para edicao manual de TODO no bootstrap, mantendo scripts como regra futura.
+- Status: to-do
+- Prioridade: 7
+- Dependencias: nenhuma
+
 ## Observacoes
 
 - Cada item acima deve gerar um arquivo de issue em yoda/project/issues/.
