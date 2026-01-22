@@ -117,7 +117,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-019 - Definir politica de tooling (obrigatorio vs opcional)
 - Descricao: definir se o tooling do YODA e mandatorio ou recomendado e registrar nas specs.
-- Status: to-do
+- Status: done
 - Prioridade: 7
 - Dependencias: nenhuma
 

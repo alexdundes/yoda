@@ -1,13 +1,13 @@
 # alex-019 - Define tooling policy (mandatory vs optional)
 
 ## Summary
-Define whether YODA tooling is mandatory or optional and document the rule in the canonical specs. This decision should explain how teams behave before and after scripts exist. The outcome must remove ambiguity from the framework guidance.
+Define the tooling policy: scripts are mandatory when available, optional only during bootstrap. Document the rule in the canonical specs and remove ambiguity from the framework guidance.
 
 ## Context
 The summary lists an open decision about tooling policy. Without a clear rule, agents and users may disagree on whether scripts are required or merely recommended.
 
 ## Objective
-Decide the tooling policy and update the relevant spec files so the rule is consistent across the framework.
+Document the tooling policy and update the relevant spec files so the rule is consistent across the framework.
 
 ## Scope
 - Decide the official tooling policy for YODA v1.
@@ -19,12 +19,13 @@ Decide the tooling policy and update the relevant spec files so the rule is cons
 - Changing unrelated framework concepts.
 
 ## Requirements
-- The policy is explicit and unambiguous.
+- The policy states that scripts are mandatory when available.
+- The policy states that tooling is optional only during bootstrap.
 - The policy is recorded in the canonical spec file(s).
 - project/specs/summary.md reflects the closed decision.
 
 ## Acceptance criteria
-- [ ] Tooling policy is defined and documented in the appropriate spec file(s).
+- [ ] Specs state that scripts are mandatory when available and optional only during bootstrap.
 - [ ] project/specs/summary.md no longer lists tooling policy as open.
 
 ## Dependencies
@@ -41,7 +42,7 @@ None
   type: issue
 
 ## Implementation notes
-- Consider how bootstrap behavior is described relative to future script-based workflow.
+- Keep the policy consistent with bootstrap rules in project/specs/15-bootstrap.md.
 
 ## Tests
 Not applicable.
@@ -50,3 +51,10 @@ Not applicable.
 - If the policy is too strict, it may block bootstrap usage.
 
 ## Result log
+Defined the tooling policy: scripts are mandatory when available, optional only during bootstrap.
+
+Commit:
+docs(specs): define tooling policy
+
+Issue: alex-019
+Path: yoda/project/issues/alex-019-definir-politica-tooling.md

@@ -52,3 +52,4 @@ Deliverables per phase are defined in project/specs/02-yoda-flow-process.md and 
 - If the issue is ambiguous, return to Document before coding.
 - Do not invent files or paths; verify the repo structure first.
 - Any change to project/specs must be tracked by an issue.
+- When scripts are available, use them for metadata changes; bootstrap is the only exception.

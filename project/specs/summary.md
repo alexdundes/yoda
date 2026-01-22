@@ -20,6 +20,7 @@ This file records decisions and known open points captured so far.
 - Name: use "YODA Framework" as the primary name (with the Y linked to YAML).
 - Brand voice and terminology: clear, technical, pragmatic; English for canonical specs; standardized terms (YODA Framework, YODA Flow, issue, `TODO.<dev>.yaml`, agent, script).
 - Stack profiles: YODA v1 is stack-agnostic; profiles are optional, future extensions outside the core.
+- Tooling policy: scripts are mandatory when available; bootstrap is the only exception.
 - Scripts: live in yoda/scripts, written in Python, file name is the command; init.py is mandatory.
 - Scripts v1 include issue_add.py to create TODO entries and issue Markdown from templates using basic fields, and issue_render.py to re-render issue Markdown from templates.
 - Logs: one YAML log per issue at yoda/logs/dev-id-slug.yaml.
@@ -31,7 +32,6 @@ This file records decisions and known open points captured so far.
 
 ## Open decisions (not finalized)
 
-- Tooling policy: is tooling mandatory (prescriptive) or recommended (optional)?
 - Audience: official positioning (solo devs vs teams/consultancies vs SaaS/multi-tenant).
 - Flow deliverables: minimum required artifacts per phase.
 - Metadata schema: any additional required fields beyond the basics.

@@ -27,6 +27,7 @@ Standardize repetitive tasks and reduce the need for manual edits.
 
 - Scripts are the official way to change metadata.
 - The human or orchestrator executes the commands.
+- When scripts are available, they are mandatory for metadata changes; bootstrap is the only exception.
 
 ## Benefits
 

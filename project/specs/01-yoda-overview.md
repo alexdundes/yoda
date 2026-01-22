@@ -23,3 +23,7 @@ Create an environment where humans and AI follow a shared flow, with clear patte
 ## Stack profiles
 
 YODA v1 is stack-agnostic. Stack profiles are not part of the core and are deferred as optional extensions for future versions.
+
+## Tooling policy
+
+Tooling is mandatory when scripts are available. During bootstrap, tooling is optional.
