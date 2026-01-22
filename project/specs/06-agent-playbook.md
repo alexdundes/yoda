@@ -6,23 +6,28 @@ Define how the AI should act in the YODA Framework at each stage of the flow.
 
 ## Phases
 
+Deliverables per phase are defined in project/specs/02-yoda-flow-process.md and must be followed.
+
 ### Study
 
 - Ask questions and understand context.
 - Do not generate code or edit files.
 - Produce summaries when requested.
+- Deliverable: optional summary notes and list of pending decisions.
 
 ### Document
 
 - Create or update the issue Markdown file.
 - Generate a skeleton via script, if available.
 - Prioritize clarity, scope, and criteria.
+- Deliverable: issue updated with acceptance criteria checkboxes.
 
 ### Implement
 
 - Read the issue Markdown file and existing code.
 - Implement only what is documented.
 - Use scripts to create structure when needed.
+- Deliverable: code changes and tests updated (or marked not applicable).
 
 ### Evaluate
 
@@ -37,6 +42,7 @@ Define how the AI should act in the YODA Framework at each stage of the flow.
   - Path: <issue path>
 - Record the cycle log at yoda/logs/dev-id-slug.yaml.
 - If a blocker arises, mark status as pending and record the reason in TODO.dev.yaml; use the pending resolution script when unblocked.
+- Deliverable: result log updated, commit suggestion written, TODO status updated, log entry recorded.
 
 ## General rules
 

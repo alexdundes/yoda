@@ -39,3 +39,12 @@ YODA Flow is the standard work cycle of the framework:
 
 - The cycle is designed to be iterative and not waterfall.
 - Lightweight process: it does not include the Study step; the AI follows the preliminary issue directly.
+
+## Deliverables per phase
+
+| Phase     | Deliverables |
+|-----------|--------------|
+| Study     | Optional summary notes; open questions and pending decisions list. |
+| Document  | Issue Markdown updated; acceptance criteria as checkboxes. |
+| Implement | Code changes; tests updated or marked not applicable. |
+| Evaluate  | Result log updated; commit suggestion written (required format); TODO status updated; log entry recorded. |
