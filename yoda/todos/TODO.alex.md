@@ -1,6 +1,8 @@
 # TODO-alex
 
 Este arquivo e o TODO em Markdown (substituto temporario do TODO.<dev>.yaml) para esta implementacao do YODA Framework.
+project/specs/ e a fonte da verdade do framework futuro; yoda/ e a implementacao em construcao.
+Enquanto os scripts nao existem, usamos Markdown para TODOs e logs nesta meta-implementacao.
 Leia REPO_INTENT.md para o contexto do repositorio.
 
 ## Backlog (ordem de execucao)

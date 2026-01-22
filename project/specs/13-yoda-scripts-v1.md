@@ -15,6 +15,10 @@ Scripts that read TODO files MUST resolve the developer slug using:
 2) YODA_DEV environment variable
 3) Interactive prompt if not defined
 
+Slug format:
+- Lowercase ASCII, digits, and hyphens only.
+- Must start with a letter and contain no spaces.
+
 ## Required scripts
 
 ### init.py

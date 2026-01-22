@@ -17,12 +17,26 @@ When the user indicates they want to enter YODA Flow, the agent must:
 
 Example natural entry phrase:
 "Vamos entrar no YODA Flow e pegar a issue prioritaria sem dependencias."
+Entry phrase criteria:
+- Must explicitly mention "YODA Flow" (or "YODA") and intent to take the highest-priority issue without dependencies.
+
+Slug format:
+- Use lowercase ASCII, digits, and hyphens only.
+- Must start with a letter and contain no spaces.
 
 ## Source of truth
 
 - project/specs/ is the source of truth for the framework and this project.
 - The issue Markdown file is the source of truth for the current task.
 - If there is a conflict between project/specs and yoda/, assume yoda/ is in bootstrap and do not migrate formats without an explicit issue.
+
+## Meta-implementation exception (this repo)
+
+- project/specs/ describes the future YODA Framework and is the canonical reference.
+- yoda/ is the in-progress implementation of that framework and can lag behind the specs.
+- While scripts do not exist, this repo temporarily uses Markdown for TODOs and logs:
+  - TODOs: yoda/todos/TODO.<dev>.md
+  - Logs: yoda/logs/dev-id-slug.md
 
 ## TODO (this implementation)
 
@@ -37,6 +51,8 @@ This implementation does not have YODA scripts yet. Until they exist:
 
 - Follow the YODA Flow: Study -> Document -> Implement -> Evaluate.
 - For lightweight process, skip Study and follow the preliminary issue directly.
+  - Use lightweight only when the issue is already clear, has explicit acceptance criteria, and no open questions remain.
+  - If there is ambiguity, new requirements, or non-trivial risk, include Study.
 - Implement only what is documented in the issue.
 - If a blocker is found, mark the issue as pending and record the reason in the TODO.
 - Logs for this project are in Markdown: yoda/logs/dev-id-slug.md.

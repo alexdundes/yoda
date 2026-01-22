@@ -23,3 +23,4 @@ Body:
 Issue: <ID>
 Path: <issue path>
 -->
+<!-- AGENT: In this repo's meta-implementation, logs are Markdown (yoda/logs/dev-id-slug.md) until scripts exist. -->

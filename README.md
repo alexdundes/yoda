@@ -110,11 +110,20 @@ A direcao atual define um backlog YAML por pessoa como fonte canonica de metadad
 
 Scripts podem gerar esqueletos Markdown a partir do YAML e produzir resumos amigaveis para IA quando necessario.
 
+## Estado atual desta meta-implementacao
+
+- `project/specs/` descreve o YODA Framework futuro e e a fonte da verdade.
+- `yoda/` e a implementacao em construcao desses specs e pode estar incompleta.
+- Enquanto os scripts nao existem, este repo usa Markdown como excecao temporaria:
+  - TODOs em `yoda/todos/TODO.<dev>.md`
+  - Logs em `yoda/logs/dev-id-slug.md`
+
 ## Entrada do agente
 
 - Arquivo raiz do agente: `yoda/yoda.md`.
 - `AGENTS.md` ou `gemini.md` apontam para esse arquivo.
 - A entrada pode ser uma frase natural indicando entrar no YODA Flow e pegar a issue prioritaria sem dependencias.
+  - A frase deve mencionar "YODA Flow" (ou "YODA") e a intencao de pegar a issue de maior prioridade sem dependencias.
 
 ## Automacao (conceitual)
 
@@ -125,7 +134,8 @@ O YODA espera scripts leves que:
 - padronizem a estrutura do projeto antes de humanos ou agentes editarem
 
 Os scripts ficam em `yoda/scripts`, sao feitos em Python e o nome do arquivo e o comando (ex.: `init.py`).
-Logs do ciclo ficam em `yoda/logs/dev-id-slug.yaml`.
+Logs do ciclo ficam em `yoda/logs/dev-id-slug.yaml` no framework final.
+Nesta meta-implementacao, usamos `yoda/logs/dev-id-slug.md` ate os scripts existirem.
 
 ## Formato de commit
 
