@@ -19,3 +19,7 @@ YODA = YAML-Oriented Documentation & Agents
 ## Goal
 
 Create an environment where humans and AI follow a shared flow, with clear patterns for artifacts, scripts, and process.
+
+## Stack profiles
+
+YODA v1 is stack-agnostic. Stack profiles are not part of the core and are deferred as optional extensions for future versions.

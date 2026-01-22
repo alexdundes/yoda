@@ -161,5 +161,4 @@ O framework esta em definicao ativa. Decisoes em aberto (ver project/specs/summa
 - Entregaveis minimos por fase (issue: yoda/project/issues/alex-021-definir-entregaveis-flow.md)
 - Campos adicionais de metadados (issue: yoda/project/issues/alex-022-definir-campos-schema-metadados.md)
 - Limites de escopo (out-of-scope) (issue: yoda/project/issues/alex-023-definir-limites-escopo.md)
-- Stack profiles (issue: yoda/project/issues/alex-024-definir-stack-profiles.md)
 MCP esta previsto como implementacao futura (v2).
