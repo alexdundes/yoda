@@ -148,12 +148,19 @@ Detalhes de CLI e tooling ficam intencionalmente abertos nesta fase.
 
 ## Escopo e posicionamento
 
-YODA e pensado para projetos reais com multiplos contribuidores, mas escala para uso solo.  
-Ele e generico e adaptavel entre stacks.
+Audiencia/posicionamento oficiais ainda estao em definicao, entao este README evita assumir um foco especifico.  
+A politica de stack profiles tambem esta em aberto.
 
 Detalhes de implementacao (CI/CD, padroes de arquitetura, etc.) ficam fora deste README e sao definidos por projeto.
 
 ## Status
 
-O framework esta em definicao ativa. Ainda faltam fechar entregaveis minimos por fase e detalhes do template de issue.
+O framework esta em definicao ativa. Decisoes em aberto (ver project/specs/summary.md):
+- Politica de tooling (issue: yoda/project/issues/alex-019-definir-politica-tooling.md)
+- Audiencia e posicionamento (issue: yoda/project/issues/alex-020-definir-audiencia-posicionamento.md)
+- Entregaveis minimos por fase (issue: yoda/project/issues/alex-021-definir-entregaveis-flow.md)
+- Campos adicionais de metadados (issue: yoda/project/issues/alex-022-definir-campos-schema-metadados.md)
+- Limites de escopo (out-of-scope) (issue: yoda/project/issues/alex-023-definir-limites-escopo.md)
+- Stack profiles (issue: yoda/project/issues/alex-024-definir-stack-profiles.md)
+- Brand voice (issue: yoda/project/issues/alex-025-definir-brand-voice.md)
 MCP esta previsto como implementacao futura (v2).
