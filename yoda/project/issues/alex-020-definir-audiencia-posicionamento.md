@@ -48,3 +48,10 @@ Not applicable.
 - Overly narrow positioning could conflict with current examples or claims.
 
 ## Result log
+Defined the primary audience (solo devs) and positioning, and updated specs and README to reflect it.
+
+Commit:
+docs(specs): define audience and positioning
+
+Issue: alex-020
+Path: yoda/project/issues/alex-020-definir-audiencia-posicionamento.md

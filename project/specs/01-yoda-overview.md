@@ -27,3 +27,11 @@ YODA v1 is stack-agnostic. Stack profiles are not part of the core and are defer
 ## Tooling policy
 
 Tooling is mandatory when scripts are available. During bootstrap, tooling is optional.
+
+## Audience and positioning
+
+Primary audience: solo developers using one human + one agent with YODA Flow.
+
+Positioning: a framework to support AI-assisted development, grounded in issue documentation versioned with the project source.
+
+Scope: a general-purpose process framework for developers who want tighter control over agent-assisted development.

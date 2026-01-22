@@ -123,7 +123,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-020 - Definir audiencia e posicionamento oficial
 - Descricao: decidir a audiencia primaria (solo, equipes, consultorias, SaaS) e refletir nas specs.
-- Status: to-do
+- Status: done
 - Prioridade: 7
 - Dependencias: nenhuma
 

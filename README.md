@@ -6,7 +6,7 @@
 </picture>
 
 > **YODA Framework — YAML-Oriented Documentation & Agents**  
-> Framework document-first: documentacao em YAML/Markdown como fonte de verdade para humanos, scripts e IA.
+> Framework document-first de apoio ao desenvolvimento assistido por IA, com documentacao em YAML/Markdown como fonte de verdade.
 
 ## O que e o YODA Framework?
 
@@ -148,8 +148,9 @@ Detalhes de CLI e tooling ficam intencionalmente abertos nesta fase.
 
 ## Escopo e posicionamento
 
-Audiencia/posicionamento oficiais ainda estao em definicao, entao este README evita assumir um foco especifico.  
-A politica de stack profiles tambem esta em aberto.
+Audiencia primaria: solo devs (1 humano + 1 agente) usando o YODA Flow.  
+Posicionamento: framework de apoio ao desenvolvimento assistido por IA, com issues versionadas junto ao codigo do projeto.  
+Escopo: framework de processos de uso geral para quem precisa de maior controle no desenvolvimento apoiado por agente.
 
 Detalhes de implementacao (CI/CD, padroes de arquitetura, etc.) ficam fora deste README e sao definidos por projeto.
 
