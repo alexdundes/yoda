@@ -2,6 +2,12 @@
 
 This README organizes the topics discussed so far. Each topic has a dedicated file in this folder.
 
+## Language policy
+
+- project/specs is always in English to improve agent interoperability.
+- Other repo content may be in Portuguese during development.
+- The final YODA Framework will be published in English; Portuguese content is provisional.
+
 ## Topics
 
 0. Conventions (normative language and shared rules)
