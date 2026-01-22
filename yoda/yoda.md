@@ -46,6 +46,7 @@ This implementation does not have YODA scripts yet. Until they exist:
 - Use yoda/todos/TODO.`<slug>`.md as the TODO source.
 - If TODO.`<slug>`.md is missing, fallback to yoda/todos/TODO.alex.md.
 - Do not edit TODO files directly unless the user requests it.
+- Always update yoda/todos/TODO.`<slug>`.md status fields to reflect completed issues.
 - A future migration will replace this with `TODO.<dev>.yaml` and scripts.
  - The future framework expects YAML TODOs and YAML logs; this repo stays on Markdown until scripts exist.
 

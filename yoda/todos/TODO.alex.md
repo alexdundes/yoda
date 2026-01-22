@@ -99,13 +99,13 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-016 - Alinhar entrada do agente com TODO no bootstrap
 - Descricao: explicitar nas specs a regra de fallback para `TODO.<dev>.md` no bootstrap e a transicao para YAML.
-- Status: to-do
+- Status: done
 - Prioridade: 7
 - Dependencias: nenhuma
 
 ### alex-017 - Definir formato de logs no bootstrap vs framework
 - Descricao: documentar nas specs a excecao de logs em Markdown no bootstrap e a regra canonica de YAML.
-- Status: to-do
+- Status: done
 - Prioridade: 7
 - Dependencias: nenhuma
 
@@ -147,13 +147,13 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-024 - Definir politicas de stack profiles
 - Descricao: decidir entre modelo generico unico vs perfis por stack e documentar.
-- Status: to-do
+- Status: done
 - Prioridade: 7
 - Dependencias: nenhuma
 
 ### alex-025 - Definir brand voice e terminologia
 - Descricao: estabelecer tom e termos oficiais do framework nas docs.
-- Status: to-do
+- Status: done
 - Prioridade: 7
 - Dependencias: nenhuma
 
