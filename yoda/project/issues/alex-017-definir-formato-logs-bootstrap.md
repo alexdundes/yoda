@@ -12,6 +12,8 @@ Update specs to clarify the bootstrap log format and the transition to YAML logs
 ## Scope
 - Add an explicit bootstrap exception for logs in the relevant specs.
 - Keep the canonical future behavior as YAML logs.
+- Document that bootstrap specifications live in a separate file that explains the bootstrap concept.
+- State that the bootstrap concept will be removed from documentation in the future.
 
 ## Out of scope
 - Implementing log scripts.
@@ -20,20 +22,18 @@ Update specs to clarify the bootstrap log format and the transition to YAML logs
 ## Requirements
 - Specs mention that bootstrap logs are Markdown until scripts exist.
 - Canonical framework behavior remains YAML logs.
+- Bootstrap specifications live in a separate file that explains the bootstrap concept.
+- The bootstrap concept is marked as temporary and will be removed from documentation in the future.
 
 ## Acceptance criteria
-- [ ] project/specs/05-scripts-and-automation.md mentions the bootstrap Markdown log exception.
-- [ ] project/specs/06-agent-playbook.md reflects the bootstrap log format.
+- [ ] Bootstrap specs are documented in a separate file that explains the bootstrap concept.
+- [ ] Specs state that bootstrap is temporary and will be removed from documentation in the future.
 
 ## Dependencies
 None
 
 ## Entry points
-- path: project/specs/05-scripts-and-automation.md
-  type: issue
-- path: project/specs/06-agent-playbook.md
-  type: issue
-- path: project/specs/12-yoda-structure.md
+- path: project/specs/15-bootstrap.md
   type: issue
 
 ## Implementation notes

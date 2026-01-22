@@ -12,27 +12,26 @@ Update the specs to state how agent entry resolves TODO files in bootstrap mode 
 ## Scope
 - Define the bootstrap fallback behavior for `TODO.<dev>.md`.
 - Keep the canonical rule for `TODO.<dev>.yaml` as the future framework default.
-- Align related specs that describe entry flow and structure.
+- Document that bootstrap specifications live in a separate file that explains the bootstrap concept.
+- State that the bootstrap concept will be removed from documentation in the future.
 
 ## Out of scope
 - Implementing scripts or tooling.
 - Changing the underlying YODA Flow steps.
 
 ## Requirements
-- Entry flow documents the conditional behavior for bootstrap vs YAML.
-- Structure spec reflects the canonical TODO format and the bootstrap exception.
+- Bootstrap specifications live in a separate file that explains the bootstrap concept.
+- The bootstrap concept is marked as temporary and will be removed from documentation in the future.
 
 ## Acceptance criteria
-- [ ] project/specs/07-agent-entry-and-root-file.md documents `TODO.<dev>.md` fallback in bootstrap.
-- [ ] project/specs/12-yoda-structure.md stays consistent with the entry flow.
+- [ ] Bootstrap specs are documented in a separate file that explains the bootstrap concept.
+- [ ] Specs state that bootstrap is temporary and will be removed from documentation in the future.
 
 ## Dependencies
 None
 
 ## Entry points
-- path: project/specs/07-agent-entry-and-root-file.md
-  type: issue
-- path: project/specs/12-yoda-structure.md
+- path: project/specs/15-bootstrap.md
   type: issue
 
 ## Implementation notes
@@ -45,3 +44,10 @@ Not applicable.
 - Agents may diverge if the bootstrap rule is not explicit.
 
 ## Result log
+Defined a separate bootstrap spec file and documented the temporary bootstrap rules and exit criteria.
+
+Commit:
+docs(specs): add bootstrap specification
+
+Issue: alex-016
+Path: yoda/project/issues/alex-016-alinhar-entrada-todo-bootstrap.md

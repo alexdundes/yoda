@@ -41,3 +41,5 @@ This README organizes the topics discussed so far. Each topic has a dedicated fi
     - file: 13-yoda-scripts-v1.md
 14. Issue templates usage guide
     - file: 14-issue-templates-usage.md
+15. Bootstrap (temporary)
+    - file: 15-bootstrap.md
