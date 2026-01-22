@@ -46,3 +46,10 @@ Not applicable.
 - Agents may write logs in the wrong format if the exception is not explicit.
 
 ## Result log
+Confirmed bootstrap log format in the dedicated bootstrap spec and documented the transition to YAML logs.
+
+Commit:
+docs(specs): document bootstrap log format
+
+Issue: alex-017
+Path: yoda/project/issues/alex-017-definir-formato-logs-bootstrap.md
