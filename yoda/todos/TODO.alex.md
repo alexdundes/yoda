@@ -75,7 +75,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-012 - Versionamento e migracoes de schema
 - Descricao: definir schema_version e politica de migracao.
-- Status: to-do
+- Status: done
 - Prioridade: 7
 - Dependencias: alex-007, alex-008
 

@@ -44,3 +44,10 @@ Not applicable.
 - Incomplete policy may lead to incompatible tooling updates.
 
 ## Result log
+Defined schema_version (1.0) for TODO and issue metadata with major/minor rules and migration policy.
+
+Commit:
+docs(specs): define schema versioning
+
+Issue: alex-012
+Path: yoda/project/issues/alex-012-versionamento-migracoes-schema.md

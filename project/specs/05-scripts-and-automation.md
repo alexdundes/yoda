@@ -39,11 +39,20 @@ Checks:
 - Issue id matches filename and title.
 - Log file exists per issue; log status enum is valid.
 - Log entries use ISO 8601 with offset and mention the issue id.
+- schema_version is present and supported; major mismatches are errors.
 
 Failure behavior:
 - Exit with code 2 (validation error).
 - Write errors to stderr.
 - Do not write changes when validation fails.
+
+## Schema versioning and migrations
+
+- TODO and issue metadata use `schema_version` (current: "1.0").
+- Versions follow semantic versioning (major.minor).
+- Major version changes are breaking and must be rejected by scripts.
+- Minor version changes are backward compatible and accepted.
+- A migration script is required to upgrade schema versions when needed.
 
 ## Principles
 
