@@ -45,3 +45,10 @@ Not applicable.
 - Overly strict rules could slow collaboration in small teams.
 
 ## Result log
+Defined multi-dev rules: depends_on is same-dev only, each dev edits only their TODO, manual conflict resolution, no branch conventions.
+
+Commit:
+docs(specs): define multi-dev rules
+
+Issue: alex-013
+Path: yoda/project/issues/alex-013-colaboracao-multi-dev.md

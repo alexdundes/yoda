@@ -74,6 +74,7 @@ Optional fields:
 - priority is an integer 0 to 10 (default 5 when not provided).
 - lightweight is required and must be boolean.
 - created_at and updated_at use ISO 8601 with explicit timezone.
+- depends_on must reference issues within the same developer TODO (no cross-dev dependencies).
 
 Note: there is no owner; each dev has their own TODO.
 

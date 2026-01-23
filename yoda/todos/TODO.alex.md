@@ -81,7 +81,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-013 - Colaboracao multi-dev
 - Descricao: regras de conflitos YAML, dependencias cruzadas e convencao de branches.
-- Status: to-do
+- Status: done
 - Prioridade: 6
 - Dependencias: alex-007
 
