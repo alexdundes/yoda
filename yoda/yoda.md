@@ -11,7 +11,7 @@ When the user indicates they want to enter YODA Flow, the agent must:
    - --dev `<slug>` flag
    - YODA_DEV environment variable
    - Ask the user
-3) Load yoda/todos/TODO.`<slug>`.md (bootstrap); fallback to yoda/todos/TODO.alex.md if missing.
+3) Load yoda/todos/TODO.`<slug>`.md (bootstrap only); fallback to yoda/todos/TODO.alex.md if missing.
 4) Select the highest-priority issue without dependencies.
 5) Follow the YODA Flow for that issue.
 
@@ -48,7 +48,9 @@ This implementation does not have YODA scripts yet. Until they exist:
 - Do not edit TODO files directly unless the user requests it.
 - Always update yoda/todos/TODO.`<slug>`.md status fields to reflect completed issues.
 - A future migration will replace this with `TODO.<dev>.yaml` and scripts.
- - The future framework expects YAML TODOs and YAML logs; this repo stays on Markdown until scripts exist.
+- Bootstrap does not allow coexistence of `TODO.<dev>.md` and `TODO.<dev>.yaml`; only one format exists at a time.
+- The future framework expects YAML TODOs and YAML logs; this repo stays on Markdown until scripts exist.
+- When scripts exist, bootstrap ends and bootstrap-specific documentation must be removed.
 
 ## Flow rules
 

@@ -15,8 +15,10 @@ Bootstrap is a temporary documentation-only mode for the YODA Framework meta-imp
 - Agent entry checks for `TODO.<dev>.md` when YAML is not available.
 - Scripts are optional during bootstrap and may be missing.
 - Manual updates to `TODO.<dev>.md` are allowed in bootstrap, but YAML updates must use scripts once available.
+- Bootstrap does not allow coexistence of `TODO.<dev>.md` and `TODO.<dev>.yaml`; only one format exists at a time.
 
 ## Exit and removal
 
 - When scripts exist, bootstrap mode ends and this document is removed from the specs.
 - The canonical framework uses YAML for TODOs and logs.
+- All bootstrap-specific documentation is temporary and must be removed when bootstrap ends.

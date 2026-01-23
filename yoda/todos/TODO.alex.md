@@ -157,6 +157,12 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 - Prioridade: 7
 - Dependencias: nenhuma
 
+### alex-026 - Revisar yoda/yoda.md com foco no bootstrap
+- Descricao: revisar e ajustar yoda/yoda.md para refletir as regras de bootstrap e evitar ambiguidades.
+- Status: done
+- Prioridade: 6
+- Dependencias: nenhuma
+
 ## Observacoes
 
 - Cada item acima deve gerar um arquivo de issue em yoda/project/issues/.
