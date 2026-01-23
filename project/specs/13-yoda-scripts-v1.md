@@ -19,6 +19,28 @@ Slug format:
 - Lowercase ASCII, digits, and hyphens only.
 - Must start with a letter and contain no spaces.
 
+## CLI contract (all scripts)
+
+Default output is Markdown for human readability. JSON output is available when explicitly requested.
+
+Global flags:
+- `--dev <slug>`: target developer slug (see Developer selection).
+- `--format md|json`: output format (default: `md`).
+- `--json`: shorthand for `--format json`.
+- `--dry-run`: simulate changes without writing files.
+- `--verbose`: include extra diagnostic details in output.
+
+Exit codes:
+- `0`: success.
+- `1`: general error (unexpected failure).
+- `2`: validation error (invalid inputs or schema).
+- `3`: not found (missing file or issue id).
+- `4`: conflict (state prevents action).
+
+Error handling:
+- Errors must be written to stderr.
+- Scripts must include a short, actionable error message.
+
 ## Required scripts
 
 ### init.py

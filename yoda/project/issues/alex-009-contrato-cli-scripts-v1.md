@@ -45,3 +45,10 @@ Not applicable.
 - Inconsistent CLI behavior could break agent tooling.
 
 ## Result log
+Defined the CLI contract with global flags, output formats, exit codes, and error handling.
+
+Commit:
+docs(specs): define CLI contract
+
+Issue: alex-009
+Path: yoda/project/issues/alex-009-contrato-cli-scripts-v1.md

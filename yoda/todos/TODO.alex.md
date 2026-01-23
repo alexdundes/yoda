@@ -57,7 +57,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-009 - Contrato CLI dos scripts v1
 - Descricao: definir interface CLI (args, outputs, exit codes, dry-run, erros).
-- Status: to-do
+- Status: done
 - Prioridade: 8
 - Dependencias: alex-004
 
