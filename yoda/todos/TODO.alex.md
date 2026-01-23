@@ -45,7 +45,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-007 - Schema formal do `TODO.<dev>.yaml`
 - Descricao: definir schema validavel do `TODO.<dev>.yaml` (tipos, obrigatorios, enums, constraints) com exemplos.
-- Status: to-do
+- Status: done
 - Prioridade: 9
 - Dependencias: nenhuma
 

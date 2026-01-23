@@ -46,3 +46,10 @@ Not applicable.
 - Overly strict schema could reduce flexibility for early adopters.
 
 ## Result log
+Defined the formal `TODO.<dev>.yaml` schema with required fields, constraints, and updated examples.
+
+Commit:
+docs(specs): define TODO schema
+
+Issue: alex-007
+Path: yoda/project/issues/alex-007-schema-formal-todo-dev-yaml.md
