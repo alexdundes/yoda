@@ -163,6 +163,12 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 - Prioridade: 6
 - Dependencias: nenhuma
 
+### alex-027 - Resolver ambiguidades de entrada e atualizacao de TODO
+- Descricao: alinhar regras de fallback e edicao do TODO entre yoda/yoda.md e specs, removendo conflitos.
+- Status: done
+- Prioridade: 6
+- Dependencias: nenhuma
+
 ## Observacoes
 
 - Cada item acima deve gerar um arquivo de issue em yoda/project/issues/.

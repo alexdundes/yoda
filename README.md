@@ -6,7 +6,7 @@
 </picture>
 
 > **YODA Framework — YAML-Oriented Documentation & Agents**  
-> Framework document-first de apoio ao desenvolvimento assistido por IA, com documentacao em YAML/Markdown como fonte de verdade.
+> Framework document-first para desenvolvimento assistido por agents, com documentacao em YAML/Markdown como fonte de verdade.
 
 ## O que e o YODA Framework?
 
@@ -16,17 +16,17 @@ O **YODA Framework** organiza projetos (codigo, documentacao e automacoes) em to
    Antes do codigo, um documento descreve o que fazer, por que e em qual ordem.
 
 2. **YAML como camada estrutural**  
-   Arquivos YAML mantem o estado estruturado do projeto: TODOs, issues, flows, agentes e contextos.  
-   Sao legiveis por humanos, scripts e IAs.
+   Arquivos YAML mantem o estado estruturado do projeto: TODOs, issues, flows, agents e contextos.  
+   Sao legiveis por humanos, scripts e agents.
 
-3. **Agentes e flows que agem sobre a documentacao**  
-   Ferramentas (scripts, CLIs, IAs) leem esses arquivos, decidem e atualizam codigo e docs.  
-   A IA le o contexto no YODA.
+3. **Agents e flows que agem sobre a documentacao**  
+   Ferramentas (scripts, CLIs, agents) leem esses arquivos, decidem e atualizam codigo e docs.  
+   O agent le o contexto no YODA.
 
 O objetivo:
 
 - Humanos escrevem e ajustam a visao do projeto em arquivos simples.
-- Agentes (IAs, CLIs, scripts) usam essa visao como input confiavel.
+- Agents (CLIs, scripts) usam essa visao como input confiavel.
 - O fluxo de trabalho permanece repetivel, auditavel e compartilhavel.
 
 ## Por que o nome YODA?
@@ -62,7 +62,7 @@ O objetivo:
   - Metadados de issues (no `TODO.<dev>.yaml`)
   - Flows de agentes (quem faz o que, em qual ordem)
   - Configuracoes de contexto (escopos, tenants, ambientes)
-- Scripts e IAs leem esses YAMLs para:
+- Scripts e agents leem esses YAMLs para:
   - Gerar/atualizar Markdown
   - Sugerir codigo
   - Orquestrar issues
@@ -78,16 +78,16 @@ O objetivo:
   - Metadados centralizados no `TODO.<dev>.yaml`
   - Descricao detalhada em um arquivo `.md` separado
 
-### 4. IA como copiloto, nao como oraculo
+### 4. Agent como copiloto, nao como oraculo
 
-- A IA nao inventa contexto; ela le do YODA.
+- O agent nao inventa contexto; ele le do YODA.
 - O YODA Framework organiza o contexto (docs + YAML) e define como ler e escrever nesses arquivos.
 - Isso reduz alucinacoes e aumenta repetibilidade e auditabilidade.
 
-### 5. Multi-agente, multi-ferramenta
+### 5. Multi-agent, multi-ferramenta
 
-- O YODA nao depende de um unico agente ou modelo.
-- Voce pode ter agentes especialistas (backend, frontend, docs), todos lendo e escrevendo estruturas padronizadas.
+- O YODA nao depende de um unico agent ou modelo.
+- Voce pode ter agents especialistas (backend, frontend, docs), todos lendo e escrevendo estruturas padronizadas.
 
 ## YODA Flow
 
@@ -108,7 +108,7 @@ A direcao atual define um backlog YAML por pessoa como fonte canonica de metadad
 - Issues ficam em `yoda/project/issues/dev-id-slug.md` (um arquivo por issue).
 - O arquivo Markdown da issue usa o ID no titulo.
 
-Scripts podem gerar esqueletos Markdown a partir do YAML e produzir resumos para IA quando necessario.
+Scripts podem gerar esqueletos Markdown a partir do YAML e produzir resumos para agents quando necessario.
 
 ## Estado atual desta meta-implementacao
 
@@ -117,13 +117,15 @@ Scripts podem gerar esqueletos Markdown a partir do YAML e produzir resumos para
 - Enquanto os scripts nao existem, este repo usa Markdown como excecao temporaria:
   - TODOs em `yoda/todos/TODO.<dev>.md`
   - Logs em `yoda/logs/dev-id-slug.md`
+- Bootstrap e provisório; a documentacao e os specs focam a fase futura nao-bootstrap, com excecoes marcadas como bootstrap.
 
-## Entrada do agente
+## Entrada do agent
 
 - Arquivo raiz do agente: `yoda/yoda.md`.
 - `AGENTS.md` ou `gemini.md` apontam para esse arquivo.
 - A entrada pode ser uma frase natural indicando entrar no YODA Flow e pegar a issue prioritaria sem dependencias.
   - A frase deve mencionar "YODA Flow" (ou "YODA") e a intencao de pegar a issue de maior prioridade sem dependencias.
+- Se o TODO esperado nao existir, o agent pergunta qual TODO usar (padrao: `yoda/todos/TODO.alex.md`).
 
 ## Automacao (conceitual)
 

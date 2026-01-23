@@ -11,7 +11,7 @@ When the user indicates they want to enter YODA Flow, the agent must:
    - --dev `<slug>` flag
    - YODA_DEV environment variable
    - Ask the user
-3) Load yoda/todos/TODO.`<slug>`.md (bootstrap only); fallback to yoda/todos/TODO.alex.md if missing.
+3) Load yoda/todos/TODO.`<slug>`.md (bootstrap only); if missing, ask the user which TODO to use (suggest yoda/todos/TODO.alex.md as the default for this repo).
 4) Select the highest-priority issue without dependencies.
 5) Follow the YODA Flow for that issue.
 
@@ -38,15 +38,16 @@ Slug format:
 - While scripts do not exist, this repo temporarily uses Markdown for TODOs and logs:
   - TODOs: `yoda/todos/TODO.<dev>.md`
   - Logs: yoda/logs/dev-id-slug.md
+- Bootstrap is temporary; canonical documentation targets the future non-bootstrap phase unless explicitly marked as bootstrap.
 
 ## TODO (this implementation)
 
 This implementation does not have YODA scripts yet. Until they exist:
 
 - Use yoda/todos/TODO.`<slug>`.md as the TODO source.
-- If TODO.`<slug>`.md is missing, fallback to yoda/todos/TODO.alex.md.
-- Do not edit TODO files directly unless the user requests it.
-- Always update yoda/todos/TODO.`<slug>`.md status fields to reflect completed issues.
+- If TODO.`<slug>`.md is missing, ask the user which TODO to use (suggest yoda/todos/TODO.alex.md as the default).
+- Do not edit TODO files beyond status/pending updates unless the user requests it.
+- Update yoda/todos/TODO.`<slug>`.md status/pending fields to reflect progress and completion.
 - A future migration will replace this with `TODO.<dev>.yaml` and scripts.
 - Bootstrap does not allow coexistence of `TODO.<dev>.md` and `TODO.<dev>.yaml`; only one format exists at a time.
 - The future framework expects YAML TODOs and YAML logs; this repo stays on Markdown until scripts exist.
@@ -75,5 +76,5 @@ This implementation does not have YODA scripts yet. Until they exist:
 
 ## Notes
 
-- If the TODO file is missing, ask the user which TODO to use.
+- If the TODO file is missing, ask the user which TODO to use (default: yoda/todos/TODO.alex.md).
 - If the top issue has dependencies, move to the next issue without dependencies.

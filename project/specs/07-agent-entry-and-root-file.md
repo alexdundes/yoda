@@ -27,3 +27,5 @@ Agent tools do not agree on which file to read (AGENTS.md, gemini.md, etc.).
    - Ask the user (fallback)
    - Slug format: lowercase ASCII, digits, and hyphens only; must start with a letter; no spaces.
 5) Agent loads `TODO.<dev>.yaml`, selects the highest-priority issue without dependencies using the canonical id, and follows the flow.
+   - Bootstrap exception: if YAML is not available, load `TODO.<dev>.md` (see `project/specs/15-bootstrap.md`).
+   - If the expected TODO file is missing, ask the user which TODO to use.
