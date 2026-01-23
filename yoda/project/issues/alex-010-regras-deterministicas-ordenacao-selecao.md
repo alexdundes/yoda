@@ -47,3 +47,10 @@ Not applicable.
 - Ambiguous tie-breakers could cause inconsistent agent behavior.
 
 ## Result log
+Defined deterministic selection rules for priority, ordering, pending handling, and dependencies.
+
+Commit:
+docs(specs): define selection rules
+
+Issue: alex-010
+Path: yoda/project/issues/alex-010-regras-deterministicas-ordenacao-selecao.md

@@ -63,7 +63,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-010 - Regras deterministicas de ordenacao e selecao
 - Descricao: consolidar regras de prioridade, ordem, pending e depends_on.
-- Status: to-do
+- Status: done
 - Prioridade: 8
 - Dependencias: alex-004
 

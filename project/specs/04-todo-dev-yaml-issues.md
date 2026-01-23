@@ -123,6 +123,12 @@ todo_next.py must select the next issue using:
 1) priority (desc)
 2) position in the YAML list (top to bottom)
 
+Selection rules:
+
+- Issues with status `pending` are not selectable; they must be reported with pending_reason.
+- Issues with unresolved depends_on are not selectable.
+- If no selectable issues exist, return an error that lists pending items and blocked dependencies.
+
 ## Minimal example (`TODO.<dev>.yaml`)
 
 ```yaml

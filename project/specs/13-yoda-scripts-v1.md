@@ -144,9 +144,10 @@ Purpose:
 - Return the next actionable issue.
 
 Behavior (minimum):
-- Select highest priority issue without dependencies.
+- Select highest priority issue without unresolved dependencies.
 - Tie-breaker: position in the YAML list (top to bottom).
 - Skip issues with pending status.
+- If no selectable issues exist, exit with an error and list pending items and blocked dependencies.
 
 Inputs:
 - TODO file path.
@@ -154,6 +155,9 @@ Inputs:
 
 Outputs:
 - Issue id and path.
+ 
+Notes:
+- If any pending issues exist, include a hint listing them and their reasons.
 
 ---
 
