@@ -11,7 +11,7 @@ agent: Human
 depends_on: []
 pending_reason: ""
 created_at: "2026-01-23T21:17:34Z"
-updated_at: "2026-01-23T21:31:20Z"
+updated_at: "2026-01-23T21:42:56Z"
 entrypoints: []
 tags: []
 origin:
@@ -88,7 +88,7 @@ Not applicable.
 - Manter compatibilidade com o fluxo de entrada descrito em `README.md`.
 
 ## Result log
-Alinhei regras de entrada e bootstrap em `yoda/yoda.md` e nas specs, explicitei a natureza provisoria do bootstrap e ajustei o README para evitar conflitos. Tambem defini a regra de fallback do TODO e o limite de edicao (status/pending) sem solicitacao explicita. Revisei o README para seguir a voz tecnica e terminologia das specs, priorizando "agent" e termos canonicos.
+Alinhei regras de entrada e bootstrap em `yoda/yoda.md` e nas specs, explicitei a natureza provisoria do bootstrap e ajustei o README para evitar conflitos. Tambem defini a regra de fallback do TODO e o limite de edicao (status/pending) sem solicitacao explicita. Revisei o README para seguir a voz tecnica e terminologia das specs, priorizando "agent" e termos canonicos, e normalizei ocorrencias restantes. Ajustei trechos finais para consistencia entre "agent" e "agents".
 
 docs: align bootstrap rules and entry flow
 

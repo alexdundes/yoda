@@ -20,13 +20,13 @@ O **YODA Framework** organiza projetos (codigo, documentacao e automacoes) em to
    Sao legiveis por humanos, scripts e agents.
 
 3. **Agents e flows que agem sobre a documentacao**  
-   Ferramentas (scripts, CLIs, agents) leem esses arquivos, decidem e atualizam codigo e docs.  
+   Scripts e agents leem esses arquivos, decidem e atualizam codigo e docs.  
    O agent le o contexto no YODA.
 
 O objetivo:
 
 - Humanos escrevem e ajustam a visao do projeto em arquivos simples.
-- Agents (CLIs, scripts) usam essa visao como input confiavel.
+- Agents e scripts usam essa visao como input confiavel.
 - O fluxo de trabalho permanece repetivel, auditavel e compartilhavel.
 
 ## Por que o nome YODA?
@@ -42,10 +42,10 @@ O objetivo:
   Tudo e orientado por esses arquivos, sem limitar o framework a apenas YAML.
 
 - **D - Documentation**  
-  A documentacao e o centro. Codigo e agentes giram em torno dela.
+  A documentacao e o centro. Codigo e agents giram em torno dela.
 
 - **A - Agents**  
-  IAs, scripts, CLIs ou servicos que leem/alteram os docs e executam acoes.
+  Agents, scripts ou servicos que leem/alteram os docs e executam acoes.
 
 ## Filosofia do YODA Framework
 
@@ -60,7 +60,7 @@ O objetivo:
 - YAML e usado para representar:
   - `TODO.<dev>.yaml` por pessoa (backlog e metadados)
   - Metadados de issues (no `TODO.<dev>.yaml`)
-  - Flows de agentes (quem faz o que, em qual ordem)
+  - Flows de agents (quem faz o que, em qual ordem)
   - Configuracoes de contexto (escopos, tenants, ambientes)
 - Scripts e agents leem esses YAMLs para:
   - Gerar/atualizar Markdown
@@ -121,7 +121,7 @@ Scripts podem gerar esqueletos Markdown a partir do YAML e produzir resumos para
 
 ## Entrada do agent
 
-- Arquivo raiz do agente: `yoda/yoda.md`.
+- Arquivo raiz do agent: `yoda/yoda.md`.
 - `AGENTS.md` ou `gemini.md` apontam para esse arquivo.
 - A entrada pode ser uma frase natural indicando entrar no YODA Flow e pegar a issue prioritaria sem dependencias.
   - A frase deve mencionar "YODA Flow" (ou "YODA") e a intencao de pegar a issue de maior prioridade sem dependencias.
@@ -131,9 +131,9 @@ Scripts podem gerar esqueletos Markdown a partir do YAML e produzir resumos para
 
 O YODA espera scripts leves que:
 
-- leiam `TODO.<dev>.yaml` e gerem Markdown ou resumos para IA
+- leiam `TODO.<dev>.yaml` e gerem Markdown ou resumos para agents
 - validem estrutura e status dos itens
-- padronizem a estrutura do projeto antes de humanos ou agentes editarem
+- padronizem a estrutura do projeto antes de humanos ou agents editarem
 
 Os scripts ficam em `yoda/scripts`, sao feitos em Python e o nome do arquivo e o comando (ex.: `init.py`).
 Logs do ciclo ficam em `yoda/logs/dev-id-slug.yaml` no framework final.
@@ -150,9 +150,9 @@ Detalhes de CLI e tooling ficam intencionalmente abertos nesta fase.
 
 ## Escopo e posicionamento
 
-Audiencia primaria: solo devs (1 humano + 1 agente) usando o YODA Flow.  
-Posicionamento: framework de apoio ao desenvolvimento assistido por IA, com issues versionadas junto ao codigo do projeto.  
-Escopo: framework de processos de uso geral para quem precisa de maior controle no desenvolvimento apoiado por agente.  
+Audiencia primaria: solo devs (1 humano + 1 agent) usando o YODA Flow.  
+Posicionamento: framework de apoio ao desenvolvimento assistido por agents, com issues versionadas junto ao codigo do projeto.  
+Escopo: framework de processos de uso geral para quem precisa de maior controle no desenvolvimento apoiado por agents.  
 Limites de escopo (v1) estao definidos em `project/specs/16-out-of-scope.md`.
 
 Detalhes de implementacao (CI/CD, padroes de arquitetura, etc.) ficam fora deste README e sao definidos por projeto.
