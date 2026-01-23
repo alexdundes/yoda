@@ -45,3 +45,10 @@ Not applicable.
 - Overly strict checks could slow down iteration.
 
 ## Result log
+Defined minimal validation checks for TODO, issue metadata, and logs, plus failure behavior.
+
+Commit:
+docs(specs): define minimal validation
+
+Issue: alex-011
+Path: yoda/project/issues/alex-011-validacao-checks-minimos.md

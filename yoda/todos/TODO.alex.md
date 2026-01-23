@@ -69,7 +69,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-011 - Validacao e checks minimos
 - Descricao: definir yoda validate e checks basicos para YAML/Markdown.
-- Status: to-do
+- Status: done
 - Prioridade: 7
 - Dependencias: alex-007, alex-008
 
