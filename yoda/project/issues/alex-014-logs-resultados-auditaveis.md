@@ -47,3 +47,10 @@ Not applicable.
 - Too much required data could make logging burdensome.
 
 ## Result log
+Documented the required log fields, structure, and linkage rules for auditability.
+
+Commit:
+docs(specs): define log schema
+
+Issue: alex-014
+Path: yoda/project/issues/alex-014-logs-resultados-auditaveis.md

@@ -87,7 +87,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-014 - Logs e resultados auditaveis
 - Descricao: definir campos obrigatorios no log e referencias bidirecionais.
-- Status: to-do
+- Status: done
 - Prioridade: 6
 - Dependencias: alex-007
 

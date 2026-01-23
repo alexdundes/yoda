@@ -23,6 +23,27 @@ Standardize repetitive tasks and reduce the need for manual edits.
 
 - One log per issue at yoda/logs/dev-id-slug.yaml
 
+## Log schema (YAML)
+
+Required fields:
+
+- issue_id: canonical id (dev-####).
+- issue_path: path to the issue Markdown file.
+- todo_id: same as issue_id.
+- status: to-do | doing | done | pending.
+- entries: list of log entries.
+
+Each entry must contain:
+
+- timestamp: ISO 8601 with offset.
+- message: log message text.
+
+Rules:
+
+- Log files are append-only; new entries are added at the end.
+- Any script action must append a log entry.
+- Manual log entries are allowed through the log_add.py script.
+
 ## Minimal validation (baseline)
 
 Validation runs whenever scripts update metadata or change issue status to done.
