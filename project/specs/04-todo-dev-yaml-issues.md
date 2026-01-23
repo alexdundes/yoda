@@ -41,16 +41,20 @@ Each issue item must contain:
 - title: issue title
 - slug: slug of the title (used in the issue file name)
 - description: brief description of what needs to be done
-- entrypoints: array of objects with:
-  - path: file path (issue or other artifact)
-  - type: entrypoint type (issue, code, other in the future)
 - status: to-do | doing | done | pending
 - priority: 0 to 10 (10 = highest priority)
-- labels: list of labels
 - agent: Human | Codex | Antigravity | ...
 - depends_on: list of ids
 - pending_reason: reason for pending (required when status = pending)
 - created_at, updated_at
+
+Optional fields:
+
+- entrypoints: array of objects with:
+  - path: file path (issue or other artifact)
+  - type: entrypoint type (issue, code, other in the future)
+- tags: list of tags
+- origin: external issue reference (system, id, requester)
 
 Note: there is no owner; each dev has their own TODO.
 
@@ -105,7 +109,7 @@ issues:
     description: Define root agent instructions for this repository.
     status: doing
     priority: 10
-    labels: [yoda, bootstrap]
+    tags: [yoda, bootstrap]
     agent: Human
     depends_on: []
     entrypoints:
@@ -122,7 +126,7 @@ issues:
     description: Document how agents should use issue templates.
     status: to-do
     priority: 8
-    labels: [templates, docs]
+    tags: [templates, docs]
     agent: Codex
     depends_on: [alex-001]
     entrypoints:
@@ -138,7 +142,7 @@ issues:
     status: pending
     pending_reason: "Waiting for consensus on script naming."
     priority: 7
-    labels: [scripts, v1]
+    tags: [scripts, v1]
     agent: Antigravity
     depends_on: [alex-001]
     entrypoints:

@@ -48,3 +48,10 @@ Not applicable.
 - Adding too many required fields may make the schema heavy for small projects.
 
 ## Result log
+Confirmed minimal schema (no new required fields), renamed labels to tags, and documented optional origin fields.
+
+Commit:
+docs(specs): finalize metadata schema fields
+
+Issue: alex-022
+Path: yoda/project/issues/alex-022-definir-campos-schema-metadados.md

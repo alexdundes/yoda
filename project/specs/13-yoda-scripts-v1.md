@@ -52,7 +52,7 @@ Behavior (minimum):
 - Fill basic fields in the template (id, title, summary) based on agent-provided inputs.
 
 Inputs:
-- Title, description or summary, labels, priority, agent, entrypoints.
+- Title, description or summary, tags, priority, agent, entrypoints.
 
 Outputs:
 - Updated `TODO.<dev>.yaml` and new issue Markdown file.
@@ -84,7 +84,7 @@ Purpose:
 - List TODO items from `TODO.<dev>.yaml`.
 
 Behavior (minimum):
-- Filter by status, priority, agent, or labels.
+- Filter by status, priority, agent, or tags.
 - Output a human-readable summary and a machine-friendly list.
 
 Inputs:
@@ -103,7 +103,7 @@ Purpose:
 - Update `TODO.<dev>.yaml` fields.
 
 Behavior (minimum):
-- Update status, priority, labels, depends_on, pending_reason.
+- Update status, priority, tags, depends_on, pending_reason.
 - Update updated_at.
 
 Inputs:

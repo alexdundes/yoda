@@ -135,7 +135,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-022 - Definir campos adicionais do schema de metadados
 - Descricao: decidir campos obrigatorios adicionais alem do baseline e atualizar as specs.
-- Status: to-do
+- Status: done
 - Prioridade: 7
 - Dependencias: nenhuma
 
