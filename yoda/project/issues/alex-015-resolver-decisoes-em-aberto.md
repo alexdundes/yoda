@@ -1,31 +1,30 @@
 # alex-015 - Resolver decisoes em aberto do summary
 
 ## Summary
-Close the open decisions listed in project/specs/summary.md by defining outcomes and placing them in the canonical spec files.
+Validate that previously open decisions are fully resolved and documented, and re-evaluate project/specs for any remaining gaps.
 
 ## Context
-The summary file tracks multiple open points (tooling policy, audience, deliverables, schema fields, scripts v1 CLI, scope boundaries, stack profiles, brand voice, and issue template details). These ambiguities block consistent application of the framework.
+The prior open decisions were split into alex-019..alex-025 and have been completed. This issue now verifies closure and checks for missing coverage in project/specs.
 
 ## Objective
-Decide and document final positions for each open decision so the specs are internally consistent.
+Confirm all previously open decisions are closed in project/specs/summary.md and document any remaining gaps in project/specs.
 
 ## Scope
-- Identify each open decision in project/specs/summary.md.
-- Decide and record outcomes in the appropriate spec files.
-- Update project/specs/summary.md to reflect the closures.
+- Compare prior open decisions against project/specs/summary.md and verify each is resolved.
+- Log a checklist of the comparison.
+- Review project/specs for missing coverage and note any new gaps.
 
 ## Out of scope
 - Implementing scripts or tooling.
-- Adding new features beyond the listed open decisions.
+- Adding new features without a new issue.
 
 ## Requirements
-- Every open decision in project/specs/summary.md has a documented outcome.
-- The outcome is recorded in the canonical spec file(s).
-- project/specs/summary.md reflects the updated status.
+- Checklist compares each previously open decision to the current summary and specs.
+- Any gaps found are recorded as new issues or notes.
 
 ## Acceptance criteria
-- [ ] All open decisions listed in project/specs/summary.md are resolved and documented.
-- [ ] project/specs/summary.md no longer lists those items as open.
+- [ ] Checklist confirms all prior open decisions are resolved and documented.
+- [ ] Any new gaps found in project/specs are recorded as follow-up items.
 
 ## Dependencies
 None
@@ -37,7 +36,7 @@ None
   type: issue
 
 ## Implementation notes
-- Keep decisions consistent with existing YODA Flow and structure documents.
+- Record the checklist in the result log.
 
 ## Tests
 Not applicable.
@@ -46,3 +45,20 @@ Not applicable.
 - Decisions may require input from stakeholders not yet aligned.
 
 ## Result log
+Checklist (open decisions -> resolved):
+
+- Tooling policy: resolved in `project/specs/05-scripts-and-automation.md` and `project/specs/summary.md`.
+- Audience and positioning: resolved in `project/specs/01-yoda-overview.md` and `project/specs/summary.md`.
+- Flow deliverables: resolved in `project/specs/02-yoda-flow-process.md` and `project/specs/06-agent-playbook.md`.
+- Metadata schema additions: resolved as minimal schema; `labels` renamed to `tags` in `project/specs/04-todo-dev-yaml-issues.md` and `project/specs/summary.md`.
+- Scope boundaries: resolved in `project/specs/16-out-of-scope.md` and `project/specs/summary.md`.
+- Stack profiles: resolved in `project/specs/01-yoda-overview.md` and `project/specs/summary.md`.
+- Brand voice and terminology: resolved in `project/specs/00-conventions.md` and `project/specs/summary.md`.
+
+Re-evaluation of project/specs: no additional gaps found.
+
+Commit:
+docs(specs): verify open decisions closure
+
+Issue: alex-015
+Path: yoda/project/issues/alex-015-resolver-decisoes-em-aberto.md
