@@ -41,12 +41,39 @@ YODA Flow is the standard work cycle of the framework:
 - Lightweight process: it does not include the Study step; the AI follows the preliminary issue directly.
   - Use lightweight only when the issue is already clear, has explicit acceptance criteria, and no open questions remain.
   - If there is ambiguity, new requirements, or non-trivial risk, include Study.
+  - Lightweight must be explicitly marked in the issue or TODO (example: lightweight: true).
 
 ## Deliverables per phase
 
 | Phase     | Deliverables |
 |-----------|--------------|
-| Study     | Optional summary notes; open questions and pending decisions list. |
-| Document  | Issue Markdown updated; acceptance criteria as checkboxes. |
-| Implement | Code changes; tests updated or marked not applicable. |
+| Study     | Chat summary in developer language; questions and pending decisions list; explicit human confirmation to proceed. |
+| Document  | Issue Markdown updated with Study details; human confirmation that the issue text is OK. |
+| Implement | Changes match the issue; tests updated or marked not applicable; acceptance criteria checked when satisfied. |
 | Evaluate  | Result log updated; commit suggestion written (required format); TODO status updated; log entry recorded. |
+
+## Study requirements
+
+- The agent must summarize the issue in developer language.
+- If the issue is incomplete, the agent must ask for missing information.
+- If the issue exists, the agent must ask about remaining decisions until none remain.
+- The agent must wait for an explicit human instruction before moving to the next step.
+
+## Document requirements
+
+- The agent must update the issue file with all Study outcomes.
+- The agent must ask the human to approve the issue text.
+- If the human rejects the text, return to Study.
+
+## Implement requirements
+
+- Implement only what the issue specifies.
+- If tests are required, they must be implemented.
+- If the project expects unit tests, they must be added.
+- Acceptance criteria checkboxes must be marked when satisfied.
+
+## Lightweight rule
+
+- Lightweight must be explicit in the issue or TODO (example: lightweight: true).
+- When lightweight is true and the issue is sufficient, Study and Document may be skipped.
+- If the issue is not sufficient, return to Study and Document.

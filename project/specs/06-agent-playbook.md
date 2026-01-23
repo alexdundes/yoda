@@ -13,14 +13,16 @@ Deliverables per phase are defined in project/specs/02-yoda-flow-process.md and 
 - Ask questions and understand context.
 - Do not generate code or edit files.
 - Produce summaries when requested.
-- Deliverable: optional summary notes and list of pending decisions.
+- Deliverable: summary in developer language, plus pending questions/decisions.
+- Wait for explicit human instruction before moving to the next step.
 
 ### Document
 
 - Create or update the issue Markdown file.
 - Generate a skeleton via script when available.
 - Prioritize clarity, scope, and criteria.
-- Deliverable: issue updated with acceptance criteria checkboxes.
+- Deliverable: issue updated with Study details and acceptance criteria checkboxes.
+- Ask the human to approve the issue text; if rejected, return to Study.
 
 ### Implement
 
@@ -28,6 +30,7 @@ Deliverables per phase are defined in project/specs/02-yoda-flow-process.md and 
 - Implement only what is documented.
 - Use scripts to create structure when needed.
 - Deliverable: code changes and tests updated (or marked not applicable).
+- Mark acceptance criteria checkboxes when satisfied.
 
 ### Evaluate
 

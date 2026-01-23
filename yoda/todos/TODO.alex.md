@@ -129,7 +129,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-021 - Definir entregaveis minimos por fase do YODA Flow
 - Descricao: especificar artefatos minimos de Study, Document, Implement, Evaluate.
-- Status: to-do
+- Status: done
 - Prioridade: 7
 - Dependencias: nenhuma
 

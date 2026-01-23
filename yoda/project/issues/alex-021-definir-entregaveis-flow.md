@@ -48,3 +48,10 @@ Not applicable.
 - Overly strict deliverables may reduce flexibility for lightweight tasks.
 
 ## Result log
+Defined minimum deliverables per phase, including the lightweight rule and approval checkpoints.
+
+Commit:
+docs(specs): define flow deliverables
+
+Issue: alex-021
+Path: yoda/project/issues/alex-021-definir-entregaveis-flow.md
