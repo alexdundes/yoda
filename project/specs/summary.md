@@ -11,7 +11,7 @@ This file records decisions and known open points captured so far.
 - Issues location and naming: issues live in yoda/project/issues/ and follow dev-id-slug.md.
 - Slug format (dev and issue): lowercase ASCII, digits, and hyphens only; must start with a letter; no spaces.
 - Issue identification: ID appears in the Markdown title.
-- Metadata schema basics: id, title, slug, description, status, priority, tags, agent, depends_on, pending_reason, created_at, updated_at (entrypoints and origin are optional).
+- Metadata schema basics: id, title, slug, description, status, priority, lightweight, tags, agent, depends_on, pending_reason, created_at, updated_at (entrypoints and origin are optional).
 - Status values: to-do, doing, done, pending (pending = blocker recorded in pending_reason).
 - Agent entry file: yoda/yoda.md, with AGENTS.md or gemini.md pointing to it.
 - Entry trigger phrase: must mention "YODA Flow" (or "YODA") and intent to take the highest-priority issue without dependencies.

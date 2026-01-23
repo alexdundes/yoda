@@ -52,7 +52,7 @@ Behavior (minimum):
 - Fill basic fields in the template (id, title, summary) based on agent-provided inputs.
 
 Inputs:
-- Title, description or summary, tags, priority, agent, entrypoints.
+- Title, description or summary, tags, priority, lightweight, agent, entrypoints.
 
 Outputs:
 - Updated `TODO.<dev>.yaml` and new issue Markdown file.

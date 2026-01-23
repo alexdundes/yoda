@@ -1,5 +1,26 @@
+---
+id: [ID]
+title: [TITLE]
+slug: [SLUG]
+description: [SUMMARY]
+status: to-do
+priority: 5
+lightweight: true
+agent: Human
+depends_on: []
+pending_reason: ""
+created_at: "[CREATED_AT]"
+updated_at: "[UPDATED_AT]"
+entrypoints: []
+tags: []
+origin:
+  system: ""
+  external_id: ""
+  requester: ""
+---
+
 # [ID] - [TITLE]
-<!-- AGENT: Replace [ID] with the canonical issue id (dev-id, e.g., alex-0001) and [TITLE] with the issue title. Keep any <...> placeholders wrapped in inline code when used in prose. -->
+<!-- AGENT: Replace [ID] with the canonical issue id (dev-id, e.g., alex-0001) and [TITLE] with the issue title. Fill front matter fields from TODO; scripts must keep them in sync. Keep any <...> placeholders wrapped in inline code when used in prose. -->
 
 ## Summary
 <!-- AGENT: One short paragraph describing what to build or change. -->

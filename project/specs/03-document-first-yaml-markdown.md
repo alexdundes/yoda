@@ -17,6 +17,7 @@
 - Used for rich free text.
 - Example: issues in Markdown (one file per issue), UI specs, business explanations.
 - It is the main reading layer for humans and AI.
+- Issue files must include YAML front matter for metadata (mirrors TODO issue fields).
 
 ## Adopted direction
 

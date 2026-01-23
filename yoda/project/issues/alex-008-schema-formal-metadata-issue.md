@@ -48,3 +48,10 @@ Not applicable.
 - Too many required fields could make issue creation heavy.
 
 ## Result log
+Defined issue metadata as YAML front matter mirroring TODO fields, including required lightweight, and updated templates/specs.
+
+Commit:
+docs(specs): define issue metadata schema
+
+Issue: alex-008
+Path: yoda/project/issues/alex-008-schema-formal-metadata-issue.md

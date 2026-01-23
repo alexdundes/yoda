@@ -50,6 +50,7 @@ Each issue item must contain:
 - description: brief description of what needs to be done
 - status: to-do | doing | done | pending
 - priority: 0 to 10 (10 = highest priority; default 5)
+- lightweight: true | false
 - agent: agent name (free string; examples: Human, Codex, Gemini CLI, Antigravity)
 - depends_on: list of ids
 - pending_reason: reason for pending (required when status = pending)
@@ -69,6 +70,7 @@ Optional fields:
 - id must match `<developer_slug>-<####>` (4 digits).
 - status must be one of: to-do, doing, done, pending.
 - priority is an integer 0 to 10 (default 5 when not provided).
+- lightweight is required and must be boolean.
 - created_at and updated_at use ISO 8601 with explicit timezone.
 
 Note: there is no owner; each dev has their own TODO.
@@ -104,6 +106,16 @@ The issue Markdown file must have a minimal identifier to link to `TODO.<dev>.ya
 - The AI must not edit `TODO.<dev>.yaml` directly; it must call scripts.
 - The AI can freely edit the issue text.
 
+## Issue metadata (Markdown)
+
+Issue files use YAML front matter that mirrors the issue metadata in `TODO.<dev>.yaml`.
+
+Rules:
+
+- Front matter is required in issue Markdown files.
+- Fields match the issue item schema, including `lightweight`.
+- Scripts must copy updates from TODO to the issue metadata.
+
 ## Ordering rule (deterministic)
 
 todo_next.py must select the next issue using:
@@ -125,6 +137,7 @@ issues:
     description: Define root agent instructions for this repository.
     status: doing
     priority: 10
+    lightweight: false
     tags: [yoda, bootstrap]
     agent: Human
     depends_on: []
@@ -142,6 +155,7 @@ issues:
     description: Document how agents should use issue templates.
     status: to-do
     priority: 8
+    lightweight: false
     tags: [templates, docs]
     agent: Codex
     depends_on: [alex-0001]
@@ -158,6 +172,7 @@ issues:
     status: pending
     pending_reason: "Waiting for consensus on script naming."
     priority: 7
+    lightweight: false
     tags: [scripts, v1]
     agent: Antigravity
     depends_on: [alex-0001]

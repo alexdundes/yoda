@@ -51,7 +51,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-008 - Schema formal do metadata da issue
 - Descricao: definir schema do metadata de issue (front matter ou equivalente) com exemplos.
-- Status: to-do
+- Status: done
 - Prioridade: 9
 - Dependencias: nenhuma
 
