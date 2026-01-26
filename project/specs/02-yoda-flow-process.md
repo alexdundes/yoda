@@ -15,7 +15,8 @@ YODA Flow is the standard work cycle of the framework:
 
 - Open conversation between human and AI.
 - Focus on understanding context, rules, and constraints.
-- No formal deliverables are produced in this step.
+- No repository artifacts are produced in this step.
+- Deliverable is the conversation summary plus pending questions/decisions.
 - At the end, the AI is ready to document an issue (Markdown file).
 
 ### 2) Document

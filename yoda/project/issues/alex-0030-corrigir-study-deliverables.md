@@ -4,14 +4,14 @@ id: alex-0030
 title: Corrigir inconsistencias no Study do YODA Flow
 slug: corrigir-study-deliverables
 description: Ajustar texto do Study para remover ambiguidade sobre deliverables.
-status: to-do
+status: done
 priority: 6
 lightweight: false
 agent: Human
 depends_on: []
 pending_reason: ""
 created_at: "2026-01-26T11:16:29-03:00"
-updated_at: "2026-01-26T11:16:29-03:00"
+updated_at: "2026-01-26T11:37:50-03:00"
 entrypoints: []
 tags: [specs, flow]
 origin:
@@ -23,7 +23,7 @@ origin:
 # alex-0030 - Corrigir inconsistencias no Study do YODA Flow
 
 ## Summary
-Ajustar a secao Study para evitar conflito entre "no formal deliverables" e a tabela de deliverables.
+Ajustar a secao Study para evitar conflito entre "no formal deliverables" e a tabela de deliverables, deixando explicito que o deliverable e a conversa (summary + perguntas).
 
 ## Context
 O arquivo `project/specs/02-yoda-flow-process.md` declara que o Study nao tem deliverables formais, mas a tabela indica entregaveis obrigatorios.
@@ -40,11 +40,12 @@ Explicitar que o Study nao gera artefatos no repositorio, mas exige deliverables
 - Alterar comportamento de scripts.
 
 ## Requirements
-- Declarar que nao ha artefato no repositorio no Study.
-- Manter a exigencia de deliverables de conversa no Study.
+- Declarar que nao ha artefatos no repositorio no Study.
+- Manter a exigencia de deliverables de conversa no Study (summary e perguntas).
+- Usar linguagem tecnica e simples, seguindo conventions.
 
 ## Acceptance criteria
-- [ ] A secao Study em `project/specs/02-yoda-flow-process.md` nao possui inconsistencias com a tabela de deliverables.
+- [x] A secao Study em `project/specs/02-yoda-flow-process.md` nao possui inconsistencias com a tabela de deliverables.
 
 ## Dependencies
 None
@@ -63,3 +64,9 @@ Not applicable.
 - Pequenas mudancas de texto podem gerar novas interpretacoes ambiguas se nao forem claras.
 
 ## Result log
+Texto do Study ajustado para explicitar deliverables de conversa sem artefatos no repositorio, alinhando com a tabela.
+
+docs(yoda): esclarecer deliverables do Study
+
+Issue: `alex-0030`
+Path: `yoda/project/issues/alex-0030-corrigir-study-deliverables.md`

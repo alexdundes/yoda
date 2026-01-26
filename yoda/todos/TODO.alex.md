@@ -183,7 +183,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-0030 - Corrigir inconsistencias no Study do YODA Flow
 - Descricao: ajustar texto do Study para remover ambiguidade sobre deliverables.
-- Status: to-do
+- Status: done
 - Prioridade: 6
 - Dependencias: nenhuma
 
