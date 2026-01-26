@@ -46,7 +46,7 @@ Rules:
 
 ## Minimal validation (baseline)
 
-Validation runs whenever scripts update metadata or change issue status to done.
+Validation is mandatory and embedded in all scripts that mutate metadata. It runs whenever scripts update metadata or change issue status to done.
 
 Checks:
 - TODO schema is valid (root + issue items).

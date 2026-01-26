@@ -4,14 +4,14 @@ id: alex-0034
 title: Clarificar validacao vs comandos v1
 slug: clarificar-validacao-scripts
 description: Explicitar se validacao e embutida ou via validate.py.
-status: to-do
+status: done
 priority: 5
 lightweight: false
 agent: Human
 depends_on: []
 pending_reason: ""
 created_at: "2026-01-26T11:16:29-03:00"
-updated_at: "2026-01-26T11:16:29-03:00"
+updated_at: "2026-01-26T12:05:35-03:00"
 entrypoints: []
 tags: [specs, scripts]
 origin:
@@ -40,11 +40,10 @@ Definir e documentar a abordagem oficial de validacao na v1.
 - Alterar outros documentos fora de `project/specs`.
 
 ## Requirements
-- Declarar explicitamente se ha `validate.py` na v1.
-- Se nao houver, registrar que validacao e embutida nos scripts que alteram metadados.
+- Registrar que validacao e obrigatoria e embutida nos scripts que alteram metadados.
 
 ## Acceptance criteria
-- [ ] `project/specs/05-scripts-and-automation.md` e `project/specs/13-yoda-scripts-v1.md` descrevem a abordagem de validacao de forma consistente.
+- [x] `project/specs/05-scripts-and-automation.md` e `project/specs/13-yoda-scripts-v1.md` descrevem a abordagem de validacao de forma consistente.
 
 ## Dependencies
 None
@@ -65,3 +64,9 @@ Not applicable.
 - Se ficar ambiguo, agents podem implementar validacao duplicada ou ausente.
 
 ## Result log
+Validacao definida como obrigatoria e embutida em scripts que alteram metadados, com regras de exit code e escrita consistente.
+
+docs(yoda): tornar validacao obrigatoria em scripts v1
+
+Issue: `alex-0034`
+Path: `yoda/project/issues/alex-0034-clarificar-validacao-scripts.md`

@@ -207,7 +207,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-0034 - Clarificar validacao vs comandos v1
 - Descricao: explicitar se validacao e embutida ou via validate.py.
-- Status: to-do
+- Status: done
 - Prioridade: 5
 - Dependencias: nenhuma
 
