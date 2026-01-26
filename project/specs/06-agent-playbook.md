@@ -43,14 +43,14 @@ Deliverables per phase are defined in [project/specs/02-yoda-flow-process.md](02
 - Body:
   - Issue: `<ID>`
   - Path: `<issue path>`
-- Record the cycle log at [`yoda/logs/<id>-<slug>.yaml`](../yoda/logs/).
-- If a blocker arises, mark status as pending and record the reason in [`yoda/todos/TODO.<dev>.yaml`](../yoda/todos/); use the pending resolution script when unblocked.
+- Record the cycle log at [`yoda/logs/<id>-<slug>.yaml`](/yoda/logs/).
+- If a blocker arises, mark status as pending and record the reason in [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/); use the pending resolution script when unblocked.
 - Deliverable: result log updated, commit suggestion written, TODO status updated, log entry recorded.
 
 ## General rules
 
 - Always keep the issue (Markdown file) as the source of truth.
-- Never edit [`yoda/todos/TODO.<dev>.yaml`](../yoda/todos/) directly.
+- Never edit [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/) directly.
 - Prefer questions when there is ambiguity.
 - If the issue is ambiguous, return to Document before coding.
 - Do not invent files or paths; verify the repo structure first.

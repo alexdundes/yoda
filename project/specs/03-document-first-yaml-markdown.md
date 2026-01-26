@@ -9,13 +9,13 @@
 ## YAML
 
 - Used for metadata and structures that scripts must read.
-- Example: backlog in [`yoda/todos/TODO.<dev>.yaml`](../yoda/todos/), agent configuration.
+- Example: backlog in [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/), agent configuration.
 - Enables automation and structured queries.
 
 ## Markdown
 
 - Used for rich free text.
-- Example: issues in Markdown (one file per issue in [`yoda/project/issues/`](../yoda/project/issues/)), UI specs, business explanations.
+- Example: issues in Markdown (one file per issue in [`yoda/project/issues/`](/yoda/project/issues/)), UI specs, business explanations.
 - It is the main reading layer for humans and AI.
 - Issue files must include YAML front matter for metadata (mirrors TODO issue fields).
 

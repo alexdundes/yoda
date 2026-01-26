@@ -226,8 +226,50 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 ### alex-0037 - Criar script de inclusao de issue (issue_add.py)
 - Descricao: especificar e implementar o script de inclusao de issues usando a estrutura definida.
 - Status: to-do
-- Prioridade: 6
+- Prioridade: 3
 - Dependencias: alex-0036
+
+### alex-0038 - Corrigir links quebrados em project/specs
+- Descricao: padronizar links para repo-root (ex.: /yoda/..., /AGENTS.md, /gemini.md) em arquivos de project/specs para evitar caminhos invalidos.
+- Status: done
+- Prioridade: 7
+- Dependencias: nenhuma
+
+### alex-0039 - Ajustar padrao de logs no repo.intent.yaml
+- Descricao: alinhar target.logs.pattern para yoda/logs/<id>-<slug>.yaml, removendo duplicacao de dev no nome.
+- Status: to-do
+- Prioridade: 6
+- Dependencias: nenhuma
+
+### alex-0040 - Clarificar texto sobre corpo livre vs front matter
+- Descricao: atualizar 04-todo-dev-yaml-issues.md para explicitar que o corpo e livre e o metadata fica no YAML front matter.
+- Status: to-do
+- Prioridade: 6
+- Dependencias: nenhuma
+
+### alex-0041 - Resolver inconsistencias de front matter nas issues antigas
+- Descricao: escolher entre backfill de front matter em alex-0001..alex-0026 ou documentar excecao de bootstrap no 15-bootstrap.md.
+- Status: to-do
+- Prioridade: 6
+- Dependencias: nenhuma
+
+### alex-0042 - Padronizar criterio de selecao sem dependencias
+- Descricao: substituir "without dependencies" por "with all dependencies resolved" em yoda/yoda.md e specs.
+- Status: to-do
+- Prioridade: 5
+- Dependencias: nenhuma
+
+### alex-0043 - Corrigir formatacao de caminho TODO.<slug>.md
+- Descricao: ajustar trecho em yoda/yoda.md para manter `yoda/todos/TODO.<slug>.md` sem backticks no meio.
+- Status: to-do
+- Prioridade: 4
+- Dependencias: nenhuma
+
+### alex-0044 - Adicionar placeholder para yoda/scripts
+- Descricao: criar yoda/scripts/ com README.md (ou .gitkeep) explicando que e placeholder ate scripts v1.
+- Status: to-do
+- Prioridade: 4
+- Dependencias: nenhuma
 
 ## Observacoes
 

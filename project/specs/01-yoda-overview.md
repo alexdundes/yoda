@@ -15,7 +15,7 @@ YODA = YAML-Oriented Documentation & Agents
 - Markdown as the narrative layer: context, criteria, and details live in free text.
 - Agents and scripts execute what is documented.
 - Agents can start with zero context by reading the right files.
-- Human entrypoint: repo `README.md`. Agent entrypoint: [`yoda/yoda.md`](../yoda/yoda.md).
+- Human entrypoint: repo `README.md`. Agent entrypoint: [`yoda/yoda.md`](/yoda/yoda.md).
 
 ## Goal
 

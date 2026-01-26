@@ -15,7 +15,7 @@ The following keywords are to be interpreted as in RFC 2119:
 - Dates and timestamps MUST use ISO 8601.
 - Timezone MUST be explicit.
 - UTC SHOULD be the default.
-- A project timezone MUST be defined in [`yoda/todos/TODO.<dev>.yaml`](../yoda/todos/) as `timezone`.
+- A project timezone MUST be defined in [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/) as `timezone`.
   - The timezone value MUST be `UTC` or an IANA TZ database name compatible with Python `zoneinfo` (example: `America/Sao_Paulo`).
   - When defined, scripts SHOULD use it for generated timestamps.
 - Text files MUST be UTF-8.
@@ -46,9 +46,9 @@ Terminology rules:
 - "YODA Framework" is the primary name; "YODA" is allowed after first mention.
 - "YODA Flow" is the official name of the cycle; phases are Study, Document, Implement, Evaluate.
 - Use "issue" for a unit of work; avoid "ticket" or "task" as the primary label.
-- [`yoda/todos/TODO.<dev>.yaml`](../yoda/todos/) is the canonical TODO file; mention [`yoda/todos/TODO.<dev>.md`](../yoda/todos/) only as a bootstrap exception.
-- Use "agent" for automated/AI actors and "script" for CLI automation in [`yoda/scripts/`](../yoda/scripts/).
-- Tokens with angle brackets (example: [`yoda/todos/TODO.<dev>.yaml`](../yoda/todos/)) must use inline code in prose to avoid Markdown tag parsing.
+- [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/) is the canonical TODO file; mention [`yoda/todos/TODO.<dev>.md`](/yoda/todos/) only as a bootstrap exception.
+- Use "agent" for automated/AI actors and "script" for CLI automation in [`yoda/scripts/`](/yoda/scripts/).
+- Tokens with angle brackets (example: [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/)) must use inline code in prose to avoid Markdown tag parsing.
 
 ## Notes
 

@@ -1,6 +1,6 @@
 # YODA Framework - Specs (en)
 
-This README organizes the topics discussed so far. Each topic has a dedicated file in this folder. The **human entrypoint** for a YODA-enabled project is the repo `README.md`; the **agent entrypoint** is [`yoda/yoda.md`](../yoda/yoda.md).
+This README organizes the topics discussed so far. Each topic has a dedicated file in this folder. The **human entrypoint** for a YODA-enabled project is the repo `README.md`; the **agent entrypoint** is [`yoda/yoda.md`](/yoda/yoda.md).
 
 ## Language policy
 
@@ -18,13 +18,13 @@ This README organizes the topics discussed so far. Each topic has a dedicated fi
    - file: [02-yoda-flow-process.md](02-yoda-flow-process.md)
 3. Document-first, YAML, and Markdown (role of each)
    - file: [03-document-first-yaml-markdown.md](03-document-first-yaml-markdown.md)
-4. [`yoda/todos/TODO.<dev>.yaml`](../yoda/todos/) and issues in Markdown (centralized metadata)
+4. [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/) and issues in Markdown (centralized metadata)
    - file: [04-todo-dev-yaml-issues.md](04-todo-dev-yaml-issues.md)
-5. Scripts and automation ([`yoda/scripts/`](../yoda/scripts/), Python)
+5. Scripts and automation ([`yoda/scripts/`](/yoda/scripts/), Python)
    - file: [05-scripts-and-automation.md](05-scripts-and-automation.md)
 6. Agent playbook and operating rules
    - file: [06-agent-playbook.md](06-agent-playbook.md)
-7. Agent entry and root files ([`yoda/yoda.md`](../yoda/yoda.md), [AGENTS.md](../AGENTS.md), [gemini.md](../gemini.md))
+7. Agent entry and root files ([`yoda/yoda.md`](/yoda/yoda.md), [AGENTS.md](/AGENTS.md), [gemini.md](/gemini.md))
    - file: [07-agent-entry-and-root-file.md](07-agent-entry-and-root-file.md)
 8. MCP in the YODA Framework (tool integration)
    - file: [08-mcp-in-yoda.md](08-mcp-in-yoda.md)

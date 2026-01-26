@@ -1,11 +1,11 @@
 # YODA Issue Templates - Usage Guide
 
-This guide explains how agents and scripts should create and fill issue files using the templates in [`yoda/templates/`](../yoda/templates/).
+This guide explains how agents and scripts should create and fill issue files using the templates in [`yoda/templates/`](/yoda/templates/).
 
 ## Templates
 
-- Standard template: [`yoda/templates/issue.md`](../yoda/templates/issue.md)
-- Lightweight template: [`yoda/templates/issue-lightweight-process.md`](../yoda/templates/issue-lightweight-process.md)
+- Standard template: [`yoda/templates/issue.md`](/yoda/templates/issue.md)
+- Lightweight template: [`yoda/templates/issue-lightweight-process.md`](/yoda/templates/issue-lightweight-process.md)
 
 ## When to use each template
 
@@ -14,10 +14,10 @@ This guide explains how agents and scripts should create and fill issue files us
 
 ## Script-driven creation
 
-Issues are created by a script ([`issue_add.py`](../yoda/scripts/issue_add.py)). The script must:
+Issues are created by a script ([`issue_add.py`](/yoda/scripts/issue_add.py)). The script must:
 
 1) Generate the next sequential id.
-2) Add the issue entry to [`yoda/todos/TODO.<dev>.yaml`](../yoda/todos/).
+2) Add the issue entry to [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/).
 3) Create the issue Markdown file from the selected template.
 4) Fill the basic fields using agent-provided inputs (id, title, summary, tags, priority, entrypoints).
 

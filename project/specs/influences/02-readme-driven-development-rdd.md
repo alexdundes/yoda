@@ -165,7 +165,7 @@ These are guidance-level norms to shape YODA’s design and how agents operate.
 
 ### MUST
 
-* **MUST** provide a **primary human entrypoint** README for the framework (the “front door”) that answers: *what it is, why it exists, quickstart, and where the specs live*. The **agent entrypoint** is [`yoda/yoda.md`](../yoda/yoda.md). ([Tom Preston-Werner][1])
+* **MUST** provide a **primary human entrypoint** README for the framework (the “front door”) that answers: *what it is, why it exists, quickstart, and where the specs live*. The **agent entrypoint** is [`yoda/yoda.md`](/yoda/yoda.md). ([Tom Preston-Werner][1])
 * **MUST** include a **real Quickstart** in the README (or link to a Quickstart doc) that results in a working minimal flow (even if bootstrap). ([Appsmith][3])
 * **MUST** treat README usage examples as **contractual targets**: if examples are present, the implementation must make them true (or the README must be updated). ([Tom Preston-Werner][1])
 * **MUST** keep README changes under version control and review them with the same discipline as code (Docs-as-Code). ([Write the Docs][5])
