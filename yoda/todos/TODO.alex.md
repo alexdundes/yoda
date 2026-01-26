@@ -189,7 +189,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-0031 - Ajustar exemplos de issue templates para id canonico
 - Descricao: atualizar exemplos de commit e paths no guia de templates.
-- Status: to-do
+- Status: done
 - Prioridade: 5
 - Dependencias: nenhuma
 
