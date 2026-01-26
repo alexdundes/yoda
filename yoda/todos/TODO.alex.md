@@ -237,7 +237,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-0039 - Ajustar padrao de logs no repo.intent.yaml
 - Descricao: alinhar target.logs.pattern para yoda/logs/<id>-<slug>.yaml, removendo duplicacao de dev no nome.
-- Status: to-do
+- Status: done
 - Prioridade: 6
 - Dependencias: nenhuma
 

@@ -19,7 +19,7 @@ target:
     pattern: yoda/todos/TODO.<dev>.yaml
   logs:
     format: yaml
-    pattern: yoda/logs/<dev>-<id>-<slug>.yaml
+    pattern: yoda/logs/<id>-<slug>.yaml
 
 agent_entry_order: # reading order, not semantic authority
   - REPO_INTENT.md
