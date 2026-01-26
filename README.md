@@ -146,7 +146,7 @@ Nesta meta-implementacao, usamos `yoda/logs/dev-id-slug.md` ate os scripts exist
   - Issue: `<ID>`
   - Path: `<issue path>`
 
-Detalhes de CLI e tooling ficam intencionalmente abertos nesta fase.
+Detalhes de CLI e tooling estao definidos em `project/specs/13-yoda-scripts-v1.md` e `project/specs/05-scripts-and-automation.md`.
 
 ## Escopo e posicionamento
 
@@ -159,10 +159,5 @@ Detalhes de implementacao (CI/CD, padroes de arquitetura, etc.) ficam fora deste
 
 ## Status
 
-O framework esta em definicao ativa. Decisoes em aberto (ver project/specs/summary.md):
-- Politica de tooling (issue: yoda/project/issues/alex-019-definir-politica-tooling.md)
-- Audiencia e posicionamento (issue: yoda/project/issues/alex-020-definir-audiencia-posicionamento.md)
-- Entregaveis minimos por fase (issue: yoda/project/issues/alex-021-definir-entregaveis-flow.md)
-- Campos adicionais de metadados (issue: yoda/project/issues/alex-022-definir-campos-schema-metadados.md)
-- Limites de escopo (out-of-scope) (issue: yoda/project/issues/alex-023-definir-limites-escopo.md)
+O framework esta em definicao ativa, com decisoes consolidadas em `project/specs` e resumidas em `project/specs/summary.md`.
 MCP esta previsto como implementacao futura (v2).

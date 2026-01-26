@@ -169,6 +169,12 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 - Prioridade: 6
 - Dependencias: nenhuma
 
+### alex-028 - Revisar README e summary com specs atuais
+- Descricao: revisar README.md e project/specs/summary.md para garantir sincronizacao com project/specs e issues concluidas.
+- Status: done
+- Prioridade: 6
+- Dependencias: nenhuma
+
 ## Observacoes
 
 - Cada item acima deve gerar um arquivo de issue em yoda/project/issues/.

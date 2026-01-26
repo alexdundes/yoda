@@ -12,6 +12,7 @@ This file records decisions and known open points captured so far.
 - Slug format (dev and issue): lowercase ASCII, digits, and hyphens only; must start with a letter; no spaces.
 - Issue identification: ID appears in the Markdown title.
 - Metadata schema basics: id, title, slug, description, status, priority, lightweight, tags, agent, depends_on, pending_reason, created_at, updated_at (entrypoints and origin are optional).
+- Issue metadata in Markdown: issue files must include YAML front matter that mirrors the TODO fields.
 - Status values: to-do, doing, done, pending (pending = blocker recorded in pending_reason).
 - Agent entry file: yoda/yoda.md, with AGENTS.md or gemini.md pointing to it.
 - Entry trigger phrase: must mention "YODA Flow" (or "YODA") and intent to take the highest-priority issue without dependencies.
@@ -27,6 +28,7 @@ This file records decisions and known open points captured so far.
 - Scripts: live in yoda/scripts, written in Python, file name is the command; init.py is mandatory.
 - Scripts v1 include issue_add.py to create TODO entries and issue Markdown from templates using basic fields, and issue_render.py to re-render issue Markdown from templates.
 - Logs: one YAML log per issue at yoda/logs/dev-id-slug.yaml.
+- Bootstrap exception: while scripts do not exist, use `TODO.<dev>.md` and Markdown logs at yoda/logs/dev-id-slug.md; bootstrap is temporary.
 - Commit: include the commit message text inside the issue and show it to the user using this format:
   - First line: conventional commit message.
   - Body:
@@ -34,3 +36,5 @@ This file records decisions and known open points captured so far.
     - Path: `<issue path>`
 
 ## Open decisions (not finalized)
+
+None.
