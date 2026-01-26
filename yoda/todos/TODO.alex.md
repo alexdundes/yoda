@@ -243,7 +243,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-0040 - Clarificar texto sobre corpo livre vs front matter
 - Descricao: atualizar 04-todo-dev-yaml-issues.md para explicitar que o corpo e livre e o metadata fica no YAML front matter.
-- Status: to-do
+- Status: done
 - Prioridade: 6
 - Dependencias: nenhuma
 

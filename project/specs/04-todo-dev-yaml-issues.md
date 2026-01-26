@@ -9,7 +9,7 @@ Separate backlog metadata from rich issue descriptions.
 - One TODO per person, in the format [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/) (dev = developer slug).
 - Each issue has its own Markdown file in [`yoda/project/issues/`](/yoda/project/issues/).
 - [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/) references the path of each issue Markdown file.
-- Issue files contain only free text (context, criteria, notes).
+- Issue files contain only free text in the body (metadata goes in YAML front matter).
 - A script creates the issue and the initial Markdown skeleton.
 
 ## Location and naming
