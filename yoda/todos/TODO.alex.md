@@ -217,6 +217,18 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 - Prioridade: 5
 - Dependencias: nenhuma
 
+### alex-0036 - Definir estrutura Python dos scripts YODA
+- Descricao: criar spec base para estrutura, dependencias e organizacao dos scripts em yoda/scripts.
+- Status: done
+- Prioridade: 6
+- Dependencias: nenhuma
+
+### alex-0037 - Criar script de inclusao de issue (issue_add.py)
+- Descricao: especificar e implementar o script de inclusao de issues usando a estrutura definida.
+- Status: to-do
+- Prioridade: 6
+- Dependencias: alex-0036
+
 ## Observacoes
 
 - Cada item acima deve gerar um arquivo de issue em yoda/project/issues/.

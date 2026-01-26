@@ -44,4 +44,6 @@ This README organizes the topics discussed so far. Each topic has a dedicated fi
 15. Bootstrap (temporary)
     - file: 15-bootstrap.md
 16. Out of scope (v1)
-    - file: 16-out-of-scope.md
+   - file: 16-out-of-scope.md
+17. Python structure for YODA scripts
+   - file: 17-scripts-python-structure.md
