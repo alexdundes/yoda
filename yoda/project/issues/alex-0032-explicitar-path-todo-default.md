@@ -4,14 +4,14 @@ id: alex-0032
 title: Explicitar path default do TODO nas specs
 slug: explicitar-path-todo-default
 description: Padronizar referencias a yoda/todos/TODO.<dev>.yaml e bootstrap.
-status: to-do
+status: done
 priority: 6
 lightweight: false
 agent: Human
 depends_on: []
 pending_reason: ""
 created_at: "2026-01-26T11:16:29-03:00"
-updated_at: "2026-01-26T11:16:29-03:00"
+updated_at: "2026-01-26T11:46:30-03:00"
 entrypoints: []
 tags: [specs, todo]
 origin:
@@ -34,6 +34,7 @@ Garantir que as specs sempre indiquem o path default completo para o TODO e a ex
 ## Scope
 - Atualizar referencias em arquivos de entrada e scripts v1.
 - Indicar o path default e o path bootstrap.
+- Atualizar todas as ocorrencias encontradas nas specs para padronizar o path.
 
 ## Out of scope
 - Alterar a estrutura real do repositorio.
@@ -42,11 +43,13 @@ Garantir que as specs sempre indiquem o path default completo para o TODO e a ex
 ## Requirements
 - Referenciar `yoda/todos/TODO.<dev>.yaml` como default.
 - Referenciar `yoda/todos/TODO.<dev>.md` como excecao de bootstrap.
+- Usar convencao clara e consistente para indicar paths canonicos.
 
 ## Acceptance criteria
-- [ ] `project/specs/13-yoda-scripts-v1.md` explicita o path default do TODO.
-- [ ] `project/specs/07-agent-entry-and-root-file.md` explicita o path default do TODO.
-- [ ] `project/specs/04-todo-dev-yaml-issues.md` explicita o path default do TODO.
+- [x] `project/specs/13-yoda-scripts-v1.md` explicita o path default do TODO.
+- [x] `project/specs/07-agent-entry-and-root-file.md` explicita o path default do TODO.
+- [x] `project/specs/04-todo-dev-yaml-issues.md` explicita o path default do TODO.
+- [x] Todas as ocorrencias nas specs foram padronizadas para o path canonico.
 
 ## Dependencies
 None
@@ -69,3 +72,9 @@ Not applicable.
 - Inconsistencias de path podem causar comportamento divergente em scripts futuros.
 
 ## Result log
+Specs atualizadas para usar `yoda/todos/TODO.<dev>.yaml` como path default e `yoda/todos/TODO.<dev>.md` no bootstrap, com padronizacao das ocorrencias.
+
+docs(yoda): explicitar path default do TODO nas specs
+
+Issue: `alex-0032`
+Path: `yoda/project/issues/alex-0032-explicitar-path-todo-default.md`

@@ -195,7 +195,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-0032 - Explicitar path default do TODO nas specs
 - Descricao: padronizar referencias a yoda/todos/TODO.<dev>.yaml e bootstrap.
-- Status: to-do
+- Status: done
 - Prioridade: 6
 - Dependencias: nenhuma
 

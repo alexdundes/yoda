@@ -9,7 +9,7 @@
 ## YAML
 
 - Used for metadata and structures that scripts must read.
-- Example: backlog in `TODO.<dev>.yaml`, agent configuration.
+- Example: backlog in `yoda/todos/TODO.<dev>.yaml`, agent configuration.
 - Enables automation and structured queries.
 
 ## Markdown

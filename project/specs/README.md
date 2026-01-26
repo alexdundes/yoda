@@ -18,7 +18,7 @@ This README organizes the topics discussed so far. Each topic has a dedicated fi
    - file: 02-yoda-flow-process.md
 3. Document-first, YAML, and Markdown (role of each)
    - file: 03-document-first-yaml-markdown.md
-4. `TODO.<dev>.yaml` and issues in Markdown (centralized metadata)
+4. `yoda/todos/TODO.<dev>.yaml` and issues in Markdown (centralized metadata)
    - file: 04-todo-dev-yaml-issues.md
 5. Scripts and automation (yoda/scripts, python)
    - file: 05-scripts-and-automation.md
