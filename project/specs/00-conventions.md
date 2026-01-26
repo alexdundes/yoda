@@ -13,7 +13,11 @@ The following keywords are to be interpreted as in RFC 2119:
 ## Formats
 
 - Dates and timestamps MUST use ISO 8601.
-- Timezone MUST be explicit and use Brasilia time (America/Sao_Paulo) with offset.
+- Timezone MUST be explicit.
+- UTC SHOULD be the default.
+- A project timezone MUST be defined in `yoda/todos/TODO.<dev>.yaml` as `timezone`.
+  - The timezone value MUST be `UTC` or an IANA TZ database name compatible with Python `zoneinfo` (example: `America/Sao_Paulo`).
+  - When defined, scripts SHOULD use it for generated timestamps.
 - Text files MUST be UTF-8.
 
 ## Paths

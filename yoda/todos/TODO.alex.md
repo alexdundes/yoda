@@ -201,7 +201,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-0033 - Revisar regra de timezone em conventions
 - Descricao: ajustar MUST/SHOULD para timezone explicita e UTC/configuravel.
-- Status: to-do
+- Status: done
 - Prioridade: 5
 - Dependencias: nenhuma
 

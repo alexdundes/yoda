@@ -40,6 +40,7 @@ Root fields (required):
 - schema_version: "1.0"
 - developer_name: human-readable developer name
 - developer_slug: developer slug used in the file name
+- timezone: `UTC` or IANA TZ database name (Python `zoneinfo` compatible)
 - updated_at
 - issues: array of issue items (can be empty)
 
@@ -73,6 +74,8 @@ Optional fields:
 - status must be one of: to-do, doing, done, pending.
 - priority is an integer 0 to 10 (default 5 when not provided).
 - lightweight is required and must be boolean.
+- timezone must be `UTC` or a valid IANA TZ database name compatible with Python `zoneinfo`.
+- UTC SHOULD be used unless the project explicitly requires another timezone.
 - created_at and updated_at use ISO 8601 with explicit timezone.
 - depends_on must reference issues within the same developer TODO (no cross-dev dependencies).
 
@@ -138,6 +141,7 @@ Selection rules:
 schema_version: "1.0"
 developer_name: Alex
 developer_slug: alex
+timezone: "America/Sao_Paulo"
 updated_at: "2026-01-21T19:40:50-03:00"
 
 issues:

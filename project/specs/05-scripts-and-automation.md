@@ -51,6 +51,7 @@ Validation runs whenever scripts update metadata or change issue status to done.
 Checks:
 - TODO schema is valid (root + issue items).
 - developer_slug follows slug rules; issues list exists (can be empty).
+- timezone is present and valid (`UTC` or IANA TZ database name compatible with Python `zoneinfo`).
 - Issue IDs are unique and match dev-#### format.
 - status enum is valid; pending_reason required when status = pending.
 - priority is 0..10 (default 5); lightweight is required boolean.
