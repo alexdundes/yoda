@@ -175,6 +175,48 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 - Prioridade: 6
 - Dependencias: nenhuma
 
+### alex-029 - Padronizar id canonico e naming de arquivos
+- Descricao: alinhar id canonico com naming de issues e logs nas specs.
+- Status: doing
+- Prioridade: 7
+- Dependencias: nenhuma
+
+### alex-030 - Corrigir inconsistencias no Study do YODA Flow
+- Descricao: ajustar texto do Study para remover ambiguidade sobre deliverables.
+- Status: to-do
+- Prioridade: 6
+- Dependencias: nenhuma
+
+### alex-031 - Ajustar exemplos de issue templates para id canonico
+- Descricao: atualizar exemplos de commit e paths no guia de templates.
+- Status: to-do
+- Prioridade: 5
+- Dependencias: nenhuma
+
+### alex-032 - Explicitar path default do TODO nas specs
+- Descricao: padronizar referencias a yoda/todos/TODO.<dev>.yaml e bootstrap.
+- Status: to-do
+- Prioridade: 6
+- Dependencias: nenhuma
+
+### alex-033 - Revisar regra de timezone em conventions
+- Descricao: ajustar MUST/SHOULD para timezone explicita e UTC/configuravel.
+- Status: to-do
+- Prioridade: 5
+- Dependencias: nenhuma
+
+### alex-034 - Clarificar validacao vs comandos v1
+- Descricao: explicitar se validacao e embutida ou via validate.py.
+- Status: to-do
+- Prioridade: 5
+- Dependencias: nenhuma
+
+### alex-035 - Revisar bootstrap e meta-implementation nas specs
+- Descricao: decidir como tratar bootstrap dentro de project/specs.
+- Status: to-do
+- Prioridade: 5
+- Dependencias: nenhuma
+
 ## Observacoes
 
 - Cada item acima deve gerar um arquivo de issue em yoda/project/issues/.
