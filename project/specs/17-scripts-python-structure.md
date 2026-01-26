@@ -1,6 +1,6 @@
 # Python structure for YODA scripts
 
-This document defines the base Python project structure for YODA scripts in `yoda/scripts`. It is a shared foundation for all v1 commands.
+This document defines the base Python project structure for YODA scripts in [`yoda/scripts/`](../yoda/scripts/). It is a shared foundation for all v1 commands.
 
 ## Goals
 
@@ -35,14 +35,14 @@ yoda/
 ```
 
 Notes:
-- Command files live directly in `yoda/scripts/`.
-- Reusable helpers live in `yoda/scripts/lib/`.
+- Command files live directly in [`yoda/scripts/`](../yoda/scripts/).
+- Reusable helpers live in [`yoda/scripts/lib/`](../yoda/scripts/lib/).
 
 ## Dependencies
 
 - Standard library is preferred by default.
 - External dependencies are allowed when they simplify correctness or maintenance.
-- Package installation uses `pip` with `yoda/scripts/requirements.txt`.
+- Package installation uses `pip` with [`yoda/scripts/requirements.txt`](../yoda/scripts/requirements.txt).
 
 Recommended dependencies for v1:
 - PyYAML (YAML parsing/serialization).
@@ -50,7 +50,7 @@ Recommended dependencies for v1:
 
 ## Imports and reuse
 
-- Command scripts MUST import shared logic from `yoda/scripts/lib/`.
+- Command scripts MUST import shared logic from [`yoda/scripts/lib/`](../yoda/scripts/lib/).
 - Do not duplicate parsing, IO, or validation logic in each script.
 - Common concerns (paths, IO, YAML, front matter, validation, CLI flags) live in `lib/`.
 
@@ -58,7 +58,7 @@ Recommended dependencies for v1:
 
 - Each script MUST expose a `main()` entrypoint.
 - Use `argparse` for CLI parsing.
-- Global flags are defined once in `lib/cli.py` and reused:
+- Global flags are defined once in [`yoda/scripts/lib/cli.py`](../yoda/scripts/lib/cli.py) and reused:
   - `--dev <slug>`
   - `--format md|json`
   - `--json`
@@ -71,31 +71,31 @@ Recommended dependencies for v1:
 - Default level: INFO.
 - `--verbose` MUST enable DEBUG logging.
 - Errors MUST be written to stderr with short, actionable messages.
-- Exit codes must follow the CLI contract in `project/specs/13-yoda-scripts-v1.md`.
+- Exit codes must follow the CLI contract in [project/specs/13-yoda-scripts-v1.md](13-yoda-scripts-v1.md).
 
 ## Validation
 
 - Validation is mandatory and embedded in any script that mutates metadata.
-- Validation lives in `lib/validate.py` and is invoked before any write.
+- Validation lives in [`yoda/scripts/lib/validate.py`](../yoda/scripts/lib/validate.py) and is invoked before any write.
 
 ## IO and concurrency
 
 - No special concurrency handling is required for v1.
-- IO utilities live in `lib/io.py` and should be the only place for file writes.
+- IO utilities live in [`yoda/scripts/lib/io.py`](../yoda/scripts/lib/io.py) and should be the only place for file writes.
 
 ## Paths and repo layout
 
 - All paths are relative to repo root.
-- TODO path: `yoda/todos/TODO.<dev>.yaml` (bootstrap: `.md`).
-- Issue path: `yoda/project/issues/<id>-<slug>.md`.
-- Log path: `yoda/logs/<id>-<slug>.yaml` (bootstrap: `.md`).
+- TODO path: [`yoda/todos/TODO.<dev>.yaml`](../yoda/todos/) (bootstrap: `.md`).
+- Issue path: [`yoda/project/issues/<id>-<slug>.md`](../yoda/project/issues/).
+- Log path: [`yoda/logs/<id>-<slug>.yaml`](../yoda/logs/) (bootstrap: `.md`).
 
 ## Tests
 
 - Use pytest as the standard testing framework.
 - Unit tests are required for script development.
-- Tests live in `yoda/scripts/tests/`.
+- Tests live in [`yoda/scripts/tests/`](../yoda/scripts/tests/).
 
 ## Versioning
 
-- Scripts follow the CLI contract and schema versioning rules in `project/specs/13-yoda-scripts-v1.md`.
+- Scripts follow the CLI contract and schema versioning rules in [project/specs/13-yoda-scripts-v1.md](13-yoda-scripts-v1.md).
