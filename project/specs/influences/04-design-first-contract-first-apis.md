@@ -184,7 +184,7 @@ These are guidance-level norms to shape YODA’s design and agent behavior.
 
 * **MUST** define machine-readable contracts for core artifacts (e.g., `TODO.<dev>.yaml`, Issue front matter, log schema) and treat them as the source of truth.
 * **MUST** define the CLI as a contract: stable flags, exit codes, and machine-readable output formats (e.g., JSON), so tools/agents can rely on it.
-* **MUST** validate artifacts against schemas in CI (schema validation + reference integrity), so “spec drift” becomes a failing build, not a surprise.
+* **MUST** validate artifacts against schemas in CI (schema validation + reference integrity), so “spec drift” becomes a failing build, not a surprise, **v2+ / quando CI existir**.
 * **MUST** treat “contract changes” (schemas/CLI outputs) as high-impact and require explicit review (breaking changes policy).
 
 ### SHOULD

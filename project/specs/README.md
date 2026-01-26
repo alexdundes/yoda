@@ -1,6 +1,6 @@
 # YODA Framework - Specs (en)
 
-This README organizes the topics discussed so far. Each topic has a dedicated file in this folder.
+This README organizes the topics discussed so far. Each topic has a dedicated file in this folder. The **human entrypoint** for a YODA-enabled project is the repo `README.md`; the **agent entrypoint** is [`yoda/yoda.md`](../yoda/yoda.md).
 
 ## Language policy
 
