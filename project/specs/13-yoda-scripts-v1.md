@@ -77,7 +77,7 @@ Inputs:
 - Title, description or summary, tags, priority, lightweight, agent, entrypoints.
 
 Outputs:
-- Updated `TODO.<dev>.yaml` and new issue Markdown file.
+- Updated `TODO.<dev>.yaml` and new issue Markdown file named `<id>-<slug>.md`.
 
 ---
 
@@ -96,7 +96,7 @@ Inputs:
 - Template path (optional).
 
 Outputs:
-- Updated issue Markdown file.
+- Updated issue Markdown file named `<id>-<slug>.md`.
 
 ---
 
@@ -212,7 +212,7 @@ Inputs:
 - Message text.
 
 Outputs:
-- Updated log file.
+- Updated log file named `<id>-<slug>.yaml`.
 
 ## Notes
 

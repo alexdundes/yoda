@@ -105,7 +105,7 @@ O YODA Flow e simples, repetivel e scriptavel.
 A direcao atual define um backlog YAML por pessoa como fonte canonica de metadados, com Markdown para detalhe narrativo.
 
 - `TODO.<dev>.yaml` guarda metadados estruturados, ordem de execucao e contexto de planejamento.
-- Issues ficam em `yoda/project/issues/dev-id-slug.md` (um arquivo por issue).
+- Issues ficam em `yoda/project/issues/<id>-<slug>.md` (um arquivo por issue).
 - O arquivo Markdown da issue usa o ID no titulo.
 
 Scripts podem gerar esqueletos Markdown a partir do YAML e produzir resumos para agents quando necessario.
@@ -116,7 +116,7 @@ Scripts podem gerar esqueletos Markdown a partir do YAML e produzir resumos para
 - `yoda/` e a implementacao em construcao desses specs e pode estar incompleta.
 - Enquanto os scripts nao existem, este repo usa Markdown como excecao temporaria:
   - TODOs em `yoda/todos/TODO.<dev>.md`
-  - Logs em `yoda/logs/dev-id-slug.md`
+- Logs em `yoda/logs/<id>-<slug>.md`
 - Bootstrap e provisório; a documentacao e os specs focam a fase futura nao-bootstrap, com excecoes marcadas como bootstrap.
 
 ## Entrada do agent
@@ -136,8 +136,8 @@ O YODA espera scripts leves que:
 - padronizem a estrutura do projeto antes de humanos ou agents editarem
 
 Os scripts ficam em `yoda/scripts`, sao feitos em Python e o nome do arquivo e o comando (ex.: `init.py`).
-Logs do ciclo ficam em `yoda/logs/dev-id-slug.yaml` no framework final.
-Nesta meta-implementacao, usamos `yoda/logs/dev-id-slug.md` ate os scripts existirem.
+Logs do ciclo ficam em `yoda/logs/<id>-<slug>.yaml` no framework final.
+Nesta meta-implementacao, usamos `yoda/logs/<id>-<slug>.md` ate os scripts existirem.
 
 ## Formato de commit
 

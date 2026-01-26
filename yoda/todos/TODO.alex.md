@@ -7,211 +7,211 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ## Backlog (ordem de execucao)
 
-### alex-001 - Criar yoda/yoda.md (entrada do agente)
+### alex-0001 - Criar yoda/yoda.md (entrada do agente)
 - Descricao: definir as instrucoes do agente YODA para este repositorio.
 - Status: done
 - Prioridade: 10
 - Dependencias: nenhuma
 
-### alex-002 - Formalizar template de issue (normal e lightweight)
+### alex-0002 - Formalizar template de issue (normal e lightweight)
 - Descricao: garantir que os templates em yoda/templates/ estejam alinhados com as specs.
 - Status: done
 - Prioridade: 9
-- Dependencias: alex-001
+- Dependencias: alex-0001
 
-### alex-003 - Estrutura minima do YODA Framework
+### alex-0003 - Estrutura minima do YODA Framework
 - Descricao: documentar a estrutura base do YODA (pastas e arquivos padrao).
 - Status: done
 - Prioridade: 8
-- Dependencias: alex-001
+- Dependencias: alex-0001
 
-### alex-004 - Definir comandos e scripts v1 (especificacao)
+### alex-0004 - Definir comandos e scripts v1 (especificacao)
 - Descricao: listar a interface dos scripts minimos (init.py, manutencao TODO, logs, resolucao de pendencia).
 - Status: done
 - Prioridade: 8
-- Dependencias: alex-001
+- Dependencias: alex-0001
 
-### alex-005 - Template de issue (regras e uso)
+### alex-0005 - Template de issue (regras e uso)
 - Descricao: documentar como o agente deve criar e preencher issues a partir dos templates.
 - Status: done
 - Prioridade: 7
-- Dependencias: alex-002
+- Dependencias: alex-0002
 
-### alex-006 - Consolidar README.md e summary.md com esta implementacao
+### alex-0006 - Consolidar README.md e summary.md com esta implementacao
 - Descricao: alinhar README e summary com o estado final das specs e do TODO.
 - Status: done
 - Prioridade: 6
-- Dependencias: alex-001, alex-003
+- Dependencias: alex-0001, alex-0003
 
-### alex-007 - Schema formal do `TODO.<dev>.yaml`
+### alex-0007 - Schema formal do `TODO.<dev>.yaml`
 - Descricao: definir schema validavel do `TODO.<dev>.yaml` (tipos, obrigatorios, enums, constraints) com exemplos.
 - Status: done
 - Prioridade: 9
 - Dependencias: nenhuma
 
-### alex-008 - Schema formal do metadata da issue
+### alex-0008 - Schema formal do metadata da issue
 - Descricao: definir schema do metadata de issue (front matter ou equivalente) com exemplos.
 - Status: done
 - Prioridade: 9
 - Dependencias: nenhuma
 
-### alex-009 - Contrato CLI dos scripts v1
+### alex-0009 - Contrato CLI dos scripts v1
 - Descricao: definir interface CLI (args, outputs, exit codes, dry-run, erros).
 - Status: done
 - Prioridade: 8
-- Dependencias: alex-004
+- Dependencias: alex-0004
 
-### alex-010 - Regras deterministicas de ordenacao e selecao
+### alex-0010 - Regras deterministicas de ordenacao e selecao
 - Descricao: consolidar regras de prioridade, ordem, pending e depends_on.
 - Status: done
 - Prioridade: 8
-- Dependencias: alex-004
+- Dependencias: alex-0004
 
-### alex-011 - Validacao e checks minimos
+### alex-0011 - Validacao e checks minimos
 - Descricao: definir yoda validate e checks basicos para YAML/Markdown.
 - Status: done
 - Prioridade: 7
-- Dependencias: alex-007, alex-008
+- Dependencias: alex-0007, alex-0008
 
-### alex-012 - Versionamento e migracoes de schema
+### alex-0012 - Versionamento e migracoes de schema
 - Descricao: definir schema_version e politica de migracao.
 - Status: done
 - Prioridade: 7
-- Dependencias: alex-007, alex-008
+- Dependencias: alex-0007, alex-0008
 
-### alex-013 - Colaboracao multi-dev
+### alex-0013 - Colaboracao multi-dev
 - Descricao: regras de conflitos YAML, dependencias cruzadas e convencao de branches.
 - Status: done
 - Prioridade: 6
-- Dependencias: alex-007
+- Dependencias: alex-0007
 
-### alex-014 - Logs e resultados auditaveis
+### alex-0014 - Logs e resultados auditaveis
 - Descricao: definir campos obrigatorios no log e referencias bidirecionais.
 - Status: done
 - Prioridade: 6
-- Dependencias: alex-007
+- Dependencias: alex-0007
 
-### alex-015 - Resolver decisoes em aberto do summary
-- Descricao: desdobrado em alex-019..alex-025 para resolver cada decisao em aberto separadamente.
+### alex-0015 - Resolver decisoes em aberto do summary
+- Descricao: desdobrado em alex-0019..alex-0025 para resolver cada decisao em aberto separadamente.
 - Status: done
 - Prioridade: 8
 - Dependencias: nenhuma
 
-### alex-016 - Alinhar entrada do agente com TODO no bootstrap
+### alex-0016 - Alinhar entrada do agente com TODO no bootstrap
 - Descricao: explicitar nas specs a regra de fallback para `TODO.<dev>.md` no bootstrap e a transicao para YAML.
 - Status: done
 - Prioridade: 7
 - Dependencias: nenhuma
 
-### alex-017 - Definir formato de logs no bootstrap vs framework
+### alex-0017 - Definir formato de logs no bootstrap vs framework
 - Descricao: documentar nas specs a excecao de logs em Markdown no bootstrap e a regra canonica de YAML.
 - Status: done
 - Prioridade: 7
 - Dependencias: nenhuma
 
-### alex-018 - Definir politica de edicao de TODO sem scripts
+### alex-0018 - Definir politica de edicao de TODO sem scripts
 - Descricao: definir a excecao para edicao manual de TODO no bootstrap, mantendo scripts como regra futura.
 - Status: done
 - Prioridade: 7
 - Dependencias: nenhuma
 
-### alex-019 - Definir politica de tooling (obrigatorio vs opcional)
+### alex-0019 - Definir politica de tooling (obrigatorio vs opcional)
 - Descricao: definir se o tooling do YODA e mandatorio ou recomendado e registrar nas specs.
 - Status: done
 - Prioridade: 7
 - Dependencias: nenhuma
 
-### alex-020 - Definir audiencia e posicionamento oficial
+### alex-0020 - Definir audiencia e posicionamento oficial
 - Descricao: decidir a audiencia primaria (solo, equipes, consultorias, SaaS) e refletir nas specs.
 - Status: done
 - Prioridade: 7
 - Dependencias: nenhuma
 
-### alex-021 - Definir entregaveis minimos por fase do YODA Flow
+### alex-0021 - Definir entregaveis minimos por fase do YODA Flow
 - Descricao: especificar artefatos minimos de Study, Document, Implement, Evaluate.
 - Status: done
 - Prioridade: 7
 - Dependencias: nenhuma
 
-### alex-022 - Definir campos adicionais do schema de metadados
+### alex-0022 - Definir campos adicionais do schema de metadados
 - Descricao: decidir campos obrigatorios adicionais alem do baseline e atualizar as specs.
 - Status: done
 - Prioridade: 7
 - Dependencias: nenhuma
 
-### alex-023 - Definir limites de escopo (out-of-scope)
+### alex-0023 - Definir limites de escopo (out-of-scope)
 - Descricao: listar explicitamente o que o framework nao cobre (CI/CD, arquitetura, RH etc.).
 - Status: done
 - Prioridade: 7
 - Dependencias: nenhuma
 
-### alex-024 - Definir politicas de stack profiles
+### alex-0024 - Definir politicas de stack profiles
 - Descricao: decidir entre modelo generico unico vs perfis por stack e documentar.
 - Status: done
 - Prioridade: 7
 - Dependencias: nenhuma
 
-### alex-025 - Definir brand voice e terminologia
+### alex-0025 - Definir brand voice e terminologia
 - Descricao: estabelecer tom e termos oficiais do framework nas docs.
 - Status: done
 - Prioridade: 7
 - Dependencias: nenhuma
 
-### alex-026 - Revisar yoda/yoda.md com foco no bootstrap
+### alex-0026 - Revisar yoda/yoda.md com foco no bootstrap
 - Descricao: revisar e ajustar yoda/yoda.md para refletir as regras de bootstrap e evitar ambiguidades.
 - Status: done
 - Prioridade: 6
 - Dependencias: nenhuma
 
-### alex-027 - Resolver ambiguidades de entrada e atualizacao de TODO
+### alex-0027 - Resolver ambiguidades de entrada e atualizacao de TODO
 - Descricao: alinhar regras de fallback e edicao do TODO entre yoda/yoda.md e specs, removendo conflitos.
 - Status: done
 - Prioridade: 6
 - Dependencias: nenhuma
 
-### alex-028 - Revisar README e summary com specs atuais
+### alex-0028 - Revisar README e summary com specs atuais
 - Descricao: revisar README.md e project/specs/summary.md para garantir sincronizacao com project/specs e issues concluidas.
 - Status: done
 - Prioridade: 6
 - Dependencias: nenhuma
 
-### alex-029 - Padronizar id canonico e naming de arquivos
+### alex-0029 - Padronizar id canonico e naming de arquivos
 - Descricao: alinhar id canonico com naming de issues e logs nas specs.
-- Status: doing
+- Status: done
 - Prioridade: 7
 - Dependencias: nenhuma
 
-### alex-030 - Corrigir inconsistencias no Study do YODA Flow
+### alex-0030 - Corrigir inconsistencias no Study do YODA Flow
 - Descricao: ajustar texto do Study para remover ambiguidade sobre deliverables.
 - Status: to-do
 - Prioridade: 6
 - Dependencias: nenhuma
 
-### alex-031 - Ajustar exemplos de issue templates para id canonico
+### alex-0031 - Ajustar exemplos de issue templates para id canonico
 - Descricao: atualizar exemplos de commit e paths no guia de templates.
 - Status: to-do
 - Prioridade: 5
 - Dependencias: nenhuma
 
-### alex-032 - Explicitar path default do TODO nas specs
+### alex-0032 - Explicitar path default do TODO nas specs
 - Descricao: padronizar referencias a yoda/todos/TODO.<dev>.yaml e bootstrap.
 - Status: to-do
 - Prioridade: 6
 - Dependencias: nenhuma
 
-### alex-033 - Revisar regra de timezone em conventions
+### alex-0033 - Revisar regra de timezone em conventions
 - Descricao: ajustar MUST/SHOULD para timezone explicita e UTC/configuravel.
 - Status: to-do
 - Prioridade: 5
 - Dependencias: nenhuma
 
-### alex-034 - Clarificar validacao vs comandos v1
+### alex-0034 - Clarificar validacao vs comandos v1
 - Descricao: explicitar se validacao e embutida ou via validate.py.
 - Status: to-do
 - Prioridade: 5
 - Dependencias: nenhuma
 
-### alex-035 - Revisar bootstrap e meta-implementation nas specs
+### alex-0035 - Revisar bootstrap e meta-implementation nas specs
 - Descricao: decidir como tratar bootstrap dentro de project/specs.
 - Status: to-do
 - Prioridade: 5

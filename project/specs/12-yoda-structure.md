@@ -16,7 +16,7 @@ Defines the minimum folder and file structure for a YODA Framework project.
 │  ├─ todos/
 │  │  └─ TODO.<dev>.yaml       # Canonical TODO format (bootstrap may use Markdown)
 │  └─ project/
-│     └─ issues/              # Issue files (dev-id-slug.md)
+│     └─ issues/              # Issue files (<id>-<slug>.md)
 └─ project/
    └─ specs/                  # YODA framework specs (source of truth)
 ```
@@ -26,9 +26,9 @@ Defines the minimum folder and file structure for a YODA Framework project.
 - yoda/yoda.md: root entry for agents in this repository.
 - yoda/templates/: issue templates used by agents.
 - yoda/scripts/: scripts that manage TODOs, logs, and scaffolding.
-- yoda/logs/: one log per issue (YAML by default).
+- yoda/logs/: one log per issue (YAML by default, named `<id>-<slug>.yaml`).
 - yoda/todos/: canonical TODO storage (YAML by default; bootstrap may use Markdown).
-- yoda/project/issues/: issue files, one per issue, named dev-id-slug.md.
+- yoda/project/issues/: issue files, one per issue, named `<id>-<slug>.md`.
 - project/specs/: official specs and decision source of truth.
 
 ## Notes

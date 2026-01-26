@@ -1,0 +1,10 @@
+# Log - alex-0027-resolver-ambiguidades-entrada-todo
+
+## Status
+- status: done
+
+## Registro
+- 2026-01-23T18:27:05-03:00: [alex-0027] Regras de entrada/bootstrap alinhadas entre yoda/yoda.md, specs e README
+- 2026-01-23T18:31:17-03:00: [alex-0027] README revisado para voz tecnica e terminologia canonica (agent)
+- 2026-01-23T18:41:45-03:00: [alex-0027] README padronizado para termos "agent" em toda a pagina
+- 2026-01-23T18:42:52-03:00: [alex-0027] README ajustado para consistencia final de termos

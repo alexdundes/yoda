@@ -21,7 +21,7 @@ Standardize repetitive tasks and reduce the need for manual edits.
 
 ## Logs
 
-- One log per issue at yoda/logs/dev-id-slug.yaml
+- One log per issue at `yoda/logs/<id>-<slug>.yaml`
 
 ## Log schema (YAML)
 

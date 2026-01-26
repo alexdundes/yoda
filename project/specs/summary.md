@@ -8,7 +8,7 @@ This file records decisions and known open points captured so far.
 - Documentation structure: prefer more YAML metadata and use scripts (Python) that generate Markdown optimized for AI consumption and human review.
 - YODA Flow: the core cycle is Study -> Document -> Implement -> Evaluate.
 - Artifacts direction: one TODO per developer (`TODO.<dev>.yaml`) and one Markdown file per issue for richer free-form descriptions, with scripts generating the issue skeleton.
-- Issues location and naming: issues live in yoda/project/issues/ and follow dev-id-slug.md.
+- Issues location and naming: issues live in yoda/project/issues/ and follow `<id>-<slug>.md`.
 - Slug format (dev and issue): lowercase ASCII, digits, and hyphens only; must start with a letter; no spaces.
 - Issue identification: ID appears in the Markdown title.
 - Metadata schema basics: id, title, slug, description, status, priority, lightweight, tags, agent, depends_on, pending_reason, created_at, updated_at (entrypoints and origin are optional).
@@ -27,8 +27,8 @@ This file records decisions and known open points captured so far.
 - Flow deliverables: Study/Document/Implement/Evaluate minimums defined, with explicit lightweight rule.
 - Scripts: live in yoda/scripts, written in Python, file name is the command; init.py is mandatory.
 - Scripts v1 include issue_add.py to create TODO entries and issue Markdown from templates using basic fields, and issue_render.py to re-render issue Markdown from templates.
-- Logs: one YAML log per issue at yoda/logs/dev-id-slug.yaml.
-- Bootstrap exception: while scripts do not exist, use `TODO.<dev>.md` and Markdown logs at yoda/logs/dev-id-slug.md; bootstrap is temporary.
+- Logs: one YAML log per issue at `yoda/logs/<id>-<slug>.yaml`.
+- Bootstrap exception: while scripts do not exist, use `TODO.<dev>.md` and Markdown logs at `yoda/logs/<id>-<slug>.md`; bootstrap is temporary.
 - Commit: include the commit message text inside the issue and show it to the user using this format:
   - First line: conventional commit message.
   - Body:

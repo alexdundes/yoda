@@ -37,7 +37,7 @@ Slug format:
 - yoda/ is the in-progress implementation of that framework and can lag behind the specs while we validate them.
 - While scripts do not exist, this repo temporarily uses Markdown for TODOs and logs:
   - TODOs: `yoda/todos/TODO.<dev>.md`
-  - Logs: yoda/logs/dev-id-slug.md
+  - Logs: `yoda/logs/<id>-<slug>.md`
 - Bootstrap is temporary; canonical documentation targets the future non-bootstrap phase unless explicitly marked as bootstrap.
 
 ## TODO (this implementation)
@@ -61,7 +61,7 @@ This implementation does not have YODA scripts yet. Until they exist:
   - If there is ambiguity, new requirements, or non-trivial risk, include Study.
 - Implement only what is documented in the issue.
 - If a blocker is found, mark the issue as pending and record the reason in the TODO.
-- Logs for this project are in Markdown: yoda/logs/dev-id-slug.md.
+- Logs for this project are in Markdown: `yoda/logs/<id>-<slug>.md`.
 - Log entries should include the canonical issue id (dev-id) in the message.
 - Status names: to-do -> doing -> done; any state can transition to pending.
 - Log timestamps should use ISO 8601 with Brasilia offset (e.g., 2026-01-21T19:40:50-03:00).
