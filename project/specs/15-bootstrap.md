@@ -1,8 +1,8 @@
-# Bootstrap (temporary)
+# Appendix: Bootstrap (informative, temporary)
 
-## Purpose
+## Status
 
-Document the bootstrap mode used by this meta-implementation while scripts are not available.
+This appendix is informative (non-normative). It documents the temporary bootstrap mode used by the meta-implementation while scripts are not available.
 
 ## Definition
 

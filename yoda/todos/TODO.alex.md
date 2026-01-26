@@ -213,7 +213,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-0035 - Revisar bootstrap e meta-implementation nas specs
 - Descricao: decidir como tratar bootstrap dentro de project/specs.
-- Status: to-do
+- Status: done
 - Prioridade: 5
 - Dependencias: nenhuma
 

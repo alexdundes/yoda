@@ -4,14 +4,14 @@ id: alex-0035
 title: Revisar bootstrap e meta-implementation nas specs
 slug: revisar-bootstrap-specs
 description: Decidir como tratar bootstrap dentro de project/specs.
-status: to-do
+status: done
 priority: 5
 lightweight: false
 agent: Human
 depends_on: []
 pending_reason: ""
 created_at: "2026-01-26T11:16:29-03:00"
-updated_at: "2026-01-26T11:16:29-03:00"
+updated_at: "2026-01-26T12:08:36-03:00"
 entrypoints: []
 tags: [specs, bootstrap]
 origin:
@@ -42,11 +42,12 @@ Definir a abordagem (appendix informativa ou mover bootstrap para fora das specs
 
 ## Requirements
 - Escolher entre: (A) appendix informativa ou (B) mover bootstrap para fora de `project/specs`.
-- Atualizar os textos para refletir a decisao escolhida.
+- Decisao: manter bootstrap como appendix informativa (nao-normativa) dentro de `project/specs`.
+- Atualizar os textos para refletir a decisao escolhida e marcar bootstrap como informativo.
 
 ## Acceptance criteria
-- [ ] `project/specs/12-yoda-structure.md` e `project/specs/15-bootstrap.md` refletem a decisao escolhida.
-- [ ] A distincao entre specs normativas e conteudo de bootstrap fica explicita.
+- [x] `project/specs/12-yoda-structure.md` e `project/specs/15-bootstrap.md` refletem a decisao escolhida.
+- [x] A distincao entre specs normativas e conteudo de bootstrap fica explicita.
 
 ## Dependencies
 None
@@ -67,3 +68,9 @@ Not applicable.
 - Decisao pode impactar documentacao existente se nao for aplicada de forma consistente.
 
 ## Result log
+Bootstrap marcado como appendix informativa (nao-normativa) nas specs, com referencia cruzada na estrutura minima.
+
+docs(yoda): marcar bootstrap como appendix informativa
+
+Issue: `alex-0035`
+Path: `yoda/project/issues/alex-0035-revisar-bootstrap-specs.md`
