@@ -57,7 +57,7 @@ Garantir que logs de scripts v1 descrevam claramente o que mudou e quais dados f
 ## Entry points
 - path: project/specs/05-scripts-and-automation.md
   type: doc
-- path: project/specs/17-scripts-python-structure.md
+- path: project/specs/15-scripts-python-structure.md
   type: doc
 - path: project/specs/18-issue-add-script.md
   type: doc

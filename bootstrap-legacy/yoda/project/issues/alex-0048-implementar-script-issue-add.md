@@ -34,7 +34,7 @@ Entregar o script `yoda/scripts/issue_add.py` conforme a spec, com validacao e s
 ## Scope
 - Implementar o script `yoda/scripts/issue_add.py` conforme a spec.
 - Garantir que o script atualize o TODO e gere o arquivo de issue a partir do template.
-- Manter compatibilidade com a estrutura definida em `project/specs/17-scripts-python-structure.md`.
+- Manter compatibilidade com a estrutura definida em `project/specs/15-scripts-python-structure.md`.
 
 ## Out of scope
 - Alterar a spec do `issue_add.py`.
@@ -61,7 +61,7 @@ Entregar o script `yoda/scripts/issue_add.py` conforme a spec, com validacao e s
   type: doc
 - path: project/specs/05-scripts-and-automation.md
   type: doc
-- path: project/specs/17-scripts-python-structure.md
+- path: project/specs/15-scripts-python-structure.md
   type: doc
 - path: yoda/templates/issue.md
   type: doc
@@ -69,7 +69,7 @@ Entregar o script `yoda/scripts/issue_add.py` conforme a spec, com validacao e s
   type: doc
 
 ## Implementation notes
-- Seguir o layout de pacotes e padroes de saida descritos em `project/specs/17-scripts-python-structure.md`.
+- Seguir o layout de pacotes e padroes de saida descritos em `project/specs/15-scripts-python-structure.md`.
 
 ## Tests
 Not applicable.

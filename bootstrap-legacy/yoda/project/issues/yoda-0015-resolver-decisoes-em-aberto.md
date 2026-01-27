@@ -74,7 +74,7 @@ Checklist (open decisions -> resolved):
 - Audience and positioning: resolved in `project/specs/01-yoda-overview.md` and `project/specs/summary.md`.
 - Flow deliverables: resolved in `project/specs/02-yoda-flow-process.md` and `project/specs/06-agent-playbook.md`.
 - Metadata schema additions: resolved as minimal schema; `labels` renamed to `tags` in `project/specs/04-todo-dev-yaml-issues.md` and `project/specs/summary.md`.
-- Scope boundaries: resolved in `project/specs/16-out-of-scope.md` and `project/specs/summary.md`.
+- Scope boundaries: resolved in `project/specs/14-out-of-scope.md` and `project/specs/summary.md`.
 - Stack profiles: resolved in `project/specs/01-yoda-overview.md` and `project/specs/summary.md`.
 - Brand voice and terminology: resolved in `project/specs/00-conventions.md` and `project/specs/summary.md`.
 

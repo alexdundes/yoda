@@ -34,7 +34,7 @@ Entregar o script `yoda/scripts/log_add.py` conforme a spec, com validacao e sai
 ## Scope
 - Implementar o script `yoda/scripts/log_add.py` conforme a spec.
 - Garantir append de entradas de log conforme schema.
-- Manter compatibilidade com a estrutura definida em `project/specs/17-scripts-python-structure.md`.
+- Manter compatibilidade com a estrutura definida em `project/specs/15-scripts-python-structure.md`.
 
 ## Out of scope
 - Alterar a spec do `log_add.py`.
@@ -60,13 +60,13 @@ Entregar o script `yoda/scripts/log_add.py` conforme a spec, com validacao e sai
   type: doc
 - path: project/specs/05-scripts-and-automation.md
   type: doc
-- path: project/specs/17-scripts-python-structure.md
+- path: project/specs/15-scripts-python-structure.md
   type: doc
 - path: yoda/scripts/README.md
   type: doc
 
 ## Implementation notes
-- Seguir o layout de pacotes e padroes de saida descritos em `project/specs/17-scripts-python-structure.md`.
+- Seguir o layout de pacotes e padroes de saida descritos em `project/specs/15-scripts-python-structure.md`.
 
 ## Tests
 Not applicable.

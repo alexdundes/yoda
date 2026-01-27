@@ -65,7 +65,7 @@ Definir requisitos completos e nao ambiguos para o `issue_add.py`, documentados 
   type: doc
 - path: project/specs/14-issue-templates-usage.md
   type: doc
-- path: project/specs/17-scripts-python-structure.md
+- path: project/specs/15-scripts-python-structure.md
   type: doc
 - path: yoda/templates/issue.md
   type: doc

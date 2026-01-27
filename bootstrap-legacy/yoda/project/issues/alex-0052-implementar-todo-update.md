@@ -34,7 +34,7 @@ Entregar o script `yoda/scripts/todo_update.py` conforme a spec, com validacao e
 ## Scope
 - Implementar o script `yoda/scripts/todo_update.py` conforme a spec.
 - Garantir atualizacao de campos do TODO e `updated_at` conforme regras.
-- Manter compatibilidade com a estrutura definida em `project/specs/17-scripts-python-structure.md`.
+- Manter compatibilidade com a estrutura definida em `project/specs/15-scripts-python-structure.md`.
 
 ## Out of scope
 - Alterar a spec do `todo_update.py`.
@@ -62,13 +62,13 @@ Entregar o script `yoda/scripts/todo_update.py` conforme a spec, com validacao e
   type: doc
 - path: project/specs/04-todo-dev-yaml-issues.md
   type: doc
-- path: project/specs/17-scripts-python-structure.md
+- path: project/specs/15-scripts-python-structure.md
   type: doc
 - path: yoda/scripts/README.md
   type: doc
 
 ## Implementation notes
-- Seguir o layout de pacotes e padroes de saida descritos em `project/specs/17-scripts-python-structure.md`.
+- Seguir o layout de pacotes e padroes de saida descritos em `project/specs/15-scripts-python-structure.md`.
 
 ## Tests
 Not applicable.

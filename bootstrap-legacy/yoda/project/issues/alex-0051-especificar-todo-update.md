@@ -63,7 +63,7 @@ Definir requisitos completos e nao ambiguos para o `todo_update.py`, documentado
   type: doc
 - path: project/specs/04-todo-dev-yaml-issues.md
   type: doc
-- path: project/specs/17-scripts-python-structure.md
+- path: project/specs/15-scripts-python-structure.md
   type: doc
 - path: project/specs/20-todo-update-script.md
   type: doc
@@ -83,7 +83,7 @@ Not applicable.
 - `pending_reason` deve ser limpo ao sair de `pending`, a menos que explicitamente informado.
 
 ## Result log
-Spec de `todo_update.py` criada em `project/specs/20-todo-update-script.md` e regra de log registrada em `project/specs/17-scripts-python-structure.md`.
+Spec de `todo_update.py` criada em `project/specs/20-todo-update-script.md` e regra de log registrada em `project/specs/15-scripts-python-structure.md`.
 
 docs(yoda): especificar todo_update.py
 

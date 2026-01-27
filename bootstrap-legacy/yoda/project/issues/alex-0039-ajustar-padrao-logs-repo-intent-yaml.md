@@ -17,7 +17,7 @@ entrypoints:
     type: doc
   - path: project/specs/05-scripts-and-automation.md
     type: doc
-  - path: project/specs/17-scripts-python-structure.md
+  - path: project/specs/15-scripts-python-structure.md
     type: doc
   - path: project/specs/summary.md
     type: doc
@@ -63,7 +63,7 @@ None.
   type: doc
 - path: project/specs/05-scripts-and-automation.md
   type: doc
-- path: project/specs/17-scripts-python-structure.md
+- path: project/specs/15-scripts-python-structure.md
   type: doc
 - path: project/specs/summary.md
   type: doc

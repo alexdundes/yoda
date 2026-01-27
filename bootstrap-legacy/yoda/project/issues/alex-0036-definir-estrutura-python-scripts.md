@@ -82,7 +82,7 @@ Not applicable.
 - Gerenciador de pacotes para instalacao em outras maquinas. (decisao: pip + `yoda/scripts/requirements.txt`)
 
 ## Result log
-Spec criada em `project/specs/17-scripts-python-structure.md` com layout, dependencias, CLI, logging e testes. README atualizado para incluir a nova spec. Tests definidos em `yoda/scripts/tests/` e testes unitarios como obrigatorios.
+Spec criada em `project/specs/15-scripts-python-structure.md` com layout, dependencias, CLI, logging e testes. README atualizado para incluir a nova spec. Tests definidos em `yoda/scripts/tests/` e testes unitarios como obrigatorios.
 
 docs(yoda): definir estrutura python dos scripts
 

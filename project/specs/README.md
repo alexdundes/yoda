@@ -39,8 +39,7 @@ This README organizes the topics discussed so far. Each topic has a dedicated fi
     - file: `13-yoda-scripts-v1.md`
 13. Issue templates usage guide
     - file: `14-issue-templates-usage.md`
-14. Bootstrap (temporary)
-15. Out of scope (v1)
-   - file: `16-out-of-scope.md`
-16. Python structure for YODA scripts
-    - file: `17-scripts-python-structure.md`
+14. Out of scope (v1)
+   - file: `14-out-of-scope.md`
+15. Python structure for YODA scripts
+    - file: `15-scripts-python-structure.md`
