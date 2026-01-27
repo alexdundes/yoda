@@ -6,7 +6,7 @@ Define how the AI acts in the YODA Framework at each stage of the flow.
 
 ## Phases
 
-Deliverables per phase are defined in [project/specs/02-yoda-flow-process.md](02-yoda-flow-process.md) and must be followed.
+Deliverables per phase are defined in `project/specs/02-yoda-flow-process.md` and must be followed.
 
 ### Study
 
@@ -43,17 +43,17 @@ Deliverables per phase are defined in [project/specs/02-yoda-flow-process.md](02
 - Body:
   - Issue: `<ID>`
   - Path: `<issue path>`
-- Record the cycle log at [`yoda/logs/<id>-<slug>.yaml`](/yoda/logs/).
-- If a blocker arises, mark status as pending and record the reason in [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/); use the pending resolution script when unblocked.
+- Record the cycle log at `yoda/logs/<id>-<slug>.yaml`.
+- If a blocker arises, mark status as pending and record the reason in `yoda/todos/TODO.<dev>.yaml`; use the pending resolution script when unblocked.
 - Deliverable: result log updated, commit suggestion written, TODO status updated, log entry recorded.
 
 ## General rules
 
 - Always keep the issue (Markdown file) as the source of truth.
-- Never edit [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/) directly.
+- Never edit `yoda/todos/TODO.<dev>.yaml` directly.
 - Prefer questions when there is ambiguity.
 - If the issue is ambiguous, return to Document before coding.
 - Do not invent files or paths; verify the repo structure first.
-- Any change to [project/specs/](./) must be tracked by an issue.
+- Any change to `project/specs/` must be tracked by an issue.
 - When scripts are available, use them for metadata changes; bootstrap is the only exception.
 - Ensure validation passes before marking issues as done; resolve validation errors first.

@@ -10,13 +10,13 @@ Bootstrap is a temporary documentation-only mode for the YODA Framework meta-imp
 
 ## Rules
 
-- Use [`yoda/todos/TODO.<dev>.md`](/yoda/todos/) instead of [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/).
-- Use Markdown logs at [`yoda/logs/<id>-<slug>.md`](/yoda/logs/) instead of YAML logs.
-- Agent entry checks for [`yoda/todos/TODO.<dev>.md`](/yoda/todos/) when YAML is not available.
+- Use `yoda/todos/TODO.<dev>.md` instead of `yoda/todos/TODO.<dev>.yaml`.
+- Use Markdown logs at `yoda/logs/<id>-<slug>.md` instead of YAML logs.
+- Agent entry checks for `yoda/todos/TODO.<dev>.md` when YAML is not available.
 - Scripts are optional during bootstrap and may be missing.
-- Manual updates to [`yoda/todos/TODO.<dev>.md`](/yoda/todos/) are allowed in bootstrap, but YAML updates must use scripts once available.
+- Manual updates to `yoda/todos/TODO.<dev>.md` are allowed in bootstrap, but YAML updates must use scripts once available.
 - Issues created before front matter adoption may lack YAML front matter; new issues must include front matter per the canonical rules.
-- Bootstrap does not allow coexistence of [`yoda/todos/TODO.<dev>.md`](/yoda/todos/) and [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/); only one format exists at a time.
+- Bootstrap does not allow coexistence of `yoda/todos/TODO.<dev>.md` and `yoda/todos/TODO.<dev>.yaml`; only one format exists at a time.
 - Any mention of bootstrap in specs must explicitly state that it is temporary and will be removed.
 - Unless explicitly marked as bootstrap, documentation targets the future non-bootstrap phase.
 

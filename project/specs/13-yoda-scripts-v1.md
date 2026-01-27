@@ -1,10 +1,10 @@
 # YODA Framework - Scripts v1 Specification
 
-This document defines the minimum script interface for YODA v1. Scripts live in [`yoda/scripts/`](/yoda/scripts/) and are executed by their file name (file name = command).
+This document defines the minimum script interface for YODA v1. Scripts live in `yoda/scripts/` and are executed by their file name (file name = command).
 
 ## Naming
 
-- Script path: [`yoda/scripts/<name>.py`](/yoda/scripts/)
+- Script path: `yoda/scripts/<name>.py`
 - Command name: `<name>.py`
 
 ## Developer selection
@@ -54,7 +54,7 @@ Purpose:
 
 Behavior (minimum):
 - Ensure required folders exist.
-- Create [`yoda/yoda.md`](/yoda/yoda.md) if missing (template placeholder or instructions).
+- Create `yoda/yoda.md` if missing (template placeholder or instructions).
 - Create templates folder and issue templates if missing.
 - Create logs folder.
 
@@ -69,11 +69,11 @@ Outputs:
 ### issue_add.py
 
 Purpose:
-- Create a new issue entry in [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/) and generate the issue Markdown from the template.
+- Create a new issue entry in `yoda/todos/TODO.<dev>.yaml` and generate the issue Markdown from the template.
 
 Behavior (minimum):
 - Generate the next sequential id.
-- Create [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/) entry with basic fields.
+- Create `yoda/todos/TODO.<dev>.yaml` entry with basic fields.
 - Create the issue Markdown file from the template.
 - Fill basic fields in the template (id, title, summary) based on agent-provided inputs.
 
@@ -81,7 +81,7 @@ Inputs:
 - Title, description or summary, tags, priority, lightweight, agent, entrypoints.
 
 Outputs:
-- Updated [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/) and new issue Markdown file named `<id>-<slug>.md` in [`yoda/project/issues/`](/yoda/project/issues/).
+- Updated `yoda/todos/TODO.<dev>.yaml` and new issue Markdown file named `<id>-<slug>.md` in `yoda/project/issues/`.
 
 ---
 
@@ -91,7 +91,7 @@ Purpose:
 - Render or re-render an issue Markdown file from the template.
 
 Behavior (minimum):
-- Load the issue data from [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/) or provided inputs.
+- Load the issue data from `yoda/todos/TODO.<dev>.yaml` or provided inputs.
 - Apply the selected template.
 - Preserve or re-apply required fields (id, title, summary).
 
@@ -100,21 +100,21 @@ Inputs:
 - Template path (optional).
 
 Outputs:
-- Updated issue Markdown file named `<id>-<slug>.md` in [`yoda/project/issues/`](/yoda/project/issues/).
+- Updated issue Markdown file named `<id>-<slug>.md` in `yoda/project/issues/`.
 
 ---
 
 ### todo_list.py
 
 Purpose:
-- List TODO items from [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/).
+- List TODO items from `yoda/todos/TODO.<dev>.yaml`.
 
 Behavior (minimum):
 - Filter by status, priority, agent, or tags.
 - Output a human-readable summary and a machine-friendly list.
 
 Inputs:
-- TODO file path (default: [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/)).
+- TODO file path (default: `yoda/todos/TODO.<dev>.yaml`).
 - --dev `<slug>` (optional, see Developer selection).
 - Optional filters.
 
@@ -126,7 +126,7 @@ Outputs:
 ### todo_update.py
 
 Purpose:
-- Update [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/) fields.
+- Update `yoda/todos/TODO.<dev>.yaml` fields.
 
 Behavior (minimum):
 - Update status, priority, tags, depends_on, pending_reason.
@@ -138,7 +138,7 @@ Inputs:
 - --dev `<slug>` (optional, see Developer selection).
 
 Outputs:
-- Updated [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/).
+- Updated `yoda/todos/TODO.<dev>.yaml`.
 
 ---
 
@@ -154,7 +154,7 @@ Behavior (minimum):
 - If no selectable issues exist, exit with an error and list pending items and blocked dependencies.
 
 Inputs:
-- TODO file path (default: [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/)).
+- TODO file path (default: `yoda/todos/TODO.<dev>.yaml`).
 - --dev `<slug>` (optional, see Developer selection).
 
 Outputs:
@@ -179,7 +179,7 @@ Inputs:
 - --dev `<slug>` (optional, see Developer selection).
 
 Outputs:
-- Updated [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/).
+- Updated `yoda/todos/TODO.<dev>.yaml`.
 
 ---
 
@@ -199,7 +199,7 @@ Inputs:
 - --dev `<slug>` (optional, see Developer selection).
 
 Outputs:
-- Updated [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/).
+- Updated `yoda/todos/TODO.<dev>.yaml`.
 
 ---
 
@@ -216,7 +216,7 @@ Inputs:
 - Message text.
 
 Outputs:
-- Updated log file named `<id>-<slug>.yaml` in [`yoda/logs/`](/yoda/logs/).
+- Updated log file named `<id>-<slug>.yaml` in `yoda/logs/`.
 
 ## Notes
 

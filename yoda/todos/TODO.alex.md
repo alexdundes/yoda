@@ -283,6 +283,12 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 - Prioridade: 4
 - Dependencias: nenhuma
 
+### alex-0047 - Remover links Markdown em project/specs
+- Descricao: substituir links Markdown por inline code em project/specs para reduzir ruido para agentes.
+- Status: done
+- Prioridade: 4
+- Dependencias: nenhuma
+
 ## Observacoes
 
 - Cada item acima deve gerar um arquivo de issue em yoda/project/issues/.

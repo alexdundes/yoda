@@ -6,22 +6,22 @@ Standardize repetitive tasks and reduce the need for manual edits.
 
 ## Location and language
 
-- Folder: [`yoda/scripts/`](/yoda/scripts/)
+- Folder: `yoda/scripts/`
 - Language: Python
 - Rule: the .py file name is the command name
 
 ## Minimum scripts (v1)
 
-- [`init.py`](/yoda/scripts/init.py): creates the minimum YODA Framework structure
-- [`issue_add.py`](/yoda/scripts/issue_add.py): adds an issue to [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/) and generates the issue Markdown from the template using basic fields provided by the agent
-- [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/) maintenance scripts (list, update, reorder, etc.)
-- scripts to present [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/) in a human-readable format for humans and agents
+- `init.py`: creates the minimum YODA Framework structure
+- `issue_add.py`: adds an issue to `yoda/todos/TODO.<dev>.yaml` and generates the issue Markdown from the template using basic fields provided by the agent
+- `yoda/todos/TODO.<dev>.yaml` maintenance scripts (list, update, reorder, etc.)
+- scripts to present `yoda/todos/TODO.<dev>.yaml` in a human-readable format for humans and agents
 - log scripts to record flow events
 - pending resolution script (sets status from pending and clears pending_reason)
 
 ## Logs
 
-- One log per issue at [`yoda/logs/<id>-<slug>.yaml`](/yoda/logs/)
+- One log per issue at `yoda/logs/<id>-<slug>.yaml`
 
 ## Log schema (YAML)
 
@@ -42,7 +42,7 @@ Rules:
 
 - Log files are append-only; new entries are added at the end.
 - Any script action must append a log entry.
-- Manual log entries are allowed through the [`log_add.py`](/yoda/scripts/log_add.py) script.
+- Manual log entries are allowed through the `log_add.py` script.
 
 ## Minimal validation (baseline)
 

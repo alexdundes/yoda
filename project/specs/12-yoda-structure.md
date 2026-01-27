@@ -23,17 +23,17 @@ Defines the minimum folder and file structure for a YODA Framework project.
 
 ## Path purposes
 
-- [`yoda/yoda.md`](/yoda/yoda.md): root entry for agents in this repository.
-- [`yoda/templates/`](/yoda/templates/): issue templates used by agents.
-- [`yoda/scripts/`](/yoda/scripts/): scripts that manage TODOs, logs, and scaffolding.
-- [`yoda/logs/`](/yoda/logs/): one log per issue (YAML by default, named `<id>-<slug>.yaml`).
-- [`yoda/todos/`](/yoda/todos/): canonical TODO storage (YAML by default; bootstrap may use Markdown).
-- [`yoda/project/issues/`](/yoda/project/issues/): issue files, one per issue, named `<id>-<slug>.md`.
-- [`project/specs/`](./): official specs and decision source of truth.
+- `yoda/yoda.md`: root entry for agents in this repository.
+- `yoda/templates/`: issue templates used by agents.
+- `yoda/scripts/`: scripts that manage TODOs, logs, and scaffolding.
+- `yoda/logs/`: one log per issue (YAML by default, named `<id>-<slug>.yaml`).
+- `yoda/todos/`: canonical TODO storage (YAML by default; bootstrap may use Markdown).
+- `yoda/project/issues/`: issue files, one per issue, named `<id>-<slug>.md`.
+- `project/specs/`: official specs and decision source of truth.
 
 ## Notes
 
-- In the general framework, TODOs are YAML ([`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/)).
-- In this meta-implementation, TODOs are Markdown until scripts exist (see Appendix: Bootstrap in [project/specs/15-bootstrap.md](15-bootstrap.md)).
+- In the general framework, TODOs are YAML (`yoda/todos/TODO.<dev>.yaml`).
+- In this meta-implementation, TODOs are Markdown until scripts exist (see Appendix: Bootstrap in `project/specs/15-bootstrap.md`).
 - Each developer edits only their own TODO file; conflicts are resolved manually if they occur.
-- Log files use YAML in the framework and follow the required fields in [project/specs/05-scripts-and-automation.md](05-scripts-and-automation.md).
+- Log files use YAML in the framework and follow the required fields in `project/specs/05-scripts-and-automation.md`.
