@@ -1,0 +1,27 @@
+schema_version: '1.0'
+issue_id: yoda-0053
+issue_path: yoda/project/issues/yoda-0053-corrigir-espaco-apos-inline-code.md
+todo_id: yoda-0053
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:15-03:00'
+  message: '[yoda-0053] issue_add created
+
+    title: Corrigir espaco apos inline code no yoda.md
+
+    description: Adicionar um espaco apos inline-code em tres linhas do yoda/yoda.md
+    para evitar colagem de texto e melhorar leitura.
+
+    slug: corrigir-espaco-apos-inline-code
+
+    priority: 4
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:42-03:00'
+  message: '[yoda-0053] todo_update
+
+    status: to-do -> done
+
+    priority: 4 -> 3
+
+    depends_on: [] -> yoda-0052'

@@ -1,0 +1,24 @@
+schema_version: '1.0'
+issue_id: yoda-0042
+issue_path: yoda/project/issues/yoda-0042-implementar-todo-update.md
+todo_id: yoda-0042
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:14-03:00'
+  message: '[yoda-0042] issue_add created
+
+    title: Implementar script de atualizacao de TODO (todo_update.py)
+
+    description: Implementar o `todo_update.py` seguindo a spec definida em `project/specs/20-todo-update-script.md`.
+
+    slug: implementar-todo-update
+
+    priority: 3
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:43-03:00'
+  message: '[yoda-0042] todo_update
+
+    status: to-do -> done
+
+    priority: 3 -> 5'

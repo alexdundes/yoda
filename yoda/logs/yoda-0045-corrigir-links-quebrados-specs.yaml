@@ -1,0 +1,26 @@
+schema_version: '1.0'
+issue_id: yoda-0045
+issue_path: yoda/project/issues/yoda-0045-corrigir-links-quebrados-specs.md
+todo_id: yoda-0045
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:15-03:00'
+  message: '[yoda-0045] issue_add created
+
+    title: Corrigir links quebrados em project/specs
+
+    description: Padronizar os links de arquivos dentro de project/specs para apontarem
+    para o repo-root usando paths absolutos (ex.: /yoda/..., /AGENTS.md). Isso evita
+    links quebrados quando os docs estao em subpastas.
+
+    slug: corrigir-links-quebrados-specs
+
+    priority: 7
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:44-03:00'
+  message: '[yoda-0045] todo_update
+
+    status: to-do -> done
+
+    priority: 7 -> 4'

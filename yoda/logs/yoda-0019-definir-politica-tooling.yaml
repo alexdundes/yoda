@@ -1,0 +1,24 @@
+schema_version: '1.0'
+issue_id: yoda-0019
+issue_path: yoda/project/issues/yoda-0019-definir-politica-tooling.md
+todo_id: yoda-0019
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:12-03:00'
+  message: '[yoda-0019] issue_add created
+
+    title: Definir politica de tooling (obrigatorio vs opcional)
+
+    description: Define the tooling policy: scripts are mandatory when available,
+    optional only during bootstrap. Document the rule in the canonical specs and remove
+    ambiguity from the framework guidance.
+
+    slug: definir-politica-tooling
+
+    priority: 7
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:37-03:00'
+  message: '[yoda-0019] todo_update
+
+    status: to-do -> done'

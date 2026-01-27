@@ -1,0 +1,25 @@
+schema_version: '1.0'
+issue_id: yoda-0006
+issue_path: yoda/project/issues/yoda-0006-consolidar-readme-summary.md
+todo_id: yoda-0006
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:11-03:00'
+  message: '[yoda-0006] issue_add created
+
+    title: Consolidar README.md e summary.md com esta implementacao
+
+    description: Align the main README and specs summary with the current implementation
+    state and latest decisions.
+
+    slug: consolidar-readme-summary
+
+    priority: 6
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:34-03:00'
+  message: '[yoda-0006] todo_update
+
+    status: to-do -> done
+
+    depends_on: [] -> yoda-0001, yoda-0003'

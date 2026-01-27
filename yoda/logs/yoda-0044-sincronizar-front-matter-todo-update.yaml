@@ -1,0 +1,25 @@
+schema_version: '1.0'
+issue_id: yoda-0044
+issue_path: yoda/project/issues/yoda-0044-sincronizar-front-matter-todo-update.md
+todo_id: yoda-0044
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:14-03:00'
+  message: '[yoda-0044] issue_add created
+
+    title: Sincronizar front matter ao atualizar TODO (todo_update.py)
+
+    description: Atualizar specs e `todo_update.py` para copiar metadados do TODO
+    para o front matter da issue a cada update.
+
+    slug: sincronizar-front-matter-todo-update
+
+    priority: 3
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:43-03:00'
+  message: '[yoda-0044] todo_update
+
+    status: to-do -> done
+
+    priority: 3 -> 4'

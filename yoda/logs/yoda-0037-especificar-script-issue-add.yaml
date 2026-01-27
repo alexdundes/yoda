@@ -1,0 +1,25 @@
+schema_version: '1.0'
+issue_id: yoda-0037
+issue_path: yoda/project/issues/yoda-0037-especificar-script-issue-add.md
+todo_id: yoda-0037
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:14-03:00'
+  message: '[yoda-0037] issue_add created
+
+    title: Especificar script de inclusao de issue (issue_add.py)
+
+    description: Especificar o comportamento do `issue_add.py` e produzir a spec em
+    `project/specs/18-issue-add-script.md`.
+
+    slug: especificar-script-issue-add
+
+    priority: 3
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:40-03:00'
+  message: '[yoda-0037] todo_update
+
+    status: to-do -> done
+
+    depends_on: [] -> yoda-0036'

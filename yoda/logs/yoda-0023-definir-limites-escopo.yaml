@@ -1,0 +1,24 @@
+schema_version: '1.0'
+issue_id: yoda-0023
+issue_path: yoda/project/issues/yoda-0023-definir-limites-escopo.md
+todo_id: yoda-0023
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:13-03:00'
+  message: '[yoda-0023] issue_add created
+
+    title: Definir limites de escopo (out-of-scope)
+
+    description: Define explicit scope boundaries for what the YODA Framework does
+    not cover. This should document out-of-scope areas such as CI/CD, architecture
+    standards, or HR workflows. The goal is to remove ambiguity about responsibilities.
+
+    slug: definir-limites-escopo
+
+    priority: 7
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:38-03:00'
+  message: '[yoda-0023] todo_update
+
+    status: to-do -> done'

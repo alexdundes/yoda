@@ -1,0 +1,25 @@
+schema_version: '1.0'
+issue_id: yoda-0002
+issue_path: yoda/project/issues/yoda-0002-template-issue.md
+todo_id: yoda-0002
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:11-03:00'
+  message: '[yoda-0002] issue_add created
+
+    title: Formalizar template de issue (normal e lightweight)
+
+    description: Align the issue templates in yoda/templates/ with the current specs
+    and usage rules, ensuring they are ready for agents to use.
+
+    slug: template-issue
+
+    priority: 9
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:33-03:00'
+  message: '[yoda-0002] todo_update
+
+    status: to-do -> done
+
+    depends_on: [] -> yoda-0001'

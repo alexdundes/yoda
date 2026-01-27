@@ -1,0 +1,25 @@
+schema_version: '1.0'
+issue_id: yoda-0021
+issue_path: yoda/project/issues/yoda-0021-definir-entregaveis-flow.md
+todo_id: yoda-0021
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:12-03:00'
+  message: '[yoda-0021] issue_add created
+
+    title: Definir entregaveis minimos por fase do YODA Flow
+
+    description: Define the minimum required deliverables for each YODA Flow phase
+    (Study, Document, Implement, Evaluate). The decision should specify what artifacts
+    are mandatory so agents and users have consistent expectations. This removes ambiguity
+    about what "done" means per phase.
+
+    slug: definir-entregaveis-flow
+
+    priority: 7
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:37-03:00'
+  message: '[yoda-0021] todo_update
+
+    status: to-do -> done'

@@ -1,0 +1,23 @@
+schema_version: '1.0'
+issue_id: yoda-0016
+issue_path: yoda/project/issues/yoda-0016-alinhar-entrada-todo-bootstrap.md
+todo_id: yoda-0016
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:12-03:00'
+  message: '[yoda-0016] issue_add created
+
+    title: Alinhar entrada do agente com TODO no bootstrap
+
+    description: Clarify in the specs how agent entry should resolve TODO sources
+    during bootstrap (Markdown) vs the future YAML format.
+
+    slug: alinhar-entrada-todo-bootstrap
+
+    priority: 7
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:36-03:00'
+  message: '[yoda-0016] todo_update
+
+    status: to-do -> done'

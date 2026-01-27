@@ -1,0 +1,23 @@
+schema_version: '1.0'
+issue_id: yoda-0031
+issue_path: yoda/project/issues/yoda-0031-ajustar-exemplo-issue-templates.md
+todo_id: yoda-0031
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:13-03:00'
+  message: '[yoda-0031] issue_add created
+
+    title: Ajustar exemplos de issue templates para id canonico
+
+    description: Atualizar o exemplo de commit e paths em `project/specs/14-issue-templates-usage.md`
+    para refletir o id canonico (dev-####).
+
+    slug: ajustar-exemplo-issue-templates
+
+    priority: 5
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:39-03:00'
+  message: '[yoda-0031] todo_update
+
+    status: to-do -> done'

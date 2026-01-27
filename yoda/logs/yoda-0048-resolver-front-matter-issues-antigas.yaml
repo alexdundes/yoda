@@ -1,0 +1,28 @@
+schema_version: '1.0'
+issue_id: yoda-0048
+issue_path: yoda/project/issues/yoda-0048-resolver-front-matter-issues-antigas.md
+todo_id: yoda-0048
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:15-03:00'
+  message: '[yoda-0048] issue_add created
+
+    title: Resolver inconsistencias de front matter nas issues antigas
+
+    description: Documentar no bootstrap que issues antigas podem nao ter YAML front
+    matter, enquanto novas issues devem seguir o padrao atual. Isso elimina ambiguidade
+    sem backfill.
+
+    slug: resolver-front-matter-issues-antigas
+
+    priority: 6
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:41-03:00'
+  message: '[yoda-0048] todo_update
+
+    status: to-do -> done
+
+    priority: 6 -> 3
+
+    depends_on: [] -> yoda-0037'

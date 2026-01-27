@@ -1,0 +1,24 @@
+schema_version: '1.0'
+issue_id: yoda-0020
+issue_path: yoda/project/issues/yoda-0020-definir-audiencia-posicionamento.md
+todo_id: yoda-0020
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:12-03:00'
+  message: '[yoda-0020] issue_add created
+
+    title: Definir audiencia e posicionamento oficial
+
+    description: Define the official target audience and positioning for the YODA
+    Framework. The decision should clarify who the framework is primarily for and
+    how it is described in the docs. This removes ambiguity for adoption and communication.
+
+    slug: definir-audiencia-posicionamento
+
+    priority: 7
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:37-03:00'
+  message: '[yoda-0020] todo_update
+
+    status: to-do -> done'

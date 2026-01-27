@@ -1,0 +1,26 @@
+schema_version: '1.0'
+issue_id: yoda-0012
+issue_path: yoda/project/issues/yoda-0012-versionamento-migracoes-schema.md
+todo_id: yoda-0012
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:12-03:00'
+  message: '[yoda-0012] issue_add created
+
+    title: Versionamento e migracoes de schema
+
+    description: Define how schema versioning and migrations work for YODA YAML and
+    Markdown artifacts. The goal is to standardize how changes are introduced and
+    upgraded. This removes ambiguity for long-term maintenance.
+
+    slug: versionamento-migracoes-schema
+
+    priority: 7
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:35-03:00'
+  message: '[yoda-0012] todo_update
+
+    status: to-do -> done
+
+    depends_on: [] -> yoda-0007, yoda-0008'

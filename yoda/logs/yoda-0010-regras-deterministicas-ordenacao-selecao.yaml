@@ -1,0 +1,26 @@
+schema_version: '1.0'
+issue_id: yoda-0010
+issue_path: yoda/project/issues/yoda-0010-regras-deterministicas-ordenacao-selecao.md
+todo_id: yoda-0010
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:12-03:00'
+  message: '[yoda-0010] issue_add created
+
+    title: Regras deterministicas de ordenacao e selecao
+
+    description: Define deterministic rules for priority, ordering, pending status,
+    and depends_on handling. The goal is to ensure all agents select the same next
+    issue. This removes ambiguity in issue selection.
+
+    slug: regras-deterministicas-ordenacao-selecao
+
+    priority: 8
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:35-03:00'
+  message: '[yoda-0010] todo_update
+
+    status: to-do -> done
+
+    depends_on: [] -> yoda-0004'

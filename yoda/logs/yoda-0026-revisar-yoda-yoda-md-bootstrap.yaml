@@ -1,0 +1,25 @@
+schema_version: '1.0'
+issue_id: yoda-0026
+issue_path: yoda/project/issues/yoda-0026-revisar-yoda-yoda-md-bootstrap.md
+todo_id: yoda-0026
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:13-03:00'
+  message: '[yoda-0026] issue_add created
+
+    title: Revisar yoda/yoda.md com foco no bootstrap
+
+    description: Revisar as instrucoes em yoda/yoda.md para garantir alinhamento com
+    toda a especificacao em project/specs/. O objetivo e remover ambiguidades sobre
+    bootstrap (TODOs, logs, ausencia de scripts e hierarquia de fontes de verdade)
+    e, se necessario, ajustar project/specs/15-bootstrap.md para refletir regras adicionais.
+
+    slug: revisar-yoda-yoda-md-bootstrap
+
+    priority: 6
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:38-03:00'
+  message: '[yoda-0026] todo_update
+
+    status: to-do -> done'

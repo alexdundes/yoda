@@ -1,0 +1,23 @@
+schema_version: '1.0'
+issue_id: yoda-0017
+issue_path: yoda/project/issues/yoda-0017-definir-formato-logs-bootstrap.md
+todo_id: yoda-0017
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:12-03:00'
+  message: '[yoda-0017] issue_add created
+
+    title: Definir formato de logs no bootstrap vs framework
+
+    description: Document the log format difference between the bootstrap meta-implementation
+    (Markdown) and the future framework (YAML).
+
+    slug: definir-formato-logs-bootstrap
+
+    priority: 7
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:36-03:00'
+  message: '[yoda-0017] todo_update
+
+    status: to-do -> done'

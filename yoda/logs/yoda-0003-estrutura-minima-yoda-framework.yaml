@@ -1,0 +1,25 @@
+schema_version: '1.0'
+issue_id: yoda-0003
+issue_path: yoda/project/issues/yoda-0003-estrutura-minima-yoda-framework.md
+todo_id: yoda-0003
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:11-03:00'
+  message: '[yoda-0003] issue_add created
+
+    title: Estrutura minima do YODA Framework
+
+    description: Define and document the minimum folder and file structure for a YODA
+    Framework project.
+
+    slug: estrutura-minima-yoda-framework
+
+    priority: 8
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:34-03:00'
+  message: '[yoda-0003] todo_update
+
+    status: to-do -> done
+
+    depends_on: [] -> yoda-0001'

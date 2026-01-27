@@ -1,0 +1,24 @@
+schema_version: '1.0'
+issue_id: yoda-0030
+issue_path: yoda/project/issues/yoda-0030-corrigir-study-deliverables.md
+todo_id: yoda-0030
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:13-03:00'
+  message: '[yoda-0030] issue_add created
+
+    title: Corrigir inconsistencias no Study do YODA Flow
+
+    description: Ajustar a secao Study para evitar conflito entre "no formal deliverables"
+    e a tabela de deliverables, deixando explicito que o deliverable e a conversa
+    (summary + perguntas).
+
+    slug: corrigir-study-deliverables
+
+    priority: 6
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:39-03:00'
+  message: '[yoda-0030] todo_update
+
+    status: to-do -> done'

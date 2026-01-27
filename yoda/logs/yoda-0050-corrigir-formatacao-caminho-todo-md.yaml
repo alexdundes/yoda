@@ -1,0 +1,27 @@
+schema_version: '1.0'
+issue_id: yoda-0050
+issue_path: yoda/project/issues/yoda-0050-corrigir-formatacao-caminho-todo-md.md
+todo_id: yoda-0050
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:15-03:00'
+  message: '[yoda-0050] issue_add created
+
+    title: Corrigir formatacao de caminho TODO.<slug>.md
+
+    description: Remover a formatacao quebrada de backticks no meio do caminho TODO.<slug>.md
+    em yoda/yoda.md, garantindo leitura e copia coerentes.
+
+    slug: corrigir-formatacao-caminho-todo-md
+
+    priority: 4
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:41-03:00'
+  message: '[yoda-0050] todo_update
+
+    status: to-do -> done
+
+    priority: 4 -> 3
+
+    depends_on: [] -> yoda-0049'

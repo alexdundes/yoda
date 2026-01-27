@@ -1,0 +1,23 @@
+schema_version: '1.0'
+issue_id: yoda-0018
+issue_path: yoda/project/issues/yoda-0018-politica-edicao-todo-sem-scripts.md
+todo_id: yoda-0018
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:12-03:00'
+  message: '[yoda-0018] issue_add created
+
+    title: Definir politica de edicao de TODO sem scripts
+
+    description: Clarify how TODO updates are handled when scripts are not yet available
+    in the meta-implementation.
+
+    slug: politica-edicao-todo-sem-scripts
+
+    priority: 7
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:37-03:00'
+  message: '[yoda-0018] todo_update
+
+    status: to-do -> done'

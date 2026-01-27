@@ -1,0 +1,27 @@
+schema_version: '1.0'
+issue_id: yoda-0013
+issue_path: yoda/project/issues/yoda-0013-colaboracao-multi-dev.md
+todo_id: yoda-0013
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:12-03:00'
+  message: '[yoda-0013] issue_add created
+
+    title: Colaboracao multi-dev
+
+    description: Define collaboration rules for multi-developer YODA usage, including
+    TODO conflicts, cross-dependencies, and branch conventions. The goal is to ensure
+    consistent behavior when multiple devs are active. This removes ambiguity for
+    team workflows.
+
+    slug: colaboracao-multi-dev
+
+    priority: 6
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:36-03:00'
+  message: '[yoda-0013] todo_update
+
+    status: to-do -> done
+
+    depends_on: [] -> yoda-0007'

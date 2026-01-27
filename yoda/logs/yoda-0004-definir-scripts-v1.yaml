@@ -1,0 +1,25 @@
+schema_version: '1.0'
+issue_id: yoda-0004
+issue_path: yoda/project/issues/yoda-0004-definir-scripts-v1.md
+todo_id: yoda-0004
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:11-03:00'
+  message: '[yoda-0004] issue_add created
+
+    title: Definir comandos e scripts v1 (especificacao)
+
+    description: Define the v1 script interface for YODA: names, purpose, and expected
+    behavior for each command.
+
+    slug: definir-scripts-v1
+
+    priority: 8
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:34-03:00'
+  message: '[yoda-0004] todo_update
+
+    status: to-do -> done
+
+    depends_on: [] -> yoda-0001'

@@ -1,0 +1,18 @@
+schema_version: '1.0'
+issue_id: yoda-0027
+issue_path: yoda/project/issues/yoda-0027-resolver-ambiguidades-entrada-todo.md
+todo_id: yoda-0027
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:13-03:00'
+  message: "[yoda-0027] issue_add created\ntitle: Resolver ambiguidades de entrada\
+    \ e atualizacao de TODO\ndescription: Existem conflitos nas regras de entrada\
+    \ do agente e manutencao de TODO entre yoda/yoda.md e as specs. Esta issue prop\xF5\
+    e ajustes pontuais para deixar o fluxo de bootstrap e as regras de edicao consistentes\
+    \ e sem ambiguidade, explicitando que o bootstrap e provis\xF3rio e que a documentacao\
+    \ foca a fase nao-bootstrap.\nslug: resolver-ambiguidades-entrada-todo\npriority:\
+    \ 6\nagent: Human"
+- timestamp: '2026-01-27T13:32:38-03:00'
+  message: '[yoda-0027] todo_update
+
+    status: to-do -> done'

@@ -1,0 +1,24 @@
+schema_version: '1.0'
+issue_id: yoda-0007
+issue_path: yoda/project/issues/yoda-0007-schema-formal-todo-dev-yaml.md
+todo_id: yoda-0007
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:12-03:00'
+  message: '[yoda-0007] issue_add created
+
+    title: Schema formal do `TODO.<dev>.yaml`
+
+    description: Define a validatable schema for `TODO.<dev>.yaml`, including field
+    types, required keys, enums, and constraints. The schema must be explicit enough
+    to support future validation tooling. This removes ambiguity for agents and scripts.
+
+    slug: schema-formal-todo-dev-yaml
+
+    priority: 9
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:34-03:00'
+  message: '[yoda-0007] todo_update
+
+    status: to-do -> done'

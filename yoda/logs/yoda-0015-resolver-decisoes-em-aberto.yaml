@@ -1,0 +1,23 @@
+schema_version: '1.0'
+issue_id: yoda-0015
+issue_path: yoda/project/issues/yoda-0015-resolver-decisoes-em-aberto.md
+todo_id: yoda-0015
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:12-03:00'
+  message: '[yoda-0015] issue_add created
+
+    title: Resolver decisoes em aberto do summary
+
+    description: Validate that previously open decisions are fully resolved and documented,
+    and re-evaluate project/specs for any remaining gaps.
+
+    slug: resolver-decisoes-em-aberto
+
+    priority: 8
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:36-03:00'
+  message: '[yoda-0015] todo_update
+
+    status: to-do -> done'

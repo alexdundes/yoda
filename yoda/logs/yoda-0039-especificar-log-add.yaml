@@ -1,0 +1,25 @@
+schema_version: '1.0'
+issue_id: yoda-0039
+issue_path: yoda/project/issues/yoda-0039-especificar-log-add.md
+todo_id: yoda-0039
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:14-03:00'
+  message: '[yoda-0039] issue_add created
+
+    title: Especificar script de log (log_add.py)
+
+    description: Especificar o comportamento do `log_add.py` e produzir a spec em
+    `project/specs/19-log-add-script.md`.
+
+    slug: especificar-log-add
+
+    priority: 3
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:42-03:00'
+  message: '[yoda-0039] todo_update
+
+    status: to-do -> done
+
+    priority: 3 -> 6'

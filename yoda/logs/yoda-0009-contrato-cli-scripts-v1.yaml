@@ -1,0 +1,26 @@
+schema_version: '1.0'
+issue_id: yoda-0009
+issue_path: yoda/project/issues/yoda-0009-contrato-cli-scripts-v1.md
+todo_id: yoda-0009
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:12-03:00'
+  message: '[yoda-0009] issue_add created
+
+    title: Contrato CLI dos scripts v1
+
+    description: Define the CLI interface for YODA scripts v1 (args, outputs, exit
+    codes, dry-run, errors). The goal is to make script usage consistent and predictable.
+    This removes ambiguity for tooling integration.
+
+    slug: contrato-cli-scripts-v1
+
+    priority: 8
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:35-03:00'
+  message: '[yoda-0009] todo_update
+
+    status: to-do -> done
+
+    depends_on: [] -> yoda-0004'

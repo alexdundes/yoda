@@ -1,0 +1,1138 @@
+schema_version: '1.0'
+developer_name: Yoda
+developer_slug: yoda
+timezone: America/Sao_Paulo
+updated_at: '2026-01-27T13:32:44-03:00'
+issues:
+- schema_version: '1.0'
+  id: yoda-0001
+  title: Criar yoda/yoda.md (entrada do agente)
+  slug: criar-yoda-yoda-md
+  description: Criar o arquivo raiz de instrucoes do agente em yoda/yoda.md para este
+    repositorio. O objetivo e definir como o agente entra no YODA Flow e qual fonte
+    de verdade deve ler antes de agir.
+  status: done
+  priority: 10
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:11-03:00'
+  updated_at: '2026-01-27T13:32:33-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0002
+  title: Formalizar template de issue (normal e lightweight)
+  slug: template-issue
+  description: Align the issue templates in yoda/templates/ with the current specs
+    and usage rules, ensuring they are ready for agents to use.
+  status: done
+  priority: 9
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0001
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:11-03:00'
+  updated_at: '2026-01-27T13:32:33-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0003
+  title: Estrutura minima do YODA Framework
+  slug: estrutura-minima-yoda-framework
+  description: Define and document the minimum folder and file structure for a YODA
+    Framework project.
+  status: done
+  priority: 8
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0001
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:11-03:00'
+  updated_at: '2026-01-27T13:32:33-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0004
+  title: Definir comandos e scripts v1 (especificacao)
+  slug: definir-scripts-v1
+  description: 'Define the v1 script interface for YODA: names, purpose, and expected
+    behavior for each command.'
+  status: done
+  priority: 8
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0001
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:11-03:00'
+  updated_at: '2026-01-27T13:32:34-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0005
+  title: Template de issue (regras e uso)
+  slug: template-issue-regras-uso
+  description: Document how agents should create and fill issues using the templates
+    under yoda/templates/.
+  status: done
+  priority: 7
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0002
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:11-03:00'
+  updated_at: '2026-01-27T13:32:34-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0006
+  title: Consolidar README.md e summary.md com esta implementacao
+  slug: consolidar-readme-summary
+  description: Align the main README and specs summary with the current implementation
+    state and latest decisions.
+  status: done
+  priority: 6
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0001
+  - yoda-0003
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:11-03:00'
+  updated_at: '2026-01-27T13:32:34-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0007
+  title: Schema formal do `TODO.<dev>.yaml`
+  slug: schema-formal-todo-dev-yaml
+  description: Define a validatable schema for `TODO.<dev>.yaml`, including field
+    types, required keys, enums, and constraints. The schema must be explicit enough
+    to support future validation tooling. This removes ambiguity for agents and scripts.
+  status: done
+  priority: 9
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:12-03:00'
+  updated_at: '2026-01-27T13:32:34-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0008
+  title: Schema formal do metadata da issue
+  slug: schema-formal-metadata-issue
+  description: Define a formal schema for issue metadata (front matter or equivalent)
+    and document where it lives. The schema must specify required fields, types, and
+    constraints. This removes ambiguity for issue creation and validation.
+  status: done
+  priority: 9
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:12-03:00'
+  updated_at: '2026-01-27T13:32:34-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0009
+  title: Contrato CLI dos scripts v1
+  slug: contrato-cli-scripts-v1
+  description: Define the CLI interface for YODA scripts v1 (args, outputs, exit codes,
+    dry-run, errors). The goal is to make script usage consistent and predictable.
+    This removes ambiguity for tooling integration.
+  status: done
+  priority: 8
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0004
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:12-03:00'
+  updated_at: '2026-01-27T13:32:35-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0010
+  title: Regras deterministicas de ordenacao e selecao
+  slug: regras-deterministicas-ordenacao-selecao
+  description: Define deterministic rules for priority, ordering, pending status,
+    and depends_on handling. The goal is to ensure all agents select the same next
+    issue. This removes ambiguity in issue selection.
+  status: done
+  priority: 8
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0004
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:12-03:00'
+  updated_at: '2026-01-27T13:32:35-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0011
+  title: Validacao e checks minimos
+  slug: validacao-checks-minimos
+  description: Define the minimal validation and checks required for YODA artifacts
+    (TODO, issues, logs). The goal is to document what must be validated and when.
+    This removes ambiguity for future validation tooling.
+  status: done
+  priority: 7
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0007
+  - yoda-0008
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:12-03:00'
+  updated_at: '2026-01-27T13:32:35-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0012
+  title: Versionamento e migracoes de schema
+  slug: versionamento-migracoes-schema
+  description: Define how schema versioning and migrations work for YODA YAML and
+    Markdown artifacts. The goal is to standardize how changes are introduced and
+    upgraded. This removes ambiguity for long-term maintenance.
+  status: done
+  priority: 7
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0007
+  - yoda-0008
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:12-03:00'
+  updated_at: '2026-01-27T13:32:35-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0013
+  title: Colaboracao multi-dev
+  slug: colaboracao-multi-dev
+  description: Define collaboration rules for multi-developer YODA usage, including
+    TODO conflicts, cross-dependencies, and branch conventions. The goal is to ensure
+    consistent behavior when multiple devs are active. This removes ambiguity for
+    team workflows.
+  status: done
+  priority: 6
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0007
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:12-03:00'
+  updated_at: '2026-01-27T13:32:36-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0014
+  title: Logs e resultados auditaveis
+  slug: logs-resultados-auditaveis
+  description: Define the required fields and structure for logs and result records
+    so they are auditable. The goal is to specify what must be recorded and how it
+    links to issues and TODOs. This removes ambiguity for logging conventions.
+  status: done
+  priority: 6
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0007
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:12-03:00'
+  updated_at: '2026-01-27T13:32:36-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0015
+  title: Resolver decisoes em aberto do summary
+  slug: resolver-decisoes-em-aberto
+  description: Validate that previously open decisions are fully resolved and documented,
+    and re-evaluate project/specs for any remaining gaps.
+  status: done
+  priority: 8
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:12-03:00'
+  updated_at: '2026-01-27T13:32:36-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0016
+  title: Alinhar entrada do agente com TODO no bootstrap
+  slug: alinhar-entrada-todo-bootstrap
+  description: Clarify in the specs how agent entry should resolve TODO sources during
+    bootstrap (Markdown) vs the future YAML format.
+  status: done
+  priority: 7
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:12-03:00'
+  updated_at: '2026-01-27T13:32:36-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0017
+  title: Definir formato de logs no bootstrap vs framework
+  slug: definir-formato-logs-bootstrap
+  description: Document the log format difference between the bootstrap meta-implementation
+    (Markdown) and the future framework (YAML).
+  status: done
+  priority: 7
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:12-03:00'
+  updated_at: '2026-01-27T13:32:36-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0018
+  title: Definir politica de edicao de TODO sem scripts
+  slug: politica-edicao-todo-sem-scripts
+  description: Clarify how TODO updates are handled when scripts are not yet available
+    in the meta-implementation.
+  status: done
+  priority: 7
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:12-03:00'
+  updated_at: '2026-01-27T13:32:37-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0019
+  title: Definir politica de tooling (obrigatorio vs opcional)
+  slug: definir-politica-tooling
+  description: 'Define the tooling policy: scripts are mandatory when available, optional
+    only during bootstrap. Document the rule in the canonical specs and remove ambiguity
+    from the framework guidance.'
+  status: done
+  priority: 7
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:12-03:00'
+  updated_at: '2026-01-27T13:32:37-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0020
+  title: Definir audiencia e posicionamento oficial
+  slug: definir-audiencia-posicionamento
+  description: Define the official target audience and positioning for the YODA Framework.
+    The decision should clarify who the framework is primarily for and how it is described
+    in the docs. This removes ambiguity for adoption and communication.
+  status: done
+  priority: 7
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:12-03:00'
+  updated_at: '2026-01-27T13:32:37-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0021
+  title: Definir entregaveis minimos por fase do YODA Flow
+  slug: definir-entregaveis-flow
+  description: Define the minimum required deliverables for each YODA Flow phase (Study,
+    Document, Implement, Evaluate). The decision should specify what artifacts are
+    mandatory so agents and users have consistent expectations. This removes ambiguity
+    about what "done" means per phase.
+  status: done
+  priority: 7
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:12-03:00'
+  updated_at: '2026-01-27T13:32:37-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0022
+  title: Definir campos adicionais do schema de metadados
+  slug: definir-campos-schema-metadados
+  description: Decide whether the TODO metadata schema needs additional required fields
+    beyond the current baseline. The decision should clarify what is mandatory in
+    YAML vs Markdown. This removes ambiguity for scripts and agents.
+  status: done
+  priority: 7
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:12-03:00'
+  updated_at: '2026-01-27T13:32:37-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0023
+  title: Definir limites de escopo (out-of-scope)
+  slug: definir-limites-escopo
+  description: Define explicit scope boundaries for what the YODA Framework does not
+    cover. This should document out-of-scope areas such as CI/CD, architecture standards,
+    or HR workflows. The goal is to remove ambiguity about responsibilities.
+  status: done
+  priority: 7
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:13-03:00'
+  updated_at: '2026-01-27T13:32:38-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0024
+  title: Definir politicas de stack profiles
+  slug: definir-stack-profiles
+  description: Define the stack profile policy for YODA v1. The decision should clarify
+    whether profiles exist in v1 or are deferred as a future extension.
+  status: done
+  priority: 7
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:13-03:00'
+  updated_at: '2026-01-27T13:32:38-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0025
+  title: Definir brand voice e terminologia
+  slug: definir-brand-voice
+  description: Define the official brand voice and terminology guidelines for the
+    YODA Framework. This should establish tone, preferred terms, and consistency rules
+    across documentation. The goal is to remove ambiguity in how the framework is
+    described.
+  status: done
+  priority: 7
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:13-03:00'
+  updated_at: '2026-01-27T13:32:38-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0026
+  title: Revisar yoda/yoda.md com foco no bootstrap
+  slug: revisar-yoda-yoda-md-bootstrap
+  description: Revisar as instrucoes em yoda/yoda.md para garantir alinhamento com
+    toda a especificacao em project/specs/. O objetivo e remover ambiguidades sobre
+    bootstrap (TODOs, logs, ausencia de scripts e hierarquia de fontes de verdade)
+    e, se necessario, ajustar project/specs/15-bootstrap.md para refletir regras adicionais.
+  status: done
+  priority: 6
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:13-03:00'
+  updated_at: '2026-01-27T13:32:38-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0027
+  title: Resolver ambiguidades de entrada e atualizacao de TODO
+  slug: resolver-ambiguidades-entrada-todo
+  description: "Existem conflitos nas regras de entrada do agente e manutencao de\
+    \ TODO entre yoda/yoda.md e as specs. Esta issue prop\xF5e ajustes pontuais para\
+    \ deixar o fluxo de bootstrap e as regras de edicao consistentes e sem ambiguidade,\
+    \ explicitando que o bootstrap e provis\xF3rio e que a documentacao foca a fase\
+    \ nao-bootstrap."
+  status: done
+  priority: 6
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:13-03:00'
+  updated_at: '2026-01-27T13:32:38-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0028
+  title: Revisar README e summary com specs atuais
+  slug: revisar-readme-summary-specs
+  description: Revisar o `README.md` e o `project/specs/summary.md` para garantir
+    que ambos reflitam a especificacao atual presente em `project/specs`. A tarefa
+    inclui remover pendencias obsoletas e ajustar o resumo para refletir decisoes
+    ja formalizadas.
+  status: done
+  priority: 6
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:13-03:00'
+  updated_at: '2026-01-27T13:32:39-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0029
+  title: Padronizar id canonico e naming de arquivos
+  slug: padronizar-id-canonico-naming
+  description: Padronizar o uso do id canonico (dev-####) e alinhar o naming de issues
+    e logs em todas as specs relevantes.
+  status: done
+  priority: 7
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:13-03:00'
+  updated_at: '2026-01-27T13:32:39-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0030
+  title: Corrigir inconsistencias no Study do YODA Flow
+  slug: corrigir-study-deliverables
+  description: Ajustar a secao Study para evitar conflito entre "no formal deliverables"
+    e a tabela de deliverables, deixando explicito que o deliverable e a conversa
+    (summary + perguntas).
+  status: done
+  priority: 6
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:13-03:00'
+  updated_at: '2026-01-27T13:32:39-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0031
+  title: Ajustar exemplos de issue templates para id canonico
+  slug: ajustar-exemplo-issue-templates
+  description: Atualizar o exemplo de commit e paths em `project/specs/14-issue-templates-usage.md`
+    para refletir o id canonico (dev-####).
+  status: done
+  priority: 5
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:13-03:00'
+  updated_at: '2026-01-27T13:32:39-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0032
+  title: Explicitar path default do TODO nas specs
+  slug: explicitar-path-todo-default
+  description: Padronizar referencias ao path default do TODO (`yoda/todos/TODO.<dev>.yaml`)
+    e ao path bootstrap (`yoda/todos/TODO.<dev>.md`).
+  status: done
+  priority: 6
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:13-03:00'
+  updated_at: '2026-01-27T13:32:39-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0033
+  title: Revisar regra de timezone em conventions
+  slug: revisar-timezone-conventions
+  description: "Revisar a regra de timezone em `project/specs/00-conventions.md` para\
+    \ exigir timezone explicita, recomendar UTC como default e permitir timezone configurada\
+    \ no TODO, com padrao compat\xEDvel com Python."
+  status: done
+  priority: 5
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:13-03:00'
+  updated_at: '2026-01-27T13:32:40-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0034
+  title: Clarificar validacao vs comandos v1
+  slug: clarificar-validacao-scripts
+  description: Clarificar se a validacao e um comando dedicado (validate.py) ou embutida
+    em scripts que alteram metadados.
+  status: done
+  priority: 5
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:13-03:00'
+  updated_at: '2026-01-27T13:32:40-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0035
+  title: Revisar bootstrap e meta-implementation nas specs
+  slug: revisar-bootstrap-specs
+  description: Decidir como tratar bootstrap dentro de `project/specs` para manter
+    as specs normativas e evitar ruido de meta-implementacao.
+  status: done
+  priority: 5
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:14-03:00'
+  updated_at: '2026-01-27T13:32:40-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0036
+  title: Definir estrutura Python dos scripts YODA
+  slug: definir-estrutura-python-scripts
+  description: Definir uma spec base para a estrutura e organizacao dos scripts Python
+    em `yoda/scripts`, incluindo dependencias, layout e reutilizacao de codigo.
+  status: done
+  priority: 6
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:14-03:00'
+  updated_at: '2026-01-27T13:32:40-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0037
+  title: Especificar script de inclusao de issue (issue_add.py)
+  slug: especificar-script-issue-add
+  description: Especificar o comportamento do `issue_add.py` e produzir a spec em
+    `project/specs/18-issue-add-script.md`.
+  status: done
+  priority: 3
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0036
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:14-03:00'
+  updated_at: '2026-01-27T13:32:40-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0038
+  title: Implementar script de inclusao de issue (issue_add.py)
+  slug: implementar-script-issue-add
+  description: Implementar o `issue_add.py` seguindo a spec definida em `project/specs/18-issue-add-script.md`.
+  status: done
+  priority: 7
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:14-03:00'
+  updated_at: '2026-01-27T13:32:42-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0039
+  title: Especificar script de log (log_add.py)
+  slug: especificar-log-add
+  description: Especificar o comportamento do `log_add.py` e produzir a spec em `project/specs/19-log-add-script.md`.
+  status: done
+  priority: 6
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:14-03:00'
+  updated_at: '2026-01-27T13:32:42-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0040
+  title: Implementar script de log (log_add.py)
+  slug: implementar-log-add
+  description: Implementar o `log_add.py` seguindo a spec definida em `project/specs/19-log-add-script.md`.
+  status: done
+  priority: 6
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:14-03:00'
+  updated_at: '2026-01-27T13:32:42-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0041
+  title: Especificar script de atualizacao de TODO (todo_update.py)
+  slug: especificar-todo-update
+  description: Especificar o comportamento do `todo_update.py` e produzir a spec em
+    `project/specs/20-todo-update-script.md`.
+  status: done
+  priority: 6
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:14-03:00'
+  updated_at: '2026-01-27T13:32:43-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0042
+  title: Implementar script de atualizacao de TODO (todo_update.py)
+  slug: implementar-todo-update
+  description: Implementar o `todo_update.py` seguindo a spec definida em `project/specs/20-todo-update-script.md`.
+  status: done
+  priority: 5
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:14-03:00'
+  updated_at: '2026-01-27T13:32:43-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0043
+  title: Melhorar rastreabilidade dos logs dos scripts
+  slug: melhorar-rastreabilidade-logs
+  description: Atualizar specs e scripts para logs detalhados, com campos alterados
+    e dados iniciais informados.
+  status: done
+  priority: 4
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:14-03:00'
+  updated_at: '2026-01-27T13:32:43-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0044
+  title: Sincronizar front matter ao atualizar TODO (todo_update.py)
+  slug: sincronizar-front-matter-todo-update
+  description: Atualizar specs e `todo_update.py` para copiar metadados do TODO para
+    o front matter da issue a cada update.
+  status: done
+  priority: 4
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:14-03:00'
+  updated_at: '2026-01-27T13:32:43-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0045
+  title: Corrigir links quebrados em project/specs
+  slug: corrigir-links-quebrados-specs
+  description: 'Padronizar os links de arquivos dentro de project/specs para apontarem
+    para o repo-root usando paths absolutos (ex.: /yoda/..., /AGENTS.md). Isso evita
+    links quebrados quando os docs estao em subpastas.'
+  status: done
+  priority: 4
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:15-03:00'
+  updated_at: '2026-01-27T13:32:43-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0046
+  title: Ajustar padrao de logs no repo.intent.yaml
+  slug: ajustar-padrao-logs-repo-intent-yaml
+  description: 'Corrigir o padrao de logs no repo.intent.yaml para remover a duplicacao
+    do dev no nome do arquivo. O target deve refletir o contrato canonico dos specs:
+    um log por issue em yoda/logs/<id>-<slug>.yaml.'
+  status: done
+  priority: 4
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:15-03:00'
+  updated_at: '2026-01-27T13:32:44-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0047
+  title: Clarificar texto sobre corpo livre vs front matter
+  slug: clarificar-texto-corpo-livre-front-matter
+  description: "Ajustar o texto inicial do 04-todo-dev-yaml-issues.md para remover\
+    \ a ambiguidade entre \u201Ccorpo livre\u201D e a obrigatoriedade de YAML front\
+    \ matter. A frase deve indicar que o corpo e livre, enquanto o metadata fica no\
+    \ front matter."
+  status: done
+  priority: 4
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:15-03:00'
+  updated_at: '2026-01-27T13:32:44-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0048
+  title: Resolver inconsistencias de front matter nas issues antigas
+  slug: resolver-front-matter-issues-antigas
+  description: Documentar no bootstrap que issues antigas podem nao ter YAML front
+    matter, enquanto novas issues devem seguir o padrao atual. Isso elimina ambiguidade
+    sem backfill.
+  status: done
+  priority: 3
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0037
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:15-03:00'
+  updated_at: '2026-01-27T13:32:41-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0049
+  title: Padronizar criterio de selecao sem dependencias
+  slug: padronizar-criterio-selecao-sem-dependencias
+  description: Substituir a expressao "highest-priority issue without dependencies"
+    por uma formulacao que deixe claro que dependencias resolvidas sao aceitaveis.
+    A frase recomendada e "highest-priority selectable issue (with all dependencies
+    resolved)".
+  status: done
+  priority: 3
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0014
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:15-03:00'
+  updated_at: '2026-01-27T13:32:41-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0050
+  title: Corrigir formatacao de caminho TODO.<slug>.md
+  slug: corrigir-formatacao-caminho-todo-md
+  description: Remover a formatacao quebrada de backticks no meio do caminho TODO.<slug>.md
+    em yoda/yoda.md, garantindo leitura e copia coerentes.
+  status: done
+  priority: 3
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0049
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:15-03:00'
+  updated_at: '2026-01-27T13:32:41-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0051
+  title: Adicionar placeholder para yoda/scripts
+  slug: adicionar-placeholder-yoda-scripts
+  description: Criar a pasta yoda/scripts com um README.md placeholder para melhorar
+    navegabilidade enquanto os scripts v1 nao existem.
+  status: done
+  priority: 3
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0010
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:15-03:00'
+  updated_at: '2026-01-27T13:32:41-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0052
+  title: Corrigir trechos em portugues nos influences
+  slug: corrigir-idioma-influences
+  description: Substituir frases em portugues nos arquivos de influences por equivalentes
+    em ingles para manter a politica de idioma das specs.
+  status: done
+  priority: 3
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0051
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:15-03:00'
+  updated_at: '2026-01-27T13:32:41-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0053
+  title: Corrigir espaco apos inline code no yoda.md
+  slug: corrigir-espaco-apos-inline-code
+  description: Adicionar um espaco apos inline-code em tres linhas do yoda/yoda.md
+    para evitar colagem de texto e melhorar leitura.
+  status: done
+  priority: 3
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0052
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:15-03:00'
+  updated_at: '2026-01-27T13:32:42-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0054
+  title: Remover links Markdown em project/specs
+  slug: remover-links-markdown-specs
+  description: "Substituir links Markdown por inline code no project/specs para reduzir\
+    \ distra\xE7\xF5es e melhorar a interpretacao por agentes."
+  status: doing
+  priority: 3
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0052
+  pending_reason: ''
+  created_at: '2026-01-27T13:32:15-03:00'
+  updated_at: '2026-01-27T13:32:42-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''

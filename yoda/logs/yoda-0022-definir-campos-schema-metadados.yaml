@@ -1,0 +1,24 @@
+schema_version: '1.0'
+issue_id: yoda-0022
+issue_path: yoda/project/issues/yoda-0022-definir-campos-schema-metadados.md
+todo_id: yoda-0022
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:12-03:00'
+  message: '[yoda-0022] issue_add created
+
+    title: Definir campos adicionais do schema de metadados
+
+    description: Decide whether the TODO metadata schema needs additional required
+    fields beyond the current baseline. The decision should clarify what is mandatory
+    in YAML vs Markdown. This removes ambiguity for scripts and agents.
+
+    slug: definir-campos-schema-metadados
+
+    priority: 7
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:37-03:00'
+  message: '[yoda-0022] todo_update
+
+    status: to-do -> done'

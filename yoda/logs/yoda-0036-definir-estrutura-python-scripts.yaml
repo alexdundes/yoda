@@ -1,0 +1,23 @@
+schema_version: '1.0'
+issue_id: yoda-0036
+issue_path: yoda/project/issues/yoda-0036-definir-estrutura-python-scripts.md
+todo_id: yoda-0036
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:14-03:00'
+  message: '[yoda-0036] issue_add created
+
+    title: Definir estrutura Python dos scripts YODA
+
+    description: Definir uma spec base para a estrutura e organizacao dos scripts
+    Python em `yoda/scripts`, incluindo dependencias, layout e reutilizacao de codigo.
+
+    slug: definir-estrutura-python-scripts
+
+    priority: 6
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:40-03:00'
+  message: '[yoda-0036] todo_update
+
+    status: to-do -> done'

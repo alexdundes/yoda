@@ -1,0 +1,25 @@
+schema_version: '1.0'
+issue_id: yoda-0028
+issue_path: yoda/project/issues/yoda-0028-revisar-readme-summary-specs.md
+todo_id: yoda-0028
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:13-03:00'
+  message: '[yoda-0028] issue_add created
+
+    title: Revisar README e summary com specs atuais
+
+    description: Revisar o `README.md` e o `project/specs/summary.md` para garantir
+    que ambos reflitam a especificacao atual presente em `project/specs`. A tarefa
+    inclui remover pendencias obsoletas e ajustar o resumo para refletir decisoes
+    ja formalizadas.
+
+    slug: revisar-readme-summary-specs
+
+    priority: 6
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:39-03:00'
+  message: '[yoda-0028] todo_update
+
+    status: to-do -> done'

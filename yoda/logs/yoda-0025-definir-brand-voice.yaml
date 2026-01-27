@@ -1,0 +1,25 @@
+schema_version: '1.0'
+issue_id: yoda-0025
+issue_path: yoda/project/issues/yoda-0025-definir-brand-voice.md
+todo_id: yoda-0025
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:13-03:00'
+  message: '[yoda-0025] issue_add created
+
+    title: Definir brand voice e terminologia
+
+    description: Define the official brand voice and terminology guidelines for the
+    YODA Framework. This should establish tone, preferred terms, and consistency rules
+    across documentation. The goal is to remove ambiguity in how the framework is
+    described.
+
+    slug: definir-brand-voice
+
+    priority: 7
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:38-03:00'
+  message: '[yoda-0025] todo_update
+
+    status: to-do -> done'

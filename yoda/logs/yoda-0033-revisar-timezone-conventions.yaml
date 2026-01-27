@@ -1,0 +1,16 @@
+schema_version: '1.0'
+issue_id: yoda-0033
+issue_path: yoda/project/issues/yoda-0033-revisar-timezone-conventions.md
+todo_id: yoda-0033
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:13-03:00'
+  message: "[yoda-0033] issue_add created\ntitle: Revisar regra de timezone em conventions\n\
+    description: Revisar a regra de timezone em `project/specs/00-conventions.md`\
+    \ para exigir timezone explicita, recomendar UTC como default e permitir timezone\
+    \ configurada no TODO, com padrao compat\xEDvel com Python.\nslug: revisar-timezone-conventions\n\
+    priority: 5\nagent: Human"
+- timestamp: '2026-01-27T13:32:40-03:00'
+  message: '[yoda-0033] todo_update
+
+    status: to-do -> done'

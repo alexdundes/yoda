@@ -1,0 +1,27 @@
+schema_version: '1.0'
+issue_id: yoda-0052
+issue_path: yoda/project/issues/yoda-0052-corrigir-idioma-influences.md
+todo_id: yoda-0052
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:15-03:00'
+  message: '[yoda-0052] issue_add created
+
+    title: Corrigir trechos em portugues nos influences
+
+    description: Substituir frases em portugues nos arquivos de influences por equivalentes
+    em ingles para manter a politica de idioma das specs.
+
+    slug: corrigir-idioma-influences
+
+    priority: 4
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:42-03:00'
+  message: '[yoda-0052] todo_update
+
+    status: to-do -> done
+
+    priority: 4 -> 3
+
+    depends_on: [] -> yoda-0051'

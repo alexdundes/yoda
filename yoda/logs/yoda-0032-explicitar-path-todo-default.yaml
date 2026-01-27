@@ -1,0 +1,23 @@
+schema_version: '1.0'
+issue_id: yoda-0032
+issue_path: yoda/project/issues/yoda-0032-explicitar-path-todo-default.md
+todo_id: yoda-0032
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:13-03:00'
+  message: '[yoda-0032] issue_add created
+
+    title: Explicitar path default do TODO nas specs
+
+    description: Padronizar referencias ao path default do TODO (`yoda/todos/TODO.<dev>.yaml`)
+    e ao path bootstrap (`yoda/todos/TODO.<dev>.md`).
+
+    slug: explicitar-path-todo-default
+
+    priority: 6
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:39-03:00'
+  message: '[yoda-0032] todo_update
+
+    status: to-do -> done'

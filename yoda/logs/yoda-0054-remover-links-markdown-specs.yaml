@@ -1,0 +1,19 @@
+schema_version: '1.0'
+issue_id: yoda-0054
+issue_path: yoda/project/issues/yoda-0054-remover-links-markdown-specs.md
+todo_id: yoda-0054
+status: doing
+entries:
+- timestamp: '2026-01-27T13:32:15-03:00'
+  message: "[yoda-0054] issue_add created\ntitle: Remover links Markdown em project/specs\n\
+    description: Substituir links Markdown por inline code no project/specs para reduzir\
+    \ distra\xE7\xF5es e melhorar a interpretacao por agentes.\nslug: remover-links-markdown-specs\n\
+    priority: 4\nagent: Human"
+- timestamp: '2026-01-27T13:32:42-03:00'
+  message: '[yoda-0054] todo_update
+
+    status: to-do -> doing
+
+    priority: 4 -> 3
+
+    depends_on: [] -> yoda-0052'

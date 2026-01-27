@@ -1,0 +1,26 @@
+schema_version: '1.0'
+issue_id: yoda-0046
+issue_path: yoda/project/issues/yoda-0046-ajustar-padrao-logs-repo-intent-yaml.md
+todo_id: yoda-0046
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:15-03:00'
+  message: '[yoda-0046] issue_add created
+
+    title: Ajustar padrao de logs no repo.intent.yaml
+
+    description: Corrigir o padrao de logs no repo.intent.yaml para remover a duplicacao
+    do dev no nome do arquivo. O target deve refletir o contrato canonico dos specs:
+    um log por issue em yoda/logs/<id>-<slug>.yaml.
+
+    slug: ajustar-padrao-logs-repo-intent-yaml
+
+    priority: 6
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:44-03:00'
+  message: '[yoda-0046] todo_update
+
+    status: to-do -> done
+
+    priority: 6 -> 4'

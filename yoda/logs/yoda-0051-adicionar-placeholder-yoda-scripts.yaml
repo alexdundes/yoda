@@ -1,0 +1,27 @@
+schema_version: '1.0'
+issue_id: yoda-0051
+issue_path: yoda/project/issues/yoda-0051-adicionar-placeholder-yoda-scripts.md
+todo_id: yoda-0051
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:15-03:00'
+  message: '[yoda-0051] issue_add created
+
+    title: Adicionar placeholder para yoda/scripts
+
+    description: Criar a pasta yoda/scripts com um README.md placeholder para melhorar
+    navegabilidade enquanto os scripts v1 nao existem.
+
+    slug: adicionar-placeholder-yoda-scripts
+
+    priority: 4
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:41-03:00'
+  message: '[yoda-0051] todo_update
+
+    status: to-do -> done
+
+    priority: 4 -> 3
+
+    depends_on: [] -> yoda-0010'

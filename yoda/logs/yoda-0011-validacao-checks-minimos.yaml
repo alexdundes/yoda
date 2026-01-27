@@ -1,0 +1,26 @@
+schema_version: '1.0'
+issue_id: yoda-0011
+issue_path: yoda/project/issues/yoda-0011-validacao-checks-minimos.md
+todo_id: yoda-0011
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:12-03:00'
+  message: '[yoda-0011] issue_add created
+
+    title: Validacao e checks minimos
+
+    description: Define the minimal validation and checks required for YODA artifacts
+    (TODO, issues, logs). The goal is to document what must be validated and when.
+    This removes ambiguity for future validation tooling.
+
+    slug: validacao-checks-minimos
+
+    priority: 7
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:35-03:00'
+  message: '[yoda-0011] todo_update
+
+    status: to-do -> done
+
+    depends_on: [] -> yoda-0007, yoda-0008'

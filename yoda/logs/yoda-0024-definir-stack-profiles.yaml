@@ -1,0 +1,23 @@
+schema_version: '1.0'
+issue_id: yoda-0024
+issue_path: yoda/project/issues/yoda-0024-definir-stack-profiles.md
+todo_id: yoda-0024
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:13-03:00'
+  message: '[yoda-0024] issue_add created
+
+    title: Definir politicas de stack profiles
+
+    description: Define the stack profile policy for YODA v1. The decision should
+    clarify whether profiles exist in v1 or are deferred as a future extension.
+
+    slug: definir-stack-profiles
+
+    priority: 7
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:38-03:00'
+  message: '[yoda-0024] todo_update
+
+    status: to-do -> done'

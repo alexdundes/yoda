@@ -1,0 +1,24 @@
+schema_version: '1.0'
+issue_id: yoda-0001
+issue_path: yoda/project/issues/yoda-0001-criar-yoda-yoda-md.md
+todo_id: yoda-0001
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:11-03:00'
+  message: '[yoda-0001] issue_add created
+
+    title: Criar yoda/yoda.md (entrada do agente)
+
+    description: Criar o arquivo raiz de instrucoes do agente em yoda/yoda.md para
+    este repositorio. O objetivo e definir como o agente entra no YODA Flow e qual
+    fonte de verdade deve ler antes de agir.
+
+    slug: criar-yoda-yoda-md
+
+    priority: 10
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:33-03:00'
+  message: '[yoda-0001] todo_update
+
+    status: to-do -> done'

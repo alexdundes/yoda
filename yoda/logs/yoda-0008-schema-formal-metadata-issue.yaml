@@ -1,0 +1,24 @@
+schema_version: '1.0'
+issue_id: yoda-0008
+issue_path: yoda/project/issues/yoda-0008-schema-formal-metadata-issue.md
+todo_id: yoda-0008
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:12-03:00'
+  message: '[yoda-0008] issue_add created
+
+    title: Schema formal do metadata da issue
+
+    description: Define a formal schema for issue metadata (front matter or equivalent)
+    and document where it lives. The schema must specify required fields, types, and
+    constraints. This removes ambiguity for issue creation and validation.
+
+    slug: schema-formal-metadata-issue
+
+    priority: 9
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:35-03:00'
+  message: '[yoda-0008] todo_update
+
+    status: to-do -> done'

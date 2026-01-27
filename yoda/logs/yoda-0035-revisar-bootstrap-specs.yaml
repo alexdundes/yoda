@@ -1,0 +1,23 @@
+schema_version: '1.0'
+issue_id: yoda-0035
+issue_path: yoda/project/issues/yoda-0035-revisar-bootstrap-specs.md
+todo_id: yoda-0035
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:14-03:00'
+  message: '[yoda-0035] issue_add created
+
+    title: Revisar bootstrap e meta-implementation nas specs
+
+    description: Decidir como tratar bootstrap dentro de `project/specs` para manter
+    as specs normativas e evitar ruido de meta-implementacao.
+
+    slug: revisar-bootstrap-specs
+
+    priority: 5
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:40-03:00'
+  message: '[yoda-0035] todo_update
+
+    status: to-do -> done'

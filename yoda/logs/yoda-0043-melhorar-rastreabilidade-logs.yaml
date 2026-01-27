@@ -1,0 +1,25 @@
+schema_version: '1.0'
+issue_id: yoda-0043
+issue_path: yoda/project/issues/yoda-0043-melhorar-rastreabilidade-logs.md
+todo_id: yoda-0043
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:14-03:00'
+  message: '[yoda-0043] issue_add created
+
+    title: Melhorar rastreabilidade dos logs dos scripts
+
+    description: Atualizar specs e scripts para logs detalhados, com campos alterados
+    e dados iniciais informados.
+
+    slug: melhorar-rastreabilidade-logs
+
+    priority: 3
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:43-03:00'
+  message: '[yoda-0043] todo_update
+
+    status: to-do -> done
+
+    priority: 3 -> 4'

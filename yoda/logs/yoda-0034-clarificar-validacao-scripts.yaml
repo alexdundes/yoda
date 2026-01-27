@@ -1,0 +1,23 @@
+schema_version: '1.0'
+issue_id: yoda-0034
+issue_path: yoda/project/issues/yoda-0034-clarificar-validacao-scripts.md
+todo_id: yoda-0034
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:13-03:00'
+  message: '[yoda-0034] issue_add created
+
+    title: Clarificar validacao vs comandos v1
+
+    description: Clarificar se a validacao e um comando dedicado (validate.py) ou
+    embutida em scripts que alteram metadados.
+
+    slug: clarificar-validacao-scripts
+
+    priority: 5
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:40-03:00'
+  message: '[yoda-0034] todo_update
+
+    status: to-do -> done'

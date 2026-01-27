@@ -1,0 +1,19 @@
+schema_version: '1.0'
+issue_id: yoda-0047
+issue_path: yoda/project/issues/yoda-0047-clarificar-texto-corpo-livre-front-matter.md
+todo_id: yoda-0047
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:15-03:00'
+  message: "[yoda-0047] issue_add created\ntitle: Clarificar texto sobre corpo livre\
+    \ vs front matter\ndescription: Ajustar o texto inicial do 04-todo-dev-yaml-issues.md\
+    \ para remover a ambiguidade entre \u201Ccorpo livre\u201D e a obrigatoriedade\
+    \ de YAML front matter. A frase deve indicar que o corpo e livre, enquanto o metadata\
+    \ fica no front matter.\nslug: clarificar-texto-corpo-livre-front-matter\npriority:\
+    \ 6\nagent: Human"
+- timestamp: '2026-01-27T13:32:44-03:00'
+  message: '[yoda-0047] todo_update
+
+    status: to-do -> done
+
+    priority: 6 -> 4'

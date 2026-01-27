@@ -1,0 +1,23 @@
+schema_version: '1.0'
+issue_id: yoda-0029
+issue_path: yoda/project/issues/yoda-0029-padronizar-id-canonico-naming.md
+todo_id: yoda-0029
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:13-03:00'
+  message: '[yoda-0029] issue_add created
+
+    title: Padronizar id canonico e naming de arquivos
+
+    description: Padronizar o uso do id canonico (dev-####) e alinhar o naming de
+    issues e logs em todas as specs relevantes.
+
+    slug: padronizar-id-canonico-naming
+
+    priority: 7
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:39-03:00'
+  message: '[yoda-0029] todo_update
+
+    status: to-do -> done'

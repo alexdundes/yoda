@@ -1,0 +1,25 @@
+schema_version: '1.0'
+issue_id: yoda-0005
+issue_path: yoda/project/issues/yoda-0005-template-issue-regras-uso.md
+todo_id: yoda-0005
+status: done
+entries:
+- timestamp: '2026-01-27T13:32:11-03:00'
+  message: '[yoda-0005] issue_add created
+
+    title: Template de issue (regras e uso)
+
+    description: Document how agents should create and fill issues using the templates
+    under yoda/templates/.
+
+    slug: template-issue-regras-uso
+
+    priority: 7
+
+    agent: Human'
+- timestamp: '2026-01-27T13:32:34-03:00'
+  message: '[yoda-0005] todo_update
+
+    status: to-do -> done
+
+    depends_on: [] -> yoda-0002'
