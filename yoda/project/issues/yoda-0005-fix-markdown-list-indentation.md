@@ -1,6 +1,6 @@
 ---
 agent: Human
-created_at: '2026-01-27T16:41:57-03:00'
+created_at: '2026-01-27T16:41:51-03:00'
 depends_on: []
 description: Adjust indentation in 02-yoda-flow-process.md for list consistency
 entrypoints: []
@@ -14,10 +14,10 @@ pending_reason: ''
 priority: 5
 schema_version: '1.0'
 slug: fix-markdown-list-indentation
-status: to-do
+status: done
 tags: []
 title: Fix markdown list indentation
-updated_at: '2026-01-27T16:41:57-03:00'
+updated_at: '2026-01-27T17:16:44-03:00'
 ---
 
 # yoda-0005 - Fix markdown list indentation
@@ -32,7 +32,7 @@ The "Next issue selection" line is mis-indented, which breaks list formatting in
 Align the indentation of the stray bullet with the rest of the list in the Notes section.
 
 ## Scope
-- Adjust indentation for the single mis-indented bullet in Notes.
+- Adjust indentation for the single mis-indented bullet in Notes in `project/specs/02-yoda-flow-process.md`.
 
 ## Out of scope
 - Any content changes to the YODA Flow rules.
@@ -41,8 +41,8 @@ Align the indentation of the stray bullet with the rest of the list in the Notes
 - Correct the indentation of the "Next issue selection" bullet so it is part of the Notes list.
 
 ## Acceptance criteria
-- [ ] The Notes list renders as a consistent bullet list.
-- [ ] No wording changes are introduced.
+- [x] The Notes list renders as a consistent bullet list.
+- [x] No wording changes are introduced.
 
 ## Dependencies
 None.
@@ -61,9 +61,10 @@ Not applicable.
 - None.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
+Fixed the indentation of the "Next issue selection" bullet so it renders as part of the Notes list.
+
+Commit suggestion:
+docs(specs): fix notes indentation
+
+Issue: `yoda-0005`
+Path: `yoda/project/issues/yoda-0005-fix-markdown-list-indentation.md`

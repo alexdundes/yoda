@@ -39,11 +39,11 @@ YODA Flow is the standard work cycle of the framework:
 ## Notes
 
 - The cycle is designed to be iterative and not waterfall.
-- Lightweight process: it does not include the Study step; the AI follows the preliminary issue directly.
+- Next issue selection must follow deterministic rules defined in specs (priority, order, pending, dependencies).
+- - Lightweight process: it does not include the Study step; the AI follows the preliminary issue directly.
   - Use lightweight only when the issue is already clear, has explicit acceptance criteria, and no open questions remain.
   - If there is ambiguity, new requirements, or non-trivial risk, include Study.
   - Lightweight must be explicitly marked in the issue or TODO (example: lightweight: true).
- - Next issue selection must follow deterministic rules defined in specs (priority, order, pending, dependencies).
 
 ## Deliverables per phase
 

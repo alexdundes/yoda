@@ -2,7 +2,7 @@ schema_version: '1.0'
 issue_id: yoda-0005
 issue_path: yoda/project/issues/yoda-0005-fix-markdown-list-indentation.md
 todo_id: yoda-0005
-status: to-do
+status: done
 entries:
 - timestamp: '2026-01-27T16:41:51-03:00'
   message: '[yoda-0005] issue_add created
@@ -14,3 +14,14 @@ entries:
     slug: fix-markdown-list-indentation'
 - timestamp: '2026-01-27T17:15:07-03:00'
   message: '[yoda-0005] docs: removed obsolete result-log comment from issue markdown'
+- timestamp: '2026-01-27T17:16:16-03:00'
+  message: '[yoda-0005] document: scope confirmed for indentation fix in project/specs/02-yoda-flow-process.md'
+- timestamp: '2026-01-27T17:16:40-03:00'
+  message: '[yoda-0005] implement: fixed indentation in 02-yoda-flow-process.md'
+- timestamp: '2026-01-27T17:16:44-03:00'
+  message: '[yoda-0005] todo_update
+
+    status: to-do -> done'
+- timestamp: '2026-01-27T17:16:48-03:00'
+  message: '[yoda-0005] evaluate: acceptance criteria checked and result log updated
+    in issue'
