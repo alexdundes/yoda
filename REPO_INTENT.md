@@ -7,6 +7,14 @@ This repository is a meta-implementation of the YODA Framework.
 - project/specs/ is the source of truth for the future YODA Framework.
 - yoda/ is the implementation workspace under construction.
 - yoda/ is aligned with the framework specs and uses YAML-based TODOs and logs.
+- bootstrap-legacy/ preserves artifacts generated during the bootstrap of this meta-implementation.
+
+## bootstrap-legacy/ (historical)
+
+- Created during bootstrap when scripts were not available and YAML artifacts in the spec did not exist.
+- During bootstrap, agents used Markdown alternatives in place of the YAML files.
+- By the end of bootstrap, some scripts existed; Markdown records were used to generate YAML files to validate concepts.
+- This folder is legacy-only, not used by the current workflow, and kept for historical verification.
 
 ## Guardrails
 

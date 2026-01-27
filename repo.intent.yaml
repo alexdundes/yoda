@@ -4,6 +4,15 @@ source_of_truth:
   framework_specs: project/specs
 
 implementation_root: yoda
+bootstrap_legacy:
+  path: bootstrap-legacy
+  status: legacy
+  intent:
+    - Preserves artifacts generated during the bootstrap of this meta-implementation.
+    - Bootstrap ran without scripts, so YAML artifacts in the spec did not exist.
+    - Agents used Markdown alternatives in place of YAML during bootstrap.
+    - Later, scripts generated YAML from Markdown records to validate concepts.
+    - Not used by the current workflow; kept for historical verification.
 
 target:
   todo:
