@@ -170,7 +170,13 @@ def _build_issue_item(
     }
 
 
-def _build_log(issue_id: str, issue_path_str: str, status: str, timestamp: str) -> dict[str, Any]:
+def _build_log(
+    issue_id: str,
+    issue_path_str: str,
+    status: str,
+    timestamp: str,
+    message: str,
+) -> dict[str, Any]:
     return {
         "schema_version": "1.0",
         "issue_id": issue_id,
@@ -180,10 +186,54 @@ def _build_log(issue_id: str, issue_path_str: str, status: str, timestamp: str) 
         "entries": [
             {
                 "timestamp": timestamp,
-                "message": f"[{issue_id}] Issue created",
+                "message": message,
             }
         ],
     }
+
+
+def _flag_present(flag: str) -> bool:
+    return any(arg == flag or arg.startswith(f"{flag}=") for arg in sys.argv)
+
+
+def _format_list(values: list[str]) -> str:
+    return ", ".join(values) if values else "[]"
+
+
+def _format_entrypoints(values: list[dict[str, str]]) -> str:
+    if not values:
+        return "[]"
+    return ", ".join(f"{item['path']}:{item['type']}" for item in values)
+
+
+def _build_issue_log_message(
+    issue_id: str,
+    title: str,
+    description: str,
+    slug: str,
+    priority: int,
+    lightweight: bool,
+    agent: str,
+    tags: list[str],
+    entrypoints: list[dict[str, str]],
+) -> str:
+    lines = [f"[{issue_id}] issue_add created"]
+    lines.append(f"title: {title}")
+    lines.append(f"description: {description}")
+    lines.append(f"slug: {slug}")
+
+    if _flag_present("--priority"):
+        lines.append(f"priority: {priority}")
+    if _flag_present("--lightweight"):
+        lines.append(f"lightweight: {str(lightweight).lower()}")
+    if _flag_present("--agent"):
+        lines.append(f"agent: {agent}")
+    if _flag_present("--tags") and tags:
+        lines.append(f"tags: {_format_list(tags)}")
+    if _flag_present("--entrypoint") and entrypoints:
+        lines.append(f"entrypoints: {_format_entrypoints(entrypoints)}")
+
+    return "\n".join(lines)
 
 
 def _render_output(payload: dict[str, Any], output_format: str) -> str:
@@ -208,7 +258,7 @@ def main() -> int:
     parser.add_argument("--description", required=False, help="Issue description")
     parser.add_argument("--summary", required=False, help="Alias for description")
     parser.add_argument("--slug", required=False, help="Explicit issue slug")
-    parser.add_argument("--priority", type=int, default=5, help="Priority 0-10")
+    parser.add_argument("--priority", type=int, default=None, help="Priority 0-10")
     parser.add_argument("--lightweight", action="store_true", help="Use lightweight template")
     parser.add_argument("--agent", default="Human", help="Agent name")
     parser.add_argument("--tags", help="Comma-separated tags")
@@ -232,7 +282,8 @@ def main() -> int:
         description = (args.summary or args.description or "").strip()
         if not description:
             raise YodaError("--description is required", exit_code=ExitCode.VALIDATION)
-        if not isinstance(args.priority, int) or not (0 <= args.priority <= 10):
+        priority = args.priority if args.priority is not None else 5
+        if not isinstance(priority, int) or not (0 <= priority <= 10):
             raise YodaError("priority must be between 0 and 10", exit_code=ExitCode.VALIDATION)
 
         todo_file = todo_path(dev)
@@ -270,7 +321,7 @@ def main() -> int:
             title=title,
             slug=slug,
             description=description,
-            priority=args.priority,
+            priority=priority,
             lightweight=bool(args.lightweight),
             agent=args.agent,
             entrypoints=entrypoints,
@@ -306,6 +357,17 @@ def main() -> int:
             issue_path_str=str(issue_file.relative_to(repo_root())),
             status="to-do",
             timestamp=timestamp,
+            message=_build_issue_log_message(
+                issue_id=issue_id,
+                title=title,
+                description=description,
+                slug=slug,
+                priority=priority,
+                lightweight=bool(args.lightweight),
+                agent=args.agent,
+                tags=tags,
+                entrypoints=entrypoints,
+            ),
         )
 
         payload = {

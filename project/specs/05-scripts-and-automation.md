@@ -44,6 +44,8 @@ Rules:
 - Log files are append-only; new entries are added at the end.
 - Any script action must append a log entry.
 - Manual log entries are allowed through the `log_add.py` script.
+- Log entries must be traceable: describe the change with one field per line in the form `field: old -> new` when updates occur.
+- Issue creation logs must include the initial values provided (omit fields not supplied).
 
 ## Minimal validation (baseline)
 

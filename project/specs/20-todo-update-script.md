@@ -95,6 +95,11 @@ On success, the script outputs a short summary in the chosen format, including:
 - TODO path
 - Dry-run indicator (if applicable)
 
+## Log message
+
+- Log messages must include one line per changed field in the format `field: old -> new`.
+- Only fields that actually changed should be logged.
+
 ## Error handling
 
 - Exit codes must follow the global contract:

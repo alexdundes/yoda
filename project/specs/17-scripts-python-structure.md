@@ -73,6 +73,7 @@ Recommended dependencies for v1:
 - Errors MUST be written to stderr with short, actionable messages.
 - Exit codes must follow the CLI contract in `project/specs/13-yoda-scripts-v1.md`.
 - Every script execution that mutates metadata MUST append a log entry via `log_add.py` (or equivalent shared helper) before exiting successfully.
+- Log messages should be detailed and traceable (one change per line with `field: old -> new`), or initial values on creation.
 
 ## Validation
 

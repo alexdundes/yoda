@@ -123,7 +123,7 @@ If `yoda/todos/TODO.<dev>.yaml` does not exist, `issue_add.py` must create it wi
 
 - The script must create `yoda/logs/<id>-<slug>.yaml` if it does not exist.
 - The log file must follow the log schema in `project/specs/05-scripts-and-automation.md`.
-- The initial log entry message should mention the issue id and that the issue was created.
+- The initial log entry message should mention the issue id and include initial values provided (one per line, omit fields not supplied).
 
 ## Output
 

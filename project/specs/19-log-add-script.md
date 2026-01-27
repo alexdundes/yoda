@@ -89,6 +89,12 @@ On success, the script outputs a short summary in the chosen format, including:
 - Timestamp used
 - Dry-run indicator (if applicable)
 
+## Message format
+
+- Messages should be multi-line when detailing updates.
+- For updates, use one field per line in the format `field: old -> new`.
+- For creation logs, list only the initial values provided (omit fields not supplied).
+
 ## Error handling
 
 - Exit codes must follow the global contract:

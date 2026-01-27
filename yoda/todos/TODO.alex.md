@@ -259,6 +259,12 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 - Prioridade: 3
 - Dependencias: alex-0051
 
+### alex-0053 - Melhorar rastreabilidade dos logs dos scripts
+- Descricao: ajustar specs e scripts para logs detalhados de mudancas e dados iniciais.
+- Status: done
+- Prioridade: 3
+- Dependencias: alex-0052
+
 ### alex-0038 - Corrigir links quebrados em project/specs
 - Descricao: padronizar links para repo-root (ex.: /yoda/..., /AGENTS.md, /gemini.md) em arquivos de project/specs para evitar caminhos invalidos.
 - Status: done

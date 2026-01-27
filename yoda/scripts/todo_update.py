@@ -8,6 +8,7 @@ import json
 import logging
 import os
 import sys
+from copy import deepcopy
 from datetime import datetime
 from typing import Any
 from zoneinfo import ZoneInfo
@@ -65,44 +66,32 @@ def _render_output(payload: dict[str, Any], output_format: str) -> str:
     return "\n".join(lines)
 
 
-def _update_issue(item: dict[str, Any], args: argparse.Namespace) -> list[str]:
-    updated = []
-
+def _update_issue(item: dict[str, Any], args: argparse.Namespace) -> None:
     if args.status is not None:
         if args.status not in ALLOWED_STATUS:
             raise YodaError("Invalid status", exit_code=ExitCode.VALIDATION)
         item["status"] = args.status
-        updated.append("status")
 
     if args.priority is not None:
         if args.priority < 0 or args.priority > 10:
             raise YodaError("priority must be between 0 and 10", exit_code=ExitCode.VALIDATION)
         item["priority"] = args.priority
-        updated.append("priority")
 
     if args.agent is not None:
         item["agent"] = args.agent
-        updated.append("agent")
 
     if args.clear_tags:
         item["tags"] = []
-        updated.append("tags")
     elif args.tags is not None:
         item["tags"] = _parse_csv(args.tags)
-        updated.append("tags")
 
     if args.clear_depends_on:
         item["depends_on"] = []
-        updated.append("depends_on")
     elif args.depends_on is not None:
         item["depends_on"] = _parse_csv(args.depends_on)
-        updated.append("depends_on")
 
     if args.pending_reason is not None:
         item["pending_reason"] = args.pending_reason
-        updated.append("pending_reason")
-
-    return updated
 
 
 def _apply_pending_rules(item: dict[str, Any], pending_reason_provided: bool) -> None:
@@ -115,6 +104,25 @@ def _apply_pending_rules(item: dict[str, Any], pending_reason_provided: bool) ->
             return
         if item.get("pending_reason"):
             item["pending_reason"] = ""
+
+
+def _format_value(value: Any) -> str:
+    if isinstance(value, list):
+        return ", ".join(str(item) for item in value) if value else "[]"
+    return "" if value is None else str(value)
+
+
+def _diff_fields(before: dict[str, Any], after: dict[str, Any]) -> tuple[list[str], list[str]]:
+    fields = ["status", "priority", "tags", "depends_on", "pending_reason", "agent"]
+    updated_fields = []
+    lines = []
+    for field in fields:
+        before_val = before.get(field)
+        after_val = after.get(field)
+        if before_val != after_val:
+            updated_fields.append(field)
+            lines.append(f"{field}: {_format_value(before_val)} -> {_format_value(after_val)}")
+    return updated_fields, lines
 
 
 def _append_log(dev: str, issue_id: str, message: str, dry_run: bool) -> None:
@@ -164,7 +172,8 @@ def main() -> int:
         if issue_item is None:
             raise YodaError("Issue id not found in TODO", exit_code=ExitCode.NOT_FOUND)
 
-        updated_fields = _update_issue(issue_item, args)
+        before_item = deepcopy(issue_item)
+        _update_issue(issue_item, args)
         pending_reason_provided = args.pending_reason is not None
         _apply_pending_rules(issue_item, pending_reason_provided)
 
@@ -173,6 +182,8 @@ def main() -> int:
         todo["updated_at"] = timestamp
 
         validate_todo(todo, dev)
+
+        updated_fields, log_lines = _diff_fields(before_item, issue_item)
 
         payload = {
             "issue_id": issue_id,
@@ -183,7 +194,10 @@ def main() -> int:
 
         if not args.dry_run:
             write_yaml(todo_file, todo)
-            log_message = f"[{issue_id}] todo_update updated fields: {', '.join(updated_fields)}"
+            if log_lines:
+                log_message = f"[{issue_id}] todo_update\\n" + "\\n".join(log_lines)
+            else:
+                log_message = f"[{issue_id}] todo_update (no changes)"
             _append_log(dev, issue_id, log_message, args.dry_run)
 
         print(_render_output(payload, output_format))
