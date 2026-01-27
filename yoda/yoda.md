@@ -11,7 +11,7 @@ When the user indicates they want to enter YODA Flow, the agent must:
    - --dev `<slug>` flag
    - YODA_DEV environment variable
    - Ask the user
-3) Load `yoda/todos/TODO.<slug>.md` (bootstrap only); if missing, ask the user which TODO to use (suggest yoda/todos/TODO.alex.md as the default for this repo).
+3) Load `yoda/todos/TODO.<dev>.md` (bootstrap only); if missing, ask the user which TODO to use (suggest yoda/todos/TODO.alex.md as the default for this repo).
 4) Select the highest-priority selectable issue (with all dependencies resolved).
 5) Follow the YODA Flow for that issue.
 
@@ -44,8 +44,8 @@ Slug format:
 
 This implementation does not have YODA scripts yet. Until they exist:
 
-- Use `yoda/todos/TODO.<slug>.md` as the TODO source.
-- If `yoda/todos/TODO.<slug>.md` is missing, ask the user which TODO to use (suggest yoda/todos/TODO.alex.md as the default).
+- Use `yoda/todos/TODO.<dev>.md` as the TODO source.
+- If `yoda/todos/TODO.<dev>.md` is missing, ask the user which TODO to use (suggest yoda/todos/TODO.alex.md as the default).
 - Do not edit TODO files beyond status/pending updates unless the user requests it.
 - Update `yoda/todos/TODO.<slug>.md` status/pending fields to reflect progress and completion.
 - A future migration will replace this with `TODO.<dev>.yaml` and scripts.

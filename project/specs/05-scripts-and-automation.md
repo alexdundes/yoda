@@ -27,6 +27,7 @@ Standardize repetitive tasks and reduce the need for manual edits.
 
 Required fields:
 
+- schema_version: "1.0"
 - issue_id: canonical id (dev-####).
 - issue_path: path to the issue Markdown file.
 - todo_id: same as issue_id.
@@ -70,7 +71,7 @@ Failure behavior:
 
 ## Schema versioning and migrations
 
-- TODO and issue metadata use `schema_version` (current: "1.0").
+- TODO, issue, and log metadata use `schema_version` (current: "1.0").
 - Versions follow semantic versioning (major.minor).
 - Major version changes are breaking and must be rejected by scripts.
 - Minor version changes are backward compatible and accepted.
