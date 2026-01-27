@@ -1,6 +1,6 @@
 ---
 agent: Human
-created_at: '2026-01-27T16:41:52-03:00'
+created_at: '2026-01-27T16:41:48-03:00'
 depends_on: []
 description: 'Add a one-page flow: create issue, update TODO, add log, finish'
 entrypoints: []
@@ -14,10 +14,10 @@ pending_reason: ''
 priority: 5
 schema_version: '1.0'
 slug: happy-path-end-to-end
-status: to-do
+status: done
 tags: []
 title: Happy path end-to-end
-updated_at: '2026-01-27T16:41:52-03:00'
+updated_at: '2026-01-27T17:10:13-03:00'
 ---
 
 # yoda-0004 - Happy path end-to-end
@@ -32,7 +32,7 @@ Current guidance is spread across multiple specs. A concise end-to-end flow will
 Provide a compact, copyable workflow example aligned with existing scripts and paths.
 
 ## Scope
-- Add a dedicated "Happy path" section to a spec doc.
+- Add a dedicated "Happy path" section to `project/specs/05-scripts-and-automation.md`.
 - Include example commands and the resulting artifacts.
 
 ## Out of scope
@@ -45,9 +45,9 @@ Provide a compact, copyable workflow example aligned with existing scripts and p
 - Keep the example short and aligned with the current CLI flags.
 
 ## Acceptance criteria
-- [ ] A single page/section documents the end-to-end happy path.
-- [ ] Example commands match current script interfaces.
-- [ ] The section references the canonical artifact paths.
+- [x] A single page/section documents the end-to-end happy path in `project/specs/05-scripts-and-automation.md`.
+- [x] Example commands match current script interfaces.
+- [x] The section references the canonical artifact paths.
 
 ## Dependencies
 None.
@@ -61,7 +61,7 @@ None.
   type: doc
 
 ## Implementation notes
-Prefer placing the section in `project/specs/05-scripts-and-automation.md` to keep it close to script usage guidance.
+Place the section in `project/specs/05-scripts-and-automation.md` to keep it close to script usage guidance.
 
 ## Tests
 Not applicable.
@@ -70,9 +70,10 @@ Not applicable.
 - If script flags change, the example must be updated to avoid drift.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
+Added a compact happy-path section with script commands and expected artifacts to `project/specs/05-scripts-and-automation.md`.
+
+Commit suggestion:
+docs(specs): add happy path flow
+
+Issue: `yoda-0004`
+Path: `yoda/project/issues/yoda-0004-happy-path-end-to-end.md`

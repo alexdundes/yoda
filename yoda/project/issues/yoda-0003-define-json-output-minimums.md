@@ -74,12 +74,6 @@ Not applicable.
 - If a script adds/removes keys, update the spec to keep the contract accurate.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
 Added a centralized JSON output contract in `project/specs/13-yoda-scripts-v1.md` with minimum keys per script and a forward-compatibility rule to ignore unknown fields.
 
 Commit suggestion:

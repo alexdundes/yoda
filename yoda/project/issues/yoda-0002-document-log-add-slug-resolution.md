@@ -67,12 +67,6 @@ Not applicable.
 - If the TODO schema changes, update the spec and implementation in tandem.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
 Documented that `log_add.py` resolves the slug from the TODO item and does not accept slug input, keeping the NOT_FOUND behavior for missing issue id/file explicit in the behavior steps.
 
 Commit suggestion:
