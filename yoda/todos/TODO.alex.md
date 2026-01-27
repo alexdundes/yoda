@@ -223,11 +223,17 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 - Prioridade: 6
 - Dependencias: nenhuma
 
-### alex-0037 - Criar script de inclusao de issue (issue_add.py)
-- Descricao: especificar e implementar o script de inclusao de issues usando a estrutura definida.
-- Status: to-do
+### alex-0037 - Especificar script de inclusao de issue (issue_add.py)
+- Descricao: especificar o script de inclusao de issues e criar a spec em project/specs/18-issue-add-script.md.
+- Status: done
 - Prioridade: 3
 - Dependencias: alex-0036
+
+### alex-0048 - Implementar script de inclusao de issue (issue_add.py)
+- Descricao: implementar o issue_add.py conforme a spec project/specs/18-issue-add-script.md.
+- Status: doing
+- Prioridade: 3
+- Dependencias: alex-0037
 
 ### alex-0038 - Corrigir links quebrados em project/specs
 - Descricao: padronizar links para repo-root (ex.: /yoda/..., /AGENTS.md, /gemini.md) em arquivos de project/specs para evitar caminhos invalidos.
