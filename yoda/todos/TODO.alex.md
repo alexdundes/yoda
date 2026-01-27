@@ -265,6 +265,12 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 - Prioridade: 3
 - Dependencias: alex-0052
 
+### alex-0054 - Sincronizar front matter ao atualizar TODO (todo_update.py)
+- Descricao: garantir que o todo_update.py copie metadados do TODO para a issue.
+- Status: done
+- Prioridade: 3
+- Dependencias: alex-0052
+
 ### alex-0038 - Corrigir links quebrados em project/specs
 - Descricao: padronizar links para repo-root (ex.: /yoda/..., /AGENTS.md, /gemini.md) em arquivos de project/specs para evitar caminhos invalidos.
 - Status: done

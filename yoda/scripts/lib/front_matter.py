@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from pathlib import Path
 from typing import Any
 
 from .errors import YodaError, ExitCode
@@ -23,3 +24,9 @@ def render_issue(template_text: str, metadata: dict[str, Any], replacements: dic
         content = content.replace(key, value)
     post.content = content
     return frontmatter.dumps(post)
+
+
+def update_front_matter(path: Path, metadata: dict[str, Any]) -> None:
+    post = frontmatter.load(str(path))
+    post.metadata = metadata
+    path.write_text(frontmatter.dumps(post), encoding="utf-8")

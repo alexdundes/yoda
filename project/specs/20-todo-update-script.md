@@ -59,8 +59,9 @@ Global flags:
    - If status is set to any non-pending value, `pending_reason` must be cleared unless explicitly provided.
 7) Update issue `updated_at` and root `updated_at` with the current timestamp in TODO timezone.
 8) Validate the resulting TODO. If validation fails, exit with code 2.
-9) Append a log entry for the updated issue via `log_add.py` (or shared helper) unless `--dry-run` is set.
-10) If `--dry-run` is set, perform all steps except file writes. Output a summary and exit 0.
+9) Update the issue Markdown front matter to mirror the TODO item (fail with code 3 if the issue file is missing).
+10) Append a log entry for the updated issue via `log_add.py` (or shared helper) unless `--dry-run` is set.
+11) If `--dry-run` is set, perform all steps except file writes. Output a summary and exit 0.
 
 ## Updates
 
@@ -81,6 +82,7 @@ Global flags:
 Before writing:
 - TODO schema is valid.
 - Issue id exists in TODO.
+- Issue Markdown file exists and can be updated.
 - Updated fields are valid per schema constraints.
 - `pending_reason` rules are satisfied.
 - `depends_on` references existing IDs.

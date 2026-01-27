@@ -15,7 +15,8 @@ from zoneinfo import ZoneInfo
 
 from lib.cli import add_global_flags, resolve_format
 from lib.errors import ExitCode, YodaError
-from lib.paths import repo_root, todo_path
+from lib.front_matter import update_front_matter
+from lib.paths import issue_path, repo_root, todo_path
 from lib.validate import validate_issue_id, validate_slug, validate_todo
 from lib.yaml_io import read_yaml, write_yaml
 
@@ -184,6 +185,9 @@ def main() -> int:
         validate_todo(todo, dev)
 
         updated_fields, log_lines = _diff_fields(before_item, issue_item)
+        issue_file = issue_path(issue_id, str(issue_item.get("slug")))
+        if not issue_file.exists():
+            raise YodaError("Issue file not found", exit_code=ExitCode.NOT_FOUND)
 
         payload = {
             "issue_id": issue_id,
@@ -194,8 +198,9 @@ def main() -> int:
 
         if not args.dry_run:
             write_yaml(todo_file, todo)
+            update_front_matter(issue_file, issue_item)
             if log_lines:
-                log_message = f"[{issue_id}] todo_update\\n" + "\\n".join(log_lines)
+                log_message = f"[{issue_id}] todo_update\n" + "\n".join(log_lines)
             else:
                 log_message = f"[{issue_id}] todo_update (no changes)"
             _append_log(dev, issue_id, log_message, args.dry_run)
