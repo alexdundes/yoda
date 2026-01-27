@@ -1,0 +1,14 @@
+schema_version: '1.0'
+issue_id: yoda-0005
+issue_path: yoda/project/issues/yoda-0005-fix-markdown-list-indentation.md
+todo_id: yoda-0005
+status: to-do
+entries:
+- timestamp: '2026-01-27T16:41:51-03:00'
+  message: '[yoda-0005] issue_add created
+
+    title: Fix markdown list indentation
+
+    description: Adjust indentation in 02-yoda-flow-process.md for list consistency
+
+    slug: fix-markdown-list-indentation'

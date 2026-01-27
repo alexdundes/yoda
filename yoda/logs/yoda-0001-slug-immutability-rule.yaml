@@ -1,0 +1,14 @@
+schema_version: '1.0'
+issue_id: yoda-0001
+issue_path: yoda/project/issues/yoda-0001-slug-immutability-rule.md
+todo_id: yoda-0001
+status: to-do
+entries:
+- timestamp: '2026-01-27T16:41:37-03:00'
+  message: '[yoda-0001] issue_add created
+
+    title: Slug immutability rule
+
+    description: Document that issue slugs are immutable; renames require migration
+
+    slug: slug-immutability-rule'

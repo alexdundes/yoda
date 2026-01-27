@@ -1,0 +1,14 @@
+schema_version: '1.0'
+issue_id: yoda-0003
+issue_path: yoda/project/issues/yoda-0003-define-json-output-minimums.md
+todo_id: yoda-0003
+status: to-do
+entries:
+- timestamp: '2026-01-27T16:41:45-03:00'
+  message: '[yoda-0003] issue_add created
+
+    title: Define JSON output minimums
+
+    description: Document minimal JSON fields for issue_add, todo_update, log_add
+
+    slug: define-json-output-minimums'

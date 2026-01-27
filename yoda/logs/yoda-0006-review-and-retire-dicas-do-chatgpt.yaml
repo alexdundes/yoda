@@ -1,0 +1,15 @@
+schema_version: '1.0'
+issue_id: yoda-0006
+issue_path: yoda/project/issues/yoda-0006-review-and-retire-dicas-do-chatgpt.md
+todo_id: yoda-0006
+status: to-do
+entries:
+- timestamp: '2026-01-27T16:47:31-03:00'
+  message: '[yoda-0006] issue_add created
+
+    title: Review and retire dicas-do-chatgpt
+
+    description: Review yoda/dicas-do-chatgpt.md; if contents are fully captured elsewhere,
+    remove the file
+
+    slug: review-and-retire-dicas-do-chatgpt'

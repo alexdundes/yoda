@@ -1,0 +1,14 @@
+schema_version: '1.0'
+issue_id: yoda-0004
+issue_path: yoda/project/issues/yoda-0004-happy-path-end-to-end.md
+todo_id: yoda-0004
+status: to-do
+entries:
+- timestamp: '2026-01-27T16:41:48-03:00'
+  message: '[yoda-0004] issue_add created
+
+    title: Happy path end-to-end
+
+    description: Add a one-page flow: create issue, update TODO, add log, finish
+
+    slug: happy-path-end-to-end'

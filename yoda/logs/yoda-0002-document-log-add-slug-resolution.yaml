@@ -1,0 +1,14 @@
+schema_version: '1.0'
+issue_id: yoda-0002
+issue_path: yoda/project/issues/yoda-0002-document-log-add-slug-resolution.md
+todo_id: yoda-0002
+status: to-do
+entries:
+- timestamp: '2026-01-27T16:41:42-03:00'
+  message: '[yoda-0002] issue_add created
+
+    title: Document log_add slug resolution
+
+    description: Add spec text: log_add resolves slug via TODO and fails if id missing
+
+    slug: document-log-add-slug-resolution'
