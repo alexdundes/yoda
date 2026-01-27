@@ -3,7 +3,7 @@ from __future__ import annotations
 import frontmatter
 import yaml
 
-from .conftest import TEST_DEV, TEST_TODO, cleanup_test_files, run_script
+from conftest import REPO_ROOT, TEST_DEV, TEST_TODO, cleanup_test_files, run_script
 
 
 def setup_function() -> None:
@@ -44,7 +44,7 @@ def test_todo_update_changes_status_and_front_matter() -> None:
     assert updated_issue["status"] == "doing"
     assert updated_issue["priority"] == 7
 
-    issue_path = TEST_TODO.parents[1] / "yoda" / "project" / "issues" / f"{issue['id']}-{issue['slug']}.md"
+    issue_path = REPO_ROOT / "yoda" / "project" / "issues" / f"{issue['id']}-{issue['slug']}.md"
     parsed = frontmatter.load(issue_path)
     assert parsed.metadata["status"] == "doing"
     assert parsed.metadata["priority"] == 7

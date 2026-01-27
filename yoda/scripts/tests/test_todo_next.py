@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 
-from .conftest import TEST_DEV, TEST_TODO, TodoFactory, cleanup_test_files, run_script, write_yaml
+from conftest import TEST_DEV, TEST_TODO, TodoFactory, cleanup_test_files, run_script, write_yaml
 
 
 def setup_function() -> None:
@@ -52,7 +52,7 @@ def test_todo_next_selects_highest_priority_and_hints_pending() -> None:
 
 def test_todo_next_not_found_when_blocked() -> None:
     factory = TodoFactory(TEST_DEV)
-    blocker = factory.issue(title="Blocker", status="to-do")
+    blocker = factory.issue(title="Blocker", status="pending", pending_reason="Waiting")
     blocked = factory.issue(
         title="Blocked",
         status="to-do",

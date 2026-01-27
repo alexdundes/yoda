@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import yaml
 
-from .conftest import TEST_DEV, TEST_TODO, cleanup_test_files, run_script
+from conftest import REPO_ROOT, TEST_DEV, TEST_TODO, cleanup_test_files, run_script
 
 
 def setup_function() -> None:
@@ -30,5 +30,5 @@ def test_issue_add_creates_todo_issue_and_log() -> None:
     issue_path = f"yoda/project/issues/{issue['id']}-{issue['slug']}.md"
     log_path = f"yoda/logs/{issue['id']}-{issue['slug']}.yaml"
 
-    assert (TEST_TODO.parents[1] / issue_path).exists()
-    assert (TEST_TODO.parents[1] / log_path).exists()
+    assert (REPO_ROOT / issue_path).exists()
+    assert (REPO_ROOT / log_path).exists()
