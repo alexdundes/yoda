@@ -14,25 +14,26 @@ pending_reason: ''
 priority: 5
 schema_version: '1.0'
 slug: slug-immutability-rule
-status: to-do
+status: done
 tags: []
 title: Slug immutability rule
-updated_at: '2026-01-27T16:41:37-03:00'
+updated_at: '2026-01-27T16:58:55-03:00'
 ---
 
 # yoda-0001 - Slug immutability rule
 
 ## Summary
-Define slug immutability in the framework specs so issue slugs never change after creation; renames are handled via explicit migrations, not regular updates.
+Define slug immutability in the framework specs so issue slugs never change after creation; renames are handled via explicit migrations, not regular updates, with `project/specs/04-todo-dev-yaml-issues.md` as the primary reference.
 
 ## Context
 Slug is embedded in issue and log paths (`yoda/project/issues/<id>-<slug>.md`, `yoda/logs/<id>-<slug>.yaml`). The specs do not explicitly state whether slug can change, which risks path drift if titles are edited or if future scripts regenerate slugs.
 
 ## Objective
-Add explicit guidance in specs that slugs are immutable and document how rename/migration should be handled.
+Add explicit guidance in specs that slugs are immutable and document how rename/migration should be handled, anchored in `project/specs/04-todo-dev-yaml-issues.md`.
 
 ## Scope
-- Add rule text to specs that define TODO/issue metadata and conventions.
+- Add the primary rule text to `project/specs/04-todo-dev-yaml-issues.md`.
+- Add a brief supporting note in `project/specs/00-conventions.md`.
 - Mention path coupling to slug and the impact on issue/log filenames.
 
 ## Out of scope
@@ -45,9 +46,10 @@ Add explicit guidance in specs that slugs are immutable and document how rename/
 - Note that scripts must not auto-change slug when updating other fields.
 
 ## Acceptance criteria
-- [ ] Spec text explicitly states slug immutability.
-- [ ] Spec mentions that renames require migration and are out of the regular update flow.
-- [ ] No code changes are required.
+- [x] `project/specs/04-todo-dev-yaml-issues.md` explicitly states slug immutability.
+- [x] `project/specs/00-conventions.md` includes a brief supporting note.
+- [x] Spec mentions that renames require migration and are out of the regular update flow.
+- [x] No code changes are required.
 
 ## Dependencies
 None.
@@ -61,7 +63,7 @@ None.
   type: code
 
 ## Implementation notes
-Keep wording consistent with existing TODO schema and path patterns (`yoda/project/issues/<id>-<slug>.md`, `yoda/logs/<id>-<slug>.yaml`).
+Keep wording consistent with existing TODO schema and path patterns (`yoda/project/issues/<id>-<slug>.md`, `yoda/logs/<id>-<slug>.yaml`). State that slug is created at issue creation time and must not be modified by update scripts.
 
 ## Tests
 Not applicable.
@@ -70,10 +72,10 @@ Not applicable.
 - If a future tool regenerates slugs, paths can drift; highlight migration-only renames.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
-<!-- AGENT: Logs are YAML: `yoda/logs/<id>-<slug>.yaml`. -->
+Added slug immutability rules to the TODO/issue spec (including migration guidance) and a supporting convention note highlighting that slug-based paths must remain stable.
+
+Commit suggestion:
+docs(specs): enforce slug immutability
+
+Issue: `yoda-0001`
+Path: `yoda/project/issues/yoda-0001-slug-immutability-rule.md`

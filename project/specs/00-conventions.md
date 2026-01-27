@@ -23,6 +23,7 @@ The following keywords are to be interpreted as in RFC 2119:
 ## Paths
 
 - All paths MUST be relative to the repository root.
+- Issue and log paths embed the issue slug; slugs MUST remain immutable after creation.
 
 ## Source of truth precedence
 

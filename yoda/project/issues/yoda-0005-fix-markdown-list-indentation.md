@@ -67,4 +67,3 @@ Body:
 Issue: `<ID>`
 Path: `<issue path>`
 -->
-<!-- AGENT: Logs are YAML: `yoda/logs/<id>-<slug>.yaml`. -->
