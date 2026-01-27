@@ -261,7 +261,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-0043 - Corrigir formatacao de caminho TODO.<slug>.md
 - Descricao: ajustar trecho em yoda/yoda.md para manter `yoda/todos/TODO.<slug>.md` sem backticks no meio.
-- Status: to-do
+- Status: done
 - Prioridade: 4
 - Dependencias: nenhuma
 
