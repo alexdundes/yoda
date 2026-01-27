@@ -255,7 +255,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-0042 - Padronizar criterio de selecao sem dependencias
 - Descricao: substituir "without dependencies" por "with all dependencies resolved" em yoda/yoda.md e specs.
-- Status: to-do
+- Status: done
 - Prioridade: 5
 - Dependencias: nenhuma
 

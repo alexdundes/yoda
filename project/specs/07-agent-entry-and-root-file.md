@@ -18,8 +18,8 @@ Agent tools do not agree on which file to read ([AGENTS.md](/AGENTS.md), [gemini
 ## Simplified entry flow
 
 1) User starts the agent with zero context.
-2) User types a natural phrase indicating entering YODA Flow and taking the highest-priority issue without dependencies.
-   - The phrase must explicitly mention "YODA Flow" (or "YODA") and intent to take the highest-priority issue without dependencies.
+2) User types a natural phrase indicating entering YODA Flow and taking the highest-priority selectable issue (with all dependencies resolved).
+   - The phrase must explicitly mention "YODA Flow" (or "YODA") and intent to take the highest-priority selectable issue (with all dependencies resolved).
    - Example: "Vamos entrar no YODA Flow e pegar a issue prioritaria sem dependencias."
 3) Agent reads [`yoda/yoda.md`](/yoda/yoda.md).
 4) Agent resolves the developer slug in this order:
@@ -27,6 +27,6 @@ Agent tools do not agree on which file to read ([AGENTS.md](/AGENTS.md), [gemini
    - YODA_DEV environment variable
    - Ask the user (fallback)
    - Slug format: lowercase ASCII, digits, and hyphens only; must start with a letter; no spaces.
-5) Agent loads [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/), selects the highest-priority issue without dependencies using the canonical id, and follows the flow.
+5) Agent loads [`yoda/todos/TODO.<dev>.yaml`](/yoda/todos/), selects the highest-priority selectable issue (with all dependencies resolved) using the canonical id, and follows the flow.
    - Bootstrap exception: if YAML is not available, load [`yoda/todos/TODO.<dev>.md`](/yoda/todos/) (see [project/specs/15-bootstrap.md](15-bootstrap.md)).
    - If the expected TODO file is missing, ask the user which TODO to use.

@@ -16,7 +16,7 @@ This file records decisions and known open points captured so far.
 - Status values: to-do, doing, done, pending (pending = blocker recorded in pending_reason).
 - Agent entry file: [`yoda/yoda.md`](/yoda/yoda.md), with [`AGENTS.md`](/AGENTS.md) or [`gemini.md`](/gemini.md) pointing to it.
 - Human entrypoint: repo `README.md`. Agent entrypoint: [`yoda/yoda.md`](/yoda/yoda.md).
-- Entry trigger phrase: must mention "YODA Flow" (or "YODA") and intent to take the highest-priority issue without dependencies.
+- Entry trigger phrase: must mention "YODA Flow" (or "YODA") and intent to take the highest-priority selectable issue (with all dependencies resolved).
 - Process light: skip the Study step and follow the preliminary issue, only when the issue is already clear with explicit acceptance criteria and no open questions.
 - Simplicity: keep the flow scriptable and avoid unnecessary complexity in formats.
 - Name: use "YODA Framework" as the primary name (with the Y linked to YAML).

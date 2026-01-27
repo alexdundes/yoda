@@ -12,13 +12,13 @@ When the user indicates they want to enter YODA Flow, the agent must:
    - YODA_DEV environment variable
    - Ask the user
 3) Load yoda/todos/TODO.`<slug>`.md (bootstrap only); if missing, ask the user which TODO to use (suggest yoda/todos/TODO.alex.md as the default for this repo).
-4) Select the highest-priority issue without dependencies.
+4) Select the highest-priority selectable issue (with all dependencies resolved).
 5) Follow the YODA Flow for that issue.
 
 Example natural entry phrase:
 "Vamos entrar no YODA Flow e pegar a issue prioritaria sem dependencias."
 Entry phrase criteria:
-- Must explicitly mention "YODA Flow" (or "YODA") and intent to take the highest-priority issue without dependencies.
+- Must explicitly mention "YODA Flow" (or "YODA") and intent to take the highest-priority selectable issue (with all dependencies resolved).
 
 Slug format:
 - Use lowercase ASCII, digits, and hyphens only.
@@ -77,4 +77,4 @@ This implementation does not have YODA scripts yet. Until they exist:
 ## Notes
 
 - If the TODO file is missing, ask the user which TODO to use (default: yoda/todos/TODO.alex.md).
-- If the top issue has dependencies, move to the next issue without dependencies.
+- If the top issue has dependencies, move to the next selectable issue (with all dependencies resolved).
