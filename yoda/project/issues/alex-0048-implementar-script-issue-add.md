@@ -4,14 +4,14 @@ id: alex-0048
 title: Implementar script de inclusao de issue (issue_add.py)
 slug: implementar-script-issue-add
 description: Implementar o issue_add.py conforme a spec project/specs/18-issue-add-script.md.
-status: doing
+status: done
 priority: 3
 lightweight: false
 agent: Human
 depends_on: [alex-0037]
 pending_reason: ""
 created_at: "2026-01-27T07:07:49-03:00"
-updated_at: "2026-01-27T08:06:38-03:00"
+updated_at: "2026-01-27T08:11:10-03:00"
 entrypoints: []
 tags: [scripts, issue, python]
 origin:
@@ -46,10 +46,10 @@ Entregar o script `yoda/scripts/issue_add.py` conforme a spec, com validacao e s
 - Suporte a `--dev`, `--dry-run`, `--format` e codigos de saida conforme spec.
 
 ## Acceptance criteria
-- [ ] `yoda/scripts/issue_add.py` existe e segue a spec `project/specs/18-issue-add-script.md`.
-- [ ] O script gera `yoda/project/issues/<id>-<slug>.md` a partir do template.
-- [ ] O script atualiza o TODO correto e respeita `--dry-run`.
-- [ ] Validacao embutida impede escrita em caso de erro.
+- [x] `yoda/scripts/issue_add.py` existe e segue a spec `project/specs/18-issue-add-script.md`.
+- [x] O script gera `yoda/project/issues/<id>-<slug>.md` a partir do template.
+- [x] O script atualiza o TODO correto e respeita `--dry-run`.
+- [x] Validacao embutida impede escrita em caso de erro.
 
 ## Dependencies
 - alex-0037
@@ -79,3 +79,9 @@ Not applicable.
 - Conflitos de arquivo/slug devem ser tratados conforme a spec.
 
 ## Result log
+Implementado `yoda/scripts/issue_add.py` com estrutura base em `yoda/scripts/lib/` e suporte a criacao de TODO, issues e logs conforme a spec.
+
+feat(yoda): implementar issue_add.py
+
+Issue: alex-0048
+Path: `yoda/project/issues/alex-0048-implementar-script-issue-add.md`

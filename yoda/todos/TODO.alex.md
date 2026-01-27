@@ -231,7 +231,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-0048 - Implementar script de inclusao de issue (issue_add.py)
 - Descricao: implementar o issue_add.py conforme a spec project/specs/18-issue-add-script.md.
-- Status: doing
+- Status: done
 - Prioridade: 3
 - Dependencias: alex-0037
 
