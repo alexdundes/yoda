@@ -1,0 +1,29 @@
+schema_version: '1.0'
+issue_id: yoda-0008
+issue_path: yoda/project/issues/yoda-0008-implement-todo-next-with-single-issue-rule.md
+todo_id: yoda-0008
+status: done
+entries:
+- timestamp: '2026-01-27T17:57:51-03:00'
+  message: '[yoda-0008] issue_add created
+
+    title: Implement todo_next with single-issue rule
+
+    description: Implement todo_next.py to select only to-do items and block when
+    any issue is doing
+
+    slug: implement-todo-next-with-single-issue-rule'
+- timestamp: '2026-01-27T18:00:20-03:00'
+  message: '[yoda-0008] todo_update
+
+    status: to-do -> doing'
+- timestamp: '2026-01-27T18:01:15-03:00'
+  message: '[yoda-0008] implement: added todo_next.py with single-issue blocking and
+    to-do-only selection'
+- timestamp: '2026-01-27T18:01:19-03:00'
+  message: '[yoda-0008] todo_update
+
+    status: doing -> done'
+- timestamp: '2026-01-27T18:01:24-03:00'
+  message: '[yoda-0008] evaluate: acceptance criteria checked and result log updated
+    in issue'

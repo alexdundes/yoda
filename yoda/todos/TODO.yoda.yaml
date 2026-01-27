@@ -2,7 +2,7 @@ schema_version: '1.0'
 developer_name: Yoda
 developer_slug: yoda
 timezone: America/Sao_Paulo
-updated_at: '2026-01-27T17:54:38-03:00'
+updated_at: '2026-01-27T18:01:19-03:00'
 issues:
 - schema_version: '1.0'
   id: yoda-0001
@@ -133,6 +133,26 @@ issues:
   pending_reason: ''
   created_at: '2026-01-27T17:22:15-03:00'
   updated_at: '2026-01-27T17:54:38-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0008
+  title: Implement todo_next with single-issue rule
+  slug: implement-todo-next-with-single-issue-rule
+  description: Implement todo_next.py to select only to-do items and block when any
+    issue is doing
+  status: done
+  priority: 5
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T17:57:51-03:00'
+  updated_at: '2026-01-27T18:01:19-03:00'
   entrypoints: []
   tags: []
   origin:
