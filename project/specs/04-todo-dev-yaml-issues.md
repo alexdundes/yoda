@@ -133,6 +133,8 @@ todo_next.py must select the next issue using:
 
 Selection rules:
 
+- If any issue is `doing`, no selection is allowed; `todo_next.py` must return a conflict error.
+- Only issues with status `to-do` are selectable.
 - Issues with status `pending` are not selectable; they must be reported with pending_reason.
 - Issues with unresolved depends_on are not selectable.
 - If no selectable issues exist, return an error that lists pending items and blocked dependencies.

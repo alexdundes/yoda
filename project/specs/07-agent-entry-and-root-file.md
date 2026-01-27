@@ -18,7 +18,7 @@ Agent tools do not agree on which file to read (`AGENTS.md`, `gemini.md`, etc.).
 ## Simplified entry flow
 
 1) User starts the agent with zero context.
-2) User types a natural phrase indicating entering YODA Flow and taking the highest-priority selectable issue (with all dependencies resolved).
+2) User types a natural phrase indicating entering YODA Flow and taking the highest-priority selectable issue (with all dependencies resolved, and no issue currently `doing`).
    - The phrase must explicitly mention "YODA Flow" (or "YODA") and intent to take the highest-priority selectable issue (with all dependencies resolved).
    - Example: "Vamos entrar no YODA Flow e pegar a issue prioritaria sem dependencias."
 3) Agent reads `yoda/yoda.md`.
@@ -27,5 +27,5 @@ Agent tools do not agree on which file to read (`AGENTS.md`, `gemini.md`, etc.).
    - YODA_DEV environment variable
    - Ask the user (fallback)
    - Slug format: lowercase ASCII, digits, and hyphens only; must start with a letter; no spaces.
-5) Agent loads `yoda/todos/TODO.<dev>.yaml`, selects the highest-priority selectable issue (with all dependencies resolved) using the canonical id, and follows the flow.
+5) Agent loads `yoda/todos/TODO.<dev>.yaml`, selects the highest-priority selectable issue (status `to-do`, dependencies resolved, and no issue `doing`) using the canonical id, and follows the flow.
    - If the expected TODO file is missing, ask the user which TODO to use.

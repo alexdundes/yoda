@@ -72,6 +72,7 @@ When `--format json` (or `--json`) is used, scripts must emit a JSON object with
   - `todo_path`
   - `pending`
   - `blocked`
+  - `doing`
 
 ## Required scripts
 
@@ -177,6 +178,8 @@ Purpose:
 
 Behavior (minimum):
 - Select highest priority issue without unresolved dependencies.
+- If any issue is `doing`, exit with conflict and report the doing list.
+- Only `to-do` issues are selectable.
 - Tie-breaker: position in the YAML list (top to bottom).
 - Skip issues with pending status.
 - If no selectable issues exist, exit with an error and list pending items and blocked dependencies.
@@ -190,6 +193,7 @@ Outputs:
  
 Notes:
 - If any pending issues exist, include a hint listing them and their reasons, even when a selectable issue exists.
+- If any `doing` issues exist, return conflict and list them to enforce one-at-a-time execution.
 
 ---
 

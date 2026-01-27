@@ -40,17 +40,18 @@ Global flags:
 1) Resolve developer slug using the standard order: `--dev`, `YODA_DEV`, interactive prompt.
 2) Resolve TODO path (default or `--todo`). If missing, exit with code 3.
 3) Load the TODO and validate the schema. If validation fails, exit with code 2.
-4) Build a list of selectable issues:
-   - status is not `pending`.
+4) If any issue has status `doing`, exit with code 4 (conflict) and include the list of doing issues in the output.
+5) Build a list of selectable issues:
+   - status is `to-do` only.
    - all `depends_on` ids are present and have status `done`.
-5) Select the next issue using deterministic rules:
+6) Select the next issue using deterministic rules:
    - highest priority first (desc).
    - tie-breaker: order in the YAML list (top to bottom).
-6) Collect pending issues (status = `pending`) with their `pending_reason`.
-7) Collect blocked issues (unresolved `depends_on`) with the blocking ids.
-8) If no selectable issues exist, exit with code 3 and include pending/blocked lists in the output.
-9) If a selectable issue exists, output the selected issue plus a pending hint whenever pending issues exist.
-10) If `--dry-run` is set, perform all steps except file writes. Output a summary and exit 0.
+7) Collect pending issues (status = `pending`) with their `pending_reason`.
+8) Collect blocked issues (unresolved `depends_on`) with the blocking ids.
+9) If no selectable issues exist, exit with code 3 and include pending/blocked lists in the output.
+10) If a selectable issue exists, output the selected issue plus a pending hint whenever pending issues exist.
+11) If `--dry-run` is set, perform all steps except file writes. Output a summary and exit 0.
 
 ## Output
 
@@ -64,6 +65,11 @@ On failure (no selectable issues), the script outputs:
 - Error message (not found)
 - Pending list (if any)
 - Blocked list (if any)
+
+On conflict (doing issues exist), the script outputs:
+- Error message (conflict)
+- Doing list
+- Pending list (if any)
 
 ## Pending hint (always-on)
 
@@ -85,5 +91,5 @@ Validation failures must exit with code 2 and write no files.
   - `1`: general error
   - `2`: validation error
   - `3`: not found (missing TODO or no selectable issues)
-  - `4`: conflict (unused by todo_next in v1)
+  - `4`: conflict (one or more issues are already `doing`)
 - Errors must be written to stderr and include an actionable message.

@@ -23,3 +23,26 @@ entries:
 - timestamp: '2026-01-27T17:32:53-03:00'
   message: '[yoda-0007] evaluate: acceptance criteria checked and result log updated
     in issue'
+- timestamp: '2026-01-27T17:44:25-03:00'
+  message: '[yoda-0007] todo_update
+
+    status: done -> doing
+
+    pending_reason:  -> Reopening to revise todo_next selection rules'
+- timestamp: '2026-01-27T17:44:33-03:00'
+  message: '[yoda-0007] todo_update
+
+    pending_reason: Reopening to revise todo_next selection rules ->'
+- timestamp: '2026-01-27T17:53:30-03:00'
+  message: '[yoda-0007] document: added single-issue (doing blocks) and to-do-only
+    selection requirements'
+- timestamp: '2026-01-27T17:54:34-03:00'
+  message: '[yoda-0007] implement: updated selection rules to enforce single-issue
+    execution and to-do-only selection'
+- timestamp: '2026-01-27T17:54:38-03:00'
+  message: '[yoda-0007] todo_update
+
+    status: doing -> done'
+- timestamp: '2026-01-27T17:54:44-03:00'
+  message: '[yoda-0007] evaluate: acceptance criteria checked and result log updated
+    in issue'
