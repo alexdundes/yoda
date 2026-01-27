@@ -249,7 +249,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-0041 - Resolver inconsistencias de front matter nas issues antigas
 - Descricao: escolher entre backfill de front matter em alex-0001..alex-0026 ou documentar excecao de bootstrap no 15-bootstrap.md.
-- Status: to-do
+- Status: done
 - Prioridade: 6
 - Dependencias: nenhuma
 
