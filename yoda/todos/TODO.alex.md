@@ -235,6 +235,18 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 - Prioridade: 3
 - Dependencias: alex-0037
 
+### alex-0049 - Especificar script de log (log_add.py)
+- Descricao: especificar o log_add.py e criar a spec em project/specs/19-log-add-script.md.
+- Status: done
+- Prioridade: 3
+- Dependencias: alex-0014
+
+### alex-0050 - Implementar script de log (log_add.py)
+- Descricao: implementar o log_add.py conforme a spec project/specs/19-log-add-script.md.
+- Status: done
+- Prioridade: 3
+- Dependencias: alex-0049
+
 ### alex-0038 - Corrigir links quebrados em project/specs
 - Descricao: padronizar links para repo-root (ex.: /yoda/..., /AGENTS.md, /gemini.md) em arquivos de project/specs para evitar caminhos invalidos.
 - Status: done

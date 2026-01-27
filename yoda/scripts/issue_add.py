@@ -68,14 +68,12 @@ def _detect_local_timezone() -> str:
     if tz_env and _is_valid_timezone(tz_env):
         return tz_env
 
-    localtime = Path("/etc/localtime")
     try:
-        if localtime.exists():
-            target = localtime.resolve()
-            parts = target.parts
-            if "zoneinfo" in parts:
-                idx = parts.index("zoneinfo")
-                candidate = "/".join(parts[idx + 1 :])
+        realpath = os.path.realpath("/etc/localtime")
+        for marker_name in ("zoneinfo", "zoneinfo.default", "zoneinfo.posix"):
+            marker = f"{os.sep}{marker_name}{os.sep}"
+            if marker in realpath:
+                candidate = realpath.split(marker, 1)[1]
                 if candidate and _is_valid_timezone(candidate):
                     return candidate
     except Exception:
