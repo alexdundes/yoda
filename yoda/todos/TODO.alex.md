@@ -277,6 +277,12 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 - Prioridade: 4
 - Dependencias: nenhuma
 
+### alex-0046 - Corrigir espaco apos inline code no yoda.md
+- Descricao: adicionar espaco apos inline-code em yoda/yoda.md para melhorar legibilidade.
+- Status: done
+- Prioridade: 4
+- Dependencias: nenhuma
+
 ## Observacoes
 
 - Cada item acima deve gerar um arquivo de issue em yoda/project/issues/.

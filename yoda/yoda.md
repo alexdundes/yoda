@@ -44,10 +44,10 @@ Slug format:
 
 This implementation does not have YODA scripts yet. Until they exist:
 
-- Use `yoda/todos/TODO.<slug>.md`as the TODO source.
-- If `yoda/todos/TODO.<slug>.md`is missing, ask the user which TODO to use (suggest yoda/todos/TODO.alex.md as the default).
+- Use `yoda/todos/TODO.<slug>.md` as the TODO source.
+- If `yoda/todos/TODO.<slug>.md` is missing, ask the user which TODO to use (suggest yoda/todos/TODO.alex.md as the default).
 - Do not edit TODO files beyond status/pending updates unless the user requests it.
-- Update `yoda/todos/TODO.<slug>.md`status/pending fields to reflect progress and completion.
+- Update `yoda/todos/TODO.<slug>.md` status/pending fields to reflect progress and completion.
 - A future migration will replace this with `TODO.<dev>.yaml` and scripts.
 - Bootstrap does not allow coexistence of `TODO.<dev>.md` and `TODO.<dev>.yaml`; only one format exists at a time.
 - The future framework expects YAML TODOs and YAML logs; this repo stays on Markdown until scripts exist.
