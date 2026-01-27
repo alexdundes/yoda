@@ -2,7 +2,7 @@ schema_version: '1.0'
 developer_name: Yoda
 developer_slug: yoda
 timezone: America/Sao_Paulo
-updated_at: '2026-01-27T17:16:44-03:00'
+updated_at: '2026-01-27T17:20:00-03:00'
 issues:
 - schema_version: '1.0'
   id: yoda-0001
@@ -105,14 +105,14 @@ issues:
   slug: review-and-retire-dicas-do-chatgpt
   description: Review yoda/dicas-do-chatgpt.md; if contents are fully captured elsewhere,
     remove the file
-  status: to-do
+  status: done
   priority: 5
   lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-27T16:47:31-03:00'
-  updated_at: '2026-01-27T16:47:31-03:00'
+  updated_at: '2026-01-27T17:20:00-03:00'
   entrypoints: []
   tags: []
   origin:

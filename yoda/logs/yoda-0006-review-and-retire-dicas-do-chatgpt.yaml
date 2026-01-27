@@ -2,7 +2,7 @@ schema_version: '1.0'
 issue_id: yoda-0006
 issue_path: yoda/project/issues/yoda-0006-review-and-retire-dicas-do-chatgpt.md
 todo_id: yoda-0006
-status: to-do
+status: done
 entries:
 - timestamp: '2026-01-27T16:47:31-03:00'
   message: '[yoda-0006] issue_add created
@@ -15,3 +15,16 @@ entries:
     slug: review-and-retire-dicas-do-chatgpt'
 - timestamp: '2026-01-27T17:15:11-03:00'
   message: '[yoda-0006] docs: removed obsolete result-log comment from issue markdown'
+- timestamp: '2026-01-27T17:19:32-03:00'
+  message: '[yoda-0006] document: mapped dicas items to current spec locations; proceed
+    to remove if redundant'
+- timestamp: '2026-01-27T17:19:57-03:00'
+  message: '[yoda-0006] implement: removed yoda/dicas-do-chatgpt.md after confirming
+    coverage'
+- timestamp: '2026-01-27T17:20:00-03:00'
+  message: '[yoda-0006] todo_update
+
+    status: to-do -> done'
+- timestamp: '2026-01-27T17:20:04-03:00'
+  message: '[yoda-0006] evaluate: acceptance criteria checked and result log updated
+    in issue'

@@ -1,8 +1,9 @@
 ---
 agent: Human
-created_at: '2026-01-27T16:44:23-03:00'
+created_at: '2026-01-27T16:47:31-03:00'
 depends_on: []
-description: Review yoda/dicas-do-chatgpt.md; if contents are fully captured elsewhere, remove the file
+description: Review yoda/dicas-do-chatgpt.md; if contents are fully captured elsewhere,
+  remove the file
 entrypoints: []
 id: yoda-0006
 lightweight: false
@@ -14,10 +15,10 @@ pending_reason: ''
 priority: 5
 schema_version: '1.0'
 slug: review-and-retire-dicas-do-chatgpt
-status: to-do
+status: done
 tags: []
 title: Review and retire dicas-do-chatgpt
-updated_at: '2026-01-27T16:44:23-03:00'
+updated_at: '2026-01-27T17:20:00-03:00'
 ---
 
 # yoda-0006 - Review and retire dicas-do-chatgpt
@@ -46,9 +47,9 @@ Either absorb remaining valid guidance into specs/issues or remove the file if i
 - If no unique guidance remains, delete the file.
 
 ## Acceptance criteria
-- [ ] A review of `yoda/dicas-do-chatgpt.md` is completed.
-- [ ] Any missing guidance is moved into specs or tracked by issues.
-- [ ] The file is removed if redundant.
+- [x] A review of `yoda/dicas-do-chatgpt.md` is completed.
+- [x] Any missing guidance is moved into specs or tracked by issues.
+- [x] The file is removed if redundant.
 
 ## Dependencies
 None.
@@ -60,7 +61,12 @@ None.
   type: doc
 
 ## Implementation notes
-Cross-check against the recent issues created from dicas-do-chatgpt feedback.
+Cross-check against the recent issues created from dicas-do-chatgpt feedback and confirm the current locations:
+- Slug immutability: `project/specs/04-todo-dev-yaml-issues.md` + `project/specs/00-conventions.md`.
+- log_add slug resolution: `project/specs/19-log-add-script.md`.
+- JSON output minimums: `project/specs/13-yoda-scripts-v1.md`.
+- Happy path: `project/specs/05-scripts-and-automation.md`.
+- Markdown indent fix: `project/specs/02-yoda-flow-process.md`.
 
 ## Tests
 Not applicable.
@@ -69,9 +75,10 @@ Not applicable.
 - Removing the file without capturing a unique requirement could lose intent.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
+Confirmed all items are already captured in specs or completed issues; removed `yoda/dicas-do-chatgpt.md` as redundant.
+
+Commit suggestion:
+docs: retire dicas-do-chatgpt
+
+Issue: `yoda-0006`
+Path: `yoda/project/issues/yoda-0006-review-and-retire-dicas-do-chatgpt.md`
