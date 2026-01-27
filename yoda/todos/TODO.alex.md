@@ -267,7 +267,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-0044 - Adicionar placeholder para yoda/scripts
 - Descricao: criar yoda/scripts/ com README.md (ou .gitkeep) explicando que e placeholder ate scripts v1.
-- Status: to-do
+- Status: done
 - Prioridade: 4
 - Dependencias: nenhuma
 
