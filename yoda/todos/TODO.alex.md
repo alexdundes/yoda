@@ -247,6 +247,18 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 - Prioridade: 3
 - Dependencias: alex-0049
 
+### alex-0051 - Especificar script de atualizacao de TODO (todo_update.py)
+- Descricao: especificar o todo_update.py e criar a spec em project/specs/20-todo-update-script.md.
+- Status: done
+- Prioridade: 3
+- Dependencias: alex-0010
+
+### alex-0052 - Implementar script de atualizacao de TODO (todo_update.py)
+- Descricao: implementar o todo_update.py conforme a spec project/specs/20-todo-update-script.md.
+- Status: to-do
+- Prioridade: 3
+- Dependencias: alex-0051
+
 ### alex-0038 - Corrigir links quebrados em project/specs
 - Descricao: padronizar links para repo-root (ex.: /yoda/..., /AGENTS.md, /gemini.md) em arquivos de project/specs para evitar caminhos invalidos.
 - Status: done
