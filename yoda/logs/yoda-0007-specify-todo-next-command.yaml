@@ -1,0 +1,25 @@
+schema_version: '1.0'
+issue_id: yoda-0007
+issue_path: yoda/project/issues/yoda-0007-specify-todo-next-command.md
+todo_id: yoda-0007
+status: done
+entries:
+- timestamp: '2026-01-27T17:22:15-03:00'
+  message: '[yoda-0007] issue_add created
+
+    title: Specify todo_next command
+
+    description: Write a spec for todo_next.py behavior, inputs, outputs, and error
+    handling
+
+    slug: specify-todo-next-command'
+- timestamp: '2026-01-27T17:32:45-03:00'
+  message: '[yoda-0007] implement: added todo_next spec, updated scripts v1 JSON contract,
+    and added spec index entry'
+- timestamp: '2026-01-27T17:32:49-03:00'
+  message: '[yoda-0007] todo_update
+
+    status: to-do -> done'
+- timestamp: '2026-01-27T17:32:53-03:00'
+  message: '[yoda-0007] evaluate: acceptance criteria checked and result log updated
+    in issue'

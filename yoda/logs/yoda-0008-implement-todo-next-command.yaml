@@ -1,0 +1,14 @@
+schema_version: '1.0'
+issue_id: yoda-0008
+issue_path: yoda/project/issues/yoda-0008-implement-todo-next-command.md
+todo_id: yoda-0008
+status: to-do
+entries:
+- timestamp: '2026-01-27T17:22:19-03:00'
+  message: '[yoda-0008] issue_add created
+
+    title: Implement todo_next command
+
+    description: Implement todo_next.py per spec, including selection rules and outputs
+
+    slug: implement-todo-next-command'

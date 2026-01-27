@@ -66,6 +66,12 @@ When `--format json` (or `--json`) is used, scripts must emit a JSON object with
   - `log_path`
   - `timestamp`
   - `dry_run`
+- `todo_next.py`:
+  - `issue_id`
+  - `issue_path`
+  - `todo_path`
+  - `pending`
+  - `blocked`
 
 ## Required scripts
 
@@ -183,7 +189,7 @@ Outputs:
 - Issue id and path.
  
 Notes:
-- If any pending issues exist, include a hint listing them and their reasons.
+- If any pending issues exist, include a hint listing them and their reasons, even when a selectable issue exists.
 
 ---
 

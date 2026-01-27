@@ -43,3 +43,5 @@ This README organizes the topics discussed so far. Each topic has a dedicated fi
    - file: `14-out-of-scope.md`
 15. Python structure for YODA scripts
     - file: `15-scripts-python-structure.md`
+16. Script specs (commands)
+    - files: `18-issue-add-script.md`, `19-log-add-script.md`, `20-todo-update-script.md`, `21-todo-next-script.md`
