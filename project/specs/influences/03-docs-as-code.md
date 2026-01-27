@@ -213,9 +213,9 @@ These are guidance-level norms to shape YODA Framework specs and agent behavior.
 ### MUST
 
 * **MUST** store YODA specs, issues, and metadata in **version control**, in **plain-text** formats suitable for diffs. ([Write the Docs][1])
-* **MUST** review doc/spec changes via **pull requests** (or equivalent review mechanism), not “direct edits on main,” **quando houver fluxo PR/CI**. ([GitHub Docs][2])
+* **MUST** review doc/spec changes via **pull requests** (or equivalent review mechanism), not “direct edits on main,” **when a PR/CI workflow exists**. ([GitHub Docs][2])
 * **MUST** define a minimal **content model** for YODA documents (required sections/fields for each doc type) so agents do not invent structure. ([GitHub Docs][6])
-* **MUST** run automated validation in CI for YODA artifacts (at minimum: schema checks for YAML, reference/link integrity, and required-section checks), **v2+ / quando CI existir**. ([Write the Docs][1])
+* **MUST** run automated validation in CI for YODA artifacts (at minimum: schema checks for YAML, reference/link integrity, and required-section checks), **v2+ / when CI exists**. ([Write the Docs][1])
 
 ### SHOULD
 

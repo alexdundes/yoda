@@ -120,7 +120,7 @@ These are **guidance-level norms** to shape YODA Framework specs and agent behav
 * **MUST** treat the Issue (and referenced spec docs) as the **contract**; implementation that contradicts docs is considered wrong until docs are updated. ([Gist][1])
 * **MUST** include **explicit acceptance criteria** (even if small) for any implementable issue. ([Gist][1])
 * **MUST** record **error behavior** and constraints when relevant (inputs, preconditions, failure modes). ([Gist][1])
-* **MUST** keep docs in version control and review changes via PR-style workflow (Docs-as-Code), **quando houver fluxo PR/CI**. ([Write the Docs][4])
+* **MUST** keep docs in version control and review changes via PR-style workflow (Docs-as-Code), **when a PR/CI workflow exists**. ([Write the Docs][4])
 
 ### SHOULD
 

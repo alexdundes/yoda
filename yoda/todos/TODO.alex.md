@@ -271,6 +271,12 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 - Prioridade: 4
 - Dependencias: nenhuma
 
+### alex-0045 - Corrigir trechos em portugues nos influences
+- Descricao: substituir trechos em portugues por ingles nos influences para alinhar com a politica de idioma.
+- Status: done
+- Prioridade: 4
+- Dependencias: nenhuma
+
 ## Observacoes
 
 - Cada item acima deve gerar um arquivo de issue em yoda/project/issues/.
