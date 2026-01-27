@@ -4,6 +4,24 @@
 
 Define how the AI acts in the YODA Framework at each stage of the flow.
 
+## Entry and selection (script-backed)
+
+When the human signals intent to start YODA Flow (example phrases: "Let's do YODA Flow", "YODA Flow, here we go", "YODA Flow, next issue"), the agent must:
+
+1) Resolve developer slug (flag, env, or ask).
+2) Call `todo_next.py` to select the next issue.
+3) If `todo_next.py` returns conflict (any `doing` issues), stop and ask the human to resolve/close the `doing` issue.
+4) Always surface pending hints (if any). If `todo_next.py` returns not found, also surface blocked hints and ask the human what to do next.
+5) If a selectable issue is returned, ask for confirmation: “Start YODA Flow for issue dev-0001?” (translate to the human's language if needed).
+6) If approved, set status to `doing` with `todo_update.py` and enter Study.
+
+Example script calls:
+
+```
+python3 yoda/scripts/todo_next.py --dev <slug>
+python3 yoda/scripts/todo_update.py --dev <slug> --issue <id> --status doing
+```
+
 ## Phases
 
 Deliverables per phase are defined in `project/specs/02-yoda-flow-process.md` and must be followed.
@@ -15,22 +33,43 @@ Deliverables per phase are defined in `project/specs/02-yoda-flow-process.md` an
 - Produce summaries when requested.
 - Deliverable: summary in developer language, plus pending questions/decisions.
 - Wait for explicit human instruction before moving to the next step.
+- If the human requests `pending`, set status with `todo_update.py --status pending --pending-reason "<reason>"` and pause the flow.
+- If Study discovers dependencies, update `depends_on` (and priority if needed) via `todo_update.py`, set status back to `to-do`, and end the cycle.
+
+Example script calls:
+
+```
+python3 yoda/scripts/todo_update.py --dev <slug> --issue <id> --status pending --pending-reason "<reason>"
+python3 yoda/scripts/todo_update.py --dev <slug> --issue <id> --depends-on "<id-1>,<id-2>" --priority <n>
+```
 
 ### Document
 
 - Create or update the issue Markdown file.
-- Generate a skeleton via script when available.
 - Prioritize clarity, scope, and criteria.
 - Deliverable: issue updated with Study details and acceptance criteria checkboxes.
 - Ask the human to approve the issue text; if rejected, return to Study.
+- Log key decisions and issue edits with `log_add.py`.
+
+Example script call:
+
+```
+python3 yoda/scripts/log_add.py --dev <slug> --issue <id> --message "[<id>] document: summary of edits/decisions"
+```
 
 ### Implement
 
 - Read the issue Markdown file and existing code.
 - Implement only what is documented.
-- Use scripts to create structure when needed.
 - Deliverable: code changes and tests updated (or marked not applicable).
 - Mark acceptance criteria checkboxes when satisfied.
+- If new decisions arise outside the spec/issue, log them with `log_add.py`.
+
+Example script call:
+
+```
+python3 yoda/scripts/log_add.py --dev <slug> --issue <id> --message "[<id>] implement: decision not in spec"
+```
 
 ### Evaluate
 
@@ -46,6 +85,15 @@ Deliverables per phase are defined in `project/specs/02-yoda-flow-process.md` an
 - Record the cycle log at `yoda/logs/<id>-<slug>.yaml`.
 - If a blocker arises, mark status as pending and record the reason in `yoda/todos/TODO.<dev>.yaml`; use the pending resolution script when unblocked.
 - Deliverable: result log updated, commit suggestion written, TODO status updated, log entry recorded.
+- If the human approves, set status to `done` with `todo_update.py`. If the human rejects, return to Study.
+- After completion, call `todo_next.py` and offer to start the next YODA Flow or exit to non-YODA work.
+
+Example script calls:
+
+```
+python3 yoda/scripts/todo_update.py --dev <slug> --issue <id> --status done
+python3 yoda/scripts/todo_next.py --dev <slug>
+```
 
 ## General rules
 
@@ -57,3 +105,4 @@ Deliverables per phase are defined in `project/specs/02-yoda-flow-process.md` an
 - Any change to `project/specs/` must be tracked by an issue.
 - When scripts are available, use them for metadata changes.
 - Ensure validation passes before marking issues as done; resolve validation errors first.
+- Issue creation (`issue_add.py`) is out of scope for YODA Flow and defined elsewhere.

@@ -1,0 +1,45 @@
+schema_version: '1.0'
+issue_id: yoda-0010
+issue_path: yoda/project/issues/yoda-0010-update-agent-playbook-to-use-scripts.md
+todo_id: yoda-0010
+status: done
+entries:
+- timestamp: '2026-01-27T19:14:48-03:00'
+  message: '[yoda-0010] issue_add created
+
+    title: Update agent playbook to use scripts
+
+    description: Revise 06-agent-playbook.md and yoda/yoda.md to reflect YODA Flow
+    with available scripts
+
+    slug: update-agent-playbook-to-use-scripts'
+- timestamp: '2026-01-27T20:09:41-03:00'
+  message: '[yoda-0010] document: added pending/depends_on handling and example script
+    invocation requirement'
+- timestamp: '2026-01-27T20:10:46-03:00'
+  message: '[yoda-0010] implement: updated playbook and yoda/yoda.md to script-backed
+    flow with examples and pending handling'
+- timestamp: '2026-01-27T20:10:50-03:00'
+  message: '[yoda-0010] todo_update
+
+    status: to-do -> done'
+- timestamp: '2026-01-27T20:10:56-03:00'
+  message: '[yoda-0010] evaluate: acceptance criteria checked and result log updated
+    in issue'
+- timestamp: '2026-01-27T20:25:46-03:00'
+  message: '[yoda-0010] todo_update
+
+    status: done -> doing'
+- timestamp: '2026-01-27T20:35:51-03:00'
+  message: '[yoda-0010] document: switched entry phrases to English, clarified confirmation
+    text, removed skeleton step, and ended cycle when dependencies found'
+- timestamp: '2026-01-27T20:39:24-03:00'
+  message: '[yoda-0010] document: updated confirmation prompt to English with translation
+    note in yoda/yoda.md'
+- timestamp: '2026-01-27T20:40:15-03:00'
+  message: '[yoda-0010] todo_update
+
+    status: doing -> done'
+- timestamp: '2026-01-27T20:46:04-03:00'
+  message: '[yoda-0010] document: clarified pending hints always shown, removed implement
+    ''create structure'' note, and updated entry phrase/blocked wording'

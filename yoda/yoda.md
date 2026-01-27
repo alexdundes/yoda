@@ -11,14 +11,21 @@ When the user indicates they want to enter YODA Flow, the agent must:
    - --dev `<slug>` flag
    - YODA_DEV environment variable
    - Ask the user
-3) Load `yoda/todos/TODO.<dev>.yaml`; if missing, ask the user which TODO to use.
-4) Select the highest-priority selectable issue (with all dependencies resolved).
-5) Follow the YODA Flow for that issue.
+3) Run `todo_next.py` to select the next issue.
+   - Always surface pending hints (if any).
+   - If it returns conflict (any `doing` issue), stop and ask the user to resolve it.
+   - If it returns not found, surface blocked hints and ask what to do next.
+4) Ask for confirmation: "Start YODA Flow for issue <id>?" (translate to the human's language if needed).
+5) If approved, set status to `doing` via `todo_update.py` and follow the YODA Flow.
 
 Example natural entry phrase:
-"Vamos entrar no YODA Flow e pegar a issue prioritaria sem dependencias."
+"Let's enter YODA Flow and take the highest-priority selectable issue (no issue doing, dependencies resolved)."
 Entry phrase criteria:
-- Must explicitly mention "YODA Flow" (or "YODA") and intent to take the highest-priority selectable issue (with all dependencies resolved).
+- Must explicitly mention "YODA Flow" (or "YODA") and intent to take the highest-priority selectable issue.
+Examples (allowed):
+- "Let's do YODA Flow"
+- "YODA Flow, here we go"
+- "YODA Flow, next issue"
 
 Slug format:
 - Use lowercase ASCII, digits, and hyphens only.
@@ -52,6 +59,7 @@ Use `yoda/todos/TODO.<dev>.yaml` as the TODO source.
   - If there is ambiguity, new requirements, or non-trivial risk, include Study.
 - Implement only what is documented in the issue.
 - If a blocker is found, mark the issue as pending and record the reason in the TODO.
+- If Study discovers dependencies, update `depends_on` (and priority if needed) using `todo_update.py`, set status back to `to-do`, and end the cycle.
 - Logs for this project are YAML: `yoda/logs/<id>-<slug>.yaml`.
 - Log entries should include the canonical issue id (dev-id) in the message.
 - Status names: to-do -> doing -> done; any state can transition to pending.
@@ -67,5 +75,5 @@ Use `yoda/todos/TODO.<dev>.yaml` as the TODO source.
 
 ## Notes
 
-- If the TODO file is missing, ask the user which TODO to use.
-- If the top issue has dependencies, move to the next selectable issue (with all dependencies resolved).
+- If the TODO file is missing, `todo_next.py` will fail; ask the user which TODO to use and retry.
+- Issue creation (`issue_add.py`) is out of scope for YODA Flow and defined elsewhere.

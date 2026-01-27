@@ -2,7 +2,7 @@ schema_version: '1.0'
 developer_name: Yoda
 developer_slug: yoda
 timezone: America/Sao_Paulo
-updated_at: '2026-01-27T18:14:19-03:00'
+updated_at: '2026-01-27T20:40:15-03:00'
 issues:
 - schema_version: '1.0'
   id: yoda-0001
@@ -173,6 +173,26 @@ issues:
   pending_reason: ''
   created_at: '2026-01-27T18:04:27-03:00'
   updated_at: '2026-01-27T18:14:19-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0010
+  title: Update agent playbook to use scripts
+  slug: update-agent-playbook-to-use-scripts
+  description: Revise 06-agent-playbook.md and yoda/yoda.md to reflect YODA Flow with
+    available scripts
+  status: done
+  priority: 5
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-27T19:14:48-03:00'
+  updated_at: '2026-01-27T20:40:15-03:00'
   entrypoints: []
   tags: []
   origin:
