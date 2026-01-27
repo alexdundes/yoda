@@ -11,7 +11,7 @@ When the user indicates they want to enter YODA Flow, the agent must:
    - --dev `<slug>` flag
    - YODA_DEV environment variable
    - Ask the user
-3) Load `yoda/todos/TODO.<dev>.md` (bootstrap only); if missing, ask the user which TODO to use (suggest yoda/todos/TODO.alex.md as the default for this repo).
+3) Load `yoda/todos/TODO.<dev>.yaml`; if missing, ask the user which TODO to use.
 4) Select the highest-priority selectable issue (with all dependencies resolved).
 5) Follow the YODA Flow for that issue.
 
@@ -28,30 +28,21 @@ Slug format:
 
 - project/specs/ is the source of truth for the framework and this project.
 - The issue Markdown file is the source of truth for the current issue.
-- If there is a conflict between project/specs and yoda/, assume yoda/ is in bootstrap and do not migrate formats without an explicit issue.
+- If there is a conflict between project/specs and yoda/, resolve it via an explicit issue.
 
 ## Meta-implementation exception (this repo)
 
 - project/specs/ describes the future YODA Framework and is the canonical reference.
-- This repository is a meta-implementation that uses the provisional specs to build the framework itself.
-- yoda/ is the in-progress implementation of that framework and can lag behind the specs while we validate them.
-- While scripts do not exist, this repo temporarily uses Markdown for TODOs and logs:
-  - TODOs: `yoda/todos/TODO.<dev>.md`
-  - Logs: `yoda/logs/<id>-<slug>.md`
-- Bootstrap is temporary; canonical documentation targets the future non-bootstrap phase unless explicitly marked as bootstrap.
+- This repository implements the YODA Framework specs directly.
+- yoda/ is the implementation workspace for the framework.
+- This repository follows the YODA Framework specs as the current source of truth.
 
 ## TODO (this implementation)
 
-This implementation does not have YODA scripts yet. Until they exist:
+Use `yoda/todos/TODO.<dev>.yaml` as the TODO source.
 
-- Use `yoda/todos/TODO.<dev>.md` as the TODO source.
-- If `yoda/todos/TODO.<dev>.md` is missing, ask the user which TODO to use (suggest yoda/todos/TODO.alex.md as the default).
-- Do not edit TODO files beyond status/pending updates unless the user requests it.
-- Update `yoda/todos/TODO.<slug>.md` status/pending fields to reflect progress and completion.
-- A future migration will replace this with `TODO.<dev>.yaml` and scripts.
-- Bootstrap does not allow coexistence of `TODO.<dev>.md` and `TODO.<dev>.yaml`; only one format exists at a time.
-- The future framework expects YAML TODOs and YAML logs; this repo stays on Markdown until scripts exist.
-- When scripts exist, bootstrap ends and bootstrap-specific documentation must be removed.
+- If `yoda/todos/TODO.<dev>.yaml` is missing, ask the user which TODO to use.
+- Do not edit TODO files directly; use scripts to update metadata.
 
 ## Flow rules
 
@@ -61,7 +52,7 @@ This implementation does not have YODA scripts yet. Until they exist:
   - If there is ambiguity, new requirements, or non-trivial risk, include Study.
 - Implement only what is documented in the issue.
 - If a blocker is found, mark the issue as pending and record the reason in the TODO.
-- Logs for this project are in Markdown: `yoda/logs/<id>-<slug>.md`.
+- Logs for this project are YAML: `yoda/logs/<id>-<slug>.yaml`.
 - Log entries should include the canonical issue id (dev-id) in the message.
 - Status names: to-do -> doing -> done; any state can transition to pending.
 - Log timestamps should use ISO 8601 with Brasilia offset (e.g., 2026-01-21T19:40:50-03:00).
@@ -76,5 +67,5 @@ This implementation does not have YODA scripts yet. Until they exist:
 
 ## Notes
 
-- If the TODO file is missing, ask the user which TODO to use (default: yoda/todos/TODO.alex.md).
+- If the TODO file is missing, ask the user which TODO to use.
 - If the top issue has dependencies, move to the next selectable issue (with all dependencies resolved).

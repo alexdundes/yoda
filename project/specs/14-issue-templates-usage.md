@@ -61,8 +61,8 @@ Example:
 
 feat(yoda): add issue template guide
 
-Issue: alex-0005
-Path: `yoda/project/issues/alex-0005-template-issue-regras-uso.md`
+Issue: dev-0005
+Path: `yoda/project/issues/dev-0005-template-issue-regras-uso.md`
 
 ## Notes
 

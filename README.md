@@ -114,10 +114,8 @@ Scripts podem gerar esqueletos Markdown a partir do YAML e produzir resumos para
 
 - `project/specs/` descreve o YODA Framework futuro e e a fonte da verdade.
 - `yoda/` e a implementacao em construcao desses specs e pode estar incompleta.
-- Enquanto os scripts nao existem, este repo usa Markdown como excecao temporaria:
-  - TODOs em `yoda/todos/TODO.<dev>.md`
-- Logs em `yoda/logs/<id>-<slug>.md`
-- Bootstrap e provisório; a documentacao e os specs focam a fase futura nao-bootstrap, com excecoes marcadas como bootstrap.
+- TODOs em `yoda/todos/TODO.<dev>.yaml`.
+- Logs em `yoda/logs/<id>-<slug>.yaml`.
 
 ## Entrada do agent
 
@@ -125,7 +123,7 @@ Scripts podem gerar esqueletos Markdown a partir do YAML e produzir resumos para
 - `AGENTS.md` ou `gemini.md` apontam para esse arquivo.
 - A entrada pode ser uma frase natural indicando entrar no YODA Flow e pegar a issue prioritaria sem dependencias.
   - A frase deve mencionar "YODA Flow" (ou "YODA") e a intencao de pegar a issue de maior prioridade sem dependencias.
-- Se o TODO esperado nao existir, o agent pergunta qual TODO usar (padrao: `yoda/todos/TODO.alex.md`).
+- Se o TODO esperado nao existir, o agent pergunta qual TODO usar.
 
 ## Automacao (conceitual)
 
@@ -137,7 +135,6 @@ O YODA espera scripts leves que:
 
 Os scripts ficam em `yoda/scripts`, sao feitos em Python e o nome do arquivo e o comando (ex.: `init.py`).
 Logs do ciclo ficam em `yoda/logs/<id>-<slug>.yaml` no framework final.
-Nesta meta-implementacao, usamos `yoda/logs/<id>-<slug>.md` ate os scripts existirem.
 
 ## Formato de commit
 

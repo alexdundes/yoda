@@ -6,12 +6,12 @@ This repository is a meta-implementation of the YODA Framework.
 
 - project/specs/ is the source of truth for the future YODA Framework.
 - yoda/ is the implementation workspace under construction.
-- Until scripts v1 exist, yoda/ uses Markdown for TODOs and logs by design.
+- yoda/ is aligned with the framework specs and uses YAML-based TODOs and logs.
 
 ## Guardrails
 
 - Do not "fix" yoda/ to match project/specs without an explicit issue.
-- If there is a conflict, assume yoda/ is in bootstrap and do not migrate formats.
+- If there is a conflict, prioritize project/specs/ and resolve via an explicit issue.
 
 ## Entry order for agents
 

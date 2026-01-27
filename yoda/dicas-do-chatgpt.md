@@ -34,10 +34,6 @@ Este arquivo registra refinamentos sugeridos apos revisar o ZIP mais recente. Na
 - Em `project/specs/02-yoda-flow-process.md` ha um bullet indentado errado ("Next issue selection...").
 - Ajuste apenas de renderizacao/leitura.
 
-6) Bootstrap dentro de specs
-- Hoje `project/specs/15-bootstrap.md` esta marcado como informativo e temporario.
-- Se quiser manter `project/specs` 100% framework futuro, mover esse arquivo para fora e deixar referencia externa.
-- Nao e impeditivo; e escolha de pureza documental.
 
 ## Observacao final
 

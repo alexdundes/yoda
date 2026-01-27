@@ -1,17 +1,9 @@
-mode: bootstrap
+mode: framework
 
 source_of_truth:
   framework_specs: project/specs
 
 implementation_root: yoda
-
-bootstrap:
-  todo:
-    format: markdown
-    glob: yoda/todos/TODO.*.md
-  logs:
-    format: markdown
-    glob: yoda/logs/*.md
 
 target:
   todo:

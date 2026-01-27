@@ -113,7 +113,7 @@ Timestamps:
 
 If `yoda/todos/TODO.<dev>.yaml` does not exist, `issue_add.py` must create it with these defaults before creating the issue:
 - `schema_version: "1.0"`
-- `developer_name`: derive from `<dev>` by title-casing (example: `alex` -> `Alex`).
+- `developer_name`: derive from `<dev>` by title-casing (example: `dev` -> `Dev`).
 - `developer_slug`: `<dev>`
 - `timezone`: local machine timezone (IANA TZ name when available)
 - `updated_at`: current timestamp
