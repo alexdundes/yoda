@@ -1,0 +1,32 @@
+schema_version: '1.0'
+issue_id: yoda-0009
+issue_path: yoda/project/issues/yoda-0009-add-unit-tests-for-yoda-scripts.md
+todo_id: yoda-0009
+status: done
+entries:
+- timestamp: '2026-01-27T18:04:27-03:00'
+  message: '[yoda-0009] issue_add created
+
+    title: Add unit tests for YODA scripts
+
+    description: Create unit tests for implemented scripts, starting with todo_next
+    and existing helpers
+
+    slug: add-unit-tests-for-yoda-scripts'
+- timestamp: '2026-01-27T18:12:16-03:00'
+  message: '[yoda-0009] todo_update
+
+    status: to-do -> doing'
+- timestamp: '2026-01-27T18:12:29-03:00'
+  message: '[yoda-0009] document: expanded requirements to cover all scripts, pytest,
+    and cleanup for dev test'
+- timestamp: '2026-01-27T18:14:06-03:00'
+  message: '[yoda-0009] implement: added pytest suite for scripts with dev test fixtures
+    and cleanup'
+- timestamp: '2026-01-27T18:14:19-03:00'
+  message: '[yoda-0009] todo_update
+
+    status: doing -> done'
+- timestamp: '2026-01-27T18:14:23-03:00'
+  message: '[yoda-0009] evaluate: acceptance criteria checked and result log updated
+    in issue'
