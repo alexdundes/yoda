@@ -24,3 +24,5 @@ entries:
 - timestamp: '2026-01-27T17:04:51-03:00'
   message: '[yoda-0002] evaluate: acceptance criteria checked and result log updated
     in issue'
+- timestamp: '2026-01-27T17:14:55-03:00'
+  message: '[yoda-0002] docs: removed obsolete result-log comment from issue markdown'

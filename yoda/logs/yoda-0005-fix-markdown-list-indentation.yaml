@@ -12,3 +12,5 @@ entries:
     description: Adjust indentation in 02-yoda-flow-process.md for list consistency
 
     slug: fix-markdown-list-indentation'
+- timestamp: '2026-01-27T17:15:07-03:00'
+  message: '[yoda-0005] docs: removed obsolete result-log comment from issue markdown'
