@@ -4,14 +4,14 @@ id: alex-0052
 title: Implementar script de atualizacao de TODO (todo_update.py)
 slug: implementar-todo-update
 description: Implementar o todo_update.py conforme a spec project/specs/20-todo-update-script.md.
-status: to-do
+status: done
 priority: 3
 lightweight: false
 agent: Human
 depends_on: [alex-0051]
 pending_reason: ""
 created_at: "2026-01-27T12:42:31-03:00"
-updated_at: "2026-01-27T12:42:31-03:00"
+updated_at: "2026-01-27T13:01:23-03:00"
 entrypoints: []
 tags: [scripts, todo, python]
 origin:
@@ -46,9 +46,9 @@ Entregar o script `yoda/scripts/todo_update.py` conforme a spec, com validacao e
 - Suporte a `--dev`, `--dry-run`, `--format` e codigos de saida conforme spec.
 
 ## Acceptance criteria
-- [ ] `yoda/scripts/todo_update.py` existe e segue a spec `project/specs/20-todo-update-script.md`.
-- [ ] O script atualiza o TODO correto e respeita `--dry-run`.
-- [ ] Validacao embutida impede escrita em caso de erro.
+- [x] `yoda/scripts/todo_update.py` existe e segue a spec `project/specs/20-todo-update-script.md`.
+- [x] O script atualiza o TODO correto e respeita `--dry-run`.
+- [x] Validacao embutida impede escrita em caso de erro.
 
 ## Dependencies
 - alex-0051
@@ -78,3 +78,9 @@ Not applicable.
 - Erros de validacao podem bloquear updates legitimos.
 
 ## Result log
+Implementado `yoda/scripts/todo_update.py` com suporte a atualizacao de campos e append de log via `log_add.py`.
+
+feat(yoda): implementar todo_update.py
+
+Issue: alex-0052
+Path: `yoda/project/issues/alex-0052-implementar-todo-update.md`

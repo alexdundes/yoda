@@ -255,7 +255,7 @@ Leia REPO_INTENT.md para o contexto do repositorio.
 
 ### alex-0052 - Implementar script de atualizacao de TODO (todo_update.py)
 - Descricao: implementar o todo_update.py conforme a spec project/specs/20-todo-update-script.md.
-- Status: to-do
+- Status: done
 - Prioridade: 3
 - Dependencias: alex-0051
 
