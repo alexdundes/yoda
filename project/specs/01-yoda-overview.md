@@ -27,7 +27,7 @@ YODA v1 is stack-agnostic. Stack profiles are not part of the core and are defer
 
 ## Tooling policy
 
-Tooling is mandatory when scripts are available. During bootstrap, tooling is optional.
+Tooling is mandatory when scripts are available.
 
 ## Audience and positioning
 

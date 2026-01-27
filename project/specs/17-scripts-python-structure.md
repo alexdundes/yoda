@@ -88,9 +88,9 @@ Recommended dependencies for v1:
 ## Paths and repo layout
 
 - All paths are relative to repo root.
-- TODO path: `yoda/todos/TODO.<dev>.yaml` (bootstrap: `.md`).
+- TODO path: `yoda/todos/TODO.<dev>.yaml`.
 - Issue path: `yoda/project/issues/<id>-<slug>.md`.
-- Log path: `yoda/logs/<id>-<slug>.yaml` (bootstrap: `.md`).
+- Log path: `yoda/logs/<id>-<slug>.yaml`.
 
 ## Tests
 

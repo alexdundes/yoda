@@ -40,7 +40,6 @@ This README organizes the topics discussed so far. Each topic has a dedicated fi
 13. Issue templates usage guide
     - file: `14-issue-templates-usage.md`
 14. Bootstrap (temporary)
-    - file: `15-bootstrap.md`
 15. Out of scope (v1)
    - file: `16-out-of-scope.md`
 16. Python structure for YODA scripts

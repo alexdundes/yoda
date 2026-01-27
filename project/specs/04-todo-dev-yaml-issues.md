@@ -152,7 +152,7 @@ issues:
     status: doing
     priority: 10
     lightweight: false
-    tags: [yoda, bootstrap]
+    tags: [yoda, framework]
     agent: Human
     depends_on: []
     entrypoints:

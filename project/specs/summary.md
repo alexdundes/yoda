@@ -22,14 +22,13 @@ This file records decisions and known open points captured so far.
 - Name: use "YODA Framework" as the primary name (with the Y linked to YAML).
 - Brand voice and terminology: clear, technical, pragmatic; English for canonical specs; standardized terms (YODA Framework, YODA Flow, issue, `yoda/todos/TODO.<dev>.yaml`, agent, script).
 - Stack profiles: YODA v1 is stack-agnostic; profiles are optional, future extensions outside the core.
-- Tooling policy: scripts are mandatory when available; bootstrap is the only exception.
+- Tooling policy: scripts are mandatory when available.
 - Audience and positioning: primary audience is solo developers (one human + one agent); general-purpose framework for tighter control of agent-assisted development.
 - Scope boundaries: out-of-scope items are defined in the v1 list.
 - Flow deliverables: Study/Document/Implement/Evaluate minimums defined, with explicit lightweight rule.
 - Scripts: live in `yoda/scripts/`, written in Python, file name is the command; `init.py` is mandatory.
 - Scripts v1 include issue_add.py to create TODO entries and issue Markdown from templates using basic fields, and issue_render.py to re-render issue Markdown from templates.
 - Logs: one YAML log per issue at `yoda/logs/<id>-<slug>.yaml`.
-- Bootstrap exception: while scripts do not exist, use `yoda/todos/TODO.<dev>.md` and Markdown logs at `yoda/logs/<id>-<slug>.md`; bootstrap is temporary.
 - Commit: include the commit message text inside the issue and show it to the user using this format:
   - First line: conventional commit message.
   - Body:
