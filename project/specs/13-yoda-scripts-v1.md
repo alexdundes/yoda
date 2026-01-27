@@ -45,6 +45,28 @@ Validation:
 - Any script that mutates metadata MUST run validation before writing changes.
 - Validation failures must return exit code 2 and must not write changes.
 
+## JSON output contract (minimum)
+
+When `--format json` (or `--json`) is used, scripts must emit a JSON object with the following minimum keys. Consumers MUST ignore unknown keys for forward compatibility.
+
+- `issue_add.py`:
+  - `issue_id`
+  - `issue_path`
+  - `todo_path`
+  - `log_path`
+  - `template`
+  - `dry_run`
+- `todo_update.py`:
+  - `issue_id`
+  - `updated_fields`
+  - `todo_path`
+  - `dry_run`
+- `log_add.py`:
+  - `issue_id`
+  - `log_path`
+  - `timestamp`
+  - `dry_run`
+
 ## Required scripts
 
 ### init.py
