@@ -32,6 +32,7 @@ Required inputs:
 
 Optional inputs:
 - `--timestamp <iso8601>`: override timestamp (default: now in TODO timezone).
+Note: `log_add.py` does not accept a slug input; it resolves the slug from the TODO item identified by `--issue`.
 
 Global flags:
 - `--dev <slug>`

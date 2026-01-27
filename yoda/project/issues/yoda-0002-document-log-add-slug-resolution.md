@@ -14,10 +14,10 @@ pending_reason: ''
 priority: 5
 schema_version: '1.0'
 slug: document-log-add-slug-resolution
-status: to-do
+status: done
 tags: []
 title: Document log_add slug resolution
-updated_at: '2026-01-27T16:41:42-03:00'
+updated_at: '2026-01-27T17:04:47-03:00'
 ---
 
 # yoda-0002 - Document log_add slug resolution
@@ -29,10 +29,10 @@ Document in the specs that `log_add.py` resolves the slug from the TODO entry (b
 The current implementation loads `yoda/todos/TODO.<dev>.yaml`, locates the issue by id, and derives the slug and paths from that entry. The spec does not explicitly state this resolution or the failure behavior.
 
 ## Objective
-Align the written contract with the implemented behavior of `log_add.py`.
+Align the written contract with the implemented behavior of `log_add.py`, documenting changes only in `project/specs/19-log-add-script.md`.
 
 ## Scope
-- Update the log_add spec to describe slug resolution via TODO.
+- Update `project/specs/19-log-add-script.md` to describe slug resolution via TODO.
 - Note the NOT_FOUND behavior when the issue id or issue file is missing.
 
 ## Out of scope
@@ -44,17 +44,15 @@ Align the written contract with the implemented behavior of `log_add.py`.
 - Clarify that the slug is not supplied via CLI and is derived from TODO.
 
 ## Acceptance criteria
-- [ ] `project/specs/19-log-add-script.md` includes the slug resolution step.
-- [ ] Error behavior for missing issue id/file is documented.
-- [ ] No code changes are required.
+- [x] `project/specs/19-log-add-script.md` includes the slug resolution step.
+- [x] Error behavior for missing issue id/file is documented.
+- [x] No code changes are required.
 
 ## Dependencies
 None.
 
 ## Entry points
 - path: project/specs/19-log-add-script.md
-  type: doc
-- path: project/specs/13-yoda-scripts-v1.md
   type: doc
 - path: yoda/scripts/log_add.py
   type: code
@@ -75,3 +73,10 @@ Body:
 Issue: `<ID>`
 Path: `<issue path>`
 -->
+Documented that `log_add.py` resolves the slug from the TODO item and does not accept slug input, keeping the NOT_FOUND behavior for missing issue id/file explicit in the behavior steps.
+
+Commit suggestion:
+docs(specs): clarify log_add slug resolution
+
+Issue: `yoda-0002`
+Path: `yoda/project/issues/yoda-0002-document-log-add-slug-resolution.md`
