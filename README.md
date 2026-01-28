@@ -133,7 +133,7 @@ O YODA espera scripts leves que:
 - validem estrutura e status dos itens
 - padronizem a estrutura do projeto antes de humanos ou agents editarem
 
-Os scripts ficam em `yoda/scripts`, sao feitos em Python e o nome do arquivo e o comando (ex.: `init.py`).
+Os scripts ficam em `yoda/scripts`, sao feitos em Python e o nome do arquivo e o comando.
 Logs do ciclo ficam em `yoda/logs/<id>-<slug>.yaml` no framework final.
 
 ## Formato de commit

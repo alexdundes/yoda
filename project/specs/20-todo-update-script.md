@@ -60,6 +60,7 @@ Global flags:
 7) Update issue `updated_at` and root `updated_at` with the current timestamp in TODO timezone.
 8) Validate the resulting TODO. If validation fails, exit with code 2.
 9) Update the issue Markdown front matter to mirror the TODO item (fail with code 3 if the issue file is missing).
+   - If the file is missing, recovery is manual: a human or agent recreates the Markdown without scripts.
 10) Append a log entry for the updated issue via `log_add.py` (or shared helper) unless `--dry-run` is set.
 11) If `--dry-run` is set, perform all steps except file writes. Output a summary and exit 0.
 

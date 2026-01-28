@@ -87,25 +87,6 @@ When `--format json` (or `--json`) is used, scripts must emit a JSON object with
 
 ## Required scripts
 
-### init.py
-
-Purpose:
-- Create the minimum YODA project structure.
-
-Behavior (minimum):
-- Ensure required folders exist.
-- Create `yoda/yoda.md` if missing (template placeholder or instructions).
-- Create templates folder and issue templates if missing.
-- Create logs folder.
-
-Inputs:
-- Optional project name or output root.
-
-Outputs:
-- Created folders and files.
-
----
-
 ### issue_add.py
 
 Purpose:
@@ -141,6 +122,7 @@ Inputs:
 
 Outputs:
 - Structured list of issues.
+  - JSON output includes full issue items when `--format json` is used.
 
 ---
 
@@ -154,7 +136,7 @@ Behavior (minimum):
 - Update updated_at.
 - Use `todo_update.py` to resolve `pending` issues by setting a new status and clearing `pending_reason`.
 - `todo_update.py` is the standard way to re-sync issue front matter with the TODO item.
-- If the issue Markdown file is missing, `todo_update.py` must fail (do not recreate the file). The file must be recreated manually, without scripts.
+- If the issue Markdown file is missing, `todo_update.py` must fail (do not recreate the file). If recovery is needed, a human or agent must recreate the Markdown manually (no scripts).
 
 Inputs:
 - Issue id.
@@ -198,11 +180,12 @@ Purpose:
 - Reorder TODO items.
 
 Behavior (minimum):
-- Move issue up/down or set explicit order.
-- Update updated_at.
+- Apply the default reorder (pending first, active by execution order, done last).
+- Optionally apply `--prefer/--over` prioritization before reordering.
+- Update updated_at only when a reorder or priority change occurs.
 
 Inputs:
-- Issue id and target position.
+- Optional `--prefer <id-a>` and `--over <id-b>`.
 - --dev `<slug>` (optional, see Developer selection).
 
 Outputs:
