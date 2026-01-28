@@ -41,6 +41,9 @@ Error handling:
 - Errors must be written to stderr.
 - Scripts must include a short, actionable error message.
 
+Agent guidance:
+- Agents may inspect the script source code in `yoda/scripts/` to understand behavior, flags, and edge cases.
+
 Validation:
 - Any script that mutates metadata MUST run validation before writing changes.
 - Validation failures must return exit code 2 and must not write changes.

@@ -15,13 +15,6 @@ When the human signals intent to start YODA Flow (example phrases: "Let's do YOD
 5) If a selectable issue is returned, ask for confirmation: “Start YODA Flow for issue dev-0001?” (translate to the human's language if needed).
 6) If approved, set status to `doing` with `todo_update.py` and enter Study.
 
-Example script calls:
-
-```
-python3 yoda/scripts/todo_next.py --dev <slug>
-python3 yoda/scripts/todo_update.py --dev <slug> --issue <id> --status doing
-```
-
 ## Phases
 
 Deliverables per phase are defined in `project/specs/02-yoda-flow-process.md` and must be followed.
@@ -33,15 +26,8 @@ Deliverables per phase are defined in `project/specs/02-yoda-flow-process.md` an
 - Produce summaries when requested.
 - Deliverable: summary in developer language, plus pending questions/decisions.
 - Wait for explicit human instruction before moving to the next step.
-- If the human requests `pending`, set status with `todo_update.py --status pending --pending-reason "<reason>"` and pause the flow.
+- If the human requests `pending`, set status to pending via `todo_update.py` and record the pending reason; then pause the flow.
 - If Study discovers dependencies, update `depends_on` (and priority if needed) via `todo_update.py`, set status back to `to-do`, and end the cycle.
-
-Example script calls:
-
-```
-python3 yoda/scripts/todo_update.py --dev <slug> --issue <id> --status pending --pending-reason "<reason>"
-python3 yoda/scripts/todo_update.py --dev <slug> --issue <id> --depends-on "<id-1>,<id-2>" --priority <n>
-```
 
 ### Document
 
@@ -51,12 +37,6 @@ python3 yoda/scripts/todo_update.py --dev <slug> --issue <id> --depends-on "<id-
 - Ask the human to approve the issue text; if rejected, return to Study.
 - Log key decisions and issue edits with `log_add.py`.
 
-Example script call:
-
-```
-python3 yoda/scripts/log_add.py --dev <slug> --issue <id> --message "[<id>] document: summary of edits/decisions"
-```
-
 ### Implement
 
 - Read the issue Markdown file and existing code.
@@ -64,12 +44,6 @@ python3 yoda/scripts/log_add.py --dev <slug> --issue <id> --message "[<id>] docu
 - Deliverable: code changes and tests updated (or marked not applicable).
 - Mark acceptance criteria checkboxes when satisfied.
 - If new decisions arise outside the spec/issue, log them with `log_add.py`.
-
-Example script call:
-
-```
-python3 yoda/scripts/log_add.py --dev <slug> --issue <id> --message "[<id>] implement: decision not in spec"
-```
 
 ### Evaluate
 
@@ -87,13 +61,6 @@ python3 yoda/scripts/log_add.py --dev <slug> --issue <id> --message "[<id>] impl
 - Deliverable: result log updated, commit suggestion written, TODO status updated, log entry recorded.
 - If the human approves, set status to `done` with `todo_update.py`. If the human rejects, return to Study.
 - After completion, call `todo_next.py` and offer to start the next YODA Flow or exit to non-YODA work.
-
-Example script calls:
-
-```
-python3 yoda/scripts/todo_update.py --dev <slug> --issue <id> --status done
-python3 yoda/scripts/todo_next.py --dev <slug>
-```
 
 ## General rules
 

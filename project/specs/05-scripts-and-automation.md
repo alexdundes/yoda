@@ -23,24 +23,6 @@ Standardize repetitive tasks and reduce the need for manual edits.
 
 - One log per issue at `yoda/logs/<id>-<slug>.yaml`
 
-## Happy path (end-to-end)
-
-Example flow for a single issue:
-
-1) Create the issue (TODO + Markdown + log):
-```
-python yoda/scripts/issue_add.py --title "Example issue" --description "Short description"
-```
-
-2) Update status or metadata:
-```
-python yoda/scripts/todo_update.py --issue dev-0001 --status doing
-```
-
-3) Append a log entry:
-```
-python yoda/scripts/log_add.py --issue dev-0001 --message "[dev-0001] started work"
-```
 
 Expected artifacts:
 - `yoda/todos/TODO.<dev>.yaml` updated with the issue metadata.
