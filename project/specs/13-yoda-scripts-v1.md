@@ -154,6 +154,7 @@ Behavior (minimum):
 - Update updated_at.
 - Use `todo_update.py` to resolve `pending` issues by setting a new status and clearing `pending_reason`.
 - `todo_update.py` is the standard way to re-sync issue front matter with the TODO item.
+- If the issue Markdown file is missing, `todo_update.py` must fail (do not recreate the file). The file must be recreated manually, without scripts.
 
 Inputs:
 - Issue id.
