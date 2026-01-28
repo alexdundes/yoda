@@ -9,7 +9,6 @@ import logging
 import re
 import sys
 from dataclasses import dataclass
-from datetime import datetime
 from typing import Any, Iterable
 
 from lib.cli import add_global_flags, resolve_format
@@ -17,8 +16,10 @@ from lib.dev import resolve_dev
 from lib.errors import ExitCode, YodaError
 from lib.logging_utils import configure_logging
 from lib.output import render_output
+from lib.parse_utils import parse_bool, parse_csv, parse_timestamp
 from lib.paths import issue_path, repo_root, todo_path
 from lib.todo_utils import load_todo_file
+from lib.time_utils import parse_timestamp as parse_issue_timestamp
 from lib.validate import validate_slug
 
 
@@ -32,58 +33,18 @@ class _Match:
 ORDER_MODES = {"created-asc", "created-desc", "updated-asc", "updated-desc"}
 
 
-def _parse_csv(value: str | None) -> list[str]:
-    if not value:
-        return []
-    return [item.strip() for item in value.split(",") if item.strip()]
-
-
-def _parse_bool(value: str | None) -> bool | None:
-    if value is None:
-        return None
-    normalized = value.strip().lower()
-    if normalized in {"true", "1", "yes"}:
-        return True
-    if normalized in {"false", "0", "no"}:
-        return False
-    raise YodaError("Invalid boolean value", exit_code=ExitCode.VALIDATION)
-
-
-def _parse_timestamp(value: str | None) -> datetime | None:
-    if value is None:
-        return None
-    try:
-        parsed = datetime.fromisoformat(value)
-    except ValueError as exc:
-        raise YodaError("Invalid timestamp format", exit_code=ExitCode.VALIDATION) from exc
-    if parsed.tzinfo is None:
-        raise YodaError("Timestamp missing timezone", exit_code=ExitCode.VALIDATION)
-    return parsed
-
-
-def _issue_timestamp(issue: dict[str, Any], field: str) -> datetime:
-    value = str(issue.get(field, ""))
-    try:
-        parsed = datetime.fromisoformat(value)
-    except ValueError as exc:
-        raise YodaError(f"Invalid {field} timestamp", exit_code=ExitCode.VALIDATION) from exc
-    if parsed.tzinfo is None:
-        raise YodaError(f"Timestamp missing timezone: {field}", exit_code=ExitCode.VALIDATION)
-    return parsed
-
-
 def _filter_issues(issues: list[dict[str, Any]], args: argparse.Namespace) -> list[dict[str, Any]]:
-    statuses = _parse_csv(args.status)
-    tags = _parse_csv(args.tags)
+    statuses = parse_csv(args.status)
+    tags = parse_csv(args.tags)
     depends_on = args.depends_on
     agent = args.agent
     priority_min = args.priority_min
     priority_max = args.priority_max
-    lightweight = _parse_bool(args.lightweight)
-    created_from = _parse_timestamp(args.created_from)
-    created_to = _parse_timestamp(args.created_to)
-    updated_from = _parse_timestamp(args.updated_from)
-    updated_to = _parse_timestamp(args.updated_to)
+    lightweight = parse_bool(args.lightweight)
+    created_from = parse_timestamp(args.created_from)
+    created_to = parse_timestamp(args.created_to)
+    updated_from = parse_timestamp(args.updated_from)
+    updated_to = parse_timestamp(args.updated_to)
 
     filtered: list[dict[str, Any]] = []
     for issue in issues:
@@ -116,14 +77,14 @@ def _filter_issues(issues: list[dict[str, Any]], args: argparse.Namespace) -> li
             continue
 
         if created_from or created_to:
-            created_at = _issue_timestamp(issue, "created_at")
+            created_at = parse_issue_timestamp(str(issue.get("created_at", "")), "created_at")
             if created_from and created_at < created_from:
                 continue
             if created_to and created_at > created_to:
                 continue
 
         if updated_from or updated_to:
-            updated_at = _issue_timestamp(issue, "updated_at")
+            updated_at = parse_issue_timestamp(str(issue.get("updated_at", "")), "updated_at")
             if updated_from and updated_at < updated_from:
                 continue
             if updated_to and updated_at > updated_to:
@@ -141,7 +102,10 @@ def _base_order(
         field = "created_at" if order.startswith("created") else "updated_at"
         return sorted(
             issues,
-            key=lambda item: (_issue_timestamp(item, field), yaml_index[str(item.get("id"))]),
+            key=lambda item: (
+                parse_issue_timestamp(str(item.get(field, "")), field),
+                yaml_index[str(item.get("id"))],
+            ),
             reverse=reverse,
         )
     return sorted(

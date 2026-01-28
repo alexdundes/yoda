@@ -23,6 +23,16 @@ def validate_timestamp(value: str) -> None:
         raise YodaError("Timestamp missing timezone", exit_code=ExitCode.VALIDATION)
 
 
+def parse_timestamp(value: str, label: str = "timestamp") -> datetime:
+    try:
+        parsed = datetime.fromisoformat(value)
+    except ValueError as exc:
+        raise YodaError(f"Invalid {label} timestamp", exit_code=ExitCode.VALIDATION) from exc
+    if parsed.tzinfo is None:
+        raise YodaError(f"Timestamp missing timezone: {label}", exit_code=ExitCode.VALIDATION)
+    return parsed
+
+
 def is_valid_timezone(name: str) -> bool:
     try:
         ZoneInfo(name)

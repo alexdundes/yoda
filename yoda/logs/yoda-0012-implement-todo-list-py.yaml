@@ -28,3 +28,5 @@ entries:
   message: '[yoda-0012] todo_update
 
     status: doing -> done'
+- timestamp: '2026-01-28T14:47:11-03:00'
+  message: '[yoda-0012] refactor: reused lib helpers in todo_list'
