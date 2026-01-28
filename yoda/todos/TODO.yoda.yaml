@@ -2,7 +2,7 @@ schema_version: '1.0'
 developer_name: Yoda
 developer_slug: yoda
 timezone: America/Sao_Paulo
-updated_at: '2026-01-28T14:26:40-03:00'
+updated_at: '2026-01-28T14:42:11-03:00'
 issues:
 - schema_version: '1.0'
   id: yoda-0001
@@ -225,14 +225,14 @@ issues:
   slug: implement-todo-list-py
   description: 'Implement todo_list.py per spec: filters, ordering, md/json output,
     and optional text/regex search in selected issue markdown files.'
-  status: to-do
+  status: done
   priority: 5
   lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-28T12:25:58-03:00'
-  updated_at: '2026-01-28T12:25:58-03:00'
+  updated_at: '2026-01-28T14:42:11-03:00'
   entrypoints: []
   tags: []
   origin:

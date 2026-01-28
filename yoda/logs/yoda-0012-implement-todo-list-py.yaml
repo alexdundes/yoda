@@ -2,7 +2,7 @@ schema_version: '1.0'
 issue_id: yoda-0012
 issue_path: yoda/project/issues/yoda-0012-implement-todo-list-py.md
 todo_id: yoda-0012
-status: to-do
+status: done
 entries:
 - timestamp: '2026-01-28T12:25:58-03:00'
   message: '[yoda-0012] issue_add created
@@ -13,3 +13,18 @@ entries:
     and optional text/regex search in selected issue markdown files.
 
     slug: implement-todo-list-py'
+- timestamp: '2026-01-28T14:33:16-03:00'
+  message: '[yoda-0012] todo_update
+
+    status: to-do -> doing'
+- timestamp: '2026-01-28T14:37:35-03:00'
+  message: '[yoda-0012] document: clarified tags filter uses AND and pending block
+    only for selected issues'
+- timestamp: '2026-01-28T14:42:01-03:00'
+  message: '[yoda-0012] implement: added todo_list command and tests'
+- timestamp: '2026-01-28T14:42:06-03:00'
+  message: '[yoda-0012] evaluate: tests pass and result log updated'
+- timestamp: '2026-01-28T14:42:11-03:00'
+  message: '[yoda-0012] todo_update
+
+    status: doing -> done'

@@ -65,7 +65,7 @@ Defaults:
 
 Filter rules:
 - `--status`: include issues whose status is in the list.
-- `--tags`: include issues that have **any** of the provided tags.
+- `--tags`: include issues that have **all** of the provided tags.
 - `--agent`: include issues whose `agent` matches exactly.
 - `--priority-min` / `--priority-max`: include issues within the inclusive range.
 - `--depends-on`: include issues where `depends_on` contains the provided id.

@@ -55,9 +55,15 @@ class TodoFactory:
         slug: str | None = None,
         depends_on: list[str] | None = None,
         pending_reason: str = "",
+        tags: list[str] | None = None,
+        lightweight: bool = False,
+        agent: str = "Test",
+        created_at: str | None = None,
+        updated_at: str | None = None,
     ) -> dict:
         issue_id = self._next_id()
-        created_at = "2026-01-01T00:00:00+00:00"
+        created_at_value = created_at or "2026-01-01T00:00:00+00:00"
+        updated_at_value = updated_at or created_at_value
         slug_value = slug or title.lower().replace(" ", "-")
         return {
             "schema_version": "1.0",
@@ -67,12 +73,15 @@ class TodoFactory:
             "description": "Test issue",
             "status": status,
             "priority": priority,
-            "lightweight": False,
-            "agent": "Test",
+            "lightweight": lightweight,
+            "agent": agent,
             "depends_on": depends_on or [],
             "pending_reason": pending_reason,
-            "created_at": created_at,
-            "updated_at": created_at,
+            "created_at": created_at_value,
+            "updated_at": updated_at_value,
+            "entrypoints": [],
+            "tags": tags or [],
+            "origin": {"system": "", "external_id": "", "requester": ""},
         }
 
     def todo(self, issues: list[dict]) -> dict:

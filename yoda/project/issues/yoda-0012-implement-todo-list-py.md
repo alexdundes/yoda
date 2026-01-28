@@ -15,10 +15,10 @@ pending_reason: ''
 priority: 5
 schema_version: '1.0'
 slug: implement-todo-list-py
-status: to-do
+status: done
 tags: []
 title: Implement todo_list.py
-updated_at: '2026-01-28T12:25:58-03:00'
+updated_at: '2026-01-28T14:42:11-03:00'
 ---
 
 # yoda-0012 - Implement todo_list.py
@@ -51,13 +51,15 @@ Entregar o script `todo_list.py` com comportamento determinístico e testes, ali
 - Suportar regex na busca textual.
 - Saída de busca textual deve ser texto fluído em Markdown com as linhas encontradas.
 - Saída padrão em Markdown deve ser tabela com colunas essenciais e largura legível.
+- `--tags` deve exigir que a issue tenha **todas** as tags fornecidas (AND).
 
 ## Acceptance criteria
-- [ ] `todo_list.py` implementado conforme a spec `yoda-0011`.
-- [ ] Saída `md` padrão é tabela legível com colunas essenciais.
-- [ ] Saída `json` contém os campos mínimos definidos.
-- [ ] Busca textual/regex funciona e retorna linhas completas encontradas.
-- [ ] Ordenação padrão respeita prioridade, ordem YAML e dependências não concluídas.
+- [x] `todo_list.py` implementado conforme a spec `yoda-0011`.
+- [x] Saída `md` padrão é tabela legível com colunas essenciais.
+- [x] Saída `json` contém os campos mínimos definidos.
+- [x] Busca textual/regex funciona e retorna linhas completas encontradas.
+- [x] Ordenação padrão respeita prioridade, ordem YAML e dependências não concluídas.
+- [x] Filtro de tags usa AND (todas as tags).
 - [ ] Testes cobrindo filtros, ordenação e busca passam.
 
 ## Dependencies
@@ -81,7 +83,7 @@ Depends on: yoda-0011.
 Reusar helpers em `yoda/scripts/lib` quando possível (CLI, validação, output). Implementar ordenação com dependências de forma estável e determinística. Para busca textual, ler arquivos apenas da seleção filtrada.
 
 ## Tests
-Adicionar testes em `yoda/scripts/tests` para: filtros padrão, ordenação por prioridade/YAML, ordenação alternativa, busca textual simples e regex.
+Adicionados testes em `yoda/scripts/tests/test_todo_list.py` para: filtros padrão, ordenação por prioridade/YAML, ordenação alternativa, busca textual simples e regex.
 
 ## Risks and edge cases
 - Regex inválida deve retornar erro de validação.
@@ -95,3 +97,9 @@ Body:
 Issue: `<ID>`
 Path: `<issue path>`
 -->
+Implemented `todo_list.py` with filters, ordering, md/json output, and grep search, plus supporting helpers and tests.
+
+feat(scripts): add todo_list command
+
+Issue: `yoda-0012`
+Path: `yoda/project/issues/yoda-0012-implement-todo-list-py.md`
