@@ -1,0 +1,39 @@
+schema_version: '1.0'
+issue_id: yoda-0011
+issue_path: yoda/project/issues/yoda-0011-specify-todo-list-py.md
+todo_id: yoda-0011
+status: done
+entries:
+- timestamp: '2026-01-28T12:25:53-03:00'
+  message: '[yoda-0011] issue_add created
+
+    title: Specify todo_list.py
+
+    description: Define CLI, filters, ordering, output formats, and text search behavior
+    for todo_list.py.
+
+    slug: specify-todo-list-py'
+- timestamp: '2026-01-28T13:57:46-03:00'
+  message: '[yoda-0011] todo_update
+
+    status: to-do -> doing'
+- timestamp: '2026-01-28T14:05:15-03:00'
+  message: '[yoda-0011] document: clarified filters, ordering options, json fields,
+    and search behavior'
+- timestamp: '2026-01-28T14:13:26-03:00'
+  message: '[yoda-0011] implement: added todo_list spec and updated indices'
+- timestamp: '2026-01-28T14:13:32-03:00'
+  message: '[yoda-0011] todo_update
+
+    status: doing -> done'
+- timestamp: '2026-01-28T14:23:03-03:00'
+  message: '[yoda-0011] todo_update
+
+    status: done -> doing'
+- timestamp: '2026-01-28T14:26:36-03:00'
+  message: '[yoda-0011] document: added pending alert block in md output and full
+    issue items in json'
+- timestamp: '2026-01-28T14:26:41-03:00'
+  message: '[yoda-0011] todo_update
+
+    status: doing -> done'

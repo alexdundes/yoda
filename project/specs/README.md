@@ -42,6 +42,8 @@ This README organizes the topics discussed so far. Each topic has a dedicated fi
     - file: `14-issue-templates-usage.md`
 15. Python structure for YODA scripts
     - file: `15-scripts-python-structure.md`
+16. `todo_list.py` specification
+    - file: `16-todo-list-script.md`
 18. `issue_add.py` specification
     - file: `18-issue-add-script.md`
 19. `log_add.py` specification

@@ -1,0 +1,15 @@
+schema_version: '1.0'
+issue_id: yoda-0012
+issue_path: yoda/project/issues/yoda-0012-implement-todo-list-py.md
+todo_id: yoda-0012
+status: to-do
+entries:
+- timestamp: '2026-01-28T12:25:58-03:00'
+  message: '[yoda-0012] issue_add created
+
+    title: Implement todo_list.py
+
+    description: Implement todo_list.py per spec: filters, ordering, md/json output,
+    and optional text/regex search in selected issue markdown files.
+
+    slug: implement-todo-list-py'

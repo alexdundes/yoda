@@ -2,7 +2,7 @@ schema_version: '1.0'
 developer_name: Yoda
 developer_slug: yoda
 timezone: America/Sao_Paulo
-updated_at: '2026-01-27T20:40:15-03:00'
+updated_at: '2026-01-28T14:26:40-03:00'
 issues:
 - schema_version: '1.0'
   id: yoda-0001
@@ -193,6 +193,46 @@ issues:
   pending_reason: ''
   created_at: '2026-01-27T19:14:48-03:00'
   updated_at: '2026-01-27T20:40:15-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0011
+  title: Specify todo_list.py
+  slug: specify-todo-list-py
+  description: Define CLI, filters, ordering, output formats, and text search behavior
+    for todo_list.py.
+  status: done
+  priority: 5
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-28T12:25:53-03:00'
+  updated_at: '2026-01-28T14:26:40-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0012
+  title: Implement todo_list.py
+  slug: implement-todo-list-py
+  description: 'Implement todo_list.py per spec: filters, ordering, md/json output,
+    and optional text/regex search in selected issue markdown files.'
+  status: to-do
+  priority: 5
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-28T12:25:58-03:00'
+  updated_at: '2026-01-28T12:25:58-03:00'
   entrypoints: []
   tags: []
   origin:

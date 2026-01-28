@@ -76,6 +76,8 @@ When `--format json` (or `--json`) is used, scripts must emit a JSON object with
   - `pending`
   - `blocked`
   - `doing`
+- `todo_list.py`:
+  - `issues` (full issue items)
 
 ## Required scripts
 
