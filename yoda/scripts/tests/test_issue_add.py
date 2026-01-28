@@ -32,3 +32,18 @@ def test_issue_add_creates_todo_issue_and_log() -> None:
 
     assert (REPO_ROOT / issue_path).exists()
     assert (REPO_ROOT / log_path).exists()
+
+
+def test_issue_add_conflict_when_issue_file_exists() -> None:
+    issue_path = (
+        REPO_ROOT / "yoda" / "project" / "issues" / "test-0001-test-issue.md"
+    )
+    issue_path.parent.mkdir(parents=True, exist_ok=True)
+    issue_path.write_text("placeholder", encoding="utf-8")
+
+    result = run_script(
+        "issue_add.py",
+        ["--dev", TEST_DEV, "--title", "Test issue", "--description", "Desc"],
+    )
+    assert result.returncode == 4, result.stderr
+    assert f"Issue file already exists: {issue_path}" in result.stderr

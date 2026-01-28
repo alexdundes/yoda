@@ -6,34 +6,16 @@ from __future__ import annotations
 import argparse
 import json
 import logging
-import os
 import sys
 from typing import Any
 
 from lib.cli import add_global_flags, resolve_format
+from lib.dev import resolve_dev
 from lib.errors import ExitCode, YodaError
+from lib.logging_utils import configure_logging
 from lib.paths import issue_path, repo_root, todo_path
-from lib.validate import validate_slug, validate_todo
-from lib.yaml_io import read_yaml
-
-
-def _configure_logging(verbose: bool) -> None:
-    logging.basicConfig(
-        level=logging.DEBUG if verbose else logging.INFO,
-        format="%(levelname)s: %(message)s",
-    )
-
-
-def _resolve_dev(explicit_dev: str | None) -> str:
-    if explicit_dev:
-        return explicit_dev
-    env_dev = os.environ.get("YODA_DEV")
-    if env_dev:
-        return env_dev
-    try:
-        return input("Developer slug: ").strip()
-    except EOFError as exc:
-        raise YodaError("Developer slug is required", exit_code=ExitCode.VALIDATION) from exc
+from lib.todo_utils import load_todo_file
+from lib.validate import validate_slug
 
 
 def _render_output(payload: dict[str, Any], output_format: str) -> str:
@@ -136,11 +118,11 @@ def main() -> int:
     parser.add_argument("--todo", required=False, help="Override TODO path")
 
     args = parser.parse_args()
-    _configure_logging(args.verbose)
+    configure_logging(args.verbose)
     output_format = resolve_format(args)
 
     try:
-        dev = _resolve_dev(args.dev).strip()
+        dev = resolve_dev(args.dev).strip()
         validate_slug(dev)
 
         if args.todo:
@@ -148,11 +130,7 @@ def main() -> int:
         else:
             todo_file = todo_path(dev)
 
-        if not todo_file.exists():
-            raise YodaError("TODO file not found", exit_code=ExitCode.NOT_FOUND)
-
-        todo = read_yaml(todo_file)
-        validate_todo(todo, dev)
+        todo = load_todo_file(todo_file, dev)
 
         issues = list(todo.get("issues", []))
         done_ids = {
@@ -175,11 +153,13 @@ def main() -> int:
         }
 
         if doing:
+            logging.error("Conflict: resolve the doing issue(s) before selecting the next one.")
             print(_render_output(payload, output_format))
             return ExitCode.CONFLICT
 
         selected = _select_next(issues, done_ids)
         if selected is None:
+            logging.error("No selectable issues found. Resolve pending or blocked items.")
             print(_render_output(payload, output_format))
             return ExitCode.NOT_FOUND
 

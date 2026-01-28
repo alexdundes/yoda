@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any
 
 from .errors import YodaError, ExitCode
+from .io import write_text
 
 try:
     import frontmatter
@@ -29,4 +30,4 @@ def render_issue(template_text: str, metadata: dict[str, Any], replacements: dic
 def update_front_matter(path: Path, metadata: dict[str, Any]) -> None:
     post = frontmatter.load(str(path))
     post.metadata = metadata
-    path.write_text(frontmatter.dumps(post), encoding="utf-8")
+    write_text(path, frontmatter.dumps(post))

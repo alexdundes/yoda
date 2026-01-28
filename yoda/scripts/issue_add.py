@@ -4,22 +4,28 @@
 from __future__ import annotations
 
 import argparse
-import json
 import logging
-import os
 import re
 import sys
-from datetime import datetime
 from pathlib import Path
 from typing import Any
-from zoneinfo import ZoneInfo
 
 from lib.cli import add_global_flags, resolve_format
+from lib.dev import resolve_dev
 from lib.errors import ExitCode, YodaError
+from lib.error_messages import (
+    conflict_issue_file,
+    conflict_issue_id,
+    conflict_log_file,
+    required_flag,
+)
 from lib.front_matter import render_issue
 from lib.io import write_text
+from lib.logging_utils import configure_logging
+from lib.output import render_output
 from lib.paths import issue_path, log_path, repo_root, template_path, todo_path
 from lib.templates import load_template
+from lib.time_utils import detect_local_timezone, now_iso
 from lib.validate import (
     ALLOWED_ENTRY_TYPES,
     ISSUE_ID_RE,
@@ -31,65 +37,14 @@ from lib.validate import (
 from lib.yaml_io import read_yaml, write_yaml
 
 
-def _configure_logging(verbose: bool) -> None:
-    logging.basicConfig(
-        level=logging.DEBUG if verbose else logging.INFO,
-        format="%(levelname)s: %(message)s",
-    )
-
-
-def _resolve_dev(explicit_dev: str | None) -> str:
-    if explicit_dev:
-        return explicit_dev
-    env_dev = os.environ.get("YODA_DEV")
-    if env_dev:
-        return env_dev
-    try:
-        return input("Developer slug: ").strip()
-    except EOFError as exc:
-        raise YodaError("Developer slug is required", exit_code=ExitCode.VALIDATION) from exc
-
-
-def _now_iso(tz_name: str) -> str:
-    tz = ZoneInfo(tz_name)
-    return datetime.now(tz).isoformat(timespec="seconds")
-
-
-def _is_valid_timezone(name: str) -> bool:
-    try:
-        ZoneInfo(name)
-        return True
-    except Exception:
-        return False
-
-
-def _detect_local_timezone() -> str:
-    tz_env = os.environ.get("TZ")
-    if tz_env and _is_valid_timezone(tz_env):
-        return tz_env
-
-    try:
-        realpath = os.path.realpath("/etc/localtime")
-        for marker_name in ("zoneinfo", "zoneinfo.default", "zoneinfo.posix"):
-            marker = f"{os.sep}{marker_name}{os.sep}"
-            if marker in realpath:
-                candidate = realpath.split(marker, 1)[1]
-                if candidate and _is_valid_timezone(candidate):
-                    return candidate
-    except Exception:
-        pass
-
-    return "UTC"
-
-
 def _create_default_todo(dev: str) -> dict[str, Any]:
-    timezone = _detect_local_timezone()
+    timezone = detect_local_timezone()
     return {
         "schema_version": "1.0",
         "developer_name": dev.title(),
         "developer_slug": dev,
         "timezone": timezone,
-        "updated_at": _now_iso(timezone),
+        "updated_at": now_iso(timezone),
         "issues": [],
     }
 
@@ -237,8 +192,6 @@ def _build_issue_log_message(
 
 
 def _render_output(payload: dict[str, Any], output_format: str) -> str:
-    if output_format == "json":
-        return json.dumps(payload, indent=2, ensure_ascii=True)
     lines = [
         f"Issue ID: {payload['issue_id']}",
         f"Issue path: {payload['issue_path']}",
@@ -246,9 +199,12 @@ def _render_output(payload: dict[str, Any], output_format: str) -> str:
         f"Log path: {payload['log_path']}",
         f"Template: {payload['template']}",
     ]
-    if payload.get("dry_run"):
-        lines.append("Dry-run: no files written")
-    return "\n".join(lines)
+    return render_output(
+        payload,
+        output_format,
+        lines,
+        dry_run=bool(payload.get("dry_run")),
+    )
 
 
 def main() -> int:
@@ -270,18 +226,18 @@ def main() -> int:
     )
 
     args = parser.parse_args()
-    _configure_logging(args.verbose)
+    configure_logging(args.verbose)
     output_format = resolve_format(args)
 
     try:
-        dev = _resolve_dev(args.dev).strip()
+        dev = resolve_dev(args.dev).strip()
         validate_slug(dev)
         title = (args.title or "").strip()
         if not title:
-            raise YodaError("--title is required", exit_code=ExitCode.VALIDATION)
+            required_flag("--title")
         description = (args.summary or args.description or "").strip()
         if not description:
-            raise YodaError("--description is required", exit_code=ExitCode.VALIDATION)
+            required_flag("--description")
         priority = args.priority if args.priority is not None else 5
         if not isinstance(priority, int) or not (0 <= priority <= 10):
             raise YodaError("priority must be between 0 and 10", exit_code=ExitCode.VALIDATION)
@@ -300,19 +256,19 @@ def main() -> int:
 
         issues = list(todo.get("issues", []))
         if any(item.get("id") == issue_id for item in issues):
-            raise YodaError("Issue id already exists in TODO", exit_code=ExitCode.CONFLICT)
+            conflict_issue_id(issue_id)
 
         issue_file = issue_path(issue_id, slug)
         log_file = log_path(issue_id, slug)
         if issue_file.exists():
-            raise YodaError("Issue file already exists", exit_code=ExitCode.CONFLICT)
+            conflict_issue_file(issue_file)
         if log_file.exists():
-            raise YodaError("Log file already exists", exit_code=ExitCode.CONFLICT)
+            conflict_log_file(log_file)
 
         template_file = template_path(args.lightweight)
         template_text = load_template(template_file)
 
-        timestamp = _now_iso(todo.get("timezone"))
+        timestamp = now_iso(todo.get("timezone"))
         entrypoints = _parse_entrypoints(args.entrypoint)
         tags = _parse_tags(args.tags)
 

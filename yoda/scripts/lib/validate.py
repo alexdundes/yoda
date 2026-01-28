@@ -128,3 +128,13 @@ def validate_todo(todo: dict[str, Any], dev: str) -> None:
         if issue_id in ids:
             raise YodaError("Duplicate issue id in TODO", exit_code=ExitCode.VALIDATION)
         ids.add(issue_id)
+    for item in todo.get("issues", []):
+        depends_on = item.get("depends_on", [])
+        if not isinstance(depends_on, list):
+            raise YodaError("depends_on must be a list", exit_code=ExitCode.VALIDATION)
+        missing = [dep for dep in depends_on if dep not in ids]
+        if missing:
+            raise YodaError(
+                f"depends_on references missing ids: {', '.join(missing)}",
+                exit_code=ExitCode.VALIDATION,
+            )
