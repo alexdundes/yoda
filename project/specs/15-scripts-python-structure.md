@@ -19,7 +19,6 @@ yoda/
     todo_update.py
     todo_next.py
     todo_reorder.py
-    pending_resolve.py
     log_add.py
     requirements.txt
     lib/

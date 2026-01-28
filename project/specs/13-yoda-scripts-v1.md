@@ -171,6 +171,7 @@ Purpose:
 Behavior (minimum):
 - Update status, priority, tags, depends_on, pending_reason.
 - Update updated_at.
+- Use `todo_update.py` to resolve `pending` issues by setting a new status and clearing `pending_reason`.
 
 Inputs:
 - Issue id.
@@ -219,26 +220,6 @@ Behavior (minimum):
 
 Inputs:
 - Issue id and target position.
-- --dev `<slug>` (optional, see Developer selection).
-
-Outputs:
-- Updated `yoda/todos/TODO.<dev>.yaml`.
-
----
-
-### pending_resolve.py
-
-Purpose:
-- Resolve a pending issue.
-
-Behavior (minimum):
-- Clear pending_reason.
-- Set status to the next chosen status (e.g., to-do or doing).
-- Update updated_at.
-
-Inputs:
-- Issue id.
-- New status.
 - --dev `<slug>` (optional, see Developer selection).
 
 Outputs:

@@ -94,7 +94,7 @@ Note: there is no owner; each dev has their own TODO.
 
 - to-do -> doing -> done
 - Any state can transition to pending
-- pending -> to-do or doing (via `pending_resolve.py`)
+- pending -> to-do or doing (via `todo_update.py`)
 
 ## Benefits
 
