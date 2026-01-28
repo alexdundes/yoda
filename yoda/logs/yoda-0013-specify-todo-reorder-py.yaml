@@ -33,3 +33,6 @@ entries:
   message: '[yoda-0013] todo_update
 
     status: doing -> done'
+- timestamp: '2026-01-28T15:26:03-03:00'
+  message: '[yoda-0013] document: aligned reorder spec with implementation (updated_at
+    only on change; no forced A before B)'

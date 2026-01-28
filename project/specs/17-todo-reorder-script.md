@@ -42,7 +42,7 @@ Global flags:
 3) Validate the TODO schema. If validation fails, exit with code 2.
 4) If `--prefer` is provided, apply the prioritization rule (see below).
 5) Reorder the issues with the default ordering rules (see Ordering).
-6) Update `updated_at` for the TODO root and any issue whose priority was changed.
+6) If a reorder occurred or a priority was updated, update `updated_at` for the TODO root and any issue whose priority changed.
 7) Write changes unless `--dry-run` is set.
 8) Output a summary in the chosen format.
 
@@ -67,7 +67,7 @@ When `--prefer <id-a> --over <id-b>` is provided:
 - Both issues must have status `to-do`; otherwise exit with code 2.
 - If `id-a` depends on `id-b`, exit with code 2 (cannot prioritize a dependent over its dependency).
 - If `id-a` has lower priority than `id-b`, set `id-a` priority to match `id-b`.
-- Ensure `id-a` appears before `id-b` in the reordered list (within the same priority group).
+- Apply the standard reorder after any priority adjustments (no additional forced position beyond the ordering rules).
 - After applying prioritization, perform the default reordering.
 
 `--prefer` and `--over` are not exclusive with default reordering; they are applied first and then the full reorder is executed.
