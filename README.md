@@ -150,7 +150,7 @@ Detalhes de CLI e tooling estao definidos em `project/specs/13-yoda-scripts-v1.m
 Audiencia primaria: solo devs (1 humano + 1 agent) usando o YODA Flow.  
 Posicionamento: framework de apoio ao desenvolvimento assistido por agents, com issues versionadas junto ao codigo do projeto.  
 Escopo: framework de processos de uso geral para quem precisa de maior controle no desenvolvimento apoiado por agents.  
-Limites de escopo (v1) estao definidos em `project/specs/14-out-of-scope.md`.
+Limites de escopo (v1) estao definidos em `project/specs/22-out-of-scope.md`.
 
 Detalhes de implementacao (CI/CD, padroes de arquitetura, etc.) ficam fora deste README e sao definidos por projeto.
 

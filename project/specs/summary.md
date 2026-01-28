@@ -26,7 +26,7 @@ This file records decisions and known open points captured so far.
 - Python structure: shared helpers in `yoda/scripts/lib/`, pytest for tests, dependencies in `yoda/scripts/requirements.txt`.
 - Issue templates: standard vs lightweight, required fill-in rules, and commit text format embedded in the issue result log.
 - Agent entry: `AGENTS.md`/`gemini.md` route to `yoda/yoda.md`; entry phrase must mention YODA Flow and intent to take highest-priority selectable issue; resolve dev via flag/env/prompt.
-- Out of scope (v1): CI/CD, infra, architecture standards, security/compliance, product/HR/legal/finance, and delivery infrastructure.
+- Out of scope (v1) is defined in `project/specs/22-out-of-scope.md`.
 - Visual identity: monochrome document icon with Y; simple lines, no extra elements.
 - MCP: future v2 direction (minimal tools: todos.list/docs.read/workspace.apply_patch), with noted risks and benefits.
 - Influences: DocDD/RDD/Docs-as-Code/Design-first/ADRs/Literate Programming/Agentic Design Patterns inform guidance and vocabulary.
