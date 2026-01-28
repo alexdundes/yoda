@@ -44,6 +44,8 @@ This README organizes the topics discussed so far. Each topic has a dedicated fi
     - file: `15-scripts-python-structure.md`
 16. `todo_list.py` specification
     - file: `16-todo-list-script.md`
+17. `todo_reorder.py` specification
+    - file: `17-todo-reorder-script.md`
 18. `issue_add.py` specification
     - file: `18-issue-add-script.md`
 19. `log_add.py` specification

@@ -2,7 +2,7 @@ schema_version: '1.0'
 developer_name: Yoda
 developer_slug: yoda
 timezone: America/Sao_Paulo
-updated_at: '2026-01-28T14:42:11-03:00'
+updated_at: '2026-01-28T15:14:42-03:00'
 issues:
 - schema_version: '1.0'
   id: yoda-0001
@@ -233,6 +233,45 @@ issues:
   pending_reason: ''
   created_at: '2026-01-28T12:25:58-03:00'
   updated_at: '2026-01-28T14:42:11-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0013
+  title: Specify todo_reorder.py
+  slug: specify-todo-reorder-py
+  description: Define CLI, ordering behaviors, and output formats for todo_reorder.py.
+  status: done
+  priority: 5
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-28T14:51:19-03:00'
+  updated_at: '2026-01-28T15:14:10-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0014
+  title: Implement todo_reorder.py
+  slug: implement-todo-reorder-py
+  description: 'Implement todo_reorder.py per spec: reorder modes, validation, output,
+    and tests.'
+  status: doing
+  priority: 5
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-28T14:51:24-03:00'
+  updated_at: '2026-01-28T15:14:42-03:00'
   entrypoints: []
   tags: []
   origin:

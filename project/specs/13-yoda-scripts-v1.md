@@ -78,6 +78,12 @@ When `--format json` (or `--json`) is used, scripts must emit a JSON object with
   - `doing`
 - `todo_list.py`:
   - `issues` (full issue items)
+- `todo_reorder.py`:
+  - `todo_path`
+  - `reordered`
+  - `priority_updated`
+  - `issue_id`
+  - `dry_run`
 
 ## Required scripts
 

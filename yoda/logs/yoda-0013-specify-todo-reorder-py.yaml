@@ -1,0 +1,35 @@
+schema_version: '1.0'
+issue_id: yoda-0013
+issue_path: yoda/project/issues/yoda-0013-specify-todo-reorder-py.md
+todo_id: yoda-0013
+status: done
+entries:
+- timestamp: '2026-01-28T14:51:19-03:00'
+  message: '[yoda-0013] issue_add created
+
+    title: Specify todo_reorder.py
+
+    description: Define CLI, ordering behaviors, and output formats for todo_reorder.py.
+
+    slug: specify-todo-reorder-py'
+- timestamp: '2026-01-28T14:54:54-03:00'
+  message: '[yoda-0013] todo_update
+
+    status: to-do -> doing'
+- timestamp: '2026-01-28T15:10:29-03:00'
+  message: '[yoda-0013] implement: added todo_reorder spec and updated indices'
+- timestamp: '2026-01-28T15:10:34-03:00'
+  message: '[yoda-0013] todo_update
+
+    status: doing -> done'
+- timestamp: '2026-01-28T15:13:46-03:00'
+  message: '[yoda-0013] todo_update
+
+    status: done -> doing'
+- timestamp: '2026-01-28T15:14:05-03:00'
+  message: '[yoda-0013] document: added prioritization validation (to-do only, reject
+    dependency)'
+- timestamp: '2026-01-28T15:14:10-03:00'
+  message: '[yoda-0013] todo_update
+
+    status: doing -> done'

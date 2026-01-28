@@ -22,7 +22,7 @@ This file records decisions and known open points captured so far.
 - CLI contract: global flags (`--dev`, `--format`, `--json`, `--dry-run`, `--verbose`); exit codes 0/1/2/3/4; errors to stderr with actionable messages.
 - JSON output minimums defined for `issue_add.py`, `todo_update.py`, `log_add.py`, `todo_next.py`.
 - Required scripts (v1): init, issue_add, issue_render, todo_list, todo_update, todo_next, todo_reorder, pending_resolve, log_add.
-- Script behavior specs defined for: todo_list, issue_add, todo_update, log_add, todo_next (validation, conflicts, output, and log rules).
+- Script behavior specs defined for: todo_list, todo_reorder, issue_add, todo_update, log_add, todo_next (validation, conflicts, output, and log rules).
 - Python structure: shared helpers in `yoda/scripts/lib/`, pytest for tests, dependencies in `yoda/scripts/requirements.txt`.
 - Issue templates: standard vs lightweight, required fill-in rules, and commit text format embedded in the issue result log.
 - Agent entry: `AGENTS.md`/`gemini.md` route to `yoda/yoda.md`; entry phrase must mention YODA Flow and intent to take highest-priority selectable issue; resolve dev via flag/env/prompt.

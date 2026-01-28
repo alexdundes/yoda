@@ -1,0 +1,19 @@
+schema_version: '1.0'
+issue_id: yoda-0014
+issue_path: yoda/project/issues/yoda-0014-implement-todo-reorder-py.md
+todo_id: yoda-0014
+status: doing
+entries:
+- timestamp: '2026-01-28T14:51:24-03:00'
+  message: '[yoda-0014] issue_add created
+
+    title: Implement todo_reorder.py
+
+    description: Implement todo_reorder.py per spec: reorder modes, validation, output,
+    and tests.
+
+    slug: implement-todo-reorder-py'
+- timestamp: '2026-01-28T15:14:42-03:00'
+  message: '[yoda-0014] todo_update
+
+    status: to-do -> doing'
