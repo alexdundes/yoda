@@ -2,7 +2,7 @@ schema_version: '1.0'
 issue_id: yoda-0014
 issue_path: yoda/project/issues/yoda-0014-implement-todo-reorder-py.md
 todo_id: yoda-0014
-status: doing
+status: done
 entries:
 - timestamp: '2026-01-28T14:51:24-03:00'
   message: '[yoda-0014] issue_add created
@@ -17,3 +17,11 @@ entries:
   message: '[yoda-0014] todo_update
 
     status: to-do -> doing'
+- timestamp: '2026-01-28T15:17:31-03:00'
+  message: '[yoda-0014] implement: added todo_reorder command and tests'
+- timestamp: '2026-01-28T15:17:36-03:00'
+  message: '[yoda-0014] evaluate: tests pass and result log updated'
+- timestamp: '2026-01-28T15:17:41-03:00'
+  message: '[yoda-0014] todo_update
+
+    status: doing -> done'

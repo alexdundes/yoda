@@ -15,10 +15,10 @@ pending_reason: ''
 priority: 5
 schema_version: '1.0'
 slug: implement-todo-reorder-py
-status: doing
+status: done
 tags: []
 title: Implement todo_reorder.py
-updated_at: '2026-01-28T15:14:42-03:00'
+updated_at: '2026-01-28T15:17:41-03:00'
 ---
 
 # yoda-0014 - Implement todo_reorder.py
@@ -50,11 +50,12 @@ Entregar o script `todo_reorder.py` com comportamento determinístico e testes, 
 - Deve produzir saída `md` e `json` conforme contrato global.
 
 ## Acceptance criteria
-- [ ] `todo_reorder.py` implementado conforme a spec `yoda-0013`.
-- [ ] Reordenação funciona para mover acima/abaixo e posição absoluta.
-- [ ] Inputs inválidos retornam exit code 2 e mensagem clara.
-- [ ] Timestamps atualizados corretamente.
-- [ ] Testes cobrindo casos principais passam.
+- [x] `todo_reorder.py` implementado conforme a spec `yoda-0013`.
+- [x] Reordenação padrão coloca `pending` no topo, ativos no meio e `done` no fim.
+- [x] `--prefer/--over` aplica priorização e validações de status/dependência.
+- [x] Inputs inválidos retornam exit code 2 e mensagem clara.
+- [x] Timestamps atualizados corretamente.
+- [x] Testes cobrindo casos principais passam.
 
 ## Dependencies
 Depends on: yoda-0013.
@@ -75,7 +76,7 @@ Depends on: yoda-0013.
 Reusar helpers em `yoda/scripts/lib` quando possível. A reordenação deve ser estável para itens não movidos.
 
 ## Tests
-Adicionar testes em `yoda/scripts/tests` cobrindo os modos de reordenação e validações.
+Adicionados testes em `yoda/scripts/tests/test_todo_reorder.py` cobrindo ordenação padrão e validações.
 
 ## Risks and edge cases
 - ID inexistente no TODO.
@@ -89,3 +90,9 @@ Body:
 Issue: `<ID>`
 Path: `<issue path>`
 -->
+Implemented `todo_reorder.py` with default ordering rules, prefer/over prioritization, and tests.
+
+feat(scripts): add todo_reorder command
+
+Issue: `yoda-0014`
+Path: `yoda/project/issues/yoda-0014-implement-todo-reorder-py.md`
