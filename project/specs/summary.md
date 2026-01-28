@@ -4,36 +4,32 @@ This file records decisions and known open points captured so far.
 
 ## Decisions captured so far
 
-- Scope: YODA Framework is not just documentation. It is a document-first way of working plus scripts that operationalize the flow (generate, consult, validate docs and tasks).
-- Documentation structure: prefer more YAML metadata and use scripts (Python) that generate Markdown optimized for AI consumption and human review.
-- YODA Flow: the core cycle is Study -> Document -> Implement -> Evaluate.
-- Artifacts direction: one TODO per developer (`yoda/todos/TODO.<dev>.yaml`) and one Markdown file per issue for richer free-form descriptions, with scripts generating the issue skeleton.
-- Issues location and naming: issues live in `yoda/project/issues/` and follow `<id>-<slug>.md`.
-- Slug format (dev and issue): lowercase ASCII, digits, and hyphens only; must start with a letter; no spaces.
-- Issue identification: ID appears in the Markdown title.
-- Metadata schema basics: id, title, slug, description, status, priority, lightweight, tags, agent, depends_on, pending_reason, created_at, updated_at, timezone (entrypoints and origin are optional).
-- Issue metadata in Markdown: issue files must include YAML front matter that mirrors the TODO fields.
-- Status values: to-do, doing, done, pending (pending = blocker recorded in pending_reason).
-- Agent entry file: `yoda/yoda.md`, with `AGENTS.md` or `gemini.md` pointing to it.
-- Human entrypoint: repo `README.md`. Agent entrypoint: `yoda/yoda.md`.
-- Entry trigger phrase: must mention "YODA Flow" (or "YODA") and intent to take the highest-priority selectable issue (with all dependencies resolved, and no issue currently `doing`).
-- Process light: skip the Study step and follow the preliminary issue, only when the issue is already clear with explicit acceptance criteria and no open questions.
-- Simplicity: keep the flow scriptable and avoid unnecessary complexity in formats.
-- Name: use "YODA Framework" as the primary name (with the Y linked to YAML).
-- Brand voice and terminology: clear, technical, pragmatic; English for canonical specs; standardized terms (YODA Framework, YODA Flow, issue, `yoda/todos/TODO.<dev>.yaml`, agent, script).
-- Stack profiles: YODA v1 is stack-agnostic; profiles are optional, future extensions outside the core.
-- Tooling policy: scripts are mandatory when available.
-- Audience and positioning: primary audience is solo developers (one human + one agent); general-purpose framework for tighter control of agent-assisted development.
-- Scope boundaries: out-of-scope items are defined in the v1 list.
-- Flow deliverables: Study/Document/Implement/Evaluate minimums defined, with explicit lightweight rule.
-- Scripts: live in `yoda/scripts/`, written in Python, file name is the command; `init.py` is mandatory.
-- Scripts v1 include issue_add.py to create TODO entries and issue Markdown from templates using basic fields, and issue_render.py to re-render issue Markdown from templates.
-- Logs: one YAML log per issue at `yoda/logs/<id>-<slug>.yaml`.
-- Commit: include the commit message text inside the issue and show it to the user using this format:
-  - First line: conventional commit message.
-  - Body:
-    - Issue: `<ID>`
-    - Path: `<issue path>`
+- Conventions: RFC 2119 keywords govern requirements; timestamps must be ISO 8601 with explicit timezone; UTC is preferred; text files are UTF-8; paths are repo-relative; slugs are immutable once created.
+- Source of truth precedence: `project/specs/` defines the framework; for work execution the issue Markdown file is the source of truth; specs override templates on conflict.
+- Voice and terminology: clear/technical/pragmatic English for canonical specs; key terms in English; YODA Framework/YODA Flow naming; use “issue” for work units; `yoda/todos/TODO.<dev>.yaml` is the canonical TODO.
+- Framework definition: document-first approach (YAML metadata + Markdown narrative), agents/scripts execute what is documented; README is the human entrypoint; `yoda/yoda.md` is the agent entrypoint.
+- YODA Flow: Study → Document → Implement → Evaluate with explicit deliverables; lightweight flow can skip Study/Document only when issue is already clear and marked `lightweight: true`; otherwise return to Study.
+- Repository structure: required folders under `yoda/` (templates, scripts, logs, todos, project/issues) plus `project/specs/` as source of truth.
+- TODO + issue model: one TODO per developer at `yoda/todos/TODO.<dev>.yaml`; one issue Markdown file per issue at `yoda/project/issues/<id>-<slug>.md`.
+- IDs and slugs: canonical id `<dev>-<NNNN>`; slug is lowercase ASCII, digits, hyphen, starts with letter; slugs are immutable and renames require migration.
+- TODO schema: required root fields include schema_version, developer name/slug, timezone, updated_at, issues; issue items include id/title/slug/description/status/priority/lightweight/agent/depends_on/pending_reason/created_at/updated_at with optional entrypoints/tags/origin.
+- Status/state machine: to-do → doing → done; any state can go pending; pending requires pending_reason and is resolved via pending_resolve.
+- Dependencies: `depends_on` uses canonical ids within the same TODO (no cross-dev); selection must ensure dependencies are done.
+- Deterministic selection: `todo_next.py` selects highest priority then list order; blocks if any issue is doing; reports pending/blocked hints.
+- Issue metadata in Markdown: YAML front matter mirrors TODO fields; issue title must include the ID.
+- Logs: one YAML log per issue in `yoda/logs/<id>-<slug>.yaml`; append-only; entries include timestamp + message; log status mirrors TODO; update logs on script actions.
+- Scripts policy: scripts are mandatory for metadata changes when available; scripts live in `yoda/scripts/`, Python, file name = command name.
+- CLI contract: global flags (`--dev`, `--format`, `--json`, `--dry-run`, `--verbose`); exit codes 0/1/2/3/4; errors to stderr with actionable messages.
+- JSON output minimums defined for `issue_add.py`, `todo_update.py`, `log_add.py`, `todo_next.py`.
+- Required scripts (v1): init, issue_add, issue_render, todo_list, todo_update, todo_next, todo_reorder, pending_resolve, log_add.
+- Script behavior specs defined for: issue_add, todo_update, log_add, todo_next (validation, conflicts, output, and log rules).
+- Python structure: shared helpers in `yoda/scripts/lib/`, pytest for tests, dependencies in `yoda/scripts/requirements.txt`.
+- Issue templates: standard vs lightweight, required fill-in rules, and commit text format embedded in the issue result log.
+- Agent entry: `AGENTS.md`/`gemini.md` route to `yoda/yoda.md`; entry phrase must mention YODA Flow and intent to take highest-priority selectable issue; resolve dev via flag/env/prompt.
+- Out of scope (v1): CI/CD, infra, architecture standards, security/compliance, product/HR/legal/finance, and delivery infrastructure.
+- Visual identity: monochrome document icon with Y; simple lines, no extra elements.
+- MCP: future v2 direction (minimal tools: todos.list/docs.read/workspace.apply_patch), with noted risks and benefits.
+- Influences: DocDD/RDD/Docs-as-Code/Design-first/ADRs/Literate Programming/Agentic Design Patterns inform guidance and vocabulary.
 
 ## Open decisions (not finalized)
 
