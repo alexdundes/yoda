@@ -27,6 +27,17 @@ Examples (allowed):
 - "YODA Flow, here we go"
 - "YODA Flow, next issue"
 
+## YODA Intake (backlog cycle)
+
+When the user signals intent to create issues or says “YODA Intake”, the agent must:
+
+1) Confirm entry into YODA Intake.
+2) Review the backlog using `todo_list.py` to avoid duplicates.
+3) Collect and shape requirements until each issue meets the Definition of Ready (DoR).
+4) Create issues via `issue_add.py` and complete the Markdown sections.
+5) Review ordering (optionally with `todo_reorder.py`) and propose the next YODA Flow issue.
+6) Exit Intake explicitly and ask whether to start YODA Flow.
+
 Slug format:
 - Use lowercase ASCII, digits, and hyphens only.
 - Must start with a letter and contain no spaces.

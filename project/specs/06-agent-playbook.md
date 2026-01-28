@@ -73,3 +73,18 @@ Deliverables per phase are defined in `project/specs/02-yoda-flow-process.md` an
 - When scripts are available, use them for metadata changes.
 - Ensure validation passes before marking issues as done; resolve validation errors first.
 - Issue creation (`issue_add.py`) is out of scope for YODA Flow and defined elsewhere.
+
+## YODA Intake (backlog cycle)
+
+When the human signals intent to create issues or explicitly says “YODA Intake”, the agent must:
+
+1) Enter YODA Intake and confirm intent.
+2) Consult `todo_list.py` to review existing backlog and avoid duplicates.
+3) Collect requirements and shape issues until they meet the Definition of Ready (DoR).
+4) Create issues via `issue_add.py` and fill issue Markdown sections.
+5) Review order (optionally use `todo_reorder.py`) and propose the next YODA Flow issue.
+6) Exit Intake explicitly and ask whether to start YODA Flow.
+
+Agent rules for Intake:
+- Do not create issues without passing DoR.
+- Keep Intake and Flow distinct; Intake prepares issues, Flow executes them.
