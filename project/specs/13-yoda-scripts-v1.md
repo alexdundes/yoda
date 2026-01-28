@@ -125,25 +125,6 @@ Outputs:
 
 ---
 
-### issue_render.py
-
-Purpose:
-- Render or re-render an issue Markdown file from the template.
-
-Behavior (minimum):
-- Load the issue data from `yoda/todos/TODO.<dev>.yaml` or provided inputs.
-- Apply the selected template.
-- Preserve or re-apply required fields (id, title, summary).
-
-Inputs:
-- Issue id.
-- Template path (optional).
-
-Outputs:
-- Updated issue Markdown file named `<id>-<slug>.md` in `yoda/project/issues/`.
-
----
-
 ### todo_list.py
 
 Purpose:
@@ -172,6 +153,7 @@ Behavior (minimum):
 - Update status, priority, tags, depends_on, pending_reason.
 - Update updated_at.
 - Use `todo_update.py` to resolve `pending` issues by setting a new status and clearing `pending_reason`.
+- `todo_update.py` is the standard way to re-sync issue front matter with the TODO item.
 
 Inputs:
 - Issue id.

@@ -14,7 +14,6 @@ This document defines the base Python project structure for YODA scripts in `yod
 yoda/
   scripts/
     issue_add.py
-    issue_render.py
     todo_list.py
     todo_update.py
     todo_next.py
