@@ -1,0 +1,15 @@
+schema_version: '1.0'
+issue_id: yoda-0021
+issue_path: yoda/project/issues/yoda-0021-license-curta-para-pacote-yoda.md
+todo_id: yoda-0021
+status: to-do
+entries:
+- timestamp: '2026-01-29T06:31:15-03:00'
+  message: "[yoda-0021] issue_add created\ntitle: LICENSE curta para pacote YODA\n\
+    description: Definir e redigir arquivo LICENSE curto a ser inclu\xEDdo no artefato\
+    \ distribu\xEDvel, alinhado \xE0s decis\xF5es de empacote e licen\xE7a do projeto.\n\
+    slug: license-curta-para-pacote-yoda\npriority: 6\nagent: Human"
+- timestamp: '2026-01-29T06:31:21-03:00'
+  message: '[yoda-0021] todo_update
+
+    depends_on: [] -> yoda-0016'

@@ -2,7 +2,7 @@ schema_version: '1.0'
 issue_id: yoda-0016
 issue_path: yoda/project/issues/yoda-0016-specs-empacotamento-e-distribui-o-do-yoda-framework.md
 todo_id: yoda-0016
-status: doing
+status: done
 entries:
 - timestamp: '2026-01-28T19:02:03-03:00'
   message: "[yoda-0016] issue_add created\ntitle: Specs: empacotamento e distribui\xE7\
@@ -14,3 +14,17 @@ entries:
   message: '[yoda-0016] todo_update
 
     status: to-do -> doing'
+- timestamp: '2026-01-29T06:34:46-03:00'
+  message: "[yoda-0016] Implement: criada spec 23-distribution-and-packaging.md definindo\
+    \ artefato tar.gz, manifesto, changelog estruturado, refer\xEAncias atualizadas\
+    \ no summary."
+- timestamp: '2026-01-29T06:34:51-03:00'
+  message: '[yoda-0016] todo_update
+
+    status: doing -> done'
+- timestamp: '2026-01-29T06:35:17-03:00'
+  message: "[yoda-0016] Evaluate: issue conclu\xEDda; spec 23-distribution-and-packaging.md\
+    \ + summary atualizado; follow-ups criados (yoda-0021, yoda-0022)."
+- timestamp: '2026-01-29T06:44:02-03:00'
+  message: '[yoda-0016] Added spec index entry for 23-distribution-and-packaging in
+    project/specs/README.md.'

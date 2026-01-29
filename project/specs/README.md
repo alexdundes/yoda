@@ -58,5 +58,7 @@ This README organizes the topics discussed so far. Each topic has a dedicated fi
     - file: `21-todo-next-script.md`
 22. Out of scope (v1)
     - file: `22-out-of-scope.md`
+23. Distribution and packaging contract
+    - file: `23-distribution-and-packaging.md`
 99. Decision summary (not part of the numbered spec sequence)
     - file: `summary.md`

@@ -15,10 +15,10 @@ pending_reason: ''
 priority: 10
 schema_version: '1.0'
 slug: specs-empacotamento-e-distribui-o-do-yoda-framework
-status: doing
+status: done
 tags: []
 title: 'Specs: empacotamento e distribuição do YODA Framework'
-updated_at: '2026-01-29T06:14:46-03:00'
+updated_at: '2026-01-29T06:34:51-03:00'
 ---
 
 # yoda-0016 - Specs: empacotamento e distribuição do YODA Framework
@@ -51,19 +51,23 @@ Produzir uma ou mais specs em `project/specs/` que normatizem o empacotamento e 
 - Referenciar explicitamente que `project/specs` não vai no pacote e justificar.
 - Definir como futuras atualizações do pacote devem tratar compatibilidade (ex.: breaking vs minor).
 - Registrar premissas de build (ferramentas permitidas, ambiente mínimo) e de consumo (projeto host).
+- Incluir contrato de changelog estruturado (`yoda/CHANGELOG.yaml`) e validação pelo comando `package`.
 - Atualizar sumário/índice das specs para incluir o novo material.
 
 ## Acceptance criteria
-- [ ] Novas specs adicionadas em `project/specs/` descrevem artefato, inclusões/exclusões e layout do pacote.
-- [ ] Seções de versionamento/compatibilidade e interface mínima dos comandos de empacote/init estão documentadas.
-- [ ] `project/specs/summary.md` (ou equivalente) referencia o novo conteúdo.
-- [ ] Nenhuma dependência obrigatória de `project/specs` permanece no pacote final (apontada explicitamente na spec).
+- [x] Novas specs adicionadas em `project/specs/` descrevem artefato, inclusões/exclusões e layout do pacote.
+- [x] Seções de versionamento/compatibilidade e interface mínima dos comandos de empacote/init estão documentadas.
+- [x] Manifesto do pacote e contrato de changelog estruturado são descritos (incluindo validação pelo `package`).
+- [x] `project/specs/summary.md` (ou equivalente) referencia o novo conteúdo.
+- [x] Nenhuma dependência obrigatória de `project/specs` permanece no pacote final (apontada explicitamente na spec).
 
 ## Dependencies
 None.
 
 ## Entry points
 - path: project/specs/summary.md
+  type: doc
+- path: project/specs/23-distribution-and-packaging.md
   type: doc
 - path: project/specs/02-yoda-flow-process.md
   type: doc
@@ -76,6 +80,7 @@ None.
 - Manter linguagem concisa (orientada a agentes), mas dentro do padrão das specs atuais.
 - Explicitar relação entre meta-implementação (repo atual) e artefato distribuível.
 - Considerar futura automação de build/init para garantir que os campos de interface sejam factíveis.
+- Desdobrar follow-ups para LICENSE e README curtos do pacote (issues separadas).
 
 ## Tests
 - Not applicable (documentação); revisar formatação/lint se houver.
@@ -86,9 +91,13 @@ None.
 - Necessidade de compatibilidade retroativa pode exigir ajustes adicionais no layout.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
+- Added `project/specs/23-distribution-and-packaging.md` with contrato de artefato (tar.gz), manifesto, changelog estruturado e regras de compatibilidade/upgrade.
+- Atualizado `project/specs/summary.md` para referenciar a nova decisão.
+
+Commit suggestion:
+```
+docs: define distribution and packaging contract
+
+Issue: yoda-0016
+Path: project/specs/23-distribution-and-packaging.md
+```

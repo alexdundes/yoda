@@ -1,0 +1,15 @@
+schema_version: '1.0'
+issue_id: yoda-0022
+issue_path: yoda/project/issues/yoda-0022-readme-curto-do-pacote-yoda.md
+todo_id: yoda-0022
+status: to-do
+entries:
+- timestamp: '2026-01-29T06:31:28-03:00'
+  message: "[yoda-0022] issue_add created\ntitle: README curto do pacote YODA\ndescription:\
+    \ Criar README conciso para o artefato distribu\xEDvel, com instru\xE7\xF5es r\xE1\
+    pidas de uso, comandos package/init, conte\xFAdo do pacote e links essenciais.\n\
+    slug: readme-curto-do-pacote-yoda\npriority: 5\nagent: Human"
+- timestamp: '2026-01-29T06:31:31-03:00'
+  message: '[yoda-0022] todo_update
+
+    depends_on: [] -> yoda-0016'

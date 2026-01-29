@@ -31,6 +31,7 @@ This file records decisions and known open points captured so far.
 - Visual identity: monochrome document icon with Y; simple lines, no extra elements.
 - MCP: future v2 direction (minimal tools: todos.list/docs.read/workspace.apply_patch), with noted risks and benefits.
 - Influences: DocDD/RDD/Docs-as-Code/Design-first/ADRs/Literate Programming/Agentic Design Patterns inform guidance and vocabulary.
+- Distribution and packaging: default artefact `tar.gz` named `yoda-framework-<semver+build>`, manifest `yoda/PACKAGE_MANIFEST.yaml`, structured changelog `yoda/CHANGELOG.yaml`, excludes `project/specs` and runtime data; `package`/`init` must follow this contract. (see `23-distribution-and-packaging.md`)
 
 ## Open decisions (not finalized)
 

@@ -2,7 +2,7 @@ schema_version: '1.0'
 developer_name: Yoda
 developer_slug: yoda
 timezone: America/Sao_Paulo
-updated_at: '2026-01-29T06:14:46-03:00'
+updated_at: '2026-01-29T06:34:51-03:00'
 issues:
 - schema_version: '1.0'
   id: yoda-0014
@@ -304,14 +304,14 @@ issues:
   description: "Especificar no project/specs como o YODA ser\xE1 empacotado/embutido,\
     \ o que entra e sai do artefato, comandos de build/init e alinhamento com meta-implementa\xE7\
     \xE3o."
-  status: doing
+  status: done
   priority: 10
   lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-28T19:02:03-03:00'
-  updated_at: '2026-01-29T06:14:46-03:00'
+  updated_at: '2026-01-29T06:34:51-03:00'
   entrypoints: []
   tags: []
   origin:
@@ -399,6 +399,49 @@ issues:
   pending_reason: ''
   created_at: '2026-01-28T19:02:16-03:00'
   updated_at: '2026-01-28T19:05:24-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0021
+  title: LICENSE curta para pacote YODA
+  slug: license-curta-para-pacote-yoda
+  description: "Definir e redigir arquivo LICENSE curto a ser inclu\xEDdo no artefato\
+    \ distribu\xEDvel, alinhado \xE0s decis\xF5es de empacote e licen\xE7a do projeto."
+  status: to-do
+  priority: 6
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0016
+  pending_reason: ''
+  created_at: '2026-01-29T06:31:15-03:00'
+  updated_at: '2026-01-29T06:31:21-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0022
+  title: README curto do pacote YODA
+  slug: readme-curto-do-pacote-yoda
+  description: "Criar README conciso para o artefato distribu\xEDvel, com instru\xE7\
+    \xF5es r\xE1pidas de uso, comandos package/init, conte\xFAdo do pacote e links\
+    \ essenciais."
+  status: to-do
+  priority: 5
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0016
+  pending_reason: ''
+  created_at: '2026-01-29T06:31:28-03:00'
+  updated_at: '2026-01-29T06:31:31-03:00'
   entrypoints: []
   tags: []
   origin:
