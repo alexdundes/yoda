@@ -1,0 +1,16 @@
+schema_version: '1.0'
+issue_id: yoda-0017
+issue_path: yoda/project/issues/yoda-0017-manual-embarcado-reescrever-yoda-yoda-md-independente-das-specs.md
+todo_id: yoda-0017
+status: to-do
+entries:
+- timestamp: '2026-01-28T19:02:06-03:00'
+  message: "[yoda-0017] issue_add created\ntitle: Manual embarcado: reescrever yoda/yoda.md\
+    \ independente das specs\ndescription: Produzir manual m\xEDnimo para agentes\
+    \ (YODA Flow e Intake) que funcione sem project/specs, com playbooks claros e\
+    \ refer\xEAncias \xE0s ferramentas/scripts.\nslug: manual-embarcado-reescrever-yoda-yoda-md-independente-das-specs\n\
+    priority: 9\nagent: Human"
+- timestamp: '2026-01-28T19:05:16-03:00'
+  message: '[yoda-0017] todo_update
+
+    depends_on: [] -> yoda-0016'

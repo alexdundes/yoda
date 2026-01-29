@@ -1,0 +1,15 @@
+schema_version: '1.0'
+issue_id: yoda-0019
+issue_path: yoda/project/issues/yoda-0019-comando-de-init-p-s-embutido.md
+todo_id: yoda-0019
+status: to-do
+entries:
+- timestamp: '2026-01-28T19:02:12-03:00'
+  message: "[yoda-0019] issue_add created\ntitle: Comando de init p\xF3s-embutido\n\
+    description: Criar script que prepara um projeto host ap\xF3s receber o pacote\
+    \ YODA: ajusta AGENTS.md, estrutura m\xEDnima, TODO.<dev>.yaml, idempotente e\
+    \ com dry-run.\nslug: comando-de-init-p-s-embutido\npriority: 7\nagent: Human"
+- timestamp: '2026-01-28T19:05:21-03:00'
+  message: '[yoda-0019] todo_update
+
+    depends_on: [] -> yoda-0016, yoda-0018'

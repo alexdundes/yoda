@@ -1,0 +1,16 @@
+schema_version: '1.0'
+issue_id: yoda-0020
+issue_path: yoda/project/issues/yoda-0020-spike-padr-o-de-instala-o-upgrade-do-yoda-em-projetos-externos.md
+todo_id: yoda-0020
+status: to-do
+entries:
+- timestamp: '2026-01-28T19:02:16-03:00'
+  message: "[yoda-0020] issue_add created\ntitle: Spike: padr\xE3o de instala\xE7\xE3\
+    o/upgrade do YODA em projetos externos\ndescription: Explorar op\xE7\xF5es para\
+    \ embutir/atualizar o YODA Framework em reposit\xF3rios externos, cobrindo pacote+init,\
+    \ versionamento, upgrade/rollback e riscos.\nslug: spike-padr-o-de-instala-o-upgrade-do-yoda-em-projetos-externos\n\
+    priority: 6\nagent: Human"
+- timestamp: '2026-01-28T19:05:24-03:00'
+  message: '[yoda-0020] todo_update
+
+    depends_on: [] -> yoda-0016'

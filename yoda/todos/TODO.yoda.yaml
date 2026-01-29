@@ -2,7 +2,7 @@ schema_version: '1.0'
 developer_name: Yoda
 developer_slug: yoda
 timezone: America/Sao_Paulo
-updated_at: '2026-01-28T17:45:41-03:00'
+updated_at: '2026-01-29T06:14:46-03:00'
 issues:
 - schema_version: '1.0'
   id: yoda-0014
@@ -291,6 +291,114 @@ issues:
   pending_reason: ''
   created_at: '2026-01-28T17:35:28-03:00'
   updated_at: '2026-01-28T17:45:41-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0016
+  title: "Specs: empacotamento e distribui\xE7\xE3o do YODA Framework"
+  slug: specs-empacotamento-e-distribui-o-do-yoda-framework
+  description: "Especificar no project/specs como o YODA ser\xE1 empacotado/embutido,\
+    \ o que entra e sai do artefato, comandos de build/init e alinhamento com meta-implementa\xE7\
+    \xE3o."
+  status: doing
+  priority: 10
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-01-28T19:02:03-03:00'
+  updated_at: '2026-01-29T06:14:46-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0017
+  title: 'Manual embarcado: reescrever yoda/yoda.md independente das specs'
+  slug: manual-embarcado-reescrever-yoda-yoda-md-independente-das-specs
+  description: "Produzir manual m\xEDnimo para agentes (YODA Flow e Intake) que funcione\
+    \ sem project/specs, com playbooks claros e refer\xEAncias \xE0s ferramentas/scripts."
+  status: to-do
+  priority: 9
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0016
+  pending_reason: ''
+  created_at: '2026-01-28T19:02:06-03:00'
+  updated_at: '2026-01-28T19:05:16-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0018
+  title: Comando de empacote do YODA (package)
+  slug: comando-de-empacote-do-yoda-package
+  description: "Implementar comando/script que gera artefato instal\xE1vel contendo\
+    \ apenas os arquivos necess\xE1rios de yoda/, com vers\xE3o e checklist de inclus\xE3\
+    o/exclus\xE3o."
+  status: to-do
+  priority: 8
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0016
+  pending_reason: ''
+  created_at: '2026-01-28T19:02:09-03:00'
+  updated_at: '2026-01-28T19:05:18-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0019
+  title: "Comando de init p\xF3s-embutido"
+  slug: comando-de-init-p-s-embutido
+  description: "Criar script que prepara um projeto host ap\xF3s receber o pacote\
+    \ YODA: ajusta AGENTS.md, estrutura m\xEDnima, TODO.<dev>.yaml, idempotente e\
+    \ com dry-run."
+  status: to-do
+  priority: 7
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0016
+  - yoda-0018
+  pending_reason: ''
+  created_at: '2026-01-28T19:02:12-03:00'
+  updated_at: '2026-01-28T19:05:21-03:00'
+  entrypoints: []
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0020
+  title: "Spike: padr\xE3o de instala\xE7\xE3o/upgrade do YODA em projetos externos"
+  slug: spike-padr-o-de-instala-o-upgrade-do-yoda-em-projetos-externos
+  description: "Explorar op\xE7\xF5es para embutir/atualizar o YODA Framework em reposit\xF3\
+    rios externos, cobrindo pacote+init, versionamento, upgrade/rollback e riscos."
+  status: to-do
+  priority: 6
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0016
+  pending_reason: ''
+  created_at: '2026-01-28T19:02:16-03:00'
+  updated_at: '2026-01-28T19:05:24-03:00'
   entrypoints: []
   tags: []
   origin:

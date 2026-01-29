@@ -1,0 +1,16 @@
+schema_version: '1.0'
+issue_id: yoda-0018
+issue_path: yoda/project/issues/yoda-0018-comando-de-empacote-do-yoda-package.md
+todo_id: yoda-0018
+status: to-do
+entries:
+- timestamp: '2026-01-28T19:02:09-03:00'
+  message: "[yoda-0018] issue_add created\ntitle: Comando de empacote do YODA (package)\n\
+    description: Implementar comando/script que gera artefato instal\xE1vel contendo\
+    \ apenas os arquivos necess\xE1rios de yoda/, com vers\xE3o e checklist de inclus\xE3\
+    o/exclus\xE3o.\nslug: comando-de-empacote-do-yoda-package\npriority: 8\nagent:\
+    \ Human"
+- timestamp: '2026-01-28T19:05:18-03:00'
+  message: '[yoda-0018] todo_update
+
+    depends_on: [] -> yoda-0016'

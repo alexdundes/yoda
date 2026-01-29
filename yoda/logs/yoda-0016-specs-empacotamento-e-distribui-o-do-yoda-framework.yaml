@@ -1,0 +1,16 @@
+schema_version: '1.0'
+issue_id: yoda-0016
+issue_path: yoda/project/issues/yoda-0016-specs-empacotamento-e-distribui-o-do-yoda-framework.md
+todo_id: yoda-0016
+status: doing
+entries:
+- timestamp: '2026-01-28T19:02:03-03:00'
+  message: "[yoda-0016] issue_add created\ntitle: Specs: empacotamento e distribui\xE7\
+    \xE3o do YODA Framework\ndescription: Especificar no project/specs como o YODA\
+    \ ser\xE1 empacotado/embutido, o que entra e sai do artefato, comandos de build/init\
+    \ e alinhamento com meta-implementa\xE7\xE3o.\nslug: specs-empacotamento-e-distribui-o-do-yoda-framework\n\
+    priority: 10\nagent: Human"
+- timestamp: '2026-01-29T06:14:47-03:00'
+  message: '[yoda-0016] todo_update
+
+    status: to-do -> doing'
