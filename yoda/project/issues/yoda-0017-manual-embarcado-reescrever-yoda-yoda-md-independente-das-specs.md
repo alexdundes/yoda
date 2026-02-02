@@ -16,23 +16,23 @@ pending_reason: ''
 priority: 9
 schema_version: '1.0'
 slug: manual-embarcado-reescrever-yoda-yoda-md-independente-das-specs
-status: to-do
+status: done
 tags: []
 title: 'Manual embarcado: reescrever yoda/yoda.md independente das specs'
-updated_at: '2026-01-28T19:05:16-03:00'
+updated_at: '2026-01-29T09:34:53-03:00'
 ---
 
 # yoda-0017 - Manual embarcado: reescrever yoda/yoda.md independente das specs
 <!-- AGENT: Replace yoda-0017 with the canonical issue id (dev-id, e.g., dev-0001) from `yoda/todos/TODO.<dev>.yaml` and Manual embarcado: reescrever yoda/yoda.md independente das specs with the issue title. Fill front matter fields from TODO; scripts must keep them in sync. Keep any <...> placeholders wrapped in inline code when used in prose. -->
 
 ## Summary
-Reescrever o manual do YODA (`yoda/yoda.md`, podendo dividir em arquivos) para que agentes executem YODA Flow e YODA Intake sem depender de `project/specs`. O conteúdo deve ser enxuto, com playbooks claros, comandos e caminhos práticos para entrada, fluxo e encerramento.
+Rewrite the YODA manual (`yoda/yoda.md`) so agents can run YODA Flow and YODA Intake without relying on `project/specs`. Deliver a concise, standalone playbook with practical steps, commands, and paths for entry, execution, and exit.
 
 ## Context
-`yoda/yoda.md` atual referencia `project/specs` como fonte de verdade e presume o repositório de meta-implementação. No pacote embarcado, `project/specs` não estará presente; sem manual autossuficiente, agentes ficarão sem orientação mínima.
+The previous `yoda/yoda.md` pointed to `project/specs`, which will not ship in the embedded package. Agents need a self-contained manual inside `yoda/` to operate both cycles with only the packaged assets.
 
 ## Objective
-Produzir manual embarcado que cubra entrada, fluxos (Flow/Intake), scripts `todo_*`, `issue_add`, `log_add`, deliverables e regras de lightweight, usando apenas recursos inclusos no pacote.
+Provide an English, single-file manual covering Flow/Intake entry phrases, developer slug resolution, playbooks (Study/Document/Implement/Evaluate, lightweight), blocking handling, script usage, paths, and handoff—using only packaged resources.
 
 ## Scope
 - Reestruturar `yoda/yoda.md` (ou dividir em poucos arquivos sob `yoda/`) para ser standalone.
@@ -54,11 +54,11 @@ Produzir manual embarcado que cubra entrada, fluxos (Flow/Intake), scripts `todo
 - Se subdividido, incluir índice claro e links relativos funcionais.
 
 ## Acceptance criteria
-- [ ] `yoda/yoda.md` (ou conjunto equivalente) funciona sem consultar `project/specs`.
-- [ ] Playbooks de YODA Flow e Intake estão descritos com passos acionáveis e exemplos de frases.
-- [ ] Uso dos scripts `todo_*`, `issue_add.py`, `log_add.py` está documentado com caminhos corretos.
-- [ ] Referências a `project/specs` não são necessárias para operar o framework embarcado.
-- [ ] Links internos/âncoras funcionam após empacote.
+- [x] `yoda/yoda.md` (single-file) works without consulting `project/specs`.
+- [x] YODA Flow and Intake playbooks are described with actionable steps and example phrasing.
+- [x] Usage of scripts (`todo_*`, `issue_add.py`, `log_add.py`) is documented with correct paths.
+- [x] No `project/specs` references are required to operate the embedded framework.
+- [x] Internal links/anchors function after packaging.
 
 ## Dependencies
 Depends on: yoda-0016.
@@ -87,9 +87,12 @@ Depends on: yoda-0016.
 - Mudanças posteriores nos scripts quebrarem referências se não forem mantidas.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
+- Rewrote `yoda/yoda.md` as a standalone, English manual with Flow/Intake playbooks, slug resolution, scripts quick reference, file map, and handoff steps; removed dependency on `project/specs`.
+
+Commit suggestion:
+```
+docs: rewrite embedded yoda manual
+
+Issue: yoda-0017
+Path: yoda/yoda.md
+```

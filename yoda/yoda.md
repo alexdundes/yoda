@@ -1,90 +1,98 @@
-# YODA Agent Instructions
+# YODA Agent Manual (Embedded)
 
-This file is the root entry for agents in this repository. It defines how to enter the YODA Flow and how to use the project sources of truth.
+Single-file guide for agents when the packaged YODA Framework is embedded in another project. Use this as the operative source; it does not rely on `project/specs/`.
 
-## Entry
+## Table of contents
+- Quick start
+- Developer slug resolution
+- Entering YODA Flow
+- YODA Flow playbook (Study, Document, Implement, Evaluate, Lightweight)
+- Blocking and pending
+- Entering YODA Intake
+- Scripts quick reference
+- Files and paths in the package
+- Exit and handoff
 
-When the user indicates they want to enter YODA Flow, the agent must:
+## Quick start
+1) Confirm intent: user must say “YODA Flow” (or “YODA Intake” for backlog work).
+2) Resolve developer slug (`--dev` > `YODA_DEV` env > ask user).
+3) Run `python3 yoda/scripts/todo_next.py --dev <slug>` to pick the next selectable issue.
+4) Ask: “Start YODA Flow for issue <id>?” If yes, set status to `doing` with `todo_update.py`.
+5) Follow the playbook below; use only documented issue scope.
 
-1) Confirm entry into YODA Flow.
-2) Resolve developer slug in this order:
-   - --dev `<slug>` flag
-   - YODA_DEV environment variable
-   - Ask the user
-3) Run `todo_next.py` to select the next issue.
-   - Always surface pending hints (if any).
-   - If it returns conflict (any `doing` issue), stop and ask the user to resolve it.
-   - If it returns not found, surface blocked hints and ask what to do next.
-4) Ask for confirmation: "Start YODA Flow for issue <id>?" (translate to the human's language if needed).
-5) If approved, set status to `doing` via `todo_update.py` and follow the YODA Flow.
+## Developer slug resolution
+- Order: CLI `--dev` flag → `YODA_DEV` env var → prompt the user.
+- Slug rules: lowercase ASCII, digits, hyphens; starts with a letter; no spaces.
+- All TODO/issue paths depend on the slug (`yoda/todos/TODO.<dev>.yaml`).
 
-Example natural entry phrase:
-"Let's enter YODA Flow and take the highest-priority selectable issue (no issue doing, dependencies resolved)."
-Entry phrase criteria:
-- Must explicitly mention "YODA Flow" (or "YODA") and intent to take the highest-priority selectable issue.
-Examples (allowed):
-- "Let's do YODA Flow"
-- "YODA Flow, here we go"
-- "YODA Flow, next issue"
+## Entering YODA Flow
+1) Confirm entry phrase includes “YODA Flow” and intent to take the highest-priority selectable issue.
+2) Ensure no issue is already `doing`; if there is, pause and ask the user to resolve.
+3) Run `todo_next.py`; surface pending/blocked info if present.
+4) Ask for confirmation; if approved, mark the issue `doing` via `todo_update.py`.
 
-## YODA Intake (backlog cycle)
+## YODA Flow playbook
+### Study
+- Goal: understand the issue, constraints, and open questions.
+- Deliverable: short chat summary + questions/decisions; wait for approval before Document.
 
-When the user signals intent to create issues or says “YODA Intake”, the agent must:
+### Document
+- Update the issue Markdown (`yoda/project/issues/<id>-<slug>.md`) to reflect Study outcomes.
+- Ensure acceptance criteria are clear and testable.
+- Get human confirmation before coding.
 
-1) Confirm entry into YODA Intake.
-2) Review the backlog using `todo_list.py` to avoid duplicates.
-3) Collect and shape requirements until each issue meets the Definition of Ready (DoR).
-4) Create issues via `issue_add.py` and complete the Markdown sections.
-5) Review ordering (optionally with `todo_reorder.py`) and propose the next YODA Flow issue.
-6) Exit Intake explicitly and ask whether to start YODA Flow.
+### Implement
+- Execute only what the issue states.
+- Use scripts to update metadata; do not edit TODO files directly.
+- Add/adjust tests if required by acceptance criteria or project norms.
 
-Slug format:
-- Use lowercase ASCII, digits, and hyphens only.
-- Must start with a letter and contain no spaces.
+### Evaluate
+- Validate against acceptance criteria.
+- Record a result log entry via `log_add.py`.
+- Suggest a commit message (conventional): first line = message; body lines `Issue: <ID>`, `Path: <issue path>`.
+- Update TODO status to `done` with `todo_update.py`; offer next issue via `todo_next.py`.
 
-## Source of truth
+### Lightweight rule
+- Allowed only if `lightweight: true` in the issue/TODO and scope is already clear.
+- If ambiguity or risk appears, fall back to full flow (Study → Document).
 
-- project/specs/ is the source of truth for the framework and this project.
-- The issue Markdown file is the source of truth for the current issue.
-- If there is a conflict between project/specs and yoda/, resolve it via an explicit issue.
+## Blocking and pending
+- If a blocker appears during Implement/Evaluate, set status `pending` with `todo_update.py --pending-reason "<reason>"`.
+- Surface dependencies explicitly; do not proceed until resolved.
+- When dependency is cleared, move back to `to-do` or `doing` as appropriate.
 
-## Meta-implementation exception (this repo)
+## Entering YODA Intake (backlog cycle)
+Trigger: user wants to create/refine issues (e.g., “YODA Intake”).
+Steps:
+1) Confirm Intake entry.
+2) Review backlog with `todo_list.py` to avoid duplicates.
+3) Collect goals/constraints; shape issues until they meet Definition of Ready (clear title, context/objective, scope/out-of-scope, acceptance criteria, dependencies/risks).
+4) Create issues via `issue_add.py`; fill Markdown sections.
+5) Review ordering (optionally `todo_reorder.py`).
+6) Exit Intake explicitly and offer to start YODA Flow on the top selectable issue.
 
-- project/specs/ describes the future YODA Framework and is the canonical reference.
-- This repository implements the YODA Framework specs directly.
-- yoda/ is the implementation workspace for the framework.
-- This repository follows the YODA Framework specs as the current source of truth.
+## Scripts quick reference
+- `todo_list.py [--status ...] [--grep ...]`: list/filter issues; excludes `done` by default.
+- `todo_next.py`: select highest-priority selectable issue; reports blockers/pending.
+- `todo_update.py --issue <id> --status <status> [--priority ...] [--depends-on ...] [--pending-reason ...]`.
+- `todo_reorder.py`: reorder TODO entries (if needed during Intake).
+- `issue_add.py --title --description [--priority ...] [--tags ...] [--entrypoint ...]`: create new issue + log + TODO entry.
+- `log_add.py --issue <id> --message "<msg including id>" [--timestamp ...]`: append to issue log.
+Notes:
+- Always include the issue id in log messages (`[yoda-0001] ...`).
+- Use `--dev <slug>` on all commands unless `YODA_DEV` is set.
+- All scripts live in `yoda/scripts/`; run from repo root.
 
-## TODO (this implementation)
+## Files and paths in the package
+- Manual: `yoda/yoda.md` (this file).
+- TODO: `yoda/todos/TODO.<dev>.yaml` (one per developer).
+- Issues: `yoda/project/issues/<id>-<slug>.md`.
+- Logs: `yoda/logs/<id>-<slug>.yaml`.
+- Templates: `yoda/templates/issue.md`, `yoda/templates/issue-lightweight-process.md`.
+- Scripts: `yoda/scripts/*.py`.
+- Package metadata (produced by `package` command when implemented): `yoda/PACKAGE_MANIFEST.yaml`, `yoda/CHANGELOG.yaml`, plus root `LICENSE` and `README`.
 
-Use `yoda/todos/TODO.<dev>.yaml` as the TODO source.
-
-- If `yoda/todos/TODO.<dev>.yaml` is missing, ask the user which TODO to use.
-- Do not edit TODO files directly; use scripts to update metadata.
-
-## Flow rules
-
-- Follow the YODA Flow: Study -> Document -> Implement -> Evaluate.
-- For lightweight process, skip Study and follow the preliminary issue directly.
-  - Use lightweight only when the issue is already clear, has explicit acceptance criteria, and no open questions remain.
-  - If there is ambiguity, new requirements, or non-trivial risk, include Study.
-- Implement only what is documented in the issue.
-- If a blocker is found, mark the issue as pending and record the reason in the TODO.
-- If Study discovers dependencies, update `depends_on` (and priority if needed) using `todo_update.py`, set status back to `to-do`, and end the cycle.
-- Logs for this project are YAML: `yoda/logs/<id>-<slug>.yaml`.
-- Log entries should include the canonical issue id (dev-id) in the message.
-- Status names: to-do -> doing -> done; any state can transition to pending.
-- Log timestamps should use ISO 8601 with Brasilia offset (e.g., 2026-01-21T19:40:50-03:00).
-- If the issue is ambiguous, return to Document before coding.
-- Do not invent files or paths; verify the repo structure first.
-- Any change to project/specs must be tracked by an issue.
-- Commit format:
-  - First line: conventional commit message.
-  - Body:
-    - Issue: `<ID>`
-    - Path: `<issue path>`
-
-## Notes
-
-- If the TODO file is missing, `todo_next.py` will fail; ask the user which TODO to use and retry.
-- Issue creation (`issue_add.py`) is out of scope for YODA Flow and defined elsewhere.
+## Exit and handoff
+- After Evaluate, propose the next issue via `todo_next.py` or exit Flow if the user prefers.
+- If Intake just completed, explicitly close it and offer YODA Flow.
+- Keep conversation concise; default language is English unless user prefers otherwise.

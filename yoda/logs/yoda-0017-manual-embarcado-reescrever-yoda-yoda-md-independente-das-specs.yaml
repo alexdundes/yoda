@@ -2,7 +2,7 @@ schema_version: '1.0'
 issue_id: yoda-0017
 issue_path: yoda/project/issues/yoda-0017-manual-embarcado-reescrever-yoda-yoda-md-independente-das-specs.md
 todo_id: yoda-0017
-status: to-do
+status: done
 entries:
 - timestamp: '2026-01-28T19:02:06-03:00'
   message: "[yoda-0017] issue_add created\ntitle: Manual embarcado: reescrever yoda/yoda.md\
@@ -14,3 +14,14 @@ entries:
   message: '[yoda-0017] todo_update
 
     depends_on: [] -> yoda-0016'
+- timestamp: '2026-01-29T09:30:58-03:00'
+  message: '[yoda-0017] todo_update
+
+    status: to-do -> doing'
+- timestamp: '2026-01-29T09:34:49-03:00'
+  message: '[yoda-0017] Implement: rewrote yoda/yoda.md as standalone English manual
+    (Flow/Intake playbooks, scripts reference, paths, no project/specs dependency).'
+- timestamp: '2026-01-29T09:34:53-03:00'
+  message: '[yoda-0017] todo_update
+
+    status: doing -> done'
