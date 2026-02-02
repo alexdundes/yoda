@@ -2,7 +2,7 @@ schema_version: '1.0'
 issue_id: yoda-0018
 issue_path: yoda/project/issues/yoda-0018-comando-de-empacote-do-yoda-package.md
 todo_id: yoda-0018
-status: to-do
+status: done
 entries:
 - timestamp: '2026-01-28T19:02:09-03:00'
   message: "[yoda-0018] issue_add created\ntitle: Comando de empacote do YODA (package)\n\
@@ -14,3 +14,14 @@ entries:
   message: '[yoda-0018] todo_update
 
     depends_on: [] -> yoda-0016'
+- timestamp: '2026-02-02T07:56:01-03:00'
+  message: '[yoda-0018] todo_update
+
+    status: to-do -> doing'
+- timestamp: '2026-02-02T08:18:55-03:00'
+  message: '[yoda-0018] Implemented package command, updated packaging spec for README.md/tests/tar.gz,
+    added docs and tests.'
+- timestamp: '2026-02-02T08:19:00-03:00'
+  message: '[yoda-0018] todo_update
+
+    status: doing -> done'

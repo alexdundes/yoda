@@ -11,7 +11,7 @@ Defines the distributable artefact of the YODA Framework and the contract expect
 - Default format: `tar.gz`.
 - Filename pattern: `yoda-framework-<semver+build>.tar.gz` (build metadata is required).
   - Build metadata format: `YYYYMMDD.<short-commit>` (example: `1.3.0+20260129.a1b2c3`).
-- Optional alternative format (`zip`) MAY be supported later but is not the default.
+- Only `tar.gz` is supported in v1; `zip` is deferred.
 
 ## Versioning and compatibility
 - Use SemVer; build metadata is mandatory for every artefact.
@@ -21,10 +21,10 @@ Defines the distributable artefact of the YODA Framework and the contract expect
 ## Included content
 - `yoda/yoda.md` (or successors) — embedded manual for agents.
 - `yoda/templates/` — issue templates.
-- `yoda/scripts/` — official scripts (`todo_*`, `issue_add`, `log_add`, etc.).
+- `yoda/scripts/` — official scripts (`todo_*`, `issue_add`, `log_add`, etc.), excluding `yoda/scripts/tests/`.
 - `yoda/favicons/` (if present) — lightweight assets referenced by the manual/UI.
 - `LICENSE` — short license file for the package.
-- `README` — concise package README.
+- `README.md` — concise package README.
 - `yoda/PACKAGE_MANIFEST.yaml` — package manifest (see below).
 - `yoda/CHANGELOG.yaml` — structured changelog (see below).
 
@@ -32,13 +32,14 @@ Defines the distributable artefact of the YODA Framework and the contract expect
 - `project/specs/` and any meta-implementation material.
 - `bootstrap-legacy/`, any top-level `project/` content outside `yoda/`.
 - Runtime data: `yoda/logs/`, `yoda/todos/`, `yoda/project/issues/`.
+- `yoda/scripts/tests/`.
 - Caches, VCS data, virtualenvs, test artefacts, temporary files.
 
 ## Internal layout
 ```
 <root>/yoda/...
 <root>/LICENSE
-<root>/README
+<root>/README.md
 <root>/yoda/PACKAGE_MANIFEST.yaml
 <root>/yoda/CHANGELOG.yaml
 ```
@@ -61,6 +62,7 @@ Required fields:
 Rules:
 - Manifest MUST reflect the exact packaged content; divergence is a build error.
 - Manifest holds only summary data; detailed change text stays in the changelog.
+- `package_sha256` is computed with the manifest's `package_sha256` field treated as empty to avoid self-reference.
 
 ## Structured changelog (`yoda/CHANGELOG.yaml`)
 - Single file versioned in the repo and included in the package.
@@ -79,7 +81,8 @@ Rules:
   - Copy `CHANGELOG.yaml` into the package.
 
 ## `package` command requirements (will be implemented separately)
-- Minimum flags: `--version`, `--output` (or directory), `--format` (default tar.gz), `--dry-run`.
+- Minimum flags: `--version`, `--output` (or directory), `--archive-format` (default tar.gz), `--dry-run`.
+- `--archive-format` only accepts `tar.gz` in v1.
 - Uses the include/exclude rules above; fails if a required item is missing.
 - Generates `PACKAGE_MANIFEST.yaml` and a checksum of the package.
 - Orders files deterministically for reproducible builds.
