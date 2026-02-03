@@ -17,10 +17,10 @@ pending_reason: ''
 priority: 7
 schema_version: '1.0'
 slug: comando-de-init-p-s-embutido
-status: to-do
+status: done
 tags: []
 title: Comando de init pós-embutido
-updated_at: '2026-01-28T19:05:21-03:00'
+updated_at: '2026-02-02T08:57:11-03:00'
 ---
 
 # yoda-0019 - Comando de init pós-embutido
@@ -37,7 +37,7 @@ Implementar script de init que, ao rodar no projeto host, crie/ajuste estrutura 
 
 ## Scope
 - Implementar CLI (ex.: `yoda/scripts/init.py`) chamada a partir do pacote.
-- Criar/atualizar `AGENTS.md` com referência ao manual embarcado.
+- Criar/atualizar arquivos de entrada de agents (`AGENTS.md`, `gemini.md`, `CLAUDE.md`, `agent.md`) com referência ao manual embarcado, preservando conteúdo existente.
 - Criar pastas necessárias (`yoda/todos`, `yoda/logs`, `yoda/project/issues`) e seed de `TODO.<dev>.yaml` se ausente.
 - Fornecer flags de dry-run e opções de sobrescrita/merge de arquivos existentes.
 - Registrar resumo das ações executadas (stdout e/ou log).
@@ -49,14 +49,21 @@ Implementar script de init que, ao rodar no projeto host, crie/ajuste estrutura 
 
 ## Requirements
 - CLI com flags: `--dev` (slug), `--dry-run`, `--force` (sobrescrita segura), `--root` (destino opcional).
-- Não sobrescrever `AGENTS.md` ou TODO existentes sem confirmação/flag; em caso de conflito, exibir diff/resumo.
+- Não sobrescrever conteúdo existente dos arquivos de agent; anexar bloco YODA ao final quando necessário.
 - Idempotente: rodar duas vezes não corrompe nem duplica entradas.
 - Usa caminhos relativos ao diretório onde o pacote foi extraído.
 - Mensagens claras de sucesso/erro e códigos de saída apropriados.
+- Arquivos de agent suportados por padrão: `AGENTS.md`, `gemini.md`, `CLAUDE.md`, `agent.md` (lista fácil de expandir no script).
+- `AGENTS.md`/`gemini.md`/etc. devem apenas apontar para `yoda/yoda.md`.
+- `--force` pode sobrescrever `TODO.<dev>.yaml`; arquivos de agent não devem perder conteúdo (apenas atualizar o bloco YODA).
+- `TODO.<dev>.yaml` seed deve conter `schema_version: 1.0`, `developer_name/slug` = dev, `timezone` local, `updated_at` e `issues: []`.
+- Quando `TODO.<dev>.yaml` já existe e é válido, não modificar; reportar quantidade de issues.
+- Conflitos (TODO inválido ou arquivo de agent ilegível) retornam exit code 4 com diff/resumo quando aplicável.
 
 ## Acceptance criteria
 - [ ] Em projeto vazio, comando cria `AGENTS.md`, estrutura `yoda/` e `TODO.<dev>.yaml` válida.
-- [ ] Reexecutar com os mesmos parâmetros não altera arquivos (salvo se `--force`).
+- [ ] Em projeto com `AGENTS.md` (ou `gemini.md`, `CLAUDE.md`, `agent.md`) existente, o conteúdo é preservado e o bloco YODA é anexado/atualizado no fim.
+- [ ] Reexecutar com os mesmos parâmetros não duplica o bloco YODA nem altera o restante do arquivo (salvo se `--force` para TODO).
 - [ ] `--dry-run` mostra ações sem escrever no disco.
 - [ ] Documentação de uso e exemplos atualizada (manual ou README de scripts).
 
@@ -77,6 +84,9 @@ Depends on: yoda-0016, yoda-0018.
 - Reutilizar utilitários existentes (`lib.paths`, `lib.dev`, etc.) para consistência.
 - Fornecer texto mínimo em `AGENTS.md` apontando para o manual embarcado.
 - Considerar modo interativo simples caso arquivos existam (perguntar/confirmar).
+- `--root` default é o diretório atual; o manual deve existir em `<root>/yoda/yoda.md`.
+- Usar bloco delimitado para idempotência: `<!-- YODA:BEGIN -->` ... `<!-- YODA:END -->`; substituir o bloco se já existir.
+- Atualizar `project/specs/07-agent-entry-and-root-file.md` se necessário para refletir múltiplos arquivos de agent.
 
 ## Tests
 - Preferir teste automatizado criando tempdir e verificando que arquivos são gerados e idempotentes; se inviável, documentar roteiro manual.
@@ -93,3 +103,13 @@ Body:
 Issue: `<ID>`
 Path: `<issue path>`
 -->
+- Added `yoda/scripts/init.py` to initialize host projects, appending a YODA block to supported agent files and seeding TODO structure with idempotent behavior.
+- Updated agent entry spec and script docs; added tests covering creation, idempotency, dry-run, and agent-file conflicts.
+
+Commit suggestion:
+```
+feat: add init command for embedded yoda
+
+Issue: yoda-0019
+Path: yoda/project/issues/yoda-0019-comando-de-init-p-s-embutido.md
+```

@@ -30,6 +30,20 @@ Notes:
 - Excludes `yoda/scripts/tests` from the package.
 - `--dev` defines `built_by` in the manifest; use `--json` or `--format json` for JSON output.
 
+## Init a host project
+
+Prepare a host project after extracting the YODA package.
+
+```bash
+python yoda/scripts/init.py --dev <slug>
+python yoda/scripts/init.py --dev <slug> --root /path/to/project --dry-run
+python yoda/scripts/init.py --dev <slug> --force
+```
+
+Notes:
+- Creates/updates `AGENTS.md`, `gemini.md`, `CLAUDE.md`, `agent.md`, plus `yoda/todos/TODO.<dev>.yaml` and required folders.
+- Preserves existing agent file content (appends the YODA block); `--force` only overwrites the TODO file.
+
 ## Tests
 
 ```bash

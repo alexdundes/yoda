@@ -2,7 +2,7 @@ schema_version: '1.0'
 issue_id: yoda-0019
 issue_path: yoda/project/issues/yoda-0019-comando-de-init-p-s-embutido.md
 todo_id: yoda-0019
-status: to-do
+status: done
 entries:
 - timestamp: '2026-01-28T19:02:12-03:00'
   message: "[yoda-0019] issue_add created\ntitle: Comando de init p\xF3s-embutido\n\
@@ -13,3 +13,14 @@ entries:
   message: '[yoda-0019] todo_update
 
     depends_on: [] -> yoda-0016, yoda-0018'
+- timestamp: '2026-02-02T08:35:18-03:00'
+  message: '[yoda-0019] todo_update
+
+    status: to-do -> doing'
+- timestamp: '2026-02-02T08:57:07-03:00'
+  message: '[yoda-0019] Implemented init command with YODA block append for agent
+    files, updated specs/docs, and added tests.'
+- timestamp: '2026-02-02T08:57:11-03:00'
+  message: '[yoda-0019] todo_update
+
+    status: doing -> done'
