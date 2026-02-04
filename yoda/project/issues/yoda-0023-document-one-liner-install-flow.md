@@ -21,10 +21,10 @@ pending_reason: ''
 priority: 5
 schema_version: '1.0'
 slug: document-one-liner-install-flow
-status: to-do
+status: done
 tags: []
 title: Document one-liner install flow
-updated_at: '2026-02-04T09:38:25-03:00'
+updated_at: '2026-02-04T11:10:48-03:00'
 ---
 
 # yoda-0023 - Document one-liner install flow
@@ -120,3 +120,12 @@ Body:
 Issue: `<ID>`
 Path: `<issue path>`
 -->
+- Updated installation/upgrade spec with GitHub Pages `/docs` hosting, explicit endpoints, and base URL; aligned README one-liner with the final URL and added a confirmation TODO.
+
+Commit suggestion:
+```
+docs: define one-liner install hosting
+
+Issue: yoda-0023
+Path: yoda/project/issues/yoda-0023-document-one-liner-install-flow.md
+```

@@ -2,7 +2,7 @@ schema_version: '1.0'
 issue_id: yoda-0023
 issue_path: yoda/project/issues/yoda-0023-document-one-liner-install-flow.md
 todo_id: yoda-0023
-status: to-do
+status: done
 entries:
 - timestamp: '2026-02-04T08:07:08-03:00'
   message: '[yoda-0023] issue_add created
@@ -22,3 +22,14 @@ entries:
   message: '[yoda-0023] todo_update
 
     depends_on: [] -> yoda-0024'
+- timestamp: '2026-02-04T11:09:01-03:00'
+  message: '[yoda-0023] todo_update
+
+    status: to-do -> doing'
+- timestamp: '2026-02-04T11:10:41-03:00'
+  message: '[yoda-0023] Documented GitHub Pages /docs hosting and endpoints; updated
+    README one-liner URL and placeholder TODO.'
+- timestamp: '2026-02-04T11:10:48-03:00'
+  message: '[yoda-0023] todo_update
+
+    status: doing -> done'

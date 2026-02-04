@@ -16,12 +16,18 @@ This specification defines how the YODA Framework is installed and upgraded when
   - `package_url`
   - `sha256` (package checksum)
 - Package contents follow `23-distribution-and-packaging.md`.
+- Hosting (default): GitHub Pages from `/docs` in the same repository.
+  - Base URL: `https://alexdundes.github.io/yoda/`
+  - Endpoints:
+    - `https://alexdundes.github.io/yoda/install/yoda-install.sh`
+    - `https://alexdundes.github.io/yoda/install/latest.json`
+  - `latest.json` points to tarball assets hosted in GitHub Releases.
 
 ## First install (quick one-liner)
 This is the **first option** for convenience. It is less safe because it executes a remote script directly.
 
 ```bash
-curl -fsSL <url>/yoda-install.sh | sh -s -- --version <semver+build> --root .
+curl -fsSL https://alexdundes.github.io/yoda/install/yoda-install.sh | sh -s -- --version <semver+build> --root .
 ```
 
 Security warnings:
