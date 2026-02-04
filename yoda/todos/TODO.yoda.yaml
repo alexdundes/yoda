@@ -2,7 +2,7 @@ schema_version: '1.0'
 developer_name: Yoda
 developer_slug: yoda
 timezone: America/Sao_Paulo
-updated_at: '2026-02-02T08:57:11-03:00'
+updated_at: '2026-02-04T07:22:50-03:00'
 issues:
 - schema_version: '1.0'
   id: yoda-0014
@@ -390,7 +390,7 @@ issues:
   slug: spike-padr-o-de-instala-o-upgrade-do-yoda-em-projetos-externos
   description: "Explorar op\xE7\xF5es para embutir/atualizar o YODA Framework em reposit\xF3\
     rios externos, cobrindo pacote+init, versionamento, upgrade/rollback e riscos."
-  status: to-do
+  status: done
   priority: 6
   lightweight: false
   agent: Human
@@ -398,7 +398,7 @@ issues:
   - yoda-0016
   pending_reason: ''
   created_at: '2026-01-28T19:02:16-03:00'
-  updated_at: '2026-01-28T19:05:24-03:00'
+  updated_at: '2026-02-04T07:22:50-03:00'
   entrypoints: []
   tags: []
   origin:

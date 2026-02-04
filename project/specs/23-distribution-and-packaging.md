@@ -24,6 +24,7 @@ Defines the distributable artefact of the YODA Framework and the contract expect
 - `yoda/scripts/` — official scripts (`todo_*`, `issue_add`, `log_add`, etc.), excluding `yoda/scripts/tests/`.
 - `yoda/favicons/` (if present) — lightweight assets referenced by the manual/UI.
 - `LICENSE` — short license file for the package.
+- `yoda/LICENSE` — embedded YODA license for host projects.
 - `README.md` — concise package README.
 - `yoda/PACKAGE_MANIFEST.yaml` — package manifest (see below).
 - `yoda/CHANGELOG.yaml` — structured changelog (see below).
@@ -40,6 +41,7 @@ Defines the distributable artefact of the YODA Framework and the contract expect
 <root>/yoda/...
 <root>/LICENSE
 <root>/README.md
+<root>/yoda/LICENSE
 <root>/yoda/PACKAGE_MANIFEST.yaml
 <root>/yoda/CHANGELOG.yaml
 ```

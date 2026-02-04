@@ -32,6 +32,7 @@ This file records decisions and known open points captured so far.
 - MCP: future v2 direction (minimal tools: todos.list/docs.read/workspace.apply_patch), with noted risks and benefits.
 - Influences: DocDD/RDD/Docs-as-Code/Design-first/ADRs/Literate Programming/Agentic Design Patterns inform guidance and vocabulary.
 - Distribution and packaging: default artefact `tar.gz` named `yoda-framework-<semver+build>`, manifest `yoda/PACKAGE_MANIFEST.yaml`, structured changelog `yoda/CHANGELOG.yaml`, excludes `project/specs` and runtime data; `package`/`init` must follow this contract. (see `23-distribution-and-packaging.md`)
+- Installation and upgrade: install via one-liner (with warnings) or manual flow; updates use `latest.json` metadata + checksum; preserve YODA data folders; rollback to `yoda/_previous/<version>`; license lives at `yoda/LICENSE`. (see `24-installation-and-upgrade.md`)
 
 ## Open decisions (not finalized)
 

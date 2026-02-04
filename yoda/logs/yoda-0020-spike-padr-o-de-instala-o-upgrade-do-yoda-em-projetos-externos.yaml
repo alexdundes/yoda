@@ -2,7 +2,7 @@ schema_version: '1.0'
 issue_id: yoda-0020
 issue_path: yoda/project/issues/yoda-0020-spike-padr-o-de-instala-o-upgrade-do-yoda-em-projetos-externos.md
 todo_id: yoda-0020
-status: to-do
+status: done
 entries:
 - timestamp: '2026-01-28T19:02:16-03:00'
   message: "[yoda-0020] issue_add created\ntitle: Spike: padr\xE3o de instala\xE7\xE3\
@@ -14,3 +14,14 @@ entries:
   message: '[yoda-0020] todo_update
 
     depends_on: [] -> yoda-0016'
+- timestamp: '2026-02-02T21:59:53-03:00'
+  message: '[yoda-0020] todo_update
+
+    status: to-do -> doing'
+- timestamp: '2026-02-04T07:22:45-03:00'
+  message: '[yoda-0020] Added installation/upgrade spec (one-liner + manual), update/rollback
+    rules, latest.json metadata, and aligned packaging spec for yoda/LICENSE.'
+- timestamp: '2026-02-04T07:22:50-03:00'
+  message: '[yoda-0020] todo_update
+
+    status: doing -> done'
