@@ -1,0 +1,13 @@
+- version: "0.1.0"
+  build: "20260204.bf92f3b"
+  date: "2026-02-04T19:49:44-03:00"
+  summary:
+    - "Initial test package release"
+    - "Installer and update tooling available"
+  breaking: []
+  additions:
+    - "docs/install/yoda-install.sh"
+    - "yoda/scripts/update.py"
+  fixes: []
+  notes: ""
+  commit: "bf92f3b41747a4989fe897ec598b8d472e1f2d17"
