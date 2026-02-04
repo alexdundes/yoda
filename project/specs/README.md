@@ -32,7 +32,6 @@ This README organizes the topics discussed so far. Each topic has a dedicated fi
     - file: `09-visual-identity-logo.md`
 10. Approaches and references (DocDD, Docs-as-Code, RDD, ADRs, etc.)
     - file: `10-approaches-and-references.md`
-11. Influences (details for each approach)
     - folder: `influences/` (one file per influence)
 11. YODA Intake (cycle)
     - file: `11-yoda-intake.md`
