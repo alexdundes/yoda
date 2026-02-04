@@ -2,7 +2,7 @@ schema_version: '1.0'
 issue_id: yoda-0021
 issue_path: yoda/project/issues/yoda-0021-license-curta-para-pacote-yoda.md
 todo_id: yoda-0021
-status: to-do
+status: done
 entries:
 - timestamp: '2026-01-29T06:31:15-03:00'
   message: "[yoda-0021] issue_add created\ntitle: LICENSE curta para pacote YODA\n\
@@ -13,3 +13,13 @@ entries:
   message: '[yoda-0021] todo_update
 
     depends_on: [] -> yoda-0016'
+- timestamp: '2026-02-04T07:52:34-03:00'
+  message: '[yoda-0021] todo_update
+
+    status: to-do -> doing'
+- timestamp: '2026-02-04T07:58:03-03:00'
+  message: '[yoda-0021] Added MIT LICENSE at repo root and mirrored it at yoda/LICENSE.'
+- timestamp: '2026-02-04T07:58:07-03:00'
+  message: '[yoda-0021] todo_update
+
+    status: doing -> done'

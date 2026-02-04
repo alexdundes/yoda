@@ -16,10 +16,10 @@ pending_reason: ''
 priority: 6
 schema_version: '1.0'
 slug: license-curta-para-pacote-yoda
-status: to-do
+status: done
 tags: []
 title: LICENSE curta para pacote YODA
-updated_at: '2026-01-29T06:31:21-03:00'
+updated_at: '2026-02-04T07:58:07-03:00'
 ---
 
 # yoda-0021 - LICENSE curta para pacote YODA
@@ -38,6 +38,7 @@ Create a concise LICENSE file (English) suitable for inclusion in the packaged a
 - Select the license type (MIT or Apache-2.0) consistent with project intent (confirm with requester if needed).
 - Draft `LICENSE` text in English, short but legally sound (SPDX-aligned).
 - Place the file where the `package` command will pick it up (repo root) and ensure inclusion in the artefact.
+- Add `yoda/LICENSE` for embedded use; keep it identical to root `LICENSE`.
 - Note the chosen license and path in the packaging spec/manifest if required.
 
 ## Out of scope
@@ -49,11 +50,13 @@ Create a concise LICENSE file (English) suitable for inclusion in the packaged a
 - LICENSE must be in English and include project name, copyright holder, and year.
 - Use standard, unmodified SPDX license text (MIT or Apache-2.0); if any customization is required, get approval.
 - File path MUST match packaging include list (root `LICENSE`).
+- Add `yoda/LICENSE` (same text as root) for embedded installs.
 - Update `yoda/PACKAGE_MANIFEST.yaml` template or notes if needed to mention the license file.
 - Keep wording concise (no extra boilerplate beyond the standard text).
 
 ## Acceptance criteria
-- [ ] `LICENSE` file exists in the repo root with the agreed license (MIT or Apache-2.0) in English.
+- [ ] `LICENSE` file exists in the repo root with the agreed license (MIT) in English.
+- [ ] `yoda/LICENSE` exists and matches the root `LICENSE`.
 - [ ] File is referenced/included by the packaging rules (23-distribution-and-packaging) without extra exclusions.
 - [ ] Ownership/year fields are filled and accurate.
 - [ ] No other repo files need modification to distribute the license.
@@ -71,6 +74,8 @@ yoda-0016
 - Confirm license choice with requester if unspecified; default recommendation: MIT for simplicity or Apache-2.0 if patent grant desired.
 - Keep file ASCII/UTF-8, no BOM.
 - Consider adding SPDX identifier on the first line if MIT is chosen (`SPDX-License-Identifier: MIT`).
+  - For this issue, use MIT with copyright: 2026 Alex Sandre Dundes Rodrigues.
+  - Include project name as part of the copyright line to satisfy the requirement.
 
 ## Tests
 - Not applicable (documentation); manual check that packaging include rules capture the file.
@@ -87,3 +92,12 @@ Body:
 Issue: `<ID>`
 Path: `<issue path>`
 -->
+- Added MIT LICENSE at repo root and mirrored it at `yoda/LICENSE` for embedded distribution.
+
+Commit suggestion:
+```
+docs: add MIT license files
+
+Issue: yoda-0021
+Path: yoda/project/issues/yoda-0021-license-curta-para-pacote-yoda.md
+```
