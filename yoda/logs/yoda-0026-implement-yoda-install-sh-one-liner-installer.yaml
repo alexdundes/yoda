@@ -2,7 +2,7 @@ schema_version: '1.0'
 issue_id: yoda-0026
 issue_path: yoda/project/issues/yoda-0026-implement-yoda-install-sh-one-liner-installer.md
 todo_id: yoda-0026
-status: to-do
+status: done
 entries:
 - timestamp: '2026-02-04T18:39:27-03:00'
   message: '[yoda-0026] issue_add created
@@ -23,3 +23,14 @@ entries:
   message: '[yoda-0026] todo_update
 
     depends_on: [] -> yoda-0025'
+- timestamp: '2026-02-04T18:53:11-03:00'
+  message: '[yoda-0026] todo_update
+
+    status: to-do -> doing'
+- timestamp: '2026-02-04T19:01:07-03:00'
+  message: '[yoda-0026] Implemented docs/install/yoda-install.sh with checksum validation,
+    preserve rules, and dry-run support.'
+- timestamp: '2026-02-04T19:01:10-03:00'
+  message: '[yoda-0026] todo_update
+
+    status: doing -> done'

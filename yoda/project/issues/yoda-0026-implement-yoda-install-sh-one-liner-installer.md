@@ -22,10 +22,10 @@ pending_reason: ''
 priority: 6
 schema_version: '1.0'
 slug: implement-yoda-install-sh-one-liner-installer
-status: to-do
+status: done
 tags: []
 title: Implement yoda-install.sh one-liner installer
-updated_at: '2026-02-04T18:39:46-03:00'
+updated_at: '2026-02-04T19:01:10-03:00'
 ---
 
 # yoda-0026 - Implement yoda-install.sh one-liner installer
@@ -44,6 +44,7 @@ Deliver `docs/install/yoda-install.sh` with a clear, safe, repeatable install fl
 <!-- AGENT: List what is in scope for this issue. -->
 - Create `docs/install/yoda-install.sh` in the repository.
 - Support flags: `--version`, `--root`, `--source`.
+- Add `--dev` (optional) and `--dry-run`.
 - Fetch `latest.json`, resolve `package_url`, and verify `sha256`.
 - Extract tarball to temp, copy the `yoda/` subtree into the host root.
 - Preserve `yoda/todos/`, `yoda/logs/`, `yoda/project/issues/` if they exist.
@@ -63,6 +64,9 @@ Deliver `docs/install/yoda-install.sh` with a clear, safe, repeatable install fl
 - Must overwrite framework files under `yoda/` per spec (scripts/templates/manual/manifest/changelog/license).
 - Must preserve YODA data dirs (`yoda/todos`, `yoda/logs`, `yoda/project/issues`).
 - Must accept `--source` to override `package_url` (file path or URL).
+- If `--version` is omitted, install the version from `latest.json`.
+- `--dev` is optional; init runs only when provided.
+- `--dry-run` shows planned actions without writing.
 - Should be idempotent when run multiple times with the same version.
 
 ## Acceptance criteria
@@ -72,6 +76,7 @@ Deliver `docs/install/yoda-install.sh` with a clear, safe, repeatable install fl
 - [ ] Checksum verification fails on mismatch.
 - [ ] `--source` override works for local tarball path.
 - [ ] YODA data directories are preserved.
+- [ ] `--version` optional (defaults to latest) and `--dry-run` works.
 
 ## Dependencies
 <!-- AGENT: List dependencies and related issues (IDs). If none, write "None". -->
@@ -91,6 +96,8 @@ Depends on: yoda-0025.
 - Use `/bin/sh` or bash with `set -euo pipefail`.
 - Prefer `curl -fsSL` (or `wget` fallback if needed).
 - Use `sha256sum` on Linux and `shasum -a 256` on macOS.
+- Allow `--dev` to trigger `init.py`; omit if not set.
+- Provide clear `--dry-run` output for each step.
 - Keep the script stable; changes should be rare and versioned.
 
 ## Tests
@@ -104,9 +111,12 @@ Depends on: yoda-0025.
 - Partial installs if filesystem permissions block copy operations.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
+- Implemented `docs/install/yoda-install.sh` with flag parsing, latest.json resolution, checksum verification, selective YODA subtree install, and optional init.
+- Added `--dry-run` messaging and preservation rules for `yoda/todos`, `yoda/logs`, and `yoda/project/issues`.
+- Verified shell syntax with `sh -n docs/install/yoda-install.sh`.
+
+Commit message:
+feat(install): add yoda-install.sh one-liner installer
+
+Issue: yoda-0026
+Path: yoda/project/issues/yoda-0026-implement-yoda-install-sh-one-liner-installer.md
