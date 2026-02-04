@@ -1,0 +1,20 @@
+schema_version: '1.0'
+issue_id: yoda-0023
+issue_path: yoda/project/issues/yoda-0023-document-one-liner-install-flow.md
+todo_id: yoda-0023
+status: to-do
+entries:
+- timestamp: '2026-02-04T08:07:08-03:00'
+  message: '[yoda-0023] issue_add created
+
+    title: Document one-liner install flow
+
+    description: Define and document the one-liner install script (yoda-install.sh),
+    hosting URLs, and latest.json metadata. Include security guidance and update README.md
+    placeholders once URLs are defined.
+
+    slug: document-one-liner-install-flow
+
+    priority: 5
+
+    entrypoints: README.md:doc, project/specs/24-installation-and-upgrade.md:doc'

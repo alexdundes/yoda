@@ -2,7 +2,7 @@ schema_version: '1.0'
 issue_id: yoda-0022
 issue_path: yoda/project/issues/yoda-0022-readme-curto-do-pacote-yoda.md
 todo_id: yoda-0022
-status: to-do
+status: done
 entries:
 - timestamp: '2026-01-29T06:31:28-03:00'
   message: "[yoda-0022] issue_add created\ntitle: README curto do pacote YODA\ndescription:\
@@ -13,3 +13,14 @@ entries:
   message: '[yoda-0022] todo_update
 
     depends_on: [] -> yoda-0016'
+- timestamp: '2026-02-04T07:58:45-03:00'
+  message: '[yoda-0022] todo_update
+
+    status: to-do -> doing'
+- timestamp: '2026-02-04T08:07:37-03:00'
+  message: '[yoda-0022] Added concise package README with one-liner install first,
+    manual steps, and TODO placeholders; created follow-up issue for one-liner doc.'
+- timestamp: '2026-02-04T08:07:40-03:00'
+  message: '[yoda-0022] todo_update
+
+    status: doing -> done'
