@@ -2,7 +2,7 @@ schema_version: '1.0'
 issue_id: yoda-0027
 issue_path: yoda/project/issues/yoda-0027-implement-update-command-for-embedded-yoda.md
 todo_id: yoda-0027
-status: to-do
+status: done
 entries:
 - timestamp: '2026-02-04T18:39:33-03:00'
   message: '[yoda-0027] issue_add created
@@ -23,3 +23,14 @@ entries:
   message: '[yoda-0027] todo_update
 
     depends_on: [] -> yoda-0025'
+- timestamp: '2026-02-04T19:05:13-03:00'
+  message: '[yoda-0027] todo_update
+
+    status: to-do -> doing'
+- timestamp: '2026-02-04T19:18:56-03:00'
+  message: '[yoda-0027] Implemented update.py with checksum validation, backup, selective
+    replace, and tests for check/apply.'
+- timestamp: '2026-02-04T19:19:00-03:00'
+  message: '[yoda-0027] todo_update
+
+    status: doing -> done'

@@ -22,10 +22,10 @@ pending_reason: ''
 priority: 6
 schema_version: '1.0'
 slug: implement-update-command-for-embedded-yoda
-status: to-do
+status: done
 tags: []
 title: Implement update command for embedded YODA
-updated_at: '2026-02-04T18:39:51-03:00'
+updated_at: '2026-02-04T19:18:59-03:00'
 ---
 
 # yoda-0027 - Implement update command for embedded YODA
@@ -43,6 +43,7 @@ Create `yoda/scripts/update.py` with `--check`, `--apply`, and `--source`, align
 ## Scope
 <!-- AGENT: List what is in scope for this issue. -->
 - Implement `yoda/scripts/update.py` with CLI flags `--check`, `--apply`, `--source`, `--root`, and `--version` (optional).
+- Allow overriding metadata source via `--latest` or `YODA_LATEST_URL` to support tests/private forks.
 - Fetch `latest.json`, validate `sha256`, and download the tarball.
 - Back up current `yoda/` subtree to `yoda/_previous/<version>`.
 - Replace framework files only (scripts/templates/manual/manifest/changelog/license).
@@ -63,6 +64,7 @@ Create `yoda/scripts/update.py` with `--check`, `--apply`, and `--source`, align
 - Must preserve YODA data directories.
 - Must create backup at `yoda/_previous/<version>`.
 - Must support `--source` for local tarball path or URL.
+- If `--source` is provided, allow applying a different version than `latest.json`.
 - Must be safe to run multiple times.
 
 ## Acceptance criteria
@@ -91,6 +93,10 @@ Depends on: yoda-0025.
 - Reuse shared helpers from `yoda/scripts/lib` for output, validation, and paths.
 - Consider supporting `--dry-run` consistent with other scripts.
 - File ordering should remain deterministic when copying from the extracted package.
+- Backup directory should use `version+build` to avoid collisions.
+- `--check` should return exit code 0 even when updates are available.
+- `--dry-run` should still download and validate the tarball.
+- `--dev` is optional; skip init if not provided.
 
 ## Tests
 <!-- AGENT: Describe tests to be added or updated. If not applicable, write \"Not applicable\". -->
@@ -109,3 +115,13 @@ Body:
 Issue: `<ID>`
 Path: `<issue path>`
 -->
+- Added `yoda/scripts/update.py` with `--check`/`--apply`, metadata overrides, checksum validation, backup, and selective framework replacement.
+- Implemented preservation rules for YODA data dirs and optional init execution.
+- Added pytest coverage for `--check` and `--apply`.
+- Tests: `python3 -m pytest yoda/scripts/tests/test_update.py`
+
+Commit message:
+feat(update): add update command for embedded yoda
+
+Issue: yoda-0027
+Path: yoda/project/issues/yoda-0027-implement-update-command-for-embedded-yoda.md
