@@ -65,6 +65,7 @@ Rules:
 - Manifest MUST reflect the exact packaged content; divergence is a build error.
 - Manifest holds only summary data; detailed change text stays in the changelog.
 - `package_sha256` is computed with the manifest's `package_sha256` field treated as empty to avoid self-reference.
+- `LICENSE` and `yoda/LICENSE` are both required but are not required to be identical.
 
 ## Structured changelog (`yoda/CHANGELOG.yaml`)
 - Single file versioned in the repo and included in the package.

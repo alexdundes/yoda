@@ -41,6 +41,7 @@ MANIFEST_REL = Path("yoda/PACKAGE_MANIFEST.yaml")
 CHANGELOG_REL = Path("yoda/CHANGELOG.yaml")
 README_REL = Path("README.md")
 LICENSE_REL = Path("LICENSE")
+YODA_LICENSE_REL = Path("yoda/LICENSE")
 YODA_MANUAL_REL = Path("yoda/yoda.md")
 TEMPLATES_REL = Path("yoda/templates")
 SCRIPTS_REL = Path("yoda/scripts")
@@ -49,6 +50,7 @@ FAVICONS_REL = Path("yoda/favicons")
 INCLUDE_GLOBS = [
     "README.md",
     "LICENSE",
+    "yoda/LICENSE",
     "yoda/yoda.md",
     "yoda/templates/**",
     "yoda/scripts/**",
@@ -132,7 +134,7 @@ def _digest_entry(entry: dict[str, Any]) -> str:
 
 
 def _ensure_required_paths(root: Path, changelog_source: Path) -> None:
-    required_files = [README_REL, LICENSE_REL, YODA_MANUAL_REL]
+    required_files = [README_REL, LICENSE_REL, YODA_LICENSE_REL, YODA_MANUAL_REL]
     required_dirs = [TEMPLATES_REL, SCRIPTS_REL]
     for rel in required_files:
         path = root / rel
@@ -165,7 +167,7 @@ def _is_excluded(rel_path: Path) -> bool:
 
 def _collect_files(root: Path) -> list[Path]:
     files: set[Path] = set()
-    for rel in (README_REL, LICENSE_REL, YODA_MANUAL_REL, CHANGELOG_REL):
+    for rel in (README_REL, LICENSE_REL, YODA_LICENSE_REL, YODA_MANUAL_REL, CHANGELOG_REL):
         files.add(rel)
 
     for rel_dir in (TEMPLATES_REL, SCRIPTS_REL):

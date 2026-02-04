@@ -1,0 +1,25 @@
+schema_version: '1.0'
+issue_id: yoda-0027
+issue_path: yoda/project/issues/yoda-0027-implement-update-command-for-embedded-yoda.md
+todo_id: yoda-0027
+status: to-do
+entries:
+- timestamp: '2026-02-04T18:39:33-03:00'
+  message: '[yoda-0027] issue_add created
+
+    title: Implement update command for embedded YODA
+
+    description: Implement yoda/scripts/update.py with --check, --apply, --source
+    to handle upgrades. It must fetch latest.json, validate sha256, back up to yoda/_previous/<version>,
+    replace framework files only, preserve data, and re-run init. Provide dry-run
+    and clear output.
+
+    slug: implement-update-command-for-embedded-yoda
+
+    priority: 6
+
+    entrypoints: project/specs/24-installation-and-upgrade.md:doc, yoda/scripts/init.py:code'
+- timestamp: '2026-02-04T18:39:51-03:00'
+  message: '[yoda-0027] todo_update
+
+    depends_on: [] -> yoda-0025'

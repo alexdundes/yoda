@@ -2,7 +2,7 @@ schema_version: '1.0'
 developer_name: Yoda
 developer_slug: yoda
 timezone: America/Sao_Paulo
-updated_at: '2026-02-04T11:10:48-03:00'
+updated_at: '2026-02-04T18:51:31-03:00'
 issues:
 - schema_version: '1.0'
   id: yoda-0014
@@ -508,6 +508,112 @@ issues:
   - path: yoda/yoda.md
     type: doc
   - path: project/specs/24-installation-and-upgrade.md
+    type: doc
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0025
+  title: Update package build to include yoda/LICENSE
+  slug: update-package-build-to-include-yoda-license
+  description: Update package generation to include yoda/LICENSE in the artefact and
+    validate its presence. Adjust include list and tests as needed to ensure embedded
+    license ships with the package.
+  status: done
+  priority: 7
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-02-04T18:39:22-03:00'
+  updated_at: '2026-02-04T18:51:31-03:00'
+  entrypoints:
+  - path: yoda/scripts/package.py
+    type: code
+  - path: project/specs/23-distribution-and-packaging.md
+    type: doc
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0026
+  title: Implement yoda-install.sh one-liner installer
+  slug: implement-yoda-install-sh-one-liner-installer
+  description: Create the yoda-install.sh script to support the one-liner install
+    flow. The script downloads the tarball, verifies sha256 via latest.json, extracts,
+    copies the yoda/ subtree per spec, and runs init. Include security warnings and
+    support --version/--root/--source.
+  status: to-do
+  priority: 6
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0025
+  pending_reason: ''
+  created_at: '2026-02-04T18:39:27-03:00'
+  updated_at: '2026-02-04T18:39:46-03:00'
+  entrypoints:
+  - path: project/specs/24-installation-and-upgrade.md
+    type: doc
+  - path: README.md
+    type: doc
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0027
+  title: Implement update command for embedded YODA
+  slug: implement-update-command-for-embedded-yoda
+  description: Implement yoda/scripts/update.py with --check, --apply, --source to
+    handle upgrades. It must fetch latest.json, validate sha256, back up to yoda/_previous/<version>,
+    replace framework files only, preserve data, and re-run init. Provide dry-run
+    and clear output.
+  status: to-do
+  priority: 6
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0025
+  pending_reason: ''
+  created_at: '2026-02-04T18:39:33-03:00'
+  updated_at: '2026-02-04T18:39:51-03:00'
+  entrypoints:
+  - path: project/specs/24-installation-and-upgrade.md
+    type: doc
+  - path: yoda/scripts/init.py
+    type: code
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0028
+  title: Set up GitHub Pages /docs hosting for installer and metadata
+  slug: set-up-github-pages-docs-hosting-for-installer-and-metadata
+  description: Create the docs/install structure and publish yoda-install.sh and latest.json
+    via GitHub Pages (/docs). Document the base URL and ensure latest.json points
+    to GitHub Releases assets. Include a simple checklist for updating latest.json
+    per release.
+  status: to-do
+  priority: 5
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0026
+  pending_reason: ''
+  created_at: '2026-02-04T18:39:41-03:00'
+  updated_at: '2026-02-04T18:39:57-03:00'
+  entrypoints:
+  - path: project/specs/24-installation-and-upgrade.md
+    type: doc
+  - path: README.md
     type: doc
   tags: []
   origin:

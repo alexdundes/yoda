@@ -69,6 +69,7 @@ def test_package_builds_and_excludes_tests(tmp_path: Path) -> None:
 
         assert "README.md" in names
         assert "LICENSE" in names
+        assert "yoda/LICENSE" in names
         assert "yoda/yoda.md" in names
         assert "yoda/PACKAGE_MANIFEST.yaml" in names
         assert "yoda/CHANGELOG.yaml" in names
