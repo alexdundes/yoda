@@ -22,6 +22,24 @@ This specification defines how the YODA Framework is installed and upgraded when
     - `https://alexdundes.github.io/yoda/install/yoda-install.sh`
     - `https://alexdundes.github.io/yoda/install/latest.json`
   - `latest.json` points to tarball assets hosted in GitHub Releases.
+  - The repo ships a placeholder `docs/install/latest.json`; it must be updated per release.
+
+## GitHub Pages setup (manual)
+1) Open GitHub repository Settings → Pages.
+2) Source: “Deploy from a branch”.
+3) Branch: `main`; Folder: `/docs`.
+4) Save and wait for Pages to publish.
+5) Verify the endpoints above resolve over HTTPS.
+
+## latest.json update checklist
+1) Build the package tarball (`yoda-framework-<semver+build>.tar.gz`) and publish it in a GitHub Release.
+2) Compute the tarball sha256.
+3) Update `docs/install/latest.json`:
+   - `version`, `build`
+   - `package_url` (direct release asset URL)
+   - `sha256` (computed checksum)
+4) Commit and push to `main` so GitHub Pages updates.
+5) Validate the one-liner install path after Pages publishes.
 
 ## First install (quick one-liner)
 This is the **first option** for convenience. It is less safe because it executes a remote script directly.

@@ -16,7 +16,7 @@ The framework is organized around two cycles: **YODA Intake** (discovery/triage)
 ## Quick install (one-liner)
 This is the fastest path, but it executes a remote script directly. Use it only if you trust the source.
 
-<!-- TODO: confirm GitHub Pages /docs hosting is enabled and URLs are correct. -->
+Note: enable GitHub Pages for `/docs` (Settings → Pages) so these URLs resolve.
 ```bash
 curl -fsSL https://alexdundes.github.io/yoda/install/yoda-install.sh | sh -s -- --version <semver+build> --root .
 ```

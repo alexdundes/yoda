@@ -2,7 +2,7 @@ schema_version: '1.0'
 developer_name: Yoda
 developer_slug: yoda
 timezone: America/Sao_Paulo
-updated_at: '2026-02-04T19:18:59-03:00'
+updated_at: '2026-02-04T19:23:38-03:00'
 issues:
 - schema_version: '1.0'
   id: yoda-0014
@@ -601,7 +601,7 @@ issues:
     via GitHub Pages (/docs). Document the base URL and ensure latest.json points
     to GitHub Releases assets. Include a simple checklist for updating latest.json
     per release.
-  status: to-do
+  status: done
   priority: 5
   lightweight: false
   agent: Human
@@ -609,7 +609,7 @@ issues:
   - yoda-0026
   pending_reason: ''
   created_at: '2026-02-04T18:39:41-03:00'
-  updated_at: '2026-02-04T18:39:57-03:00'
+  updated_at: '2026-02-04T19:23:38-03:00'
   entrypoints:
   - path: project/specs/24-installation-and-upgrade.md
     type: doc

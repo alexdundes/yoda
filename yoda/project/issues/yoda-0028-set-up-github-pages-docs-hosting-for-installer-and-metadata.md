@@ -22,10 +22,10 @@ pending_reason: ''
 priority: 5
 schema_version: '1.0'
 slug: set-up-github-pages-docs-hosting-for-installer-and-metadata
-status: to-do
+status: done
 tags: []
 title: Set up GitHub Pages /docs hosting for installer and metadata
-updated_at: '2026-02-04T18:39:57-03:00'
+updated_at: '2026-02-04T19:23:38-03:00'
 ---
 
 # yoda-0028 - Set up GitHub Pages /docs hosting for installer and metadata
@@ -82,6 +82,7 @@ Depends on: yoda-0026.
 - Use the base URL `https://alexdundes.github.io/yoda/` and serve assets from `/docs/install/`.
 - `latest.json` should point to GitHub Releases assets and include `sha256`.
 - Keep `yoda-install.sh` stable; only update when behavior changes.
+- The repo can ship a placeholder `latest.json`, but it must be updated before the first release.
 
 ## Tests
 <!-- AGENT: Describe tests to be added or updated. If not applicable, write \"Not applicable\". -->
@@ -99,3 +100,12 @@ Body:
 Issue: `<ID>`
 Path: `<issue path>`
 -->
+- Added `docs/install/latest.json` placeholder with required fields alongside the installer.
+- Documented GitHub Pages setup and the `latest.json` update checklist in `project/specs/24-installation-and-upgrade.md`.
+- Updated README to note Pages configuration for `/docs`.
+
+Commit message:
+docs(hosting): add latest.json placeholder and pages checklist
+
+Issue: yoda-0028
+Path: yoda/project/issues/yoda-0028-set-up-github-pages-docs-hosting-for-installer-and-metadata.md

@@ -2,7 +2,7 @@ schema_version: '1.0'
 issue_id: yoda-0028
 issue_path: yoda/project/issues/yoda-0028-set-up-github-pages-docs-hosting-for-installer-and-metadata.md
 todo_id: yoda-0028
-status: to-do
+status: done
 entries:
 - timestamp: '2026-02-04T18:39:41-03:00'
   message: '[yoda-0028] issue_add created
@@ -23,3 +23,14 @@ entries:
   message: '[yoda-0028] todo_update
 
     depends_on: [] -> yoda-0026'
+- timestamp: '2026-02-04T19:21:25-03:00'
+  message: '[yoda-0028] todo_update
+
+    status: to-do -> doing'
+- timestamp: '2026-02-04T19:23:33-03:00'
+  message: '[yoda-0028] Added docs/install/latest.json placeholder and documented
+    Pages setup + latest.json checklist.'
+- timestamp: '2026-02-04T19:23:38-03:00'
+  message: '[yoda-0028] todo_update
+
+    status: doing -> done'
