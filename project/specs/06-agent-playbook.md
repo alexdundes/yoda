@@ -6,7 +6,7 @@ Define how the AI acts in the YODA Framework at each stage of the flow.
 
 ## Entry and selection (script-backed)
 
-When the human signals intent to start YODA Flow (example phrases: "Let's do YODA Flow", "YODA Flow, here we go", "YODA Flow, next issue"), the agent must:
+When the human signals intent to start YODA Flow (example phrases: "Let's do YODA Flow", "YODA Flow, here we go", "YODA Flow, next issue"), the agent assumes the **Flow skin** and must:
 
 1) Resolve developer slug (flag, env, or ask).
 2) Call `todo_next.py` to select the next issue.
@@ -76,7 +76,7 @@ Deliverables per phase are defined in `project/specs/02-yoda-flow-process.md` an
 
 ## YODA Intake (backlog cycle)
 
-When the human signals intent to create issues or explicitly says “YODA Intake”, the agent must:
+When the human signals intent to create issues or explicitly says “YODA Intake”, the agent assumes the **Intake skin** and must:
 
 1) Enter YODA Intake and confirm intent.
 2) Consult `todo_list.py` to review existing backlog and avoid duplicates.

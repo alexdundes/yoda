@@ -9,6 +9,8 @@ YODA Flow is the standard work cycle of the framework:
 3) Implement
 4) Evaluate
 
+When the agent enters YODA Flow, it assumes the **Flow skin** and follows the rules and deliverables of this cycle.
+
 ## Step details
 
 ### 1) Study

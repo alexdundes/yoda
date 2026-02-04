@@ -46,6 +46,8 @@ Terminology rules:
 
 - "YODA Framework" is the primary name; "YODA" is allowed after first mention.
 - "YODA Flow" is the official name of the cycle; phases are Study, Document, Implement, Evaluate.
+- "YODA Intake" is the discovery/triage cycle; it precedes YODA Flow.
+- When an agent enters a cycle, it assumes the corresponding skin (Flow skin or Intake skin).
 - Use "issue" for a unit of work; avoid "ticket" or "task" as the primary label.
 - `yoda/todos/TODO.<dev>.yaml` is the canonical TODO file.
 - Use "agent" for automated/AI actors and "script" for CLI automation in `yoda/scripts/`.

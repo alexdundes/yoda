@@ -27,6 +27,7 @@ Single-file guide for agents when the packaged YODA Framework is embedded in ano
 
 ## Entering YODA Flow
 1) Confirm entry phrase includes “YODA Flow” and intent to take the highest-priority selectable issue.
+   - When entering YODA Flow, the agent assumes the **Flow skin**.
 2) Ensure no issue is already `doing`; if there is, pause and ask the user to resolve.
 3) Run `todo_next.py`; surface pending/blocked info if present.
 4) Ask for confirmation; if approved, mark the issue `doing` via `todo_update.py`.
@@ -65,6 +66,7 @@ Single-file guide for agents when the packaged YODA Framework is embedded in ano
 Trigger: user wants to create/refine issues (e.g., “YODA Intake”).
 Steps:
 1) Confirm Intake entry.
+   - When entering YODA Intake, the agent assumes the **Intake skin**.
 2) Review backlog with `todo_list.py` to avoid duplicates.
 3) Collect goals/constraints; shape issues until they meet Definition of Ready (clear title, context/objective, scope/out-of-scope, acceptance criteria, dependencies/risks).
 4) Create issues via `issue_add.py`; fill Markdown sections.

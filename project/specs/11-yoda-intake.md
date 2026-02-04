@@ -9,6 +9,7 @@ Define the YODA Intake cycle, the discovery/triage loop that turns human demands
 - **YODA Intake** is backlog-centric: it shapes and prepares issues.
 - **YODA Flow** is issue-centric: it executes a ready issue.
 - Intake precedes Flow and hands off issues to Flow explicitly.
+- When the agent enters YODA Intake, it assumes the **Intake skin**.
 
 ## Entry trigger
 
