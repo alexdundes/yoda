@@ -28,6 +28,9 @@ except Exception as exc:  # pragma: no cover - runtime dependency
 
 
 AGENT_FILES = ["AGENTS.md", "gemini.md", "CLAUDE.md", "agent.md"]
+REPO_INTENT_FILE = "REPO_INTENT.md"
+REPO_INTENT_YAML = "repo.intent.yaml"
+REPO_INTENT_HEADER = "# Repository Intent\n\nThis repository embeds the YODA Framework.\n"
 YODA_BLOCK = (
     "<!-- YODA:BEGIN -->\n"
     "## YODA Framework\n\n"
@@ -35,6 +38,19 @@ YODA_BLOCK = (
     "1) yoda/yoda.md\n"
     "<!-- YODA:END -->\n"
 )
+REPO_INTENT_BLOCK = (
+    "<!-- YODA:BEGIN -->\n"
+    "## YODA Framework\n\n"
+    "Read in order:\n\n"
+    "1) REPO_INTENT.md\n"
+    "2) yoda/yoda.md\n"
+    "<!-- YODA:END -->\n"
+)
+REPO_INTENT_YODA_DEFAULT = {
+    "embedded": True,
+    "manual": "yoda/yoda.md",
+    "agent_entry_order": ["REPO_INTENT.md", "yoda/yoda.md"],
+}
 DIFF_LIMIT = 40
 
 
@@ -88,6 +104,26 @@ def _upsert_block(existing: str, block: str) -> tuple[str, str, str | None]:
         return existing, "unchanged", None
     updated = existing[:start] + block + existing[tail_start:]
     return updated, "updated", None
+
+
+def _merge_repo_intent(data: dict[str, Any]) -> tuple[dict[str, Any], bool, str | None]:
+    yoda_section = data.get("yoda")
+    if yoda_section is None:
+        updated = dict(data)
+        updated["yoda"] = dict(REPO_INTENT_YODA_DEFAULT)
+        return updated, True, None
+    if not isinstance(yoda_section, dict):
+        return data, False, "yoda section is not a mapping"
+
+    changed = False
+    updated = dict(data)
+    merged_section = dict(yoda_section)
+    for key, value in REPO_INTENT_YODA_DEFAULT.items():
+        if key not in merged_section:
+            merged_section[key] = value
+            changed = True
+    updated["yoda"] = merged_section
+    return updated, changed, None
 
 
 def _render_output(payload: dict[str, Any], output_format: str) -> str:
@@ -225,6 +261,130 @@ def main() -> int:
                 if not args.dry_run:
                     agents_path.write_text(YODA_BLOCK, encoding="utf-8")
                 files_written.append(f"{filename} (created)")
+
+        intent_path = root / REPO_INTENT_FILE
+        if intent_path.exists():
+            if intent_path.is_dir():
+                conflicts.append(
+                    {
+                        "path": REPO_INTENT_FILE,
+                        "reason": "path exists and is a directory",
+                        "diff": [],
+                    }
+                )
+                files_skipped.append(f"{REPO_INTENT_FILE} (kept)")
+                exit_code = ExitCode.CONFLICT
+            else:
+                try:
+                    existing = intent_path.read_text(encoding="utf-8")
+                except OSError:
+                    conflicts.append(
+                        {
+                            "path": REPO_INTENT_FILE,
+                            "reason": "unreadable file",
+                            "diff": [],
+                        }
+                    )
+                    files_skipped.append(f"{REPO_INTENT_FILE} (kept)")
+                    exit_code = ExitCode.CONFLICT
+                else:
+                    updated, status, reason = _upsert_block(existing, REPO_INTENT_BLOCK)
+                    if status == "conflict":
+                        conflicts.append(
+                            {
+                                "path": REPO_INTENT_FILE,
+                                "reason": reason or "invalid YODA block",
+                                "diff": [],
+                            }
+                        )
+                        files_skipped.append(f"{REPO_INTENT_FILE} (kept)")
+                        exit_code = ExitCode.CONFLICT
+                    elif status == "unchanged":
+                        files_skipped.append(f"{REPO_INTENT_FILE} (unchanged)")
+                    else:
+                        if not args.dry_run:
+                            intent_path.write_text(updated, encoding="utf-8")
+                        action = "updated" if status == "updated" else "appended"
+                        files_written.append(f"{REPO_INTENT_FILE} ({action})")
+        else:
+            content = _append_block(REPO_INTENT_HEADER, REPO_INTENT_BLOCK)
+            if not args.dry_run:
+                intent_path.write_text(content, encoding="utf-8")
+            files_written.append(f"{REPO_INTENT_FILE} (created)")
+
+        intent_yaml_path = root / REPO_INTENT_YAML
+        if intent_yaml_path.exists():
+            if intent_yaml_path.is_dir():
+                conflicts.append(
+                    {
+                        "path": REPO_INTENT_YAML,
+                        "reason": "path exists and is a directory",
+                        "diff": [],
+                    }
+                )
+                files_skipped.append(f"{REPO_INTENT_YAML} (kept)")
+                exit_code = ExitCode.CONFLICT
+            else:
+                try:
+                    raw = intent_yaml_path.read_text(encoding="utf-8")
+                    data = yaml.safe_load(raw)
+                except Exception:
+                    conflicts.append(
+                        {
+                            "path": REPO_INTENT_YAML,
+                            "reason": "invalid YAML",
+                            "diff": [],
+                        }
+                    )
+                    files_skipped.append(f"{REPO_INTENT_YAML} (kept)")
+                    exit_code = ExitCode.CONFLICT
+                else:
+                    if data is None:
+                        data = {}
+                    if not isinstance(data, dict):
+                        conflicts.append(
+                            {
+                                "path": REPO_INTENT_YAML,
+                                "reason": "YAML root is not a mapping",
+                                "diff": [],
+                            }
+                        )
+                        files_skipped.append(f"{REPO_INTENT_YAML} (kept)")
+                        exit_code = ExitCode.CONFLICT
+                    else:
+                        merged, changed, reason = _merge_repo_intent(data)
+                        if reason:
+                            conflicts.append(
+                                {
+                                    "path": REPO_INTENT_YAML,
+                                    "reason": reason,
+                                    "diff": [],
+                                }
+                            )
+                            files_skipped.append(f"{REPO_INTENT_YAML} (kept)")
+                            exit_code = ExitCode.CONFLICT
+                        elif not changed:
+                            files_skipped.append(f"{REPO_INTENT_YAML} (unchanged)")
+                        else:
+                            if not args.dry_run:
+                                intent_yaml_path.write_text(
+                                    yaml.safe_dump(
+                                        merged, sort_keys=False, allow_unicode=False
+                                    ),
+                                    encoding="utf-8",
+                                )
+                            files_written.append(f"{REPO_INTENT_YAML} (updated)")
+        else:
+            if not args.dry_run:
+                intent_yaml_path.write_text(
+                    yaml.safe_dump(
+                        {"yoda": REPO_INTENT_YODA_DEFAULT},
+                        sort_keys=False,
+                        allow_unicode=False,
+                    ),
+                    encoding="utf-8",
+                )
+            files_written.append(f"{REPO_INTENT_YAML} (created)")
 
         todo_path = root / "yoda" / "todos" / f"TODO.{dev}.yaml"
         if todo_path.exists():

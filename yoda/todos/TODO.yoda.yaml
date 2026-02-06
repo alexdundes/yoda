@@ -2,7 +2,7 @@ schema_version: '1.0'
 developer_name: Yoda
 developer_slug: yoda
 timezone: America/Sao_Paulo
-updated_at: '2026-02-06T08:58:28-03:00'
+updated_at: '2026-02-06T09:06:04-03:00'
 issues:
 - schema_version: '1.0'
   id: yoda-0014
@@ -627,14 +627,14 @@ issues:
   description: Update init.py to create REPO_INTENT.md when missing and append a YODA
     block when present; apply the same concept to repo.intent.yaml without overwriting
     existing content.
-  status: to-do
+  status: done
   priority: 6
   lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-02-04T20:16:53-03:00'
-  updated_at: '2026-02-04T20:16:53-03:00'
+  updated_at: '2026-02-06T09:06:04-03:00'
   entrypoints:
   - path: yoda/scripts/init.py
     type: code

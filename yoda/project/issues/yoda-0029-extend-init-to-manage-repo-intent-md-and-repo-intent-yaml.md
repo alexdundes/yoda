@@ -22,10 +22,10 @@ pending_reason: ''
 priority: 6
 schema_version: '1.0'
 slug: extend-init-to-manage-repo-intent-md-and-repo-intent-yaml
-status: to-do
+status: done
 tags: []
 title: Extend init to manage REPO_INTENT.md and repo.intent.yaml
-updated_at: '2026-02-04T20:16:53-03:00'
+updated_at: '2026-02-06T09:06:04-03:00'
 ---
 
 # yoda-0029 - Extend init to manage REPO_INTENT.md and repo.intent.yaml
@@ -108,3 +108,13 @@ Body:
 Issue: `<ID>`
 Path: `<issue path>`
 -->
+- Added REPO_INTENT.md creation/upsert with YODA markers and default content.
+- Added repo.intent.yaml creation and merge behavior for a YODA section.
+- Extended init tests to cover repo intent creation, merge, and idempotency.
+- Tests: `python3 -m pytest yoda/scripts/tests/test_init.py`
+
+Commit message:
+feat(init): manage repo intent files
+
+Issue: yoda-0029
+Path: yoda/project/issues/yoda-0029-extend-init-to-manage-repo-intent-md-and-repo-intent-yaml.md

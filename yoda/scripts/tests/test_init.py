@@ -97,3 +97,76 @@ def test_init_conflict_on_agent_path_directory(tmp_path: Path) -> None:
     )
     assert result.returncode == 4, result.stderr
     assert (tmp_path / "gemini.md").is_dir()
+
+
+def test_init_creates_repo_intent_files(tmp_path: Path) -> None:
+    _seed_manual(tmp_path)
+
+    result = run_script(
+        "init.py",
+        ["--dev", TEST_DEV, "--root", str(tmp_path)],
+    )
+    assert result.returncode == 0, result.stderr
+
+    repo_intent = tmp_path / "REPO_INTENT.md"
+    repo_yaml = tmp_path / "repo.intent.yaml"
+
+    assert repo_intent.exists()
+    assert repo_yaml.exists()
+
+    content = repo_intent.read_text(encoding="utf-8")
+    assert "Repository Intent" in content
+    assert "<!-- YODA:BEGIN -->" in content
+    assert "yoda/yoda.md" in content
+
+    data = yaml.safe_load(repo_yaml.read_text(encoding="utf-8"))
+    assert "yoda" in data
+    assert data["yoda"]["manual"] == "yoda/yoda.md"
+
+
+def test_init_merges_repo_intent_yaml(tmp_path: Path) -> None:
+    _seed_manual(tmp_path)
+
+    repo_yaml = tmp_path / "repo.intent.yaml"
+    repo_yaml.write_text(
+        "mode: host\n"
+        "custom: true\n"
+        "yoda:\n"
+        "  embedded: false\n",
+        encoding="utf-8",
+    )
+
+    result = run_script(
+        "init.py",
+        ["--dev", TEST_DEV, "--root", str(tmp_path)],
+    )
+    assert result.returncode == 0, result.stderr
+
+    data = yaml.safe_load(repo_yaml.read_text(encoding="utf-8"))
+    assert data["mode"] == "host"
+    assert data["custom"] is True
+    assert data["yoda"]["embedded"] is False
+    assert data["yoda"]["manual"] == "yoda/yoda.md"
+    assert "agent_entry_order" in data["yoda"]
+
+
+def test_init_repo_intent_markers_idempotent(tmp_path: Path) -> None:
+    _seed_manual(tmp_path)
+
+    repo_intent = tmp_path / "REPO_INTENT.md"
+    repo_intent.write_text("Custom intro\n", encoding="utf-8")
+
+    first = run_script(
+        "init.py",
+        ["--dev", TEST_DEV, "--root", str(tmp_path)],
+    )
+    assert first.returncode == 0, first.stderr
+
+    second = run_script(
+        "init.py",
+        ["--dev", TEST_DEV, "--root", str(tmp_path)],
+    )
+    assert second.returncode == 0, second.stderr
+
+    content = repo_intent.read_text(encoding="utf-8")
+    assert content.count("<!-- YODA:BEGIN -->") == 1
