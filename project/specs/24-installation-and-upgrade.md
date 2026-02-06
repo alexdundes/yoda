@@ -44,12 +44,18 @@ This specification defines how the YODA Framework is installed and upgraded when
 ## First install (quick one-liner)
 This is the **first option** for convenience. It is less safe because it executes a remote script directly.
 
+Latest (no version, simplest):
+```bash
+curl -fsSL https://alexdundes.github.io/yoda/install/yoda-install.sh | sh -s -- --root .
+```
+
+Pinned version (recommended for production):
 ```bash
 curl -fsSL https://alexdundes.github.io/yoda/install/yoda-install.sh | sh -s -- --version <semver+build> --root .
 ```
 
 Security warnings:
-- Prefer pinning an explicit `--version`.
+- Prefer the pinned command for production or regulated environments.
 - Prefer the manual flow below in production or regulated environments.
 - The script must verify the package checksum from `latest.json`.
 

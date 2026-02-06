@@ -2,7 +2,7 @@ schema_version: '1.0'
 developer_name: Yoda
 developer_slug: yoda
 timezone: America/Sao_Paulo
-updated_at: '2026-02-04T19:23:38-03:00'
+updated_at: '2026-02-06T08:58:28-03:00'
 issues:
 - schema_version: '1.0'
   id: yoda-0014
@@ -614,6 +614,60 @@ issues:
   - path: project/specs/24-installation-and-upgrade.md
     type: doc
   - path: README.md
+    type: doc
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0029
+  title: Extend init to manage REPO_INTENT.md and repo.intent.yaml
+  slug: extend-init-to-manage-repo-intent-md-and-repo-intent-yaml
+  description: Update init.py to create REPO_INTENT.md when missing and append a YODA
+    block when present; apply the same concept to repo.intent.yaml without overwriting
+    existing content.
+  status: to-do
+  priority: 6
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-02-04T20:16:53-03:00'
+  updated_at: '2026-02-04T20:16:53-03:00'
+  entrypoints:
+  - path: yoda/scripts/init.py
+    type: code
+  - path: REPO_INTENT.md
+    type: doc
+  - path: repo.intent.yaml
+    type: config
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0030
+  title: Allow one-liner install without explicit version
+  slug: allow-one-liner-install-without-explicit-version
+  description: Make the one-liner install flow default to latest when --version is
+    omitted and update documentation to remove required version in the quick install
+    command.
+  status: done
+  priority: 7
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-02-05T12:24:06-03:00'
+  updated_at: '2026-02-06T08:58:28-03:00'
+  entrypoints:
+  - path: docs/install/yoda-install.sh
+    type: code
+  - path: README.md
+    type: doc
+  - path: project/specs/24-installation-and-upgrade.md
     type: doc
   tags: []
   origin:

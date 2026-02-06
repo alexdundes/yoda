@@ -16,15 +16,20 @@ The framework is organized around two cycles: **YODA Intake** (discovery/triage)
 ## Quick install (one-liner)
 This is the fastest path, but it executes a remote script directly. Use it only if you trust the source.
 
-Note: enable GitHub Pages for `/docs` (Settings → Pages) so these URLs resolve.
+Latest (no version, simplest):
+```bash
+curl -fsSL https://alexdundes.github.io/yoda/install/yoda-install.sh | sh -s -- --root .
+```
+
+Pinned version (recommended for production):
 ```bash
 curl -fsSL https://alexdundes.github.io/yoda/install/yoda-install.sh | sh -s -- --version <semver+build> --root .
 ```
 
 Safety tips:
-- Pin an explicit `--version`.
-- Review the script if you are in a regulated environment.
-- The installer must verify the tarball checksum from `latest.json`.
+- Prefer the pinned command for production or regulated environments.
+- Review the script before running it in sensitive contexts.
+- The installer verifies the tarball checksum from `latest.json`.
 
 ## Manual install (recommended)
 1) Download `yoda-framework-<semver+build>.tar.gz` and `latest.json`.

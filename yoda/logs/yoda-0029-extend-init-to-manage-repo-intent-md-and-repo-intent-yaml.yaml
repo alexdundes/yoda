@@ -1,0 +1,20 @@
+schema_version: '1.0'
+issue_id: yoda-0029
+issue_path: yoda/project/issues/yoda-0029-extend-init-to-manage-repo-intent-md-and-repo-intent-yaml.md
+todo_id: yoda-0029
+status: to-do
+entries:
+- timestamp: '2026-02-04T20:16:53-03:00'
+  message: '[yoda-0029] issue_add created
+
+    title: Extend init to manage REPO_INTENT.md and repo.intent.yaml
+
+    description: Update init.py to create REPO_INTENT.md when missing and append a
+    YODA block when present; apply the same concept to repo.intent.yaml without overwriting
+    existing content.
+
+    slug: extend-init-to-manage-repo-intent-md-and-repo-intent-yaml
+
+    priority: 6
+
+    entrypoints: yoda/scripts/init.py:code, REPO_INTENT.md:doc, repo.intent.yaml:config'
