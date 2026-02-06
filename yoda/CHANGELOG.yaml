@@ -1,3 +1,15 @@
+- version: "0.1.1"
+  build: "20260206.34b2c68"
+  date: "2026-02-06T09:08:53-03:00"
+  summary:
+    - "Repo intent initialization support"
+    - "Simplified one-liner install docs"
+  breaking: []
+  additions:
+    - "REPO_INTENT.md and repo.intent.yaml init handling"
+  fixes: []
+  notes: ""
+  commit: "34b2c68ab8d7b42f7feacaad26008686fedc57ca"
 - version: "0.1.0"
   build: "20260204.bf92f3b"
   date: "2026-02-04T19:49:44-03:00"
