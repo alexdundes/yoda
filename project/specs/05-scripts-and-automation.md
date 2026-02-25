@@ -84,6 +84,27 @@ Failure behavior:
 - Minor version changes are backward compatible and accepted.
 - A migration script is required to upgrade schema versions when needed.
 
+Classification policy for YAML layout/schema changes:
+- Subtle change (minor bump within same major): does not require migration of existing persisted metadata and remains readable/writable by current scripts.
+- Breaking change (major bump): requires migration logic for persisted metadata and coordinated rollout.
+
+Operational rollout policy (internal YODA development):
+- For subtle changes:
+  - bump `schema_version` minor;
+  - keep scripts backward compatible for current stored metadata;
+  - no mandatory migration step in `update.py`.
+- For breaking changes:
+  - bump `schema_version` major;
+  - implement explicit migration in `yoda/scripts/update.py`;
+  - `update.py` must execute migration before final validation;
+  - run `init.py` at the end of update flow to re-sync framework entry files and defaults when needed.
+
+Examples:
+- Subtle: add an optional metadata field with safe default and no required rewrite of existing TODO/log/issue files.
+- Subtle: tighten validation wording or output formatting without changing persisted YAML contract.
+- Breaking: remove or rename a required field in TODO/issue/log schema.
+- Breaking: change field semantics that require rewriting existing metadata to preserve behavior.
+
 ## Principles
 
 - Scripts are the official way to change metadata.

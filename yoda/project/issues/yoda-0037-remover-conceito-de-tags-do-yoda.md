@@ -56,7 +56,8 @@ Eliminar `tags` de todo o fluxo YODA mantendo os comandos coerentes e previsivei
 - Ordem obrigatoria: `project/specs/` antes de `yoda/`.
 - CLI nao deve expor flags relacionadas a tags ao final.
 - Por alterar layout YAML, aplicar politica de versionamento definida em `yoda-0038`.
-- Se houver breaking no upgrade, implementar tratamento em `update.py`.
+- Classificacao definida: **subtle**.
+- Rollout definido em conjunto com `yoda-0035` e `yoda-0036`: aplicar **um unico incremento menor** de `schema_version` para o pacote `0.1.3`.
 
 ## Acceptance criteria
 - [ ] Specs e manual nao tratam mais `tags` como campo ativo.
@@ -76,6 +77,7 @@ Eliminar `tags` de todo o fluxo YODA mantendo os comandos coerentes e previsivei
   type: doc
 
 ## Implementation notes
+Decisao de planejamento: tratar esta mudanca como `subtle` e coordenar com `yoda-0035`/`yoda-0036` para um unico bump menor de schema na release `0.1.3`.
 Planejar migracao para limpar tags existentes nos dados historicos.
 
 ## Tests

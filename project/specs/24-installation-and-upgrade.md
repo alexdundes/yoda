@@ -102,6 +102,8 @@ python yoda/scripts/init.py --dev <slug> --root .
 - Updates MUST use checksum validation from `latest.json`.
 - Tools SHOULD allow an explicit `--source` to support private forks/packages.
 - Agent entry files MUST be preserved; YODA blocks are appended/updated (no destructive overwrite).
+- If a package introduces a breaking YAML layout/schema version (major bump), `update.py` MUST run migration steps before completion.
+- After applying an update (with or without migrations), `init.py` SHOULD run to re-sync embedded YODA entry files and defaults.
 
 ## Follow-ups
 - Implement `yoda/scripts/update.py` with `--check`, `--apply`, `--source`.

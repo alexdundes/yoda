@@ -2,7 +2,7 @@ schema_version: '1.0'
 developer_name: Yoda
 developer_slug: yoda
 timezone: America/Sao_Paulo
-updated_at: '2026-02-25T18:42:18-03:00'
+updated_at: '2026-02-25T18:58:03-03:00'
 issues:
 - schema_version: '1.0'
   id: yoda-0014
@@ -750,10 +750,11 @@ issues:
   priority: 2
   lightweight: false
   agent: Human
-  depends_on: []
+  depends_on:
+  - yoda-0038
   pending_reason: ''
   created_at: '2026-02-25T15:23:19-03:00'
-  updated_at: '2026-02-25T15:23:19-03:00'
+  updated_at: '2026-02-25T18:46:21-03:00'
   entrypoints:
   - path: yoda/scripts/issue_add.py
     type: code
@@ -897,14 +898,14 @@ issues:
     YAML do YODA: mudancas sutis incrementam versao menor (1.x), mudancas breaking
     que exigem tratamento em update.py incrementam versao maior. Incluir como regra
     operacional em specs e yoda.md, com criterio claro para classificacao e rollout.'
-  status: to-do
+  status: done
   priority: 2
   lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-02-25T15:36:45-03:00'
-  updated_at: '2026-02-25T15:36:45-03:00'
+  updated_at: '2026-02-25T18:51:16-03:00'
   entrypoints:
   - path: project/specs/
     type: doc
@@ -926,14 +927,14 @@ issues:
     ou varias issues YODA. Prever tambem operacao equivalente com issues do GitHub
     (gh). Regra transversal: atualizar primeiro project/specs/ e depois yoda/.'
   status: to-do
-  priority: 4
+  priority: 1
   lightweight: false
   agent: Human
   depends_on:
   - yoda-0038
   pending_reason: ''
   created_at: '2026-02-25T15:36:45-03:00'
-  updated_at: '2026-02-25T15:36:56-03:00'
+  updated_at: '2026-02-25T18:58:03-03:00'
   entrypoints:
   - path: project/specs/
     type: doc

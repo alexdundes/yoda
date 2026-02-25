@@ -34,6 +34,7 @@ This file records decisions and known open points captured so far.
 - Influences: DocDD/RDD/Docs-as-Code/Design-first/ADRs/Literate Programming/Agentic Design Patterns inform guidance and vocabulary.
 - Distribution and packaging: default artefact `tar.gz` named `yoda-framework-<semver+build>`, manifest `yoda/PACKAGE_MANIFEST.yaml`, structured changelog `CHANGELOG.yaml`, excludes `project/specs` and runtime data; `package`/`init` must follow this contract. (see `23-distribution-and-packaging.md`)
 - Installation and upgrade: install via one-liner (with warnings) or manual flow; updates use `latest.json` metadata + checksum; preserve YODA data folders; rollback to `yoda/_previous/<version>`; license lives at `yoda/LICENSE`. (see `24-installation-and-upgrade.md`)
+- YAML layout/schema versioning policy (internal YODA development): subtle changes bump minor and do not require migration; breaking changes bump major and require migration in `update.py`, followed by `init.py` re-sync during rollout.
 
 ## Open decisions (not finalized)
 

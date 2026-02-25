@@ -23,3 +23,10 @@ entries:
     tags: release-0.1.2, bug, concurrency, issue-add, docs-first
 
     entrypoints: yoda/scripts/issue_add.py:code, yoda/todos/TODO.yoda.yaml:data, project/specs/:doc'
+- timestamp: '2026-02-25T18:46:21-03:00'
+  message: '[yoda-0033] dependency update: depends_on ajustado para yoda-0038 por
+    decisao de priorizacao do fluxo.'
+- timestamp: '2026-02-25T18:46:21-03:00'
+  message: '[yoda-0033] todo_update
+
+    depends_on: [] -> yoda-0038'

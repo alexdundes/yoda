@@ -2,7 +2,7 @@ schema_version: '1.0'
 issue_id: yoda-0038
 issue_path: yoda/project/issues/yoda-0038-definir-politica-de-versionamento-do-layout-yaml-do-yoda.md
 todo_id: yoda-0038
-status: to-do
+status: done
 entries:
 - timestamp: '2026-02-25T15:36:45-03:00'
   message: '[yoda-0038] issue_add created
@@ -19,3 +19,15 @@ entries:
     priority: 2
 
     entrypoints: project/specs/:doc, yoda/yoda.md:doc, yoda/scripts/update.py:code'
+- timestamp: '2026-02-25T18:47:26-03:00'
+  message: '[yoda-0038] todo_update
+
+    status: to-do -> doing'
+- timestamp: '2026-02-25T18:51:16-03:00'
+  message: '[yoda-0038] implement: politica de versionamento YAML definida em specs
+    com classificacao sutil/breaking e regra de rollout update.py + init.py; sem incluir
+    yoda/yoda.md.'
+- timestamp: '2026-02-25T18:51:16-03:00'
+  message: '[yoda-0038] todo_update
+
+    status: doing -> done'

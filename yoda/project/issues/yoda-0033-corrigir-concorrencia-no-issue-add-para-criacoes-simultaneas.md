@@ -1,7 +1,8 @@
 ---
 agent: Human
 created_at: '2026-02-25T15:23:19-03:00'
-depends_on: []
+depends_on:
+- yoda-0038
 description: 'Ao executar dois issue_add em paralelo, ambos podem receber o mesmo
   proximo ID (ex.: yoda-0031), gerando colisao de arquivos e corrupcao estrutural
   no TODO YAML. Corrigir a alocacao de ID e a escrita de artefatos para suportar concorrencia
@@ -32,7 +33,7 @@ tags:
 - issue-add
 - docs-first
 title: Corrigir concorrencia no issue_add para criacoes simultaneas
-updated_at: '2026-02-25T15:23:19-03:00'
+updated_at: '2026-02-25T18:46:21-03:00'
 ---
 
 # yoda-0033 - Corrigir concorrencia no issue_add para criacoes simultaneas

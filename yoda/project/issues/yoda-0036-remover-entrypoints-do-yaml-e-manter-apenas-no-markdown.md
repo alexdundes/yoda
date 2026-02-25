@@ -57,7 +57,8 @@ Manter `entrypoints` somente na secao markdown da issue e remover do YAML.
 - Ordem obrigatoria: `project/specs/` antes de `yoda/`.
 - Nenhum script deve requerer `entrypoints` em YAML ao final.
 - Por alterar layout YAML, aplicar politica de versionamento definida em `yoda-0038`.
-- Se houver breaking no upgrade, implementar tratamento em `update.py`.
+- Classificacao definida: **subtle**.
+- Rollout definido em conjunto com `yoda-0035` e `yoda-0037`: aplicar **um unico incremento menor** de `schema_version` para o pacote `0.1.3`.
 
 ## Acceptance criteria
 - [ ] Specs definem entrypoints apenas no markdown da issue.
@@ -77,6 +78,7 @@ Manter `entrypoints` somente na secao markdown da issue e remover do YAML.
   type: code
 
 ## Implementation notes
+Decisao de planejamento: tratar esta mudanca como `subtle` e coordenar com `yoda-0035`/`yoda-0037` para um unico bump menor de schema na release `0.1.3`.
 Garantir que relatorios/listagens nao percam contexto apos mover a fonte para markdown.
 
 ## Tests

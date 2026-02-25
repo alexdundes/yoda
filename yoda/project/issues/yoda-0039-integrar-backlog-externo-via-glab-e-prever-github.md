@@ -21,13 +21,13 @@ origin:
   requester: ''
   system: ''
 pending_reason: ''
-priority: 4
+priority: 1
 schema_version: '1.0'
 slug: integrar-backlog-externo-via-glab-e-prever-github
 status: to-do
 tags: []
 title: Integrar backlog externo via glab e prever GitHub
-updated_at: '2026-02-25T15:36:56-03:00'
+updated_at: '2026-02-25T18:58:03-03:00'
 ---
 
 # yoda-0039 - Integrar backlog externo via glab e prever GitHub
@@ -56,7 +56,7 @@ Definir e implementar um fluxo de intake a partir de issues GitLab/GitHub para g
 - Ordem obrigatoria: `project/specs/` antes de `yoda/`.
 - Fluxo deve permitir selecionar issue externa e gerar issues YODA relacionadas.
 - Deve existir rastreabilidade entre issue YODA e origem externa.
-- Se houver alteracao de layout YAML, aplicar politica `yoda-0038` e migracao com `update.py` quando breaking.
+- Classificacao planejada: **subtle** (se houver alteracao de layout YAML, manter compatibilidade sem migracao breaking).
 
 ## Acceptance criteria
 - [ ] Specs descrevem fluxo com `glab` e previsao equivalente para `gh`.
@@ -76,6 +76,7 @@ Definir e implementar um fluxo de intake a partir de issues GitLab/GitHub para g
   type: doc
 
 ## Implementation notes
+Decisao de planejamento: tratar esta issue como `subtle`.
 Preferir primeiro um fluxo manual-assistido robusto (comandos claros) antes de automacao ampla.
 
 ## Tests

@@ -23,3 +23,6 @@ entries:
   message: '[yoda-0037] todo_update
 
     depends_on: [] -> yoda-0038'
+- timestamp: '2026-02-25T18:58:33-03:00'
+  message: '[yoda-0037] planning decision: classificada como subtle; rollout coordenado
+    com yoda-0035/yoda-0036 com um unico bump menor de schema na release 0.1.3.'

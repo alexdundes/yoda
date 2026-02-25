@@ -56,7 +56,8 @@ Remover completamente `lightweight` do modelo operacional e dos artefatos do YOD
 - Ordem obrigatoria: `project/specs/` antes de `yoda/`.
 - Nenhum comando deve depender de `lightweight` ao final.
 - Por alterar layout YAML, aplicar politica de versionamento definida em `yoda-0038`.
-- Se houver breaking no upgrade, implementar tratamento em `update.py`.
+- Classificacao definida: **subtle**.
+- Rollout definido em conjunto com `yoda-0036` e `yoda-0037`: aplicar **um unico incremento menor** de `schema_version` para o pacote `0.1.3`.
 
 ## Acceptance criteria
 - [ ] Specs e manual nao mencionam `lightweight` como conceito ativo.
@@ -76,7 +77,7 @@ Remover completamente `lightweight` do modelo operacional e dos artefatos do YOD
   type: code
 
 ## Implementation notes
-Executar migracao de dados existente quando necessario para nao deixar estado inconsistente.
+Decisao de planejamento: tratar esta mudanca como `subtle` e coordenar com `yoda-0036`/`yoda-0037` para um unico bump menor de schema na release `0.1.3`.
 
 ## Tests
 Adicionar/atualizar testes para garantir ausencia de `lightweight` no parse, filtros e output dos scripts.
