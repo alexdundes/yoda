@@ -59,9 +59,6 @@ Each issue item must contain:
 
 Optional fields:
 
-- entrypoints: array of objects with:
-  - path: file path (issue or other artifact)
-  - type: entrypoint type (doc, code, config, schema, data, asset, other)
 - tags: list of tags
 - origin: external issue reference (system, external_id, requester)
 
@@ -160,11 +157,6 @@ issues:
     tags: [yoda, framework]
     agent: Human
     depends_on: []
-    entrypoints:
-      - path: yoda/yoda.md
-        type: doc
-      - path: project/specs/07-agent-entry-and-root-file.md
-        type: doc
     created_at: "2026-01-21T18:46:15-03:00"
     updated_at: "2026-01-21T18:46:15-03:00"
 
@@ -177,9 +169,6 @@ issues:
     tags: [templates, docs]
     agent: Codex
     depends_on: [dev-0001]
-    entrypoints:
-      - path: yoda/templates/issue.md
-        type: doc
     created_at: "2026-01-21T19:26:26-03:00"
     updated_at: "2026-01-21T19:26:26-03:00"
 
@@ -193,9 +182,6 @@ issues:
     tags: [scripts, v1]
     agent: Antigravity
     depends_on: [dev-0001]
-    entrypoints:
-      - path: project/specs/13-yoda-scripts-v1.md
-        type: doc
     created_at: "2026-01-21T19:17:35-03:00"
     updated_at: "2026-01-21T19:17:35-03:00"
 ```

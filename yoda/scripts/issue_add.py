@@ -27,7 +27,6 @@ from lib.paths import issue_path, log_path, repo_root, template_path, todo_path
 from lib.templates import load_template
 from lib.time_utils import detect_local_timezone, now_iso
 from lib.validate import (
-    ALLOWED_ENTRY_TYPES,
     ISSUE_ID_RE,
     SLUG_RE,
     validate_slug,
@@ -75,18 +74,6 @@ def _generate_slug(title: str) -> str:
     return slug
 
 
-def _parse_entrypoints(values: list[str]) -> list[dict[str, str]]:
-    entrypoints: list[dict[str, str]] = []
-    for raw in values:
-        if ":" not in raw:
-            raise YodaError("Entry point must be <path>:<type>", exit_code=ExitCode.VALIDATION)
-        path, entry_type = raw.split(":", 1)
-        if entry_type not in ALLOWED_ENTRY_TYPES:
-            raise YodaError("Invalid entrypoint type", exit_code=ExitCode.VALIDATION)
-        entrypoints.append({"path": path, "type": entry_type})
-    return entrypoints
-
-
 def _parse_tags(value: str | None) -> list[str]:
     if not value:
         return []
@@ -100,7 +87,6 @@ def _build_issue_item(
     description: str,
     priority: int,
     agent: str,
-    entrypoints: list[dict[str, str]],
     tags: list[str],
     timestamp: str,
 ) -> dict[str, Any]:
@@ -117,7 +103,6 @@ def _build_issue_item(
         "pending_reason": "",
         "created_at": timestamp,
         "updated_at": timestamp,
-        "entrypoints": entrypoints,
         "tags": tags,
         "origin": {"system": "", "external_id": "", "requester": ""},
     }
@@ -153,12 +138,6 @@ def _format_list(values: list[str]) -> str:
     return ", ".join(values) if values else "[]"
 
 
-def _format_entrypoints(values: list[dict[str, str]]) -> str:
-    if not values:
-        return "[]"
-    return ", ".join(f"{item['path']}:{item['type']}" for item in values)
-
-
 def _build_issue_log_message(
     issue_id: str,
     title: str,
@@ -167,7 +146,6 @@ def _build_issue_log_message(
     priority: int,
     agent: str,
     tags: list[str],
-    entrypoints: list[dict[str, str]],
 ) -> str:
     lines = [f"[{issue_id}] issue_add created"]
     lines.append(f"title: {title}")
@@ -180,8 +158,6 @@ def _build_issue_log_message(
         lines.append(f"agent: {agent}")
     if _flag_present("--tags") and tags:
         lines.append(f"tags: {_format_list(tags)}")
-    if _flag_present("--entrypoint") and entrypoints:
-        lines.append(f"entrypoints: {_format_entrypoints(entrypoints)}")
 
     return "\n".join(lines)
 
@@ -212,12 +188,6 @@ def main() -> int:
     parser.add_argument("--priority", type=int, default=None, help="Priority 0-10")
     parser.add_argument("--agent", default="Human", help="Agent name")
     parser.add_argument("--tags", help="Comma-separated tags")
-    parser.add_argument(
-        "--entrypoint",
-        action="append",
-        default=[],
-        help="Entrypoint item as <path>:<type>",
-    )
 
     args = parser.parse_args()
     configure_logging(args.verbose)
@@ -263,7 +233,6 @@ def main() -> int:
         template_text = load_template(template_file)
 
         timestamp = now_iso(todo.get("timezone"))
-        entrypoints = _parse_entrypoints(args.entrypoint)
         tags = _parse_tags(args.tags)
 
         issue_item = _build_issue_item(
@@ -273,7 +242,6 @@ def main() -> int:
             description=description,
             priority=priority,
             agent=args.agent,
-            entrypoints=entrypoints,
             tags=tags,
             timestamp=timestamp,
         )
@@ -314,7 +282,6 @@ def main() -> int:
                 priority=priority,
                 agent=args.agent,
                 tags=tags,
-                entrypoints=entrypoints,
             ),
         )
 

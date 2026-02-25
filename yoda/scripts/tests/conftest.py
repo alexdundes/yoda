@@ -79,7 +79,6 @@ class TodoFactory:
             "pending_reason": pending_reason,
             "created_at": created_at_value,
             "updated_at": updated_at_value,
-            "entrypoints": [],
             "tags": tags or [],
             "origin": {"system": "", "external_id": "", "requester": ""},
         }

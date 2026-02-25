@@ -8,13 +8,6 @@ description: 'Hoje entrypoints aparecem no front matter YAML e tambem no corpo d
   esse campo do YAML de issue/TODO/log quando aplicavel. Regra transversal: atualizar
   primeiro project/specs/ e depois yoda/. Como envolve layout YAML, aplicar politica
   de versao de schema e tratamento de compatibilidade conforme update.py quando aplicavel.'
-entrypoints:
-- path: project/specs/
-  type: doc
-- path: yoda/templates/issue.md
-  type: doc
-- path: yoda/scripts/
-  type: code
 id: yoda-0036
 origin:
   external_id: ''
@@ -24,10 +17,10 @@ pending_reason: ''
 priority: 3
 schema_version: '1.0'
 slug: remover-entrypoints-do-yaml-e-manter-apenas-no-markdown
-status: to-do
+status: done
 tags: []
 title: Remover entrypoints do YAML e manter apenas no markdown
-updated_at: '2026-02-25T15:36:56-03:00'
+updated_at: '2026-02-25T19:18:57-03:00'
 ---
 
 # yoda-0036 - Remover entrypoints do YAML e manter apenas no markdown
@@ -60,10 +53,10 @@ Manter `entrypoints` somente na secao markdown da issue e remover do YAML.
 - Rollout definido em conjunto com `yoda-0035` e `yoda-0037`: aplicar **um unico incremento menor** de `schema_version` para o pacote `0.1.3`.
 
 ## Acceptance criteria
-- [ ] Specs definem entrypoints apenas no markdown da issue.
-- [ ] YAML de TODO/issue/log nao inclui mais `entrypoints`.
-- [ ] Scripts de criacao/atualizacao continuam funcionais sem esse campo no YAML.
-- [ ] Migracao dos dados existentes e validada.
+- [x] Specs definem entrypoints apenas no markdown da issue.
+- [x] YAML de TODO/issue/log nao inclui mais `entrypoints`.
+- [x] Scripts de criacao/atualizacao continuam funcionais sem esse campo no YAML.
+- [x] Migracao dos dados existentes e validada.
 
 ## Dependencies
 `yoda-0038` (politica de versionamento de layout YAML).
@@ -94,3 +87,10 @@ Body:
 Issue: `<ID>`
 Path: `<issue path>`
 -->
+`entrypoints` foi removido do YAML (TODO/front matter/log contract) e mantido somente na secao markdown da issue. Scripts foram ajustados para nao ler/escrever `entrypoints` no metadata (`issue_add.py` sem `--entrypoint` e sem persistencia do campo). Specs e manual de scripts foram alinhados; dados existentes em `TODO` e front matter das issues foram migrados para remover o campo legado.
+
+test: `python3 -m pytest yoda/scripts/tests` => 33 passed.
+
+refactor(yoda): remover entrypoints do YAML e manter apenas no markdown
+Issue: `yoda-0036`
+Path: `yoda/project/issues/yoda-0036-remover-entrypoints-do-yaml-e-manter-apenas-no-markdown.md`

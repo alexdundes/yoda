@@ -77,7 +77,7 @@ Steps:
 - `todo_next.py`: select highest-priority selectable issue; reports blockers/pending.
 - `todo_update.py --issue <id> --status <status> [--priority ...] [--depends-on ...] [--pending-reason ...]`.
 - `todo_reorder.py`: reorder TODO entries (if needed during Intake).
-- `issue_add.py --title --description [--priority ...] [--tags ...] [--entrypoint ...]`: create new issue + log + TODO entry (default priority baseline is `5`).
+- `issue_add.py --title --description [--priority ...] [--tags ...]`: create new issue + log + TODO entry (default priority baseline is `5`).
 - `log_add.py --issue <id> --message "<msg including id>" [--timestamp ...]`: append to issue log.
 Notes:
 - Always include the issue id in log messages (`[yoda-0001] ...`).

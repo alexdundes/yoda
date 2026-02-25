@@ -17,7 +17,7 @@ Issues are created by a script (`issue_add.py`). The script must:
 1) Generate the next sequential id.
 2) Add the issue entry to `yoda/todos/TODO.<dev>.yaml`.
 3) Create the issue Markdown file from the standard template.
-4) Fill the basic fields using agent-provided inputs (id, title, summary, tags, priority, entrypoints).
+4) Fill the basic fields using agent-provided inputs (id, title, summary, tags, priority).
 
 After the script finishes, the agent must open the issue Markdown file and complete the remaining sections.
 

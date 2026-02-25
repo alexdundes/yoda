@@ -11,7 +11,6 @@ depends_on: []
 pending_reason: ""
 created_at: "[CREATED_AT]"
 updated_at: "[UPDATED_AT]"
-entrypoints: []
 tags: []
 origin:
   system: ""

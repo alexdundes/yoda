@@ -39,7 +39,6 @@ Optional inputs:
 - `--priority <0..10>`: integer priority (default 5 baseline).
 - `--agent <text>`: agent name (default `Human`).
 - `--tags <csv>`: comma-separated tags.
-- `--entrypoint <path>:<type>`: entrypoint item, repeatable. Allowed types: `doc`, `code`, `config`, `schema`, `data`, `asset`, `other`.
 
 Global flags:
 - `--dev <slug>`
@@ -98,7 +97,6 @@ The TODO issue item and issue front matter must include:
 - `depends_on: []`
 - `pending_reason: ""`
 - `created_at`, `updated_at` (same timestamp)
-- `entrypoints` (from flags)
 - `tags` (from flags)
 - `origin` (default empty values)
 
