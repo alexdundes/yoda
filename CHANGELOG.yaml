@@ -1,25 +1,36 @@
-- version: "0.1.1"
-  build: "20260206.34b2c68"
-  date: "2026-02-06T09:08:53-03:00"
+- version: 0.1.2
+  build: 20260225.5070dbb
+  date: '2026-02-25T17:25:03-03:00'
   summary:
-    - "Repo intent initialization support"
-    - "Simplified one-liner install docs"
+  - Removed the lightweight concept from the manual and related artifacts
+  breaking: []
+  additions: []
+  fixes:
+  - Removed legacy lightweight references in templates and scripts
+  notes: ''
+  commit: 5070dbb02779671012a4c3647ba17bb77b7bc220
+- version: 0.1.1
+  build: 20260206.34b2c68
+  date: '2026-02-06T09:08:53-03:00'
+  summary:
+  - Repo intent initialization support
+  - Simplified one-liner install docs
   breaking: []
   additions:
-    - "REPO_INTENT.md and repo.intent.yaml init handling"
+  - REPO_INTENT.md and repo.intent.yaml init handling
   fixes: []
-  notes: ""
-  commit: "34b2c68ab8d7b42f7feacaad26008686fedc57ca"
-- version: "0.1.0"
-  build: "20260204.bf92f3b"
-  date: "2026-02-04T19:49:44-03:00"
+  notes: ''
+  commit: 34b2c68ab8d7b42f7feacaad26008686fedc57ca
+- version: 0.1.0
+  build: 20260204.bf92f3b
+  date: '2026-02-04T19:49:44-03:00'
   summary:
-    - "Initial test package release"
-    - "Installer and update tooling available"
+  - Initial test package release
+  - Installer and update tooling available
   breaking: []
   additions:
-    - "docs/install/yoda-install.sh"
-    - "yoda/scripts/update.py"
+  - docs/install/yoda-install.sh
+  - yoda/scripts/update.py
   fixes: []
-  notes: ""
-  commit: "bf92f3b41747a4989fe897ec598b8d472e1f2d17"
+  notes: ''
+  commit: bf92f3b41747a4989fe897ec598b8d472e1f2d17

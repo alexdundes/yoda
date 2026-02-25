@@ -79,37 +79,56 @@ EXCLUDE_GLOBS = [
 ]
 
 HELP_DESCRIPTION = (
-    "Build a deterministic YODA distribution artefact (tar.gz) and manage changelog entries."
+    "Build a deterministic YODA package (tar.gz) and create or reuse CHANGELOG entries."
 )
 
 HELP_EPILOG = """Agent runbook (read this before packaging):
-1) Follow the packaging contract in:
+Goal:
+- Produce one release archive with traceable metadata and a matching changelog entry.
+
+1) Read the packaging contract first:
    - project/specs/23-distribution-and-packaging.md
 
-2) Build release notes from repository history (do not guess):
-   - Check working tree and staged changes: git status --short
+2) Build release notes from repository history (never guess):
+   - Check working tree: git status --short
    - Inspect recent commits: git log --oneline --decorate -n 20
-   - Review changed files for the release scope: git diff --name-only <base>..HEAD
+   - Review release scope files: git diff --name-only <base>..HEAD
+   - Read the changed files and derive changelog text from those real changes.
+   - Use those findings to define --summary/--addition/--fix/--breaking.
 
-3) Create the release entry with package.py:
-   - Use --next-version plus release fields (--summary/--addition/--fix/--breaking/--notes).
+3) Default mode:
+   - Use --next-version unless the human explicitly asks for --version.
+
+4) Choose one mode only:
+   - New release entry mode:
+     Use --next-version with release text fields
+     (--summary/--addition/--fix/--breaking/--notes).
+   - Existing entry mode:
+     Use --version <semver+build> when CHANGELOG already has the exact entry.
+
+5) Rules for changelog text:
+   - Write all changelog text in English.
+   - Use direct and concise language.
+   - Keep summaries factual.
+
+6) What package.py does in new release entry mode:
    - package.py computes build metadata as YYYYMMDD.<short-commit>.
    - package.py prepends the entry in CHANGELOG.yaml before packaging.
    - SemVer rules: breaking=MAJOR, additive=MINOR, fixes=PATCH.
 
-4) Validate content using dry-run:
+7) Validate content with dry-run:
    - python3 package.py --dev <slug> --next-version <semver> --summary "<summary>" --dry-run
    - Confirm only allowed files are included and excluded paths are absent.
 
-5) Build the final archive:
+8) Build the final archive:
    - python3 package.py --dev <slug> --next-version <semver> --summary "<summary>" --dir dist
-   - Destination folder: dist/
-   - Output: dist/yoda-framework-<semver+build>.tar.gz (build is generated automatically)
+   - Output folder: dist/
+   - Output file: dist/yoda-framework-<semver+build>.tar.gz
 
-6) Final verification:
+9) Final verification:
    - tar -tzf <archive> | sort
-   - Required files must include README.md, LICENSE, yoda/LICENSE,
-     yoda/yoda.md, CHANGELOG.yaml, and yoda/PACKAGE_MANIFEST.yaml.
+   - Required files: README.md, LICENSE, yoda/LICENSE, yoda/yoda.md,
+     CHANGELOG.yaml, yoda/PACKAGE_MANIFEST.yaml.
 """
 
 
