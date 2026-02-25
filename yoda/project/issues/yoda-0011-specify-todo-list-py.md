@@ -1,10 +1,8 @@
 ---
-agent: Human
 created_at: '2026-01-28T12:25:53-03:00'
 depends_on: []
 description: Define CLI, filters, ordering, output formats, and text search behavior
   for todo_list.py.
-entrypoints: []
 id: yoda-0011
 origin:
   external_id: ''
@@ -12,12 +10,11 @@ origin:
   system: ''
 pending_reason: ''
 priority: 5
-schema_version: '1.0'
+schema_version: '1.01'
 slug: specify-todo-list-py
 status: done
-tags: []
 title: Specify todo_list.py
-updated_at: '2026-01-28T14:26:40-03:00'
+updated_at: '2026-02-25T20:02:28-03:00'
 ---
 
 # yoda-0011 - Specify todo_list.py

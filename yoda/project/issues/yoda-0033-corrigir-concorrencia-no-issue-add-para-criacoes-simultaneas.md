@@ -1,5 +1,4 @@
 ---
-agent: Human
 created_at: '2026-02-25T15:23:19-03:00'
 depends_on:
 - yoda-0038
@@ -8,13 +7,6 @@ description: 'Ao executar dois issue_add em paralelo, ambos podem receber o mesm
   no TODO YAML. Corrigir a alocacao de ID e a escrita de artefatos para suportar concorrencia
   segura (locking/atomicidade/retry). Regra transversal deste backlog: primeiro atualizar
   a documentacao em project/specs/ e somente depois aplicar mudancas em yoda/.'
-entrypoints:
-- path: yoda/scripts/issue_add.py
-  type: code
-- path: yoda/todos/TODO.yoda.yaml
-  type: data
-- path: project/specs/
-  type: doc
 id: yoda-0033
 origin:
   external_id: ''
@@ -22,17 +14,11 @@ origin:
   system: ''
 pending_reason: ''
 priority: 2
-schema_version: '1.0'
+schema_version: '1.01'
 slug: corrigir-concorrencia-no-issue-add-para-criacoes-simultaneas
 status: to-do
-tags:
-- release-0.1.2
-- bug
-- concurrency
-- issue-add
-- docs-first
 title: Corrigir concorrencia no issue_add para criacoes simultaneas
-updated_at: '2026-02-25T18:46:21-03:00'
+updated_at: '2026-02-25T20:02:28-03:00'
 ---
 
 # yoda-0033 - Corrigir concorrencia no issue_add para criacoes simultaneas

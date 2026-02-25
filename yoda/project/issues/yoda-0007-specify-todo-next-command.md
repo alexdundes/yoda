@@ -1,9 +1,7 @@
 ---
-agent: Human
 created_at: '2026-01-27T17:22:15-03:00'
 depends_on: []
 description: Write a spec for todo_next.py behavior, inputs, outputs, and error handling
-entrypoints: []
 id: yoda-0007
 origin:
   external_id: ''
@@ -11,12 +9,11 @@ origin:
   system: ''
 pending_reason: ''
 priority: 5
-schema_version: '1.0'
+schema_version: '1.01'
 slug: specify-todo-next-command
 status: done
-tags: []
 title: Specify todo_next command
-updated_at: '2026-01-27T17:54:38-03:00'
+updated_at: '2026-02-25T20:02:28-03:00'
 ---
 
 # yoda-0007 - Specify todo_next command

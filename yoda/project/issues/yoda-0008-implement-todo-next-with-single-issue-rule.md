@@ -1,10 +1,8 @@
 ---
-agent: Human
 created_at: '2026-01-27T17:57:51-03:00'
 depends_on: []
 description: Implement todo_next.py to select only to-do items and block when any
   issue is doing
-entrypoints: []
 id: yoda-0008
 origin:
   external_id: ''
@@ -12,12 +10,11 @@ origin:
   system: ''
 pending_reason: ''
 priority: 5
-schema_version: '1.0'
+schema_version: '1.01'
 slug: implement-todo-next-with-single-issue-rule
 status: done
-tags: []
 title: Implement todo_next with single-issue rule
-updated_at: '2026-01-27T18:01:19-03:00'
+updated_at: '2026-02-25T20:02:28-03:00'
 ---
 
 # yoda-0008 - Implement todo_next with single-issue rule

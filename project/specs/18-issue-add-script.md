@@ -37,8 +37,6 @@ Optional inputs:
 - `--summary <text>`: alias for description (if provided, it overrides `--description`).
 - `--slug <slug>`: explicit slug for the issue. If omitted, the slug is generated from the title.
 - `--priority <0..10>`: integer priority (default 5 baseline).
-- `--agent <text>`: agent name (default `Human`).
-- `--tags <csv>`: comma-separated tags.
 
 Global flags:
 - `--dev <slug>`
@@ -89,15 +87,13 @@ Global flags:
 ## Metadata population
 
 The TODO issue item and issue front matter must include:
-- `schema_version: "1.0"`
+- `schema_version: "1.01"`
 - `id`, `title`, `slug`, `description`
 - `status: to-do`
 - `priority`
-- `agent`
 - `depends_on: []`
 - `pending_reason: ""`
 - `created_at`, `updated_at` (same timestamp)
-- `tags` (from flags)
 - `origin` (default empty values)
 
 Priority policy for issue creation:
@@ -111,7 +107,7 @@ Timestamps:
 ## TODO file creation
 
 If `yoda/todos/TODO.<dev>.yaml` does not exist, `issue_add.py` must create it with these defaults before creating the issue:
-- `schema_version: "1.0"`
+- `schema_version: "1.01"`
 - `developer_name`: derive from `<dev>` by title-casing (example: `dev` -> `Dev`).
 - `developer_slug`: `<dev>`
 - `timezone`: local machine timezone (IANA TZ name when available)

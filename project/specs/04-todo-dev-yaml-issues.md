@@ -37,7 +37,7 @@ Separate backlog metadata from rich issue descriptions.
 
 Root fields (required):
 
-- schema_version: "1.0"
+- schema_version: "1.01"
 - developer_name: human-readable developer name
 - developer_slug: developer slug used in the file name
 - timezone: `UTC` or IANA TZ database name (Python `zoneinfo` compatible)
@@ -52,19 +52,17 @@ Each issue item must contain:
 - description: brief description of what needs to be done
 - status: to-do | doing | done | pending
 - priority: 0 to 10 (10 = highest priority; baseline/default 5)
-- agent: agent name (free string; examples: Human, Codex, Gemini CLI, Antigravity)
 - depends_on: list of ids
 - pending_reason: reason for pending (required when status = pending)
 - created_at, updated_at
 
 Optional fields:
 
-- tags: list of tags
 - origin: external issue reference (system, external_id, requester)
 
 ## Constraints
 
-- schema_version uses semantic versioning (current: 1.0).
+- schema_version uses semantic versioning (current: 1.01).
 - developer_slug must match the slug rules (lowercase ASCII, digits, hyphens; start with a letter; no spaces).
 - id must match `<developer_slug>-<####>` (4 digits).
 - status must be one of: to-do, doing, done, pending.
@@ -141,7 +139,7 @@ Selection rules:
 ## Minimal example (`yoda/todos/TODO.<dev>.yaml`)
 
 ```yaml
-schema_version: "1.0"
+schema_version: "1.01"
 developer_name: Alex
 developer_slug: dev
 timezone: "America/Sao_Paulo"
@@ -154,8 +152,6 @@ issues:
     description: Define root agent instructions for this repository.
     status: doing
     priority: 10
-    tags: [yoda, framework]
-    agent: Human
     depends_on: []
     created_at: "2026-01-21T18:46:15-03:00"
     updated_at: "2026-01-21T18:46:15-03:00"
@@ -166,8 +162,6 @@ issues:
     description: Document how agents should use issue templates.
     status: to-do
     priority: 8
-    tags: [templates, docs]
-    agent: Codex
     depends_on: [dev-0001]
     created_at: "2026-01-21T19:26:26-03:00"
     updated_at: "2026-01-21T19:26:26-03:00"
@@ -179,8 +173,6 @@ issues:
     status: pending
     pending_reason: "Waiting for consensus on script naming."
     priority: 7
-    tags: [scripts, v1]
-    agent: Antigravity
     depends_on: [dev-0001]
     created_at: "2026-01-21T19:17:35-03:00"
     updated_at: "2026-01-21T19:17:35-03:00"

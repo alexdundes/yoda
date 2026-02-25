@@ -59,14 +59,6 @@ def _update_issue(item: dict[str, Any], args: argparse.Namespace) -> None:
             raise YodaError("priority must be between 0 and 10", exit_code=ExitCode.VALIDATION)
         item["priority"] = args.priority
 
-    if args.agent is not None:
-        item["agent"] = args.agent
-
-    if args.clear_tags:
-        item["tags"] = []
-    elif args.tags is not None:
-        item["tags"] = _parse_csv(args.tags)
-
     if args.clear_depends_on:
         item["depends_on"] = []
     elif args.depends_on is not None:
@@ -95,7 +87,7 @@ def _format_value(value: Any) -> str:
 
 
 def _diff_fields(before: dict[str, Any], after: dict[str, Any]) -> tuple[list[str], list[str]]:
-    fields = ["status", "priority", "tags", "depends_on", "pending_reason", "agent"]
+    fields = ["status", "priority", "depends_on", "pending_reason"]
     updated_fields = []
     lines = []
     for field in fields:
@@ -123,11 +115,8 @@ def main() -> int:
     parser.add_argument("--issue", required=False, help="Issue id (dev-####)")
     parser.add_argument("--status", help="New status")
     parser.add_argument("--priority", type=int, help="Priority 0-10")
-    parser.add_argument("--tags", help="Comma-separated tags")
     parser.add_argument("--depends-on", dest="depends_on", help="Comma-separated issue ids")
     parser.add_argument("--pending-reason", dest="pending_reason", help="Pending reason")
-    parser.add_argument("--agent", help="Agent name")
-    parser.add_argument("--clear-tags", action="store_true", help="Clear tags")
     parser.add_argument("--clear-depends-on", action="store_true", help="Clear dependencies")
 
     args = parser.parse_args()

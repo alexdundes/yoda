@@ -1,10 +1,10 @@
-schema_version: '1.0'
+schema_version: '1.01'
 developer_name: Yoda
 developer_slug: yoda
 timezone: America/Sao_Paulo
-updated_at: '2026-02-25T19:18:57-03:00'
+updated_at: '2026-02-25T20:07:45-03:00'
 issues:
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0014
   title: Implement todo_reorder.py
   slug: implement-todo-reorder-py
@@ -12,36 +12,30 @@ issues:
     and tests.'
   status: done
   priority: 5
-  agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-28T14:51:24-03:00'
-  updated_at: '2026-01-28T15:17:41-03:00'
-  entrypoints: []
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0013
   title: Specify todo_reorder.py
   slug: specify-todo-reorder-py
   description: Define CLI, ordering behaviors, and output formats for todo_reorder.py.
   status: done
   priority: 5
-  agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-28T14:51:19-03:00'
-  updated_at: '2026-01-28T15:14:10-03:00'
-  entrypoints: []
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0012
   title: Implement todo_list.py
   slug: implement-todo-list-py
@@ -49,18 +43,15 @@ issues:
     and optional text/regex search in selected issue markdown files.'
   status: done
   priority: 5
-  agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-28T12:25:58-03:00'
-  updated_at: '2026-01-28T14:42:11-03:00'
-  entrypoints: []
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0011
   title: Specify todo_list.py
   slug: specify-todo-list-py
@@ -68,18 +59,15 @@ issues:
     for todo_list.py.
   status: done
   priority: 5
-  agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-28T12:25:53-03:00'
-  updated_at: '2026-01-28T14:26:40-03:00'
-  entrypoints: []
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0010
   title: Update agent playbook to use scripts
   slug: update-agent-playbook-to-use-scripts
@@ -87,17 +75,15 @@ issues:
     available scripts
   status: done
   priority: 5
-  agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-27T19:14:48-03:00'
-  updated_at: '2026-01-27T20:40:15-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0009
   title: Add unit tests for YODA scripts
   slug: add-unit-tests-for-yoda-scripts
@@ -105,17 +91,15 @@ issues:
     and existing helpers
   status: done
   priority: 5
-  agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-27T18:04:27-03:00'
-  updated_at: '2026-01-27T18:14:19-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0008
   title: Implement todo_next with single-issue rule
   slug: implement-todo-next-with-single-issue-rule
@@ -123,17 +107,15 @@ issues:
     issue is doing
   status: done
   priority: 5
-  agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-27T17:57:51-03:00'
-  updated_at: '2026-01-27T18:01:19-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0007
   title: Specify todo_next command
   slug: specify-todo-next-command
@@ -141,17 +123,15 @@ issues:
     handling
   status: done
   priority: 5
-  agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-27T17:22:15-03:00'
-  updated_at: '2026-01-27T17:54:38-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0006
   title: Review and retire dicas-do-chatgpt
   slug: review-and-retire-dicas-do-chatgpt
@@ -159,119 +139,105 @@ issues:
     remove the file
   status: done
   priority: 5
-  agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-27T16:47:31-03:00'
-  updated_at: '2026-01-27T17:20:00-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0005
   title: Fix markdown list indentation
   slug: fix-markdown-list-indentation
   description: Adjust indentation in 02-yoda-flow-process.md for list consistency
   status: done
   priority: 5
-  agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-27T16:41:51-03:00'
-  updated_at: '2026-01-27T17:16:44-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0004
   title: Happy path end-to-end
   slug: happy-path-end-to-end
   description: 'Add a one-page flow: create issue, update TODO, add log, finish'
   status: done
   priority: 5
-  agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-27T16:41:48-03:00'
-  updated_at: '2026-01-27T17:10:13-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0003
   title: Define JSON output minimums
   slug: define-json-output-minimums
   description: Document minimal JSON fields for issue_add, todo_update, log_add
   status: done
   priority: 5
-  agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-27T16:41:45-03:00'
-  updated_at: '2026-01-27T17:07:50-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0002
   title: Document log_add slug resolution
   slug: document-log-add-slug-resolution
   description: 'Add spec text: log_add resolves slug via TODO and fails if id missing'
   status: done
   priority: 5
-  agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-27T16:41:42-03:00'
-  updated_at: '2026-01-27T17:04:47-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0001
   title: Slug immutability rule
   slug: slug-immutability-rule
   description: Document that issue slugs are immutable; renames require migration
   status: done
   priority: 5
-  agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-27T16:41:37-03:00'
-  updated_at: '2026-01-27T16:58:55-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0015
   title: Specify YODA Intake
   slug: specify-yoda-intake
   description: Create a spec and update docs to define the YODA Intake concept.
   status: done
   priority: 5
-  agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-28T17:35:28-03:00'
-  updated_at: '2026-01-28T17:45:41-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0016
   title: "Specs: empacotamento e distribui\xE7\xE3o do YODA Framework"
   slug: specs-empacotamento-e-distribui-o-do-yoda-framework
@@ -280,18 +246,15 @@ issues:
     \xE3o."
   status: done
   priority: 10
-  agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-28T19:02:03-03:00'
-  updated_at: '2026-01-29T06:34:51-03:00'
-  entrypoints: []
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0017
   title: 'Manual embarcado: reescrever yoda/yoda.md independente das specs'
   slug: manual-embarcado-reescrever-yoda-yoda-md-independente-das-specs
@@ -299,18 +262,16 @@ issues:
     \ sem project/specs, com playbooks claros e refer\xEAncias \xE0s ferramentas/scripts."
   status: done
   priority: 9
-  agent: Human
   depends_on:
   - yoda-0016
   pending_reason: ''
   created_at: '2026-01-28T19:02:06-03:00'
-  updated_at: '2026-01-29T09:34:53-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0018
   title: Comando de empacote do YODA (package)
   slug: comando-de-empacote-do-yoda-package
@@ -319,18 +280,16 @@ issues:
     o/exclus\xE3o."
   status: done
   priority: 8
-  agent: Human
   depends_on:
   - yoda-0016
   pending_reason: ''
   created_at: '2026-01-28T19:02:09-03:00'
-  updated_at: '2026-02-02T08:19:00-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0019
   title: "Comando de init p\xF3s-embutido"
   slug: comando-de-init-p-s-embutido
@@ -339,19 +298,17 @@ issues:
     \ com dry-run."
   status: done
   priority: 7
-  agent: Human
   depends_on:
   - yoda-0016
   - yoda-0018
   pending_reason: ''
   created_at: '2026-01-28T19:02:12-03:00'
-  updated_at: '2026-02-02T08:57:11-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0020
   title: "Spike: padr\xE3o de instala\xE7\xE3o/upgrade do YODA em projetos externos"
   slug: spike-padr-o-de-instala-o-upgrade-do-yoda-em-projetos-externos
@@ -359,18 +316,16 @@ issues:
     rios externos, cobrindo pacote+init, versionamento, upgrade/rollback e riscos."
   status: done
   priority: 6
-  agent: Human
   depends_on:
   - yoda-0016
   pending_reason: ''
   created_at: '2026-01-28T19:02:16-03:00'
-  updated_at: '2026-02-04T07:22:50-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0021
   title: LICENSE curta para pacote YODA
   slug: license-curta-para-pacote-yoda
@@ -378,18 +333,16 @@ issues:
     \ distribu\xEDvel, alinhado \xE0s decis\xF5es de empacote e licen\xE7a do projeto."
   status: done
   priority: 6
-  agent: Human
   depends_on:
   - yoda-0016
   pending_reason: ''
   created_at: '2026-01-29T06:31:15-03:00'
-  updated_at: '2026-02-04T07:58:07-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0022
   title: README curto do pacote YODA
   slug: readme-curto-do-pacote-yoda
@@ -398,18 +351,16 @@ issues:
     \ essenciais."
   status: done
   priority: 5
-  agent: Human
   depends_on:
   - yoda-0016
   pending_reason: ''
   created_at: '2026-01-29T06:31:28-03:00'
-  updated_at: '2026-02-04T08:07:40-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0023
   title: Document one-liner install flow
   slug: document-one-liner-install-flow
@@ -418,18 +369,16 @@ issues:
     placeholders once URLs are defined.
   status: done
   priority: 5
-  agent: Human
   depends_on:
   - yoda-0024
   pending_reason: ''
   created_at: '2026-02-04T08:07:08-03:00'
-  updated_at: '2026-02-04T11:10:48-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0024
   title: Revise package README content and structure
   slug: revise-package-readme-content-and-structure
@@ -443,17 +392,15 @@ issues:
     must be higher priority than yoda-0023; yoda-0023 should depend on this.
   status: done
   priority: 7
-  agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-02-04T09:38:21-03:00'
-  updated_at: '2026-02-04T10:50:03-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0025
   title: Update package build to include yoda/LICENSE
   slug: update-package-build-to-include-yoda-license
@@ -462,17 +409,15 @@ issues:
     license ships with the package.
   status: done
   priority: 7
-  agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-02-04T18:39:22-03:00'
-  updated_at: '2026-02-04T18:51:31-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0026
   title: Implement yoda-install.sh one-liner installer
   slug: implement-yoda-install-sh-one-liner-installer
@@ -482,18 +427,16 @@ issues:
     support --version/--root/--source.
   status: done
   priority: 6
-  agent: Human
   depends_on:
   - yoda-0025
   pending_reason: ''
   created_at: '2026-02-04T18:39:27-03:00'
-  updated_at: '2026-02-04T19:01:10-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0027
   title: Implement update command for embedded YODA
   slug: implement-update-command-for-embedded-yoda
@@ -503,18 +446,16 @@ issues:
     and clear output.
   status: done
   priority: 6
-  agent: Human
   depends_on:
   - yoda-0025
   pending_reason: ''
   created_at: '2026-02-04T18:39:33-03:00'
-  updated_at: '2026-02-04T19:18:59-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0028
   title: Set up GitHub Pages /docs hosting for installer and metadata
   slug: set-up-github-pages-docs-hosting-for-installer-and-metadata
@@ -524,18 +465,16 @@ issues:
     per release.
   status: done
   priority: 5
-  agent: Human
   depends_on:
   - yoda-0026
   pending_reason: ''
   created_at: '2026-02-04T18:39:41-03:00'
-  updated_at: '2026-02-04T19:23:38-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0029
   title: Extend init to manage REPO_INTENT.md and repo.intent.yaml
   slug: extend-init-to-manage-repo-intent-md-and-repo-intent-yaml
@@ -544,17 +483,15 @@ issues:
     existing content.
   status: done
   priority: 6
-  agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-02-04T20:16:53-03:00'
-  updated_at: '2026-02-06T09:06:04-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0030
   title: Allow one-liner install without explicit version
   slug: allow-one-liner-install-without-explicit-version
@@ -563,17 +500,15 @@ issues:
     command.
   status: done
   priority: 7
-  agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-02-05T12:24:06-03:00'
-  updated_at: '2026-02-06T08:58:28-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0031
   title: Padronizar GEMINI.md no init
   slug: padronizar-gemini-md-no-init
@@ -584,20 +519,15 @@ issues:
     \ com legado; o \xFAnico consumidor atual \xE9 ../fibu."
   status: done
   priority: 3
-  agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-02-25T15:18:57-03:00'
-  updated_at: '2026-02-25T18:39:01-03:00'
-  tags:
-  - release-0.1.2
-  - init
-  - docs-first
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0032
   title: 'YODA Intake: coletar texto corrido e agente traduzir em issue'
   slug: yoda-intake-coletar-texto-corrido-e-agente-traduzir-em-issue
@@ -609,21 +539,15 @@ issues:
     \ aplicar mudan\xE7as em yoda/."
   status: done
   priority: 3
-  agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-02-25T15:19:59-03:00'
-  updated_at: '2026-02-25T18:42:18-03:00'
-  tags:
-  - release-0.1.2
-  - intake
-  - playbook
-  - docs-first
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0033
   title: Corrigir concorrencia no issue_add para criacoes simultaneas
   slug: corrigir-concorrencia-no-issue-add-para-criacoes-simultaneas
@@ -635,23 +559,16 @@ issues:
     em yoda/.'
   status: to-do
   priority: 2
-  agent: Human
   depends_on:
   - yoda-0038
   pending_reason: ''
   created_at: '2026-02-25T15:23:19-03:00'
-  updated_at: '2026-02-25T18:46:21-03:00'
-  tags:
-  - release-0.1.2
-  - bug
-  - concurrency
-  - issue-add
-  - docs-first
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0034
   title: Remover comentario-instrucao do template de issue
   slug: remover-comentario-instrucao-do-template-de-issue
@@ -661,17 +578,15 @@ issues:
     atualizar primeiro project/specs/ e depois yoda/.'
   status: done
   priority: 4
-  agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-02-25T15:36:44-03:00'
-  updated_at: '2026-02-25T18:28:21-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0035
   title: Remover conceito de lightweight do YODA
   slug: remover-conceito-de-lightweight-do-yoda
@@ -682,18 +597,16 @@ issues:
     quando aplicavel.'
   status: done
   priority: 3
-  agent: Human
   depends_on:
   - yoda-0038
   pending_reason: ''
   created_at: '2026-02-25T15:36:44-03:00'
-  updated_at: '2026-02-25T19:06:01-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0036
   title: Remover entrypoints do YAML e manter apenas no markdown
   slug: remover-entrypoints-do-yaml-e-manter-apenas-no-markdown
@@ -705,18 +618,16 @@ issues:
     aplicavel.'
   status: done
   priority: 3
-  agent: Human
   depends_on:
   - yoda-0038
   pending_reason: ''
   created_at: '2026-02-25T15:36:44-03:00'
-  updated_at: '2026-02-25T19:18:57-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0037
   title: Remover conceito de tags do YODA
   slug: remover-conceito-de-tags-do-yoda
@@ -724,20 +635,18 @@ issues:
     YODA (schema, scripts, filtros e templates). Regra transversal: atualizar primeiro
     project/specs/ e depois yoda/. Como envolve layout YAML, aplicar politica de versao
     de schema e tratamento de compatibilidade conforme update.py quando aplicavel.'
-  status: to-do
+  status: done
   priority: 3
-  agent: Human
   depends_on:
   - yoda-0038
   pending_reason: ''
   created_at: '2026-02-25T15:36:45-03:00'
-  updated_at: '2026-02-25T15:36:56-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0038
   title: Definir politica de versionamento do layout YAML do YODA
   slug: definir-politica-de-versionamento-do-layout-yaml-do-yoda
@@ -747,17 +656,15 @@ issues:
     operacional em specs e yoda.md, com criterio claro para classificacao e rollout.'
   status: done
   priority: 2
-  agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-02-25T15:36:45-03:00'
-  updated_at: '2026-02-25T18:51:16-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0039
   title: Integrar backlog externo via glab e prever GitHub
   slug: integrar-backlog-externo-via-glab-e-prever-github
@@ -767,18 +674,16 @@ issues:
     (gh). Regra transversal: atualizar primeiro project/specs/ e depois yoda/.'
   status: to-do
   priority: 1
-  agent: Human
   depends_on:
   - yoda-0038
   pending_reason: ''
   created_at: '2026-02-25T15:36:45-03:00'
-  updated_at: '2026-02-25T18:58:03-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
   origin:
     system: ''
     external_id: ''
     requester: ''
-- schema_version: '1.0'
+- schema_version: '1.01'
   id: yoda-0040
   title: Definir heuristica de prioridade com baseline 5
   slug: definir-heuristica-de-prioridade-com-baseline-5
@@ -788,12 +693,28 @@ issues:
     atualizar primeiro project/specs/ e depois yoda/.'
   status: done
   priority: 4
-  agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-02-25T15:36:45-03:00'
-  updated_at: '2026-02-25T18:32:04-03:00'
-  tags: []
+  updated_at: '2026-02-25T20:02:28-03:00'
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.01'
+  id: yoda-0041
+  title: Remover conceito de agent do YODA
+  slug: remover-conceito-de-agent-do-yoda
+  description: 'Eliminar o campo agent do modelo YAML e do fluxo operacional, seguindo
+    a mesma abordagem usada para lightweight, entrypoints e tags: docs-first, classificacao
+    subtle, ajuste de scripts e reconciliacao via init.py --reconcile-layout quando
+    aplicavel.'
+  status: done
+  priority: 3
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-02-25T19:53:46-03:00'
+  updated_at: '2026-02-25T20:07:45-03:00'
   origin:
     system: ''
     external_id: ''

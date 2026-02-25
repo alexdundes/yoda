@@ -73,3 +73,66 @@ def test_todo_update_rejects_missing_depends_on() -> None:
     )
     assert update_result.returncode == 2, update_result.stderr
     assert "depends_on references missing ids" in update_result.stderr
+
+
+def test_todo_update_rejects_removed_tags_flags() -> None:
+    add_result = run_script(
+        "issue_add.py",
+        ["--dev", TEST_DEV, "--title", "Test issue", "--description", "Desc"],
+    )
+    assert add_result.returncode == 0, add_result.stderr
+
+    todo = yaml.safe_load(TEST_TODO.read_text(encoding="utf-8"))
+    issue = todo["issues"][0]
+
+    update_result = run_script(
+        "todo_update.py",
+        [
+            "--dev",
+            TEST_DEV,
+            "--issue",
+            issue["id"],
+            "--tags",
+            "alpha",
+        ],
+    )
+    assert update_result.returncode == 2
+    assert "unrecognized arguments: --tags alpha" in update_result.stderr
+
+    clear_result = run_script(
+        "todo_update.py",
+        [
+            "--dev",
+            TEST_DEV,
+            "--issue",
+            issue["id"],
+            "--clear-tags",
+        ],
+    )
+    assert clear_result.returncode == 2
+    assert "unrecognized arguments: --clear-tags" in clear_result.stderr
+
+
+def test_todo_update_rejects_removed_agent_flag() -> None:
+    add_result = run_script(
+        "issue_add.py",
+        ["--dev", TEST_DEV, "--title", "Test issue", "--description", "Desc"],
+    )
+    assert add_result.returncode == 0, add_result.stderr
+
+    todo = yaml.safe_load(TEST_TODO.read_text(encoding="utf-8"))
+    issue = todo["issues"][0]
+
+    update_result = run_script(
+        "todo_update.py",
+        [
+            "--dev",
+            TEST_DEV,
+            "--issue",
+            issue["id"],
+            "--agent",
+            "Codex",
+        ],
+    )
+    assert update_result.returncode == 2
+    assert "unrecognized arguments: --agent Codex" in update_result.stderr

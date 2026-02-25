@@ -52,21 +52,30 @@ def test_todo_list_default_order_and_pending_in_json() -> None:
     assert "origin" in payload["issues"][0]
 
 
-def test_todo_list_tags_filter_and() -> None:
+def test_todo_list_rejects_removed_tags_flag() -> None:
     factory = TodoFactory(TEST_DEV)
-    issue_a = factory.issue(title="A", tags=["alpha", "beta"])
-    issue_b = factory.issue(title="B", tags=["alpha"])
-    issues = [issue_a, issue_b]
-    write_yaml(TEST_TODO, factory.todo(issues))
+    issue_a = factory.issue(title="A")
+    write_yaml(TEST_TODO, factory.todo([issue_a]))
 
     result = run_script(
         "todo_list.py",
-        ["--dev", TEST_DEV, "--format", "json", "--tags", "alpha,beta"],
+        ["--dev", TEST_DEV, "--tags", "alpha"],
     )
-    assert result.returncode == 0, result.stderr
-    payload = json.loads(result.stdout)
-    ids = [item["id"] for item in payload["issues"]]
-    assert ids == [issue_a["id"]]
+    assert result.returncode == 2
+    assert "unrecognized arguments: --tags alpha" in result.stderr
+
+
+def test_todo_list_rejects_removed_agent_flag() -> None:
+    factory = TodoFactory(TEST_DEV)
+    issue_a = factory.issue(title="A")
+    write_yaml(TEST_TODO, factory.todo([issue_a]))
+
+    result = run_script(
+        "todo_list.py",
+        ["--dev", TEST_DEV, "--agent", "Codex"],
+    )
+    assert result.returncode == 2
+    assert "unrecognized arguments: --agent Codex" in result.stderr
 
 
 def test_todo_list_order_by_created_desc() -> None:

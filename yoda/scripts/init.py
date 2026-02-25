@@ -13,6 +13,7 @@ from typing import Any
 from lib.cli import add_global_flags, resolve_format
 from lib.dev import resolve_dev
 from lib.errors import ExitCode, YodaError
+from lib.front_matter import update_front_matter
 from lib.logging_utils import configure_logging
 from lib.output import render_output
 from lib.time_utils import detect_local_timezone, now_iso
@@ -52,17 +53,83 @@ REPO_INTENT_YODA_DEFAULT = {
     "agent_entry_order": ["REPO_INTENT.md", "yoda/yoda.md"],
 }
 DIFF_LIMIT = 40
+SCHEMA_VERSION = "1.01"
 
 
 def _build_todo(dev: str, timezone: str) -> dict[str, Any]:
     return {
-        "schema_version": "1.0",
+        "schema_version": SCHEMA_VERSION,
         "developer_name": dev,
         "developer_slug": dev,
         "timezone": timezone,
         "updated_at": now_iso(timezone),
         "issues": [],
     }
+
+
+def _touch_markdown_files(root: Path, dry_run: bool) -> int:
+    files = sorted(path for path in root.rglob("*.md") if path.is_file())
+    if not dry_run:
+        for path in files:
+            path.touch()
+    return len(files)
+
+
+def _reconcile_todo_and_issues(
+    root: Path,
+    dev: str,
+    dry_run: bool,
+) -> tuple[list[str], list[str]]:
+    todo_file = root / "yoda" / "todos" / f"TODO.{dev}.yaml"
+    if not todo_file.exists():
+        return [], [f"{todo_file.relative_to(root)} (missing, reconcile skipped)"]
+
+    raw = yaml.safe_load(todo_file.read_text(encoding="utf-8")) or {}
+    if not isinstance(raw, dict):
+        raise YodaError("Invalid TODO YAML root for reconcile", exit_code=ExitCode.VALIDATION)
+
+    timezone = str(raw.get("timezone") or detect_local_timezone())
+    timestamp = now_iso(timezone)
+
+    raw["schema_version"] = SCHEMA_VERSION
+    raw["updated_at"] = timestamp
+    issues = raw.get("issues", [])
+    if not isinstance(issues, list):
+        raise YodaError("TODO issues must be a list", exit_code=ExitCode.VALIDATION)
+
+    written: list[str] = []
+    skipped: list[str] = []
+    for issue in issues:
+        if not isinstance(issue, dict):
+            continue
+        issue["schema_version"] = SCHEMA_VERSION
+        issue.pop("agent", None)
+        issue.pop("tags", None)
+        issue.pop("entrypoints", None)
+        issue.pop("lightweight", None)
+        issue["updated_at"] = timestamp
+
+        issue_id = str(issue.get("id", ""))
+        slug = str(issue.get("slug", ""))
+        if not issue_id or not slug:
+            skipped.append(f"issue metadata missing id/slug ({issue_id})")
+            continue
+        issue_file = root / "yoda" / "project" / "issues" / f"{issue_id}-{slug}.md"
+        if not issue_file.exists():
+            skipped.append(f"{issue_file.relative_to(root)} (missing, reconcile skipped)")
+            continue
+        if not dry_run:
+            update_front_matter(issue_file, issue)
+        written.append(f"{issue_file.relative_to(root)} (reconciled)")
+
+    validate_todo(raw, dev)
+    if not dry_run:
+        todo_file.write_text(
+            yaml.safe_dump(raw, sort_keys=False, allow_unicode=False),
+            encoding="utf-8",
+        )
+    written.append(f"{todo_file.relative_to(root)} (reconciled)")
+    return written, skipped
 
 
 def _diff_summary(expected: str, existing: str, label: str) -> list[str]:
@@ -163,6 +230,11 @@ def main() -> int:
     add_global_flags(parser)
     parser.add_argument("--root", help="Project root to initialize (default: cwd)")
     parser.add_argument("--force", action="store_true", help="Overwrite existing files")
+    parser.add_argument(
+        "--reconcile-layout",
+        action="store_true",
+        help="Touch markdown files and reconcile TODO/issues front matter to current schema",
+    )
 
     args = parser.parse_args()
     configure_logging(args.verbose)
@@ -431,6 +503,17 @@ def main() -> int:
             "conflicts": conflicts,
             "dry_run": bool(args.dry_run),
         }
+
+        if args.reconcile_layout:
+            touched = _touch_markdown_files(root, args.dry_run)
+            files_written.append(f"*.md touched: {touched}")
+            reconcile_written, reconcile_skipped = _reconcile_todo_and_issues(
+                root=root,
+                dev=dev,
+                dry_run=bool(args.dry_run),
+            )
+            files_written.extend(reconcile_written)
+            files_skipped.extend(reconcile_skipped)
 
         print(_render_output(payload, output_format))
         return exit_code

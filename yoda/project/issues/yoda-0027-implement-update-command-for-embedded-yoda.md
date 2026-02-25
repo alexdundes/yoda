@@ -1,5 +1,4 @@
 ---
-agent: Human
 created_at: '2026-02-04T18:39:33-03:00'
 depends_on:
 - yoda-0025
@@ -7,11 +6,6 @@ description: Implement yoda/scripts/update.py with --check, --apply, --source to
   upgrades. It must fetch latest.json, validate sha256, back up to yoda/_previous/<version>,
   replace framework files only, preserve data, and re-run init. Provide dry-run and
   clear output.
-entrypoints:
-- path: project/specs/24-installation-and-upgrade.md
-  type: doc
-- path: yoda/scripts/init.py
-  type: code
 id: yoda-0027
 origin:
   external_id: ''
@@ -19,12 +13,11 @@ origin:
   system: ''
 pending_reason: ''
 priority: 6
-schema_version: '1.0'
+schema_version: '1.01'
 slug: implement-update-command-for-embedded-yoda
 status: done
-tags: []
 title: Implement update command for embedded YODA
-updated_at: '2026-02-04T19:18:59-03:00'
+updated_at: '2026-02-25T20:02:28-03:00'
 ---
 
 # yoda-0027 - Implement update command for embedded YODA

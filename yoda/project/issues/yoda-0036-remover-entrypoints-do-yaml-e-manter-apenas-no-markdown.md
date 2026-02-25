@@ -1,5 +1,4 @@
 ---
-agent: Human
 created_at: '2026-02-25T15:36:44-03:00'
 depends_on:
 - yoda-0038
@@ -15,12 +14,11 @@ origin:
   system: ''
 pending_reason: ''
 priority: 3
-schema_version: '1.0'
+schema_version: '1.01'
 slug: remover-entrypoints-do-yaml-e-manter-apenas-no-markdown
 status: done
-tags: []
 title: Remover entrypoints do YAML e manter apenas no markdown
-updated_at: '2026-02-25T19:18:57-03:00'
+updated_at: '2026-02-25T20:02:28-03:00'
 ---
 
 # yoda-0036 - Remover entrypoints do YAML e manter apenas no markdown

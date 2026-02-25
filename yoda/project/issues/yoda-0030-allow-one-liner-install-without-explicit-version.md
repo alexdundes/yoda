@@ -1,16 +1,8 @@
 ---
-agent: Human
 created_at: '2026-02-05T12:24:06-03:00'
 depends_on: []
 description: Make the one-liner install flow default to latest when --version is omitted
   and update documentation to remove required version in the quick install command.
-entrypoints:
-- path: docs/install/yoda-install.sh
-  type: code
-- path: README.md
-  type: doc
-- path: project/specs/24-installation-and-upgrade.md
-  type: doc
 id: yoda-0030
 origin:
   external_id: ''
@@ -18,12 +10,11 @@ origin:
   system: ''
 pending_reason: ''
 priority: 7
-schema_version: '1.0'
+schema_version: '1.01'
 slug: allow-one-liner-install-without-explicit-version
 status: done
-tags: []
 title: Allow one-liner install without explicit version
-updated_at: '2026-02-06T08:58:28-03:00'
+updated_at: '2026-02-25T20:02:28-03:00'
 ---
 
 # yoda-0030 - Allow one-liner install without explicit version

@@ -1,5 +1,4 @@
 ---
-agent: Human
 created_at: '2026-02-25T15:19:59-03:00'
 depends_on: []
 description: 'No modo YODA Intake, o agente deve pedir ao dev a descrição da issue
@@ -7,11 +6,6 @@ description: 'No modo YODA Intake, o agente deve pedir ao dev a descrição da i
   estruturada e para atualização do markdown da issue. Revisar e ajustar o playbook
   em yoda/yoda.md (seção de Intake). Regra transversal: primeiro atualizar a documentação
   em project/specs/, e somente depois aplicar mudanças em yoda/.'
-entrypoints:
-- path: yoda/yoda.md
-  type: doc
-- path: project/specs/
-  type: doc
 id: yoda-0032
 origin:
   external_id: ''
@@ -19,16 +13,11 @@ origin:
   system: ''
 pending_reason: ''
 priority: 3
-schema_version: '1.0'
+schema_version: '1.01'
 slug: yoda-intake-coletar-texto-corrido-e-agente-traduzir-em-issue
 status: done
-tags:
-- release-0.1.2
-- intake
-- playbook
-- docs-first
 title: 'YODA Intake: coletar texto corrido e agente traduzir em issue'
-updated_at: '2026-02-25T18:42:18-03:00'
+updated_at: '2026-02-25T20:02:28-03:00'
 ---
 
 # yoda-0032 - YODA Intake: coletar texto corrido e agente traduzir em issue

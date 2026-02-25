@@ -1,17 +1,15 @@
 ---
-schema_version: "1.0"
+schema_version: "1.01"
 id: [ID]
 title: [TITLE]
 slug: [SLUG]
 description: [SUMMARY]
 status: to-do
 priority: 5
-agent: Human
 depends_on: []
 pending_reason: ""
 created_at: "[CREATED_AT]"
 updated_at: "[UPDATED_AT]"
-tags: []
 origin:
   system: ""
   external_id: ""

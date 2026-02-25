@@ -73,6 +73,10 @@ Security warnings:
 ```bash
 python yoda/scripts/init.py --dev <slug> --root .
 ```
+Optional maintenance reconcile during upgrades:
+```bash
+python yoda/scripts/init.py --dev <slug> --root . --reconcile-layout
+```
 6) Commit changes in the host project.
 
 ## Upgrade flow (recommended)
@@ -84,6 +88,10 @@ python yoda/scripts/init.py --dev <slug> --root .
 6) Re-run init to append/update agent entry blocks if needed:
 ```bash
 python yoda/scripts/init.py --dev <slug> --root .
+```
+When schema/layout updates require metadata reconciliation:
+```bash
+python yoda/scripts/init.py --dev <slug> --root . --reconcile-layout
 ```
 
 ## Rollback

@@ -50,7 +50,7 @@ def _validate_log(log_doc: dict[str, Any]) -> None:
     for field in required:
         if field not in log_doc:
             raise YodaError("Log schema missing required fields", exit_code=ExitCode.VALIDATION)
-    if log_doc.get("schema_version") != "1.0":
+    if str(log_doc.get("schema_version")) != "1.0":
         raise YodaError("Unsupported log schema_version", exit_code=ExitCode.VALIDATION)
     if log_doc.get("status") not in {"to-do", "doing", "done", "pending"}:
         raise YodaError("Invalid log status", exit_code=ExitCode.VALIDATION)

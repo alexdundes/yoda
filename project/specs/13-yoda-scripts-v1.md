@@ -96,10 +96,10 @@ Behavior (minimum):
 - Generate the next sequential id.
 - Create `yoda/todos/TODO.<dev>.yaml` entry with basic fields.
 - Create the issue Markdown file from the template.
-- Fill basic fields in the template (id, title, summary) based on agent-provided inputs.
+- Fill basic fields in the template (id, title, summary) based on provided inputs.
 
 Inputs:
-- Title, description or summary, tags, priority, agent.
+- Title, description or summary, priority.
 
 Outputs:
 - Updated `yoda/todos/TODO.<dev>.yaml` and new issue Markdown file named `<id>-<slug>.md` in `yoda/project/issues/`.
@@ -112,7 +112,7 @@ Purpose:
 - List TODO items from `yoda/todos/TODO.<dev>.yaml`.
 
 Behavior (minimum):
-- Filter by status, priority, agent, or tags.
+- Filter by status or priority.
 - Output a human-readable summary and a machine-friendly list.
 
 Inputs:
@@ -132,7 +132,7 @@ Purpose:
 - Update `yoda/todos/TODO.<dev>.yaml` fields.
 
 Behavior (minimum):
-- Update status, priority, tags, depends_on, pending_reason.
+- Update status, priority, depends_on, pending_reason.
 - Update updated_at.
 - Use `todo_update.py` to resolve `pending` issues by setting a new status and clearing `pending_reason`.
 - `todo_update.py` is the standard way to re-sync issue front matter with the TODO item.

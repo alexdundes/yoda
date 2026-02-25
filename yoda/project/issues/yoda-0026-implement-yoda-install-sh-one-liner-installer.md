@@ -1,5 +1,4 @@
 ---
-agent: Human
 created_at: '2026-02-04T18:39:27-03:00'
 depends_on:
 - yoda-0025
@@ -7,11 +6,6 @@ description: Create the yoda-install.sh script to support the one-liner install 
   The script downloads the tarball, verifies sha256 via latest.json, extracts, copies
   the yoda/ subtree per spec, and runs init. Include security warnings and support
   --version/--root/--source.
-entrypoints:
-- path: project/specs/24-installation-and-upgrade.md
-  type: doc
-- path: README.md
-  type: doc
 id: yoda-0026
 origin:
   external_id: ''
@@ -19,12 +13,11 @@ origin:
   system: ''
 pending_reason: ''
 priority: 6
-schema_version: '1.0'
+schema_version: '1.01'
 slug: implement-yoda-install-sh-one-liner-installer
 status: done
-tags: []
 title: Implement yoda-install.sh one-liner installer
-updated_at: '2026-02-04T19:01:10-03:00'
+updated_at: '2026-02-25T20:02:28-03:00'
 ---
 
 # yoda-0026 - Implement yoda-install.sh one-liner installer

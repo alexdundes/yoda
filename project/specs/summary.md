@@ -12,7 +12,7 @@ This file records decisions and known open points captured so far.
 - Repository structure: required folders under `yoda/` (templates, scripts, logs, todos, project/issues) plus `project/specs/` as source of truth.
 - TODO + issue model: one TODO per developer at `yoda/todos/TODO.<dev>.yaml`; one issue Markdown file per issue at `yoda/project/issues/<id>-<slug>.md`.
 - IDs and slugs: canonical id `<dev>-<NNNN>`; slug is lowercase ASCII, digits, hyphen, starts with letter; slugs are immutable and renames require migration.
-- TODO schema: required root fields include schema_version, developer name/slug, timezone, updated_at, issues; issue items include id/title/slug/description/status/priority/agent/depends_on/pending_reason/created_at/updated_at with optional tags/origin.
+- TODO schema: required root fields include schema_version, developer name/slug, timezone, updated_at, issues; issue items include id/title/slug/description/status/priority/depends_on/pending_reason/created_at/updated_at with optional origin.
 - Status/state machine: to-do → doing → done; any state can go pending; pending requires pending_reason and is resolved via todo_update.
 - Dependencies: `depends_on` uses canonical ids within the same TODO (no cross-dev); selection must ensure dependencies are done.
 - Priority baseline: new issues default to `5`; values different from `5` should be assigned only by relative comparison against open issues, with brief justification in issue text.
@@ -35,6 +35,7 @@ This file records decisions and known open points captured so far.
 - Distribution and packaging: default artefact `tar.gz` named `yoda-framework-<semver+build>`, manifest `yoda/PACKAGE_MANIFEST.yaml`, structured changelog `CHANGELOG.yaml`, excludes `project/specs` and runtime data; `package`/`init` must follow this contract. (see `23-distribution-and-packaging.md`)
 - Installation and upgrade: install via one-liner (with warnings) or manual flow; updates use `latest.json` metadata + checksum; preserve YODA data folders; rollback to `yoda/_previous/<version>`; license lives at `yoda/LICENSE`. (see `24-installation-and-upgrade.md`)
 - YAML layout/schema versioning policy (internal YODA development): subtle changes bump minor and do not require migration; breaking changes bump major and require migration in `update.py`, followed by `init.py` re-sync during rollout.
+- Current TODO/issue metadata schema target is `1.01` (logs remain `1.0`); `init.py --reconcile-layout` is the maintenance path to touch/reconcile TODO and issue front matter during upgrades.
 
 ## Open decisions (not finalized)
 

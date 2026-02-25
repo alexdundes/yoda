@@ -40,11 +40,13 @@ Prepare a host project after extracting the YODA package.
 python yoda/scripts/init.py --dev <slug>
 python yoda/scripts/init.py --dev <slug> --root /path/to/project --dry-run
 python yoda/scripts/init.py --dev <slug> --force
+python yoda/scripts/init.py --dev <slug> --reconcile-layout
 ```
 
 Notes:
-- Creates/updates `AGENTS.md`, `gemini.md`, `CLAUDE.md`, `agent.md`, plus `yoda/todos/TODO.<dev>.yaml` and required folders.
+- Creates/updates `AGENTS.md`, `GEMINI.md`, `CLAUDE.md`, `agent.md`, plus `yoda/todos/TODO.<dev>.yaml` and required folders.
 - Preserves existing agent file content (appends the YODA block); `--force` only overwrites the TODO file.
+- `--reconcile-layout` touches `*.md` files and reconciles TODO/issue front matter metadata to the current schema/layout.
 
 ## Tests
 

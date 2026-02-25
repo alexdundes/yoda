@@ -1,9 +1,7 @@
 ---
-agent: Human
 created_at: '2026-01-28T14:51:19-03:00'
 depends_on: []
 description: Define CLI, ordering behaviors, and output formats for todo_reorder.py.
-entrypoints: []
 id: yoda-0013
 origin:
   external_id: ''
@@ -11,12 +9,11 @@ origin:
   system: ''
 pending_reason: ''
 priority: 5
-schema_version: '1.0'
+schema_version: '1.01'
 slug: specify-todo-reorder-py
 status: done
-tags: []
 title: Specify todo_reorder.py
-updated_at: '2026-01-28T15:14:10-03:00'
+updated_at: '2026-02-25T20:02:28-03:00'
 ---
 
 # yoda-0013 - Specify todo_reorder.py

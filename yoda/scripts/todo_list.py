@@ -36,9 +36,7 @@ ORDER_MODES = {"created-asc", "created-desc", "updated-asc", "updated-desc"}
 
 def _filter_issues(issues: list[dict[str, Any]], args: argparse.Namespace) -> list[dict[str, Any]]:
     statuses = parse_csv(args.status)
-    tags = parse_csv(args.tags)
     depends_on = args.depends_on
-    agent = args.agent
     priority_min = args.priority_min
     priority_max = args.priority_max
     created_from = parse_timestamp(args.created_from)
@@ -55,14 +53,6 @@ def _filter_issues(issues: list[dict[str, Any]], args: argparse.Namespace) -> li
         else:
             if status == "done":
                 continue
-
-        if tags:
-            issue_tags = set(issue.get("tags", []))
-            if not all(tag in issue_tags for tag in tags):
-                continue
-
-        if agent and str(issue.get("agent", "")) != agent:
-            continue
 
         if depends_on and depends_on not in issue.get("depends_on", []):
             continue
@@ -240,8 +230,6 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="List TODO issues")
     add_global_flags(parser)
     parser.add_argument("--status", help="Comma-separated status filter")
-    parser.add_argument("--tags", help="Comma-separated tags filter (AND)")
-    parser.add_argument("--agent", help="Agent name filter")
     parser.add_argument("--priority-min", type=int, dest="priority_min")
     parser.add_argument("--priority-max", type=int, dest="priority_max")
     parser.add_argument("--depends-on", dest="depends_on", help="Include issues that depend on id")

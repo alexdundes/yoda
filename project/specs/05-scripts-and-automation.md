@@ -78,7 +78,8 @@ Failure behavior:
 
 ## Schema versioning and migrations
 
-- TODO, issue, and log metadata use `schema_version` (current: "1.0").
+- TODO and issue metadata use `schema_version` (current target: "1.01").
+- Log metadata uses `schema_version` "1.0".
 - Versions follow semantic versioning (major.minor).
 - Major version changes are breaking and must be rejected by scripts.
 - Minor version changes are backward compatible and accepted.

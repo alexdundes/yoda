@@ -1,10 +1,8 @@
 ---
-agent: Human
 created_at: '2026-01-28T14:51:24-03:00'
 depends_on: []
 description: 'Implement todo_reorder.py per spec: reorder modes, validation, output,
   and tests.'
-entrypoints: []
 id: yoda-0014
 origin:
   external_id: ''
@@ -12,12 +10,11 @@ origin:
   system: ''
 pending_reason: ''
 priority: 5
-schema_version: '1.0'
+schema_version: '1.01'
 slug: implement-todo-reorder-py
 status: done
-tags: []
 title: Implement todo_reorder.py
-updated_at: '2026-01-28T15:17:41-03:00'
+updated_at: '2026-02-25T20:02:28-03:00'
 ---
 
 # yoda-0014 - Implement todo_reorder.py

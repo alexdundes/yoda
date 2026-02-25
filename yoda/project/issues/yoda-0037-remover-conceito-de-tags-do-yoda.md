@@ -1,5 +1,4 @@
 ---
-agent: Human
 created_at: '2026-02-25T15:36:45-03:00'
 depends_on:
 - yoda-0038
@@ -7,13 +6,6 @@ description: 'O campo tags esta subutilizado e deve ser eliminado por completo d
   YODA (schema, scripts, filtros e templates). Regra transversal: atualizar primeiro
   project/specs/ e depois yoda/. Como envolve layout YAML, aplicar politica de versao
   de schema e tratamento de compatibilidade conforme update.py quando aplicavel.'
-entrypoints:
-- path: project/specs/
-  type: doc
-- path: yoda/scripts/
-  type: code
-- path: yoda/templates/issue.md
-  type: doc
 id: yoda-0037
 origin:
   external_id: ''
@@ -21,12 +13,11 @@ origin:
   system: ''
 pending_reason: ''
 priority: 3
-schema_version: '1.0'
+schema_version: '1.01'
 slug: remover-conceito-de-tags-do-yoda
-status: to-do
-tags: []
+status: done
 title: Remover conceito de tags do YODA
-updated_at: '2026-02-25T15:36:56-03:00'
+updated_at: '2026-02-25T20:02:28-03:00'
 ---
 
 # yoda-0037 - Remover conceito de tags do YODA
@@ -46,6 +37,7 @@ Eliminar `tags` de todo o fluxo YODA mantendo os comandos coerentes e previsivei
 - Atualizar scripts que recebem/filtram tags.
 - Remover tags de templates e exemplos.
 - Ajustar `yoda/yoda.md` quando houver mencoes.
+- Incluir no `init.py` um parametro de manutencao para "touch" em todos os `*.md` e reconciliacao estrutural de `TODO.<dev>.yaml` e `<dev>-NNNN-*.md`, para uso em atualizacoes.
 
 ## Out of scope
 - Criar sistema alternativo de classificacao no mesmo ciclo.
@@ -57,12 +49,17 @@ Eliminar `tags` de todo o fluxo YODA mantendo os comandos coerentes e previsivei
 - Por alterar layout YAML, aplicar politica de versionamento definida em `yoda-0038`.
 - Classificacao definida: **subtle**.
 - Rollout definido em conjunto com `yoda-0035` e `yoda-0036`: aplicar **um unico incremento menor** de `schema_version` para o pacote `0.1.3`.
+- A partir desta issue, considerar `schema_version` alvo `1.01`.
+- `issue_add` pode manter mencao de `tags` no texto de log historico, mas sem manter `tags` como campo ativo no modelo.
+- Nao remover `tags` dos dados existentes agora; a limpeza/reconciliacao deve ocorrer via nova capacidade de manutencao no `init.py`.
+- `todo_list.py` deve remover suporte ao filtro `--tags`.
+- `todo_update.py` deve remover suporte a `--tags` e `--clear-tags`.
 
 ## Acceptance criteria
-- [ ] Specs e manual nao tratam mais `tags` como campo ativo.
-- [ ] YAML de TODO/issue/log nao inclui `tags`.
-- [ ] Scripts funcionam sem `--tags`/`--clear-tags` ou equivalentes.
-- [ ] Testes cobrem comportamento apos remocao.
+- [x] Specs e manual nao tratam mais `tags` como campo ativo.
+- [x] Scripts funcionam sem `--tags`/`--clear-tags` (flags removidas).
+- [x] Testes cobrem comportamento apos remocao.
+- [x] `init.py` possui parametro de manutencao para touch/reconciliacao e ele corrige `TODO.<dev>.yaml` e front matter dos `*.md` conforme schema alvo `1.01`.
 
 ## Dependencies
 `yoda-0038` (politica de versionamento de layout YAML).
@@ -77,10 +74,12 @@ Eliminar `tags` de todo o fluxo YODA mantendo os comandos coerentes e previsivei
 
 ## Implementation notes
 Decisao de planejamento: tratar esta mudanca como `subtle` e coordenar com `yoda-0035`/`yoda-0036` para um unico bump menor de schema na release `0.1.3`.
-Planejar migracao para limpar tags existentes nos dados historicos.
+Nao remover `tags` imediatamente dos artefatos existentes; usar um fluxo de reconciliacao acionado por parametro no `init.py`.
+Manter compatibilidade de log historico em `issue_add` (linha textual), sem promover `tags` como campo ativo no schema.
 
 ## Tests
-Atualizar testes de CLI e schema para validar ausencia de tags.
+Atualizar testes de CLI para validar remocao de `--tags` e `--clear-tags`.
+Adicionar teste para o novo parametro de manutencao do `init.py` cobrindo touch/reconciliacao de `TODO.<dev>.yaml` e front matter de issues.
 
 ## Risks and edge cases
 - Automacoes externas que usam filtros por tags podem falhar apos mudanca.
@@ -93,3 +92,10 @@ Body:
 Issue: `<ID>`
 Path: `<issue path>`
 -->
+Tags foi removido como conceito ativo do modelo e da CLI: `todo_list.py` sem `--tags`, `todo_update.py` sem `--tags/--clear-tags`, `issue_add.py` sem campo `tags` no metadata novo. A documentacao foi atualizada para schema alvo `1.01`, sem `tags` no schema ativo. Foi adicionado `--reconcile-layout` em `init.py` para touch de `*.md` e reconciliacao de `TODO.<dev>.yaml` + front matter das issues, e esse recurso foi executado para corrigir o workspace atual para `schema_version 1.01`.
+
+test: `python3 -m pytest yoda/scripts/tests` => 35 passed.
+
+refactor(yoda): desativar tags no modelo e adicionar reconciliacao de layout no init
+Issue: `yoda-0037`
+Path: `yoda/project/issues/yoda-0037-remover-conceito-de-tags-do-yoda.md`

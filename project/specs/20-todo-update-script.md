@@ -31,13 +31,10 @@ Required inputs:
 Updatable fields (flags):
 - `--status <to-do|doing|done|pending>`
 - `--priority <0..10>`
-- `--tags <csv>`
 - `--depends-on <csv>`: comma-separated issue ids.
 - `--pending-reason <text>`
-- `--agent <text>`
 
 Optional inputs:
-- `--clear-tags`: remove all tags.
 - `--clear-depends-on`: remove all dependencies.
 
 Global flags:
@@ -68,7 +65,7 @@ Global flags:
 
 - Only the fields listed above may be updated by `todo_update.py`.
 - Fields not specified by flags must remain unchanged.
-- `tags` and `depends_on` must be lists after processing.
+- `depends_on` must be a list after processing.
 - `priority` must remain within 0..10.
 - `status` must match the allowed enum.
 - `depends_on` ids must exist within the same TODO.

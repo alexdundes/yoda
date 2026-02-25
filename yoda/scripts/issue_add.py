@@ -39,7 +39,7 @@ from lib.yaml_io import read_yaml, write_yaml
 def _create_default_todo(dev: str) -> dict[str, Any]:
     timezone = detect_local_timezone()
     return {
-        "schema_version": "1.0",
+        "schema_version": "1.01",
         "developer_name": dev.title(),
         "developer_slug": dev,
         "timezone": timezone,
@@ -74,36 +74,26 @@ def _generate_slug(title: str) -> str:
     return slug
 
 
-def _parse_tags(value: str | None) -> list[str]:
-    if not value:
-        return []
-    return [tag.strip() for tag in value.split(",") if tag.strip()]
-
-
 def _build_issue_item(
     issue_id: str,
     title: str,
     slug: str,
     description: str,
     priority: int,
-    agent: str,
-    tags: list[str],
     timestamp: str,
 ) -> dict[str, Any]:
     return {
-        "schema_version": "1.0",
+        "schema_version": "1.01",
         "id": issue_id,
         "title": title,
         "slug": slug,
         "description": description,
         "status": "to-do",
         "priority": priority,
-        "agent": agent,
         "depends_on": [],
         "pending_reason": "",
         "created_at": timestamp,
         "updated_at": timestamp,
-        "tags": tags,
         "origin": {"system": "", "external_id": "", "requester": ""},
     }
 
@@ -134,18 +124,12 @@ def _flag_present(flag: str) -> bool:
     return any(arg == flag or arg.startswith(f"{flag}=") for arg in sys.argv)
 
 
-def _format_list(values: list[str]) -> str:
-    return ", ".join(values) if values else "[]"
-
-
 def _build_issue_log_message(
     issue_id: str,
     title: str,
     description: str,
     slug: str,
     priority: int,
-    agent: str,
-    tags: list[str],
 ) -> str:
     lines = [f"[{issue_id}] issue_add created"]
     lines.append(f"title: {title}")
@@ -154,10 +138,6 @@ def _build_issue_log_message(
 
     if _flag_present("--priority"):
         lines.append(f"priority: {priority}")
-    if _flag_present("--agent"):
-        lines.append(f"agent: {agent}")
-    if _flag_present("--tags") and tags:
-        lines.append(f"tags: {_format_list(tags)}")
 
     return "\n".join(lines)
 
@@ -186,8 +166,6 @@ def main() -> int:
     parser.add_argument("--summary", required=False, help="Alias for description")
     parser.add_argument("--slug", required=False, help="Explicit issue slug")
     parser.add_argument("--priority", type=int, default=None, help="Priority 0-10")
-    parser.add_argument("--agent", default="Human", help="Agent name")
-    parser.add_argument("--tags", help="Comma-separated tags")
 
     args = parser.parse_args()
     configure_logging(args.verbose)
@@ -233,7 +211,6 @@ def main() -> int:
         template_text = load_template(template_file)
 
         timestamp = now_iso(todo.get("timezone"))
-        tags = _parse_tags(args.tags)
 
         issue_item = _build_issue_item(
             issue_id=issue_id,
@@ -241,8 +218,6 @@ def main() -> int:
             slug=slug,
             description=description,
             priority=priority,
-            agent=args.agent,
-            tags=tags,
             timestamp=timestamp,
         )
 
@@ -254,7 +229,7 @@ def main() -> int:
 
         issue_metadata = issue_item.copy()
         issue_metadata.pop("schema_version", None)
-        issue_metadata["schema_version"] = "1.0"
+        issue_metadata["schema_version"] = "1.01"
 
         rendered_issue = render_issue(
             template_text,
@@ -280,8 +255,6 @@ def main() -> int:
                 description=description,
                 slug=slug,
                 priority=priority,
-                agent=args.agent,
-                tags=tags,
             ),
         )
 

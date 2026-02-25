@@ -1,9 +1,7 @@
 ---
-agent: Human
 created_at: '2026-01-28T17:35:28-03:00'
 depends_on: []
 description: Create a spec and update docs to define the YODA Intake concept.
-entrypoints: []
 id: yoda-0015
 origin:
   external_id: ''
@@ -11,12 +9,11 @@ origin:
   system: ''
 pending_reason: ''
 priority: 5
-schema_version: '1.0'
+schema_version: '1.01'
 slug: specify-yoda-intake
 status: done
-tags: []
 title: Specify YODA Intake
-updated_at: '2026-01-28T17:45:41-03:00'
+updated_at: '2026-02-25T20:02:28-03:00'
 ---
 
 # yoda-0015 - Specify YODA Intake

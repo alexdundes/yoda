@@ -1,5 +1,4 @@
 ---
-agent: Human
 created_at: '2026-02-04T09:38:21-03:00'
 depends_on: []
 description: Define the full content and structure for the package README.md (English,
@@ -10,21 +9,6 @@ description: Define the full content and structure for the package README.md (En
   license note. Add TODO comments for unresolved URLs/hosting. Require updates to
   specs/playbook/yoda/yoda.md to include the agent-skin-in-cycle concept. This issue
   must be higher priority than yoda-0023; yoda-0023 should depend on this.
-entrypoints:
-- path: README.md
-  type: doc
-- path: project/specs/00-conventions.md
-  type: doc
-- path: project/specs/02-yoda-flow-process.md
-  type: doc
-- path: project/specs/11-yoda-intake.md
-  type: doc
-- path: project/specs/06-agent-playbook.md
-  type: doc
-- path: yoda/yoda.md
-  type: doc
-- path: project/specs/24-installation-and-upgrade.md
-  type: doc
 id: yoda-0024
 origin:
   external_id: ''
@@ -32,12 +16,11 @@ origin:
   system: ''
 pending_reason: ''
 priority: 7
-schema_version: '1.0'
+schema_version: '1.01'
 slug: revise-package-readme-content-and-structure
 status: done
-tags: []
 title: Revise package README content and structure
-updated_at: '2026-02-04T10:50:03-03:00'
+updated_at: '2026-02-25T20:02:28-03:00'
 ---
 
 # yoda-0024 - Revise package README content and structure

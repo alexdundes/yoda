@@ -1,9 +1,7 @@
 ---
-agent: Human
 created_at: '2026-01-27T16:41:42-03:00'
 depends_on: []
 description: 'Add spec text: log_add resolves slug via TODO and fails if id missing'
-entrypoints: []
 id: yoda-0002
 origin:
   external_id: ''
@@ -11,12 +9,11 @@ origin:
   system: ''
 pending_reason: ''
 priority: 5
-schema_version: '1.0'
+schema_version: '1.01'
 slug: document-log-add-slug-resolution
 status: done
-tags: []
 title: Document log_add slug resolution
-updated_at: '2026-01-27T17:04:47-03:00'
+updated_at: '2026-02-25T20:02:28-03:00'
 ---
 
 # yoda-0002 - Document log_add slug resolution

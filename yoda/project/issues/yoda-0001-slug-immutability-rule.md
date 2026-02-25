@@ -1,9 +1,7 @@
 ---
-agent: Human
 created_at: '2026-01-27T16:41:37-03:00'
 depends_on: []
 description: Document that issue slugs are immutable; renames require migration
-entrypoints: []
 id: yoda-0001
 origin:
   external_id: ''
@@ -11,12 +9,11 @@ origin:
   system: ''
 pending_reason: ''
 priority: 5
-schema_version: '1.0'
+schema_version: '1.01'
 slug: slug-immutability-rule
 status: done
-tags: []
 title: Slug immutability rule
-updated_at: '2026-01-27T16:58:55-03:00'
+updated_at: '2026-02-25T20:02:28-03:00'
 ---
 
 # yoda-0001 - Slug immutability rule

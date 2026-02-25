@@ -1,15 +1,9 @@
 ---
-agent: Human
 created_at: '2026-02-04T18:39:22-03:00'
 depends_on: []
 description: Update package generation to include yoda/LICENSE in the artefact and
   validate its presence. Adjust include list and tests as needed to ensure embedded
   license ships with the package.
-entrypoints:
-- path: yoda/scripts/package.py
-  type: code
-- path: project/specs/23-distribution-and-packaging.md
-  type: doc
 id: yoda-0025
 origin:
   external_id: ''
@@ -17,12 +11,11 @@ origin:
   system: ''
 pending_reason: ''
 priority: 7
-schema_version: '1.0'
+schema_version: '1.01'
 slug: update-package-build-to-include-yoda-license
 status: done
-tags: []
 title: Update package build to include yoda/LICENSE
-updated_at: '2026-02-04T18:51:31-03:00'
+updated_at: '2026-02-25T20:02:28-03:00'
 ---
 
 # yoda-0025 - Update package build to include yoda/LICENSE

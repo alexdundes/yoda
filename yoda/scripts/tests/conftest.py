@@ -57,8 +57,6 @@ class TodoFactory:
         slug: str | None = None,
         depends_on: list[str] | None = None,
         pending_reason: str = "",
-        tags: list[str] | None = None,
-        agent: str = "Test",
         created_at: str | None = None,
         updated_at: str | None = None,
     ) -> dict:
@@ -74,12 +72,10 @@ class TodoFactory:
             "description": "Test issue",
             "status": status,
             "priority": priority,
-            "agent": agent,
             "depends_on": depends_on or [],
             "pending_reason": pending_reason,
             "created_at": created_at_value,
             "updated_at": updated_at_value,
-            "tags": tags or [],
             "origin": {"system": "", "external_id": "", "requester": ""},
         }
 

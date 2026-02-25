@@ -1,17 +1,9 @@
 ---
-agent: Human
 created_at: '2026-02-04T20:16:53-03:00'
 depends_on: []
 description: Update init.py to create REPO_INTENT.md when missing and append a YODA
   block when present; apply the same concept to repo.intent.yaml without overwriting
   existing content.
-entrypoints:
-- path: yoda/scripts/init.py
-  type: code
-- path: REPO_INTENT.md
-  type: doc
-- path: repo.intent.yaml
-  type: config
 id: yoda-0029
 origin:
   external_id: ''
@@ -19,12 +11,11 @@ origin:
   system: ''
 pending_reason: ''
 priority: 6
-schema_version: '1.0'
+schema_version: '1.01'
 slug: extend-init-to-manage-repo-intent-md-and-repo-intent-yaml
 status: done
-tags: []
 title: Extend init to manage REPO_INTENT.md and repo.intent.yaml
-updated_at: '2026-02-06T09:06:04-03:00'
+updated_at: '2026-02-25T20:02:28-03:00'
 ---
 
 # yoda-0029 - Extend init to manage REPO_INTENT.md and repo.intent.yaml

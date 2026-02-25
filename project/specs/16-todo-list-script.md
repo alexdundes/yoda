@@ -28,8 +28,6 @@ The script follows the global CLI contract in `project/specs/13-yoda-scripts-v1.
 Optional inputs:
 - `--dev <slug>`
 - `--status <csv>`: filter by status (comma-separated).
-- `--tags <csv>`: filter by tags (comma-separated).
-- `--agent <text>`: filter by agent name (exact match).
 - `--priority-min <n>`: minimum priority (0..10).
 - `--priority-max <n>`: maximum priority (0..10).
 - `--depends-on <id>`: include issues that list this id in `depends_on`.
@@ -64,8 +62,6 @@ Defaults:
 
 Filter rules:
 - `--status`: include issues whose status is in the list.
-- `--tags`: include issues that have **all** of the provided tags.
-- `--agent`: include issues whose `agent` matches exactly.
 - `--priority-min` / `--priority-max`: include issues within the inclusive range.
 - `--depends-on`: include issues where `depends_on` contains the provided id.
 - `--created-from` / `--created-to`: include issues whose `created_at` is within the inclusive range.

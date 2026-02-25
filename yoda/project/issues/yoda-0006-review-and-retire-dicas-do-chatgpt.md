@@ -1,10 +1,8 @@
 ---
-agent: Human
 created_at: '2026-01-27T16:47:31-03:00'
 depends_on: []
 description: Review yoda/dicas-do-chatgpt.md; if contents are fully captured elsewhere,
   remove the file
-entrypoints: []
 id: yoda-0006
 origin:
   external_id: ''
@@ -12,12 +10,11 @@ origin:
   system: ''
 pending_reason: ''
 priority: 5
-schema_version: '1.0'
+schema_version: '1.01'
 slug: review-and-retire-dicas-do-chatgpt
 status: done
-tags: []
 title: Review and retire dicas-do-chatgpt
-updated_at: '2026-01-27T17:20:00-03:00'
+updated_at: '2026-02-25T20:02:28-03:00'
 ---
 
 # yoda-0006 - Review and retire dicas-do-chatgpt

@@ -13,6 +13,7 @@ SLUG_RE = re.compile(r"^[a-z][a-z0-9-]*$")
 ISSUE_ID_RE = re.compile(r"^[a-z][a-z0-9-]*-\d{4}$")
 ALLOWED_STATUS = {"to-do", "doing", "done", "pending"}
 ALLOWED_ENTRY_TYPES = {"doc", "code", "config", "schema", "data", "asset", "other"}
+SUPPORTED_SCHEMA_VERSIONS = {"1.0", "1.01"}
 
 
 def validate_slug(slug: str) -> None:
@@ -61,7 +62,7 @@ def validate_todo_root(todo: dict[str, Any], dev: str) -> None:
         ["schema_version", "developer_name", "developer_slug", "timezone", "updated_at", "issues"],
         "TODO root",
     )
-    if todo.get("schema_version") != "1.0":
+    if str(todo.get("schema_version")) not in SUPPORTED_SCHEMA_VERSIONS:
         raise YodaError("Unsupported schema_version", exit_code=ExitCode.VALIDATION)
     if todo.get("developer_slug") != dev:
         raise YodaError("developer_slug does not match --dev", exit_code=ExitCode.VALIDATION)
@@ -82,7 +83,6 @@ def validate_issue_item(item: dict[str, Any], dev: str) -> None:
             "description",
             "status",
             "priority",
-            "agent",
             "depends_on",
             "pending_reason",
             "created_at",

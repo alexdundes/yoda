@@ -1,10 +1,8 @@
 ---
-agent: Human
 created_at: '2026-01-27T19:14:48-03:00'
 depends_on: []
 description: Revise 06-agent-playbook.md and yoda/yoda.md to reflect YODA Flow with
   available scripts
-entrypoints: []
 id: yoda-0010
 origin:
   external_id: ''
@@ -12,12 +10,11 @@ origin:
   system: ''
 pending_reason: ''
 priority: 5
-schema_version: '1.0'
+schema_version: '1.01'
 slug: update-agent-playbook-to-use-scripts
 status: done
-tags: []
 title: Update agent playbook to use scripts
-updated_at: '2026-01-27T20:40:15-03:00'
+updated_at: '2026-02-25T20:02:28-03:00'
 ---
 
 # yoda-0010 - Update agent playbook to use scripts

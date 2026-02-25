@@ -1,11 +1,9 @@
 ---
-agent: Human
 created_at: '2026-01-28T19:02:16-03:00'
 depends_on:
 - yoda-0016
 description: Explorar opções para embutir/atualizar o YODA Framework em repositórios
   externos, cobrindo pacote+init, versionamento, upgrade/rollback e riscos.
-entrypoints: []
 id: yoda-0020
 origin:
   external_id: ''
@@ -13,12 +11,11 @@ origin:
   system: ''
 pending_reason: ''
 priority: 6
-schema_version: '1.0'
+schema_version: '1.01'
 slug: spike-padr-o-de-instala-o-upgrade-do-yoda-em-projetos-externos
 status: done
-tags: []
 title: 'Spike: padrão de instalação/upgrade do YODA em projetos externos'
-updated_at: '2026-02-04T07:22:50-03:00'
+updated_at: '2026-02-25T20:02:28-03:00'
 ---
 
 # yoda-0020 - Spike: padrão de instalação/upgrade do YODA em projetos externos

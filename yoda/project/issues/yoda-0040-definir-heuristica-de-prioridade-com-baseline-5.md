@@ -1,16 +1,10 @@
 ---
-agent: Human
 created_at: '2026-02-25T15:36:45-03:00'
 depends_on: []
 description: 'Orientar o agente para tratar prioridade 5 como baseline padrao e ajustar
   para cima/baixo apenas por importancia relativa frente as demais issues abertas.
   Documentar isso em yoda/yoda.md e alinhar com specs. Regra transversal: atualizar
   primeiro project/specs/ e depois yoda/.'
-entrypoints:
-- path: project/specs/
-  type: doc
-- path: yoda/yoda.md
-  type: doc
 id: yoda-0040
 origin:
   external_id: ''
@@ -18,12 +12,11 @@ origin:
   system: ''
 pending_reason: ''
 priority: 4
-schema_version: '1.0'
+schema_version: '1.01'
 slug: definir-heuristica-de-prioridade-com-baseline-5
 status: done
-tags: []
 title: Definir heuristica de prioridade com baseline 5
-updated_at: '2026-02-25T18:32:04-03:00'
+updated_at: '2026-02-25T20:02:28-03:00'
 ---
 
 # yoda-0040 - Definir heuristica de prioridade com baseline 5

@@ -1,10 +1,8 @@
 ---
-agent: Human
 created_at: '2026-01-27T18:04:27-03:00'
 depends_on: []
 description: Create unit tests for implemented scripts, starting with todo_next and
   existing helpers
-entrypoints: []
 id: yoda-0009
 origin:
   external_id: ''
@@ -12,12 +10,11 @@ origin:
   system: ''
 pending_reason: ''
 priority: 5
-schema_version: '1.0'
+schema_version: '1.01'
 slug: add-unit-tests-for-yoda-scripts
 status: done
-tags: []
 title: Add unit tests for YODA scripts
-updated_at: '2026-01-27T18:14:19-03:00'
+updated_at: '2026-02-25T20:02:28-03:00'
 ---
 
 # yoda-0009 - Add unit tests for YODA scripts
