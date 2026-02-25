@@ -111,7 +111,9 @@ def test_update_apply_installs_and_preserves(tmp_path: Path) -> None:
 
     assert result.returncode == 0, result.stderr
     backup_dir = root / "yoda" / "_previous" / "1.0.0+20260204.a"
+    backup_root = root / "yoda" / "_previous"
     assert backup_dir.is_dir()
+    assert (backup_root / ".gitignore").read_text(encoding="utf-8") == "*\n!.gitignore\n"
     assert (backup_dir / "yoda.md").read_text(encoding="utf-8") == "old manual\n"
     assert (root / "yoda" / "yoda.md").read_text(encoding="utf-8") == "new manual 1.0.1\n"
     assert (root / "yoda" / "todos" / "keep.txt").read_text(encoding="utf-8") == "keep todo\n"

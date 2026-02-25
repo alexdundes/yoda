@@ -33,6 +33,7 @@ except Exception as exc:  # pragma: no cover - runtime dependency
 
 
 DEFAULT_LATEST_URL = "https://alexdundes.github.io/yoda/install/latest.json"
+BACKUP_GITIGNORE = "*\n!.gitignore\n"
 
 
 def _is_url(value: str) -> bool:
@@ -87,6 +88,14 @@ def _sha256(path: Path) -> str:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             hasher.update(chunk)
     return hasher.hexdigest()
+
+
+def _ensure_backup_gitignore(backup_root: Path) -> None:
+    backup_root.mkdir(parents=True, exist_ok=True)
+    gitignore_path = backup_root / ".gitignore"
+    if gitignore_path.exists():
+        return
+    gitignore_path.write_text(BACKUP_GITIGNORE, encoding="utf-8")
 
 
 def _copy_entry(src: Path, dest: Path) -> None:
@@ -280,7 +289,7 @@ def main() -> int:
             if not dest_yoda.is_dir():
                 raise YodaError(f"Missing yoda directory at {dest_yoda}", exit_code=ExitCode.NOT_FOUND)
 
-            backup_dir.parent.mkdir(parents=True, exist_ok=True)
+            _ensure_backup_gitignore(backup_dir.parent)
             if backup_dir.exists():
                 if not backup_dir.is_dir():
                     raise YodaError(
