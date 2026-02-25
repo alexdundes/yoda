@@ -23,10 +23,10 @@ pending_reason: ''
 priority: 4
 schema_version: '1.0'
 slug: remover-comentario-instrucao-do-template-de-issue
-status: doing
+status: done
 tags: []
 title: Remover comentario-instrucao do template de issue
-updated_at: '2026-02-25T15:40:58-03:00'
+updated_at: '2026-02-25T18:28:21-03:00'
 ---
 
 # yoda-0034 - Remover comentario-instrucao do template de issue

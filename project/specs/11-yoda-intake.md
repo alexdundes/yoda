@@ -30,6 +30,7 @@ Examples (translate to the human's language if needed):
 3) **Shape**
    - Decompose into well-sized issues (epic vs tasks).
    - Define scope, out of scope, acceptance criteria, and risks.
+   - Assign priority using baseline `5` by default; only adjust above/below `5` with a comparative reason against current open issues.
 4) **Definition of Ready (DoR)**
    - Ensure each issue meets the minimal readiness criteria (see below).
 5) **Create**
@@ -48,6 +49,7 @@ Each issue must include at minimum:
 - Scope and out-of-scope.
 - Acceptance criteria (testable).
 - Dependencies and risks.
+- Priority set with baseline `5`, with comparative justification when different from `5`.
 
 ## Agent rules (Intake)
 
@@ -55,6 +57,7 @@ Each issue must include at minimum:
 - Always consult `todo_list.py` before proposing new issues.
 - Keep the cycle explicit: enter Intake, exit Intake, then offer YODA Flow.
 - Use clear, analyst-style language.
+- Use priority `5` as the default for new issues; when using another value, record why this issue is relatively more/less important than open issues.
 
 ## Outputs
 

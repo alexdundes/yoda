@@ -2,7 +2,7 @@ schema_version: '1.0'
 issue_id: yoda-0040
 issue_path: yoda/project/issues/yoda-0040-definir-heuristica-de-prioridade-com-baseline-5.md
 todo_id: yoda-0040
-status: to-do
+status: done
 entries:
 - timestamp: '2026-02-25T15:36:45-03:00'
   message: '[yoda-0040] issue_add created
@@ -19,3 +19,17 @@ entries:
     priority: 4
 
     entrypoints: project/specs/:doc, yoda/yoda.md:doc'
+- timestamp: '2026-02-25T18:28:57-03:00'
+  message: '[yoda-0040] todo_update
+
+    status: to-do -> doing'
+- timestamp: '2026-02-25T18:31:50-03:00'
+  message: '[yoda-0040] implement: baseline de prioridade 5 documentado nas specs
+    e no manual yoda, com regra de justificativa para desvios.'
+- timestamp: '2026-02-25T18:32:00-03:00'
+  message: '[yoda-0040] evaluate: criterios de aceite conferidos; baseline 5 e justificativa
+    para desvios presentes em specs e yoda/yoda.md.'
+- timestamp: '2026-02-25T18:32:04-03:00'
+  message: '[yoda-0040] todo_update
+
+    status: doing -> done'

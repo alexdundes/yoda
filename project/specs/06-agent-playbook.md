@@ -88,3 +88,5 @@ When the human signals intent to create issues or explicitly says “YODA Intake
 Agent rules for Intake:
 - Do not create issues without passing DoR.
 - Keep Intake and Flow distinct; Intake prepares issues, Flow executes them.
+- Use `priority: 5` as the default baseline for new issues.
+- Only assign priority different from `5` when there is explicit comparative importance versus other open issues, and record that rationale in the issue text.

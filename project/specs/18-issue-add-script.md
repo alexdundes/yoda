@@ -37,7 +37,7 @@ Required inputs:
 Optional inputs:
 - `--summary <text>`: alias for description (if provided, it overrides `--description`).
 - `--slug <slug>`: explicit slug for the issue. If omitted, the slug is generated from the title.
-- `--priority <0..10>`: integer priority (default 5).
+- `--priority <0..10>`: integer priority (default 5 baseline).
 - `--lightweight`: use the lightweight template and set `lightweight: true`.
 - `--agent <text>`: agent name (default `Human`).
 - `--tags <csv>`: comma-separated tags.
@@ -105,6 +105,10 @@ The TODO issue item and issue front matter must include:
 - `entrypoints` (from flags)
 - `tags` (from flags)
 - `origin` (default empty values)
+
+Priority policy for issue creation:
+- If `--priority` is omitted, the created issue must use `5` (baseline).
+- In YODA Intake, values different from `5` should be used only with explicit comparative justification in the issue Markdown.
 
 Timestamps:
 - Use the timezone defined in the TODO root field `timezone`.

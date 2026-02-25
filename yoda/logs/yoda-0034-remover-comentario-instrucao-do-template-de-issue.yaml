@@ -2,7 +2,7 @@ schema_version: '1.0'
 issue_id: yoda-0034
 issue_path: yoda/project/issues/yoda-0034-remover-comentario-instrucao-do-template-de-issue.md
 todo_id: yoda-0034
-status: doing
+status: done
 entries:
 - timestamp: '2026-02-25T15:36:44-03:00'
   message: '[yoda-0034] issue_add created
@@ -23,3 +23,10 @@ entries:
   message: '[yoda-0034] todo_update
 
     status: to-do -> doing'
+- timestamp: '2026-02-25T18:28:17-03:00'
+  message: '[yoda-0034] evaluate: comentario inicial AGENT removido dos templates
+    issue.md e issue-lightweight-process.md (commit 5070dbb).'
+- timestamp: '2026-02-25T18:28:21-03:00'
+  message: '[yoda-0034] todo_update
+
+    status: doing -> done'

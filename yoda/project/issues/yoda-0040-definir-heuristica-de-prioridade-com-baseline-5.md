@@ -21,10 +21,10 @@ pending_reason: ''
 priority: 4
 schema_version: '1.0'
 slug: definir-heuristica-de-prioridade-com-baseline-5
-status: to-do
+status: done
 tags: []
 title: Definir heuristica de prioridade com baseline 5
-updated_at: '2026-02-25T15:36:45-03:00'
+updated_at: '2026-02-25T18:32:04-03:00'
 ---
 
 # yoda-0040 - Definir heuristica de prioridade com baseline 5
@@ -51,13 +51,14 @@ Padronizar a atribuicao de prioridade com baseline `5` e ajuste comparativo.
 ## Requirements
 - Ordem obrigatoria: `project/specs/` antes de `yoda/`.
 - Nova issue deve iniciar em prioridade `5` por padrao, salvo justificativa explicita.
-- Ajustes acima/abaixo de `5` devem considerar comparacao com issues abertas.
+- Ajustes acima/abaixo de `5` devem considerar comparacao com issues abertas e registrar justificativa curta no markdown da issue.
 - Regra precisa ficar clara no trecho de Intake em `yoda/yoda.md`.
 
 ## Acceptance criteria
-- [ ] Specs documentam baseline `5` e criterio para ajustar prioridade.
-- [ ] `yoda/yoda.md` instrui explicitamente esse comportamento.
-- [ ] Exemplos de Intake/issue creation refletem a regra.
+- [x] Specs documentam baseline `5` e criterio para ajustar prioridade por comparacao relativa.
+- [x] Specs deixam explicito que prioridade diferente de `5` requer justificativa curta no markdown da issue.
+- [x] `yoda/yoda.md` instrui explicitamente esse comportamento no trecho de Intake e referencia de script.
+- [x] Exemplos de Intake/issue creation refletem a regra.
 
 ## Dependencies
 None.
@@ -70,6 +71,7 @@ None.
 
 ## Implementation notes
 Manter a regra simples para favorecer aplicacao consistente em conversas de Intake.
+Aplicar nos docs com texto normativo e sem obrigar mudanca de codigo em `issue_add.py` (default `5` ja existe).
 
 ## Tests
 Nao aplicavel para testes automatizados diretos; validar por revisao documental e exemplos atualizados.
@@ -85,3 +87,8 @@ Body:
 Issue: `<ID>`
 Path: `<issue path>`
 -->
+Atualizado o baseline de prioridade para `5` como regra padrao em `project/specs/` e no manual `yoda/yoda.md`, com criterio de ajuste relativo ao backlog aberto e exigencia de justificativa curta quando prioridade for diferente de `5`.
+
+docs(yoda): definir baseline 5 para prioridade no Intake
+Issue: `yoda-0040`
+Path: `yoda/project/issues/yoda-0040-definir-heuristica-de-prioridade-com-baseline-5.md`

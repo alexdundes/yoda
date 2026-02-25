@@ -15,6 +15,7 @@ This file records decisions and known open points captured so far.
 - TODO schema: required root fields include schema_version, developer name/slug, timezone, updated_at, issues; issue items include id/title/slug/description/status/priority/lightweight/agent/depends_on/pending_reason/created_at/updated_at with optional entrypoints/tags/origin.
 - Status/state machine: to-do → doing → done; any state can go pending; pending requires pending_reason and is resolved via todo_update.
 - Dependencies: `depends_on` uses canonical ids within the same TODO (no cross-dev); selection must ensure dependencies are done.
+- Priority baseline: new issues default to `5`; values different from `5` should be assigned only by relative comparison against open issues, with brief justification in issue text.
 - Deterministic selection: `todo_next.py` selects highest priority then list order; blocks if any issue is doing; reports pending/blocked hints.
 - Issue metadata in Markdown: YAML front matter mirrors TODO fields; issue title must include the ID.
 - Logs: one YAML log per issue in `yoda/logs/<id>-<slug>.yaml`; append-only; entries include timestamp + message; log status mirrors TODO; update logs on script actions.

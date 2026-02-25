@@ -51,7 +51,7 @@ Each issue item must contain:
 - slug: slug of the title (used in the issue file name)
 - description: brief description of what needs to be done
 - status: to-do | doing | done | pending
-- priority: 0 to 10 (10 = highest priority; default 5)
+- priority: 0 to 10 (10 = highest priority; baseline/default 5)
 - lightweight: true | false
 - agent: agent name (free string; examples: Human, Codex, Gemini CLI, Antigravity)
 - depends_on: list of ids
@@ -73,6 +73,10 @@ Optional fields:
 - id must match `<developer_slug>-<####>` (4 digits).
 - status must be one of: to-do, doing, done, pending.
 - priority is an integer 0 to 10 (default 5 when not provided).
+- priority baseline policy:
+  - `5` is the default neutral baseline for new issues.
+  - `0..4` means lower relative importance and `6..10` means higher relative importance compared to other open issues in the same TODO.
+  - If priority is different from `5`, the issue Markdown should include a short comparative justification.
 - lightweight is required and must be boolean.
 - timezone must be `UTC` or a valid IANA TZ database name compatible with Python `zoneinfo`.
 - UTC SHOULD be used unless the project explicitly requires another timezone.
