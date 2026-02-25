@@ -129,6 +129,12 @@ Goal:
    - tar -tzf <archive> | sort
    - Required files: README.md, LICENSE, yoda/LICENSE, yoda/yoda.md,
      CHANGELOG.yaml, yoda/PACKAGE_MANIFEST.yaml.
+
+10) Human handoff for GitLab distribution publish:
+   - Instruct the human step by step on where to upload the dist archive in GitLab.
+   - Provide ready-to-copy text for each relevant screen field
+     (for example: tag/version, release title, release notes/description, asset name, asset URL or uploaded file label).
+   - Base this text on the generated version/build and the changelog entry.
 """
 
 
