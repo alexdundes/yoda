@@ -2,18 +2,18 @@
 
 ## Problem
 
-Agent tools do not agree on which file to read (`AGENTS.md`, `gemini.md`, etc.).
+Agent tools do not agree on which file to read (`AGENTS.md`, `GEMINI.md`, etc.).
 
 ## YODA proposal
 
 - Root file: `yoda/yoda.md`.
 - This file contains the agent instructions for the project.
 - In an embedded YODA setup, `yoda/yoda.md` is the **README.md** for the YODA layer inside a host project (human-readable context for agents).
-- init creates/updates agent entry files (`AGENTS.md`, `gemini.md`, `CLAUDE.md`, `agent.md`) pointing to `yoda/yoda.md`, appending a delimited YODA block to preserve existing content.
+- init creates/updates agent entry files (`AGENTS.md`, `GEMINI.md`, `CLAUDE.md`, `agent.md`) pointing to `yoda/yoda.md`, appending a delimited YODA block to preserve existing content.
 
 ## Interoperability
 
-- `AGENTS.md` (Codex), `gemini.md` (Gemini CLI / anti-gravity), and other supported files only route to `yoda/yoda.md`.
+- `AGENTS.md` (Codex), `GEMINI.md` (Gemini CLI / anti-gravity), and other supported files only route to `yoda/yoda.md`.
 
 ## Simplified entry flow
 

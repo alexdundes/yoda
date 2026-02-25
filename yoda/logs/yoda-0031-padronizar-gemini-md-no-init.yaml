@@ -2,7 +2,7 @@ schema_version: '1.0'
 issue_id: yoda-0031
 issue_path: yoda/project/issues/yoda-0031-padronizar-gemini-md-no-init.md
 todo_id: yoda-0031
-status: to-do
+status: done
 entries:
 - timestamp: '2026-02-25T15:18:57-03:00'
   message: "[yoda-0031] issue_add created\ntitle: Padronizar GEMINI.md no init\ndescription:\
@@ -13,3 +13,14 @@ entries:
     \ com legado; o \xFAnico consumidor atual \xE9 ../fibu.\nslug: padronizar-gemini-md-no-init\n\
     priority: 3\ntags: release-0.1.2, init, docs-first\nentrypoints: yoda/scripts/init.py:code,\
     \ project/specs/:doc"
+- timestamp: '2026-02-25T18:35:41-03:00'
+  message: '[yoda-0031] todo_update
+
+    status: to-do -> doing'
+- timestamp: '2026-02-25T18:38:56-03:00'
+  message: '[yoda-0031] evaluate: init validado em /tmp/yoda-init-gemini-0031 com
+    dois runs; primeiro cria GEMINI.md e segundo permanece unchanged (idempotente).'
+- timestamp: '2026-02-25T18:39:01-03:00'
+  message: '[yoda-0031] todo_update
+
+    status: doing -> done'

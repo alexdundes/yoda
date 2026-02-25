@@ -24,7 +24,7 @@ This README organizes the topics discussed so far. Each topic has a dedicated fi
     - file: `05-scripts-and-automation.md`
 06. Agent playbook and operating rules
     - file: `06-agent-playbook.md`
-07. Agent entry and root files (`yoda/yoda.md`, `AGENTS.md`, `gemini.md`)
+07. Agent entry and root files (`yoda/yoda.md`, `AGENTS.md`, `GEMINI.md`)
     - file: `07-agent-entry-and-root-file.md`
 08. MCP in the YODA Framework (tool integration)
     - file: `08-mcp-in-yoda.md`

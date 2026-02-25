@@ -27,7 +27,7 @@ except Exception as exc:  # pragma: no cover - runtime dependency
     ) from exc
 
 
-AGENT_FILES = ["AGENTS.md", "gemini.md", "CLAUDE.md", "agent.md"]
+AGENT_FILES = ["AGENTS.md", "GEMINI.md", "CLAUDE.md", "agent.md"]
 REPO_INTENT_FILE = "REPO_INTENT.md"
 REPO_INTENT_YAML = "repo.intent.yaml"
 REPO_INTENT_HEADER = "# Repository Intent\n\nThis repository embeds the YODA Framework.\n"

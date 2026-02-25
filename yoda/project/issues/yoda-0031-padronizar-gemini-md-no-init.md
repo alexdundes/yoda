@@ -22,13 +22,13 @@ pending_reason: ''
 priority: 3
 schema_version: '1.0'
 slug: padronizar-gemini-md-no-init
-status: to-do
+status: done
 tags:
 - release-0.1.2
 - init
 - docs-first
 title: Padronizar GEMINI.md no init
-updated_at: '2026-02-25T15:18:57-03:00'
+updated_at: '2026-02-25T18:39:01-03:00'
 ---
 
 # yoda-0031 - Padronizar GEMINI.md no init
@@ -59,10 +59,10 @@ Garantir que o init do YODA trate `GEMINI.md` como nome canonico, sem referencia
 - O comportamento deve continuar idempotente em execucoes repetidas.
 
 ## Acceptance criteria
-- [ ] Existe definicao explicita em `project/specs/` do uso de `GEMINI.md`.
-- [ ] `yoda/scripts/init.py` nao depende de `gemini.md` para o caminho principal.
-- [ ] Uma execucao de init em projeto limpo gera/referencia `GEMINI.md`.
-- [ ] Execucoes repetidas nao criam efeitos colaterais indevidos.
+- [x] Existe definicao explicita em `project/specs/` do uso de `GEMINI.md`.
+- [x] `yoda/scripts/init.py` nao depende de `gemini.md` para o caminho principal.
+- [x] Uma execucao de init em projeto limpo gera/referencia `GEMINI.md`.
+- [x] Execucoes repetidas nao criam efeitos colaterais indevidos.
 
 ## Dependencies
 None.
@@ -90,3 +90,8 @@ Body:
 Issue: `<ID>`
 Path: `<issue path>`
 -->
+Padronizacao aplicada para `GEMINI.md` no fluxo de init: specs atualizadas para nome canonico, `yoda/scripts/init.py` ajustado para gerar/referenciar `GEMINI.md`, e arquivo do repositorio renomeado no Git para manter consistencia de case. Validacao de idempotencia executada em diretorio temporario com dois runs consecutivos.
+
+fix(init): padronizar GEMINI.md como arquivo canonico de entrada
+Issue: `yoda-0031`
+Path: `yoda/project/issues/yoda-0031-padronizar-gemini-md-no-init.md`

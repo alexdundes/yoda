@@ -27,7 +27,7 @@ This file records decisions and known open points captured so far.
 - Script behavior specs defined for: todo_list, todo_reorder, issue_add, todo_update, log_add, todo_next (validation, conflicts, output, and log rules).
 - Python structure: shared helpers in `yoda/scripts/lib/`, pytest for tests, dependencies in `yoda/scripts/requirements.txt`.
 - Issue templates: standard vs lightweight, required fill-in rules, and commit text format embedded in the issue result log.
-- Agent entry: `AGENTS.md`/`gemini.md` route to `yoda/yoda.md`; entry phrase must mention YODA Flow and intent to take highest-priority selectable issue; resolve dev via flag/env/prompt.
+- Agent entry: `AGENTS.md`/`GEMINI.md` route to `yoda/yoda.md`; entry phrase must mention YODA Flow and intent to take highest-priority selectable issue; resolve dev via flag/env/prompt.
 - Out of scope (v1) is defined in `project/specs/22-out-of-scope.md`.
 - Visual identity: monochrome document icon with Y; simple lines, no extra elements.
 - MCP: future v2 direction (minimal tools: todos.list/docs.read/workspace.apply_patch), with noted risks and benefits.

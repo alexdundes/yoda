@@ -2,7 +2,7 @@ schema_version: '1.0'
 developer_name: Yoda
 developer_slug: yoda
 timezone: America/Sao_Paulo
-updated_at: '2026-02-25T18:32:04-03:00'
+updated_at: '2026-02-25T18:39:01-03:00'
 issues:
 - schema_version: '1.0'
   id: yoda-0014
@@ -683,14 +683,14 @@ issues:
     \ deste backlog: primeiro atualizar a documenta\xE7\xE3o em project/specs/, e\
     \ somente depois aplicar mudan\xE7as em yoda/. Neste item, n\xE3o considerar compatibilidade\
     \ com legado; o \xFAnico consumidor atual \xE9 ../fibu."
-  status: to-do
+  status: done
   priority: 3
   lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
   created_at: '2026-02-25T15:18:57-03:00'
-  updated_at: '2026-02-25T15:18:57-03:00'
+  updated_at: '2026-02-25T18:39:01-03:00'
   entrypoints:
   - path: yoda/scripts/init.py
     type: code
