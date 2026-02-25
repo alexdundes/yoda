@@ -1,0 +1,25 @@
+schema_version: '1.0'
+issue_id: yoda-0033
+issue_path: yoda/project/issues/yoda-0033-corrigir-concorrencia-no-issue-add-para-criacoes-simultaneas.md
+todo_id: yoda-0033
+status: to-do
+entries:
+- timestamp: '2026-02-25T15:23:19-03:00'
+  message: '[yoda-0033] issue_add created
+
+    title: Corrigir concorrencia no issue_add para criacoes simultaneas
+
+    description: Ao executar dois issue_add em paralelo, ambos podem receber o mesmo
+    proximo ID (ex.: yoda-0031), gerando colisao de arquivos e corrupcao estrutural
+    no TODO YAML. Corrigir a alocacao de ID e a escrita de artefatos para suportar
+    concorrencia segura (locking/atomicidade/retry). Regra transversal deste backlog:
+    primeiro atualizar a documentacao em project/specs/ e somente depois aplicar mudancas
+    em yoda/.
+
+    slug: corrigir-concorrencia-no-issue-add-para-criacoes-simultaneas
+
+    priority: 2
+
+    tags: release-0.1.2, bug, concurrency, issue-add, docs-first
+
+    entrypoints: yoda/scripts/issue_add.py:code, yoda/todos/TODO.yoda.yaml:data, project/specs/:doc'

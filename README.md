@@ -52,7 +52,7 @@ python yoda/scripts/init.py --dev <slug> --root .
 - `yoda/scripts/` (CLI tools)
 - `yoda/templates/` (issue templates)
 - `yoda/PACKAGE_MANIFEST.yaml` (build metadata)
-- `yoda/CHANGELOG.yaml` (release history)
+- `CHANGELOG.yaml` (release history)
 
 ## Inspirations
 - **DocDD**: documentation as the driver for software outcomes.
@@ -71,7 +71,7 @@ YODA stands for **YAML-Oriented Documentation & Agents**. We always pair YODA wi
 - **Markdown**: issues and decisions need narrative context that is human-readable and reviewable.
 
 ## Version & integrity
-Check `yoda/PACKAGE_MANIFEST.yaml` for version/build metadata and `yoda/CHANGELOG.yaml` for release notes. Integrity is validated using the `latest.json` checksum model.
+Check `yoda/PACKAGE_MANIFEST.yaml` for version/build metadata and `CHANGELOG.yaml` for release notes. Integrity is validated using the `latest.json` checksum model.
 
 ## Upgrade & rollback
 Upgrades replace only the framework files under `yoda/` and preserve project data. Keep a backup at `yoda/_previous/<version>` to rollback by restoring the prior subtree.

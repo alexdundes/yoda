@@ -15,6 +15,8 @@ TEST_TODO = REPO_ROOT / "yoda" / "todos" / f"TODO.{TEST_DEV}.yaml"
 
 def run_script(script_name: str, args: Iterable[str]) -> subprocess.CompletedProcess[str]:
     script_path = REPO_ROOT / "yoda" / "scripts" / script_name
+    if not script_path.exists():
+        script_path = REPO_ROOT / script_name
     cmd = [sys.executable, str(script_path), *args]
     return subprocess.run(cmd, capture_output=True, text=True)
 

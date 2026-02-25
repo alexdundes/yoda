@@ -27,7 +27,7 @@ Defines the distributable artefact of the YODA Framework and the contract expect
 - `yoda/LICENSE` — embedded YODA license for host projects.
 - `README.md` — concise package README.
 - `yoda/PACKAGE_MANIFEST.yaml` — package manifest (see below).
-- `yoda/CHANGELOG.yaml` — structured changelog (see below).
+- `CHANGELOG.yaml` — structured changelog (see below).
 
 ## Excluded content
 - `project/specs/` and any meta-implementation material.
@@ -43,7 +43,7 @@ Defines the distributable artefact of the YODA Framework and the contract expect
 <root>/README.md
 <root>/yoda/LICENSE
 <root>/yoda/PACKAGE_MANIFEST.yaml
-<root>/yoda/CHANGELOG.yaml
+<root>/CHANGELOG.yaml
 ```
 - The package preserves relative paths; `init` relies on this structure after extraction.
 
@@ -67,7 +67,7 @@ Rules:
 - `package_sha256` is computed with the manifest's `package_sha256` field treated as empty to avoid self-reference.
 - `LICENSE` and `yoda/LICENSE` are both required but are not required to be identical.
 
-## Structured changelog (`yoda/CHANGELOG.yaml`)
+## Structured changelog (`CHANGELOG.yaml`)
 - Single file versioned in the repo and included in the package.
 - Entry schema per release:
   - `version` (SemVer), `build` (metadata), `date` (ISO 8601, offset)
@@ -79,17 +79,22 @@ Rules:
   - `commit` (SHA or tag)
   - `package_sha256` (optional; filled by `package`)
 - `package` MUST:
-  - Fail if no changelog entry matches the requested version+build.
+  - Support creating a release entry from CLI input (`--next-version`, `--summary`, `--addition`, `--fix`, `--breaking`, `--notes`).
+  - Generate `build` as `YYYYMMDD.<short-commit>` from the current git `HEAD`.
+  - Prepend the generated entry to `CHANGELOG.yaml` before packaging (skip write on `--dry-run`).
+  - Allow packaging from an existing entry via explicit `--version <semver+build>`.
   - Compute a digest of the entry and record it in `PACKAGE_MANIFEST.yaml`.
   - Copy `CHANGELOG.yaml` into the package.
 
 ## `package` command requirements (will be implemented separately)
-- Minimum flags: `--version`, `--output` (or directory), `--archive-format` (default tar.gz), `--dry-run`.
+- Release mode flags: `--next-version <semver>` plus at least one `--summary`.
+- Existing-entry mode flag: `--version <semver+build>`.
+- Output flags: `--output` (or directory), `--archive-format` (default tar.gz), `--dry-run`.
 - `--archive-format` only accepts `tar.gz` in v1.
 - Uses the include/exclude rules above; fails if a required item is missing.
 - Generates `PACKAGE_MANIFEST.yaml` and a checksum of the package.
 - Orders files deterministically for reproducible builds.
-- Supports `--changelog` to point to a custom changelog path (default `yoda/CHANGELOG.yaml`).
+- Supports `--changelog` to point to a custom changelog path (default `CHANGELOG.yaml`).
 
 ## `init` command requirements (consumer; implemented separately)
 - Assumes the layout defined here.

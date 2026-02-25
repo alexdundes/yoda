@@ -15,9 +15,13 @@ import tempfile
 from pathlib import Path
 from typing import Any, Iterable
 
+SCRIPT_DIR = Path(__file__).resolve().parent
+LIB_ROOT = SCRIPT_DIR / "yoda" / "scripts"
+if str(LIB_ROOT) not in sys.path:
+    sys.path.insert(0, str(LIB_ROOT))
+
 from lib.cli import add_global_flags, resolve_format
 from lib.dev import resolve_dev
-from lib.error_messages import required_flag
 from lib.errors import ExitCode, YodaError
 from lib.logging_utils import configure_logging
 from lib.output import render_output
@@ -37,8 +41,9 @@ except Exception as exc:  # pragma: no cover - runtime dependency
 SEMVER_BUILD_RE = re.compile(
     r"^(?P<version>\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?)\+(?P<build>[0-9A-Za-z.-]+)$"
 )
+SEMVER_RE = re.compile(r"^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$")
 MANIFEST_REL = Path("yoda/PACKAGE_MANIFEST.yaml")
-CHANGELOG_REL = Path("yoda/CHANGELOG.yaml")
+CHANGELOG_REL = Path("CHANGELOG.yaml")
 README_REL = Path("README.md")
 LICENSE_REL = Path("LICENSE")
 YODA_LICENSE_REL = Path("yoda/LICENSE")
@@ -55,7 +60,7 @@ INCLUDE_GLOBS = [
     "yoda/templates/**",
     "yoda/scripts/**",
     "yoda/favicons/**",
-    "yoda/CHANGELOG.yaml",
+    "CHANGELOG.yaml",
     "yoda/PACKAGE_MANIFEST.yaml",
 ]
 EXCLUDE_GLOBS = [
@@ -73,6 +78,40 @@ EXCLUDE_GLOBS = [
     ".DS_Store",
 ]
 
+HELP_DESCRIPTION = (
+    "Build a deterministic YODA distribution artefact (tar.gz) and manage changelog entries."
+)
+
+HELP_EPILOG = """Agent runbook (read this before packaging):
+1) Follow the packaging contract in:
+   - project/specs/23-distribution-and-packaging.md
+
+2) Build release notes from repository history (do not guess):
+   - Check working tree and staged changes: git status --short
+   - Inspect recent commits: git log --oneline --decorate -n 20
+   - Review changed files for the release scope: git diff --name-only <base>..HEAD
+
+3) Create the release entry with package.py:
+   - Use --next-version plus release fields (--summary/--addition/--fix/--breaking/--notes).
+   - package.py computes build metadata as YYYYMMDD.<short-commit>.
+   - package.py prepends the entry in CHANGELOG.yaml before packaging.
+   - SemVer rules: breaking=MAJOR, additive=MINOR, fixes=PATCH.
+
+4) Validate content using dry-run:
+   - python3 package.py --dev <slug> --next-version <semver> --summary "<summary>" --dry-run
+   - Confirm only allowed files are included and excluded paths are absent.
+
+5) Build the final archive:
+   - python3 package.py --dev <slug> --next-version <semver> --summary "<summary>" --dir dist
+   - Destination folder: dist/
+   - Output: dist/yoda-framework-<semver+build>.tar.gz (build is generated automatically)
+
+6) Final verification:
+   - tar -tzf <archive> | sort
+   - Required files must include README.md, LICENSE, yoda/LICENSE,
+     yoda/yoda.md, CHANGELOG.yaml, and yoda/PACKAGE_MANIFEST.yaml.
+"""
+
 
 def _parse_version(value: str) -> tuple[str, str]:
     match = SEMVER_BUILD_RE.match(value)
@@ -82,6 +121,16 @@ def _parse_version(value: str) -> tuple[str, str]:
             exit_code=ExitCode.VALIDATION,
         )
     return match.group("version"), match.group("build")
+
+
+def _validate_semver(value: str) -> str:
+    result = value.strip()
+    if not SEMVER_RE.match(result):
+        raise YodaError(
+            "Invalid next version (expected semver without build, e.g. 1.3.0)",
+            exit_code=ExitCode.VALIDATION,
+        )
+    return result
 
 
 def _git_info(root: Path) -> tuple[str, bool]:
@@ -117,6 +166,11 @@ def _load_changelog_entries(path: Path) -> list[dict[str, Any]]:
     return result
 
 
+def _write_changelog_entries(path: Path, entries: list[dict[str, Any]]) -> None:
+    payload = yaml.safe_dump(entries, sort_keys=False, allow_unicode=False)
+    path.write_text(payload, encoding="utf-8")
+
+
 def _find_changelog_entry(
     entries: Iterable[dict[str, Any]], version: str, build: str
 ) -> dict[str, Any]:
@@ -126,6 +180,13 @@ def _find_changelog_entry(
     raise YodaError(
         f"Missing changelog entry for {version}+{build}", exit_code=ExitCode.NOT_FOUND
     )
+
+
+def _entry_exists(entries: Iterable[dict[str, Any]], version: str, build: str) -> bool:
+    for entry in entries:
+        if str(entry.get("version")) == version and str(entry.get("build")) == build:
+            return True
+    return False
 
 
 def _digest_entry(entry: dict[str, Any]) -> str:
@@ -263,6 +324,31 @@ def _resolve_path(root: Path, value: str) -> Path:
     return root / path
 
 
+def _build_release_entry(
+    *,
+    version: str,
+    build: str,
+    built_at: str,
+    commit: str,
+    summary: list[str],
+    additions: list[str],
+    fixes: list[str],
+    breaking: list[str],
+    notes: str,
+) -> dict[str, Any]:
+    return {
+        "version": version,
+        "build": build,
+        "date": built_at,
+        "summary": summary,
+        "breaking": breaking,
+        "additions": additions,
+        "fixes": fixes,
+        "notes": notes,
+        "commit": commit,
+    }
+
+
 def _render_output(payload: dict[str, Any], output_format: str) -> str:
     lines = [
         f"Package filename: {payload['package_filename']}",
@@ -272,6 +358,11 @@ def _render_output(payload: dict[str, Any], output_format: str) -> str:
         f"Manifest path: {payload['manifest_path']}",
         f"Files: {payload['file_count']}",
     ]
+    if payload.get("changelog_action"):
+        lines.append(
+            f"Changelog entry {payload['changelog_action']}: "
+            f"{payload['version']} ({payload['changelog_path']})"
+        )
     if payload.get("dry_run"):
         lines.append("Included files:")
         for item in payload.get("files", []):
@@ -280,13 +371,86 @@ def _render_output(payload: dict[str, Any], output_format: str) -> str:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Build YODA package artefact")
+    parser = argparse.ArgumentParser(
+        description=HELP_DESCRIPTION,
+        epilog=HELP_EPILOG,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
     add_global_flags(parser)
-    parser.add_argument("--version", required=False, help="SemVer+build (e.g. 1.3.0+20260129.a1b2c3)")
-    parser.add_argument("--output", help="Output file path")
-    parser.add_argument("--dir", help="Output directory")
-    parser.add_argument("--archive-format", default="tar.gz", help="Archive format (tar.gz)")
-    parser.add_argument("--changelog", help="Override changelog path (default yoda/CHANGELOG.yaml)")
+    parser.add_argument(
+        "--version",
+        required=False,
+        help=(
+            "Release version as SemVer+build, e.g. 1.3.0+20260129.a1b2c3. "
+            "Use this only when CHANGELOG already contains the entry."
+        ),
+    )
+    parser.add_argument(
+        "--next-version",
+        help=(
+            "Next release SemVer (without build), e.g. 1.3.0. "
+            "Generates build metadata and prepends an entry in CHANGELOG."
+        ),
+    )
+    parser.add_argument(
+        "--summary",
+        action="append",
+        default=[],
+        help=(
+            "Release summary bullet (repeat 1 to 3 times with --next-version). "
+            "Example: --summary \"New package workflow\""
+        ),
+    )
+    parser.add_argument(
+        "--addition",
+        action="append",
+        default=[],
+        help="Addition bullet for changelog entry (repeatable, used with --next-version).",
+    )
+    parser.add_argument(
+        "--fix",
+        action="append",
+        default=[],
+        help="Fix bullet for changelog entry (repeatable, used with --next-version).",
+    )
+    parser.add_argument(
+        "--breaking",
+        action="append",
+        default=[],
+        help="Breaking change bullet for changelog entry (repeatable, used with --next-version).",
+    )
+    parser.add_argument(
+        "--notes",
+        default="",
+        help="Optional notes for changelog entry (used with --next-version).",
+    )
+    parser.add_argument(
+        "--output",
+        help="Full output file path for the archive. Mutually exclusive with --dir.",
+    )
+    parser.add_argument(
+        "--dir",
+        help=(
+            "Output directory where the default archive name is written "
+            "(yoda-framework-<version>.tar.gz)."
+        ),
+    )
+    parser.add_argument(
+        "--archive-format",
+        default="tar.gz",
+        help="Archive format. Only tar.gz is valid in v1.",
+    )
+    parser.add_argument(
+        "--changelog",
+        help=(
+            "Custom changelog file path (default CHANGELOG.yaml). "
+            "Used to read/update release entries before packaging."
+        ),
+    )
+
+    if len(sys.argv) == 1:
+        parser.print_help()
+        return ExitCode.SUCCESS
 
     args = parser.parse_args()
     configure_logging(args.verbose)
@@ -296,11 +460,6 @@ def main() -> int:
         dev = resolve_dev(args.dev).strip()
         validate_slug(dev)
 
-        version_input = (args.version or "").strip()
-        if not version_input:
-            required_flag("--version")
-        version, build = _parse_version(version_input)
-
         fmt = (args.archive_format or "tar.gz").strip().lower()
         if fmt != "tar.gz":
             raise YodaError("Only tar.gz is supported", exit_code=ExitCode.VALIDATION)
@@ -308,13 +467,87 @@ def main() -> int:
         root = repo_root()
         changelog_source = _resolve_path(root, args.changelog or str(CHANGELOG_REL))
         _ensure_required_paths(root, changelog_source)
+        changelog_path = root / CHANGELOG_REL
 
+        built_at = now_iso(detect_local_timezone())
+        commit, dirty = _git_info(root)
+        short_commit = commit[:7]
+
+        explicit_version = (args.version or "").strip()
+        next_version_raw = (args.next_version or "").strip()
+        if bool(explicit_version) == bool(next_version_raw):
+            raise YodaError(
+                "Use exactly one of --version or --next-version",
+                exit_code=ExitCode.VALIDATION,
+            )
+
+        changelog_updated = False
+        changelog_action = ""
+        tmp_paths: list[Path] = []
+        source_overrides: dict[Path, Path] = {}
         entries = _load_changelog_entries(changelog_source)
+        if next_version_raw:
+            version = _validate_semver(next_version_raw)
+            summary = [item.strip() for item in args.summary if item.strip()]
+            additions = [item.strip() for item in args.addition if item.strip()]
+            fixes = [item.strip() for item in args.fix if item.strip()]
+            breaking = [item.strip() for item in args.breaking if item.strip()]
+            if not (1 <= len(summary) <= 3):
+                raise YodaError(
+                    "--next-version requires 1 to 3 --summary entries",
+                    exit_code=ExitCode.VALIDATION,
+                )
+            build = f"{built_at[:10].replace('-', '')}.{short_commit}"
+            version_input = f"{version}+{build}"
+            if _entry_exists(entries, version, build):
+                raise YodaError(
+                    f"Changelog entry already exists for {version_input}",
+                    exit_code=ExitCode.CONFLICT,
+                )
+            new_entry = _build_release_entry(
+                version=version,
+                build=build,
+                built_at=built_at,
+                commit=commit,
+                summary=summary,
+                additions=additions,
+                fixes=fixes,
+                breaking=breaking,
+                notes=(args.notes or "").strip(),
+            )
+            updated_entries = [new_entry, *entries]
+            if args.dry_run:
+                with tempfile.NamedTemporaryFile(
+                    mode="w",
+                    encoding="utf-8",
+                    suffix=".yaml",
+                    delete=False,
+                ) as tmp_file:
+                    tmp_path = Path(tmp_file.name)
+                    tmp_file.write(yaml.safe_dump(updated_entries, sort_keys=False, allow_unicode=False))
+                tmp_paths.append(tmp_path)
+                source_overrides[CHANGELOG_REL] = tmp_path
+                changelog_source_for_validation = tmp_path
+                changelog_action = "prepared"
+            else:
+                if changelog_source == changelog_path:
+                    _write_changelog_entries(changelog_path, updated_entries)
+                else:
+                    _write_changelog_entries(changelog_source, updated_entries)
+                    source_overrides[CHANGELOG_REL] = changelog_source
+                changelog_updated = True
+                changelog_action = "added"
+                changelog_source_for_validation = changelog_source
+        else:
+            version_input = explicit_version
+            version, build = _parse_version(version_input)
+            changelog_source_for_validation = changelog_source
+            if changelog_source != changelog_path:
+                source_overrides[CHANGELOG_REL] = changelog_source
+
+        entries = _load_changelog_entries(changelog_source_for_validation)
         entry = _find_changelog_entry(entries, version, build)
         entry_digest = _digest_entry(entry)
-
-        commit, dirty = _git_info(root)
-        built_at = now_iso(detect_local_timezone())
 
         filename = f"yoda-framework-{version_input}.tar.gz"
         output_path = _resolve_output_path(args, filename, root)
@@ -322,9 +555,6 @@ def main() -> int:
             raise YodaError(f"Output already exists: {output_path}", exit_code=ExitCode.CONFLICT)
 
         files = _collect_files(root)
-        source_overrides: dict[Path, Path] = {}
-        if changelog_source != root / CHANGELOG_REL:
-            source_overrides[CHANGELOG_REL] = changelog_source
 
         manifest: dict[str, Any] = {
             "schema_version": "1.0",
@@ -359,10 +589,18 @@ def main() -> int:
             "file_count": len(files),
             "files": [path.as_posix() for path in files],
             "dry_run": bool(args.dry_run),
+            "changelog_updated": changelog_updated,
+            "changelog_action": changelog_action,
+            "changelog_path": str(changelog_source),
         }
 
         if args.dry_run:
             print(_render_output(payload, output_format))
+            for tmp_path in tmp_paths:
+                try:
+                    tmp_path.unlink(missing_ok=True)
+                except Exception:
+                    pass
             return ExitCode.SUCCESS
 
         output_path.parent.mkdir(parents=True, exist_ok=True)

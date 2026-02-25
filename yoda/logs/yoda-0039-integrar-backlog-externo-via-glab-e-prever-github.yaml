@@ -1,0 +1,25 @@
+schema_version: '1.0'
+issue_id: yoda-0039
+issue_path: yoda/project/issues/yoda-0039-integrar-backlog-externo-via-glab-e-prever-github.md
+todo_id: yoda-0039
+status: to-do
+entries:
+- timestamp: '2026-02-25T15:36:45-03:00'
+  message: '[yoda-0039] issue_add created
+
+    title: Integrar backlog externo via glab e prever GitHub
+
+    description: Redefinir o uso de origin para mapear e traduzir backlog externo
+    em issues YODA usando glab (GitLab CLI), permitindo que uma issue externa gere
+    uma ou varias issues YODA. Prever tambem operacao equivalente com issues do GitHub
+    (gh). Regra transversal: atualizar primeiro project/specs/ e depois yoda/.
+
+    slug: integrar-backlog-externo-via-glab-e-prever-github
+
+    priority: 4
+
+    entrypoints: project/specs/:doc, yoda/scripts/:code, yoda/yoda.md:doc'
+- timestamp: '2026-02-25T15:36:56-03:00'
+  message: '[yoda-0039] todo_update
+
+    depends_on: [] -> yoda-0038'

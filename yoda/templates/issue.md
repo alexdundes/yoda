@@ -21,7 +21,6 @@ origin:
 ---
 
 # [ID] - [TITLE]
-<!-- AGENT: Replace [ID] with the canonical issue id (dev-id, e.g., dev-0001) from `yoda/todos/TODO.<dev>.yaml` and [TITLE] with the issue title. Fill front matter fields from TODO; scripts must keep them in sync. Keep any <...> placeholders wrapped in inline code when used in prose. -->
 
 ## Summary
 <!-- AGENT: Provide a short summary of the problem and the intended change (2-4 sentences). -->

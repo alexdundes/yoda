@@ -67,4 +67,6 @@ Path: `yoda/project/issues/dev-0005-template-issue-regras-uso.md`
 ## Notes
 
 - Templates are designed to be agent-ready and must remain consistent with `project/specs/`.
+- The opening instruction comment that asks to replace `[ID]` and `[TITLE]` must not appear in final templates used by `issue_add.py`.
+- Section-level guidance comments may remain when they are intentionally part of the template workflow.
 - If the template lacks required information, update `project/specs/` first.

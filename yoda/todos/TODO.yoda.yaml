@@ -2,7 +2,7 @@ schema_version: '1.0'
 developer_name: Yoda
 developer_slug: yoda
 timezone: America/Sao_Paulo
-updated_at: '2026-02-06T09:06:04-03:00'
+updated_at: '2026-02-25T15:40:58-03:00'
 issues:
 - schema_version: '1.0'
   id: yoda-0014
@@ -668,6 +668,304 @@ issues:
   - path: README.md
     type: doc
   - path: project/specs/24-installation-and-upgrade.md
+    type: doc
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0031
+  title: Padronizar GEMINI.md no init
+  slug: padronizar-gemini-md-no-init
+  description: "Ajustar o script yoda/scripts/init.py para criar/referenciar o arquivo\
+    \ GEMINI.md em caixa alta, substituindo a varia\xE7\xE3o gemini.md. Regra transversal\
+    \ deste backlog: primeiro atualizar a documenta\xE7\xE3o em project/specs/, e\
+    \ somente depois aplicar mudan\xE7as em yoda/. Neste item, n\xE3o considerar compatibilidade\
+    \ com legado; o \xFAnico consumidor atual \xE9 ../fibu."
+  status: to-do
+  priority: 3
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-02-25T15:18:57-03:00'
+  updated_at: '2026-02-25T15:18:57-03:00'
+  entrypoints:
+  - path: yoda/scripts/init.py
+    type: code
+  - path: project/specs/
+    type: doc
+  tags:
+  - release-0.1.2
+  - init
+  - docs-first
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0032
+  title: 'YODA Intake: coletar texto corrido e agente traduzir em issue'
+  slug: yoda-intake-coletar-texto-corrido-e-agente-traduzir-em-issue
+  description: "No modo YODA Intake, o agente deve pedir ao dev a descri\xE7\xE3o\
+    \ da issue em texto corrido e assumir a responsabilidade de traduzir esse conte\xFA\
+    do para issue estruturada e para atualiza\xE7\xE3o do markdown da issue. Revisar\
+    \ e ajustar o playbook em yoda/yoda.md (se\xE7\xE3o de Intake). Regra transversal:\
+    \ primeiro atualizar a documenta\xE7\xE3o em project/specs/, e somente depois\
+    \ aplicar mudan\xE7as em yoda/."
+  status: to-do
+  priority: 3
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-02-25T15:19:59-03:00'
+  updated_at: '2026-02-25T15:19:59-03:00'
+  entrypoints:
+  - path: yoda/yoda.md
+    type: doc
+  - path: project/specs/
+    type: doc
+  tags:
+  - release-0.1.2
+  - intake
+  - playbook
+  - docs-first
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0033
+  title: Corrigir concorrencia no issue_add para criacoes simultaneas
+  slug: corrigir-concorrencia-no-issue-add-para-criacoes-simultaneas
+  description: 'Ao executar dois issue_add em paralelo, ambos podem receber o mesmo
+    proximo ID (ex.: yoda-0031), gerando colisao de arquivos e corrupcao estrutural
+    no TODO YAML. Corrigir a alocacao de ID e a escrita de artefatos para suportar
+    concorrencia segura (locking/atomicidade/retry). Regra transversal deste backlog:
+    primeiro atualizar a documentacao em project/specs/ e somente depois aplicar mudancas
+    em yoda/.'
+  status: to-do
+  priority: 2
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-02-25T15:23:19-03:00'
+  updated_at: '2026-02-25T15:23:19-03:00'
+  entrypoints:
+  - path: yoda/scripts/issue_add.py
+    type: code
+  - path: yoda/todos/TODO.yoda.yaml
+    type: data
+  - path: project/specs/
+    type: doc
+  tags:
+  - release-0.1.2
+  - bug
+  - concurrency
+  - issue-add
+  - docs-first
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0034
+  title: Remover comentario-instrucao do template de issue
+  slug: remover-comentario-instrucao-do-template-de-issue
+  description: 'Eliminar os comentarios de instrucao do agente no template de issue
+    que nao sao substituidos e acabam vazando para os arquivos finais. A issue gerada
+    deve nascer limpa, sem blocos de comentario operacional do template. Regra transversal:
+    atualizar primeiro project/specs/ e depois yoda/.'
+  status: doing
+  priority: 4
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-02-25T15:36:44-03:00'
+  updated_at: '2026-02-25T15:40:58-03:00'
+  entrypoints:
+  - path: yoda/templates/issue.md
+    type: doc
+  - path: yoda/scripts/issue_add.py
+    type: code
+  - path: project/specs/
+    type: doc
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0035
+  title: Remover conceito de lightweight do YODA
+  slug: remover-conceito-de-lightweight-do-yoda
+  description: 'O conceito de lightweight esta subutilizado e deve ser removido por
+    completo do YODA (schema, scripts, templates e playbooks). Regra transversal:
+    atualizar primeiro project/specs/ e depois yoda/. Como envolve layout YAML, aplicar
+    politica de versao de schema e tratamento de compatibilidade conforme update.py
+    quando aplicavel.'
+  status: to-do
+  priority: 3
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0038
+  pending_reason: ''
+  created_at: '2026-02-25T15:36:44-03:00'
+  updated_at: '2026-02-25T15:36:56-03:00'
+  entrypoints:
+  - path: project/specs/
+    type: doc
+  - path: yoda/yoda.md
+    type: doc
+  - path: yoda/scripts/
+    type: code
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0036
+  title: Remover entrypoints do YAML e manter apenas no markdown
+  slug: remover-entrypoints-do-yaml-e-manter-apenas-no-markdown
+  description: 'Hoje entrypoints aparecem no front matter YAML e tambem no corpo do
+    markdown da issue. Simplificar para manter entrypoints apenas no markdown e remover
+    esse campo do YAML de issue/TODO/log quando aplicavel. Regra transversal: atualizar
+    primeiro project/specs/ e depois yoda/. Como envolve layout YAML, aplicar politica
+    de versao de schema e tratamento de compatibilidade conforme update.py quando
+    aplicavel.'
+  status: to-do
+  priority: 3
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0038
+  pending_reason: ''
+  created_at: '2026-02-25T15:36:44-03:00'
+  updated_at: '2026-02-25T15:36:56-03:00'
+  entrypoints:
+  - path: project/specs/
+    type: doc
+  - path: yoda/templates/issue.md
+    type: doc
+  - path: yoda/scripts/
+    type: code
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0037
+  title: Remover conceito de tags do YODA
+  slug: remover-conceito-de-tags-do-yoda
+  description: 'O campo tags esta subutilizado e deve ser eliminado por completo do
+    YODA (schema, scripts, filtros e templates). Regra transversal: atualizar primeiro
+    project/specs/ e depois yoda/. Como envolve layout YAML, aplicar politica de versao
+    de schema e tratamento de compatibilidade conforme update.py quando aplicavel.'
+  status: to-do
+  priority: 3
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0038
+  pending_reason: ''
+  created_at: '2026-02-25T15:36:45-03:00'
+  updated_at: '2026-02-25T15:36:56-03:00'
+  entrypoints:
+  - path: project/specs/
+    type: doc
+  - path: yoda/scripts/
+    type: code
+  - path: yoda/templates/issue.md
+    type: doc
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0038
+  title: Definir politica de versionamento do layout YAML do YODA
+  slug: definir-politica-de-versionamento-do-layout-yaml-do-yoda
+  description: 'Definir e documentar regra obrigatoria de versionamento de schema/layout
+    YAML do YODA: mudancas sutis incrementam versao menor (1.x), mudancas breaking
+    que exigem tratamento em update.py incrementam versao maior. Incluir como regra
+    operacional em specs e yoda.md, com criterio claro para classificacao e rollout.'
+  status: to-do
+  priority: 2
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-02-25T15:36:45-03:00'
+  updated_at: '2026-02-25T15:36:45-03:00'
+  entrypoints:
+  - path: project/specs/
+    type: doc
+  - path: yoda/yoda.md
+    type: doc
+  - path: yoda/scripts/update.py
+    type: code
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0039
+  title: Integrar backlog externo via glab e prever GitHub
+  slug: integrar-backlog-externo-via-glab-e-prever-github
+  description: 'Redefinir o uso de origin para mapear e traduzir backlog externo em
+    issues YODA usando glab (GitLab CLI), permitindo que uma issue externa gere uma
+    ou varias issues YODA. Prever tambem operacao equivalente com issues do GitHub
+    (gh). Regra transversal: atualizar primeiro project/specs/ e depois yoda/.'
+  status: to-do
+  priority: 4
+  lightweight: false
+  agent: Human
+  depends_on:
+  - yoda-0038
+  pending_reason: ''
+  created_at: '2026-02-25T15:36:45-03:00'
+  updated_at: '2026-02-25T15:36:56-03:00'
+  entrypoints:
+  - path: project/specs/
+    type: doc
+  - path: yoda/scripts/
+    type: code
+  - path: yoda/yoda.md
+    type: doc
+  tags: []
+  origin:
+    system: ''
+    external_id: ''
+    requester: ''
+- schema_version: '1.0'
+  id: yoda-0040
+  title: Definir heuristica de prioridade com baseline 5
+  slug: definir-heuristica-de-prioridade-com-baseline-5
+  description: 'Orientar o agente para tratar prioridade 5 como baseline padrao e
+    ajustar para cima/baixo apenas por importancia relativa frente as demais issues
+    abertas. Documentar isso em yoda/yoda.md e alinhar com specs. Regra transversal:
+    atualizar primeiro project/specs/ e depois yoda/.'
+  status: to-do
+  priority: 4
+  lightweight: false
+  agent: Human
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-02-25T15:36:45-03:00'
+  updated_at: '2026-02-25T15:36:45-03:00'
+  entrypoints:
+  - path: project/specs/
+    type: doc
+  - path: yoda/yoda.md
     type: doc
   tags: []
   origin:

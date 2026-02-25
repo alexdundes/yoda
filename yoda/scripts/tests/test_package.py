@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 import tarfile
 from pathlib import Path
 
@@ -72,7 +73,7 @@ def test_package_builds_and_excludes_tests(tmp_path: Path) -> None:
         assert "yoda/LICENSE" in names
         assert "yoda/yoda.md" in names
         assert "yoda/PACKAGE_MANIFEST.yaml" in names
-        assert "yoda/CHANGELOG.yaml" in names
+        assert "CHANGELOG.yaml" in names
         assert not any(name.startswith("yoda/scripts/tests") for name in names)
     finally:
         _cleanup_license(license_existed)
@@ -104,5 +105,38 @@ def test_package_dry_run_does_not_write(tmp_path: Path) -> None:
         )
         assert result.returncode == 0, result.stderr
         assert not output_path.exists()
+    finally:
+        _cleanup_license(license_existed)
+
+
+def test_package_next_version_updates_changelog(tmp_path: Path) -> None:
+    license_existed = _ensure_license()
+    changelog_path = tmp_path / "CHANGELOG.yaml"
+    _write_changelog(changelog_path, "1.1.0", "20260202.base")
+
+    try:
+        result = run_script(
+            "package.py",
+            [
+                "--dev",
+                TEST_DEV,
+                "--next-version",
+                "1.2.0",
+                "--summary",
+                "Automated changelog entry",
+                "--addition",
+                "New packaging contract",
+                "--output",
+                str(tmp_path / "yoda-framework-next.tar.gz"),
+                "--changelog",
+                str(changelog_path),
+            ],
+        )
+        assert result.returncode == 0, result.stderr
+        content = changelog_path.read_text(encoding="utf-8")
+        assert "version: 1.2.0" in content
+        assert 'summary:' in content
+        assert "Automated changelog entry" in content
+        assert re.search(r"build: \d{8}\.[0-9a-f]{7}", content)
     finally:
         _cleanup_license(license_existed)

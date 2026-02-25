@@ -86,6 +86,7 @@ Global flags:
 8) Populate the issue front matter fields to mirror the TODO item fields.
 9) Create or update the TODO entry (append to the end of the issues list).
 10) Create the issue Markdown file from the template with the populated fields.
+    - The generated issue file must not include the opening template instruction comment that asks to replace `[ID]` and `[TITLE]`.
 11) Create the log file with a single entry describing the issue creation.
 12) If `--dry-run` is set, perform all steps except file writes. Output a summary and exit 0.
 

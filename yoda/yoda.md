@@ -92,7 +92,7 @@ Notes:
 - Logs: `yoda/logs/<id>-<slug>.yaml`.
 - Templates: `yoda/templates/issue.md`, `yoda/templates/issue-lightweight-process.md`.
 - Scripts: `yoda/scripts/*.py`.
-- Package metadata (produced by `package` command when implemented): `yoda/PACKAGE_MANIFEST.yaml`, `yoda/CHANGELOG.yaml`, plus root `LICENSE` and `README`.
+- Package metadata: `yoda/PACKAGE_MANIFEST.yaml`, `CHANGELOG.yaml`, plus root `LICENSE` and `README`.
 
 ## Exit and handoff
 - After Evaluate, propose the next issue via `todo_next.py` or exit Flow if the user prefers.

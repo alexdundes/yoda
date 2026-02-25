@@ -18,15 +18,16 @@ python yoda/scripts/log_add.py --issue dev-0001 --message "[dev-0001] Started wo
 
 ## Package artefact
 
-Build the distributable YODA package (tar.gz) with a SemVer+build version.
+Build the distributable YODA package (tar.gz) and let `package.py` create the release entry in `CHANGELOG.yaml`.
 
 ```bash
-python yoda/scripts/package.py --dev <slug> --version 1.3.0+20260202.a1b2c3 --archive-format tar.gz --dir dist
-python yoda/scripts/package.py --dev <slug> --version 1.3.0+20260202.a1b2c3 --dry-run
+python package.py --dev <slug> --next-version 1.3.0 --summary "Release summary" --archive-format tar.gz --dir dist
+python package.py --dev <slug> --next-version 1.3.0 --summary "Release summary" --dry-run
 ```
 
 Notes:
-- Requires `README.md`, `LICENSE`, and `yoda/CHANGELOG.yaml` (or `--changelog`).
+- Requires `README.md`, `LICENSE`, and `CHANGELOG.yaml` (or `--changelog`).
+- `--next-version` generates build metadata as `YYYYMMDD.<short-commit>` and prepends the changelog entry.
 - Excludes `yoda/scripts/tests` from the package.
 - `--dev` defines `built_by` in the manifest; use `--json` or `--format json` for JSON output.
 
