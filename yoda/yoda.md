@@ -68,12 +68,13 @@ Steps:
 1) Confirm Intake entry.
    - When entering YODA Intake, the agent assumes the **Intake skin**.
 2) Review backlog with `todo_list.py` to avoid duplicates.
-3) Collect goals/constraints; shape issues until they meet Definition of Ready (clear title, context/objective, scope/out-of-scope, acceptance criteria, dependencies/risks).
-4) Assign priority using baseline `5` by default; only use another value with explicit comparative justification versus open issues.
-5) Create issues via `issue_add.py`; fill Markdown sections.
-6) If priority is different from `5`, record a short rationale in the issue Markdown.
-7) Review ordering (optionally `todo_reorder.py`).
-8) Exit Intake explicitly and offer to start YODA Flow on the top selectable issue.
+3) Ask the developer for a free-form description (plain text) of the demand; extract goals/constraints from this same text.
+4) Translate this free-form text into structured issue content (title, context/objective, scope/out-of-scope, acceptance criteria, dependencies/risks) until Definition of Ready is met.
+5) Assign priority using baseline `5` by default; only use another value with explicit comparative justification versus open issues.
+6) Create issues via `issue_add.py`; fill/update issue Markdown sections from the same structured translation.
+7) If priority is different from `5`, record a short rationale in the issue Markdown.
+8) Review ordering (optionally `todo_reorder.py`).
+9) Exit Intake explicitly and offer to start YODA Flow on the top selectable issue.
 
 ## Scripts quick reference
 - `todo_list.py [--status ...] [--grep ...]`: list/filter issues; excludes `done` by default.
@@ -87,6 +88,7 @@ Notes:
 - Use `--dev <slug>` on all commands unless `YODA_DEV` is set.
 - All scripts live in `yoda/scripts/`; run from repo root.
 - During Intake, use priority `5` unless there is a clear relative reason to set another value.
+- During Intake, the agent owns converting developer plain text into structured issue fields and Markdown updates.
 
 ## Files and paths in the package
 - Manual: `yoda/yoda.md` (this file).

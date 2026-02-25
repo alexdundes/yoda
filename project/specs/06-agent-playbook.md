@@ -80,8 +80,9 @@ When the human signals intent to create issues or explicitly says “YODA Intake
 
 1) Enter YODA Intake and confirm intent.
 2) Consult `todo_list.py` to review existing backlog and avoid duplicates.
-3) Collect requirements and shape issues until they meet the Definition of Ready (DoR).
-4) Create issues via `issue_add.py` and fill issue Markdown sections.
+3) Ask for a free-form description from the human and collect requirements from this plain-text input.
+4) Translate the free-form input into structured issue content until it meets the Definition of Ready (DoR).
+5) Create issues via `issue_add.py` and fill/update issue Markdown sections from the same structured translation.
 5) Review order (optionally use `todo_reorder.py`) and propose the next YODA Flow issue.
 6) Exit Intake explicitly and ask whether to start YODA Flow.
 
@@ -90,3 +91,4 @@ Agent rules for Intake:
 - Keep Intake and Flow distinct; Intake prepares issues, Flow executes them.
 - Use `priority: 5` as the default baseline for new issues.
 - Only assign priority different from `5` when there is explicit comparative importance versus other open issues, and record that rationale in the issue text.
+- Treat human free-form text as source input; the agent owns the conversion into structured issue fields and issue Markdown.

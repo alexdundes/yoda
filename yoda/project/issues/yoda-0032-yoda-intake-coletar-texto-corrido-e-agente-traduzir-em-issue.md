@@ -22,14 +22,14 @@ pending_reason: ''
 priority: 3
 schema_version: '1.0'
 slug: yoda-intake-coletar-texto-corrido-e-agente-traduzir-em-issue
-status: to-do
+status: done
 tags:
 - release-0.1.2
 - intake
 - playbook
 - docs-first
 title: 'YODA Intake: coletar texto corrido e agente traduzir em issue'
-updated_at: '2026-02-25T15:19:59-03:00'
+updated_at: '2026-02-25T18:42:18-03:00'
 ---
 
 # yoda-0032 - YODA Intake: coletar texto corrido e agente traduzir em issue
@@ -61,10 +61,10 @@ Definir e documentar no playbook que o Intake parte de texto corrido fornecido p
 - O mesmo conteudo estruturado deve orientar a atualizacao do markdown da issue.
 
 ## Acceptance criteria
-- [ ] As specs em `project/specs/` descrevem Intake com coleta em texto corrido.
-- [ ] `yoda/yoda.md` contem instrucao explicita de traducao do texto corrido para issue estruturada.
-- [ ] O fluxo documentado conecta abertura da issue e atualizacao do markdown da issue a partir da mesma base textual.
-- [ ] Nao ha contradicao entre specs e manual embutido para o comportamento de Intake.
+- [x] As specs em `project/specs/` descrevem Intake com coleta em texto corrido.
+- [x] `yoda/yoda.md` contem instrucao explicita de traducao do texto corrido para issue estruturada.
+- [x] O fluxo documentado conecta abertura da issue e atualizacao do markdown da issue a partir da mesma base textual.
+- [x] Nao ha contradicao entre specs e manual embutido para o comportamento de Intake.
 
 ## Dependencies
 None.
@@ -93,3 +93,8 @@ Body:
 Issue: `<ID>`
 Path: `<issue path>`
 -->
+Fluxo de Intake atualizado para explicitar que o agente deve solicitar descricao em texto corrido, traduzir para estrutura de issue (DoR) e usar a mesma base estruturada para criar a issue e atualizar seu markdown. Alinhamento aplicado em `project/specs/11-yoda-intake.md`, `project/specs/06-agent-playbook.md` e `yoda/yoda.md`, sem contradicoes entre specs e manual embutido.
+
+docs(intake): coletar texto corrido e traduzir para issue estruturada
+Issue: `yoda-0032`
+Path: `yoda/project/issues/yoda-0032-yoda-intake-coletar-texto-corrido-e-agente-traduzir-em-issue.md`

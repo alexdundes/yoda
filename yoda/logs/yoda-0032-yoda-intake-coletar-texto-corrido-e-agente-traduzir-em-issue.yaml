@@ -2,7 +2,7 @@ schema_version: '1.0'
 issue_id: yoda-0032
 issue_path: yoda/project/issues/yoda-0032-yoda-intake-coletar-texto-corrido-e-agente-traduzir-em-issue.md
 todo_id: yoda-0032
-status: to-do
+status: done
 entries:
 - timestamp: '2026-02-25T15:19:59-03:00'
   message: "[yoda-0032] issue_add created\ntitle: YODA Intake: coletar texto corrido\
@@ -14,3 +14,15 @@ entries:
     \ e somente depois aplicar mudan\xE7as em yoda/.\nslug: yoda-intake-coletar-texto-corrido-e-agente-traduzir-em-issue\n\
     priority: 3\ntags: release-0.1.2, intake, playbook, docs-first\nentrypoints: yoda/yoda.md:doc,\
     \ project/specs/:doc"
+- timestamp: '2026-02-25T18:40:47-03:00'
+  message: '[yoda-0032] todo_update
+
+    status: to-do -> doing'
+- timestamp: '2026-02-25T18:42:14-03:00'
+  message: '[yoda-0032] implement: Intake atualizado para coleta em texto corrido
+    e traducao estruturada aplicada tanto na criacao quanto na atualizacao do markdown
+    da issue.'
+- timestamp: '2026-02-25T18:42:18-03:00'
+  message: '[yoda-0032] todo_update
+
+    status: doing -> done'
