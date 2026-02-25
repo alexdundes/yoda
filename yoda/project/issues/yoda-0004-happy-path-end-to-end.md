@@ -5,7 +5,6 @@ depends_on: []
 description: 'Add a one-page flow: create issue, update TODO, add log, finish'
 entrypoints: []
 id: yoda-0004
-lightweight: false
 origin:
   external_id: ''
   requester: ''

@@ -5,7 +5,6 @@ depends_on: []
 description: Define CLI, ordering behaviors, and output formats for todo_reorder.py.
 entrypoints: []
 id: yoda-0013
-lightweight: false
 origin:
   external_id: ''
   requester: ''

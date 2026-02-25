@@ -82,7 +82,6 @@ def validate_issue_item(item: dict[str, Any], dev: str) -> None:
             "description",
             "status",
             "priority",
-            "lightweight",
             "agent",
             "depends_on",
             "pending_reason",
@@ -97,8 +96,6 @@ def validate_issue_item(item: dict[str, Any], dev: str) -> None:
         raise YodaError("Invalid status", exit_code=ExitCode.VALIDATION)
     if not isinstance(item.get("priority"), int) or not (0 <= item.get("priority") <= 10):
         raise YodaError("Invalid priority", exit_code=ExitCode.VALIDATION)
-    if not isinstance(item.get("lightweight"), bool):
-        raise YodaError("lightweight must be boolean", exit_code=ExitCode.VALIDATION)
     if item.get("status") == "pending" and not item.get("pending_reason"):
         raise YodaError("pending_reason required for pending status", exit_code=ExitCode.VALIDATION)
     if not isinstance(item.get("depends_on"), list):

@@ -13,7 +13,6 @@ entrypoints:
 - path: README.md
   type: doc
 id: yoda-0028
-lightweight: false
 origin:
   external_id: ''
   requester: ''

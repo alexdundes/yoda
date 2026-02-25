@@ -7,7 +7,6 @@ description: Criar README conciso para o artefato distribuível, com instruçõe
   de uso, comandos package/init, conteúdo do pacote e links essenciais.
 entrypoints: []
 id: yoda-0022
-lightweight: false
 origin:
   external_id: ''
   requester: ''

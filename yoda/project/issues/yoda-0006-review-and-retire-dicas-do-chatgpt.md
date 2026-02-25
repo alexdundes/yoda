@@ -6,7 +6,6 @@ description: Review yoda/dicas-do-chatgpt.md; if contents are fully captured els
   remove the file
 entrypoints: []
 id: yoda-0006
-lightweight: false
 origin:
   external_id: ''
   requester: ''

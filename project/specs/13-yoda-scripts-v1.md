@@ -99,7 +99,7 @@ Behavior (minimum):
 - Fill basic fields in the template (id, title, summary) based on agent-provided inputs.
 
 Inputs:
-- Title, description or summary, tags, priority, lightweight, agent, entrypoints.
+- Title, description or summary, tags, priority, agent, entrypoints.
 
 Outputs:
 - Updated `yoda/todos/TODO.<dev>.yaml` and new issue Markdown file named `<id>-<slug>.md` in `yoda/project/issues/`.

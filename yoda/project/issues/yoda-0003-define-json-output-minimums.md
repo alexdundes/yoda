@@ -5,7 +5,6 @@ depends_on: []
 description: Document minimal JSON fields for issue_add, todo_update, log_add
 entrypoints: []
 id: yoda-0003
-lightweight: false
 origin:
   external_id: ''
   requester: ''

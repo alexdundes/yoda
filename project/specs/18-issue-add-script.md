@@ -23,7 +23,6 @@ Out of scope:
 - Issue path: `yoda/project/issues/<id>-<slug>.md`
 - Templates:
   - Standard: `yoda/templates/issue.md`
-  - Lightweight: `yoda/templates/issue-lightweight-process.md`
 - Log path: `yoda/logs/<id>-<slug>.yaml`
 
 ## CLI
@@ -38,7 +37,6 @@ Optional inputs:
 - `--summary <text>`: alias for description (if provided, it overrides `--description`).
 - `--slug <slug>`: explicit slug for the issue. If omitted, the slug is generated from the title.
 - `--priority <0..10>`: integer priority (default 5 baseline).
-- `--lightweight`: use the lightweight template and set `lightweight: true`.
 - `--agent <text>`: agent name (default `Human`).
 - `--tags <csv>`: comma-separated tags.
 - `--entrypoint <path>:<type>`: entrypoint item, repeatable. Allowed types: `doc`, `code`, `config`, `schema`, `data`, `asset`, `other`.
@@ -68,8 +66,7 @@ Global flags:
 
 ## Template selection
 
-- Default template is `yoda/templates/issue.md`.
-- If `--lightweight` is provided, use `yoda/templates/issue-lightweight-process.md`.
+- Use `yoda/templates/issue.md`.
 
 ## Behavior
 
@@ -97,7 +94,6 @@ The TODO issue item and issue front matter must include:
 - `id`, `title`, `slug`, `description`
 - `status: to-do`
 - `priority`
-- `lightweight`
 - `agent`
 - `depends_on: []`
 - `pending_reason: ""`

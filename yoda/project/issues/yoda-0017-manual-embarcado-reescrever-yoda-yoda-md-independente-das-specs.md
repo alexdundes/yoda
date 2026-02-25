@@ -7,7 +7,6 @@ description: Produzir manual mínimo para agentes (YODA Flow e Intake) que funci
   sem project/specs, com playbooks claros e referências às ferramentas/scripts.
 entrypoints: []
 id: yoda-0017
-lightweight: false
 origin:
   external_id: ''
   requester: ''

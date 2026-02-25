@@ -6,7 +6,7 @@ Single-file guide for agents when the packaged YODA Framework is embedded in ano
 - Quick start
 - Developer slug resolution
 - Entering YODA Flow
-- YODA Flow playbook (Study, Document, Implement, Evaluate, Lightweight)
+- YODA Flow playbook (Study, Document, Implement, Evaluate)
 - Blocking and pending
 - Entering YODA Intake
 - Scripts quick reference
@@ -53,10 +53,6 @@ Single-file guide for agents when the packaged YODA Framework is embedded in ano
 - Suggest a commit message (conventional): first line = message; body lines `Issue: <ID>`, `Path: <issue path>`.
 - Update TODO status to `done` with `todo_update.py`; offer next issue via `todo_next.py`.
 
-### Lightweight rule
-- Allowed only if `lightweight: true` in the issue/TODO and scope is already clear.
-- If ambiguity or risk appears, fall back to full flow (Study → Document).
-
 ## Blocking and pending
 - If a blocker appears during Implement/Evaluate, set status `pending` with `todo_update.py --pending-reason "<reason>"`.
 - Surface dependencies explicitly; do not proceed until resolved.
@@ -95,7 +91,7 @@ Notes:
 - TODO: `yoda/todos/TODO.<dev>.yaml` (one per developer).
 - Issues: `yoda/project/issues/<id>-<slug>.md`.
 - Logs: `yoda/logs/<id>-<slug>.yaml`.
-- Templates: `yoda/templates/issue.md`, `yoda/templates/issue-lightweight-process.md`.
+- Templates: `yoda/templates/issue.md`.
 - Scripts: `yoda/scripts/*.py`.
 - Package metadata: `yoda/PACKAGE_MANIFEST.yaml`, `CHANGELOG.yaml`, plus root `LICENSE` and `README`.
 

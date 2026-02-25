@@ -33,7 +33,6 @@ Optional inputs:
 - `--priority-min <n>`: minimum priority (0..10).
 - `--priority-max <n>`: maximum priority (0..10).
 - `--depends-on <id>`: include issues that list this id in `depends_on`.
-- `--lightweight <true|false>`: filter by lightweight value.
 - `--created-from <iso8601>`: inclusive lower bound for `created_at`.
 - `--created-to <iso8601>`: inclusive upper bound for `created_at`.
 - `--updated-from <iso8601>`: inclusive lower bound for `updated_at`.
@@ -69,7 +68,6 @@ Filter rules:
 - `--agent`: include issues whose `agent` matches exactly.
 - `--priority-min` / `--priority-max`: include issues within the inclusive range.
 - `--depends-on`: include issues where `depends_on` contains the provided id.
-- `--lightweight`: include issues whose `lightweight` matches the provided value.
 - `--created-from` / `--created-to`: include issues whose `created_at` is within the inclusive range.
 - `--updated-from` / `--updated-to`: include issues whose `updated_at` is within the inclusive range.
 

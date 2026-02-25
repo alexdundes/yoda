@@ -5,12 +5,10 @@ This guide explains how agents and scripts should create and fill issue files us
 ## Templates
 
 - Standard template: `yoda/templates/issue.md`
-- Lightweight template: `yoda/templates/issue-lightweight-process.md`
 
-## When to use each template
+## Template policy
 
-- Standard template: use for most work, especially when requirements, scope, or risks need explicit documentation.
-- Lightweight template: use for small changes when the Study step is skipped and the issue is already clear.
+- Standard template: use for all issue creation in v1.
 
 ## Script-driven creation
 
@@ -18,7 +16,7 @@ Issues are created by a script (`issue_add.py`). The script must:
 
 1) Generate the next sequential id.
 2) Add the issue entry to `yoda/todos/TODO.<dev>.yaml`.
-3) Create the issue Markdown file from the selected template.
+3) Create the issue Markdown file from the standard template.
 4) Fill the basic fields using agent-provided inputs (id, title, summary, tags, priority, entrypoints).
 
 After the script finishes, the agent must open the issue Markdown file and complete the remaining sections.
@@ -38,14 +36,6 @@ After the script finishes, the agent must open the issue Markdown file and compl
 - Implementation notes: technical constraints or decisions.
 - Tests: planned tests or "Not applicable".
 - Risks and edge cases: potential failures to consider.
-- Result log: final summary and commit text.
-
-### Lightweight template (issue-lightweight-process.md)
-
-- Summary: short, direct description.
-- What to implement: exact steps or changes.
-- Files to touch: files to create or edit.
-- Acceptance check: testable checkboxes.
 - Result log: final summary and commit text.
 
 ## Commit format

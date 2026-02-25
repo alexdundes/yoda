@@ -5,7 +5,6 @@ depends_on: []
 description: Create a spec and update docs to define the YODA Intake concept.
 entrypoints: []
 id: yoda-0015
-lightweight: false
 origin:
   external_id: ''
   requester: ''

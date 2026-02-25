@@ -13,7 +13,6 @@ entrypoints:
 - path: yoda/scripts/init.py
   type: code
 id: yoda-0027
-lightweight: false
 origin:
   external_id: ''
   requester: ''

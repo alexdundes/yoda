@@ -11,7 +11,6 @@ entrypoints:
 - path: project/specs/23-distribution-and-packaging.md
   type: doc
 id: yoda-0025
-lightweight: false
 origin:
   external_id: ''
   requester: ''

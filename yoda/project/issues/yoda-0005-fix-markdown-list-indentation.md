@@ -5,7 +5,6 @@ depends_on: []
 description: Adjust indentation in 02-yoda-flow-process.md for list consistency
 entrypoints: []
 id: yoda-0005
-lightweight: false
 origin:
   external_id: ''
   requester: ''

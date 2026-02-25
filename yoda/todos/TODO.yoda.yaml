@@ -2,7 +2,7 @@ schema_version: '1.0'
 developer_name: Yoda
 developer_slug: yoda
 timezone: America/Sao_Paulo
-updated_at: '2026-02-25T18:58:03-03:00'
+updated_at: '2026-02-25T19:06:01-03:00'
 issues:
 - schema_version: '1.0'
   id: yoda-0014
@@ -12,7 +12,6 @@ issues:
     and tests.'
   status: done
   priority: 5
-  lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
@@ -31,7 +30,6 @@ issues:
   description: Define CLI, ordering behaviors, and output formats for todo_reorder.py.
   status: done
   priority: 5
-  lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
@@ -51,7 +49,6 @@ issues:
     and optional text/regex search in selected issue markdown files.'
   status: done
   priority: 5
-  lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
@@ -71,7 +68,6 @@ issues:
     for todo_list.py.
   status: done
   priority: 5
-  lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
@@ -91,7 +87,6 @@ issues:
     available scripts
   status: done
   priority: 5
-  lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
@@ -111,7 +106,6 @@ issues:
     and existing helpers
   status: done
   priority: 5
-  lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
@@ -131,7 +125,6 @@ issues:
     issue is doing
   status: done
   priority: 5
-  lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
@@ -151,7 +144,6 @@ issues:
     handling
   status: done
   priority: 5
-  lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
@@ -171,7 +163,6 @@ issues:
     remove the file
   status: done
   priority: 5
-  lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
@@ -190,7 +181,6 @@ issues:
   description: Adjust indentation in 02-yoda-flow-process.md for list consistency
   status: done
   priority: 5
-  lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
@@ -209,7 +199,6 @@ issues:
   description: 'Add a one-page flow: create issue, update TODO, add log, finish'
   status: done
   priority: 5
-  lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
@@ -228,7 +217,6 @@ issues:
   description: Document minimal JSON fields for issue_add, todo_update, log_add
   status: done
   priority: 5
-  lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
@@ -247,7 +235,6 @@ issues:
   description: 'Add spec text: log_add resolves slug via TODO and fails if id missing'
   status: done
   priority: 5
-  lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
@@ -266,7 +253,6 @@ issues:
   description: Document that issue slugs are immutable; renames require migration
   status: done
   priority: 5
-  lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
@@ -285,7 +271,6 @@ issues:
   description: Create a spec and update docs to define the YODA Intake concept.
   status: done
   priority: 5
-  lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
@@ -306,7 +291,6 @@ issues:
     \xE3o."
   status: done
   priority: 10
-  lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
@@ -326,7 +310,6 @@ issues:
     \ sem project/specs, com playbooks claros e refer\xEAncias \xE0s ferramentas/scripts."
   status: done
   priority: 9
-  lightweight: false
   agent: Human
   depends_on:
   - yoda-0016
@@ -348,7 +331,6 @@ issues:
     o/exclus\xE3o."
   status: done
   priority: 8
-  lightweight: false
   agent: Human
   depends_on:
   - yoda-0016
@@ -370,7 +352,6 @@ issues:
     \ com dry-run."
   status: done
   priority: 7
-  lightweight: false
   agent: Human
   depends_on:
   - yoda-0016
@@ -392,7 +373,6 @@ issues:
     rios externos, cobrindo pacote+init, versionamento, upgrade/rollback e riscos."
   status: done
   priority: 6
-  lightweight: false
   agent: Human
   depends_on:
   - yoda-0016
@@ -413,7 +393,6 @@ issues:
     \ distribu\xEDvel, alinhado \xE0s decis\xF5es de empacote e licen\xE7a do projeto."
   status: done
   priority: 6
-  lightweight: false
   agent: Human
   depends_on:
   - yoda-0016
@@ -435,7 +414,6 @@ issues:
     \ essenciais."
   status: done
   priority: 5
-  lightweight: false
   agent: Human
   depends_on:
   - yoda-0016
@@ -457,7 +435,6 @@ issues:
     placeholders once URLs are defined.
   status: done
   priority: 5
-  lightweight: false
   agent: Human
   depends_on:
   - yoda-0024
@@ -488,7 +465,6 @@ issues:
     must be higher priority than yoda-0023; yoda-0023 should depend on this.
   status: done
   priority: 7
-  lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
@@ -523,7 +499,6 @@ issues:
     license ships with the package.
   status: done
   priority: 7
-  lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
@@ -549,7 +524,6 @@ issues:
     support --version/--root/--source.
   status: done
   priority: 6
-  lightweight: false
   agent: Human
   depends_on:
   - yoda-0025
@@ -576,7 +550,6 @@ issues:
     and clear output.
   status: done
   priority: 6
-  lightweight: false
   agent: Human
   depends_on:
   - yoda-0025
@@ -603,7 +576,6 @@ issues:
     per release.
   status: done
   priority: 5
-  lightweight: false
   agent: Human
   depends_on:
   - yoda-0026
@@ -629,7 +601,6 @@ issues:
     existing content.
   status: done
   priority: 6
-  lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
@@ -656,7 +627,6 @@ issues:
     command.
   status: done
   priority: 7
-  lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
@@ -685,7 +655,6 @@ issues:
     \ com legado; o \xFAnico consumidor atual \xE9 ../fibu."
   status: done
   priority: 3
-  lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
@@ -716,7 +685,6 @@ issues:
     \ aplicar mudan\xE7as em yoda/."
   status: done
   priority: 3
-  lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
@@ -748,7 +716,6 @@ issues:
     em yoda/.'
   status: to-do
   priority: 2
-  lightweight: false
   agent: Human
   depends_on:
   - yoda-0038
@@ -782,7 +749,6 @@ issues:
     atualizar primeiro project/specs/ e depois yoda/.'
   status: done
   priority: 4
-  lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
@@ -809,15 +775,14 @@ issues:
     atualizar primeiro project/specs/ e depois yoda/. Como envolve layout YAML, aplicar
     politica de versao de schema e tratamento de compatibilidade conforme update.py
     quando aplicavel.'
-  status: to-do
+  status: done
   priority: 3
-  lightweight: false
   agent: Human
   depends_on:
   - yoda-0038
   pending_reason: ''
   created_at: '2026-02-25T15:36:44-03:00'
-  updated_at: '2026-02-25T15:36:56-03:00'
+  updated_at: '2026-02-25T19:06:01-03:00'
   entrypoints:
   - path: project/specs/
     type: doc
@@ -842,7 +807,6 @@ issues:
     aplicavel.'
   status: to-do
   priority: 3
-  lightweight: false
   agent: Human
   depends_on:
   - yoda-0038
@@ -871,7 +835,6 @@ issues:
     de schema e tratamento de compatibilidade conforme update.py quando aplicavel.'
   status: to-do
   priority: 3
-  lightweight: false
   agent: Human
   depends_on:
   - yoda-0038
@@ -900,7 +863,6 @@ issues:
     operacional em specs e yoda.md, com criterio claro para classificacao e rollout.'
   status: done
   priority: 2
-  lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''
@@ -928,7 +890,6 @@ issues:
     (gh). Regra transversal: atualizar primeiro project/specs/ e depois yoda/.'
   status: to-do
   priority: 1
-  lightweight: false
   agent: Human
   depends_on:
   - yoda-0038
@@ -957,7 +918,6 @@ issues:
     atualizar primeiro project/specs/ e depois yoda/.'
   status: done
   priority: 4
-  lightweight: false
   agent: Human
   depends_on: []
   pending_reason: ''

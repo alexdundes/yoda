@@ -15,7 +15,6 @@ entrypoints:
 - path: yoda/scripts/
   type: code
 id: yoda-0035
-lightweight: false
 origin:
   external_id: ''
   requester: ''
@@ -24,10 +23,10 @@ pending_reason: ''
 priority: 3
 schema_version: '1.0'
 slug: remover-conceito-de-lightweight-do-yoda
-status: to-do
+status: done
 tags: []
 title: Remover conceito de lightweight do YODA
-updated_at: '2026-02-25T15:36:56-03:00'
+updated_at: '2026-02-25T19:06:01-03:00'
 ---
 
 # yoda-0035 - Remover conceito de lightweight do YODA
@@ -60,10 +59,10 @@ Remover completamente `lightweight` do modelo operacional e dos artefatos do YOD
 - Rollout definido em conjunto com `yoda-0036` e `yoda-0037`: aplicar **um unico incremento menor** de `schema_version` para o pacote `0.1.3`.
 
 ## Acceptance criteria
-- [ ] Specs e manual nao mencionam `lightweight` como conceito ativo.
-- [ ] YAML/TODO/log/issue nao usam campo `lightweight`.
-- [ ] Scripts funcionam sem flags/filtros `lightweight`.
-- [ ] Testes cobrindo fluxo principal passam apos remocao.
+- [x] Specs e manual nao mencionam `lightweight` como conceito ativo.
+- [x] YAML/TODO/log/issue nao usam campo `lightweight`.
+- [x] Scripts funcionam sem flags/filtros `lightweight`.
+- [x] Testes cobrindo fluxo principal passam apos remocao.
 
 ## Dependencies
 `yoda-0038` (politica de versionamento de layout YAML).
@@ -93,3 +92,10 @@ Body:
 Issue: `<ID>`
 Path: `<issue path>`
 -->
+Remocao de `lightweight` aplicada no YODA: specs e manual atualizados para fluxo unico (sem lightweight), `issue_add.py` e `todo_list.py` sem flag/filtro `lightweight`, validacoes ajustadas, template lightweight removido e template padrao simplificado. Artefatos existentes (TODO e front matter de issues) foram limpos para nao carregar mais o campo `lightweight`.
+
+test: `python3 -m pytest yoda/scripts/tests` => 33 passed.
+
+refactor(yoda): remover conceito de lightweight do fluxo e schema
+Issue: `yoda-0035`
+Path: `yoda/project/issues/yoda-0035-remover-conceito-de-lightweight-do-yoda.md`

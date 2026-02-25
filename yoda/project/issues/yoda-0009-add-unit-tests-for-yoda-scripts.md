@@ -6,7 +6,6 @@ description: Create unit tests for implemented scripts, starting with todo_next 
   existing helpers
 entrypoints: []
 id: yoda-0009
-lightweight: false
 origin:
   external_id: ''
   requester: ''

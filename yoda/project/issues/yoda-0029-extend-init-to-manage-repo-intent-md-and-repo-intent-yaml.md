@@ -13,7 +13,6 @@ entrypoints:
 - path: repo.intent.yaml
   type: config
 id: yoda-0029
-lightweight: false
 origin:
   external_id: ''
   requester: ''

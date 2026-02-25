@@ -16,7 +16,6 @@ entrypoints:
 - path: project/specs/
   type: doc
 id: yoda-0033
-lightweight: false
 origin:
   external_id: ''
   requester: ''

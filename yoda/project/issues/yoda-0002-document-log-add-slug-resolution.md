@@ -5,7 +5,6 @@ depends_on: []
 description: 'Add spec text: log_add resolves slug via TODO and fails if id missing'
 entrypoints: []
 id: yoda-0002
-lightweight: false
 origin:
   external_id: ''
   requester: ''

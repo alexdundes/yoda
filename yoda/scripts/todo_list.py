@@ -17,7 +17,7 @@ from lib.errors import ExitCode, YodaError
 from lib.logging_utils import configure_logging
 from lib.order_utils import apply_dependency_order
 from lib.output import render_output
-from lib.parse_utils import parse_bool, parse_csv, parse_timestamp
+from lib.parse_utils import parse_csv, parse_timestamp
 from lib.paths import issue_path, repo_root, todo_path
 from lib.todo_utils import load_todo_file
 from lib.time_utils import parse_timestamp as parse_issue_timestamp
@@ -41,7 +41,6 @@ def _filter_issues(issues: list[dict[str, Any]], args: argparse.Namespace) -> li
     agent = args.agent
     priority_min = args.priority_min
     priority_max = args.priority_max
-    lightweight = parse_bool(args.lightweight)
     created_from = parse_timestamp(args.created_from)
     created_to = parse_timestamp(args.created_to)
     updated_from = parse_timestamp(args.updated_from)
@@ -66,9 +65,6 @@ def _filter_issues(issues: list[dict[str, Any]], args: argparse.Namespace) -> li
             continue
 
         if depends_on and depends_on not in issue.get("depends_on", []):
-            continue
-
-        if lightweight is not None and bool(issue.get("lightweight")) != lightweight:
             continue
 
         priority = int(issue.get("priority", 0))
@@ -249,7 +245,6 @@ def main() -> int:
     parser.add_argument("--priority-min", type=int, dest="priority_min")
     parser.add_argument("--priority-max", type=int, dest="priority_max")
     parser.add_argument("--depends-on", dest="depends_on", help="Include issues that depend on id")
-    parser.add_argument("--lightweight", help="Filter by lightweight true|false")
     parser.add_argument("--created-from", dest="created_from", help="ISO 8601 timestamp")
     parser.add_argument("--created-to", dest="created_to", help="ISO 8601 timestamp")
     parser.add_argument("--updated-from", dest="updated_from", help="ISO 8601 timestamp")

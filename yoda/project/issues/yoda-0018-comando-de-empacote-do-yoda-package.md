@@ -7,7 +7,6 @@ description: Implementar comando/script que gera artefato instalável contendo a
   os arquivos necessários de yoda/, com versão e checklist de inclusão/exclusão.
 entrypoints: []
 id: yoda-0018
-lightweight: false
 origin:
   external_id: ''
   requester: ''

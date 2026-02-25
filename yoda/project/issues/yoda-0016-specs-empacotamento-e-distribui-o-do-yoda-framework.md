@@ -6,7 +6,6 @@ description: Especificar no project/specs como o YODA será empacotado/embutido,
   que entra e sai do artefato, comandos de build/init e alinhamento com meta-implementação.
 entrypoints: []
 id: yoda-0016
-lightweight: false
 origin:
   external_id: ''
   requester: ''

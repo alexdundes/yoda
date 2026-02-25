@@ -12,7 +12,6 @@ entrypoints:
 - path: yoda/yoda.md
   type: doc
 id: yoda-0040
-lightweight: false
 origin:
   external_id: ''
   requester: ''

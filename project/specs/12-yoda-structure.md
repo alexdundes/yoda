@@ -10,7 +10,6 @@ Defines the minimum folder and file structure for a YODA Framework project.
 │  ├─ yoda.md                 # Root agent instructions
 │  ├─ templates/
 │  │  ├─ issue.md             # Standard issue template
-│  │  └─ issue-lightweight-process.md
 │  ├─ scripts/                # Python scripts (file name = command)
 │  ├─ logs/                   # One log per issue
 │  ├─ todos/

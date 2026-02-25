@@ -6,7 +6,6 @@ description: Revise 06-agent-playbook.md and yoda/yoda.md to reflect YODA Flow w
   available scripts
 entrypoints: []
 id: yoda-0010
-lightweight: false
 origin:
   external_id: ''
   requester: ''

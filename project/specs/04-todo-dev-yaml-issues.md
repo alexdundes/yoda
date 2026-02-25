@@ -52,7 +52,6 @@ Each issue item must contain:
 - description: brief description of what needs to be done
 - status: to-do | doing | done | pending
 - priority: 0 to 10 (10 = highest priority; baseline/default 5)
-- lightweight: true | false
 - agent: agent name (free string; examples: Human, Codex, Gemini CLI, Antigravity)
 - depends_on: list of ids
 - pending_reason: reason for pending (required when status = pending)
@@ -77,7 +76,6 @@ Optional fields:
   - `5` is the default neutral baseline for new issues.
   - `0..4` means lower relative importance and `6..10` means higher relative importance compared to other open issues in the same TODO.
   - If priority is different from `5`, the issue Markdown should include a short comparative justification.
-- lightweight is required and must be boolean.
 - timezone must be `UTC` or a valid IANA TZ database name compatible with Python `zoneinfo`.
 - UTC SHOULD be used unless the project explicitly requires another timezone.
 - created_at and updated_at use ISO 8601 with explicit timezone.
@@ -125,7 +123,7 @@ Issue files use YAML front matter that mirrors the issue metadata in `yoda/todos
 Rules:
 
 - Front matter is required in issue Markdown files.
-- Fields match the issue item schema, including `lightweight`.
+- Fields match the issue item schema.
 - Scripts must copy updates from TODO to the issue metadata.
 
 ## Ordering rule (deterministic)
@@ -159,7 +157,6 @@ issues:
     description: Define root agent instructions for this repository.
     status: doing
     priority: 10
-    lightweight: false
     tags: [yoda, framework]
     agent: Human
     depends_on: []
@@ -177,7 +174,6 @@ issues:
     description: Document how agents should use issue templates.
     status: to-do
     priority: 8
-    lightweight: false
     tags: [templates, docs]
     agent: Codex
     depends_on: [dev-0001]
@@ -194,7 +190,6 @@ issues:
     status: pending
     pending_reason: "Waiting for consensus on script naming."
     priority: 7
-    lightweight: false
     tags: [scripts, v1]
     agent: Antigravity
     depends_on: [dev-0001]

@@ -8,7 +8,6 @@ description: 'Criar script que prepara um projeto host após receber o pacote YO
   ajusta AGENTS.md, estrutura mínima, TODO.<dev>.yaml, idempotente e com dry-run.'
 entrypoints: []
 id: yoda-0019
-lightweight: false
 origin:
   external_id: ''
   requester: ''

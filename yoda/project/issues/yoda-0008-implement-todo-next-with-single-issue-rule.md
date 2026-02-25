@@ -6,7 +6,6 @@ description: Implement todo_next.py to select only to-do items and block when an
   issue is doing
 entrypoints: []
 id: yoda-0008
-lightweight: false
 origin:
   external_id: ''
   requester: ''

@@ -19,6 +19,5 @@ def log_path(issue_id: str, slug: str) -> Path:
     return repo_root() / "yoda" / "logs" / f"{issue_id}-{slug}.yaml"
 
 
-def template_path(lightweight: bool) -> Path:
-    name = "issue-lightweight-process.md" if lightweight else "issue.md"
-    return repo_root() / "yoda" / "templates" / name
+def template_path() -> Path:
+    return repo_root() / "yoda" / "templates" / "issue.md"

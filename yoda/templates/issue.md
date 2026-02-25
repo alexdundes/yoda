@@ -6,7 +6,6 @@ slug: [SLUG]
 description: [SUMMARY]
 status: to-do
 priority: 5
-lightweight: false
 agent: Human
 depends_on: []
 pending_reason: ""

@@ -14,7 +14,6 @@ entrypoints:
 - path: yoda/scripts/update.py
   type: code
 id: yoda-0038
-lightweight: false
 origin:
   external_id: ''
   requester: ''

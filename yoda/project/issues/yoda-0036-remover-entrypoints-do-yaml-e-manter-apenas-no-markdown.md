@@ -16,7 +16,6 @@ entrypoints:
 - path: yoda/scripts/
   type: code
 id: yoda-0036
-lightweight: false
 origin:
   external_id: ''
   requester: ''

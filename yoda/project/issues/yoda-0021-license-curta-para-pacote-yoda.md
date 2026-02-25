@@ -7,7 +7,6 @@ description: Definir e redigir arquivo LICENSE curto a ser incluído no artefato
   alinhado às decisões de empacote e licença do projeto.
 entrypoints: []
 id: yoda-0021
-lightweight: false
 origin:
   external_id: ''
   requester: ''

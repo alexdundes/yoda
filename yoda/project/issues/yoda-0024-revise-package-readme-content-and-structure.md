@@ -26,7 +26,6 @@ entrypoints:
 - path: project/specs/24-installation-and-upgrade.md
   type: doc
 id: yoda-0024
-lightweight: false
 origin:
   external_id: ''
   requester: ''

@@ -43,10 +43,6 @@ When the agent enters YODA Flow, it assumes the **Flow skin** and follows the ru
 - The cycle is designed to be iterative and not waterfall.
   - Next issue selection must follow deterministic rules defined in specs (priority, order, pending, dependencies, and no issue in `doing`).
 - YODA Flow is issue-centric and starts only after issues are ready (see YODA Intake for the discovery/triage cycle).
-- - Lightweight process: it does not include the Study step; the AI follows the preliminary issue directly.
-  - Use lightweight only when the issue is already clear, has explicit acceptance criteria, and no open questions remain.
-  - If there is ambiguity, new requirements, or non-trivial risk, include Study.
-  - Lightweight must be explicitly marked in the issue or TODO (example: lightweight: true).
 
 ## Deliverables per phase
 
@@ -76,9 +72,3 @@ When the agent enters YODA Flow, it assumes the **Flow skin** and follows the ru
 - If tests are required, they must be implemented.
 - If the project expects unit tests, they must be added.
 - Acceptance criteria checkboxes must be marked when satisfied.
-
-## Lightweight rule
-
-- Lightweight must be explicit in the issue or TODO (example: lightweight: true).
-- When lightweight is true and the issue is sufficient, Study and Document may be skipped.
-- If the issue is not sufficient, return to Study and Document.

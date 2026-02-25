@@ -6,7 +6,6 @@ description: 'Implement todo_reorder.py per spec: reorder modes, validation, out
   and tests.'
 entrypoints: []
 id: yoda-0014
-lightweight: false
 origin:
   external_id: ''
   requester: ''

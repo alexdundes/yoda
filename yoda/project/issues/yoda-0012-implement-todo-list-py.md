@@ -6,7 +6,6 @@ description: 'Implement todo_list.py per spec: filters, ordering, md/json output
   and optional text/regex search in selected issue markdown files.'
 entrypoints: []
 id: yoda-0012
-lightweight: false
 origin:
   external_id: ''
   requester: ''

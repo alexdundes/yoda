@@ -99,7 +99,6 @@ def _build_issue_item(
     slug: str,
     description: str,
     priority: int,
-    lightweight: bool,
     agent: str,
     entrypoints: list[dict[str, str]],
     tags: list[str],
@@ -113,7 +112,6 @@ def _build_issue_item(
         "description": description,
         "status": "to-do",
         "priority": priority,
-        "lightweight": lightweight,
         "agent": agent,
         "depends_on": [],
         "pending_reason": "",
@@ -167,7 +165,6 @@ def _build_issue_log_message(
     description: str,
     slug: str,
     priority: int,
-    lightweight: bool,
     agent: str,
     tags: list[str],
     entrypoints: list[dict[str, str]],
@@ -179,8 +176,6 @@ def _build_issue_log_message(
 
     if _flag_present("--priority"):
         lines.append(f"priority: {priority}")
-    if _flag_present("--lightweight"):
-        lines.append(f"lightweight: {str(lightweight).lower()}")
     if _flag_present("--agent"):
         lines.append(f"agent: {agent}")
     if _flag_present("--tags") and tags:
@@ -215,7 +210,6 @@ def main() -> int:
     parser.add_argument("--summary", required=False, help="Alias for description")
     parser.add_argument("--slug", required=False, help="Explicit issue slug")
     parser.add_argument("--priority", type=int, default=None, help="Priority 0-10")
-    parser.add_argument("--lightweight", action="store_true", help="Use lightweight template")
     parser.add_argument("--agent", default="Human", help="Agent name")
     parser.add_argument("--tags", help="Comma-separated tags")
     parser.add_argument(
@@ -265,7 +259,7 @@ def main() -> int:
         if log_file.exists():
             conflict_log_file(log_file)
 
-        template_file = template_path(args.lightweight)
+        template_file = template_path()
         template_text = load_template(template_file)
 
         timestamp = now_iso(todo.get("timezone"))
@@ -278,7 +272,6 @@ def main() -> int:
             slug=slug,
             description=description,
             priority=priority,
-            lightweight=bool(args.lightweight),
             agent=args.agent,
             entrypoints=entrypoints,
             tags=tags,
@@ -319,7 +312,6 @@ def main() -> int:
                 description=description,
                 slug=slug,
                 priority=priority,
-                lightweight=bool(args.lightweight),
                 agent=args.agent,
                 tags=tags,
                 entrypoints=entrypoints,

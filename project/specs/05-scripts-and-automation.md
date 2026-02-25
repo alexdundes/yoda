@@ -62,7 +62,7 @@ Checks:
 - timezone is present and valid (`UTC` or IANA TZ database name compatible with Python `zoneinfo`).
 - Issue IDs are unique and match dev-#### format.
 - status enum is valid; pending_reason required when status = pending.
-- priority is 0..10 (default 5); lightweight is required boolean.
+- priority is 0..10 (default 5).
 - depends_on references existing IDs.
 - created_at and updated_at use ISO 8601 with offset.
 - Issue front matter exists and mirrors TODO fields.

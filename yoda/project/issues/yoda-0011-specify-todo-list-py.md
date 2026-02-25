@@ -6,7 +6,6 @@ description: Define CLI, filters, ordering, output formats, and text search beha
   for todo_list.py.
 entrypoints: []
 id: yoda-0011
-lightweight: false
 origin:
   external_id: ''
   requester: ''

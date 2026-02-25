@@ -7,7 +7,6 @@ description: Explorar opções para embutir/atualizar o YODA Framework em reposi
   externos, cobrindo pacote+init, versionamento, upgrade/rollback e riscos.
 entrypoints: []
 id: yoda-0020
-lightweight: false
 origin:
   external_id: ''
   requester: ''

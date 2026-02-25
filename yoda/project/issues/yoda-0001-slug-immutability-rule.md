@@ -5,7 +5,6 @@ depends_on: []
 description: Document that issue slugs are immutable; renames require migration
 entrypoints: []
 id: yoda-0001
-lightweight: false
 origin:
   external_id: ''
   requester: ''

@@ -5,7 +5,6 @@ depends_on: []
 description: Write a spec for todo_next.py behavior, inputs, outputs, and error handling
 entrypoints: []
 id: yoda-0007
-lightweight: false
 origin:
   external_id: ''
   requester: ''
