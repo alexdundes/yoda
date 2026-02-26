@@ -55,6 +55,48 @@ def test_issue_add_conflict_when_issue_file_exists() -> None:
     assert f"Issue file already exists: {issue_path}" in result.stderr
 
 
+def test_issue_add_sets_origin_from_external_issue() -> None:
+    result = run_script(
+        "issue_add.py",
+        [
+            "--dev",
+            TEST_DEV,
+            "--title",
+            "From external",
+            "--description",
+            "Desc",
+            "--extern-issue",
+            "123",
+            "--origin-system",
+            "github",
+        ],
+    )
+    assert result.returncode == 0, result.stderr
+
+    todo = yaml.safe_load(TEST_TODO.read_text(encoding="utf-8"))
+    issue = todo["issues"][0]
+    assert issue["origin"]["system"] == "github"
+    assert issue["origin"]["external_id"] == "123"
+
+
+def test_issue_add_rejects_non_numeric_external_issue() -> None:
+    result = run_script(
+        "issue_add.py",
+        [
+            "--dev",
+            TEST_DEV,
+            "--title",
+            "From external",
+            "--description",
+            "Desc",
+            "--extern-issue",
+            "abc",
+        ],
+    )
+    assert result.returncode == 2
+    assert "--extern-issue must be numeric" in result.stderr
+
+
 def test_issue_add_parallel_creations_generate_unique_ids() -> None:
     script = REPO_ROOT / "yoda" / "scripts" / "issue_add.py"
     cmd_a = [

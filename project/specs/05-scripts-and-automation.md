@@ -12,7 +12,9 @@ Standardize repetitive tasks and reduce the need for manual edits.
 
 ## Minimum scripts (v1)
 
-- `issue_add.py`: adds an issue to `yoda/todos/TODO.<dev>.yaml` and generates the issue Markdown from the template using basic fields provided by the agent
+- `issue_add.py`: adds an issue to `yoda/todos/TODO.<dev>.yaml`, generates issue Markdown, and may link external origin metadata (`origin`) when provided
+- `yoda_intake.py`: intake runbook command; routes intake flow for external/non-external sources and can summarize external issues
+- `get_extern_issue.py`: fetches external issue data and stores local JSON for intake continuation
 - `yoda/todos/TODO.<dev>.yaml` maintenance scripts (list, update, reorder, etc.)
 - scripts to present `yoda/todos/TODO.<dev>.yaml` in a human-readable format for humans and agents
 - log scripts to record flow events

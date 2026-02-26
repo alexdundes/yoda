@@ -59,5 +59,11 @@ This README organizes the topics discussed so far. Each topic has a dedicated fi
     - file: `22-out-of-scope.md`
 23. Distribution and packaging contract
     - file: `23-distribution-and-packaging.md`
+24. Installation and upgrade contract
+    - file: `24-installation-and-upgrade.md`
+25. `yoda_intake.py` specification
+    - file: `25-yoda-intake-script.md`
+26. `get_extern_issue.py` specification
+    - file: `26-get-extern-issue-script.md`
 99. Decision summary (not part of the numbered spec sequence)
     - file: `summary.md`

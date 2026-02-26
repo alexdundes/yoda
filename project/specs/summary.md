@@ -23,8 +23,10 @@ This file records decisions and known open points captured so far.
 - CLI contract: global flags (`--dev`, `--format`, `--json`, `--dry-run`, `--verbose`); exit codes 0/1/2/3/4; errors to stderr with actionable messages.
 - JSON output minimums defined for `issue_add.py`, `todo_update.py`, `log_add.py`, `todo_next.py`.
 - `todo_list.py` JSON output uses full issue items.
-- Required scripts (v1): issue_add, todo_list, todo_update, todo_next, todo_reorder, log_add.
-- Script behavior specs defined for: todo_list, todo_reorder, issue_add, todo_update, log_add, todo_next (validation, conflicts, output, and log rules).
+- Required scripts (v1): issue_add, yoda_intake, get_extern_issue, todo_list, todo_update, todo_next, todo_reorder, log_add.
+- Script behavior specs defined for: todo_list, todo_reorder, issue_add, yoda_intake, get_extern_issue, todo_update, log_add, todo_next (validation, conflicts, output, and log rules).
+- Dedicated script contracts include `18-issue-add-script.md`, `25-yoda-intake-script.md`, and `26-get-extern-issue-script.md`.
+- Intake external integration: provider detection comes from git `origin`; GitLab uses `glab`, GitHub uses `gh`; `get_extern_issue.py` fetches and stores `yoda/project/extern-issues/<provider>-<NNN>.json`; `yoda_intake.py` consumes that local file and commit references use `#NNN` without auto-close keywords.
 - Concurrency policy: `issue_add.py` uses external lock per `--dev`, retries lock acquisition 3 times with increasing wait, writes files atomically (temp + replace), and fails explicitly without automatic rollback on partial failure.
 - Python structure: shared helpers in `yoda/scripts/lib/`, pytest for tests, dependencies in `yoda/scripts/requirements.txt`.
 - Issue templates: standard template usage, required fill-in rules, and commit text format embedded in the issue result log.

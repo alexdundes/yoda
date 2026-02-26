@@ -22,27 +22,38 @@ Examples (translate to the human's language if needed):
 
 ## Cycle steps
 
-1) **Collect**
+1) **Start via script**
+   - Call `yoda_intake.py --dev <slug>` when entering Intake.
+   - Follow the returned initial runbook to decide:
+     - external issue path (`--extern-issue <NNN>`)
+     - no external issue path (`--no-extern-issue`)
+2) **Collect**
    - Ask the human for a free-form description (plain text) of the issue or demand.
    - Gather goals, constraints, and context from that same free-form input.
-2) **Triage**
+3) **Triage**
    - Use `todo_list.py` to review the backlog and avoid duplicates.
    - Identify conflicts, dependencies, or candidates for merge/split.
-3) **Shape**
+4) **Shape**
    - Translate the free-form input into structured issue content.
    - Decompose into well-sized issues (epic vs tasks).
    - Define scope, out of scope, acceptance criteria, and risks.
    - Assign priority using baseline `5` by default; only adjust above/below `5` with a comparative reason against current open issues.
-4) **Definition of Ready (DoR)**
+5) **Definition of Ready (DoR)**
    - Ensure each issue meets the minimal readiness criteria (see below).
-5) **Create**
+6) **Create**
    - Use `issue_add.py` to create issues and add them to the TODO.
    - Fill/update the issue Markdown from the same structured translation generated from the human free-form input.
    - Remove placeholders and complete sections.
-6) **Order**
+7) **Order**
    - Review ordering; optionally use `todo_reorder.py`.
-7) **Handoff**
+8) **Handoff**
    - Explicitly close Intake and propose the next YODA Flow issue.
+
+External source path (when `--extern-issue <NNN>` is used):
+- Ask the human to run `get_extern_issue.py --dev <slug> --extern-issue <NNN>`.
+- `get_extern_issue.py` stores source data at `yoda/project/extern-issues/<provider>-<NNN>.json`.
+- Re-run `yoda_intake.py --dev <slug> --extern-issue <NNN>` to continue with local source file.
+- Associate commits with external issue using `#NNN` only; do not auto-close external issues.
 
 ## Definition of Ready (DoR)
 
@@ -57,6 +68,7 @@ Each issue must include at minimum:
 ## Agent rules (Intake)
 
 - Do not create issues without passing the DoR gate.
+- Enter Intake through `yoda_intake.py` and follow the returned runbook.
 - Always consult `todo_list.py` before proposing new issues.
 - Keep the cycle explicit: enter Intake, exit Intake, then offer YODA Flow.
 - Use clear, analyst-style language.

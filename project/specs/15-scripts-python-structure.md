@@ -14,6 +14,8 @@ This document defines the base Python project structure for YODA scripts in `yod
 yoda/
   scripts/
     issue_add.py
+    yoda_intake.py
+    get_extern_issue.py
     todo_list.py
     todo_update.py
     todo_next.py
@@ -30,6 +32,9 @@ yoda/
       templates.py
       validate.py
       errors.py
+      external_issue_utils.py
+      provider_gitlab.py
+      provider_github.py
 ```
 
 Notes:

@@ -63,21 +63,24 @@ Trigger: user wants to create/refine issues (e.g., “YODA Intake”).
 Steps:
 1) Confirm Intake entry.
    - When entering YODA Intake, the agent assumes the **Intake skin**.
-2) Review backlog with `todo_list.py` to avoid duplicates.
-3) Ask the developer for a free-form description (plain text) of the demand; extract goals/constraints from this same text.
-4) Translate this free-form text into structured issue content (title, context/objective, scope/out-of-scope, acceptance criteria, dependencies/risks) until Definition of Ready is met.
-5) Assign priority using baseline `5` by default; only use another value with explicit comparative justification versus open issues.
-6) Create issues via `issue_add.py`; fill/update issue Markdown sections from the same structured translation.
-7) If priority is different from `5`, record a short rationale in the issue Markdown.
-8) Review ordering (optionally `todo_reorder.py`).
-9) Exit Intake explicitly and offer to start YODA Flow on the top selectable issue.
+2) Call `python3 yoda/scripts/yoda_intake.py --dev <slug>`.
+3) Follow the returned AGENT runbook exactly.
+4) If the runbook asks for external source decision:
+   - with external issue:
+     - ask the human to run `get_extern_issue.py --dev <slug> --extern-issue <NNN>`.
+     - after file creation, call `yoda_intake.py --dev <slug> --extern-issue <NNN>`.
+   - without external issue: call `yoda_intake.py --dev <slug> --no-extern-issue`.
+5) Continue Intake execution based on the runbook output.
+6) Exit Intake explicitly and offer to start YODA Flow on the top selectable issue.
 
 ## Scripts quick reference
 - `todo_list.py [--status ...] [--grep ...]`: list/filter issues; excludes `done` by default.
 - `todo_next.py`: select highest-priority selectable issue; reports blockers/pending.
 - `todo_update.py --issue <id> --status <status> [--priority ...] [--depends-on ...] [--pending-reason ...]`.
 - `todo_reorder.py`: reorder TODO entries (if needed during Intake).
-- `issue_add.py --title --description [--priority ...]`: create new issue + log + TODO entry (default priority baseline is `5`).
+- `issue_add.py --title --description [--priority ...] [--extern-issue <NNN>] [--origin-system ...] [--origin-requester ...]`: create new issue + log + TODO entry (default priority baseline is `5`).
+- `get_extern_issue.py --dev <slug> --extern-issue <NNN>`: human-side command to fetch and store external source at `yoda/project/extern-issues/<provider>-<NNN>.json`.
+- `yoda_intake.py --dev <slug> [--extern-issue <NNN> | --no-extern-issue]`: returns AGENT runbook for Intake; external mode also returns source issue summary.
 - `log_add.py --issue <id> --message "<msg including id>" [--timestamp ...]`: append to issue log.
 Notes:
 - Always include the issue id in log messages (`[yoda-0001] ...`).

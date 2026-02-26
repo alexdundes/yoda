@@ -79,16 +79,23 @@ Deliverables per phase are defined in `project/specs/02-yoda-flow-process.md` an
 When the human signals intent to create issues or explicitly says “YODA Intake”, the agent assumes the **Intake skin** and must:
 
 1) Enter YODA Intake and confirm intent.
-2) Consult `todo_list.py` to review existing backlog and avoid duplicates.
-3) Ask for a free-form description from the human and collect requirements from this plain-text input.
-4) Translate the free-form input into structured issue content until it meets the Definition of Ready (DoR).
-5) Create issues via `issue_add.py` and fill/update issue Markdown sections from the same structured translation.
-5) Review order (optionally use `todo_reorder.py`) and propose the next YODA Flow issue.
-6) Exit Intake explicitly and ask whether to start YODA Flow.
+2) Run `yoda_intake.py --dev <slug>` and follow the returned AGENT runbook.
+3) If the runbook asks for external source:
+   - with external issue: ask human to run `get_extern_issue.py --dev <slug> --extern-issue <NNN>`, then run `yoda_intake.py --dev <slug> --extern-issue <NNN>`.
+   - without external issue: run `yoda_intake.py --dev <slug> --no-extern-issue`.
+4) Consult `todo_list.py` to review existing backlog and avoid duplicates.
+5) Ask for a free-form description from the human and collect requirements from this plain-text input.
+6) Translate the free-form input into structured issue content until it meets the Definition of Ready (DoR).
+7) Create issues via `issue_add.py` and fill/update issue Markdown sections from the same structured translation.
+8) Review order (optionally use `todo_reorder.py`) and propose the next YODA Flow issue.
+9) Exit Intake explicitly and ask whether to start YODA Flow.
 
 Agent rules for Intake:
 - Do not create issues without passing DoR.
 - Keep Intake and Flow distinct; Intake prepares issues, Flow executes them.
+- In external mode, `get_extern_issue.py` detects provider from `origin` and uses provider-specific CLI (`glab`/`gh`).
+- If required CLI is missing, `get_extern_issue.py` should provide actionable install instructions to the human.
+- When referencing external issue in commit suggestions, use `#NNN` only (no auto-close keywords).
 - Use `priority: 5` as the default baseline for new issues.
 - Only assign priority different from `5` when there is explicit comparative importance versus other open issues, and record that rationale in the issue text.
 - Treat human free-form text as source input; the agent owns the conversion into structured issue fields and issue Markdown.

@@ -84,6 +84,16 @@ When `--format json` (or `--json`) is used, scripts must emit a JSON object with
   - `priority_updated`
   - `issue_id`
   - `dry_run`
+- `yoda_intake.py`:
+  - `mode`
+  - `dev`
+  - `runbook`
+  - `external_issue` (when `--extern-issue` is used)
+- `get_extern_issue.py`:
+  - `dev`
+  - `provider`
+  - `issue_number`
+  - `saved_file`
 
 ## Required scripts
 
@@ -100,6 +110,7 @@ Behavior (minimum):
 
 Inputs:
 - Title, description or summary, priority.
+- Optional external origin linkage via `--extern-issue`, `--origin-system`, `--origin-requester`.
 
 Outputs:
 - Updated `yoda/todos/TODO.<dev>.yaml` and new issue Markdown file named `<id>-<slug>.md` in `yoda/project/issues/`.
@@ -207,6 +218,49 @@ Inputs:
 
 Outputs:
 - Updated log file named `<id>-<slug>.yaml` in `yoda/logs/`.
+
+---
+
+### yoda_intake.py
+
+Purpose:
+- Provide AGENT runbooks for YODA Intake.
+
+Behavior (minimum):
+- `--dev` only: return initial runbook to branch into `--extern-issue` vs `--no-extern-issue`.
+- `--no-extern-issue`: return full runbook for local-only intake.
+- `--extern-issue <NNN>`:
+  - if external file is missing, return runbook asking the human to execute `get_extern_issue.py`;
+  - if external file exists, return full runbook and friendly markdown summary of the source issue.
+
+Inputs:
+- `--dev <slug>`
+- Optional `--extern-issue <NNN>` or `--no-extern-issue` (mutually exclusive).
+
+Outputs:
+- Runbook text (markdown by default).
+- Source issue summary when external mode is used and local source file exists.
+
+---
+
+### get_extern_issue.py
+
+Purpose:
+- Fetch external issue details and persist them locally for later `yoda_intake.py` consumption.
+
+Behavior (minimum):
+- Detect provider from git `origin`.
+- Use provider CLI (`glab`/`gh`) to fetch issue details.
+- Write source JSON to `yoda/project/extern-issues/<provider>-<NNN>.json`.
+- Output a one-line next step command to continue intake loop.
+
+Inputs:
+- `--dev <slug>`
+- `--extern-issue <NNN>`
+
+Outputs:
+- Saved JSON file path.
+- Next step command: `yoda_intake.py --dev <slug> --extern-issue <NNN>`.
 
 ## Notes
 

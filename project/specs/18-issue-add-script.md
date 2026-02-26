@@ -37,6 +37,9 @@ Optional inputs:
 - `--summary <text>`: alias for description (if provided, it overrides `--description`).
 - `--slug <slug>`: explicit slug for the issue. If omitted, the slug is generated from the title.
 - `--priority <0..10>`: integer priority (default 5 baseline).
+- `--extern-issue <NNN>`: link an external source issue id.
+- `--origin-system <text>`: explicit origin system (example: `github`, `gitlab`).
+- `--origin-requester <text>`: optional requester metadata for origin traceability.
 
 Global flags:
 - `--dev <slug>`
@@ -102,7 +105,11 @@ The TODO issue item and issue front matter must include:
 - `depends_on: []`
 - `pending_reason: ""`
 - `created_at`, `updated_at` (same timestamp)
-- `origin` (default empty values)
+- `origin`:
+  - when `--extern-issue` is provided, `origin.external_id` MUST be set to `NNN`;
+  - `origin.system` SHOULD come from `--origin-system` or be inferred from git `origin`;
+  - `origin.requester` MAY be set by `--origin-requester`;
+  - when no external source is provided, origin fields may remain empty.
 
 Priority policy for issue creation:
 - If `--priority` is omitted, the created issue must use `5` (baseline).

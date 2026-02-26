@@ -2,7 +2,7 @@ schema_version: '1.01'
 developer_name: Yoda
 developer_slug: yoda
 timezone: America/Sao_Paulo
-updated_at: '2026-02-26T14:34:39-03:00'
+updated_at: '2026-02-26T17:12:16-03:00'
 issues:
 - schema_version: '1.01'
   id: yoda-0014
@@ -672,13 +672,13 @@ issues:
     issues YODA usando glab (GitLab CLI), permitindo que uma issue externa gere uma
     ou varias issues YODA. Prever tambem operacao equivalente com issues do GitHub
     (gh). Regra transversal: atualizar primeiro project/specs/ e depois yoda/.'
-  status: to-do
+  status: done
   priority: 1
   depends_on:
   - yoda-0038
   pending_reason: ''
   created_at: '2026-02-25T15:36:45-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
+  updated_at: '2026-02-26T17:12:16-03:00'
   origin:
     system: ''
     external_id: ''

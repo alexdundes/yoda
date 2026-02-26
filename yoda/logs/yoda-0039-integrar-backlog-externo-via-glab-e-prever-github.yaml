@@ -2,7 +2,7 @@ schema_version: '1.0'
 issue_id: yoda-0039
 issue_path: yoda/project/issues/yoda-0039-integrar-backlog-externo-via-glab-e-prever-github.md
 todo_id: yoda-0039
-status: to-do
+status: done
 entries:
 - timestamp: '2026-02-25T15:36:45-03:00'
   message: '[yoda-0039] issue_add created
@@ -33,3 +33,23 @@ entries:
 - timestamp: '2026-02-25T18:58:33-03:00'
   message: '[yoda-0039] planning decision: classificada como subtle para eventual
     impacto em schema/layout YAML.'
+- timestamp: '2026-02-26T14:39:03-03:00'
+  message: '[yoda-0039] todo_update
+
+    status: to-do -> doing'
+- timestamp: '2026-02-26T14:39:11-03:00'
+  message: '[yoda-0039] todo_update (no changes)'
+- timestamp: '2026-02-26T15:11:14-03:00'
+  message: '[yoda-0039] document step updated\n- Added yoda_intake.py two-step flow
+    (--dev, then --extern-issue or --no-extern-issue)\n- Added origin-based provider
+    detection and CLI install guidance requirements\n- Added external commit association
+    rule (#NNN only, no auto-close)\n- Expanded scope to review and align project/specs
+    documentation'
+- timestamp: '2026-02-26T17:12:16-03:00'
+  message: '[yoda-0039] evaluate completed\n- Added yoda_intake.py + get_extern_issue.py
+    intake split\n- Added provider modules and external issue local-store flow\n-
+    Added dedicated specs 25/26 and aligned script references\n- Tests: 49 passed'
+- timestamp: '2026-02-26T17:12:16-03:00'
+  message: '[yoda-0039] todo_update
+
+    status: doing -> done'

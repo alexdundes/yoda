@@ -22,6 +22,7 @@ from lib.error_messages import (
     conflict_log_file,
     required_flag,
 )
+from lib.external_issue_utils import detect_origin_url, parse_origin, provider_from_host
 from lib.front_matter import render_issue
 from lib.io import write_text_atomic
 from lib.logging_utils import configure_logging
@@ -121,6 +122,7 @@ def _build_issue_item(
     slug: str,
     description: str,
     priority: int,
+    origin: dict[str, str],
     timestamp: str,
 ) -> dict[str, Any]:
     return {
@@ -135,7 +137,7 @@ def _build_issue_item(
         "pending_reason": "",
         "created_at": timestamp,
         "updated_at": timestamp,
-        "origin": {"system": "", "external_id": "", "requester": ""},
+        "origin": origin,
     }
 
 
@@ -179,8 +181,32 @@ def _build_issue_log_message(
 
     if _flag_present("--priority"):
         lines.append(f"priority: {priority}")
+    if _flag_present("--extern-issue"):
+        lines.append("origin: external issue linked")
 
     return "\n".join(lines)
+
+
+def _resolve_origin(extern_issue: str | None, origin_system: str | None, origin_requester: str | None) -> dict[str, str]:
+    system = (origin_system or "").strip().lower()
+    external_id = (extern_issue or "").strip()
+    requester = (origin_requester or "").strip()
+
+    if not external_id:
+        return {"system": system, "external_id": "", "requester": requester}
+    if not external_id.isdigit():
+        raise YodaError("--extern-issue must be numeric (NNN).", exit_code=ExitCode.VALIDATION)
+    if not system:
+        try:
+            origin_url = detect_origin_url()
+            host, _ = parse_origin(origin_url)
+            system = provider_from_host(host)
+        except YodaError as exc:
+            raise YodaError(
+                f"Could not infer origin system for --extern-issue {external_id}. Use --origin-system.",
+                exit_code=exc.exit_code,
+            ) from exc
+    return {"system": system, "external_id": external_id, "requester": requester}
 
 
 def _render_output(payload: dict[str, Any], output_format: str) -> str:
@@ -200,13 +226,25 @@ def _render_output(payload: dict[str, Any], output_format: str) -> str:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Create a new issue")
+    parser = argparse.ArgumentParser(
+        description="Create a new issue",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=(
+            "Required input: --title and (--description or --summary).\n"
+            "Use --extern-issue <NNN> to link an external source.\n"
+            "Optional origin fields: --origin-system and --origin-requester.\n"
+            "Priority default is 5; change it only with justified higher/lower importance versus other open issues."
+        ),
+    )
     add_global_flags(parser)
     parser.add_argument("--title", required=False, help="Issue title")
     parser.add_argument("--description", required=False, help="Issue description")
     parser.add_argument("--summary", required=False, help="Alias for description")
     parser.add_argument("--slug", required=False, help="Explicit issue slug")
     parser.add_argument("--priority", type=int, default=None, help="Priority 0-10")
+    parser.add_argument("--extern-issue", dest="extern_issue", help="External issue number (NNN)")
+    parser.add_argument("--origin-system", dest="origin_system", help="Origin system (github/gitlab)")
+    parser.add_argument("--origin-requester", dest="origin_requester", help="Origin requester")
 
     args = parser.parse_args()
     configure_logging(args.verbose)
@@ -224,6 +262,7 @@ def main() -> int:
         priority = args.priority if args.priority is not None else 5
         if not isinstance(priority, int) or not (0 <= priority <= 10):
             raise YodaError("priority must be between 0 and 10", exit_code=ExitCode.VALIDATION)
+        origin = _resolve_origin(args.extern_issue, args.origin_system, args.origin_requester)
 
         slug = args.slug.strip() if args.slug else _generate_slug(title)
         validate_slug(slug)
@@ -255,11 +294,12 @@ def main() -> int:
             issue_item = _build_issue_item(
                 issue_id=issue_id,
                 title=title,
-                slug=slug,
-                description=description,
-                priority=priority,
-                timestamp=timestamp,
-            )
+            slug=slug,
+            description=description,
+            priority=priority,
+            origin=origin,
+            timestamp=timestamp,
+        )
 
             issues.append(issue_item)
             todo["issues"] = issues
