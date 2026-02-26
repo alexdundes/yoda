@@ -68,21 +68,29 @@ Global flags:
 ## Behavior
 
 1) Resolve developer slug using the standard order: `--dev`, `YODA_DEV`, interactive prompt.
-2) Load `yoda/todos/TODO.<dev>.yaml`. If it does not exist, create a new TODO file with default root fields (see "TODO file creation") before continuing.
-3) Validate the TODO schema and inputs. If validation fails, exit with code 2.
-4) Generate the next canonical ID and slug.
-5) Construct the issue path and log path.
-6) Check for conflicts:
+2) Acquire an external lock file scoped by `--dev` before reading/writing TODO/issue/log artifacts.
+   - Retry lock acquisition up to 3 attempts with increasing wait between attempts.
+   - If lock acquisition fails after retries, exit with code 4 and an explicit message.
+3) Load `yoda/todos/TODO.<dev>.yaml`. If it does not exist, create a new TODO file with default root fields (see "TODO file creation") before continuing.
+4) Validate the TODO schema and inputs. If validation fails, exit with code 2.
+5) Generate the next canonical ID and slug.
+6) Construct the issue path and log path.
+7) Check for conflicts:
    - If the ID already exists in the TODO, exit with code 4.
    - If the issue file already exists, exit with code 4.
    - If the log file already exists, exit with code 4.
-7) Load the selected template. If missing, exit with code 3.
-8) Populate the issue front matter fields to mirror the TODO item fields.
-9) Create or update the TODO entry (append to the end of the issues list).
+8) Load the selected template. If missing, exit with code 3.
+9) Populate the issue front matter fields to mirror the TODO item fields.
 10) Create the issue Markdown file from the template with the populated fields.
     - The generated issue file must not include the opening template instruction comment that asks to replace `[ID]` and `[TITLE]`.
 11) Create the log file with a single entry describing the issue creation.
-12) If `--dry-run` is set, perform all steps except file writes. Output a summary and exit 0.
+12) Create or update the TODO entry (append to the end of the issues list).
+13) File writes during creation MUST be atomic per file (temporary file + replace).
+14) If `--dry-run` is set, perform all steps except file writes. Output a summary and exit 0.
+
+Failure policy:
+- If a write step fails after lock acquisition, return explicit error and abort.
+- No automatic rollback is required for files written before the failure.
 
 ## Metadata population
 

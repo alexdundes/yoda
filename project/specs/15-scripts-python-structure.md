@@ -80,7 +80,11 @@ Recommended dependencies for v1:
 
 ## IO and concurrency
 
-- No special concurrency handling is required for v1.
+- `issue_add.py` MUST implement concurrency control per developer slug (`--dev`) using an external lock file.
+- Lock acquisition in `issue_add.py` MUST use retry with 3 attempts and increasing wait between attempts.
+- If lock acquisition fails after retries, `issue_add.py` MUST fail with an explicit conflict error.
+- No automatic rollback is required when a write step fails after lock acquisition; failure must be explicit.
+- Writes that mutate artifacts during `issue_add.py` MUST use atomic replace semantics (temporary file + replace) to avoid partial/corrupted files.
 - IO utilities live in `yoda/scripts/lib/io.py` and should be the only place for file writes.
 
 ## Paths and repo layout

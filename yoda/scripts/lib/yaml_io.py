@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any
 
 from .errors import YodaError, ExitCode
+from .io import write_text_atomic
 
 try:
     import yaml
@@ -31,3 +32,8 @@ def write_yaml(path: Path, data: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     text = yaml.safe_dump(data, sort_keys=False, allow_unicode=False)
     path.write_text(text, encoding="utf-8")
+
+
+def write_yaml_atomic(path: Path, data: dict[str, Any]) -> None:
+    text = yaml.safe_dump(data, sort_keys=False, allow_unicode=False)
+    write_text_atomic(path, text)

@@ -5,8 +5,11 @@ from __future__ import annotations
 
 import argparse
 import logging
+import os
 import re
 import sys
+import time
+from contextlib import contextmanager
 from pathlib import Path
 from typing import Any
 
@@ -20,7 +23,7 @@ from lib.error_messages import (
     required_flag,
 )
 from lib.front_matter import render_issue
-from lib.io import write_text
+from lib.io import write_text_atomic
 from lib.logging_utils import configure_logging
 from lib.output import render_output
 from lib.paths import issue_path, log_path, repo_root, template_path, todo_path
@@ -33,7 +36,45 @@ from lib.validate import (
     validate_todo,
     validate_todo_root,
 )
-from lib.yaml_io import read_yaml, write_yaml
+from lib.yaml_io import read_yaml, write_yaml_atomic
+
+
+LOCK_RETRIES = 3
+LOCK_BASE_WAIT_SECONDS = 0.1
+
+
+def _lock_path(dev: str) -> Path:
+    return repo_root() / "yoda" / "locks" / f"issue_add.{dev}.lock"
+
+
+@contextmanager
+def _issue_add_lock(dev: str) -> Any:
+    lock_file = _lock_path(dev)
+    lock_file.parent.mkdir(parents=True, exist_ok=True)
+    acquired = False
+    for attempt in range(1, LOCK_RETRIES + 1):
+        try:
+            fd = os.open(str(lock_file), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+            with os.fdopen(fd, "w", encoding="utf-8") as handle:
+                handle.write(f"pid={os.getpid()}\n")
+                handle.write(f"attempt={attempt}\n")
+            acquired = True
+            break
+        except FileExistsError:
+            if attempt == LOCK_RETRIES:
+                raise YodaError(
+                    f"Failed to acquire issue_add lock for dev '{dev}' after {LOCK_RETRIES} attempts: {lock_file}",
+                    exit_code=ExitCode.CONFLICT,
+                )
+            time.sleep(LOCK_BASE_WAIT_SECONDS * attempt)
+
+    if not acquired:
+        raise YodaError("Unexpected lock acquisition failure", exit_code=ExitCode.ERROR)
+
+    try:
+        yield
+    finally:
+        lock_file.unlink(missing_ok=True)
 
 
 def _create_default_todo(dev: str) -> dict[str, Any]:
@@ -184,93 +225,91 @@ def main() -> int:
         if not isinstance(priority, int) or not (0 <= priority <= 10):
             raise YodaError("priority must be between 0 and 10", exit_code=ExitCode.VALIDATION)
 
-        todo_file = todo_path(dev)
-        if todo_file.exists():
-            todo = read_yaml(todo_file)
-        else:
-            todo = _create_default_todo(dev)
-
-        validate_todo_root(todo, dev)
-
         slug = args.slug.strip() if args.slug else _generate_slug(title)
         validate_slug(slug)
-        issue_id = _next_issue_id(dev, todo.get("issues", []))
-
-        issues = list(todo.get("issues", []))
-        if any(item.get("id") == issue_id for item in issues):
-            conflict_issue_id(issue_id)
-
-        issue_file = issue_path(issue_id, slug)
-        log_file = log_path(issue_id, slug)
-        if issue_file.exists():
-            conflict_issue_file(issue_file)
-        if log_file.exists():
-            conflict_log_file(log_file)
 
         template_file = template_path()
         template_text = load_template(template_file)
+        with _issue_add_lock(dev):
+            todo_file = todo_path(dev)
+            if todo_file.exists():
+                todo = read_yaml(todo_file)
+            else:
+                todo = _create_default_todo(dev)
 
-        timestamp = now_iso(todo.get("timezone"))
+            validate_todo_root(todo, dev)
 
-        issue_item = _build_issue_item(
-            issue_id=issue_id,
-            title=title,
-            slug=slug,
-            description=description,
-            priority=priority,
-            timestamp=timestamp,
-        )
+            issue_id = _next_issue_id(dev, todo.get("issues", []))
+            issues = list(todo.get("issues", []))
+            if any(item.get("id") == issue_id for item in issues):
+                conflict_issue_id(issue_id)
 
-        issues.append(issue_item)
-        todo["issues"] = issues
-        todo["updated_at"] = timestamp
+            issue_file = issue_path(issue_id, slug)
+            log_file = log_path(issue_id, slug)
+            if issue_file.exists():
+                conflict_issue_file(issue_file)
+            if log_file.exists():
+                conflict_log_file(log_file)
 
-        validate_todo(todo, dev)
-
-        issue_metadata = issue_item.copy()
-        issue_metadata.pop("schema_version", None)
-        issue_metadata["schema_version"] = "1.01"
-
-        rendered_issue = render_issue(
-            template_text,
-            metadata=issue_metadata,
-            replacements={
-                "[ID]": issue_id,
-                "[TITLE]": title,
-                "[SLUG]": slug,
-                "[SUMMARY]": description,
-                "[CREATED_AT]": timestamp,
-                "[UPDATED_AT]": timestamp,
-            },
-        )
-
-        log_payload = _build_log(
-            issue_id=issue_id,
-            issue_path_str=str(issue_file.relative_to(repo_root())),
-            status="to-do",
-            timestamp=timestamp,
-            message=_build_issue_log_message(
+            timestamp = now_iso(todo.get("timezone"))
+            issue_item = _build_issue_item(
                 issue_id=issue_id,
                 title=title,
-                description=description,
                 slug=slug,
+                description=description,
                 priority=priority,
-            ),
-        )
+                timestamp=timestamp,
+            )
 
-        payload = {
-            "issue_id": issue_id,
-            "issue_path": str(issue_file.relative_to(repo_root())),
-            "todo_path": str(todo_file.relative_to(repo_root())),
-            "log_path": str(log_file.relative_to(repo_root())),
-            "template": str(template_file.relative_to(repo_root())),
-            "dry_run": bool(args.dry_run),
-        }
+            issues.append(issue_item)
+            todo["issues"] = issues
+            todo["updated_at"] = timestamp
+            validate_todo(todo, dev)
 
-        if not args.dry_run:
-            write_yaml(todo_file, todo)
-            write_text(issue_file, rendered_issue)
-            write_yaml(log_file, log_payload)
+            issue_metadata = issue_item.copy()
+            issue_metadata.pop("schema_version", None)
+            issue_metadata["schema_version"] = "1.01"
+
+            rendered_issue = render_issue(
+                template_text,
+                metadata=issue_metadata,
+                replacements={
+                    "[ID]": issue_id,
+                    "[TITLE]": title,
+                    "[SLUG]": slug,
+                    "[SUMMARY]": description,
+                    "[CREATED_AT]": timestamp,
+                    "[UPDATED_AT]": timestamp,
+                },
+            )
+
+            log_payload = _build_log(
+                issue_id=issue_id,
+                issue_path_str=str(issue_file.relative_to(repo_root())),
+                status="to-do",
+                timestamp=timestamp,
+                message=_build_issue_log_message(
+                    issue_id=issue_id,
+                    title=title,
+                    description=description,
+                    slug=slug,
+                    priority=priority,
+                ),
+            )
+
+            payload = {
+                "issue_id": issue_id,
+                "issue_path": str(issue_file.relative_to(repo_root())),
+                "todo_path": str(todo_file.relative_to(repo_root())),
+                "log_path": str(log_file.relative_to(repo_root())),
+                "template": str(template_file.relative_to(repo_root())),
+                "dry_run": bool(args.dry_run),
+            }
+
+            if not args.dry_run:
+                write_text_atomic(issue_file, rendered_issue)
+                write_yaml_atomic(log_file, log_payload)
+                write_yaml_atomic(todo_file, todo)
 
         print(_render_output(payload, output_format))
         return ExitCode.SUCCESS

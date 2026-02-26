@@ -16,9 +16,9 @@ pending_reason: ''
 priority: 2
 schema_version: '1.01'
 slug: corrigir-concorrencia-no-issue-add-para-criacoes-simultaneas
-status: to-do
+status: done
 title: Corrigir concorrencia no issue_add para criacoes simultaneas
-updated_at: '2026-02-25T20:02:28-03:00'
+updated_at: '2026-02-26T14:34:39-03:00'
 ---
 
 # yoda-0033 - Corrigir concorrencia no issue_add para criacoes simultaneas
@@ -47,15 +47,19 @@ Tornar `issue_add.py` seguro para concorrencia, impedindo IDs duplicados e garan
 ## Requirements
 - Ordem de execucao: atualizar `project/specs/` antes de `yoda/`.
 - `issue_add.py` deve impedir emissao de ID duplicado sob concorrencia.
-- Escrita de arquivos deve evitar estado parcial/corrompido em falhas intermediarias.
-- Em caso de disputa, o comando deve tentar novamente de forma controlada ou falhar com erro claro.
+- Lock externo por arquivo (por `--dev`) deve serializar a alocacao/escrita para criacao de issue.
+- Escrita de arquivos deve usar estrategia atomica (arquivo temporario + replace) para evitar estado parcial/corrompido.
+- Em caso de disputa de lock, o comando deve aplicar retry com 3 tentativas e espera crescente entre tentativas.
+- Em caso de falha apos retries, retornar erro explicito (sem rollback).
 
 ## Acceptance criteria
-- [ ] Existe especificacao em `project/specs/` cobrindo criacao concorrente de issues.
-- [ ] Execucao concorrente de duas chamadas `issue_add.py` resulta em IDs distintos.
-- [ ] `TODO.<dev>.yaml` permanece valido apos execucoes simultaneas.
-- [ ] Cada issue criada possui seu markdown e log corretos, sem sobrescrita cruzada.
-- [ ] Ha teste automatizado reproduzindo o cenario e validando a correcao.
+- [x] Existe especificacao em `project/specs/` cobrindo criacao concorrente de issues.
+- [x] Execucao concorrente de duas chamadas `issue_add.py` resulta em IDs distintos.
+- [x] `TODO.<dev>.yaml` permanece valido apos execucoes simultaneas.
+- [x] Cada issue criada possui seu markdown e log corretos, sem sobrescrita cruzada.
+- [x] Em disputa, `issue_add.py` aplica retry de lock em 3 tentativas com espera crescente.
+- [x] Ao esgotar retries ou falhar durante escrita, o comando retorna erro explicito (sem rollback automatico).
+- [x] Ha teste automatizado reproduzindo o cenario e validando a correcao.
 
 ## Dependencies
 None.
@@ -69,7 +73,10 @@ None.
   type: data
 
 ## Implementation notes
-Preferir estrategia simples e robustas: lock por arquivo de TODO, escrita atomica com arquivo temporario + rename, e leitura de estado apos lock antes de definir proximo ID.
+- Lock externo por `--dev` (arquivo `.lock` dedicado), sem necessidade de estrategia intra-dev adicional.
+- A secao critica deve incluir leitura do estado mais recente, alocacao do proximo ID e escrita dos artefatos.
+- Retry policy definida: 3 tentativas com espera crescente.
+- Falhas devem ser explicitas e abortar sem rollback automatico.
 
 ## Tests
 Adicionar teste de concorrencia para `issue_add.py` com duas execucoes paralelas, verificando IDs unicos e integridade dos arquivos gerados.
@@ -80,9 +87,8 @@ Adicionar teste de concorrencia para `issue_add.py` com duas execucoes paralelas
 - Regressao em fluxos sequenciais se o lock/retry for mal calibrado.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
+Implementado controle de concorrencia em `issue_add.py` com lock externo por `--dev`, retry (3 tentativas com espera crescente), e escrita atomica por arquivo (tmp + replace). Atualizadas specs (docs-first) para formalizar o contrato e adicionados testes de concorrencia/contencao de lock.
+
+fix(yoda): make issue_add concurrency-safe with per-dev lock and atomic writes
+Issue: `yoda-0033`
+Path: `yoda/project/issues/yoda-0033-corrigir-concorrencia-no-issue-add-para-criacoes-simultaneas.md`

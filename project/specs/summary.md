@@ -25,6 +25,7 @@ This file records decisions and known open points captured so far.
 - `todo_list.py` JSON output uses full issue items.
 - Required scripts (v1): issue_add, todo_list, todo_update, todo_next, todo_reorder, log_add.
 - Script behavior specs defined for: todo_list, todo_reorder, issue_add, todo_update, log_add, todo_next (validation, conflicts, output, and log rules).
+- Concurrency policy: `issue_add.py` uses external lock per `--dev`, retries lock acquisition 3 times with increasing wait, writes files atomically (temp + replace), and fails explicitly without automatic rollback on partial failure.
 - Python structure: shared helpers in `yoda/scripts/lib/`, pytest for tests, dependencies in `yoda/scripts/requirements.txt`.
 - Issue templates: standard template usage, required fill-in rules, and commit text format embedded in the issue result log.
 - Agent entry: `AGENTS.md`/`GEMINI.md` route to `yoda/yoda.md`; entry phrase must mention YODA Flow and intent to take highest-priority selectable issue; resolve dev via flag/env/prompt.

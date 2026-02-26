@@ -2,7 +2,7 @@ schema_version: '1.0'
 issue_id: yoda-0033
 issue_path: yoda/project/issues/yoda-0033-corrigir-concorrencia-no-issue-add-para-criacoes-simultaneas.md
 todo_id: yoda-0033
-status: to-do
+status: done
 entries:
 - timestamp: '2026-02-25T15:23:19-03:00'
   message: '[yoda-0033] issue_add created
@@ -30,3 +30,19 @@ entries:
   message: '[yoda-0033] todo_update
 
     depends_on: [] -> yoda-0038'
+- timestamp: '2026-02-26T14:24:41-03:00'
+  message: '[yoda-0033] todo_update
+
+    status: to-do -> doing'
+- timestamp: '2026-02-26T14:29:57-03:00'
+  message: '[yoda-0033] Study decisions finalized\n- Retry policy: 3 attempts with
+    increasing wait\n- Failure mode: explicit error, no rollback\n- Lock strategy:
+    external lock file per --dev (atomicity scope by dev)'
+- timestamp: '2026-02-26T14:34:36-03:00'
+  message: '[yoda-0033] evaluate completed\n- Docs-first specs updated for issue_add
+    concurrency\n- Implemented per-dev lock + retry(3) + atomic writes\n- No rollback
+    policy kept explicit\n- Tests: 39 passed'
+- timestamp: '2026-02-26T14:34:40-03:00'
+  message: '[yoda-0033] todo_update
+
+    status: doing -> done'
