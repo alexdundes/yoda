@@ -9,6 +9,9 @@ import sys
 REPO_ROOT = Path(__file__).resolve().parents[3]
 SCRIPT_PATH = REPO_ROOT / "yoda" / "scripts" / "yoda_intake.py"
 EXTERN_DIR = REPO_ROOT / "yoda" / "project" / "extern-issues"
+# Canonical external issue reference for manual/integration validation:
+# GitHub issue #1 ("Test Issue for External Intake Validation").
+LIVE_REFERENCE_EXTERN_ISSUE = "1"
 TEST_EXTERN_ISSUE = "900123"
 
 
