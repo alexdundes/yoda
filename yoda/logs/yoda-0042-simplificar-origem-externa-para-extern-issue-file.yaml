@@ -1,0 +1,12 @@
+schema_version: '1.0'
+issue_id: yoda-0042
+issue_path: yoda/project/issues/yoda-0042-simplificar-origem-externa-para-extern-issue-file.md
+todo_id: yoda-0042
+status: to-do
+entries:
+- timestamp: '2026-02-26T18:50:40-03:00'
+  message: "[yoda-0042] issue_add created\ntitle: Simplificar origem externa para\
+    \ extern_issue_file\ndescription: Substituir origin.system, origin.external_id\
+    \ e origin.requester por um \xFAnico campo extern_issue_file com caminho relativo\
+    \ para o JSON da issue externa (ex.: ../github-2.json).\nslug: simplificar-origem-externa-para-extern-issue-file\n\
+    priority: 5\norigin: external issue linked"

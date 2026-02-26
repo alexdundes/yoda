@@ -1,0 +1,19 @@
+schema_version: '1.0'
+issue_id: yoda-0043
+issue_path: yoda/project/issues/yoda-0043-omitir-campos-opcionais-vazios-nos-arquivos.md
+todo_id: yoda-0043
+status: to-do
+entries:
+- timestamp: '2026-02-26T18:57:50-03:00'
+  message: '[yoda-0043] issue_add created
+
+    title: Omitir campos opcionais vazios nos arquivos
+
+    description: Quando um campo opcional estiver vazio, ele nao deve ser definido/persistido
+    nos arquivos gerados ou atualizados.
+
+    slug: omitir-campos-opcionais-vazios-nos-arquivos
+
+    priority: 5
+
+    origin: external issue linked'

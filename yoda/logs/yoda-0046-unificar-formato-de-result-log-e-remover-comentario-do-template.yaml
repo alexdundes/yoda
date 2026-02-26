@@ -1,0 +1,20 @@
+schema_version: '1.0'
+issue_id: yoda-0046
+issue_path: yoda/project/issues/yoda-0046-unificar-formato-de-result-log-e-remover-comentario-do-template.md
+todo_id: yoda-0046
+status: to-do
+entries:
+- timestamp: '2026-02-26T19:27:28-03:00'
+  message: '[yoda-0046] issue_add created
+
+    title: Unificar formato de Result log e remover comentario do template
+
+    description: Remover comentario instrucional do Result log no template e alinhar
+    o formato do Evaluate no yoda/yoda.md, com linha de issue externa condicional
+    quando houver vinculo.
+
+    slug: unificar-formato-de-result-log-e-remover-comentario-do-template
+
+    priority: 5
+
+    origin: external issue linked'

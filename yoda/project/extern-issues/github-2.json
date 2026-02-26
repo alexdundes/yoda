@@ -1,0 +1,12 @@
+{
+  "provider": "github",
+  "number": "2",
+  "title": "Ajustes de campos",
+  "description": "## Contexto\n\nDurante o intake da issue externa `#2`, decompusemos o trabalho em micro-issues internas para simplificar o modelo de dados do YODA, reduzir ru\u00eddo nos arquivos e padronizar o fluxo de atualiza\u00e7\u00e3o/fechamento de issues.\n\n## Micro-issues abertas no backlog interno\n\n- `yoda-0042` \u2014 Simplificar origem externa para `extern_issue_file`  \n  Substituir `origin.system`, `origin.external_id` e `origin.requester` por um \u00fanico campo com caminho relativo para o JSON externo (ex.: `../extern-issues/github-2.json`).\n\n- `yoda-0043` \u2014 Omitir campos opcionais vazios nos arquivos  \n  Campos opcionais sem valor n\u00e3o devem ser persistidos (nem no front matter, nem no TODO YAML), reduzindo tamanho e ru\u00eddo.\n\n- `yoda-0044` \u2014 Padronizar front matter sem defaults no template  \n  O template n\u00e3o deve carregar valores operacionais padr\u00e3o; `issue_add.py` e `todo_update.py` passam a preencher/atualizar.  \n  Tamb\u00e9m define ordem fixa de campos no front matter para melhorar legibilidade e consist\u00eancia de diff.\n\n- `yoda-0045` \u2014 Update de descri\u00e7\u00e3o + rename com slug derivado do nome do arquivo  \n  Permitir altera\u00e7\u00e3o de descri\u00e7\u00e3o e rename do arquivo; `slug` passa a ser derivado do filename (sem campo `slug` no TODO/front matter).  \n  Regra: se mudar descri\u00e7\u00e3o sem informar slug, recalcula e renomeia; se informar descri\u00e7\u00e3o+slug, usa o slug informado; rename deve gravar novo arquivo e remover o antigo.  \n  Classifica\u00e7\u00e3o: `subtle` (sem impacto de compatibilidade esperado).\n\n- `yoda-0046` \u2014 Unificar `Result log` e remover coment\u00e1rio do template  \n  Remover coment\u00e1rio residual do bloco `Result log` no template e alinhar formato com o playbook (`yoda/yoda.md`, fase Evaluate).  \n  A linha `- **<GitLab|GitHub> Issue** :   #NNN` deve aparecer **somente** quando houver associa\u00e7\u00e3o externa, com `#` obrigat\u00f3rio para vincula\u00e7\u00e3o autom\u00e1tica.\n\n## Resultado esperado\n\nCom esse pacote, o fluxo de issues internas fica mais simples, consistente e menos sujeito a inconsist\u00eancias entre template, YAML, nome de arquivo e playbook operacional.",
+  "state": "open",
+  "author": "alexdundes",
+  "url": "https://github.com/alexdundes/yoda/issues/2",
+  "labels": [
+    "enhancement"
+  ]
+}

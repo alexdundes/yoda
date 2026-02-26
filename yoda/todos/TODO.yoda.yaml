@@ -2,7 +2,7 @@ schema_version: '1.01'
 developer_name: Yoda
 developer_slug: yoda
 timezone: America/Sao_Paulo
-updated_at: '2026-02-26T17:12:16-03:00'
+updated_at: '2026-02-26T19:27:28-03:00'
 issues:
 - schema_version: '1.01'
   id: yoda-0014
@@ -718,4 +718,88 @@ issues:
   origin:
     system: ''
     external_id: ''
+    requester: ''
+- schema_version: '1.01'
+  id: yoda-0042
+  title: Simplificar origem externa para extern_issue_file
+  slug: simplificar-origem-externa-para-extern-issue-file
+  description: "Substituir origin.system, origin.external_id e origin.requester por\
+    \ um \xFAnico campo extern_issue_file com caminho relativo para o JSON da issue\
+    \ externa (ex.: ../github-2.json)."
+  status: to-do
+  priority: 5
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-02-26T18:50:40-03:00'
+  updated_at: '2026-02-26T18:50:40-03:00'
+  origin:
+    system: github
+    external_id: '2'
+    requester: ''
+- schema_version: '1.01'
+  id: yoda-0043
+  title: Omitir campos opcionais vazios nos arquivos
+  slug: omitir-campos-opcionais-vazios-nos-arquivos
+  description: Quando um campo opcional estiver vazio, ele nao deve ser definido/persistido
+    nos arquivos gerados ou atualizados.
+  status: to-do
+  priority: 5
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-02-26T18:57:50-03:00'
+  updated_at: '2026-02-26T18:57:50-03:00'
+  origin:
+    system: github
+    external_id: '2'
+    requester: ''
+- schema_version: '1.01'
+  id: yoda-0044
+  title: Padronizar front matter sem defaults no template
+  slug: padronizar-front-matter-sem-defaults-no-template
+  description: Remover valores padrao do front matter no template markdown; issue_add.py
+    e todo_update.py passam a preencher/atualizar campos. Definir ordem fixa de campos
+    no front matter para leitura consistente.
+  status: to-do
+  priority: 5
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-02-26T19:04:01-03:00'
+  updated_at: '2026-02-26T19:04:01-03:00'
+  origin:
+    system: github
+    external_id: '2'
+    requester: ''
+- schema_version: '1.01'
+  id: yoda-0045
+  title: Permitir update de descricao e rename por slug derivado do arquivo
+  slug: permitir-update-de-descricao-e-rename-por-slug-derivado-do-arquivo
+  description: "Permitir alterar descricao e rename do arquivo da issue; remover campo\
+    \ slug do modelo e derivar slug sempre do nome do arquivo (sem ID), com regras\
+    \ claras de rec\xE1lculo no update."
+  status: to-do
+  priority: 5
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-02-26T19:12:53-03:00'
+  updated_at: '2026-02-26T19:12:53-03:00'
+  origin:
+    system: github
+    external_id: '2'
+    requester: ''
+- schema_version: '1.01'
+  id: yoda-0046
+  title: Unificar formato de Result log e remover comentario do template
+  slug: unificar-formato-de-result-log-e-remover-comentario-do-template
+  description: Remover comentario instrucional do Result log no template e alinhar
+    o formato do Evaluate no yoda/yoda.md, com linha de issue externa condicional
+    quando houver vinculo.
+  status: to-do
+  priority: 5
+  depends_on: []
+  pending_reason: ''
+  created_at: '2026-02-26T19:27:28-03:00'
+  updated_at: '2026-02-26T19:27:28-03:00'
+  origin:
+    system: github
+    external_id: '2'
     requester: ''

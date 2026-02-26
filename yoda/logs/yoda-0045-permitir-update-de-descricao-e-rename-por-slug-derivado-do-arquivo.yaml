@@ -1,0 +1,12 @@
+schema_version: '1.0'
+issue_id: yoda-0045
+issue_path: yoda/project/issues/yoda-0045-permitir-update-de-descricao-e-rename-por-slug-derivado-do-arquivo.md
+todo_id: yoda-0045
+status: to-do
+entries:
+- timestamp: '2026-02-26T19:12:53-03:00'
+  message: "[yoda-0045] issue_add created\ntitle: Permitir update de descricao e rename\
+    \ por slug derivado do arquivo\ndescription: Permitir alterar descricao e rename\
+    \ do arquivo da issue; remover campo slug do modelo e derivar slug sempre do nome\
+    \ do arquivo (sem ID), com regras claras de rec\xE1lculo no update.\nslug: permitir-update-de-descricao-e-rename-por-slug-derivado-do-arquivo\n\
+    priority: 5\norigin: external issue linked"
