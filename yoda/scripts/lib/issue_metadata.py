@@ -9,7 +9,6 @@ OPTIONAL_EMPTY_KEYS = ("depends_on", "pending_reason", "extern_issue_file")
 CANONICAL_ISSUE_FIELD_ORDER = (
     "schema_version",
     "id",
-    "slug",
     "status",
     "pending_reason",
     "depends_on",
@@ -36,6 +35,7 @@ def prune_empty_optionals(item: dict[str, Any]) -> dict[str, Any]:
 def canonicalize_issue_metadata(item: dict[str, Any]) -> dict[str, Any]:
     """Return issue metadata ordered by canonical field order."""
     normalized = dict(item)
+    normalized.pop("slug", None)
     prune_empty_optionals(normalized)
 
     ordered: dict[str, Any] = {}

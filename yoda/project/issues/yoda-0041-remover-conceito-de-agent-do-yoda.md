@@ -1,7 +1,6 @@
 ---
 schema_version: '1.02'
 id: yoda-0041
-slug: remover-conceito-de-agent-do-yoda
 status: done
 title: Remover conceito de agent do YODA
 description: 'Eliminar o campo agent do modelo YAML e do fluxo operacional, seguindo
@@ -10,7 +9,7 @@ description: 'Eliminar o campo agent do modelo YAML e do fluxo operacional, segu
   aplicavel.'
 priority: 3
 created_at: '2026-02-25T19:53:46-03:00'
-updated_at: '2026-03-03T12:57:08-03:00'
+updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0041 - Remover conceito de agent do YODA

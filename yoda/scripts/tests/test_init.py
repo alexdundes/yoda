@@ -193,7 +193,6 @@ def test_init_reconcile_layout_updates_schema_and_front_matter(tmp_path: Path) -
     assert _front_matter_keys(issue_path) == [
         "schema_version",
         "id",
-        "slug",
         "status",
         "title",
         "description",

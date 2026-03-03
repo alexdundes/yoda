@@ -1,7 +1,6 @@
 ---
 schema_version: '1.02'
 id: yoda-0021
-slug: license-curta-para-pacote-yoda
 status: done
 depends_on:
 - yoda-0016
@@ -10,7 +9,7 @@ description: "Definir e redigir arquivo LICENSE curto a ser inclu\xEDdo no artef
   \ distribu\xEDvel, alinhado \xE0s decis\xF5es de empacote e licen\xE7a do projeto."
 priority: 6
 created_at: '2026-01-29T06:31:15-03:00'
-updated_at: '2026-03-03T12:57:08-03:00'
+updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0021 - LICENSE curta para pacote YODA

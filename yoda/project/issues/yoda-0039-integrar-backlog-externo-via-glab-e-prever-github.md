@@ -1,7 +1,6 @@
 ---
 schema_version: '1.02'
 id: yoda-0039
-slug: integrar-backlog-externo-via-glab-e-prever-github
 status: done
 depends_on:
 - yoda-0038
@@ -12,7 +11,7 @@ description: 'Redefinir o uso de origin para mapear e traduzir backlog externo e
   Regra transversal: atualizar primeiro project/specs/ e depois yoda/.'
 priority: 1
 created_at: '2026-02-25T15:36:45-03:00'
-updated_at: '2026-03-03T12:57:08-03:00'
+updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0039 - Integrar backlog externo via glab e prever GitHub

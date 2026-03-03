@@ -1,7 +1,6 @@
 ---
 schema_version: '1.02'
 id: yoda-0033
-slug: corrigir-concorrencia-no-issue-add-para-criacoes-simultaneas
 status: done
 depends_on:
 - yoda-0038
@@ -13,7 +12,7 @@ description: 'Ao executar dois issue_add em paralelo, ambos podem receber o mesm
   a documentacao em project/specs/ e somente depois aplicar mudancas em yoda/.'
 priority: 2
 created_at: '2026-02-25T15:23:19-03:00'
-updated_at: '2026-03-03T12:57:08-03:00'
+updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0033 - Corrigir concorrencia no issue_add para criacoes simultaneas

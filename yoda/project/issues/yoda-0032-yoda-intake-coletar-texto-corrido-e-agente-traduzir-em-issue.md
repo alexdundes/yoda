@@ -1,7 +1,6 @@
 ---
 schema_version: '1.02'
 id: yoda-0032
-slug: yoda-intake-coletar-texto-corrido-e-agente-traduzir-em-issue
 status: done
 title: 'YODA Intake: coletar texto corrido e agente traduzir em issue'
 description: "No modo YODA Intake, o agente deve pedir ao dev a descri\xE7\xE3o da\
@@ -12,7 +11,7 @@ description: "No modo YODA Intake, o agente deve pedir ao dev a descri\xE7\xE3o 
   \ mudan\xE7as em yoda/."
 priority: 3
 created_at: '2026-02-25T15:19:59-03:00'
-updated_at: '2026-03-03T12:57:08-03:00'
+updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0032 - YODA Intake: coletar texto corrido e agente traduzir em issue

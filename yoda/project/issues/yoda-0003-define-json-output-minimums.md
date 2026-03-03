@@ -1,13 +1,12 @@
 ---
 schema_version: '1.02'
 id: yoda-0003
-slug: define-json-output-minimums
 status: done
 title: Define JSON output minimums
 description: Document minimal JSON fields for issue_add, todo_update, log_add
 priority: 5
 created_at: '2026-01-27T16:41:45-03:00'
-updated_at: '2026-03-03T12:57:08-03:00'
+updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0003 - Define JSON output minimums

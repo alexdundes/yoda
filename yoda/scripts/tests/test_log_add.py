@@ -5,6 +5,18 @@ import yaml
 from conftest import REPO_ROOT, TEST_DEV, TEST_TODO, cleanup_test_files, run_script
 
 
+def _issue_file_for_id(issue_id: str):
+    matches = list((REPO_ROOT / "yoda" / "project" / "issues").glob(f"{issue_id}-*.md"))
+    assert len(matches) == 1
+    return matches[0]
+
+
+def _log_file_for_id(issue_id: str):
+    matches = list((REPO_ROOT / "yoda" / "logs").glob(f"{issue_id}-*.yaml"))
+    assert len(matches) == 1
+    return matches[0]
+
+
 def setup_function() -> None:
     cleanup_test_files()
 
@@ -22,7 +34,7 @@ def test_log_add_appends_entry() -> None:
 
     todo = yaml.safe_load(TEST_TODO.read_text(encoding="utf-8"))
     issue = todo["issues"][0]
-    log_path = REPO_ROOT / "yoda" / "logs" / f"{issue['id']}-{issue['slug']}.yaml"
+    log_path = _log_file_for_id(issue["id"])
 
     before = yaml.safe_load(log_path.read_text(encoding="utf-8"))
     before_len = len(before.get("entries", []))
@@ -79,7 +91,7 @@ def test_log_add_errors_when_issue_file_missing() -> None:
 
     todo = yaml.safe_load(TEST_TODO.read_text(encoding="utf-8"))
     issue = todo["issues"][0]
-    issue_path = REPO_ROOT / "yoda" / "project" / "issues" / f"{issue['id']}-{issue['slug']}.md"
+    issue_path = _issue_file_for_id(issue["id"])
     if issue_path.exists():
         issue_path.unlink()
 
@@ -95,4 +107,4 @@ def test_log_add_errors_when_issue_file_missing() -> None:
         ],
     )
     assert result.returncode == 3
-    assert f"Issue file not found: {issue_path}" in result.stderr
+    assert f"Issue file not found for id: {issue['id']}" in result.stderr

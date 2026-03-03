@@ -35,6 +35,7 @@ Entry:
 2. Run `python3 yoda/scripts/todo_next.py --dev <slug>`.
 3. Confirm the selected issue with the human.
 4. Set `doing` via `todo_update.py`.
+5. Start the cycle with `Study`.
 
 Execution phases:
 1. Study
@@ -43,10 +44,12 @@ Execution phases:
 4. Evaluate
 
 Flow policy:
+- The issue must be set to `doing` before `Study`.
+- After each phase (`Study`, `Document`, `Implement`, `Evaluate`), wait for explicit human authorization before moving to the next phase.
 - Implement only approved issue scope.
 - Use scripts to update metadata (do not hand-edit TODO YAML).
 - If blocked, set `pending` with explicit reason.
-- In Evaluate, validate acceptance criteria, append log (`log_add.py`), and close with `todo_update.py --status done`.
+- In `Evaluate`, validate acceptance criteria, append log (`log_add.py`), and conclude the issue with `todo_update.py --status done`.
 
 ## YODA Intake
 

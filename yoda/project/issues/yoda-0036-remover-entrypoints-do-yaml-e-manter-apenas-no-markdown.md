@@ -1,7 +1,6 @@
 ---
 schema_version: '1.02'
 id: yoda-0036
-slug: remover-entrypoints-do-yaml-e-manter-apenas-no-markdown
 status: done
 depends_on:
 - yoda-0038
@@ -13,7 +12,7 @@ description: 'Hoje entrypoints aparecem no front matter YAML e tambem no corpo d
   de versao de schema e tratamento de compatibilidade conforme update.py quando aplicavel.'
 priority: 3
 created_at: '2026-02-25T15:36:44-03:00'
-updated_at: '2026-03-03T12:57:08-03:00'
+updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0036 - Remover entrypoints do YAML e manter apenas no markdown

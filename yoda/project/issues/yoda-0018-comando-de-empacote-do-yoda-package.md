@@ -1,7 +1,6 @@
 ---
 schema_version: '1.02'
 id: yoda-0018
-slug: comando-de-empacote-do-yoda-package
 status: done
 depends_on:
 - yoda-0016
@@ -11,7 +10,7 @@ description: "Implementar comando/script que gera artefato instal\xE1vel contend
   o/exclus\xE3o."
 priority: 8
 created_at: '2026-01-28T19:02:09-03:00'
-updated_at: '2026-03-03T12:57:08-03:00'
+updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0018 - Comando de empacote do YODA (package)

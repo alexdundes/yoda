@@ -1,13 +1,12 @@
 ---
 schema_version: '1.02'
 id: yoda-0001
-slug: slug-immutability-rule
 status: done
 title: Slug immutability rule
 description: Document that issue slugs are immutable; renames require migration
 priority: 5
 created_at: '2026-01-27T16:41:37-03:00'
-updated_at: '2026-03-03T12:57:08-03:00'
+updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0001 - Slug immutability rule

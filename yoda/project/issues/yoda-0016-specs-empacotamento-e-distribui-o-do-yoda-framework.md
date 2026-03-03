@@ -1,7 +1,6 @@
 ---
 schema_version: '1.02'
 id: yoda-0016
-slug: specs-empacotamento-e-distribui-o-do-yoda-framework
 status: done
 title: "Specs: empacotamento e distribui\xE7\xE3o do YODA Framework"
 description: "Especificar no project/specs como o YODA ser\xE1 empacotado/embutido,\
@@ -9,7 +8,7 @@ description: "Especificar no project/specs como o YODA ser\xE1 empacotado/embuti
   \xE3o."
 priority: 10
 created_at: '2026-01-28T19:02:03-03:00'
-updated_at: '2026-03-03T12:57:08-03:00'
+updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0016 - Specs: empacotamento e distribuição do YODA Framework

@@ -1,7 +1,6 @@
 ---
 schema_version: '1.02'
 id: yoda-0026
-slug: implement-yoda-install-sh-one-liner-installer
 status: done
 depends_on:
 - yoda-0025
@@ -12,7 +11,7 @@ description: Create the yoda-install.sh script to support the one-liner install 
   --version/--root/--source.
 priority: 6
 created_at: '2026-02-04T18:39:27-03:00'
-updated_at: '2026-03-03T12:57:08-03:00'
+updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0026 - Implement yoda-install.sh one-liner installer

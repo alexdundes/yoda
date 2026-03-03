@@ -1,13 +1,12 @@
 ---
 schema_version: '1.02'
 id: yoda-0005
-slug: fix-markdown-list-indentation
 status: done
 title: Fix markdown list indentation
 description: Adjust indentation in 02-yoda-flow-process.md for list consistency
 priority: 5
 created_at: '2026-01-27T16:41:51-03:00'
-updated_at: '2026-03-03T12:57:08-03:00'
+updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0005 - Fix markdown list indentation

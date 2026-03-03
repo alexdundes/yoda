@@ -15,7 +15,7 @@ from lib.error_messages import required_flag
 from lib.errors import ExitCode, YodaError
 from lib.logging_utils import configure_logging
 from lib.output import render_output
-from lib.issue_utils import ensure_issue_file_exists
+from lib.issue_utils import issue_slug_from_path, resolve_issue_file_by_id, resolve_log_file_by_id
 from lib.paths import log_path, repo_root, todo_path
 from lib.time_utils import now_iso, validate_timestamp
 from lib.todo_utils import find_issue, load_todo_file
@@ -111,12 +111,9 @@ def main() -> int:
         todo = load_todo_file(todo_file, dev)
         issue_item = find_issue(todo, issue_id)
 
-        slug = str(issue_item.get("slug"))
-        validate_slug(slug)
-
-        issue_file = ensure_issue_file_exists(issue_id, slug)
-
-        log_file = log_path(issue_id, slug)
+        issue_file = resolve_issue_file_by_id(issue_id)
+        slug = issue_slug_from_path(issue_file, issue_id)
+        log_file = resolve_log_file_by_id(issue_id) or log_path(issue_id, slug)
 
         status = str(issue_item.get("status", "to-do"))
         log_doc = _load_or_init_log(

@@ -14,11 +14,12 @@ from typing import Any, Iterable
 from lib.cli import add_global_flags, resolve_format
 from lib.dev import resolve_dev
 from lib.errors import ExitCode, YodaError
+from lib.issue_utils import resolve_issue_file_by_id
 from lib.logging_utils import configure_logging
 from lib.order_utils import apply_dependency_order
 from lib.output import render_output
 from lib.parse_utils import parse_csv, parse_timestamp
-from lib.paths import issue_path, repo_root, todo_path
+from lib.paths import repo_root, todo_path
 from lib.todo_utils import load_todo_file
 from lib.time_utils import parse_timestamp as parse_issue_timestamp
 from lib.validate import validate_slug
@@ -115,9 +116,9 @@ def _find_matches(
     matches: list[_Match] = []
     for issue in issues:
         issue_id = str(issue.get("id"))
-        slug = str(issue.get("slug"))
-        path = issue_path(issue_id, slug)
-        if not path.exists():
+        try:
+            path = resolve_issue_file_by_id(issue_id)
+        except YodaError:
             continue
         try:
             lines = path.read_text(encoding="utf-8").splitlines()
@@ -204,8 +205,10 @@ def _render_grep_output(
         issue = id_to_issue.get(issue_id)
         if not issue:
             continue
-        slug = str(issue.get("slug"))
-        path = issue_path(issue_id, slug).relative_to(repo_root())
+        try:
+            path = resolve_issue_file_by_id(issue_id).relative_to(repo_root())
+        except YodaError:
+            continue
         lines.append(f"## {issue_id} - {issue.get('title')}")
         lines.append(f"Path: {path}")
         for match in matches_by_issue[issue_id]:

@@ -1,7 +1,6 @@
 ---
 schema_version: '1.02'
 id: yoda-0020
-slug: spike-padr-o-de-instala-o-upgrade-do-yoda-em-projetos-externos
 status: done
 depends_on:
 - yoda-0016
@@ -10,7 +9,7 @@ description: "Explorar op\xE7\xF5es para embutir/atualizar o YODA Framework em r
   rios externos, cobrindo pacote+init, versionamento, upgrade/rollback e riscos."
 priority: 6
 created_at: '2026-01-28T19:02:16-03:00'
-updated_at: '2026-03-03T12:57:08-03:00'
+updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0020 - Spike: padrão de instalação/upgrade do YODA em projetos externos

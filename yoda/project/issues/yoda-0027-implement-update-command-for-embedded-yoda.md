@@ -1,7 +1,6 @@
 ---
 schema_version: '1.02'
 id: yoda-0027
-slug: implement-update-command-for-embedded-yoda
 status: done
 depends_on:
 - yoda-0025
@@ -12,7 +11,7 @@ description: Implement yoda/scripts/update.py with --check, --apply, --source to
   clear output.
 priority: 6
 created_at: '2026-02-04T18:39:33-03:00'
-updated_at: '2026-03-03T12:57:08-03:00'
+updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0027 - Implement update command for embedded YODA

@@ -79,7 +79,6 @@ def validate_issue_item(item: dict[str, Any], dev: str) -> None:
         [
             "id",
             "title",
-            "slug",
             "description",
             "status",
             "priority",
@@ -89,7 +88,9 @@ def validate_issue_item(item: dict[str, Any], dev: str) -> None:
         "issue item",
     )
     validate_issue_id(str(item.get("id")), dev)
-    validate_slug(str(item.get("slug")))
+    slug = item.get("slug")
+    if slug is not None:
+        validate_slug(str(slug))
     if item.get("status") not in ALLOWED_STATUS:
         raise YodaError("Invalid status", exit_code=ExitCode.VALIDATION)
     if not isinstance(item.get("priority"), int) or not (0 <= item.get("priority") <= 10):

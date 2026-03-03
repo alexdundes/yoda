@@ -6,7 +6,6 @@ from __future__ import annotations
 import argparse
 import logging
 import os
-import re
 import sys
 import time
 from contextlib import contextmanager
@@ -29,11 +28,11 @@ from lib.issue_metadata import canonicalize_issue_metadata
 from lib.logging_utils import configure_logging
 from lib.output import render_output
 from lib.paths import issue_path, log_path, repo_root, template_path, todo_path
+from lib.slug_utils import generate_issue_slug
 from lib.templates import load_template
 from lib.time_utils import detect_local_timezone, now_iso
 from lib.validate import (
     ISSUE_ID_RE,
-    SLUG_RE,
     validate_slug,
     validate_todo,
     validate_todo_root,
@@ -108,19 +107,9 @@ def _next_issue_id(dev: str, issues: list[dict[str, Any]]) -> str:
     return f"{dev}-{max_num + 1:04d}"
 
 
-def _generate_slug(title: str) -> str:
-    slug = re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")
-    if not slug:
-        slug = "issue"
-    if not slug[0].isalpha():
-        slug = f"issue-{slug}"
-    return slug
-
-
 def _build_issue_item(
     issue_id: str,
     title: str,
-    slug: str,
     description: str,
     priority: int,
     extern_issue_file: str,
@@ -129,7 +118,6 @@ def _build_issue_item(
     item = {
         "schema_version": "1.02",
         "id": issue_id,
-        "slug": slug,
         "status": "to-do",
         "depends_on": [],
         "pending_reason": "",
@@ -260,7 +248,7 @@ def main() -> int:
             raise YodaError("priority must be between 0 and 10", exit_code=ExitCode.VALIDATION)
         extern_issue_file = _resolve_extern_issue_file(args.extern_issue)
 
-        slug = args.slug.strip() if args.slug else _generate_slug(title)
+        slug = args.slug.strip() if args.slug else generate_issue_slug(title)
         validate_slug(slug)
 
         template_file = template_path()
@@ -290,7 +278,6 @@ def main() -> int:
             issue_item = _build_issue_item(
                 issue_id=issue_id,
                 title=title,
-                slug=slug,
                 description=description,
                 priority=priority,
                 extern_issue_file=extern_issue_file,
@@ -312,7 +299,6 @@ def main() -> int:
                 replacements={
                     "[ID]": issue_id,
                     "[TITLE]": title,
-                    "[SLUG]": slug,
                     "[SUMMARY]": description,
                     "[CREATED_AT]": timestamp,
                     "[UPDATED_AT]": timestamp,

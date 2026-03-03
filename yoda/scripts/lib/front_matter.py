@@ -34,15 +34,19 @@ def _dump_with_front_matter(metadata: dict[str, Any], content: str) -> str:
     return f"---\n{metadata_text}\n---\n"
 
 
+def render_issue_document(content: str, metadata: dict[str, Any]) -> str:
+    return _dump_with_front_matter(canonicalize_issue_metadata(metadata), content)
+
+
 def render_issue(template_text: str, metadata: dict[str, Any], replacements: dict[str, str]) -> str:
     post = frontmatter.loads(template_text)
     content = post.content
     for key, value in replacements.items():
         content = content.replace(key, value)
-    return _dump_with_front_matter(canonicalize_issue_metadata(metadata), content)
+    return render_issue_document(content, metadata)
 
 
 def update_front_matter(path: Path, metadata: dict[str, Any]) -> None:
     post = frontmatter.load(str(path))
-    rendered = _dump_with_front_matter(canonicalize_issue_metadata(metadata), post.content)
+    rendered = render_issue_document(post.content, metadata)
     write_text(path, rendered)

@@ -109,20 +109,29 @@ def _reconcile_todo_and_issues(
         issue.pop("entrypoints", None)
         issue.pop("lightweight", None)
         issue.pop("origin", None)
+        issue.pop("slug", None)
         issue["extern_issue_file"] = str(issue.get("extern_issue_file", "") or "")
         issue["updated_at"] = timestamp
         normalized = canonicalize_issue_metadata(issue)
         issues[idx] = normalized
 
         issue_id = str(normalized.get("id", ""))
-        slug = str(normalized.get("slug", ""))
-        if not issue_id or not slug:
-            skipped.append(f"issue metadata missing id/slug ({issue_id})")
+        if not issue_id:
+            skipped.append("issue metadata missing id")
             continue
-        issue_file = root / "yoda" / "project" / "issues" / f"{issue_id}-{slug}.md"
-        if not issue_file.exists():
-            skipped.append(f"{issue_file.relative_to(root)} (missing, reconcile skipped)")
+        matches = sorted(
+            path
+            for path in (root / "yoda" / "project" / "issues").glob(f"{issue_id}-*.md")
+            if path.is_file()
+        )
+        if not matches:
+            skipped.append(f"yoda/project/issues/{issue_id}-*.md (missing, reconcile skipped)")
             continue
+        if len(matches) > 1:
+            names = ", ".join(path.name for path in matches)
+            skipped.append(f"{issue_id} has multiple issue files ({names}), reconcile skipped")
+            continue
+        issue_file = matches[0]
         if not dry_run:
             update_front_matter(issue_file, normalized)
         written.append(f"{issue_file.relative_to(root)} (reconciled)")

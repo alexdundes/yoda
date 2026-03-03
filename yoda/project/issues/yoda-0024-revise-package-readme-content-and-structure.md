@@ -1,7 +1,6 @@
 ---
 schema_version: '1.02'
 id: yoda-0024
-slug: revise-package-readme-content-and-structure
 status: done
 title: Revise package README content and structure
 description: Define the full content and structure for the package README.md (English,
@@ -14,7 +13,7 @@ description: Define the full content and structure for the package README.md (En
   must be higher priority than yoda-0023; yoda-0023 should depend on this.
 priority: 7
 created_at: '2026-02-04T09:38:21-03:00'
-updated_at: '2026-03-03T12:57:08-03:00'
+updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0024 - Revise package README content and structure

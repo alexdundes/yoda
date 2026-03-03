@@ -1,7 +1,6 @@
 ---
 schema_version: '1.02'
 id: yoda-0023
-slug: document-one-liner-install-flow
 status: done
 depends_on:
 - yoda-0024
@@ -11,7 +10,7 @@ description: Define and document the one-liner install script (yoda-install.sh),
   once URLs are defined.
 priority: 5
 created_at: '2026-02-04T08:07:08-03:00'
-updated_at: '2026-03-03T12:57:08-03:00'
+updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0023 - Document one-liner install flow

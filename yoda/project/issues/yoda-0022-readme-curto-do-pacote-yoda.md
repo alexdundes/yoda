@@ -1,7 +1,6 @@
 ---
 schema_version: '1.02'
 id: yoda-0022
-slug: readme-curto-do-pacote-yoda
 status: done
 depends_on:
 - yoda-0016
@@ -10,7 +9,7 @@ description: "Criar README conciso para o artefato distribu\xEDvel, com instru\x
   \xF5es r\xE1pidas de uso, comandos package/init, conte\xFAdo do pacote e links essenciais."
 priority: 5
 created_at: '2026-01-29T06:31:28-03:00'
-updated_at: '2026-03-03T12:57:08-03:00'
+updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0022 - README curto do pacote YODA

@@ -1,13 +1,12 @@
 ---
 schema_version: '1.02'
 id: yoda-0004
-slug: happy-path-end-to-end
 status: done
 title: Happy path end-to-end
 description: 'Add a one-page flow: create issue, update TODO, add log, finish'
 priority: 5
 created_at: '2026-01-27T16:41:48-03:00'
-updated_at: '2026-03-03T12:57:08-03:00'
+updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0004 - Happy path end-to-end

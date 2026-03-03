@@ -12,8 +12,9 @@ from typing import Any
 from lib.cli import add_global_flags, resolve_format
 from lib.dev import resolve_dev
 from lib.errors import ExitCode, YodaError
+from lib.issue_utils import resolve_issue_file_by_id
 from lib.logging_utils import configure_logging
-from lib.paths import issue_path, repo_root, todo_path
+from lib.paths import repo_root, todo_path
 from lib.todo_utils import load_todo_file
 from lib.validate import validate_slug
 
@@ -164,11 +165,12 @@ def main() -> int:
             return ExitCode.NOT_FOUND
 
         issue_id = str(selected.get("id"))
-        slug = str(selected.get("slug"))
-        issue_file = issue_path(issue_id, slug)
-
         payload["issue_id"] = issue_id
-        payload["issue_path"] = str(issue_file.relative_to(repo_root()))
+        try:
+            issue_file = resolve_issue_file_by_id(issue_id)
+            payload["issue_path"] = str(issue_file.relative_to(repo_root()))
+        except YodaError:
+            payload["issue_path"] = f"yoda/project/issues/{issue_id}-*.md"
 
         print(_render_output(payload, output_format))
         return ExitCode.SUCCESS

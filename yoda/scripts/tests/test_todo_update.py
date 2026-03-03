@@ -6,6 +6,18 @@ import yaml
 from conftest import REPO_ROOT, TEST_DEV, TEST_TODO, cleanup_test_files, run_script
 
 
+def _issue_file_for_id(issue_id: str):
+    matches = list((REPO_ROOT / "yoda" / "project" / "issues").glob(f"{issue_id}-*.md"))
+    assert len(matches) == 1
+    return matches[0]
+
+
+def _log_file_for_id(issue_id: str):
+    matches = list((REPO_ROOT / "yoda" / "logs").glob(f"{issue_id}-*.yaml"))
+    assert len(matches) == 1
+    return matches[0]
+
+
 def _front_matter_keys(path) -> list[str]:
     text = path.read_text(encoding="utf-8")
     lines = text.splitlines()
@@ -60,14 +72,13 @@ def test_todo_update_changes_status_and_front_matter() -> None:
     assert updated_issue["status"] == "doing"
     assert updated_issue["priority"] == 7
 
-    issue_path = REPO_ROOT / "yoda" / "project" / "issues" / f"{issue['id']}-{issue['slug']}.md"
+    issue_path = _issue_file_for_id(issue["id"])
     parsed = frontmatter.load(issue_path)
     assert parsed.metadata["status"] == "doing"
     assert parsed.metadata["priority"] == 7
     assert _front_matter_keys(issue_path) == [
         "schema_version",
         "id",
-        "slug",
         "status",
         "title",
         "description",
@@ -129,13 +140,12 @@ def test_todo_update_updates_extern_issue_file_and_front_matter() -> None:
     updated_issue = updated["issues"][0]
     assert updated_issue["extern_issue_file"] == "../extern_issues/github-2.json"
 
-    issue_path = REPO_ROOT / "yoda" / "project" / "issues" / f"{issue['id']}-{issue['slug']}.md"
+    issue_path = _issue_file_for_id(issue["id"])
     parsed = frontmatter.load(issue_path)
     assert parsed.metadata["extern_issue_file"] == "../extern_issues/github-2.json"
     assert _front_matter_keys(issue_path) == [
         "schema_version",
         "id",
-        "slug",
         "status",
         "title",
         "description",
@@ -182,7 +192,7 @@ def test_todo_update_clear_extern_issue_file_removes_key() -> None:
     updated_issue = updated["issues"][0]
     assert "extern_issue_file" not in updated_issue
 
-    issue_path = REPO_ROOT / "yoda" / "project" / "issues" / f"{issue['id']}-{issue['slug']}.md"
+    issue_path = _issue_file_for_id(issue["id"])
     parsed = frontmatter.load(issue_path)
     assert "extern_issue_file" not in parsed.metadata
 
@@ -215,7 +225,7 @@ def test_todo_update_updates_extern_issue_file_from_extern_issue(monkeypatch) ->
     updated_issue = updated["issues"][0]
     assert updated_issue["extern_issue_file"] == "../extern_issues/github-2.json"
 
-    issue_path = REPO_ROOT / "yoda" / "project" / "issues" / f"{issue['id']}-{issue['slug']}.md"
+    issue_path = _issue_file_for_id(issue["id"])
     parsed = frontmatter.load(issue_path)
     assert parsed.metadata["extern_issue_file"] == "../extern_issues/github-2.json"
 
@@ -369,12 +379,11 @@ def test_todo_update_preserves_status_pending_reason_depends_order() -> None:
     )
     assert update_result.returncode == 0, update_result.stderr
 
-    issue_path = REPO_ROOT / "yoda" / "project" / "issues" / f"{issue['id']}-{issue['slug']}.md"
+    issue_path = _issue_file_for_id(issue["id"])
     keys = _front_matter_keys(issue_path)
     assert keys == [
         "schema_version",
         "id",
-        "slug",
         "status",
         "pending_reason",
         "depends_on",
@@ -384,3 +393,69 @@ def test_todo_update_preserves_status_pending_reason_depends_order() -> None:
         "created_at",
         "updated_at",
     ]
+
+
+def test_todo_update_title_change_recalculates_slug_and_renames_files() -> None:
+    add_result = run_script(
+        "issue_add.py",
+        ["--dev", TEST_DEV, "--title", "Initial title", "--description", "Desc"],
+    )
+    assert add_result.returncode == 0, add_result.stderr
+
+    todo = yaml.safe_load(TEST_TODO.read_text(encoding="utf-8"))
+    issue = todo["issues"][0]
+    old_issue_path = _issue_file_for_id(issue["id"])
+    old_log_path = _log_file_for_id(issue["id"])
+
+    update_result = run_script(
+        "todo_update.py",
+        [
+            "--dev",
+            TEST_DEV,
+            "--issue",
+            issue["id"],
+            "--title",
+            "Renamed title",
+        ],
+    )
+    assert update_result.returncode == 0, update_result.stderr
+
+    new_issue_path = _issue_file_for_id(issue["id"])
+    new_log_path = _log_file_for_id(issue["id"])
+    assert old_issue_path != new_issue_path
+    assert old_log_path != new_log_path
+    assert not old_issue_path.exists()
+    assert not old_log_path.exists()
+    assert new_issue_path.name.endswith("-renamed-title.md")
+    assert new_log_path.name.endswith("-renamed-title.yaml")
+
+    updated = yaml.safe_load(TEST_TODO.read_text(encoding="utf-8"))
+    assert "slug" not in updated["issues"][0]
+    assert updated["issues"][0]["title"] == "Renamed title"
+
+
+def test_todo_update_title_and_slug_override_uses_explicit_slug() -> None:
+    add_result = run_script(
+        "issue_add.py",
+        ["--dev", TEST_DEV, "--title", "Initial title", "--description", "Desc"],
+    )
+    assert add_result.returncode == 0, add_result.stderr
+
+    issue_id = yaml.safe_load(TEST_TODO.read_text(encoding="utf-8"))["issues"][0]["id"]
+    update_result = run_script(
+        "todo_update.py",
+        [
+            "--dev",
+            TEST_DEV,
+            "--issue",
+            issue_id,
+            "--title",
+            "Other title",
+            "--slug",
+            "manual-slug",
+        ],
+    )
+    assert update_result.returncode == 0, update_result.stderr
+
+    assert _issue_file_for_id(issue_id).name.endswith("-manual-slug.md")
+    assert _log_file_for_id(issue_id).name.endswith("-manual-slug.yaml")

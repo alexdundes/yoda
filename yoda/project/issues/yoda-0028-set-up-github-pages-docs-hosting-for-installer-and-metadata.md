@@ -1,7 +1,6 @@
 ---
 schema_version: '1.02'
 id: yoda-0028
-slug: set-up-github-pages-docs-hosting-for-installer-and-metadata
 status: done
 depends_on:
 - yoda-0026
@@ -12,7 +11,7 @@ description: Create the docs/install structure and publish yoda-install.sh and l
   release.
 priority: 5
 created_at: '2026-02-04T18:39:41-03:00'
-updated_at: '2026-03-03T12:57:08-03:00'
+updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0028 - Set up GitHub Pages /docs hosting for installer and metadata

@@ -1,7 +1,6 @@
 ---
 schema_version: '1.02'
 id: yoda-0034
-slug: remover-comentario-instrucao-do-template-de-issue
 status: done
 title: Remover comentario-instrucao do template de issue
 description: 'Eliminar os comentarios de instrucao do agente no template de issue
@@ -10,7 +9,7 @@ description: 'Eliminar os comentarios de instrucao do agente no template de issu
   atualizar primeiro project/specs/ e depois yoda/.'
 priority: 4
 created_at: '2026-02-25T15:36:44-03:00'
-updated_at: '2026-03-03T12:57:08-03:00'
+updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0034 - Remover comentario-instrucao do template de issue

@@ -1,7 +1,6 @@
 ---
 schema_version: '1.02'
 id: yoda-0037
-slug: remover-conceito-de-tags-do-yoda
 status: done
 depends_on:
 - yoda-0038
@@ -12,7 +11,7 @@ description: 'O campo tags esta subutilizado e deve ser eliminado por completo d
   de schema e tratamento de compatibilidade conforme update.py quando aplicavel.'
 priority: 3
 created_at: '2026-02-25T15:36:45-03:00'
-updated_at: '2026-03-03T12:57:08-03:00'
+updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0037 - Remover conceito de tags do YODA

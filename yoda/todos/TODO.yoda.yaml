@@ -2,154 +2,138 @@ schema_version: '1.02'
 developer_name: Yoda
 developer_slug: yoda
 timezone: America/Sao_Paulo
-updated_at: '2026-03-03T12:59:28-03:00'
+updated_at: '2026-03-03T14:38:25-03:00'
 issues:
 - schema_version: '1.02'
   id: yoda-0014
-  slug: implement-todo-reorder-py
   status: done
   title: Implement todo_reorder.py
   description: 'Implement todo_reorder.py per spec: reorder modes, validation, output,
     and tests.'
   priority: 5
   created_at: '2026-01-28T14:51:24-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0013
-  slug: specify-todo-reorder-py
   status: done
   title: Specify todo_reorder.py
   description: Define CLI, ordering behaviors, and output formats for todo_reorder.py.
   priority: 5
   created_at: '2026-01-28T14:51:19-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0012
-  slug: implement-todo-list-py
   status: done
   title: Implement todo_list.py
   description: 'Implement todo_list.py per spec: filters, ordering, md/json output,
     and optional text/regex search in selected issue markdown files.'
   priority: 5
   created_at: '2026-01-28T12:25:58-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0011
-  slug: specify-todo-list-py
   status: done
   title: Specify todo_list.py
   description: Define CLI, filters, ordering, output formats, and text search behavior
     for todo_list.py.
   priority: 5
   created_at: '2026-01-28T12:25:53-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0010
-  slug: update-agent-playbook-to-use-scripts
   status: done
   title: Update agent playbook to use scripts
   description: Revise 06-agent-playbook.md and yoda/yoda.md to reflect YODA Flow with
     available scripts
   priority: 5
   created_at: '2026-01-27T19:14:48-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0009
-  slug: add-unit-tests-for-yoda-scripts
   status: done
   title: Add unit tests for YODA scripts
   description: Create unit tests for implemented scripts, starting with todo_next
     and existing helpers
   priority: 5
   created_at: '2026-01-27T18:04:27-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0008
-  slug: implement-todo-next-with-single-issue-rule
   status: done
   title: Implement todo_next with single-issue rule
   description: Implement todo_next.py to select only to-do items and block when any
     issue is doing
   priority: 5
   created_at: '2026-01-27T17:57:51-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0007
-  slug: specify-todo-next-command
   status: done
   title: Specify todo_next command
   description: Write a spec for todo_next.py behavior, inputs, outputs, and error
     handling
   priority: 5
   created_at: '2026-01-27T17:22:15-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0006
-  slug: review-and-retire-dicas-do-chatgpt
   status: done
   title: Review and retire dicas-do-chatgpt
   description: Review yoda/dicas-do-chatgpt.md; if contents are fully captured elsewhere,
     remove the file
   priority: 5
   created_at: '2026-01-27T16:47:31-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0005
-  slug: fix-markdown-list-indentation
   status: done
   title: Fix markdown list indentation
   description: Adjust indentation in 02-yoda-flow-process.md for list consistency
   priority: 5
   created_at: '2026-01-27T16:41:51-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0004
-  slug: happy-path-end-to-end
   status: done
   title: Happy path end-to-end
   description: 'Add a one-page flow: create issue, update TODO, add log, finish'
   priority: 5
   created_at: '2026-01-27T16:41:48-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0003
-  slug: define-json-output-minimums
   status: done
   title: Define JSON output minimums
   description: Document minimal JSON fields for issue_add, todo_update, log_add
   priority: 5
   created_at: '2026-01-27T16:41:45-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0002
-  slug: document-log-add-slug-resolution
   status: done
   title: Document log_add slug resolution
   description: 'Add spec text: log_add resolves slug via TODO and fails if id missing'
   priority: 5
   created_at: '2026-01-27T16:41:42-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0001
-  slug: slug-immutability-rule
   status: done
   title: Slug immutability rule
   description: Document that issue slugs are immutable; renames require migration
   priority: 5
   created_at: '2026-01-27T16:41:37-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0015
-  slug: specify-yoda-intake
   status: done
   title: Specify YODA Intake
   description: Create a spec and update docs to define the YODA Intake concept.
   priority: 5
   created_at: '2026-01-28T17:35:28-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0016
-  slug: specs-empacotamento-e-distribui-o-do-yoda-framework
   status: done
   title: "Specs: empacotamento e distribui\xE7\xE3o do YODA Framework"
   description: "Especificar no project/specs como o YODA ser\xE1 empacotado/embutido,\
@@ -157,10 +141,9 @@ issues:
     \xE3o."
   priority: 10
   created_at: '2026-01-28T19:02:03-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0017
-  slug: manual-embarcado-reescrever-yoda-yoda-md-independente-das-specs
   status: done
   depends_on:
   - yoda-0016
@@ -169,10 +152,9 @@ issues:
     \ sem project/specs, com playbooks claros e refer\xEAncias \xE0s ferramentas/scripts."
   priority: 9
   created_at: '2026-01-28T19:02:06-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0018
-  slug: comando-de-empacote-do-yoda-package
   status: done
   depends_on:
   - yoda-0016
@@ -182,10 +164,9 @@ issues:
     o/exclus\xE3o."
   priority: 8
   created_at: '2026-01-28T19:02:09-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0019
-  slug: comando-de-init-p-s-embutido
   status: done
   depends_on:
   - yoda-0016
@@ -196,10 +177,9 @@ issues:
     \ com dry-run."
   priority: 7
   created_at: '2026-01-28T19:02:12-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0020
-  slug: spike-padr-o-de-instala-o-upgrade-do-yoda-em-projetos-externos
   status: done
   depends_on:
   - yoda-0016
@@ -208,10 +188,9 @@ issues:
     rios externos, cobrindo pacote+init, versionamento, upgrade/rollback e riscos."
   priority: 6
   created_at: '2026-01-28T19:02:16-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0021
-  slug: license-curta-para-pacote-yoda
   status: done
   depends_on:
   - yoda-0016
@@ -220,10 +199,9 @@ issues:
     \ distribu\xEDvel, alinhado \xE0s decis\xF5es de empacote e licen\xE7a do projeto."
   priority: 6
   created_at: '2026-01-29T06:31:15-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0022
-  slug: readme-curto-do-pacote-yoda
   status: done
   depends_on:
   - yoda-0016
@@ -233,10 +211,9 @@ issues:
     \ essenciais."
   priority: 5
   created_at: '2026-01-29T06:31:28-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0023
-  slug: document-one-liner-install-flow
   status: done
   depends_on:
   - yoda-0024
@@ -246,10 +223,9 @@ issues:
     placeholders once URLs are defined.
   priority: 5
   created_at: '2026-02-04T08:07:08-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0024
-  slug: revise-package-readme-content-and-structure
   status: done
   title: Revise package README content and structure
   description: Define the full content and structure for the package README.md (English,
@@ -262,10 +238,9 @@ issues:
     must be higher priority than yoda-0023; yoda-0023 should depend on this.
   priority: 7
   created_at: '2026-02-04T09:38:21-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0025
-  slug: update-package-build-to-include-yoda-license
   status: done
   title: Update package build to include yoda/LICENSE
   description: Update package generation to include yoda/LICENSE in the artefact and
@@ -273,10 +248,9 @@ issues:
     license ships with the package.
   priority: 7
   created_at: '2026-02-04T18:39:22-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0026
-  slug: implement-yoda-install-sh-one-liner-installer
   status: done
   depends_on:
   - yoda-0025
@@ -287,10 +261,9 @@ issues:
     support --version/--root/--source.
   priority: 6
   created_at: '2026-02-04T18:39:27-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0027
-  slug: implement-update-command-for-embedded-yoda
   status: done
   depends_on:
   - yoda-0025
@@ -301,10 +274,9 @@ issues:
     and clear output.
   priority: 6
   created_at: '2026-02-04T18:39:33-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0028
-  slug: set-up-github-pages-docs-hosting-for-installer-and-metadata
   status: done
   depends_on:
   - yoda-0026
@@ -315,10 +287,9 @@ issues:
     per release.
   priority: 5
   created_at: '2026-02-04T18:39:41-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0029
-  slug: extend-init-to-manage-repo-intent-md-and-repo-intent-yaml
   status: done
   title: Extend init to manage REPO_INTENT.md and repo.intent.yaml
   description: Update init.py to create REPO_INTENT.md when missing and append a YODA
@@ -326,10 +297,9 @@ issues:
     existing content.
   priority: 6
   created_at: '2026-02-04T20:16:53-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0030
-  slug: allow-one-liner-install-without-explicit-version
   status: done
   title: Allow one-liner install without explicit version
   description: Make the one-liner install flow default to latest when --version is
@@ -337,10 +307,9 @@ issues:
     command.
   priority: 7
   created_at: '2026-02-05T12:24:06-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0031
-  slug: padronizar-gemini-md-no-init
   status: done
   title: Padronizar GEMINI.md no init
   description: "Ajustar o script yoda/scripts/init.py para criar/referenciar o arquivo\
@@ -350,10 +319,9 @@ issues:
     \ com legado; o \xFAnico consumidor atual \xE9 ../fibu."
   priority: 3
   created_at: '2026-02-25T15:18:57-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0032
-  slug: yoda-intake-coletar-texto-corrido-e-agente-traduzir-em-issue
   status: done
   title: 'YODA Intake: coletar texto corrido e agente traduzir em issue'
   description: "No modo YODA Intake, o agente deve pedir ao dev a descri\xE7\xE3o\
@@ -364,10 +332,9 @@ issues:
     \ aplicar mudan\xE7as em yoda/."
   priority: 3
   created_at: '2026-02-25T15:19:59-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0033
-  slug: corrigir-concorrencia-no-issue-add-para-criacoes-simultaneas
   status: done
   depends_on:
   - yoda-0038
@@ -380,10 +347,9 @@ issues:
     em yoda/.'
   priority: 2
   created_at: '2026-02-25T15:23:19-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0034
-  slug: remover-comentario-instrucao-do-template-de-issue
   status: done
   title: Remover comentario-instrucao do template de issue
   description: 'Eliminar os comentarios de instrucao do agente no template de issue
@@ -392,10 +358,9 @@ issues:
     atualizar primeiro project/specs/ e depois yoda/.'
   priority: 4
   created_at: '2026-02-25T15:36:44-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0035
-  slug: remover-conceito-de-lightweight-do-yoda
   status: done
   depends_on:
   - yoda-0038
@@ -407,10 +372,9 @@ issues:
     quando aplicavel.'
   priority: 3
   created_at: '2026-02-25T15:36:44-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0036
-  slug: remover-entrypoints-do-yaml-e-manter-apenas-no-markdown
   status: done
   depends_on:
   - yoda-0038
@@ -423,10 +387,9 @@ issues:
     aplicavel.'
   priority: 3
   created_at: '2026-02-25T15:36:44-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0037
-  slug: remover-conceito-de-tags-do-yoda
   status: done
   depends_on:
   - yoda-0038
@@ -437,10 +400,9 @@ issues:
     de schema e tratamento de compatibilidade conforme update.py quando aplicavel.'
   priority: 3
   created_at: '2026-02-25T15:36:45-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0038
-  slug: definir-politica-de-versionamento-do-layout-yaml-do-yoda
   status: done
   title: Definir politica de versionamento do layout YAML do YODA
   description: 'Definir e documentar regra obrigatoria de versionamento de schema/layout
@@ -449,10 +411,9 @@ issues:
     operacional em specs e yoda.md, com criterio claro para classificacao e rollout.'
   priority: 2
   created_at: '2026-02-25T15:36:45-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0039
-  slug: integrar-backlog-externo-via-glab-e-prever-github
   status: done
   depends_on:
   - yoda-0038
@@ -463,10 +424,9 @@ issues:
     (gh). Regra transversal: atualizar primeiro project/specs/ e depois yoda/.'
   priority: 1
   created_at: '2026-02-25T15:36:45-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0040
-  slug: definir-heuristica-de-prioridade-com-baseline-5
   status: done
   title: Definir heuristica de prioridade com baseline 5
   description: 'Orientar o agente para tratar prioridade 5 como baseline padrao e
@@ -475,10 +435,9 @@ issues:
     atualizar primeiro project/specs/ e depois yoda/.'
   priority: 4
   created_at: '2026-02-25T15:36:45-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0041
-  slug: remover-conceito-de-agent-do-yoda
   status: done
   title: Remover conceito de agent do YODA
   description: 'Eliminar o campo agent do modelo YAML e do fluxo operacional, seguindo
@@ -487,10 +446,9 @@ issues:
     aplicavel.'
   priority: 3
   created_at: '2026-02-25T19:53:46-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0042
-  slug: simplificar-origem-externa-para-extern-issue-file
   status: done
   title: Simplificar origem externa para extern_issue_file
   description: "Substituir origin.system, origin.external_id e origin.requester por\
@@ -499,10 +457,9 @@ issues:
   priority: 5
   extern_issue_file: ../extern_issues/github-2.json
   created_at: '2026-02-26T18:50:40-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0043
-  slug: omitir-campos-opcionais-vazios-nos-arquivos
   status: done
   title: Omitir campos opcionais vazios nos arquivos
   description: Quando um campo opcional estiver vazio, ele nao deve ser definido/persistido
@@ -510,10 +467,9 @@ issues:
   priority: 5
   extern_issue_file: ../extern_issues/github-2.json
   created_at: '2026-02-26T18:57:50-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0044
-  slug: padronizar-front-matter-sem-defaults-no-template
   status: done
   title: Padronizar front matter sem defaults no template
   description: Remover valores padrao do front matter no template markdown; issue_add.py
@@ -522,11 +478,10 @@ issues:
   priority: 5
   extern_issue_file: ../extern_issues/github-2.json
   created_at: '2026-02-26T19:04:01-03:00'
-  updated_at: '2026-03-03T12:59:28-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'
 - schema_version: '1.02'
   id: yoda-0045
-  slug: permitir-update-de-descricao-e-rename-por-slug-derivado-do-arquivo
-  status: to-do
+  status: done
   title: Permitir update de descricao e rename por slug derivado do arquivo
   description: "Permitir alterar descricao e rename do arquivo da issue; remover campo\
     \ slug do modelo e derivar slug sempre do nome do arquivo (sem ID), com regras\
@@ -534,10 +489,9 @@ issues:
   priority: 5
   extern_issue_file: ../extern_issues/github-2.json
   created_at: '2026-02-26T19:12:53-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:38:25-03:00'
 - schema_version: '1.02'
   id: yoda-0046
-  slug: unificar-formato-de-result-log-e-remover-comentario-do-template
   status: to-do
   title: Unificar formato de Result log e remover comentario do template
   description: Remover comentario instrucional do Result log no template e alinhar
@@ -546,4 +500,4 @@ issues:
   priority: 5
   extern_issue_file: ../extern_issues/github-2.json
   created_at: '2026-02-26T19:27:28-03:00'
-  updated_at: '2026-03-03T12:57:08-03:00'
+  updated_at: '2026-03-03T14:36:08-03:00'

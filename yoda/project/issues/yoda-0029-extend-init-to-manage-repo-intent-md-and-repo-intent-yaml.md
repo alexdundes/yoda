@@ -1,7 +1,6 @@
 ---
 schema_version: '1.02'
 id: yoda-0029
-slug: extend-init-to-manage-repo-intent-md-and-repo-intent-yaml
 status: done
 title: Extend init to manage REPO_INTENT.md and repo.intent.yaml
 description: Update init.py to create REPO_INTENT.md when missing and append a YODA
@@ -9,7 +8,7 @@ description: Update init.py to create REPO_INTENT.md when missing and append a Y
   existing content.
 priority: 6
 created_at: '2026-02-04T20:16:53-03:00'
-updated_at: '2026-03-03T12:57:08-03:00'
+updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0029 - Extend init to manage REPO_INTENT.md and repo.intent.yaml

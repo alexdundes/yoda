@@ -23,6 +23,18 @@ def _front_matter_keys(text: str) -> list[str]:
     return keys
 
 
+def _issue_file_for_id(issue_id: str):
+    matches = list((REPO_ROOT / "yoda" / "project" / "issues").glob(f"{issue_id}-*.md"))
+    assert len(matches) == 1
+    return matches[0]
+
+
+def _log_file_for_id(issue_id: str):
+    matches = list((REPO_ROOT / "yoda" / "logs").glob(f"{issue_id}-*.yaml"))
+    assert len(matches) == 1
+    return matches[0]
+
+
 def setup_function() -> None:
     cleanup_test_files()
 
@@ -49,12 +61,10 @@ def test_issue_add_creates_todo_issue_and_log() -> None:
     assert "pending_reason" not in issue
     assert "extern_issue_file" not in issue
     assert issue["id"].startswith(f"{TEST_DEV}-")
-    issue_path = f"yoda/project/issues/{issue['id']}-{issue['slug']}.md"
-    log_path = f"yoda/logs/{issue['id']}-{issue['slug']}.yaml"
-
-    issue_file = REPO_ROOT / issue_path
+    issue_file = _issue_file_for_id(issue["id"])
+    log_file = _log_file_for_id(issue["id"])
     assert issue_file.exists()
-    assert (REPO_ROOT / log_path).exists()
+    assert log_file.exists()
     issue_text = issue_file.read_text(encoding="utf-8")
     assert "agent:" not in issue_text
     assert "depends_on:" not in issue_text
@@ -63,7 +73,6 @@ def test_issue_add_creates_todo_issue_and_log() -> None:
     assert _front_matter_keys(issue_text) == [
         "schema_version",
         "id",
-        "slug",
         "status",
         "title",
         "description",
@@ -107,12 +116,11 @@ def test_issue_add_sets_extern_issue_file_from_external_issue() -> None:
     todo = yaml.safe_load(TEST_TODO.read_text(encoding="utf-8"))
     issue = todo["issues"][0]
     assert issue["extern_issue_file"] == "../extern_issues/github-123.json"
-    issue_file = REPO_ROOT / "yoda" / "project" / "issues" / f"{issue['id']}-{issue['slug']}.md"
+    issue_file = _issue_file_for_id(issue["id"])
     keys = _front_matter_keys(issue_file.read_text(encoding="utf-8"))
     assert keys == [
         "schema_version",
         "id",
-        "slug",
         "status",
         "title",
         "description",
@@ -178,8 +186,8 @@ def test_issue_add_parallel_creations_generate_unique_ids() -> None:
     assert len(set(ids)) == 2
 
     for issue in todo["issues"]:
-        issue_file = REPO_ROOT / "yoda" / "project" / "issues" / f"{issue['id']}-{issue['slug']}.md"
-        log_file = REPO_ROOT / "yoda" / "logs" / f"{issue['id']}-{issue['slug']}.yaml"
+        issue_file = _issue_file_for_id(issue["id"])
+        log_file = _log_file_for_id(issue["id"])
         assert issue_file.exists()
         assert log_file.exists()
 

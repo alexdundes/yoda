@@ -1,7 +1,6 @@
 ---
 schema_version: '1.02'
 id: yoda-0019
-slug: comando-de-init-p-s-embutido
 status: done
 depends_on:
 - yoda-0016
@@ -11,7 +10,7 @@ description: "Criar script que prepara um projeto host ap\xF3s receber o pacote 
   \ ajusta AGENTS.md, estrutura m\xEDnima, TODO.<dev>.yaml, idempotente e com dry-run."
 priority: 7
 created_at: '2026-01-28T19:02:12-03:00'
-updated_at: '2026-03-03T12:57:08-03:00'
+updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0019 - Comando de init pós-embutido

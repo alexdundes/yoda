@@ -1,7 +1,6 @@
 ---
 schema_version: '1.02'
 id: yoda-0044
-slug: padronizar-front-matter-sem-defaults-no-template
 status: done
 title: Padronizar front matter sem defaults no template
 description: Remover valores padrao do front matter no template markdown; issue_add.py
@@ -10,7 +9,7 @@ description: Remover valores padrao do front matter no template markdown; issue_
 priority: 5
 extern_issue_file: ../extern_issues/github-2.json
 created_at: '2026-02-26T19:04:01-03:00'
-updated_at: '2026-03-03T12:59:28-03:00'
+updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0044 - Padronizar front matter sem defaults no template

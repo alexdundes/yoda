@@ -8,19 +8,28 @@ import logging
 import os
 import sys
 from copy import deepcopy
+from pathlib import Path
 from typing import Any
+
+import frontmatter
 
 from lib.cli import add_global_flags, resolve_format
 from lib.dev import resolve_dev
 from lib.error_messages import required_flag
 from lib.errors import ExitCode, YodaError
 from lib.external_issue_utils import detect_origin_url, parse_origin, provider_from_host
-from lib.front_matter import update_front_matter
-from lib.issue_utils import ensure_issue_file_exists
+from lib.front_matter import render_issue_document, update_front_matter
+from lib.io import write_text_atomic
+from lib.issue_utils import (
+    issue_slug_from_path,
+    resolve_issue_file_by_id,
+    resolve_log_file_by_id,
+)
 from lib.issue_metadata import canonicalize_issue_metadata, prune_empty_optionals
 from lib.logging_utils import configure_logging
 from lib.output import render_output
-from lib.paths import repo_root, todo_path
+from lib.paths import log_path, repo_root, todo_path
+from lib.slug_utils import generate_issue_slug
 from lib.time_utils import now_iso
 from lib.todo_utils import find_issue, load_todo_file
 from lib.validate import validate_issue_id, validate_slug, validate_todo
@@ -77,6 +86,18 @@ def _update_issue(item: dict[str, Any], args: argparse.Namespace) -> None:
             raise YodaError("priority must be between 0 and 10", exit_code=ExitCode.VALIDATION)
         item["priority"] = args.priority
 
+    if args.title is not None:
+        title = args.title.strip()
+        if not title:
+            raise YodaError("title cannot be empty", exit_code=ExitCode.VALIDATION)
+        item["title"] = title
+
+    if args.description is not None:
+        description = args.description.strip()
+        if not description:
+            raise YodaError("description cannot be empty", exit_code=ExitCode.VALIDATION)
+        item["description"] = description
+
     if args.clear_depends_on:
         item["depends_on"] = []
     elif args.depends_on is not None:
@@ -125,7 +146,15 @@ def _format_value(value: Any) -> str:
 
 
 def _diff_fields(before: dict[str, Any], after: dict[str, Any]) -> tuple[list[str], list[str]]:
-    fields = ["status", "priority", "depends_on", "pending_reason", "extern_issue_file"]
+    fields = [
+        "title",
+        "description",
+        "status",
+        "priority",
+        "depends_on",
+        "pending_reason",
+        "extern_issue_file",
+    ]
     updated_fields = []
     lines = []
     for field in fields:
@@ -147,12 +176,66 @@ def _append_log(dev: str, issue_id: str, message: str, dry_run: bool) -> None:
         raise YodaError("Failed to append log entry", exit_code=ExitCode.ERROR)
 
 
+def _resolve_target_slug(args: argparse.Namespace, current_slug: str) -> str:
+    if args.slug is not None:
+        slug = args.slug.strip()
+        if not slug:
+            raise YodaError("slug cannot be empty", exit_code=ExitCode.VALIDATION)
+        return slug
+    if args.title is not None:
+        return generate_issue_slug(args.title.strip())
+    return current_slug
+
+
+def _prepare_renamed_issue_file(
+    issue_file: Path,
+    issue_id: str,
+    target_slug: str,
+    metadata: dict[str, Any],
+) -> tuple[Path, bool]:
+    target_issue_file = issue_file.with_name(f"{issue_id}-{target_slug}.md")
+    renamed = target_issue_file != issue_file
+    if renamed and target_issue_file.exists():
+        raise YodaError(
+            f"Issue file already exists: {target_issue_file}",
+            exit_code=ExitCode.CONFLICT,
+        )
+    if not renamed:
+        return issue_file, False
+
+    post = frontmatter.load(str(issue_file))
+    rendered = render_issue_document(post.content, metadata)
+    write_text_atomic(target_issue_file, rendered)
+    issue_file.unlink(missing_ok=True)
+    return target_issue_file, True
+
+
+def _prepare_renamed_log_file(issue_id: str, target_slug: str, dry_run: bool) -> None:
+    if dry_run:
+        return
+    current_log = resolve_log_file_by_id(issue_id)
+    if current_log is None:
+        return
+    target_log = log_path(issue_id, target_slug)
+    if target_log == current_log:
+        return
+    if target_log.exists():
+        raise YodaError(
+            f"Log file already exists: {target_log}",
+            exit_code=ExitCode.CONFLICT,
+        )
+    os.replace(current_log, target_log)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Update TODO issue fields")
     add_global_flags(parser)
     parser.add_argument("--issue", required=False, help="Issue id (dev-####)")
     parser.add_argument("--status", help="New status")
     parser.add_argument("--priority", type=int, help="Priority 0-10")
+    parser.add_argument("--title", help="New title")
+    parser.add_argument("--description", help="New description")
+    parser.add_argument("--slug", help="Override slug used in issue filename")
     parser.add_argument("--depends-on", dest="depends_on", help="Comma-separated issue ids")
     parser.add_argument("--pending-reason", dest="pending_reason", help="Pending reason")
     parser.add_argument("--clear-depends-on", action="store_true", help="Clear dependencies")
@@ -187,11 +270,14 @@ def main() -> int:
         todo_file = todo_path(dev)
         todo = load_todo_file(todo_file, dev)
         issue_item = find_issue(todo, issue_id)
+        issue_file = resolve_issue_file_by_id(issue_id)
+        current_slug = issue_slug_from_path(issue_file, issue_id)
 
         before_item = deepcopy(issue_item)
         _update_issue(issue_item, args)
         pending_reason_provided = args.pending_reason is not None
         _apply_pending_rules(issue_item, pending_reason_provided)
+        target_slug = _resolve_target_slug(args, current_slug)
         normalized_issue = canonicalize_issue_metadata(issue_item)
         issue_item.clear()
         issue_item.update(normalized_issue)
@@ -203,8 +289,6 @@ def main() -> int:
         validate_todo(todo, dev)
 
         updated_fields, log_lines = _diff_fields(before_item, issue_item)
-        issue_file = ensure_issue_file_exists(issue_id, str(issue_item.get("slug")))
-
         payload = {
             "issue_id": issue_id,
             "updated_fields": updated_fields,
@@ -213,8 +297,16 @@ def main() -> int:
         }
 
         if not args.dry_run:
+            _prepare_renamed_log_file(issue_id, target_slug, args.dry_run)
+            new_issue_file, renamed = _prepare_renamed_issue_file(
+                issue_file=issue_file,
+                issue_id=issue_id,
+                target_slug=target_slug,
+                metadata=issue_item,
+            )
             write_yaml(todo_file, todo)
-            update_front_matter(issue_file, issue_item)
+            if not renamed:
+                update_front_matter(new_issue_file, issue_item)
             if log_lines:
                 log_message = f"[{issue_id}] todo_update\n" + "\n".join(log_lines)
             else:

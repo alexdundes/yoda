@@ -1,14 +1,13 @@
 ---
 schema_version: '1.02'
 id: yoda-0030
-slug: allow-one-liner-install-without-explicit-version
 status: done
 title: Allow one-liner install without explicit version
 description: Make the one-liner install flow default to latest when --version is omitted
   and update documentation to remove required version in the quick install command.
 priority: 7
 created_at: '2026-02-05T12:24:06-03:00'
-updated_at: '2026-03-03T12:57:08-03:00'
+updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0030 - Allow one-liner install without explicit version
