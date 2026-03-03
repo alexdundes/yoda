@@ -4,15 +4,13 @@ depends_on:
 - yoda-0016
 description: Definir e redigir arquivo LICENSE curto a ser incluído no artefato distribuível,
   alinhado às decisões de empacote e licença do projeto.
-extern_issue_file: ''
 id: yoda-0021
-pending_reason: ''
 priority: 6
 schema_version: '1.02'
 slug: license-curta-para-pacote-yoda
 status: done
 title: LICENSE curta para pacote YODA
-updated_at: '2026-03-03T11:41:51-03:00'
+updated_at: '2026-03-03T12:27:03-03:00'
 ---
 
 # yoda-0021 - LICENSE curta para pacote YODA

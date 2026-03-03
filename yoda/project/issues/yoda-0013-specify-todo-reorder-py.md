@@ -1,16 +1,13 @@
 ---
 created_at: '2026-01-28T14:51:19-03:00'
-depends_on: []
 description: Define CLI, ordering behaviors, and output formats for todo_reorder.py.
-extern_issue_file: ''
 id: yoda-0013
-pending_reason: ''
 priority: 5
 schema_version: '1.02'
 slug: specify-todo-reorder-py
 status: done
 title: Specify todo_reorder.py
-updated_at: '2026-03-03T11:41:51-03:00'
+updated_at: '2026-03-03T12:27:03-03:00'
 ---
 
 # yoda-0013 - Specify todo_reorder.py

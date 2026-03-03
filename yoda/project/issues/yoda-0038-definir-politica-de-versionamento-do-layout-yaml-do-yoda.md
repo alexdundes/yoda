@@ -1,19 +1,16 @@
 ---
 created_at: '2026-02-25T15:36:45-03:00'
-depends_on: []
 description: 'Definir e documentar regra obrigatoria de versionamento de schema/layout
   YAML do YODA: mudancas sutis incrementam versao menor (1.x), mudancas breaking que
   exigem tratamento em update.py incrementam versao maior. Incluir como regra operacional
   em specs e yoda.md, com criterio claro para classificacao e rollout.'
-extern_issue_file: ''
 id: yoda-0038
-pending_reason: ''
 priority: 2
 schema_version: '1.02'
 slug: definir-politica-de-versionamento-do-layout-yaml-do-yoda
 status: done
 title: Definir politica de versionamento do layout YAML do YODA
-updated_at: '2026-03-03T11:41:51-03:00'
+updated_at: '2026-03-03T12:27:03-03:00'
 ---
 
 # yoda-0038 - Definir politica de versionamento do layout YAML do YODA

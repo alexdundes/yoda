@@ -1,16 +1,13 @@
 ---
 created_at: '2026-01-27T16:41:37-03:00'
-depends_on: []
 description: Document that issue slugs are immutable; renames require migration
-extern_issue_file: ''
 id: yoda-0001
-pending_reason: ''
 priority: 5
 schema_version: '1.02'
 slug: slug-immutability-rule
 status: done
 title: Slug immutability rule
-updated_at: '2026-03-03T11:41:51-03:00'
+updated_at: '2026-03-03T12:27:03-03:00'
 ---
 
 # yoda-0001 - Slug immutability rule

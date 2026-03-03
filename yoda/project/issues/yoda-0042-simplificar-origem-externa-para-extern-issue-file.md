@@ -1,18 +1,16 @@
 ---
 created_at: '2026-02-26T18:50:40-03:00'
-depends_on: []
 description: 'Substituir origin.system, origin.external_id e origin.requester por
   um único campo extern_issue_file com caminho relativo para o JSON da issue externa
   (ex.: ../github-2.json).'
 extern_issue_file: ../extern_issues/github-2.json
 id: yoda-0042
-pending_reason: ''
 priority: 5
 schema_version: '1.02'
 slug: simplificar-origem-externa-para-extern-issue-file
-status: to-do
+status: done
 title: Simplificar origem externa para extern_issue_file
-updated_at: '2026-03-03T11:51:27-03:00'
+updated_at: '2026-03-03T12:27:03-03:00'
 ---
 
 # yoda-0042 - Simplificar origem externa para extern_issue_file

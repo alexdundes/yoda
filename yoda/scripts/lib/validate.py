@@ -83,8 +83,6 @@ def validate_issue_item(item: dict[str, Any], dev: str) -> None:
             "description",
             "status",
             "priority",
-            "depends_on",
-            "pending_reason",
             "created_at",
             "updated_at",
         ],
@@ -96,9 +94,13 @@ def validate_issue_item(item: dict[str, Any], dev: str) -> None:
         raise YodaError("Invalid status", exit_code=ExitCode.VALIDATION)
     if not isinstance(item.get("priority"), int) or not (0 <= item.get("priority") <= 10):
         raise YodaError("Invalid priority", exit_code=ExitCode.VALIDATION)
-    if item.get("status") == "pending" and not item.get("pending_reason"):
+    pending_reason = item.get("pending_reason")
+    if pending_reason is not None and not isinstance(pending_reason, str):
+        raise YodaError("pending_reason must be a string", exit_code=ExitCode.VALIDATION)
+    if item.get("status") == "pending" and not pending_reason:
         raise YodaError("pending_reason required for pending status", exit_code=ExitCode.VALIDATION)
-    if not isinstance(item.get("depends_on"), list):
+    depends_on = item.get("depends_on", [])
+    if not isinstance(depends_on, list):
         raise YodaError("depends_on must be a list", exit_code=ExitCode.VALIDATION)
     extern_issue_file = item.get("extern_issue_file")
     if extern_issue_file is not None:

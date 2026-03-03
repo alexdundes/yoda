@@ -1,18 +1,16 @@
 ---
 created_at: '2026-02-26T19:04:01-03:00'
-depends_on: []
 description: Remover valores padrao do front matter no template markdown; issue_add.py
   e todo_update.py passam a preencher/atualizar campos. Definir ordem fixa de campos
   no front matter para leitura consistente.
 extern_issue_file: ../extern_issues/github-2.json
 id: yoda-0044
-pending_reason: ''
 priority: 5
 schema_version: '1.02'
 slug: padronizar-front-matter-sem-defaults-no-template
 status: to-do
 title: Padronizar front matter sem defaults no template
-updated_at: '2026-03-03T11:51:27-03:00'
+updated_at: '2026-03-03T12:27:03-03:00'
 ---
 
 # yoda-0044 - Padronizar front matter sem defaults no template

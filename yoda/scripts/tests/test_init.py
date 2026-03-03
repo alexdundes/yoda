@@ -162,14 +162,18 @@ def test_init_reconcile_layout_updates_schema_and_front_matter(tmp_path: Path) -
     assert "tags" not in todo["issues"][0]
     assert "agent" not in todo["issues"][0]
     assert "origin" not in todo["issues"][0]
-    assert todo["issues"][0]["extern_issue_file"] == ""
+    assert "depends_on" not in todo["issues"][0]
+    assert "pending_reason" not in todo["issues"][0]
+    assert "extern_issue_file" not in todo["issues"][0]
 
     issue_doc = issue_path.read_text(encoding="utf-8")
     assert "schema_version: '1.02'" in issue_doc
     assert "tags:" not in issue_doc
     assert "agent:" not in issue_doc
     assert "origin:" not in issue_doc
-    assert "extern_issue_file: ''" in issue_doc
+    assert "depends_on:" not in issue_doc
+    assert "pending_reason:" not in issue_doc
+    assert "extern_issue_file:" not in issue_doc
 
 
 def test_init_creates_repo_intent_files(tmp_path: Path) -> None:

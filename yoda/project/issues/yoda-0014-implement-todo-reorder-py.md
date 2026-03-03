@@ -1,17 +1,14 @@
 ---
 created_at: '2026-01-28T14:51:24-03:00'
-depends_on: []
 description: 'Implement todo_reorder.py per spec: reorder modes, validation, output,
   and tests.'
-extern_issue_file: ''
 id: yoda-0014
-pending_reason: ''
 priority: 5
 schema_version: '1.02'
 slug: implement-todo-reorder-py
 status: done
 title: Implement todo_reorder.py
-updated_at: '2026-03-03T11:41:51-03:00'
+updated_at: '2026-03-03T12:27:03-03:00'
 ---
 
 # yoda-0014 - Implement todo_reorder.py

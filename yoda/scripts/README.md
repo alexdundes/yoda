@@ -49,6 +49,13 @@ Notes:
 - Creates/updates `AGENTS.md`, `GEMINI.md`, `CLAUDE.md`, `agent.md`, plus `yoda/todos/TODO.<dev>.yaml` and required folders.
 - Preserves existing agent file content (appends the YODA block); `--force` only overwrites the TODO file.
 - `--reconcile-layout` touches `*.md` files and reconciles TODO/issue front matter metadata to the current schema/layout.
+- Reconcile also removes optional metadata keys when empty (`depends_on`, `pending_reason`, `extern_issue_file`).
+
+## Optional metadata policy
+
+- Empty optional metadata is omitted from TODO and issue front matter.
+- Current optional keys: `depends_on`, `pending_reason`, `extern_issue_file`.
+- `pending_reason` is required only when `status=pending`.
 
 ## Tests
 

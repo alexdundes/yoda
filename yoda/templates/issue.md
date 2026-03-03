@@ -6,11 +6,8 @@ slug: [SLUG]
 description: [SUMMARY]
 status: to-do
 priority: 5
-depends_on: []
-pending_reason: ""
 created_at: "[CREATED_AT]"
 updated_at: "[UPDATED_AT]"
-extern_issue_file: ""
 ---
 
 # [ID] - [TITLE]

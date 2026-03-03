@@ -6,15 +6,13 @@ description: 'O conceito de lightweight esta subutilizado e deve ser removido po
   completo do YODA (schema, scripts, templates e playbooks). Regra transversal: atualizar
   primeiro project/specs/ e depois yoda/. Como envolve layout YAML, aplicar politica
   de versao de schema e tratamento de compatibilidade conforme update.py quando aplicavel.'
-extern_issue_file: ''
 id: yoda-0035
-pending_reason: ''
 priority: 3
 schema_version: '1.02'
 slug: remover-conceito-de-lightweight-do-yoda
 status: done
 title: Remover conceito de lightweight do YODA
-updated_at: '2026-03-03T11:41:51-03:00'
+updated_at: '2026-03-03T12:27:03-03:00'
 ---
 
 # yoda-0035 - Remover conceito de lightweight do YODA

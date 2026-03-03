@@ -30,6 +30,9 @@ def test_issue_add_creates_todo_issue_and_log() -> None:
 
     issue = todo["issues"][0]
     assert "agent" not in issue
+    assert "depends_on" not in issue
+    assert "pending_reason" not in issue
+    assert "extern_issue_file" not in issue
     assert issue["id"].startswith(f"{TEST_DEV}-")
     issue_path = f"yoda/project/issues/{issue['id']}-{issue['slug']}.md"
     log_path = f"yoda/logs/{issue['id']}-{issue['slug']}.yaml"
@@ -38,6 +41,9 @@ def test_issue_add_creates_todo_issue_and_log() -> None:
     assert issue_file.exists()
     assert (REPO_ROOT / log_path).exists()
     assert "agent:" not in issue_file.read_text(encoding="utf-8")
+    assert "depends_on:" not in issue_file.read_text(encoding="utf-8")
+    assert "pending_reason:" not in issue_file.read_text(encoding="utf-8")
+    assert "extern_issue_file:" not in issue_file.read_text(encoding="utf-8")
 
 
 def test_issue_add_conflict_when_issue_file_exists() -> None:

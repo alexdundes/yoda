@@ -5,15 +5,13 @@ depends_on:
 - yoda-0018
 description: 'Criar script que prepara um projeto host após receber o pacote YODA:
   ajusta AGENTS.md, estrutura mínima, TODO.<dev>.yaml, idempotente e com dry-run.'
-extern_issue_file: ''
 id: yoda-0019
-pending_reason: ''
 priority: 7
 schema_version: '1.02'
 slug: comando-de-init-p-s-embutido
 status: done
 title: Comando de init pós-embutido
-updated_at: '2026-03-03T11:41:51-03:00'
+updated_at: '2026-03-03T12:27:03-03:00'
 ---
 
 # yoda-0019 - Comando de init pós-embutido

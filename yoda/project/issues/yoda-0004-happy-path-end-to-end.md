@@ -1,16 +1,13 @@
 ---
 created_at: '2026-01-27T16:41:48-03:00'
-depends_on: []
 description: 'Add a one-page flow: create issue, update TODO, add log, finish'
-extern_issue_file: ''
 id: yoda-0004
-pending_reason: ''
 priority: 5
 schema_version: '1.02'
 slug: happy-path-end-to-end
 status: done
 title: Happy path end-to-end
-updated_at: '2026-03-03T11:41:51-03:00'
+updated_at: '2026-03-03T12:27:03-03:00'
 ---
 
 # yoda-0004 - Happy path end-to-end

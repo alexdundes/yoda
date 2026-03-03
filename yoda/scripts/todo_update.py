@@ -17,6 +17,7 @@ from lib.errors import ExitCode, YodaError
 from lib.external_issue_utils import detect_origin_url, parse_origin, provider_from_host
 from lib.front_matter import update_front_matter
 from lib.issue_utils import ensure_issue_file_exists
+from lib.issue_metadata import prune_empty_optionals
 from lib.logging_utils import configure_logging
 from lib.output import render_output
 from lib.paths import repo_root, todo_path
@@ -114,6 +115,7 @@ def _apply_pending_rules(item: dict[str, Any], pending_reason_provided: bool) ->
             return
         if item.get("pending_reason"):
             item["pending_reason"] = ""
+    prune_empty_optionals(item)
 
 
 def _format_value(value: Any) -> str:

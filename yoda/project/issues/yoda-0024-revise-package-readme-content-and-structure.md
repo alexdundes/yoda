@@ -1,6 +1,5 @@
 ---
 created_at: '2026-02-04T09:38:21-03:00'
-depends_on: []
 description: Define the full content and structure for the package README.md (English,
   friendly). Include logo block, short tagline, cycles + agent skin concept, inspirations
   (DocDD, Docs-as-Code, Design-first/Contract-first, Literate Programming parallel),
@@ -9,15 +8,13 @@ description: Define the full content and structure for the package README.md (En
   license note. Add TODO comments for unresolved URLs/hosting. Require updates to
   specs/playbook/yoda/yoda.md to include the agent-skin-in-cycle concept. This issue
   must be higher priority than yoda-0023; yoda-0023 should depend on this.
-extern_issue_file: ''
 id: yoda-0024
-pending_reason: ''
 priority: 7
 schema_version: '1.02'
 slug: revise-package-readme-content-and-structure
 status: done
 title: Revise package README content and structure
-updated_at: '2026-03-03T11:41:51-03:00'
+updated_at: '2026-03-03T12:27:03-03:00'
 ---
 
 # yoda-0024 - Revise package README content and structure

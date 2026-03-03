@@ -14,6 +14,7 @@ from lib.cli import add_global_flags, resolve_format
 from lib.dev import resolve_dev
 from lib.errors import ExitCode, YodaError
 from lib.front_matter import update_front_matter
+from lib.issue_metadata import prune_empty_optionals
 from lib.logging_utils import configure_logging
 from lib.output import render_output
 from lib.time_utils import detect_local_timezone, now_iso
@@ -110,6 +111,7 @@ def _reconcile_todo_and_issues(
         issue.pop("origin", None)
         issue["extern_issue_file"] = str(issue.get("extern_issue_file", "") or "")
         issue["updated_at"] = timestamp
+        prune_empty_optionals(issue)
 
         issue_id = str(issue.get("id", ""))
         slug = str(issue.get("slug", ""))

@@ -6,15 +6,13 @@ description: Implement yoda/scripts/update.py with --check, --apply, --source to
   upgrades. It must fetch latest.json, validate sha256, back up to yoda/_previous/<version>,
   replace framework files only, preserve data, and re-run init. Provide dry-run and
   clear output.
-extern_issue_file: ''
 id: yoda-0027
-pending_reason: ''
 priority: 6
 schema_version: '1.02'
 slug: implement-update-command-for-embedded-yoda
 status: done
 title: Implement update command for embedded YODA
-updated_at: '2026-03-03T11:41:51-03:00'
+updated_at: '2026-03-03T12:27:03-03:00'
 ---
 
 # yoda-0027 - Implement update command for embedded YODA

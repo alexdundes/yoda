@@ -2,7 +2,7 @@ schema_version: '1.0'
 issue_id: yoda-0042
 issue_path: yoda/project/issues/yoda-0042-simplificar-origem-externa-para-extern-issue-file.md
 todo_id: yoda-0042
-status: to-do
+status: done
 entries:
 - timestamp: '2026-02-26T18:50:40-03:00'
   message: "[yoda-0042] issue_add created\ntitle: Simplificar origem externa para\
@@ -24,3 +24,7 @@ entries:
     status: doing -> done'
 - timestamp: '2026-03-03T11:51:27-03:00'
   message: '[yoda-0042] todo_update (no changes)'
+- timestamp: '2026-03-03T12:10:21-03:00'
+  message: '[yoda-0042] todo_update
+
+    status: to-do -> done'

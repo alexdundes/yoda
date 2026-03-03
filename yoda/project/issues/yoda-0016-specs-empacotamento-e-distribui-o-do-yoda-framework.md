@@ -1,17 +1,14 @@
 ---
 created_at: '2026-01-28T19:02:03-03:00'
-depends_on: []
 description: Especificar no project/specs como o YODA será empacotado/embutido, o
   que entra e sai do artefato, comandos de build/init e alinhamento com meta-implementação.
-extern_issue_file: ''
 id: yoda-0016
-pending_reason: ''
 priority: 10
 schema_version: '1.02'
 slug: specs-empacotamento-e-distribui-o-do-yoda-framework
 status: done
 title: 'Specs: empacotamento e distribuição do YODA Framework'
-updated_at: '2026-03-03T11:41:51-03:00'
+updated_at: '2026-03-03T12:27:03-03:00'
 ---
 
 # yoda-0016 - Specs: empacotamento e distribuição do YODA Framework

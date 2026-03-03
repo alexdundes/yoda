@@ -107,6 +107,47 @@ def test_todo_update_updates_extern_issue_file_and_front_matter() -> None:
     assert parsed.metadata["extern_issue_file"] == "../extern_issues/github-2.json"
 
 
+def test_todo_update_clear_extern_issue_file_removes_key() -> None:
+    add_result = run_script(
+        "issue_add.py",
+        [
+            "--dev",
+            TEST_DEV,
+            "--title",
+            "Test issue",
+            "--description",
+            "Desc",
+            "--extern-issue",
+            "2",
+        ],
+    )
+    assert add_result.returncode == 0, add_result.stderr
+
+    todo = yaml.safe_load(TEST_TODO.read_text(encoding="utf-8"))
+    issue = todo["issues"][0]
+    assert issue["extern_issue_file"] == "../extern_issues/github-2.json"
+
+    update_result = run_script(
+        "todo_update.py",
+        [
+            "--dev",
+            TEST_DEV,
+            "--issue",
+            issue["id"],
+            "--clear-extern-issue-file",
+        ],
+    )
+    assert update_result.returncode == 0, update_result.stderr
+
+    updated = yaml.safe_load(TEST_TODO.read_text(encoding="utf-8"))
+    updated_issue = updated["issues"][0]
+    assert "extern_issue_file" not in updated_issue
+
+    issue_path = REPO_ROOT / "yoda" / "project" / "issues" / f"{issue['id']}-{issue['slug']}.md"
+    parsed = frontmatter.load(issue_path)
+    assert "extern_issue_file" not in parsed.metadata
+
+
 def test_todo_update_updates_extern_issue_file_from_extern_issue(monkeypatch) -> None:
     monkeypatch.setenv("YODA_ORIGIN_URL", "https://github.com/acme/proj.git")
     add_result = run_script(

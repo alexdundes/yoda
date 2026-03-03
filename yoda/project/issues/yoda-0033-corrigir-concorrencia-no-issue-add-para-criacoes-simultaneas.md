@@ -7,15 +7,13 @@ description: 'Ao executar dois issue_add em paralelo, ambos podem receber o mesm
   no TODO YAML. Corrigir a alocacao de ID e a escrita de artefatos para suportar concorrencia
   segura (locking/atomicidade/retry). Regra transversal deste backlog: primeiro atualizar
   a documentacao em project/specs/ e somente depois aplicar mudancas em yoda/.'
-extern_issue_file: ''
 id: yoda-0033
-pending_reason: ''
 priority: 2
 schema_version: '1.02'
 slug: corrigir-concorrencia-no-issue-add-para-criacoes-simultaneas
 status: done
 title: Corrigir concorrencia no issue_add para criacoes simultaneas
-updated_at: '2026-03-03T11:41:51-03:00'
+updated_at: '2026-03-03T12:27:03-03:00'
 ---
 
 # yoda-0033 - Corrigir concorrencia no issue_add para criacoes simultaneas
