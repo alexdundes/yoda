@@ -1,15 +1,15 @@
 ---
-created_at: '2026-02-04T18:39:22-03:00'
-description: Update package generation to include yoda/LICENSE in the artefact and
-  validate its presence. Adjust include list and tests as needed to ensure embedded
-  license ships with the package.
-id: yoda-0025
-priority: 7
 schema_version: '1.02'
+id: yoda-0025
 slug: update-package-build-to-include-yoda-license
 status: done
 title: Update package build to include yoda/LICENSE
-updated_at: '2026-03-03T12:27:03-03:00'
+description: Update package generation to include yoda/LICENSE in the artefact and
+  validate its presence. Adjust include list and tests as needed to ensure embedded
+  license ships with the package.
+priority: 7
+created_at: '2026-02-04T18:39:22-03:00'
+updated_at: '2026-03-03T12:57:08-03:00'
 ---
 
 # yoda-0025 - Update package build to include yoda/LICENSE

@@ -1,16 +1,17 @@
 ---
-created_at: '2026-01-28T19:02:09-03:00'
-depends_on:
-- yoda-0016
-description: Implementar comando/script que gera artefato instalável contendo apenas
-  os arquivos necessários de yoda/, com versão e checklist de inclusão/exclusão.
-id: yoda-0018
-priority: 8
 schema_version: '1.02'
+id: yoda-0018
 slug: comando-de-empacote-do-yoda-package
 status: done
+depends_on:
+- yoda-0016
 title: Comando de empacote do YODA (package)
-updated_at: '2026-03-03T12:27:03-03:00'
+description: "Implementar comando/script que gera artefato instal\xE1vel contendo\
+  \ apenas os arquivos necess\xE1rios de yoda/, com vers\xE3o e checklist de inclus\xE3\
+  o/exclus\xE3o."
+priority: 8
+created_at: '2026-01-28T19:02:09-03:00'
+updated_at: '2026-03-03T12:57:08-03:00'
 ---
 
 # yoda-0018 - Comando de empacote do YODA (package)

@@ -1,17 +1,18 @@
 ---
-created_at: '2026-02-25T15:19:59-03:00'
-description: 'No modo YODA Intake, o agente deve pedir ao dev a descrição da issue
-  em texto corrido e assumir a responsabilidade de traduzir esse conteúdo para issue
-  estruturada e para atualização do markdown da issue. Revisar e ajustar o playbook
-  em yoda/yoda.md (seção de Intake). Regra transversal: primeiro atualizar a documentação
-  em project/specs/, e somente depois aplicar mudanças em yoda/.'
-id: yoda-0032
-priority: 3
 schema_version: '1.02'
+id: yoda-0032
 slug: yoda-intake-coletar-texto-corrido-e-agente-traduzir-em-issue
 status: done
 title: 'YODA Intake: coletar texto corrido e agente traduzir em issue'
-updated_at: '2026-03-03T12:27:03-03:00'
+description: "No modo YODA Intake, o agente deve pedir ao dev a descri\xE7\xE3o da\
+  \ issue em texto corrido e assumir a responsabilidade de traduzir esse conte\xFA\
+  do para issue estruturada e para atualiza\xE7\xE3o do markdown da issue. Revisar\
+  \ e ajustar o playbook em yoda/yoda.md (se\xE7\xE3o de Intake). Regra transversal:\
+  \ primeiro atualizar a documenta\xE7\xE3o em project/specs/, e somente depois aplicar\
+  \ mudan\xE7as em yoda/."
+priority: 3
+created_at: '2026-02-25T15:19:59-03:00'
+updated_at: '2026-03-03T12:57:08-03:00'
 ---
 
 # yoda-0032 - YODA Intake: coletar texto corrido e agente traduzir em issue

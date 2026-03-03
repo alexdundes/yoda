@@ -1,19 +1,19 @@
 ---
-created_at: '2026-02-25T15:23:19-03:00'
+schema_version: '1.02'
+id: yoda-0033
+slug: corrigir-concorrencia-no-issue-add-para-criacoes-simultaneas
+status: done
 depends_on:
 - yoda-0038
+title: Corrigir concorrencia no issue_add para criacoes simultaneas
 description: 'Ao executar dois issue_add em paralelo, ambos podem receber o mesmo
   proximo ID (ex.: yoda-0031), gerando colisao de arquivos e corrupcao estrutural
   no TODO YAML. Corrigir a alocacao de ID e a escrita de artefatos para suportar concorrencia
   segura (locking/atomicidade/retry). Regra transversal deste backlog: primeiro atualizar
   a documentacao em project/specs/ e somente depois aplicar mudancas em yoda/.'
-id: yoda-0033
 priority: 2
-schema_version: '1.02'
-slug: corrigir-concorrencia-no-issue-add-para-criacoes-simultaneas
-status: done
-title: Corrigir concorrencia no issue_add para criacoes simultaneas
-updated_at: '2026-03-03T12:27:03-03:00'
+created_at: '2026-02-25T15:23:19-03:00'
+updated_at: '2026-03-03T12:57:08-03:00'
 ---
 
 # yoda-0033 - Corrigir concorrencia no issue_add para criacoes simultaneas

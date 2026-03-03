@@ -1,14 +1,14 @@
 ---
-created_at: '2026-01-27T16:47:31-03:00'
-description: Review yoda/dicas-do-chatgpt.md; if contents are fully captured elsewhere,
-  remove the file
-id: yoda-0006
-priority: 5
 schema_version: '1.02'
+id: yoda-0006
 slug: review-and-retire-dicas-do-chatgpt
 status: done
 title: Review and retire dicas-do-chatgpt
-updated_at: '2026-03-03T12:27:03-03:00'
+description: Review yoda/dicas-do-chatgpt.md; if contents are fully captured elsewhere,
+  remove the file
+priority: 5
+created_at: '2026-01-27T16:47:31-03:00'
+updated_at: '2026-03-03T12:57:08-03:00'
 ---
 
 # yoda-0006 - Review and retire dicas-do-chatgpt

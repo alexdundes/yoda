@@ -14,7 +14,7 @@ from lib.cli import add_global_flags, resolve_format
 from lib.dev import resolve_dev
 from lib.errors import ExitCode, YodaError
 from lib.front_matter import update_front_matter
-from lib.issue_metadata import prune_empty_optionals
+from lib.issue_metadata import canonicalize_issue_metadata
 from lib.logging_utils import configure_logging
 from lib.output import render_output
 from lib.time_utils import detect_local_timezone, now_iso
@@ -100,7 +100,7 @@ def _reconcile_todo_and_issues(
 
     written: list[str] = []
     skipped: list[str] = []
-    for issue in issues:
+    for idx, issue in enumerate(issues):
         if not isinstance(issue, dict):
             continue
         issue["schema_version"] = SCHEMA_VERSION
@@ -111,10 +111,11 @@ def _reconcile_todo_and_issues(
         issue.pop("origin", None)
         issue["extern_issue_file"] = str(issue.get("extern_issue_file", "") or "")
         issue["updated_at"] = timestamp
-        prune_empty_optionals(issue)
+        normalized = canonicalize_issue_metadata(issue)
+        issues[idx] = normalized
 
-        issue_id = str(issue.get("id", ""))
-        slug = str(issue.get("slug", ""))
+        issue_id = str(normalized.get("id", ""))
+        slug = str(normalized.get("slug", ""))
         if not issue_id or not slug:
             skipped.append(f"issue metadata missing id/slug ({issue_id})")
             continue
@@ -123,7 +124,7 @@ def _reconcile_todo_and_issues(
             skipped.append(f"{issue_file.relative_to(root)} (missing, reconcile skipped)")
             continue
         if not dry_run:
-            update_front_matter(issue_file, issue)
+            update_front_matter(issue_file, normalized)
         written.append(f"{issue_file.relative_to(root)} (reconciled)")
 
     validate_todo(raw, dev)

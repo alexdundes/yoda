@@ -1,14 +1,14 @@
 ---
-created_at: '2026-01-27T17:57:51-03:00'
-description: Implement todo_next.py to select only to-do items and block when any
-  issue is doing
-id: yoda-0008
-priority: 5
 schema_version: '1.02'
+id: yoda-0008
 slug: implement-todo-next-with-single-issue-rule
 status: done
 title: Implement todo_next with single-issue rule
-updated_at: '2026-03-03T12:27:03-03:00'
+description: Implement todo_next.py to select only to-do items and block when any
+  issue is doing
+priority: 5
+created_at: '2026-01-27T17:57:51-03:00'
+updated_at: '2026-03-03T12:57:08-03:00'
 ---
 
 # yoda-0008 - Implement todo_next with single-issue rule

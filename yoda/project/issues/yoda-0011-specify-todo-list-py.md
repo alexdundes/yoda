@@ -1,14 +1,14 @@
 ---
-created_at: '2026-01-28T12:25:53-03:00'
-description: Define CLI, filters, ordering, output formats, and text search behavior
-  for todo_list.py.
-id: yoda-0011
-priority: 5
 schema_version: '1.02'
+id: yoda-0011
 slug: specify-todo-list-py
 status: done
 title: Specify todo_list.py
-updated_at: '2026-03-03T12:27:03-03:00'
+description: Define CLI, filters, ordering, output formats, and text search behavior
+  for todo_list.py.
+priority: 5
+created_at: '2026-01-28T12:25:53-03:00'
+updated_at: '2026-03-03T12:57:08-03:00'
 ---
 
 # yoda-0011 - Specify todo_list.py

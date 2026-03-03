@@ -16,6 +16,22 @@ def _seed_manual(root: Path) -> None:
 AGENT_FILES = ["AGENTS.md", "GEMINI.md", "CLAUDE.md", "agent.md"]
 
 
+def _front_matter_keys(path: Path) -> list[str]:
+    text = path.read_text(encoding="utf-8")
+    lines = text.splitlines()
+    assert lines and lines[0] == "---"
+    end = 1
+    while end < len(lines) and lines[end] != "---":
+        end += 1
+    keys: list[str] = []
+    for line in lines[1:end]:
+        if not line or line.startswith(" "):
+            continue
+        if ":" in line:
+            keys.append(line.split(":", 1)[0].strip())
+    return keys
+
+
 def test_init_creates_structure_and_is_idempotent(tmp_path: Path) -> None:
     _seed_manual(tmp_path)
 
@@ -174,6 +190,17 @@ def test_init_reconcile_layout_updates_schema_and_front_matter(tmp_path: Path) -
     assert "depends_on:" not in issue_doc
     assert "pending_reason:" not in issue_doc
     assert "extern_issue_file:" not in issue_doc
+    assert _front_matter_keys(issue_path) == [
+        "schema_version",
+        "id",
+        "slug",
+        "status",
+        "title",
+        "description",
+        "priority",
+        "created_at",
+        "updated_at",
+    ]
 
 
 def test_init_creates_repo_intent_files(tmp_path: Path) -> None:

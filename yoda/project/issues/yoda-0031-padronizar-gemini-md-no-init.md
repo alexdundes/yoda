@@ -1,17 +1,17 @@
 ---
-created_at: '2026-02-25T15:18:57-03:00'
-description: 'Ajustar o script yoda/scripts/init.py para criar/referenciar o arquivo
-  GEMINI.md em caixa alta, substituindo a variação gemini.md. Regra transversal deste
-  backlog: primeiro atualizar a documentação em project/specs/, e somente depois aplicar
-  mudanças em yoda/. Neste item, não considerar compatibilidade com legado; o único
-  consumidor atual é ../fibu.'
-id: yoda-0031
-priority: 3
 schema_version: '1.02'
+id: yoda-0031
 slug: padronizar-gemini-md-no-init
 status: done
 title: Padronizar GEMINI.md no init
-updated_at: '2026-03-03T12:27:03-03:00'
+description: "Ajustar o script yoda/scripts/init.py para criar/referenciar o arquivo\
+  \ GEMINI.md em caixa alta, substituindo a varia\xE7\xE3o gemini.md. Regra transversal\
+  \ deste backlog: primeiro atualizar a documenta\xE7\xE3o em project/specs/, e somente\
+  \ depois aplicar mudan\xE7as em yoda/. Neste item, n\xE3o considerar compatibilidade\
+  \ com legado; o \xFAnico consumidor atual \xE9 ../fibu."
+priority: 3
+created_at: '2026-02-25T15:18:57-03:00'
+updated_at: '2026-03-03T12:57:08-03:00'
 ---
 
 # yoda-0031 - Padronizar GEMINI.md no init

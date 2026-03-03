@@ -1,13 +1,13 @@
 ---
-created_at: '2026-01-27T16:41:42-03:00'
-description: 'Add spec text: log_add resolves slug via TODO and fails if id missing'
-id: yoda-0002
-priority: 5
 schema_version: '1.02'
+id: yoda-0002
 slug: document-log-add-slug-resolution
 status: done
 title: Document log_add slug resolution
-updated_at: '2026-03-03T12:27:03-03:00'
+description: 'Add spec text: log_add resolves slug via TODO and fails if id missing'
+priority: 5
+created_at: '2026-01-27T16:41:42-03:00'
+updated_at: '2026-03-03T12:57:08-03:00'
 ---
 
 # yoda-0002 - Document log_add slug resolution

@@ -17,7 +17,7 @@ from lib.errors import ExitCode, YodaError
 from lib.external_issue_utils import detect_origin_url, parse_origin, provider_from_host
 from lib.front_matter import update_front_matter
 from lib.issue_utils import ensure_issue_file_exists
-from lib.issue_metadata import prune_empty_optionals
+from lib.issue_metadata import canonicalize_issue_metadata, prune_empty_optionals
 from lib.logging_utils import configure_logging
 from lib.output import render_output
 from lib.paths import repo_root, todo_path
@@ -192,6 +192,9 @@ def main() -> int:
         _update_issue(issue_item, args)
         pending_reason_provided = args.pending_reason is not None
         _apply_pending_rules(issue_item, pending_reason_provided)
+        normalized_issue = canonicalize_issue_metadata(issue_item)
+        issue_item.clear()
+        issue_item.update(normalized_issue)
 
         timestamp = now_iso(todo.get("timezone"))
         issue_item["updated_at"] = timestamp

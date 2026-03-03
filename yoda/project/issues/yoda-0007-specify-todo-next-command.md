@@ -1,13 +1,13 @@
 ---
-created_at: '2026-01-27T17:22:15-03:00'
-description: Write a spec for todo_next.py behavior, inputs, outputs, and error handling
-id: yoda-0007
-priority: 5
 schema_version: '1.02'
+id: yoda-0007
 slug: specify-todo-next-command
 status: done
 title: Specify todo_next command
-updated_at: '2026-03-03T12:27:03-03:00'
+description: Write a spec for todo_next.py behavior, inputs, outputs, and error handling
+priority: 5
+created_at: '2026-01-27T17:22:15-03:00'
+updated_at: '2026-03-03T12:57:08-03:00'
 ---
 
 # yoda-0007 - Specify todo_next command

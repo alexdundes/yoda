@@ -25,7 +25,7 @@ from lib.error_messages import (
 from lib.external_issue_utils import detect_origin_url, parse_origin, provider_from_host
 from lib.front_matter import render_issue
 from lib.io import write_text_atomic
-from lib.issue_metadata import prune_empty_optionals
+from lib.issue_metadata import canonicalize_issue_metadata
 from lib.logging_utils import configure_logging
 from lib.output import render_output
 from lib.paths import issue_path, log_path, repo_root, template_path, todo_path
@@ -129,18 +129,18 @@ def _build_issue_item(
     item = {
         "schema_version": "1.02",
         "id": issue_id,
-        "title": title,
         "slug": slug,
-        "description": description,
         "status": "to-do",
-        "priority": priority,
         "depends_on": [],
         "pending_reason": "",
+        "title": title,
+        "description": description,
+        "priority": priority,
+        "extern_issue_file": extern_issue_file,
         "created_at": timestamp,
         "updated_at": timestamp,
-        "extern_issue_file": extern_issue_file,
     }
-    return prune_empty_optionals(item)
+    return canonicalize_issue_metadata(item)
 
 
 def _build_log(

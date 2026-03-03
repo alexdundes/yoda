@@ -1,17 +1,17 @@
 ---
-created_at: '2026-02-04T08:07:08-03:00'
+schema_version: '1.02'
+id: yoda-0023
+slug: document-one-liner-install-flow
+status: done
 depends_on:
 - yoda-0024
+title: Document one-liner install flow
 description: Define and document the one-liner install script (yoda-install.sh), hosting
   URLs, and latest.json metadata. Include security guidance and update README.md placeholders
   once URLs are defined.
-id: yoda-0023
 priority: 5
-schema_version: '1.02'
-slug: document-one-liner-install-flow
-status: done
-title: Document one-liner install flow
-updated_at: '2026-03-03T12:27:03-03:00'
+created_at: '2026-02-04T08:07:08-03:00'
+updated_at: '2026-03-03T12:57:08-03:00'
 ---
 
 # yoda-0023 - Document one-liner install flow

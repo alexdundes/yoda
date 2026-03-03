@@ -1,18 +1,18 @@
 ---
-created_at: '2026-02-04T18:39:33-03:00'
+schema_version: '1.02'
+id: yoda-0027
+slug: implement-update-command-for-embedded-yoda
+status: done
 depends_on:
 - yoda-0025
+title: Implement update command for embedded YODA
 description: Implement yoda/scripts/update.py with --check, --apply, --source to handle
   upgrades. It must fetch latest.json, validate sha256, back up to yoda/_previous/<version>,
   replace framework files only, preserve data, and re-run init. Provide dry-run and
   clear output.
-id: yoda-0027
 priority: 6
-schema_version: '1.02'
-slug: implement-update-command-for-embedded-yoda
-status: done
-title: Implement update command for embedded YODA
-updated_at: '2026-03-03T12:27:03-03:00'
+created_at: '2026-02-04T18:39:33-03:00'
+updated_at: '2026-03-03T12:57:08-03:00'
 ---
 
 # yoda-0027 - Implement update command for embedded YODA

@@ -57,6 +57,12 @@ Notes:
 - Current optional keys: `depends_on`, `pending_reason`, `extern_issue_file`.
 - `pending_reason` is required only when `status=pending`.
 
+## Issue front matter order
+
+- Canonical order for issue metadata:
+  `schema_version`, `id`, `slug`, `status`, `pending_reason`, `depends_on`, `title`, `description`, `priority`, `extern_issue_file`, `created_at`, `updated_at`.
+- Omitted optional keys are skipped but relative order is preserved when present.
+
 ## Tests
 
 ```bash

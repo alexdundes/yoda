@@ -1,16 +1,16 @@
 ---
-created_at: '2026-02-25T19:53:46-03:00'
+schema_version: '1.02'
+id: yoda-0041
+slug: remover-conceito-de-agent-do-yoda
+status: done
+title: Remover conceito de agent do YODA
 description: 'Eliminar o campo agent do modelo YAML e do fluxo operacional, seguindo
   a mesma abordagem usada para lightweight, entrypoints e tags: docs-first, classificacao
   subtle, ajuste de scripts e reconciliacao via init.py --reconcile-layout quando
   aplicavel.'
-id: yoda-0041
 priority: 3
-schema_version: '1.02'
-slug: remover-conceito-de-agent-do-yoda
-status: done
-title: Remover conceito de agent do YODA
-updated_at: '2026-03-03T12:27:03-03:00'
+created_at: '2026-02-25T19:53:46-03:00'
+updated_at: '2026-03-03T12:57:08-03:00'
 ---
 
 # yoda-0041 - Remover conceito de agent do YODA

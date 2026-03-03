@@ -1,13 +1,4 @@
 ---
-schema_version: "1.02"
-id: [ID]
-title: [TITLE]
-slug: [SLUG]
-description: [SUMMARY]
-status: to-do
-priority: 5
-created_at: "[CREATED_AT]"
-updated_at: "[UPDATED_AT]"
 ---
 
 # [ID] - [TITLE]

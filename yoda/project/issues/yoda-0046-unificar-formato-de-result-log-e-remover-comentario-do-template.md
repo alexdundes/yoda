@@ -1,16 +1,16 @@
 ---
-created_at: '2026-02-26T19:27:28-03:00'
-description: Remover comentario instrucional do Result log no template e alinhar o
-  formato do Evaluate no yoda/yoda.md, com linha de issue externa condicional quando
-  houver vinculo.
-extern_issue_file: ../extern_issues/github-2.json
-id: yoda-0046
-priority: 5
 schema_version: '1.02'
+id: yoda-0046
 slug: unificar-formato-de-result-log-e-remover-comentario-do-template
 status: to-do
 title: Unificar formato de Result log e remover comentario do template
-updated_at: '2026-03-03T12:27:03-03:00'
+description: Remover comentario instrucional do Result log no template e alinhar o
+  formato do Evaluate no yoda/yoda.md, com linha de issue externa condicional quando
+  houver vinculo.
+priority: 5
+extern_issue_file: ../extern_issues/github-2.json
+created_at: '2026-02-26T19:27:28-03:00'
+updated_at: '2026-03-03T12:57:08-03:00'
 ---
 
 # yoda-0046 - Unificar formato de Result log e remover comentario do template

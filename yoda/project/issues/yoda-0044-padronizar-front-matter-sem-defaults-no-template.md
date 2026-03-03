@@ -1,16 +1,16 @@
 ---
-created_at: '2026-02-26T19:04:01-03:00'
+schema_version: '1.02'
+id: yoda-0044
+slug: padronizar-front-matter-sem-defaults-no-template
+status: done
+title: Padronizar front matter sem defaults no template
 description: Remover valores padrao do front matter no template markdown; issue_add.py
   e todo_update.py passam a preencher/atualizar campos. Definir ordem fixa de campos
   no front matter para leitura consistente.
-extern_issue_file: ../extern_issues/github-2.json
-id: yoda-0044
 priority: 5
-schema_version: '1.02'
-slug: padronizar-front-matter-sem-defaults-no-template
-status: to-do
-title: Padronizar front matter sem defaults no template
-updated_at: '2026-03-03T12:27:03-03:00'
+extern_issue_file: ../extern_issues/github-2.json
+created_at: '2026-02-26T19:04:01-03:00'
+updated_at: '2026-03-03T12:59:28-03:00'
 ---
 
 # yoda-0044 - Padronizar front matter sem defaults no template
@@ -42,13 +42,20 @@ Separar claramente template e preenchimento de dados: template sem defaults, scr
 - `todo_update.py` (ou script equivalente) deve atualizar mantendo ordem canonica.
 - Ordem de campos deve ser unica e documentada.
 - Serializacao deve ser deterministica para evitar reorder acidental.
+- Ordem canonica obrigatoria de front matter:
+  - `schema_version`, `id`, `slug`, `status`, `pending_reason` (quando presente), `depends_on` (quando presente), `title`, `description`, `priority`, `extern_issue_file` (quando presente), `created_at`, `updated_at`.
+- Politica de opcionais vazios confirmada: omitir `pending_reason`, `depends_on` e `extern_issue_file` quando vazios.
+- No template, manter apenas delimitadores de front matter (`---`), sem placeholders de dados.
+- `init.py --reconcile-layout` deve aplicar a mesma ordem canonica ao legado ao reconciliar front matter de issues.
 
 ## Acceptance criteria
-- [ ] `yoda/templates/issue.md` nao contem defaults operacionais no front matter.
-- [ ] Nova issue criada por `issue_add.py` sai com campos preenchidos e ordenados conforme padrao.
-- [ ] Update de issue preserva a mesma ordem de campos no front matter.
-- [ ] Fixtures/testes de front matter cobrem ordem fixa e ausencia de defaults no template.
-- [ ] Reconciliacao (quando aplicada) nao quebra validacao dos arquivos existentes.
+- [x] `yoda/templates/issue.md` nao contem defaults operacionais no front matter.
+- [x] Nova issue criada por `issue_add.py` sai com campos preenchidos e ordenados conforme padrao.
+- [x] Update de issue preserva a mesma ordem de campos no front matter.
+- [x] Fixtures/testes de front matter cobrem ordem fixa e ausencia de defaults no template.
+- [x] Reconciliacao (quando aplicada) nao quebra validacao dos arquivos existentes.
+- [x] A ordem relativa `status -> pending_reason -> depends_on` e respeitada quando os campos existem.
+- [x] `title` aparece antes de `description` no front matter final.
 
 ## Dependencies
 Relacionada a `yoda-0043` (omissao de opcionais vazios) e `yoda-0042` (simplificacao de origem externa); origem externa `github #2`.
@@ -70,11 +77,17 @@ Relacionada a `yoda-0043` (omissao de opcionais vazios) e `yoda-0042` (simplific
 ## Implementation notes
 Se `todo_update.py` ainda nao cobrir update de front matter no fluxo atual, definir explicitamente o caminho responsavel por essa atualizacao e manter nomenclatura/documentacao consistente. A ordem canonica pode ser centralizada em utilitario unico para evitar divergencia entre criacao e update.
 
+Decisoes de Document:
+- Campo temporal canonico: `created_at` (nao `create_at`).
+- `title` deve aparecer antes de `description`.
+- Template de issue sem placeholders de metadata; scripts passam a ser a unica fonte de preenchimento de front matter.
+
 ## Tests
 - Adicionar testes de renderizacao do template sem defaults.
 - Adicionar testes de `issue_add.py` validando ordem fixa do front matter.
 - Adicionar/ajustar testes de update para garantir preservacao da ordem.
 - Rodar `python3 -m pytest yoda/scripts/tests`.
+- Executado: `python3 -m pytest yoda/scripts/tests -q` -> `56 passed`.
 
 ## Risks and edge cases
 - Divergencia entre scripts se a ordenacao nao for centralizada.
@@ -82,9 +95,9 @@ Se `todo_update.py` ainda nao cobrir update de front matter no fluxo atual, defi
 - Casos legados com front matter incompleto exigirem normalizacao cuidadosa.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
+refactor(yoda): canonicalize issue front matter order and remove template metadata defaults
+
+Issue: `yoda-0044`
+Path: `yoda/project/issues/yoda-0044-padronizar-front-matter-sem-defaults-no-template.md`
+
+Foi centralizada uma ordem canonica unica para metadata de issue e a serializacao de front matter passou a preservar essa ordem de forma deterministica. O template `yoda/templates/issue.md` foi reduzido para shell de front matter vazio (`---`/`---`), deixando o preenchimento totalmente a cargo dos scripts. `issue_add.py`, `todo_update.py` e `init.py --reconcile-layout` foram ajustados para emitir metadata ordenada com politica de omissao de opcionais vazios, e os testes foram atualizados para cobrir ordem fixa, ausencia de defaults e posicionamento relativo de `status`, `pending_reason` e `depends_on`.

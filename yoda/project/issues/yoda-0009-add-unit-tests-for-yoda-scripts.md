@@ -1,14 +1,14 @@
 ---
-created_at: '2026-01-27T18:04:27-03:00'
-description: Create unit tests for implemented scripts, starting with todo_next and
-  existing helpers
-id: yoda-0009
-priority: 5
 schema_version: '1.02'
+id: yoda-0009
 slug: add-unit-tests-for-yoda-scripts
 status: done
 title: Add unit tests for YODA scripts
-updated_at: '2026-03-03T12:27:03-03:00'
+description: Create unit tests for implemented scripts, starting with todo_next and
+  existing helpers
+priority: 5
+created_at: '2026-01-27T18:04:27-03:00'
+updated_at: '2026-03-03T12:57:08-03:00'
 ---
 
 # yoda-0009 - Add unit tests for YODA scripts
