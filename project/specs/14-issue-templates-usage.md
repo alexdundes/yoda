@@ -36,27 +36,35 @@ After the script finishes, the agent must open the issue Markdown file and compl
 - Implementation notes: technical constraints or decisions.
 - Tests: planned tests or "Not applicable".
 - Risks and edge cases: potential failures to consider.
-- Result log: final summary and commit text.
+- Result log: keep the section heading only; formatting instructions come from the playbook.
 
 ## Commit format
 
-The commit text in Result log must follow this format:
+The Result log format is defined in `yoda/yoda.md` (Evaluate section) and must follow:
 
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
+- `<First line: conventional commit message.>`
+- blank line
+- `<descricao do que foi feito>`
+- blank line
+- `- **<GitLab|GitHub> Issue** :   #NNN` (only when `extern_issue_file` exists)
+- blank line
+- `- **Issue**: \`<ID>\``
+- blank line
+- `- **Path**: \`<issue path>\``
 
 Example:
 
 feat(yoda): add issue template guide
 
-Issue: dev-0005
-Path: `yoda/project/issues/dev-0005-template-issue-regras-uso.md`
+Summary of what was done.
+
+- **Issue**: `dev-0005`
+
+- **Path**: `yoda/project/issues/dev-0005-template-issue-regras-uso.md`
 
 ## Notes
 
 - Templates are designed to be agent-ready and must remain consistent with `project/specs/`.
 - The opening instruction comment that asks to replace `[ID]` and `[TITLE]` must not appear in final templates used by `issue_add.py`.
-- Section-level guidance comments may remain when they are intentionally part of the template workflow.
+- Keep `## Result log` empty in `yoda/templates/issue.md`; the playbook is the single source of truth for formatting.
 - If the template lacks required information, update `project/specs/` first.

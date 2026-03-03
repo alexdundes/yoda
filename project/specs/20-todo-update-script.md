@@ -31,6 +31,9 @@ Required inputs:
 Updatable fields (flags):
 - `--status <to-do|doing|done|pending>`
 - `--priority <0..10>`
+- `--title <text>`
+- `--description <text>`
+- `--slug <slug>`: filename slug override used for issue/log rename.
 - `--depends-on <csv>`: comma-separated issue ids.
 - `--pending-reason <text>`
 - `--extern-issue <NNN>`: infer provider from git `origin` and generate `extern_issue_file` as `../extern_issues/<provider>-<NNN>.json`.
@@ -53,16 +56,21 @@ Global flags:
 2) Load `yoda/todos/TODO.<dev>.yaml`. If missing, exit with code 3.
 3) Validate the TODO schema. If validation fails, exit with code 2.
 4) Find the issue item by id. If not found, exit with code 3.
-5) Apply provided updates to the issue item.
-6) Enforce pending rules:
+5) Resolve current issue file by id (`yoda/project/issues/<id>-*.md`); if missing, exit with code 3; if multiple matches, exit with code 4.
+6) Apply provided updates to the issue item.
+7) Enforce pending rules:
    - If status is set to `pending`, `pending_reason` must be provided (or already present).
    - If status is set to any non-pending value, `pending_reason` must be cleared unless explicitly provided.
-7) Update issue `updated_at` and root `updated_at` with the current timestamp in TODO timezone.
-8) Validate the resulting TODO. If validation fails, exit with code 2.
-9) Update the issue Markdown front matter to mirror the TODO item (fail with code 3 if the issue file is missing).
-   - If the file is missing, recovery is manual: a human or agent recreates the Markdown without scripts.
-10) Append a log entry for the updated issue via `log_add.py` (or shared helper) unless `--dry-run` is set.
-11) If `--dry-run` is set, perform all steps except file writes. Output a summary and exit 0.
+8) Resolve target filename slug:
+   - use `--slug` when provided;
+   - else, if `--title` changed, derive slug from the new title;
+   - else keep current filename slug.
+9) If target slug differs, rename issue and log files to `<id>-<target-slug>.*` (conflict => exit 4).
+10) Update issue `updated_at` and root `updated_at` with the current timestamp in TODO timezone.
+11) Validate the resulting TODO. If validation fails, exit with code 2.
+12) Update the issue Markdown front matter to mirror the TODO item.
+13) Append a log entry for the updated issue via `log_add.py` (or shared helper) unless `--dry-run` is set.
+14) If `--dry-run` is set, perform all steps except file writes. Output a summary and exit 0.
 
 ## Updates
 
@@ -74,6 +82,8 @@ Global flags:
 - `depends_on` ids must exist within the same TODO.
 - `extern_issue_file`, when provided and non-empty, must match the schema/validation pattern.
 - `--extern-issue` and `--extern-issue-file` are mutually exclusive.
+- `slug` must not be persisted in TODO/front matter; it is a filename concern.
+- `--clear-extern-issue-file` removes external linkage from persisted metadata.
 
 ## Timestamp
 
@@ -112,5 +122,5 @@ On success, the script outputs a short summary in the chosen format, including:
   - `1`: general error
   - `2`: validation error
   - `3`: not found (missing TODO or issue id)
-  - `4`: conflict (unused by todo_update in v1)
+  - `4`: conflict (rename target exists or multiple files found for same id)
 - Errors must be written to stderr and include an actionable message.

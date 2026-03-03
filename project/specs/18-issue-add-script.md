@@ -97,16 +97,18 @@ Failure policy:
 
 The TODO issue item and issue front matter must include:
 - `schema_version: "1.02"`
-- `id`, `title`, `slug`, `description`
+- `id`, `title`, `description`
 - `status: to-do`
 - `priority`
-- `depends_on: []`
-- `pending_reason: ""`
 - `created_at`, `updated_at` (same timestamp)
 - `extern_issue_file`:
   - when `--extern-issue` is provided, MUST be set to a relative path from `yoda/project/issues/` to `yoda/project/extern_issues/<provider>-<NNN>.json`;
-  - example: `../extern_issues/github-2.json`;
-  - when no external source is provided, MUST be an empty string.
+  - example: `../extern_issues/github-2.json`.
+
+Metadata policy:
+- `slug` is represented by the issue filename (`<id>-<slug>.md`) and must not be persisted in TODO/front matter.
+- Optional empty fields (`depends_on`, `pending_reason`, `extern_issue_file`) must be omitted.
+- `depends_on` starts empty by default and is written only when non-empty.
 
 Priority policy for issue creation:
 - If `--priority` is omitted, the created issue must use `5` (baseline).

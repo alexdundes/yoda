@@ -50,7 +50,9 @@ Global flags:
    - GitHub: `gh`
    - GitLab: `glab`
 6) Ensure CLI authentication is ready (`auth status`).
-7) Fetch external issue data via provider API helper.
+7) Fetch external issue data via provider API helper, including activity log:
+   - GitHub: issue details + comments + timeline/events.
+   - GitLab: issue details + notes.
 8) Persist JSON to `yoda/project/extern_issues/<provider>-<NNN>.json`.
 9) Output concise summary plus one explicit continuation command:
    - `python3 yoda/scripts/yoda_intake.py --dev <slug> --extern-issue <NNN>`
@@ -66,6 +68,16 @@ Minimum keys:
 - `author`
 - `url`
 - `labels`
+- `log`
+
+`log` entry minimum keys:
+- `type`
+- `id`
+- `author`
+- `created_at`
+- `updated_at`
+- `body`
+- `url`
 
 ## Output
 

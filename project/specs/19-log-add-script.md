@@ -32,7 +32,7 @@ Required inputs:
 
 Optional inputs:
 - `--timestamp <iso8601>`: override timestamp (default: now in TODO timezone).
-Note: `log_add.py` does not accept a slug input; it resolves the slug from the TODO item identified by `--issue`.
+Note: `log_add.py` does not accept a slug input; it resolves issue/log files by `id` pattern matching in the filesystem.
 
 Global flags:
 - `--dev <slug>`
@@ -47,7 +47,9 @@ Global flags:
 2) Load `yoda/todos/TODO.<dev>.yaml`. If missing, exit with code 3.
 3) Validate the TODO schema and inputs. If validation fails, exit with code 2.
 4) Find the issue item by id. If not found, exit with code 3.
-5) Resolve slug from the TODO issue item and construct issue/log paths.
+5) Resolve issue file from `yoda/project/issues/<id>-*.md` and log file from `yoda/logs/<id>-*.yaml`.
+   - If no issue file exists, exit with code 3.
+   - If multiple issue/log matches exist for the same id, exit with code 4 (conflict).
 6) Ensure the issue Markdown file exists. If missing, exit with code 3.
 7) Load the log file if it exists; otherwise, create a new log document with the required schema fields.
 8) Append a log entry with timestamp and message.
@@ -60,7 +62,7 @@ Global flags:
 If the log file does not exist, `log_add.py` must create it with:
 - `schema_version: "1.0"`
 - `issue_id`: from input
-- `issue_path`: resolved from TODO slug
+- `issue_path`: resolved from the matched issue markdown path
 - `todo_id`: same as issue_id
 - `status`: current issue status from TODO
 - `entries`: empty list (before append)
@@ -103,5 +105,5 @@ On success, the script outputs a short summary in the chosen format, including:
   - `1`: general error
   - `2`: validation error
   - `3`: not found (missing TODO, issue id, or issue file)
-  - `4`: conflict (unused by log_add in v1)
+  - `4`: conflict (ambiguous multiple files for the same issue id)
 - Errors must be written to stderr and include an actionable message.

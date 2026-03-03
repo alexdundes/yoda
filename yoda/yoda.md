@@ -63,6 +63,10 @@ Evaluate `Result log` official format:
 - blank line
 - `- **Path**: \`<issue path>\``
 
+Template rule:
+- Keep `## Result log` empty in `yoda/templates/issue.md`.
+- The formatting source of truth is this Evaluate section in `yoda/yoda.md`.
+
 External issue line rule:
 - Emit the line only when the issue front matter contains `extern_issue_file`.
 - Derive provider and number from `extern_issue_file` (for example, `../extern_issues/github-2.json` => `GitHub` and `#2`).
