@@ -18,7 +18,7 @@ Out of scope:
 ## Location
 
 - Script path: `yoda/scripts/get_extern_issue.py`
-- Output folder: `yoda/project/extern-issues/`
+- Output folder: `yoda/project/extern_issues/`
 - Output file pattern:
   - GitHub: `github-<NNN>.json`
   - GitLab: `gitlab-<NNN>.json`
@@ -51,7 +51,7 @@ Global flags:
    - GitLab: `glab`
 6) Ensure CLI authentication is ready (`auth status`).
 7) Fetch external issue data via provider API helper.
-8) Persist JSON to `yoda/project/extern-issues/<provider>-<NNN>.json`.
+8) Persist JSON to `yoda/project/extern_issues/<provider>-<NNN>.json`.
 9) Output concise summary plus one explicit continuation command:
    - `python3 yoda/scripts/yoda_intake.py --dev <slug> --extern-issue <NNN>`
 
@@ -92,4 +92,3 @@ JSON mode:
 - Missing/unsupported origin or provider must return not-found (exit code 3).
 - Missing CLI or invalid auth must return not-found (exit code 3) with actionable message.
 - API or unexpected runtime failures must return general error (exit code 1).
-

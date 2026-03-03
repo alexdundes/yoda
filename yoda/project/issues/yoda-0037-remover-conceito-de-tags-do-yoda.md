@@ -6,18 +6,15 @@ description: 'O campo tags esta subutilizado e deve ser eliminado por completo d
   YODA (schema, scripts, filtros e templates). Regra transversal: atualizar primeiro
   project/specs/ e depois yoda/. Como envolve layout YAML, aplicar politica de versao
   de schema e tratamento de compatibilidade conforme update.py quando aplicavel.'
+extern_issue_file: ''
 id: yoda-0037
-origin:
-  external_id: ''
-  requester: ''
-  system: ''
 pending_reason: ''
 priority: 3
-schema_version: '1.01'
+schema_version: '1.02'
 slug: remover-conceito-de-tags-do-yoda
 status: done
 title: Remover conceito de tags do YODA
-updated_at: '2026-02-25T20:02:28-03:00'
+updated_at: '2026-03-03T11:41:51-03:00'
 ---
 
 # yoda-0037 - Remover conceito de tags do YODA

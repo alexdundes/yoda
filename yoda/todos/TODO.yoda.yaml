@@ -1,10 +1,10 @@
-schema_version: '1.01'
+schema_version: '1.02'
 developer_name: Yoda
 developer_slug: yoda
 timezone: America/Sao_Paulo
-updated_at: '2026-02-26T19:27:28-03:00'
+updated_at: '2026-03-03T11:51:27-03:00'
 issues:
-- schema_version: '1.01'
+- schema_version: '1.02'
   id: yoda-0014
   title: Implement todo_reorder.py
   slug: implement-todo-reorder-py
@@ -15,12 +15,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-28T14:51:24-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0013
   title: Specify todo_reorder.py
   slug: specify-todo-reorder-py
@@ -30,12 +27,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-28T14:51:19-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0012
   title: Implement todo_list.py
   slug: implement-todo-list-py
@@ -46,12 +40,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-28T12:25:58-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0011
   title: Specify todo_list.py
   slug: specify-todo-list-py
@@ -62,12 +53,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-28T12:25:53-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0010
   title: Update agent playbook to use scripts
   slug: update-agent-playbook-to-use-scripts
@@ -78,12 +66,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-27T19:14:48-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0009
   title: Add unit tests for YODA scripts
   slug: add-unit-tests-for-yoda-scripts
@@ -94,12 +79,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-27T18:04:27-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0008
   title: Implement todo_next with single-issue rule
   slug: implement-todo-next-with-single-issue-rule
@@ -110,12 +92,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-27T17:57:51-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0007
   title: Specify todo_next command
   slug: specify-todo-next-command
@@ -126,12 +105,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-27T17:22:15-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0006
   title: Review and retire dicas-do-chatgpt
   slug: review-and-retire-dicas-do-chatgpt
@@ -142,12 +118,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-27T16:47:31-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0005
   title: Fix markdown list indentation
   slug: fix-markdown-list-indentation
@@ -157,12 +130,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-27T16:41:51-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0004
   title: Happy path end-to-end
   slug: happy-path-end-to-end
@@ -172,12 +142,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-27T16:41:48-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0003
   title: Define JSON output minimums
   slug: define-json-output-minimums
@@ -187,12 +154,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-27T16:41:45-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0002
   title: Document log_add slug resolution
   slug: document-log-add-slug-resolution
@@ -202,12 +166,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-27T16:41:42-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0001
   title: Slug immutability rule
   slug: slug-immutability-rule
@@ -217,12 +178,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-27T16:41:37-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0015
   title: Specify YODA Intake
   slug: specify-yoda-intake
@@ -232,12 +190,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-28T17:35:28-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0016
   title: "Specs: empacotamento e distribui\xE7\xE3o do YODA Framework"
   slug: specs-empacotamento-e-distribui-o-do-yoda-framework
@@ -249,12 +204,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-01-28T19:02:03-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0017
   title: 'Manual embarcado: reescrever yoda/yoda.md independente das specs'
   slug: manual-embarcado-reescrever-yoda-yoda-md-independente-das-specs
@@ -266,12 +218,9 @@ issues:
   - yoda-0016
   pending_reason: ''
   created_at: '2026-01-28T19:02:06-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0018
   title: Comando de empacote do YODA (package)
   slug: comando-de-empacote-do-yoda-package
@@ -284,12 +233,9 @@ issues:
   - yoda-0016
   pending_reason: ''
   created_at: '2026-01-28T19:02:09-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0019
   title: "Comando de init p\xF3s-embutido"
   slug: comando-de-init-p-s-embutido
@@ -303,12 +249,9 @@ issues:
   - yoda-0018
   pending_reason: ''
   created_at: '2026-01-28T19:02:12-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0020
   title: "Spike: padr\xE3o de instala\xE7\xE3o/upgrade do YODA em projetos externos"
   slug: spike-padr-o-de-instala-o-upgrade-do-yoda-em-projetos-externos
@@ -320,12 +263,9 @@ issues:
   - yoda-0016
   pending_reason: ''
   created_at: '2026-01-28T19:02:16-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0021
   title: LICENSE curta para pacote YODA
   slug: license-curta-para-pacote-yoda
@@ -337,12 +277,9 @@ issues:
   - yoda-0016
   pending_reason: ''
   created_at: '2026-01-29T06:31:15-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0022
   title: README curto do pacote YODA
   slug: readme-curto-do-pacote-yoda
@@ -355,12 +292,9 @@ issues:
   - yoda-0016
   pending_reason: ''
   created_at: '2026-01-29T06:31:28-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0023
   title: Document one-liner install flow
   slug: document-one-liner-install-flow
@@ -373,12 +307,9 @@ issues:
   - yoda-0024
   pending_reason: ''
   created_at: '2026-02-04T08:07:08-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0024
   title: Revise package README content and structure
   slug: revise-package-readme-content-and-structure
@@ -395,12 +326,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-02-04T09:38:21-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0025
   title: Update package build to include yoda/LICENSE
   slug: update-package-build-to-include-yoda-license
@@ -412,12 +340,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-02-04T18:39:22-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0026
   title: Implement yoda-install.sh one-liner installer
   slug: implement-yoda-install-sh-one-liner-installer
@@ -431,12 +356,9 @@ issues:
   - yoda-0025
   pending_reason: ''
   created_at: '2026-02-04T18:39:27-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0027
   title: Implement update command for embedded YODA
   slug: implement-update-command-for-embedded-yoda
@@ -450,12 +372,9 @@ issues:
   - yoda-0025
   pending_reason: ''
   created_at: '2026-02-04T18:39:33-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0028
   title: Set up GitHub Pages /docs hosting for installer and metadata
   slug: set-up-github-pages-docs-hosting-for-installer-and-metadata
@@ -469,12 +388,9 @@ issues:
   - yoda-0026
   pending_reason: ''
   created_at: '2026-02-04T18:39:41-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0029
   title: Extend init to manage REPO_INTENT.md and repo.intent.yaml
   slug: extend-init-to-manage-repo-intent-md-and-repo-intent-yaml
@@ -486,12 +402,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-02-04T20:16:53-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0030
   title: Allow one-liner install without explicit version
   slug: allow-one-liner-install-without-explicit-version
@@ -503,12 +416,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-02-05T12:24:06-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0031
   title: Padronizar GEMINI.md no init
   slug: padronizar-gemini-md-no-init
@@ -522,12 +432,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-02-25T15:18:57-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0032
   title: 'YODA Intake: coletar texto corrido e agente traduzir em issue'
   slug: yoda-intake-coletar-texto-corrido-e-agente-traduzir-em-issue
@@ -542,12 +449,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-02-25T15:19:59-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0033
   title: Corrigir concorrencia no issue_add para criacoes simultaneas
   slug: corrigir-concorrencia-no-issue-add-para-criacoes-simultaneas
@@ -563,12 +467,9 @@ issues:
   - yoda-0038
   pending_reason: ''
   created_at: '2026-02-25T15:23:19-03:00'
-  updated_at: '2026-02-26T14:34:39-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0034
   title: Remover comentario-instrucao do template de issue
   slug: remover-comentario-instrucao-do-template-de-issue
@@ -581,12 +482,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-02-25T15:36:44-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0035
   title: Remover conceito de lightweight do YODA
   slug: remover-conceito-de-lightweight-do-yoda
@@ -601,12 +499,9 @@ issues:
   - yoda-0038
   pending_reason: ''
   created_at: '2026-02-25T15:36:44-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0036
   title: Remover entrypoints do YAML e manter apenas no markdown
   slug: remover-entrypoints-do-yaml-e-manter-apenas-no-markdown
@@ -622,12 +517,9 @@ issues:
   - yoda-0038
   pending_reason: ''
   created_at: '2026-02-25T15:36:44-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0037
   title: Remover conceito de tags do YODA
   slug: remover-conceito-de-tags-do-yoda
@@ -641,12 +533,9 @@ issues:
   - yoda-0038
   pending_reason: ''
   created_at: '2026-02-25T15:36:45-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0038
   title: Definir politica de versionamento do layout YAML do YODA
   slug: definir-politica-de-versionamento-do-layout-yaml-do-yoda
@@ -659,12 +548,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-02-25T15:36:45-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0039
   title: Integrar backlog externo via glab e prever GitHub
   slug: integrar-backlog-externo-via-glab-e-prever-github
@@ -678,12 +564,9 @@ issues:
   - yoda-0038
   pending_reason: ''
   created_at: '2026-02-25T15:36:45-03:00'
-  updated_at: '2026-02-26T17:12:16-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0040
   title: Definir heuristica de prioridade com baseline 5
   slug: definir-heuristica-de-prioridade-com-baseline-5
@@ -696,12 +579,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-02-25T15:36:45-03:00'
-  updated_at: '2026-02-25T20:02:28-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0041
   title: Remover conceito de agent do YODA
   slug: remover-conceito-de-agent-do-yoda
@@ -714,12 +594,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-02-25T19:53:46-03:00'
-  updated_at: '2026-02-25T20:07:45-03:00'
-  origin:
-    system: ''
-    external_id: ''
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:41:51-03:00'
+  extern_issue_file: ''
+- schema_version: '1.02'
   id: yoda-0042
   title: Simplificar origem externa para extern_issue_file
   slug: simplificar-origem-externa-para-extern-issue-file
@@ -731,12 +608,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-02-26T18:50:40-03:00'
-  updated_at: '2026-02-26T18:50:40-03:00'
-  origin:
-    system: github
-    external_id: '2'
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:51:27-03:00'
+  extern_issue_file: ../extern_issues/github-2.json
+- schema_version: '1.02'
   id: yoda-0043
   title: Omitir campos opcionais vazios nos arquivos
   slug: omitir-campos-opcionais-vazios-nos-arquivos
@@ -747,12 +621,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-02-26T18:57:50-03:00'
-  updated_at: '2026-02-26T18:57:50-03:00'
-  origin:
-    system: github
-    external_id: '2'
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:51:27-03:00'
+  extern_issue_file: ../extern_issues/github-2.json
+- schema_version: '1.02'
   id: yoda-0044
   title: Padronizar front matter sem defaults no template
   slug: padronizar-front-matter-sem-defaults-no-template
@@ -764,12 +635,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-02-26T19:04:01-03:00'
-  updated_at: '2026-02-26T19:04:01-03:00'
-  origin:
-    system: github
-    external_id: '2'
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:51:27-03:00'
+  extern_issue_file: ../extern_issues/github-2.json
+- schema_version: '1.02'
   id: yoda-0045
   title: Permitir update de descricao e rename por slug derivado do arquivo
   slug: permitir-update-de-descricao-e-rename-por-slug-derivado-do-arquivo
@@ -781,12 +649,9 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-02-26T19:12:53-03:00'
-  updated_at: '2026-02-26T19:12:53-03:00'
-  origin:
-    system: github
-    external_id: '2'
-    requester: ''
-- schema_version: '1.01'
+  updated_at: '2026-03-03T11:51:27-03:00'
+  extern_issue_file: ../extern_issues/github-2.json
+- schema_version: '1.02'
   id: yoda-0046
   title: Unificar formato de Result log e remover comentario do template
   slug: unificar-formato-de-result-log-e-remover-comentario-do-template
@@ -798,8 +663,5 @@ issues:
   depends_on: []
   pending_reason: ''
   created_at: '2026-02-26T19:27:28-03:00'
-  updated_at: '2026-02-26T19:27:28-03:00'
-  origin:
-    system: github
-    external_id: '2'
-    requester: ''
+  updated_at: '2026-03-03T11:51:27-03:00'
+  extern_issue_file: ../extern_issues/github-2.json

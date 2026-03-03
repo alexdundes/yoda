@@ -33,9 +33,12 @@ Updatable fields (flags):
 - `--priority <0..10>`
 - `--depends-on <csv>`: comma-separated issue ids.
 - `--pending-reason <text>`
+- `--extern-issue <NNN>`: infer provider from git `origin` and generate `extern_issue_file` as `../extern_issues/<provider>-<NNN>.json`.
+- `--extern-issue-file <path>`: relative path from `yoda/project/issues/` to external JSON (example: `../extern_issues/github-2.json`).
 
 Optional inputs:
 - `--clear-depends-on`: remove all dependencies.
+- `--clear-extern-issue-file`: clear external source linkage (`extern_issue_file: ""`).
 
 Global flags:
 - `--dev <slug>`
@@ -69,6 +72,8 @@ Global flags:
 - `priority` must remain within 0..10.
 - `status` must match the allowed enum.
 - `depends_on` ids must exist within the same TODO.
+- `extern_issue_file`, when provided and non-empty, must match the schema/validation pattern.
+- `--extern-issue` and `--extern-issue-file` are mutually exclusive.
 
 ## Timestamp
 

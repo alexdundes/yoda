@@ -45,7 +45,7 @@ def _render(payload: dict[str, Any], output_format: str) -> str:
 
 
 def run(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Fetch external issue into yoda/project/extern-issues")
+    parser = argparse.ArgumentParser(description="Fetch external issue into yoda/project/extern_issues")
     add_global_flags(parser)
     parser.add_argument("--extern-issue", dest="extern_issue", required=False, help="External issue number (NNN)")
 

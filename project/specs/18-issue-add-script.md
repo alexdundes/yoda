@@ -37,9 +37,7 @@ Optional inputs:
 - `--summary <text>`: alias for description (if provided, it overrides `--description`).
 - `--slug <slug>`: explicit slug for the issue. If omitted, the slug is generated from the title.
 - `--priority <0..10>`: integer priority (default 5 baseline).
-- `--extern-issue <NNN>`: link an external source issue id.
-- `--origin-system <text>`: explicit origin system (example: `github`, `gitlab`).
-- `--origin-requester <text>`: optional requester metadata for origin traceability.
+- `--extern-issue <NNN>`: generate `extern_issue_file` pointing to `../extern_issues/<provider>-<NNN>.json`.
 
 Global flags:
 - `--dev <slug>`
@@ -98,18 +96,17 @@ Failure policy:
 ## Metadata population
 
 The TODO issue item and issue front matter must include:
-- `schema_version: "1.01"`
+- `schema_version: "1.02"`
 - `id`, `title`, `slug`, `description`
 - `status: to-do`
 - `priority`
 - `depends_on: []`
 - `pending_reason: ""`
 - `created_at`, `updated_at` (same timestamp)
-- `origin`:
-  - when `--extern-issue` is provided, `origin.external_id` MUST be set to `NNN`;
-  - `origin.system` SHOULD come from `--origin-system` or be inferred from git `origin`;
-  - `origin.requester` MAY be set by `--origin-requester`;
-  - when no external source is provided, origin fields may remain empty.
+- `extern_issue_file`:
+  - when `--extern-issue` is provided, MUST be set to a relative path from `yoda/project/issues/` to `yoda/project/extern_issues/<provider>-<NNN>.json`;
+  - example: `../extern_issues/github-2.json`;
+  - when no external source is provided, MUST be an empty string.
 
 Priority policy for issue creation:
 - If `--priority` is omitted, the created issue must use `5` (baseline).
@@ -122,7 +119,7 @@ Timestamps:
 ## TODO file creation
 
 If `yoda/todos/TODO.<dev>.yaml` does not exist, `issue_add.py` must create it with these defaults before creating the issue:
-- `schema_version: "1.01"`
+- `schema_version: "1.02"`
 - `developer_name`: derive from `<dev>` by title-casing (example: `dev` -> `Dev`).
 - `developer_slug`: `<dev>`
 - `timezone`: local machine timezone (IANA TZ name when available)

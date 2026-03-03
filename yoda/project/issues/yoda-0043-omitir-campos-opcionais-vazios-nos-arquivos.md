@@ -3,18 +3,15 @@ created_at: '2026-02-26T18:57:50-03:00'
 depends_on: []
 description: Quando um campo opcional estiver vazio, ele nao deve ser definido/persistido
   nos arquivos gerados ou atualizados.
+extern_issue_file: ../extern_issues/github-2.json
 id: yoda-0043
-origin:
-  external_id: '2'
-  requester: ''
-  system: github
 pending_reason: ''
 priority: 5
-schema_version: '1.01'
+schema_version: '1.02'
 slug: omitir-campos-opcionais-vazios-nos-arquivos
 status: to-do
 title: Omitir campos opcionais vazios nos arquivos
-updated_at: '2026-02-26T18:57:50-03:00'
+updated_at: '2026-03-03T11:51:27-03:00'
 ---
 
 # yoda-0043 - Omitir campos opcionais vazios nos arquivos

@@ -81,7 +81,7 @@ def _issue_add_lock(dev: str) -> Any:
 def _create_default_todo(dev: str) -> dict[str, Any]:
     timezone = detect_local_timezone()
     return {
-        "schema_version": "1.01",
+        "schema_version": "1.02",
         "developer_name": dev.title(),
         "developer_slug": dev,
         "timezone": timezone,
@@ -122,11 +122,11 @@ def _build_issue_item(
     slug: str,
     description: str,
     priority: int,
-    origin: dict[str, str],
+    extern_issue_file: str,
     timestamp: str,
 ) -> dict[str, Any]:
     return {
-        "schema_version": "1.01",
+        "schema_version": "1.02",
         "id": issue_id,
         "title": title,
         "slug": slug,
@@ -137,7 +137,7 @@ def _build_issue_item(
         "pending_reason": "",
         "created_at": timestamp,
         "updated_at": timestamp,
-        "origin": origin,
+        "extern_issue_file": extern_issue_file,
     }
 
 
@@ -182,31 +182,27 @@ def _build_issue_log_message(
     if _flag_present("--priority"):
         lines.append(f"priority: {priority}")
     if _flag_present("--extern-issue"):
-        lines.append("origin: external issue linked")
+        lines.append("extern_issue_file: external issue linked")
 
     return "\n".join(lines)
 
 
-def _resolve_origin(extern_issue: str | None, origin_system: str | None, origin_requester: str | None) -> dict[str, str]:
-    system = (origin_system or "").strip().lower()
+def _resolve_extern_issue_file(extern_issue: str | None) -> str:
     external_id = (extern_issue or "").strip()
-    requester = (origin_requester or "").strip()
-
     if not external_id:
-        return {"system": system, "external_id": "", "requester": requester}
+        return ""
     if not external_id.isdigit():
         raise YodaError("--extern-issue must be numeric (NNN).", exit_code=ExitCode.VALIDATION)
-    if not system:
-        try:
-            origin_url = detect_origin_url()
-            host, _ = parse_origin(origin_url)
-            system = provider_from_host(host)
-        except YodaError as exc:
-            raise YodaError(
-                f"Could not infer origin system for --extern-issue {external_id}. Use --origin-system.",
-                exit_code=exc.exit_code,
-            ) from exc
-    return {"system": system, "external_id": external_id, "requester": requester}
+    try:
+        origin_url = detect_origin_url()
+        host, _ = parse_origin(origin_url)
+        provider = provider_from_host(host)
+    except YodaError as exc:
+        raise YodaError(
+            f"Could not infer provider for --extern-issue {external_id}. Check git remote origin.",
+            exit_code=exc.exit_code,
+        ) from exc
+    return f"../extern_issues/{provider}-{external_id}.json"
 
 
 def _render_output(payload: dict[str, Any], output_format: str) -> str:
@@ -232,7 +228,7 @@ def main() -> int:
         epilog=(
             "Required input: --title and (--description or --summary).\n"
             "Use --extern-issue <NNN> to link an external source.\n"
-            "Optional origin fields: --origin-system and --origin-requester.\n"
+            "When --extern-issue is provided, extern_issue_file is generated as a relative path to yoda/project/extern_issues/.\n"
             "Priority default is 5; change it only with justified higher/lower importance versus other open issues."
         ),
     )
@@ -243,8 +239,6 @@ def main() -> int:
     parser.add_argument("--slug", required=False, help="Explicit issue slug")
     parser.add_argument("--priority", type=int, default=None, help="Priority 0-10")
     parser.add_argument("--extern-issue", dest="extern_issue", help="External issue number (NNN)")
-    parser.add_argument("--origin-system", dest="origin_system", help="Origin system (github/gitlab)")
-    parser.add_argument("--origin-requester", dest="origin_requester", help="Origin requester")
 
     args = parser.parse_args()
     configure_logging(args.verbose)
@@ -262,7 +256,7 @@ def main() -> int:
         priority = args.priority if args.priority is not None else 5
         if not isinstance(priority, int) or not (0 <= priority <= 10):
             raise YodaError("priority must be between 0 and 10", exit_code=ExitCode.VALIDATION)
-        origin = _resolve_origin(args.extern_issue, args.origin_system, args.origin_requester)
+        extern_issue_file = _resolve_extern_issue_file(args.extern_issue)
 
         slug = args.slug.strip() if args.slug else _generate_slug(title)
         validate_slug(slug)
@@ -294,12 +288,12 @@ def main() -> int:
             issue_item = _build_issue_item(
                 issue_id=issue_id,
                 title=title,
-            slug=slug,
-            description=description,
-            priority=priority,
-            origin=origin,
-            timestamp=timestamp,
-        )
+                slug=slug,
+                description=description,
+                priority=priority,
+                extern_issue_file=extern_issue_file,
+                timestamp=timestamp,
+            )
 
             issues.append(issue_item)
             todo["issues"] = issues
@@ -308,7 +302,7 @@ def main() -> int:
 
             issue_metadata = issue_item.copy()
             issue_metadata.pop("schema_version", None)
-            issue_metadata["schema_version"] = "1.01"
+            issue_metadata["schema_version"] = "1.02"
 
             rendered_issue = render_issue(
                 template_text,

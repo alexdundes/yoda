@@ -3,18 +3,15 @@ created_at: '2026-01-27T16:47:31-03:00'
 depends_on: []
 description: Review yoda/dicas-do-chatgpt.md; if contents are fully captured elsewhere,
   remove the file
+extern_issue_file: ''
 id: yoda-0006
-origin:
-  external_id: ''
-  requester: ''
-  system: ''
 pending_reason: ''
 priority: 5
-schema_version: '1.01'
+schema_version: '1.02'
 slug: review-and-retire-dicas-do-chatgpt
 status: done
 title: Review and retire dicas-do-chatgpt
-updated_at: '2026-02-25T20:02:28-03:00'
+updated_at: '2026-03-03T11:41:51-03:00'
 ---
 
 # yoda-0006 - Review and retire dicas-do-chatgpt

@@ -110,7 +110,7 @@ Behavior (minimum):
 
 Inputs:
 - Title, description or summary, priority.
-- Optional external origin linkage via `--extern-issue`, `--origin-system`, `--origin-requester`.
+- Optional external linkage via `--extern-issue` (stores `extern_issue_file`).
 
 Outputs:
 - Updated `yoda/todos/TODO.<dev>.yaml` and new issue Markdown file named `<id>-<slug>.md` in `yoda/project/issues/`.
@@ -143,7 +143,7 @@ Purpose:
 - Update `yoda/todos/TODO.<dev>.yaml` fields.
 
 Behavior (minimum):
-- Update status, priority, depends_on, pending_reason.
+- Update status, priority, depends_on, pending_reason, and extern_issue_file.
 - Update updated_at.
 - Use `todo_update.py` to resolve `pending` issues by setting a new status and clearing `pending_reason`.
 - `todo_update.py` is the standard way to re-sync issue front matter with the TODO item.
@@ -251,7 +251,7 @@ Purpose:
 Behavior (minimum):
 - Detect provider from git `origin`.
 - Use provider CLI (`glab`/`gh`) to fetch issue details.
-- Write source JSON to `yoda/project/extern-issues/<provider>-<NNN>.json`.
+- Write source JSON to `yoda/project/extern_issues/<provider>-<NNN>.json`.
 - Output a one-line next step command to continue intake loop.
 
 Inputs:

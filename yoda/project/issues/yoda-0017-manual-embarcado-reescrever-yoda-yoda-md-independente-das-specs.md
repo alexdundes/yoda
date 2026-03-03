@@ -4,18 +4,15 @@ depends_on:
 - yoda-0016
 description: Produzir manual mínimo para agentes (YODA Flow e Intake) que funcione
   sem project/specs, com playbooks claros e referências às ferramentas/scripts.
+extern_issue_file: ''
 id: yoda-0017
-origin:
-  external_id: ''
-  requester: ''
-  system: ''
 pending_reason: ''
 priority: 9
-schema_version: '1.01'
+schema_version: '1.02'
 slug: manual-embarcado-reescrever-yoda-yoda-md-independente-das-specs
 status: done
 title: 'Manual embarcado: reescrever yoda/yoda.md independente das specs'
-updated_at: '2026-02-25T20:02:28-03:00'
+updated_at: '2026-03-03T11:41:51-03:00'
 ---
 
 # yoda-0017 - Manual embarcado: reescrever yoda/yoda.md independente das specs

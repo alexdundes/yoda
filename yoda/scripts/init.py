@@ -53,7 +53,7 @@ REPO_INTENT_YODA_DEFAULT = {
     "agent_entry_order": ["REPO_INTENT.md", "yoda/yoda.md"],
 }
 DIFF_LIMIT = 40
-SCHEMA_VERSION = "1.01"
+SCHEMA_VERSION = "1.02"
 
 
 def _build_todo(dev: str, timezone: str) -> dict[str, Any]:
@@ -107,6 +107,8 @@ def _reconcile_todo_and_issues(
         issue.pop("tags", None)
         issue.pop("entrypoints", None)
         issue.pop("lightweight", None)
+        issue.pop("origin", None)
+        issue["extern_issue_file"] = str(issue.get("extern_issue_file", "") or "")
         issue["updated_at"] = timestamp
 
         issue_id = str(issue.get("id", ""))

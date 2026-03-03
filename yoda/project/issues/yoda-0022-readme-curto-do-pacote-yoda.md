@@ -4,18 +4,15 @@ depends_on:
 - yoda-0016
 description: Criar README conciso para o artefato distribuível, com instruções rápidas
   de uso, comandos package/init, conteúdo do pacote e links essenciais.
+extern_issue_file: ''
 id: yoda-0022
-origin:
-  external_id: ''
-  requester: ''
-  system: ''
 pending_reason: ''
 priority: 5
-schema_version: '1.01'
+schema_version: '1.02'
 slug: readme-curto-do-pacote-yoda
 status: done
 title: README curto do pacote YODA
-updated_at: '2026-02-25T20:02:28-03:00'
+updated_at: '2026-03-03T11:41:51-03:00'
 ---
 
 # yoda-0022 - README curto do pacote YODA

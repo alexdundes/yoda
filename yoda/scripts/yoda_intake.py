@@ -70,7 +70,7 @@ def _resolve_dev_no_prompt(explicit_dev: str | None) -> str | None:
 
 def _full_runbook(dev: str, external: bool, external_file: str | None = None) -> str:
     if external:
-        file_hint = external_file or "yoda/project/extern-issues/<provider>-<NNN>.json"
+        file_hint = external_file or "yoda/project/extern_issues/<provider>-<NNN>.json"
         lines = [
             "## AGENT runbook",
             "",
@@ -84,7 +84,7 @@ def _full_runbook(dev: str, external: bool, external_file: str | None = None) ->
             "6. Before creating issues, run this command to review usage details:",
         ]
         lines.extend(_cmd_block("python3 yoda/scripts/issue_add.py --help"))
-        lines.extend(["7. For each generated YODA issue, keep `origin` traceability to external source."])
+        lines.extend(["7. For each generated YODA issue, keep `extern_issue_file` traceability to external source."])
     else:
         lines = [
             "## AGENT runbook",
@@ -132,7 +132,7 @@ def _extern_fetch_runbook(dev: str, issue_number: str) -> str:
     lines.extend(_cmd_block(f"python3 yoda/scripts/get_extern_issue.py --dev {dev} --extern-issue {issue_number}"))
     lines.extend(
         [
-            "2. Wait for confirmation that the JSON file was created in `yoda/project/extern-issues/`.",
+            "2. Wait for confirmation that the JSON file was created in `yoda/project/extern_issues/`.",
             "3. Read the saved `*.json` file details to guide micro-issue decomposition with the human.",
             "4. After confirmation, rerun this command:",
         ]

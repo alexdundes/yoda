@@ -5,18 +5,15 @@ description: 'Eliminar os comentarios de instrucao do agente no template de issu
   que nao sao substituidos e acabam vazando para os arquivos finais. A issue gerada
   deve nascer limpa, sem blocos de comentario operacional do template. Regra transversal:
   atualizar primeiro project/specs/ e depois yoda/.'
+extern_issue_file: ''
 id: yoda-0034
-origin:
-  external_id: ''
-  requester: ''
-  system: ''
 pending_reason: ''
 priority: 4
-schema_version: '1.01'
+schema_version: '1.02'
 slug: remover-comentario-instrucao-do-template-de-issue
 status: done
 title: Remover comentario-instrucao do template de issue
-updated_at: '2026-02-25T20:02:28-03:00'
+updated_at: '2026-03-03T11:41:51-03:00'
 ---
 
 # yoda-0034 - Remover comentario-instrucao do template de issue

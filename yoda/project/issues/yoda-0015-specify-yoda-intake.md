@@ -2,18 +2,15 @@
 created_at: '2026-01-28T17:35:28-03:00'
 depends_on: []
 description: Create a spec and update docs to define the YODA Intake concept.
+extern_issue_file: ''
 id: yoda-0015
-origin:
-  external_id: ''
-  requester: ''
-  system: ''
 pending_reason: ''
 priority: 5
-schema_version: '1.01'
+schema_version: '1.02'
 slug: specify-yoda-intake
 status: done
 title: Specify YODA Intake
-updated_at: '2026-02-25T20:02:28-03:00'
+updated_at: '2026-03-03T11:41:51-03:00'
 ---
 
 # yoda-0015 - Specify YODA Intake

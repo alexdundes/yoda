@@ -37,7 +37,7 @@ Separate backlog metadata from rich issue descriptions.
 
 Root fields (required):
 
-- schema_version: "1.01"
+- schema_version: "1.02"
 - developer_name: human-readable developer name
 - developer_slug: developer slug used in the file name
 - timezone: `UTC` or IANA TZ database name (Python `zoneinfo` compatible)
@@ -58,11 +58,11 @@ Each issue item must contain:
 
 Optional fields:
 
-- origin: external issue reference (system, external_id, requester)
+- extern_issue_file: relative path from `yoda/project/issues/` to external source JSON in `yoda/project/extern_issues/` (example: `../extern_issues/github-2.json`)
 
 ## Constraints
 
-- schema_version uses semantic versioning (current: 1.01).
+- schema_version uses semantic versioning (current: 1.02).
 - developer_slug must match the slug rules (lowercase ASCII, digits, hyphens; start with a letter; no spaces).
 - id must match `<developer_slug>-<####>` (4 digits).
 - status must be one of: to-do, doing, done, pending.
@@ -139,7 +139,7 @@ Selection rules:
 ## Minimal example (`yoda/todos/TODO.<dev>.yaml`)
 
 ```yaml
-schema_version: "1.01"
+schema_version: "1.02"
 developer_name: Alex
 developer_slug: dev
 timezone: "America/Sao_Paulo"

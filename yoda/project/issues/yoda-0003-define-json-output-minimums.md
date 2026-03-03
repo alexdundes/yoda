@@ -2,18 +2,15 @@
 created_at: '2026-01-27T16:41:45-03:00'
 depends_on: []
 description: Document minimal JSON fields for issue_add, todo_update, log_add
+extern_issue_file: ''
 id: yoda-0003
-origin:
-  external_id: ''
-  requester: ''
-  system: ''
 pending_reason: ''
 priority: 5
-schema_version: '1.01'
+schema_version: '1.02'
 slug: define-json-output-minimums
 status: done
 title: Define JSON output minimums
-updated_at: '2026-02-25T20:02:28-03:00'
+updated_at: '2026-03-03T11:41:51-03:00'
 ---
 
 # yoda-0003 - Define JSON output minimums

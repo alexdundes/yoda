@@ -13,7 +13,7 @@ SLUG_RE = re.compile(r"^[a-z][a-z0-9-]*$")
 ISSUE_ID_RE = re.compile(r"^[a-z][a-z0-9-]*-\d{4}$")
 ALLOWED_STATUS = {"to-do", "doing", "done", "pending"}
 ALLOWED_ENTRY_TYPES = {"doc", "code", "config", "schema", "data", "asset", "other"}
-SUPPORTED_SCHEMA_VERSIONS = {"1.0", "1.01"}
+SUPPORTED_SCHEMA_VERSIONS = {"1.0", "1.01", "1.02"}
 
 
 def validate_slug(slug: str) -> None:
@@ -100,6 +100,15 @@ def validate_issue_item(item: dict[str, Any], dev: str) -> None:
         raise YodaError("pending_reason required for pending status", exit_code=ExitCode.VALIDATION)
     if not isinstance(item.get("depends_on"), list):
         raise YodaError("depends_on must be a list", exit_code=ExitCode.VALIDATION)
+    extern_issue_file = item.get("extern_issue_file")
+    if extern_issue_file is not None:
+        if not isinstance(extern_issue_file, str):
+            raise YodaError("extern_issue_file must be a string", exit_code=ExitCode.VALIDATION)
+        if extern_issue_file and not re.match(r"^\.\./extern_issues/[a-z0-9-]+-\d+\.json$", extern_issue_file):
+            raise YodaError(
+                "extern_issue_file must be a relative path like ../extern_issues/<provider>-<NNN>.json",
+                exit_code=ExitCode.VALIDATION,
+            )
     if item.get("entrypoints") is not None:
         if not isinstance(item.get("entrypoints"), list):
             raise YodaError("entrypoints must be a list", exit_code=ExitCode.VALIDATION)

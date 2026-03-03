@@ -3,18 +3,15 @@ created_at: '2026-01-28T12:25:58-03:00'
 depends_on: []
 description: 'Implement todo_list.py per spec: filters, ordering, md/json output,
   and optional text/regex search in selected issue markdown files.'
+extern_issue_file: ''
 id: yoda-0012
-origin:
-  external_id: ''
-  requester: ''
-  system: ''
 pending_reason: ''
 priority: 5
-schema_version: '1.01'
+schema_version: '1.02'
 slug: implement-todo-list-py
 status: done
 title: Implement todo_list.py
-updated_at: '2026-02-25T20:02:28-03:00'
+updated_at: '2026-03-03T11:41:51-03:00'
 ---
 
 # yoda-0012 - Implement todo_list.py

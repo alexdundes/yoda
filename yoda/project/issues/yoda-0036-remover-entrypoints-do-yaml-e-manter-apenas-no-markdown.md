@@ -7,18 +7,15 @@ description: 'Hoje entrypoints aparecem no front matter YAML e tambem no corpo d
   esse campo do YAML de issue/TODO/log quando aplicavel. Regra transversal: atualizar
   primeiro project/specs/ e depois yoda/. Como envolve layout YAML, aplicar politica
   de versao de schema e tratamento de compatibilidade conforme update.py quando aplicavel.'
+extern_issue_file: ''
 id: yoda-0036
-origin:
-  external_id: ''
-  requester: ''
-  system: ''
 pending_reason: ''
 priority: 3
-schema_version: '1.01'
+schema_version: '1.02'
 slug: remover-entrypoints-do-yaml-e-manter-apenas-no-markdown
 status: done
 title: Remover entrypoints do YAML e manter apenas no markdown
-updated_at: '2026-02-25T20:02:28-03:00'
+updated_at: '2026-03-03T11:41:51-03:00'
 ---
 
 # yoda-0036 - Remover entrypoints do YAML e manter apenas no markdown

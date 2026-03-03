@@ -3,18 +3,15 @@ created_at: '2026-01-27T18:04:27-03:00'
 depends_on: []
 description: Create unit tests for implemented scripts, starting with todo_next and
   existing helpers
+extern_issue_file: ''
 id: yoda-0009
-origin:
-  external_id: ''
-  requester: ''
-  system: ''
 pending_reason: ''
 priority: 5
-schema_version: '1.01'
+schema_version: '1.02'
 slug: add-unit-tests-for-yoda-scripts
 status: done
 title: Add unit tests for YODA scripts
-updated_at: '2026-02-25T20:02:28-03:00'
+updated_at: '2026-03-03T11:41:51-03:00'
 ---
 
 # yoda-0009 - Add unit tests for YODA scripts

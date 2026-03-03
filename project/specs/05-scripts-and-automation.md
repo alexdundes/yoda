@@ -12,7 +12,7 @@ Standardize repetitive tasks and reduce the need for manual edits.
 
 ## Minimum scripts (v1)
 
-- `issue_add.py`: adds an issue to `yoda/todos/TODO.<dev>.yaml`, generates issue Markdown, and may link external origin metadata (`origin`) when provided
+- `issue_add.py`: adds an issue to `yoda/todos/TODO.<dev>.yaml`, generates issue Markdown, and may link external source JSON via `extern_issue_file` when provided
 - `yoda_intake.py`: intake runbook command; routes intake flow for external/non-external sources and can summarize external issues
 - `get_extern_issue.py`: fetches external issue data and stores local JSON for intake continuation
 - `yoda/todos/TODO.<dev>.yaml` maintenance scripts (list, update, reorder, etc.)
@@ -80,7 +80,7 @@ Failure behavior:
 
 ## Schema versioning and migrations
 
-- TODO and issue metadata use `schema_version` (current target: "1.01").
+- TODO and issue metadata use `schema_version` (current target: "1.02").
 - Log metadata uses `schema_version` "1.0".
 - Versions follow semantic versioning (major.minor).
 - Major version changes are breaking and must be rejected by scripts.

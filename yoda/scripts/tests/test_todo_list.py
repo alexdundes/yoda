@@ -49,7 +49,7 @@ def test_todo_list_default_order_and_pending_in_json() -> None:
     assert issue_done["id"] not in ids
     assert ids == [issue_b["id"], issue_a["id"], issue_dep["id"], issue_pending["id"]]
     assert "pending_reason" in payload["issues"][0]
-    assert "origin" in payload["issues"][0]
+    assert "extern_issue_file" in payload["issues"][0]
 
 
 def test_todo_list_rejects_removed_tags_flag() -> None:

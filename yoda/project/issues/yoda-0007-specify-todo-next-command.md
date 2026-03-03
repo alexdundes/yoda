@@ -2,18 +2,15 @@
 created_at: '2026-01-27T17:22:15-03:00'
 depends_on: []
 description: Write a spec for todo_next.py behavior, inputs, outputs, and error handling
+extern_issue_file: ''
 id: yoda-0007
-origin:
-  external_id: ''
-  requester: ''
-  system: ''
 pending_reason: ''
 priority: 5
-schema_version: '1.01'
+schema_version: '1.02'
 slug: specify-todo-next-command
 status: done
 title: Specify todo_next command
-updated_at: '2026-02-25T20:02:28-03:00'
+updated_at: '2026-03-03T11:41:51-03:00'
 ---
 
 # yoda-0007 - Specify todo_next command

@@ -1,5 +1,5 @@
 ---
-schema_version: "1.01"
+schema_version: "1.02"
 id: [ID]
 title: [TITLE]
 slug: [SLUG]
@@ -10,10 +10,7 @@ depends_on: []
 pending_reason: ""
 created_at: "[CREATED_AT]"
 updated_at: "[UPDATED_AT]"
-origin:
-  system: ""
-  external_id: ""
-  requester: ""
+extern_issue_file: ""
 ---
 
 # [ID] - [TITLE]

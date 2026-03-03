@@ -6,18 +6,15 @@ description: 'No modo YODA Intake, o agente deve pedir ao dev a descrição da i
   estruturada e para atualização do markdown da issue. Revisar e ajustar o playbook
   em yoda/yoda.md (seção de Intake). Regra transversal: primeiro atualizar a documentação
   em project/specs/, e somente depois aplicar mudanças em yoda/.'
+extern_issue_file: ''
 id: yoda-0032
-origin:
-  external_id: ''
-  requester: ''
-  system: ''
 pending_reason: ''
 priority: 3
-schema_version: '1.01'
+schema_version: '1.02'
 slug: yoda-intake-coletar-texto-corrido-e-agente-traduzir-em-issue
 status: done
 title: 'YODA Intake: coletar texto corrido e agente traduzir em issue'
-updated_at: '2026-02-25T20:02:28-03:00'
+updated_at: '2026-03-03T11:41:51-03:00'
 ---
 
 # yoda-0032 - YODA Intake: coletar texto corrido e agente traduzir em issue

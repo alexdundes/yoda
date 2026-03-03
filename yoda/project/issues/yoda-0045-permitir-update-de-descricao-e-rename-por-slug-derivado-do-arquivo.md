@@ -4,18 +4,15 @@ depends_on: []
 description: Permitir alterar descricao e rename do arquivo da issue; remover campo
   slug do modelo e derivar slug sempre do nome do arquivo (sem ID), com regras claras
   de recálculo no update.
+extern_issue_file: ../extern_issues/github-2.json
 id: yoda-0045
-origin:
-  external_id: '2'
-  requester: ''
-  system: github
 pending_reason: ''
 priority: 5
-schema_version: '1.01'
+schema_version: '1.02'
 slug: permitir-update-de-descricao-e-rename-por-slug-derivado-do-arquivo
 status: to-do
 title: Permitir update de descricao e rename por slug derivado do arquivo
-updated_at: '2026-02-26T19:12:53-03:00'
+updated_at: '2026-03-03T11:51:27-03:00'
 ---
 
 # yoda-0045 - Permitir update de descricao e rename por slug derivado do arquivo

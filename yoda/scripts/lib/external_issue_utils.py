@@ -84,7 +84,7 @@ def ensure_cli_and_auth(provider: str) -> None:
 
 
 def extern_issue_dir() -> Path:
-    return repo_root() / "yoda" / "project" / "extern-issues"
+    return repo_root() / "yoda" / "project" / "extern_issues"
 
 
 def extern_issue_path(provider: str, issue_number: str) -> Path:

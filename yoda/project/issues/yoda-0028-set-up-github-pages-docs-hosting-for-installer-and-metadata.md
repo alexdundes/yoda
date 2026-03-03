@@ -6,18 +6,15 @@ description: Create the docs/install structure and publish yoda-install.sh and l
   via GitHub Pages (/docs). Document the base URL and ensure latest.json points to
   GitHub Releases assets. Include a simple checklist for updating latest.json per
   release.
+extern_issue_file: ''
 id: yoda-0028
-origin:
-  external_id: ''
-  requester: ''
-  system: ''
 pending_reason: ''
 priority: 5
-schema_version: '1.01'
+schema_version: '1.02'
 slug: set-up-github-pages-docs-hosting-for-installer-and-metadata
 status: done
 title: Set up GitHub Pages /docs hosting for installer and metadata
-updated_at: '2026-02-25T20:02:28-03:00'
+updated_at: '2026-03-03T11:41:51-03:00'
 ---
 
 # yoda-0028 - Set up GitHub Pages /docs hosting for installer and metadata

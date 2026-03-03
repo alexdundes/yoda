@@ -66,7 +66,7 @@ class TodoFactory:
         updated_at_value = updated_at or created_at_value
         slug_value = slug or title.lower().replace(" ", "-")
         return {
-            "schema_version": "1.0",
+            "schema_version": "1.02",
             "id": issue_id,
             "title": title,
             "slug": slug_value,
@@ -77,7 +77,7 @@ class TodoFactory:
             "pending_reason": pending_reason,
             "created_at": created_at_value,
             "updated_at": updated_at_value,
-            "origin": {"system": "", "external_id": "", "requester": ""},
+            "extern_issue_file": "",
         }
 
     def todo(self, issues: list[dict]) -> dict:

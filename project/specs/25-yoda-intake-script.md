@@ -18,7 +18,7 @@ Out of scope:
 ## Location
 
 - Script path: `yoda/scripts/yoda_intake.py`
-- External source folder: `yoda/project/extern-issues/`
+- External source folder: `yoda/project/extern_issues/`
 
 ## CLI
 
@@ -66,7 +66,7 @@ When only `--dev` is provided:
 ### Mode D: external intake (`--dev --extern-issue <NNN>`)
 
 - Validate `<NNN>` as numeric.
-- Attempt to load local file from `yoda/project/extern-issues/<provider>-<NNN>.json`:
+- Attempt to load local file from `yoda/project/extern_issues/<provider>-<NNN>.json`:
   - provider is inferred from git `origin` when possible;
   - fallback: first matching `*-<NNN>.json`.
 - If file is missing:
@@ -98,4 +98,3 @@ JSON mode:
 - Mutually exclusive violation (`--extern-issue` + `--no-extern-issue`) must return validation error (exit code 2).
 - Non-numeric `--extern-issue` must return validation error (exit code 2).
 - Unexpected runtime failures must return exit code 1.
-

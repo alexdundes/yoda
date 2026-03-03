@@ -34,7 +34,7 @@ def test_init_creates_structure_and_is_idempotent(tmp_path: Path) -> None:
     assert issues_dir.exists()
 
     todo = yaml.safe_load(todo_path.read_text(encoding="utf-8"))
-    assert todo["schema_version"] == "1.01"
+    assert todo["schema_version"] == "1.02"
     assert todo["developer_slug"] == TEST_DEV
     assert todo["issues"] == []
 
@@ -127,7 +127,7 @@ def test_init_reconcile_layout_updates_schema_and_front_matter(tmp_path: Path) -
         "  pending_reason: ''\n"
         "  created_at: '2026-01-01T00:00:00+00:00'\n"
         "  updated_at: '2026-01-01T00:00:00+00:00'\n"
-        "  origin: {system: '', external_id: '', requester: ''}\n",
+        "  extern_issue_file: ''\n",
         encoding="utf-8",
     )
 
@@ -146,7 +146,7 @@ def test_init_reconcile_layout_updates_schema_and_front_matter(tmp_path: Path) -
         "pending_reason: ''\n"
         "created_at: '2026-01-01T00:00:00+00:00'\n"
         "updated_at: '2026-01-01T00:00:00+00:00'\n"
-        "origin: {system: '', external_id: '', requester: ''}\n"
+        "extern_issue_file: ''\n"
         "---\n\n# Legacy\n",
         encoding="utf-8",
     )
@@ -158,14 +158,18 @@ def test_init_reconcile_layout_updates_schema_and_front_matter(tmp_path: Path) -
     assert result.returncode == 0, result.stderr
 
     todo = yaml.safe_load(todo_path.read_text(encoding="utf-8"))
-    assert todo["schema_version"] == "1.01"
+    assert todo["schema_version"] == "1.02"
     assert "tags" not in todo["issues"][0]
     assert "agent" not in todo["issues"][0]
+    assert "origin" not in todo["issues"][0]
+    assert todo["issues"][0]["extern_issue_file"] == ""
 
     issue_doc = issue_path.read_text(encoding="utf-8")
-    assert "schema_version: '1.01'" in issue_doc
+    assert "schema_version: '1.02'" in issue_doc
     assert "tags:" not in issue_doc
     assert "agent:" not in issue_doc
+    assert "origin:" not in issue_doc
+    assert "extern_issue_file: ''" in issue_doc
 
 
 def test_init_creates_repo_intent_files(tmp_path: Path) -> None:

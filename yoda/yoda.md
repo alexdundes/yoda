@@ -63,7 +63,7 @@ External source path:
 ```bash
 python3 yoda/scripts/get_extern_issue.py --dev <slug> --extern-issue <NNN>
 ```
-2. After the JSON file is created in `yoda/project/extern-issues/`, run:
+2. After the JSON file is created in `yoda/project/extern_issues/`, run:
 ```bash
 python3 yoda/scripts/yoda_intake.py --dev <slug> --extern-issue <NNN>
 ```
@@ -78,7 +78,7 @@ Intake policy:
 - Review current backlog before adding new issues.
 - Translate human free text into structured issue content.
 - Priority baseline is `5`; change only with explicit relative justification against open issues.
-- Keep `origin` traceability when external source exists.
+- Keep `extern_issue_file` traceability when external source exists.
 - Before creating issues, run `python3 yoda/scripts/issue_add.py --help` and follow its runbook.
 
 ## Script authority map
@@ -97,7 +97,7 @@ Intake policy:
 - TODO: `yoda/todos/TODO.<dev>.yaml`
 - Issues: `yoda/project/issues/<id>-<slug>.md`
 - Logs: `yoda/logs/<id>-<slug>.yaml`
-- External issues: `yoda/project/extern-issues/<provider>-<NNN>.json`
+- External issues: `yoda/project/extern_issues/<provider>-<NNN>.json`
 - Scripts: `yoda/scripts/*.py`
 
 ## Exit and handoff

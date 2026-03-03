@@ -14,6 +14,7 @@ from lib.cli import add_global_flags, resolve_format
 from lib.dev import resolve_dev
 from lib.error_messages import required_flag
 from lib.errors import ExitCode, YodaError
+from lib.external_issue_utils import detect_origin_url, parse_origin, provider_from_host
 from lib.front_matter import update_front_matter
 from lib.issue_utils import ensure_issue_file_exists
 from lib.logging_utils import configure_logging
@@ -49,6 +50,22 @@ def _render_output(payload: dict[str, Any], output_format: str) -> str:
 
 
 def _update_issue(item: dict[str, Any], args: argparse.Namespace) -> None:
+    if args.extern_issue_file is not None and args.clear_extern_issue_file:
+        raise YodaError(
+            "Use either --extern-issue-file or --clear-extern-issue-file, not both.",
+            exit_code=ExitCode.VALIDATION,
+        )
+    if args.extern_issue is not None and args.clear_extern_issue_file:
+        raise YodaError(
+            "Use either --extern-issue or --clear-extern-issue-file, not both.",
+            exit_code=ExitCode.VALIDATION,
+        )
+    if args.extern_issue is not None and args.extern_issue_file is not None:
+        raise YodaError(
+            "Use either --extern-issue or --extern-issue-file, not both.",
+            exit_code=ExitCode.VALIDATION,
+        )
+
     if args.status is not None:
         if args.status not in ALLOWED_STATUS:
             raise YodaError("Invalid status", exit_code=ExitCode.VALIDATION)
@@ -66,6 +83,25 @@ def _update_issue(item: dict[str, Any], args: argparse.Namespace) -> None:
 
     if args.pending_reason is not None:
         item["pending_reason"] = args.pending_reason
+
+    if args.clear_extern_issue_file:
+        item["extern_issue_file"] = ""
+    elif args.extern_issue is not None:
+        external_id = str(args.extern_issue).strip()
+        if not external_id.isdigit():
+            raise YodaError("--extern-issue must be numeric (NNN).", exit_code=ExitCode.VALIDATION)
+        try:
+            origin_url = detect_origin_url()
+            host, _ = parse_origin(origin_url)
+            provider = provider_from_host(host)
+        except YodaError as exc:
+            raise YodaError(
+                f"Could not infer provider for --extern-issue {external_id}. Check git remote origin.",
+                exit_code=exc.exit_code,
+            ) from exc
+        item["extern_issue_file"] = f"../extern_issues/{provider}-{external_id}.json"
+    elif args.extern_issue_file is not None:
+        item["extern_issue_file"] = args.extern_issue_file
 
 
 def _apply_pending_rules(item: dict[str, Any], pending_reason_provided: bool) -> None:
@@ -87,7 +123,7 @@ def _format_value(value: Any) -> str:
 
 
 def _diff_fields(before: dict[str, Any], after: dict[str, Any]) -> tuple[list[str], list[str]]:
-    fields = ["status", "priority", "depends_on", "pending_reason"]
+    fields = ["status", "priority", "depends_on", "pending_reason", "extern_issue_file"]
     updated_fields = []
     lines = []
     for field in fields:
@@ -118,6 +154,21 @@ def main() -> int:
     parser.add_argument("--depends-on", dest="depends_on", help="Comma-separated issue ids")
     parser.add_argument("--pending-reason", dest="pending_reason", help="Pending reason")
     parser.add_argument("--clear-depends-on", action="store_true", help="Clear dependencies")
+    parser.add_argument(
+        "--extern-issue-file",
+        dest="extern_issue_file",
+        help="Relative path to external issue JSON (example: ../extern_issues/github-2.json)",
+    )
+    parser.add_argument(
+        "--extern-issue",
+        dest="extern_issue",
+        help="External issue number (NNN); generates extern_issue_file automatically",
+    )
+    parser.add_argument(
+        "--clear-extern-issue-file",
+        action="store_true",
+        help="Clear extern_issue_file",
+    )
 
     args = parser.parse_args()
     configure_logging(args.verbose)

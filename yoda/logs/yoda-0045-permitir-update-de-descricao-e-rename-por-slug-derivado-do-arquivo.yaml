@@ -10,3 +10,5 @@ entries:
     \ do arquivo da issue; remover campo slug do modelo e derivar slug sempre do nome\
     \ do arquivo (sem ID), com regras claras de rec\xE1lculo no update.\nslug: permitir-update-de-descricao-e-rename-por-slug-derivado-do-arquivo\n\
     priority: 5\norigin: external issue linked"
+- timestamp: '2026-03-03T11:51:27-03:00'
+  message: '[yoda-0045] todo_update (no changes)'

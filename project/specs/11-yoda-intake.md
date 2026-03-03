@@ -51,7 +51,7 @@ Examples (translate to the human's language if needed):
 
 External source path (when `--extern-issue <NNN>` is used):
 - Ask the human to run `get_extern_issue.py --dev <slug> --extern-issue <NNN>`.
-- `get_extern_issue.py` stores source data at `yoda/project/extern-issues/<provider>-<NNN>.json`.
+- `get_extern_issue.py` stores source data at `yoda/project/extern_issues/<provider>-<NNN>.json`.
 - Re-run `yoda_intake.py --dev <slug> --extern-issue <NNN>` to continue with local source file.
 - Associate commits with external issue using `#NNN` only; do not auto-close external issues.
 
