@@ -8,5 +8,142 @@
   "url": "https://github.com/alexdundes/yoda/issues/2",
   "labels": [
     "enhancement"
+  ],
+  "log": [
+    {
+      "type": "timeline:added_to_project_v2",
+      "id": "23117285259",
+      "author": "alexdundes",
+      "created_at": "2026-02-26T21:12:33Z",
+      "updated_at": "",
+      "body": "event: added_to_project_v2; commit: None",
+      "url": ""
+    },
+    {
+      "type": "timeline:project_v2_item_status_changed",
+      "id": "23117307146",
+      "author": "github-project-automation[bot]",
+      "created_at": "2026-02-26T21:12:34Z",
+      "updated_at": "",
+      "body": "event: project_v2_item_status_changed; commit: None",
+      "url": ""
+    },
+    {
+      "type": "timeline:project_v2_item_status_changed",
+      "id": "23117282457",
+      "author": "alexdundes",
+      "created_at": "2026-02-26T21:13:04Z",
+      "updated_at": "",
+      "body": "event: project_v2_item_status_changed; commit: None",
+      "url": ""
+    },
+    {
+      "type": "timeline:closed",
+      "id": "23117249116",
+      "author": "alexdundes",
+      "created_at": "2026-02-26T21:13:07Z",
+      "updated_at": "",
+      "body": "event: closed; commit: None",
+      "url": ""
+    },
+    {
+      "type": "timeline:project_v2_item_status_changed",
+      "id": "23117283274",
+      "author": "alexdundes",
+      "created_at": "2026-02-26T21:13:08Z",
+      "updated_at": "",
+      "body": "event: project_v2_item_status_changed; commit: None",
+      "url": ""
+    },
+    {
+      "type": "timeline:assigned",
+      "id": "23117254284",
+      "author": "alexdundes",
+      "created_at": "2026-02-26T21:13:22Z",
+      "updated_at": "",
+      "body": "event: assigned; commit: None",
+      "url": ""
+    },
+    {
+      "type": "timeline:removed_from_project_v2",
+      "id": "23117333578",
+      "author": "alexdundes",
+      "created_at": "2026-02-26T21:16:41Z",
+      "updated_at": "",
+      "body": "event: removed_from_project_v2; commit: None",
+      "url": ""
+    },
+    {
+      "type": "timeline:added_to_project_v2",
+      "id": "23117340625",
+      "author": "alexdundes",
+      "created_at": "2026-02-26T21:16:58Z",
+      "updated_at": "",
+      "body": "event: added_to_project_v2; commit: None",
+      "url": ""
+    },
+    {
+      "type": "timeline:project_v2_item_status_changed",
+      "id": "23117340670",
+      "author": "github-project-automation[bot]",
+      "created_at": "2026-02-26T21:16:59Z",
+      "updated_at": "",
+      "body": "event: project_v2_item_status_changed; commit: None",
+      "url": ""
+    },
+    {
+      "type": "timeline:project_v2_item_status_changed",
+      "id": "23117366206",
+      "author": "alexdundes",
+      "created_at": "2026-02-26T21:17:14Z",
+      "updated_at": "",
+      "body": "event: project_v2_item_status_changed; commit: None",
+      "url": ""
+    },
+    {
+      "type": "timeline:project_v2_item_status_changed",
+      "id": "23117349502",
+      "author": "alexdundes",
+      "created_at": "2026-02-26T21:17:22Z",
+      "updated_at": "",
+      "body": "event: project_v2_item_status_changed; commit: None",
+      "url": ""
+    },
+    {
+      "type": "timeline:reopened",
+      "id": "23118008818",
+      "author": "alexdundes",
+      "created_at": "2026-02-26T21:45:34Z",
+      "updated_at": "",
+      "body": "event: reopened; commit: None",
+      "url": ""
+    },
+    {
+      "type": "timeline:labeled",
+      "id": "23118035115",
+      "author": "alexdundes",
+      "created_at": "2026-02-26T21:46:32Z",
+      "updated_at": "",
+      "body": "event: labeled; commit: None",
+      "url": ""
+    },
+    {
+      "type": "timeline:referenced",
+      "id": "23235381595",
+      "author": "alexdundes",
+      "created_at": "2026-03-03T18:07:40Z",
+      "updated_at": "",
+      "body": "event: referenced; commit: 5a5b24dec9c664b04c11d9e8323e1ff940350630",
+      "url": ""
+    },
+    {
+      "type": "comment",
+      "id": "3992819566",
+      "author": "alexdundes",
+      "created_at": "2026-03-03T18:24:58Z",
+      "updated_at": "2026-03-03T18:24:58Z",
+      "body": "Inclus\u00e3o de coment\u00e1rio para testes de integra\u00e7\u00e3o",
+      "url": "https://github.com/alexdundes/yoda/issues/2#issuecomment-3992819566"
+    }
   ]
 }

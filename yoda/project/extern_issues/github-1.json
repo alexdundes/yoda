@@ -3,10 +3,75 @@
   "number": "1",
   "title": "Test Issue for External Intake Validation",
   "description": "# Test Issue for External Intake Validation\n\n## Summary\nThis is a fake issue created to validate the `get_extern_issue.py` workflow end to end.\n\n## Context\nWe need a predictable external issue to test how YODA Intake consumes external data and stores it locally in `yoda/project/extern-issues/`.\n\n## Objective\nConfirm that `get_extern_issue.py` can fetch this issue metadata/body and generate a valid local JSON artifact for agent-guided intake.\n\n## Scope\n- Provide a stable external issue payload for testing.\n- Validate provider detection from `origin`.\n- Validate issue fetch by external ID (`#1`).\n- Validate JSON output creation and naming convention.\n\n## Out of Scope\n- Real feature implementation.\n- Production planning.\n- Cross-team delivery commitments.\n- External issue auto-closing behavior.\n\n## Requirements\n- `get_extern_issue.py --dev <slug> --extern-issue 1` must run successfully.\n- Output file must be created at:\n  - `yoda/project/extern-issues/github-1.json` (for GitHub origin)\n  - or `yoda/project/extern-issues/gitlab-1.json` (for GitLab origin)\n- The output must include key fields (provider, origin, external id, title, state, URL, body).\n\n## Acceptance Criteria\n- [ ] Script fetches issue `#1` without parsing errors.\n- [ ] JSON file is created in the expected folder with the expected filename.\n- [ ] JSON content is valid and readable by `yoda_intake.py --extern-issue 1`.\n- [ ] Intake runbook references the generated JSON file path.\n- [ ] No external issue is closed automatically.\n\n## Dependencies\n- Authenticated CLI for the detected provider (`gh` or `glab`).\n- Accessible repository remote (`origin`) configured.\n\n## Risks and Edge Cases\n- Missing CLI binary.\n- Missing/expired auth token.\n- Wrong repository `origin`.\n- API/network restrictions in sandboxed environments.\n\n## Test Notes\nThis issue is intentionally fake and exists only for workflow verification of external-issue intake.\n",
-  "state": "open",
+  "state": "closed",
   "author": "alexdundes",
   "url": "https://github.com/alexdundes/yoda/issues/1",
   "labels": [
     "enhancement"
+  ],
+  "log": [
+    {
+      "type": "timeline:assigned",
+      "id": "23113494282",
+      "author": "alexdundes",
+      "created_at": "2026-02-26T18:40:27Z",
+      "updated_at": "",
+      "body": "event: assigned; commit: None",
+      "url": ""
+    },
+    {
+      "type": "timeline:labeled",
+      "id": "23113494742",
+      "author": "alexdundes",
+      "created_at": "2026-02-26T18:40:29Z",
+      "updated_at": "",
+      "body": "event: labeled; commit: None",
+      "url": ""
+    },
+    {
+      "type": "timeline:renamed",
+      "id": "23117048778",
+      "author": "alexdundes",
+      "created_at": "2026-02-26T21:04:15Z",
+      "updated_at": "",
+      "body": "event: renamed; commit: None",
+      "url": ""
+    },
+    {
+      "type": "timeline:added_to_project_v2",
+      "id": "23117200929",
+      "author": "alexdundes",
+      "created_at": "2026-02-26T21:10:46Z",
+      "updated_at": "",
+      "body": "event: added_to_project_v2; commit: None",
+      "url": ""
+    },
+    {
+      "type": "timeline:project_v2_item_status_changed",
+      "id": "23117200545",
+      "author": "github-project-automation[bot]",
+      "created_at": "2026-02-26T21:10:47Z",
+      "updated_at": "",
+      "body": "event: project_v2_item_status_changed; commit: None",
+      "url": ""
+    },
+    {
+      "type": "timeline:project_v2_item_status_changed",
+      "id": "23117284468",
+      "author": "alexdundes",
+      "created_at": "2026-02-26T21:13:13Z",
+      "updated_at": "",
+      "body": "event: project_v2_item_status_changed; commit: None",
+      "url": ""
+    },
+    {
+      "type": "timeline:closed",
+      "id": "23117252165",
+      "author": "alexdundes",
+      "created_at": "2026-02-26T21:13:16Z",
+      "updated_at": "",
+      "body": "event: closed; commit: None",
+      "url": ""
+    }
   ]
 }

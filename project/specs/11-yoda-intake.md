@@ -55,6 +55,13 @@ External source path (when `--extern-issue <NNN>` is used):
 - Re-run `yoda_intake.py --dev <slug> --extern-issue <NNN>` to continue with local source file.
 - Associate commits with external issue using `#NNN` only; do not auto-close external issues.
 
+External log usage (from `extern_issues/<provider>-<NNN>.json`):
+- Treat `log` as auxiliary context for Intake decisions, not as the single source of truth.
+- Use `log` events to detect recency and state changes (for example: reopened, closed, referenced commits, project moves).
+- Use these signals to adjust triage and priority when justified, especially when recent events indicate new urgency or reopened work.
+- Keep issue shaping anchored in human intent and external issue description; use `log` to refine scope and ordering.
+- When relevant, reference meaningful `log` events in the Intake rationale for traceability.
+
 ## Definition of Ready (DoR)
 
 Each issue must include at minimum:
