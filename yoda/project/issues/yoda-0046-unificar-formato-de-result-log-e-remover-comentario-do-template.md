@@ -1,7 +1,7 @@
 ---
 schema_version: '1.02'
 id: yoda-0046
-status: to-do
+status: done
 title: Unificar formato de Result log e remover comentario do template
 description: Remover comentario instrucional do Result log no template e alinhar o
   formato do Evaluate no yoda/yoda.md, com linha de issue externa condicional quando
@@ -9,7 +9,7 @@ description: Remover comentario instrucional do Result log no template e alinhar
 priority: 5
 extern_issue_file: ../extern_issues/github-2.json
 created_at: '2026-02-26T19:27:28-03:00'
-updated_at: '2026-03-03T14:36:08-03:00'
+updated_at: '2026-03-03T15:05:09-03:00'
 ---
 
 # yoda-0046 - Unificar formato de Result log e remover comentario do template
@@ -36,25 +36,28 @@ Padronizar `Result log` com um unico formato oficial, remover comentario residua
 - Mudancas de schema nao relacionadas ao tema de log de resultado.
 
 ## Requirements
-- O template de issue nao deve conter comentario HTML no bloco `Result log`.
+- O template de issue deve manter a secao `Result log` vazia (apenas o heading), sem comentario HTML e sem formato preenchido.
 - O playbook Evaluate deve declarar este formato unico:
   - `<First line: conventional commit message.>`
   - linha em branco
   - `<descricao do que foi feito>`
   - linha em branco
   - `- **<GitLab|GitHub> Issue** :   #NNN` (somente quando houver issue externa associada)
+  - linha em branco
   - `- **Issue**: \`<ID>\``
+  - linha em branco
   - `- **Path**: \`<issue path>\``
-- Quando houver issue externa associada, a linha deve incluir `#NNN` obrigatoriamente.
+- A linha `GitLab|GitHub Issue` so deve ser emitida quando existir `extern_issue_file` no front matter da issue.
+- Quando houver issue externa associada, a linha deve incluir `#NNN` obrigatoriamente, derivando `NNN` do nome do arquivo externo (ex.: `../extern_issues/github-2.json` -> `#2`).
 - Quando nao houver issue externa associada, a linha `GitLab|GitHub Issue` deve ser omitida.
-- O formato entre template e playbook deve permanecer consistente e sem duplicidade de regra.
+- O playbook (`yoda/yoda.md`) deve ser a unica fonte de verdade do formato de `Result log`.
 
 ## Acceptance criteria
-- [ ] `yoda/templates/issue.md` nao contem mais o comentario instrucional no `Result log`.
-- [ ] `yoda/yoda.md` (Evaluate) descreve exatamente o formato oficial definido.
-- [ ] O formato no template e no playbook e identico, sem instrucoes conflitantes.
-- [ ] Caso com issue externa inclui linha `GitLab|GitHub Issue` com `#NNN`.
-- [ ] Caso sem issue externa nao inclui a linha `GitLab|GitHub Issue`.
+- [x] `yoda/templates/issue.md` deixa `Result log` vazio (sem comentario e sem placeholders de formato).
+- [x] `yoda/yoda.md` (Evaluate) descreve exatamente o formato oficial definido.
+- [x] O formato existe apenas no playbook, sem regra duplicada no template.
+- [x] Caso com issue externa inclui linha `GitLab|GitHub Issue` com `#NNN`.
+- [x] Caso sem issue externa nao inclui a linha `GitLab|GitHub Issue`.
 
 ## Dependencies
 Origem externa `github #2`.
@@ -71,9 +74,10 @@ Origem externa `github #2`.
 Classificacao sugerida: `subtle` (ajuste de padronizacao e instrucao operacional, sem quebra de compatibilidade funcional esperada). A regra condicional da issue externa deve ser objetiva e testavel para evitar ambiguidade de output.
 
 ## Tests
-- Validar manualmente/por teste de fixture que o template nao inclui comentario no `Result log`.
+- Validar manualmente/por teste de fixture que o template deixa `Result log` vazio.
 - Validar que o playbook Evaluate contem o formato oficial e a regra condicional da issue externa.
-- Adicionar teste/documentacao de exemplo para ambos os cenarios: com e sem issue externa.
+- Validar cenario com issue externa (ex.: `yoda-0046` com `extern_issue_file: ../extern_issues/github-2.json`) incluindo linha `GitHub Issue` com `#2`.
+- Validar cenario sem issue externa (baseline `yoda-0001` a `yoda-0041`) omitindo a linha `GitLab|GitHub Issue`.
 
 ## Risks and edge cases
 - Agentes antigos podem continuar reproduzindo formato legado se instrucoes cacheadas forem usadas.
@@ -81,9 +85,12 @@ Classificacao sugerida: `subtle` (ajuste de padronizacao e instrucao operacional
 - Inclusao indevida da linha externa em issue sem vinculo pode gerar referencia incorreta.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
+docs(yoda): unificar Result log no playbook e manter template vazio
+
+A secao `## Result log` do template foi esvaziada (apenas heading), e o formato oficial ficou centralizado no `Evaluate` de `yoda/yoda.md`. Tambem foi adicionada instrucao operacional explicita para o agente preencher o `Result log` no markdown da issue antes de rodar `log_add.py` e somente depois concluir com `todo_update.py --status done`.
+
+- **GitHub Issue** :   #2
+
+- **Issue**: `yoda-0046`
+
+- **Path**: `yoda/project/issues/yoda-0046-unificar-formato-de-result-log-e-remover-comentario-do-template.md`

@@ -47,9 +47,3 @@
 - 
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->

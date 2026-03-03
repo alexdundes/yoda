@@ -214,3 +214,22 @@ def test_issue_add_fails_when_lock_contention_exhausts_retries() -> None:
 def test_issue_template_has_empty_front_matter_shell() -> None:
     template = (REPO_ROOT / "yoda" / "templates" / "issue.md").read_text(encoding="utf-8")
     assert template.startswith("---\n---\n")
+
+
+def test_issue_template_result_log_is_empty_and_has_no_instruction_comment() -> None:
+    template = (REPO_ROOT / "yoda" / "templates" / "issue.md").read_text(encoding="utf-8")
+    assert "## Result log\n" in template
+    assert "<First line: conventional commit message.>" not in template
+    assert "<descricao do que foi feito>" not in template
+    assert "- **<GitLab|GitHub> Issue** :   #NNN" not in template
+    assert "- **Issue**: `<ID>`" not in template
+    assert "- **Path**: `<issue path>`" not in template
+    assert "## Result log\n<!-- AGENT:" not in template
+
+
+def test_yoda_manual_defines_result_log_external_rule() -> None:
+    manual = (REPO_ROOT / "yoda" / "yoda.md").read_text(encoding="utf-8")
+    assert "Evaluate `Result log` official format:" in manual
+    assert "Keep `## Result log` empty in `yoda/templates/issue.md`." in manual
+    assert "`- **<GitLab|GitHub> Issue** :   #NNN` (only when `extern_issue_file` exists)" in manual
+    assert "Derive provider and number from `extern_issue_file`" in manual

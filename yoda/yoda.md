@@ -49,7 +49,24 @@ Flow policy:
 - Implement only approved issue scope.
 - Use scripts to update metadata (do not hand-edit TODO YAML).
 - If blocked, set `pending` with explicit reason.
-- In `Evaluate`, validate acceptance criteria, append log (`log_add.py`), and conclude the issue with `todo_update.py --status done`.
+- In `Evaluate`, validate acceptance criteria, then fill `## Result log` in the issue markdown (`yoda/project/issues/<id>-<slug>.md`) using the official format from this playbook.
+- After updating the issue markdown `Result log`, append execution log (`log_add.py`), and only then conclude the issue with `todo_update.py --status done`.
+
+Evaluate `Result log` official format:
+- `<First line: conventional commit message.>`
+- blank line
+- `<descricao do que foi feito>`
+- blank line
+- `- **<GitLab|GitHub> Issue** :   #NNN` (only when `extern_issue_file` exists)
+- blank line
+- `- **Issue**: \`<ID>\``
+- blank line
+- `- **Path**: \`<issue path>\``
+
+External issue line rule:
+- Emit the line only when the issue front matter contains `extern_issue_file`.
+- Derive provider and number from `extern_issue_file` (for example, `../extern_issues/github-2.json` => `GitHub` and `#2`).
+- Omit the line when no external association exists.
 
 ## YODA Intake
 
