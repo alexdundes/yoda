@@ -13,7 +13,6 @@ updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0017 - Manual embarcado: reescrever yoda/yoda.md independente das specs
-<!-- AGENT: Replace yoda-0017 with the canonical issue id (dev-id, e.g., dev-0001) from `yoda/todos/TODO.<dev>.yaml` and Manual embarcado: reescrever yoda/yoda.md independente das specs with the issue title. Fill front matter fields from TODO; scripts must keep them in sync. Keep any <...> placeholders wrapped in inline code when used in prose. -->
 
 ## Summary
 Rewrite the YODA manual (`yoda/yoda.md`) so agents can run YODA Flow and YODA Intake without relying on `project/specs`. Deliver a concise, standalone playbook with practical steps, commands, and paths for entry, execution, and exit.

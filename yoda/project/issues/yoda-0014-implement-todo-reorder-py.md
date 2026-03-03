@@ -11,7 +11,6 @@ updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0014 - Implement todo_reorder.py
-<!-- AGENT: Replace yoda-0014 with the canonical issue id (dev-id, e.g., dev-0001) from `yoda/todos/TODO.<dev>.yaml` and Implement todo_reorder.py with the issue title. Fill front matter fields from TODO; scripts must keep them in sync. Keep any <...> placeholders wrapped in inline code when used in prose. -->
 
 ## Summary
 Implementar `todo_reorder.py` conforme a spec: reordenação de issues no `TODO.<dev>.yaml`, validação de inputs, saída `md`/`json` e testes.
@@ -73,12 +72,6 @@ Adicionados testes em `yoda/scripts/tests/test_todo_reorder.py` cobrindo ordena�
 - Conflito de flags de modo.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
 Implemented `todo_reorder.py` with default ordering rules, prefer/over prioritization, and tests.
 
 feat(scripts): add todo_reorder command

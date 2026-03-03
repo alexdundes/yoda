@@ -14,7 +14,6 @@ updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0031 - Padronizar GEMINI.md no init
-<!-- AGENT: Replace yoda-0031 with the canonical issue id (dev-id, e.g., dev-0001) from `yoda/todos/TODO.<dev>.yaml` and Padronizar GEMINI.md no init with the issue title. Fill front matter fields from TODO; scripts must keep them in sync. Keep any <...> placeholders wrapped in inline code when used in prose. -->
 
 ## Summary
 Padronizar o nome do arquivo `GEMINI.md` em caixa alta no fluxo de init do YODA. O ajuste deve remover o uso de `gemini.md` no script de inicializacao e manter o comportamento idempotente. Esta issue segue a regra transversal do ciclo `0.1.2`: atualizar primeiro `project/specs/` e apenas depois `yoda/`.
@@ -66,12 +65,6 @@ Validar init em cenario limpo e em reexecucao para confirmar idempotencia. Atual
 - Documentacao e implementacao podem divergir se a ordem docs-first nao for respeitada.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
 Padronizacao aplicada para `GEMINI.md` no fluxo de init: specs atualizadas para nome canonico, `yoda/scripts/init.py` ajustado para gerar/referenciar `GEMINI.md`, e arquivo do repositorio renomeado no Git para manter consistencia de case. Validacao de idempotencia executada em diretorio temporario com dois runs consecutivos.
 
 fix(init): padronizar GEMINI.md como arquivo canonico de entrada

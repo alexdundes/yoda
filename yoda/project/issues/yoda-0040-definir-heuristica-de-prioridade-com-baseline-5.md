@@ -13,7 +13,6 @@ updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0040 - Definir heuristica de prioridade com baseline 5
-<!-- AGENT: Replace yoda-0040 with the canonical issue id (dev-id, e.g., dev-0001) from `yoda/todos/TODO.<dev>.yaml` and Definir heuristica de prioridade com baseline 5 with the issue title. Fill front matter fields from TODO; scripts must keep them in sync. Keep any <...> placeholders wrapped in inline code when used in prose. -->
 
 ## Summary
 Definir regra de priorizacao para agentes com baseline em prioridade `5`. A prioridade deve subir ou descer somente por importancia relativa entre issues abertas.
@@ -66,12 +65,6 @@ Nao aplicavel para testes automatizados diretos; validar por revisao documental 
 - Agente pode inflar prioridade sem registrar justificativa.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
 Atualizado o baseline de prioridade para `5` como regra padrao em `project/specs/` e no manual `yoda/yoda.md`, com criterio de ajuste relativo ao backlog aberto e exigencia de justificativa curta quando prioridade for diferente de `5`.
 
 docs(yoda): definir baseline 5 para prioridade no Intake

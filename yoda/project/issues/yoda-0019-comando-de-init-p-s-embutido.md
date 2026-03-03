@@ -14,7 +14,6 @@ updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0019 - Comando de init pós-embutido
-<!-- AGENT: Replace yoda-0019 with the canonical issue id (dev-id, e.g., dev-0001) from `yoda/todos/TODO.<dev>.yaml` and Comando de init pós-embutido with the issue title. Fill front matter fields from TODO; scripts must keep them in sync. Keep any <...> placeholders wrapped in inline code when used in prose. -->
 
 ## Summary
 Criar comando de inicialização para projetos que recebem o pacote do YODA, configurando estrutura mínima (AGENTS.md, pastas, TODO.<dev>.yaml) de forma idempotente e segura, com opção de dry-run.
@@ -87,12 +86,6 @@ Depends on: yoda-0016, yoda-0018.
 - Falta de slug de dev levando a TODO inválido.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
 - Added `yoda/scripts/init.py` to initialize host projects, appending a YODA block to supported agent files and seeding TODO structure with idempotent behavior.
 - Updated agent entry spec and script docs; added tests covering creation, idempotency, dry-run, and agent-file conflicts.
 

@@ -16,7 +16,6 @@ updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0036 - Remover entrypoints do YAML e manter apenas no markdown
-<!-- AGENT: Replace yoda-0036 with the canonical issue id (dev-id, e.g., dev-0001) from `yoda/todos/TODO.<dev>.yaml` and Remover entrypoints do YAML e manter apenas no markdown with the issue title. Fill front matter fields from TODO; scripts must keep them in sync. Keep any <...> placeholders wrapped in inline code when used in prose. -->
 
 ## Summary
 Eliminar a duplicidade de `entrypoints` entre YAML e markdown de issue. O conceito deve permanecer apenas no corpo markdown da issue para reduzir redundancia e divergencia.
@@ -73,12 +72,6 @@ Adicionar testes de leitura/escrita de issue sem `entrypoints` em YAML, preserva
 - Dados historicos com campo legado podem falhar sem migracao.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
 `entrypoints` foi removido do YAML (TODO/front matter/log contract) e mantido somente na secao markdown da issue. Scripts foram ajustados para nao ler/escrever `entrypoints` no metadata (`issue_add.py` sem `--entrypoint` e sem persistencia do campo). Specs e manual de scripts foram alinhados; dados existentes em `TODO` e front matter das issues foram migrados para remover o campo legado.
 
 test: `python3 -m pytest yoda/scripts/tests` => 33 passed.

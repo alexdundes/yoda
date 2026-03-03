@@ -16,7 +16,6 @@ updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0033 - Corrigir concorrencia no issue_add para criacoes simultaneas
-<!-- AGENT: Replace yoda-0033 with the canonical issue id (dev-id, e.g., dev-0001) from `yoda/todos/TODO.<dev>.yaml` and Corrigir concorrencia no issue_add para criacoes simultaneas with the issue title. Fill front matter fields from TODO; scripts must keep them in sync. Keep any <...> placeholders wrapped in inline code when used in prose. -->
 
 ## Summary
 Corrigir a condicao de corrida no comando `issue_add.py` quando duas criacoes acontecem simultaneamente. O problema atual pode gerar mesmo ID para duas issues, sobrescrita de artefatos e inconsistencias no `TODO` YAML. A solucao deve garantir alocacao unica de ID e escrita segura dos arquivos relacionados.

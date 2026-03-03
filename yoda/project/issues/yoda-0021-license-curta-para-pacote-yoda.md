@@ -13,7 +13,6 @@ updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0021 - LICENSE curta para pacote YODA
-<!-- AGENT: Replace yoda-0021 with the canonical issue id (dev-id, e.g., dev-0001) from `yoda/todos/TODO.<dev>.yaml` and LICENSE curta para pacote YODA with the issue title. Fill front matter fields from TODO; scripts must keep them in sync. Keep any <...> placeholders wrapped in inline code when used in prose. -->
 
 ## Summary
 Produce a short, explicit LICENSE file to ship inside the YODA package, aligned with the packaging spec (yoda-0016) and the project’s chosen licensing model. The license text must be lightweight and clear for consumers embedding the framework.
@@ -76,12 +75,6 @@ yoda-0016
 - Packaging script excluding the file if path or name differs from spec.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
 - Added MIT LICENSE at repo root and mirrored it at `yoda/LICENSE` for embedded distribution.
 
 Commit suggestion:

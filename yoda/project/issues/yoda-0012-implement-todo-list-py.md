@@ -80,12 +80,6 @@ Adicionados testes em `yoda/scripts/tests/test_todo_list.py` para: filtros padr�
 - Dependências múltiplas e ciclos devem ser tratadas com fallback determinístico.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
 Implemented `todo_list.py` with filters, ordering, md/json output, and grep search, plus supporting helpers and tests.
 
 feat(scripts): add todo_list command

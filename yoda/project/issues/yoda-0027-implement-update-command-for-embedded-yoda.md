@@ -15,7 +15,6 @@ updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0027 - Implement update command for embedded YODA
-<!-- AGENT: Replace yoda-0027 with the canonical issue id (dev-id, e.g., dev-0001) from `yoda/todos/TODO.<dev>.yaml` and Implement update command for embedded YODA with the issue title. Fill front matter fields from TODO; scripts must keep them in sync. Keep any <...> placeholders wrapped in inline code when used in prose. -->
 
 ## Summary
 Implement a dedicated update command for embedded YODA (`yoda/scripts/update.py`). It should check for updates, validate package integrity, perform safe in-place upgrades, and support rollback via backups. This delivers the upgrade path defined in the install/upgrade spec.
@@ -27,7 +26,6 @@ We have install and packaging capabilities but no automated upgrade path for emb
 Create `yoda/scripts/update.py` with `--check`, `--apply`, and `--source`, aligned with `project/specs/24-installation-and-upgrade.md`.
 
 ## Scope
-<!-- AGENT: List what is in scope for this issue. -->
 - Implement `yoda/scripts/update.py` with CLI flags `--check`, `--apply`, `--source`, `--root`, and `--version` (optional).
 - Allow overriding metadata source via `--latest` or `YODA_LATEST_URL` to support tests/private forks.
 - Fetch `latest.json`, validate `sha256`, and download the tarball.
@@ -38,13 +36,11 @@ Create `yoda/scripts/update.py` with `--check`, `--apply`, and `--source`, align
 - Provide dry-run behavior and clear output.
 
 ## Out of scope
-<!-- AGENT: List what is explicitly NOT part of this issue. -->
 - Publishing artefacts or defining release pipelines.
 - Signature verification (PGP/Minisign).
 - Windows installers.
 
 ## Requirements
-<!-- AGENT: List functional requirements as bullet points. -->
 - Must validate checksum against `latest.json`.
 - Must not overwrite host root `README.md` or root `LICENSE`.
 - Must preserve YODA data directories.
@@ -54,7 +50,6 @@ Create `yoda/scripts/update.py` with `--check`, `--apply`, and `--source`, align
 - Must be safe to run multiple times.
 
 ## Acceptance criteria
-<!-- AGENT: List testable acceptance criteria. Use checkboxes. -->
 - [ ] `yoda/scripts/update.py` exists and supports `--check` and `--apply`.
 - [ ] Update creates backup and preserves data directories.
 - [ ] Checksum mismatches abort the update.
@@ -62,11 +57,9 @@ Create `yoda/scripts/update.py` with `--check`, `--apply`, and `--source`, align
 - [ ] Re-running update does not corrupt state.
 
 ## Dependencies
-<!-- AGENT: List dependencies and related issues (IDs). If none, write "None". -->
 Depends on: yoda-0025.
 
 ## Entry points
-<!-- AGENT: List relevant files or artifacts used as references for implementation. -->
 - path: project/specs/24-installation-and-upgrade.md
   type: doc
 - path: yoda/scripts/init.py
@@ -75,7 +68,6 @@ Depends on: yoda-0025.
   type: code
 
 ## Implementation notes
-<!-- AGENT: Add technical notes, constraints, or decisions needed to implement. -->
 - Reuse shared helpers from `yoda/scripts/lib` for output, validation, and paths.
 - Consider supporting `--dry-run` consistent with other scripts.
 - File ordering should remain deterministic when copying from the extracted package.
@@ -85,22 +77,14 @@ Depends on: yoda-0025.
 - `--dev` is optional; skip init if not provided.
 
 ## Tests
-<!-- AGENT: Describe tests to be added or updated. If not applicable, write \"Not applicable\". -->
 - Add pytest coverage for `--check` and `--apply` using temp dirs and dummy tarballs.
 
 ## Risks and edge cases
-<!-- AGENT: List risks, edge cases, or failure scenarios to consider. -->
 - Partial updates if copy fails mid-way.
 - Missing `latest.json` or invalid schema.
 - Backup directory already exists for the same version.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
 - Added `yoda/scripts/update.py` with `--check`/`--apply`, metadata overrides, checksum validation, backup, and selective framework replacement.
 - Implemented preservation rules for YODA data dirs and optional init execution.
 - Added pytest coverage for `--check` and `--apply`.

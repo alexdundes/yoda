@@ -17,7 +17,6 @@ updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0024 - Revise package README content and structure
-<!-- AGENT: Replace yoda-0024 with the canonical issue id (dev-id, e.g., dev-0001) from `yoda/todos/TODO.<dev>.yaml` and Revise package README content and structure with the issue title. Fill front matter fields from TODO; scripts must keep them in sync. Keep any <...> placeholders wrapped in inline code when used in prose. -->
 
 ## Summary
 Define the complete content and structure for the package `README.md` in English, with a friendly tone and full conceptual overview. The current README is too thin relative to the intended YODA narrative and install/upgrade guidance. This issue standardizes the required blocks, placeholders, and the cycle/skin concept, and aligns core specs/playbook with that concept.
@@ -29,7 +28,6 @@ The package README is the first human-facing document for embedded YODA, but it 
 Deliver a clear, friendly, English package README with all required blocks and TODO placeholders, and update the relevant specs and playbook to include the agent-skin-in-cycle concept.
 
 ## Scope
-<!-- AGENT: List what is in scope for this issue. -->
 - Rewrite `README.md` (English, friendly) with the full block structure defined below.
 - Add the logo block directly after the title.
 - Add a short tagline that conveys package nature, YODA acronym, and purpose.
@@ -41,13 +39,11 @@ Deliver a clear, friendly, English package README with all required blocks and T
 - Ensure yoda-0023 depends on this issue.
 
 ## Out of scope
-<!-- AGENT: List what is explicitly NOT part of this issue. -->
 - Implementing the installer/update scripts or hosting.
 - Localizing the README into other languages.
 - Changing package format or publish pipeline.
 
 ## Requirements
-<!-- AGENT: List functional requirements as bullet points. -->
 - README is English and friendly (human-oriented, not spec-like).
 - No word-count limit; prioritize completeness and clarity.
 - Title followed by the exact logo markup block:
@@ -98,7 +94,6 @@ Deliver a clear, friendly, English package README with all required blocks and T
   - `yoda/yoda.md`
 
 ## Acceptance criteria
-<!-- AGENT: List testable acceptance criteria. Use checkboxes. -->
 - [ ] `README.md` includes all required sections/blocks in English, friendly tone.
 - [ ] Logo markup is inserted immediately after the title.
 - [ ] One-liner install appears before manual install and includes warnings.
@@ -109,11 +104,9 @@ Deliver a clear, friendly, English package README with all required blocks and T
 - [ ] yoda-0023 depends on this issue.
 
 ## Dependencies
-<!-- AGENT: List dependencies and related issues (IDs). If none, write "None". -->
 None. (This issue blocks yoda-0023.)
 
 ## Entry points
-<!-- AGENT: List relevant files or artifacts used as references for implementation. -->
 - path: README.md
   type: doc
 - path: project/specs/00-conventions.md
@@ -130,7 +123,6 @@ None. (This issue blocks yoda-0023.)
   type: doc
 
 ## Implementation notes
-<!-- AGENT: Add technical notes, constraints, or decisions needed to implement. -->
 - Use "cycle" as the canonical term; "skin" is an agent stance when entering a cycle.
 - Keep README Markdown simple (no badges).
 - Use HTML comments for TODO placeholders:
@@ -153,22 +145,14 @@ None. (This issue blocks yoda-0023.)
   14) License
 
 ## Tests
-<!-- AGENT: Describe tests to be added or updated. If not applicable, write \"Not applicable\". -->
 Not applicable (documentation-only).
 
 ## Risks and edge cases
-<!-- AGENT: List risks, edge cases, or failure scenarios to consider. -->
 - README becomes too long or drifts from specs.
 - Ambiguous "skin" concept without spec alignment.
 - Placeholder URLs remain unresolved and are not tracked.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
 - Rewrote root `README.md` with the full friendly package narrative, logo/tagline, cycle/skin concept, install flows, inspirations, and placeholders.
 - Updated specs and manual to codify the agent-skin-in-cycle concept across YODA Flow/Intake guidance.
 

@@ -13,7 +13,6 @@ updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0022 - README curto do pacote YODA
-<!-- AGENT: Replace yoda-0022 with the canonical issue id (dev-id, e.g., dev-0001) from `yoda/todos/TODO.<dev>.yaml` and README curto do pacote YODA with the issue title. Fill front matter fields from TODO; scripts must keep them in sync. Keep any <...> placeholders wrapped in inline code when used in prose. -->
 
 ## Summary
 Author a concise README (English) to ship inside the YODA package, giving consumers a quick start: what the package is, how to extract/use it, and where to find the full manual/scripts.
@@ -82,12 +81,6 @@ yoda-0016
 - Future formats (zip) might need an extra extraction example.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
 - Replaced root `README.md` with a concise, friendly package README that emphasizes the one-liner install, includes manual steps, and marks unresolved URLs with TODO comments.
 - Created follow-up issue for the one-liner install documentation and URL placeholders.
 

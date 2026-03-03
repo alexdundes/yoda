@@ -13,7 +13,6 @@ updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0034 - Remover comentario-instrucao do template de issue
-<!-- AGENT: Replace yoda-0034 with the canonical issue id (dev-id, e.g., dev-0001) from `yoda/todos/TODO.<dev>.yaml` and Remover comentario-instrucao do template de issue with the issue title. Fill front matter fields from TODO; scripts must keep them in sync. Keep any <...> placeholders wrapped in inline code when used in prose. -->
 
 ## Summary
 Remover apenas o comentario-instrucao inicial de substituicao de ID/titulo do template de issue, que vaza para os arquivos gerados. Os demais comentarios de apoio por secao permanecem.
@@ -36,7 +35,8 @@ Garantir que o template final de issue nao inclua o comentario inicial de substi
 
 ## Requirements
 - Ordem obrigatoria: `project/specs/` antes de `yoda/`.
-- Issue criada por script nao deve conter o comentario inicial `<!-- AGENT: Replace [ID] ... -->`.
+- Issue criada por script nao deve conter o comentario inicial `
+`.
 
 ## Acceptance criteria
 - [ ] Specs atualizadas com regra explicita.
@@ -64,9 +64,3 @@ Criar issue de teste via script e validar especificamente ausencia do comentario
 - Reintroducao de comentarios em futuros templates se nao houver regra de revisao.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->

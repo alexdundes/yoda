@@ -10,7 +10,6 @@ updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0013 - Specify todo_reorder.py
-<!-- AGENT: Replace yoda-0013 with the canonical issue id (dev-id, e.g., dev-0001) from `yoda/todos/TODO.<dev>.yaml` and Specify todo_reorder.py with the issue title. Fill front matter fields from TODO; scripts must keep them in sync. Keep any <...> placeholders wrapped in inline code when used in prose. -->
 
 ## Summary
 Definir a especificação do comando `todo_reorder.py` para reordenar issues no `TODO.<dev>.yaml`. A spec deve cobrir CLI, modos de ordenação, validações e formatos de saída para permitir implementação consistente e testável.
@@ -80,12 +79,6 @@ Not applicable (spec-only).
 - `--prefer` igual a `--over`.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
 Defined `todo_reorder.py` specification including default ordering (pending/active/done), prioritization behavior, CLI, validation, and outputs.
 Updated prioritization rules: only `to-do`, and reject when A depends on B.
 

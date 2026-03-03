@@ -15,7 +15,6 @@ updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0032 - YODA Intake: coletar texto corrido e agente traduzir em issue
-<!-- AGENT: Replace yoda-0032 with the canonical issue id (dev-id, e.g., dev-0001) from `yoda/todos/TODO.<dev>.yaml` and YODA Intake: coletar texto corrido e agente traduzir em issue with the issue title. Fill front matter fields from TODO; scripts must keep them in sync. Keep any <...> placeholders wrapped in inline code when used in prose. -->
 
 ## Summary
 Ajustar o modo YODA Intake para que o agente solicite ao dev a descricao da issue em texto corrido e seja responsavel por traduzir isso para uma issue estruturada. A mesma base textual deve ser usada para preencher/atualizar o markdown da issue. Esta issue tambem segue a regra transversal do ciclo `0.1.2`: atualizar primeiro `project/specs/` e depois `yoda/`.
@@ -69,12 +68,6 @@ Revisao documental: validar consistencia textual entre specs e `yoda/yoda.md`. S
 - Excessiva liberdade na traducao pode perder requisitos se os criterios nao estiverem explicitos.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
 Fluxo de Intake atualizado para explicitar que o agente deve solicitar descricao em texto corrido, traduzir para estrutura de issue (DoR) e usar a mesma base estruturada para criar a issue e atualizar seu markdown. Alinhamento aplicado em `project/specs/11-yoda-intake.md`, `project/specs/06-agent-playbook.md` e `yoda/yoda.md`, sem contradicoes entre specs e manual embutido.
 
 docs(intake): coletar texto corrido e traduzir para issue estruturada

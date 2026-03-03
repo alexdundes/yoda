@@ -13,7 +13,6 @@ updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0020 - Spike: padrão de instalação/upgrade do YODA em projetos externos
-<!-- AGENT: Replace yoda-0020 with the canonical issue id (dev-id, e.g., dev-0001) from `yoda/todos/TODO.<dev>.yaml` and Spike: padrão de instalação/upgrade do YODA em projetos externos with the issue title. Fill front matter fields from TODO; scripts must keep them in sync. Keep any <...> placeholders wrapped in inline code when used in prose. -->
 
 ## Summary
 Investigar e propor padrão de instalação e upgrade do YODA em projetos externos, avaliando opções (pacote + init, submódulo, vendoring, gestor de pacotes), versionamento, upgrade/rollback e riscos. Entrega será um documento de decisão com recomendações e próximos passos.
@@ -85,12 +84,6 @@ Depends on: yoda-0016 (usar specs de distribuição como base).
 - Recomendação depender de ferramentas não disponíveis no pacote.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
 - Added installation/upgrade spec covering one-liner install (with warnings), manual flow, update/rollback, and `latest.json` metadata; aligned packaging spec for `yoda/LICENSE` and updated summary.
 
 Commit suggestion:

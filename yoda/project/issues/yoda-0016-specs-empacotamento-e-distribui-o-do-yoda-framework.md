@@ -12,7 +12,6 @@ updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0016 - Specs: empacotamento e distribuição do YODA Framework
-<!-- AGENT: Replace yoda-0016 with the canonical issue id (dev-id, e.g., dev-0001) from `yoda/todos/TODO.<dev>.yaml` and Specs: empacotamento e distribuição do YODA Framework with the issue title. Fill front matter fields from TODO; scripts must keep them in sync. Keep any <...> placeholders wrapped in inline code when used in prose. -->
 
 ## Summary
 Clarificar no `project/specs` como o YODA Framework será empacotado e embutido em outros projetos, definindo o que entra/sai do artefato, layout, versionamento e comandos de build/init. As specs atuais focam na meta-implementação e não guiam a distribuição prática, gerando confusão.

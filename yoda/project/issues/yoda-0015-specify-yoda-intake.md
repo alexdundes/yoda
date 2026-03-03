@@ -10,7 +10,6 @@ updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0015 - Specify YODA Intake
-<!-- AGENT: Replace yoda-0015 with the canonical issue id (dev-id, e.g., dev-0001) from `yoda/todos/TODO.<dev>.yaml` and Specify YODA Intake with the issue title. Fill front matter fields from TODO; scripts must keep them in sync. Keep any <...> placeholders wrapped in inline code when used in prose. -->
 
 ## Summary
 Definir o conceito e o ciclo do **YODA Intake** como etapa anterior ao YODA Flow, focada em descoberta/triagem e criação de issues prontas para execução. A issue deve produzir uma spec formal e ajustes de documentação para padronizar entrada, passos, artefatos e handoff para o YODA Flow.
@@ -74,12 +73,6 @@ Not applicable (docs/spec only).
 - Backlog duplicado se triagem/deduplicação não for seguida.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
 Defined the YODA Intake cycle and updated Flow and playbook docs to clarify roles and handoff.
 
 docs(specs): add YODA Intake cycle

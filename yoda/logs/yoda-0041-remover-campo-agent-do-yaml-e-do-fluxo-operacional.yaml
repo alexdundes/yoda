@@ -29,3 +29,8 @@ entries:
   message: '[yoda-0041] todo_update
 
     status: doing -> done'
+- timestamp: '2026-03-03T15:15:53-03:00'
+  message: '[yoda-0041] todo_update
+
+    title: Remover conceito de agent do YODA -> Remover campo agent do YAML e do fluxo
+    operacional'

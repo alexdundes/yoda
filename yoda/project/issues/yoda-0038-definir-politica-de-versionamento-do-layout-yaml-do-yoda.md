@@ -13,7 +13,6 @@ updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0038 - Definir politica de versionamento do layout YAML do YODA
-<!-- AGENT: Replace yoda-0038 with the canonical issue id (dev-id, e.g., dev-0001) from `yoda/todos/TODO.<dev>.yaml` and Definir politica de versionamento do layout YAML do YODA with the issue title. Fill front matter fields from TODO; scripts must keep them in sync. Keep any <...> placeholders wrapped in inline code when used in prose. -->
 
 ## Summary
 Definir uma politica obrigatoria para versionar mudancas no layout/schema YAML do YODA. A regra deve distinguir mudancas sutis (incremento menor em `1.x`) de mudancas breaking (incremento maior com tratamento via `update.py`).
@@ -69,12 +68,6 @@ Nao aplicavel para testes automatizados diretos; validar por revisao documental 
 - Regra sem exemplos pode ser ignorada em futuras issues.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
 Politica de versionamento de layout/schema YAML formalizada no contexto interno de desenvolvimento do YODA (somente specs/scripts): classificacao sutil vs breaking, criterios operacionais, exemplos objetivos e regra de rollout com migracao obrigatoria em `update.py` para major bump e re-sync via `init.py`. O manual embarcado `yoda/yoda.md` nao foi usado para essa politica, conforme decisao.
 
 docs(specs): definir politica de versionamento de layout YAML com rollout update/init

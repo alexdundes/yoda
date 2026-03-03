@@ -86,12 +86,6 @@ Esta mudanca e de schema/layout e foi classificada como `subtle` para rollout in
 - Regressao em scripts que ainda leem `origin.*` implicitamente.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
 refactor(yoda): replace origin metadata with extern_issue_file and bump schema to 1.02
 
 Body:

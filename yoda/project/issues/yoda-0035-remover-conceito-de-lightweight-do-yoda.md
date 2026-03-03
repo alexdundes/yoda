@@ -15,7 +15,6 @@ updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0035 - Remover conceito de lightweight do YODA
-<!-- AGENT: Replace yoda-0035 with the canonical issue id (dev-id, e.g., dev-0001) from `yoda/todos/TODO.<dev>.yaml` and Remover conceito de lightweight do YODA with the issue title. Fill front matter fields from TODO; scripts must keep them in sync. Keep any <...> placeholders wrapped in inline code when used in prose. -->
 
 ## Summary
 Eliminar o conceito de `lightweight` do YODA por estar subutilizado. A remocao deve cobrir schema, scripts, templates e documentacao, sem deixar caminhos alternativos ativos.
@@ -71,12 +70,6 @@ Adicionar/atualizar testes para garantir ausencia de `lightweight` no parse, fil
 - Divergencia entre schema documentado e parser dos scripts.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
 Remocao de `lightweight` aplicada no YODA: specs e manual atualizados para fluxo unico (sem lightweight), `issue_add.py` e `todo_list.py` sem flag/filtro `lightweight`, validacoes ajustadas, template lightweight removido e template padrao simplificado. Artefatos existentes (TODO e front matter de issues) foram limpos para nao carregar mais o campo `lightweight`.
 
 test: `python3 -m pytest yoda/scripts/tests` => 33 passed.

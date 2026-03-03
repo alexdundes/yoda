@@ -15,7 +15,6 @@ updated_at: '2026-03-03T14:36:08-03:00'
 ---
 
 # yoda-0037 - Remover conceito de tags do YODA
-<!-- AGENT: Replace yoda-0037 with the canonical issue id (dev-id, e.g., dev-0001) from `yoda/todos/TODO.<dev>.yaml` and Remover conceito de tags do YODA with the issue title. Fill front matter fields from TODO; scripts must keep them in sync. Keep any <...> placeholders wrapped in inline code when used in prose. -->
 
 ## Summary
 Remover completamente o conceito de `tags` do YODA por baixa utilizacao. Isso inclui schema, filtros CLI, templates e documentacao operacional.
@@ -80,12 +79,6 @@ Adicionar teste para o novo parametro de manutencao do `init.py` cobrindo touch/
 - Remocao parcial em scripts pode causar comportamento inconsistente.
 
 ## Result log
-<!-- AGENT: After implementation, summarize what was done and include the commit message using this format:
-First line: conventional commit message.
-Body:
-Issue: `<ID>`
-Path: `<issue path>`
--->
 Tags foi removido como conceito ativo do modelo e da CLI: `todo_list.py` sem `--tags`, `todo_update.py` sem `--tags/--clear-tags`, `issue_add.py` sem campo `tags` no metadata novo. A documentacao foi atualizada para schema alvo `1.01`, sem `tags` no schema ativo. Foi adicionado `--reconcile-layout` em `init.py` para touch de `*.md` e reconciliacao de `TODO.<dev>.yaml` + front matter das issues, e esse recurso foi executado para corrigir o workspace atual para `schema_version 1.01`.
 
 test: `python3 -m pytest yoda/scripts/tests` => 35 passed.
