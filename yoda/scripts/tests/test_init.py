@@ -13,7 +13,7 @@ def _seed_manual(root: Path) -> None:
     (yoda_dir / "yoda.md").write_text("# Manual\n", encoding="utf-8")
 
 
-AGENT_FILES = ["AGENTS.md", "GEMINI.md", "CLAUDE.md", "agent.md"]
+AGENT_FILES = ["AGENTS.md", "GEMINI.md", "CLAUDE.md"]
 
 
 def _front_matter_keys(path: Path) -> list[str]:

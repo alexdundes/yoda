@@ -9,7 +9,7 @@ Agent tools do not agree on which file to read (`AGENTS.md`, `GEMINI.md`, etc.).
 - Root file: `yoda/yoda.md`.
 - This file contains the agent instructions for the project.
 - In an embedded YODA setup, `yoda/yoda.md` is the **README.md** for the YODA layer inside a host project (human-readable context for agents).
-- init creates/updates agent entry files (`AGENTS.md`, `GEMINI.md`, `CLAUDE.md`, `agent.md`) pointing to `yoda/yoda.md`, appending a delimited YODA block to preserve existing content.
+- init creates/updates agent entry files (`AGENTS.md`, `GEMINI.md`, `CLAUDE.md`) pointing to `yoda/yoda.md`, appending a delimited YODA block to preserve existing content.
 
 ## Interoperability
 
