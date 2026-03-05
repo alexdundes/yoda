@@ -12,6 +12,19 @@ Define the 0.3.0 issue-centric model and how legacy TODO data coexists during mi
 
 ## Front matter schema (issue)
 
+Canonical order:
+
+- `schema_version`
+- `status`: `to-do | doing | pending | done`
+- `phase`: `study | document | implement | evaluate` (only when `status=doing`)
+- `depends_on`: list of issue IDs (omit when empty)
+- `title`
+- `description`
+- `priority`: integer `0..10`
+- `extern_issue_file`: path to external issue JSON (omit when empty)
+- `created_at`
+- `updated_at`
+
 Required fields:
 
 - `schema_version`
@@ -33,6 +46,8 @@ Conditional/optional fields:
 
 - `## Dependencies` section MUST NOT exist.
 - `## Entry points` MUST be a simple list (`- <entry point>`).
+- `## Flow log` MUST exist and use append-only single-line entries:
+  - `- <ISO8601> | <source> | <short-message>`
 
 ## Filename validation
 
@@ -44,6 +59,10 @@ Conditional/optional fields:
 
 - `yoda/todos/TODO.<dev>.yaml` may exist during migration and compatibility operations.
 - Legacy TODO is not the canonical execution source for YODA Flow in 0.3.0.
+- Structural normalization is centralized in `init.py`:
+  - `--check`: audit differences without mutation.
+  - `--apply`: normalize to the 0.3.0 issue contract.
+- During transition, scripts may read legacy and new formats; structural conversion must not be implicit in helper scripts.
 
 ## Constraints
 

@@ -2,7 +2,7 @@ schema_version: '1.02'
 developer_name: Yoda
 developer_slug: yoda
 timezone: America/Sao_Paulo
-updated_at: '2026-03-04T22:26:56-03:00'
+updated_at: '2026-03-05T11:45:51-03:00'
 issues:
 - schema_version: '1.02'
   id: yoda-0014
@@ -513,7 +513,7 @@ issues:
   updated_at: '2026-03-04T22:26:56-03:00'
 - schema_version: '1.02'
   id: yoda-0048
-  status: to-do
+  status: done
   depends_on:
   - yoda-0047
   title: Modelo de issue markdown 0.3.0 com phase e log embutido
@@ -522,7 +522,7 @@ issues:
   priority: 5
   extern_issue_file: ../extern_issues/github-3.json
   created_at: '2026-03-04T20:33:41-03:00'
-  updated_at: '2026-03-04T20:34:07-03:00'
+  updated_at: '2026-03-05T11:45:51-03:00'
 - schema_version: '1.02'
   id: yoda-0049
   status: to-do

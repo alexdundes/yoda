@@ -12,10 +12,18 @@ Define how issue templates are filled and maintained under 0.3.0.
 4) Do not include `## Dependencies` section in body.
 5) `## Entry points` must be simple list items:
    - `- <entry point>`
-6) Keep `## Result log` empty in template; fill only during Evaluate.
+6) Include `## Flow log` and keep it empty in template.
+7) `## Flow log` entries must follow:
+   - `- <ISO8601> | <source> | <short-message>`
+8) Keep `## Result log` empty in template; fill only during Evaluate.
 
 ## Metadata constraints
 
 - `phase` only when `status=doing`.
 - `depends_on` omitted when empty.
 - `extern_issue_file` omitted when empty.
+
+## Migration and normalization
+
+- Existing issues are normalized by `init.py` (`--check`/`--apply`) according to 0.3.0.
+- Do not rely on manual bulk edits to enforce template shape across existing issues.
