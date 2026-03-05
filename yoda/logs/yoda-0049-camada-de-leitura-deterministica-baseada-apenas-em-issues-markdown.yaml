@@ -1,0 +1,21 @@
+schema_version: '1.0'
+issue_id: yoda-0049
+issue_path: yoda/project/issues/yoda-0049-camada-de-leitura-deterministica-baseada-apenas-em-issues-markdown.md
+todo_id: yoda-0049
+status: to-do
+entries:
+- timestamp: '2026-03-04T20:33:41-03:00'
+  message: '[yoda-0049] issue_add created
+
+    title: Camada de leitura deterministica baseada apenas em issues markdown
+
+    description: Implementar leitura e indexacao de yoda/project/issues/*.md para
+    montar estado em memoria sem dependencia de TODO.<dev>.yaml.
+
+    slug: camada-de-leitura-deterministica-baseada-apenas-em-issues-markdown
+
+    extern_issue_file: external issue linked'
+- timestamp: '2026-03-04T20:34:07-03:00'
+  message: '[yoda-0049] todo_update
+
+    depends_on:  -> yoda-0048'

@@ -1,0 +1,21 @@
+schema_version: '1.0'
+issue_id: yoda-0057
+issue_path: yoda/project/issues/yoda-0057-remover-id-do-front-matter-e-derivar-id-pelo-nome-do-arquivo.md
+todo_id: yoda-0057
+status: to-do
+entries:
+- timestamp: '2026-03-04T20:58:43-03:00'
+  message: '[yoda-0057] issue_add created
+
+    title: Remover id do front matter e derivar ID pelo nome do arquivo
+
+    description: Eliminar o campo id do front matter no modelo 0.3.0 e definir o nome
+    do arquivo da issue como fonte canonica para derivacao do ID.
+
+    slug: remover-id-do-front-matter-e-derivar-id-pelo-nome-do-arquivo
+
+    extern_issue_file: external issue linked'
+- timestamp: '2026-03-04T20:59:15-03:00'
+  message: '[yoda-0057] todo_update
+
+    depends_on:  -> yoda-0048'

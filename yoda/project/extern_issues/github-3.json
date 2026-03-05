@@ -1,0 +1,48 @@
+{
+  "provider": "github",
+  "number": "3",
+  "title": "YODA 0.3.0: Fluxo determin\u00edstico por fase com runbooks compactos e unifica\u00e7\u00e3o em arquivo de issue (.md)",
+  "description": "## Contexto\n\nHoje o YODA Flow depende de m\u00faltiplos arquivos e passos (`TODO.<dev>.yaml`, issue `.md`, log `.yaml`, `todo_next.py`, `todo_update.py`, `log_add.py`), o que aumenta:\n- custo de contexto/tokens,\n- chance de erro operacional do agente,\n- risco de alucina\u00e7\u00e3o por execu\u00e7\u00e3o manual de playbook.\n\nQueremos evoluir para um fluxo **mais determin\u00edstico, compacto e orientado por scripts**, seguindo o mesmo princ\u00edpio j\u00e1 usado no YODA Intake.\n\n## Objetivo (v0.3.0)\n\nRedesenhar o YODA Flow para que o agente execute um fluxo guiado por runbooks curtos por fase, com estado expl\u00edcito da fase da issue e menos superf\u00edcies de inconsist\u00eancia.\n\n## Escopo proposto\n\n1. **Novo comando de orquestra\u00e7\u00e3o**\n- Evoluir/substituir `todo_next.py` por `yoda_flow_next.py`.\n- O script deve:\n  - selecionar a pr\u00f3xima issue eleg\u00edvel (determin\u00edstico),\n  - aplicar transi\u00e7\u00f5es de estado necess\u00e1rias (hoje feitas via `todo_update.py`),\n  - retornar runbook curto e assertivo da fase atual/pr\u00f3xima a\u00e7\u00e3o do agente.\n\n2. **Estado de fase no ciclo**\n- Introduzir estado expl\u00edcito de fase da issue:\n  - `Study` / `Document` / `Implement` / `Evaluate`.\n- O estado deve ser persistido para retomada confi\u00e1vel e execu\u00e7\u00e3o determin\u00edstica.\n\n3. **Runbooks compactos por fase**\n- Cada fase deve ter instru\u00e7\u00f5es objetivas e pequenas, emitidas pelo script.\n- O agente deixa de depender de um playbook extenso para lembrar o processo.\n\n4. **Revis\u00e3o da estrat\u00e9gia de logs**\n- `log_add.py` sai do fluxo padr\u00e3o de runbooks/playbooks.\n- Logs operacionais passam a ser registrados prioritariamente pelo `yoda_flow_next.py` (via par\u00e2metros pr\u00f3prios).\n- `log_add.py` permanece para uso excepcional.\n\n5. **Unifica\u00e7\u00e3o de artefatos**\n- Eliminar separa\u00e7\u00e3o entre issue markdown e log YAML.\n- Consolidar hist\u00f3rico/log no **pr\u00f3prio arquivo da issue `.md`**, em formato leg\u00edvel para humanos e edit\u00e1vel de forma determin\u00edstica por script.\n\n6. **Simplifica\u00e7\u00e3o do modelo de dados**\n- Remover depend\u00eancia de `yoda/todos/TODO.<dev>.yaml`.\n- Fonte \u00fanica: arquivos de issue `.md` com front matter.\n- Scripts devem montar estado em mem\u00f3ria lendo front matter + conte\u00fado das issues.\n\n## Crit\u00e9rios de aceite (alto n\u00edvel)\n\n- [ ] Existe especifica\u00e7\u00e3o Document First atualizada em `project/specs/` para o novo YODA Flow 0.3.0.\n- [ ] `yoda_flow_next.py` implementa sele\u00e7\u00e3o determin\u00edstica + transi\u00e7\u00f5es + runbook por fase.\n- [ ] Estado de fase da issue \u00e9 persistido e retom\u00e1vel sem ambiguidade.\n- [ ] Fluxo padr\u00e3o n\u00e3o exige `log_add.py`.\n- [ ] Log/hist\u00f3rico passa a viver no arquivo da issue `.md`.\n- [ ] `TODO.<dev>.yaml` deixa de ser necess\u00e1rio no fluxo principal.\n- [ ] Existe plano de migra\u00e7\u00e3o dos artefatos antigos para o novo formato.\n- [ ] Documenta\u00e7\u00e3o de opera\u00e7\u00e3o (playbook/manual) reflete o novo fluxo compacto.\n\n## Observa\u00e7\u00f5es de versionamento\n\nEsta mudan\u00e7a \u00e9 **breaking** no layout/schema/processo e deve ser tratada como mudan\u00e7a maior para a release **0.3.0**, com migra\u00e7\u00e3o expl\u00edcita.\n",
+  "state": "open",
+  "author": "alexdundes",
+  "url": "https://github.com/alexdundes/yoda/issues/3",
+  "labels": [],
+  "log": [
+    {
+      "type": "timeline:added_to_project_v2",
+      "id": "23277157178",
+      "author": "github-project-automation[bot]",
+      "created_at": "2026-03-04T23:27:22Z",
+      "updated_at": "",
+      "body": "event: added_to_project_v2; commit: None",
+      "url": ""
+    },
+    {
+      "type": "timeline:project_v2_item_status_changed",
+      "id": "23277157462",
+      "author": "github-project-automation[bot]",
+      "created_at": "2026-03-04T23:27:23Z",
+      "updated_at": "",
+      "body": "event: project_v2_item_status_changed; commit: None",
+      "url": ""
+    },
+    {
+      "type": "comment",
+      "id": "4001001525",
+      "author": "alexdundes",
+      "created_at": "2026-03-04T23:42:50Z",
+      "updated_at": "2026-03-04T23:42:50Z",
+      "body": "Atualiza\u00e7\u00e3o do desmembramento (YODA Intake): inclu\u00ed uma nova micro-issue no pacote 0.3.0 para tratar UX de documenta\u00e7\u00e3o.\n\n- Nova issue interna: `yoda-0055` \u2014 **Padronizar se\u00e7\u00e3o Entry points para renderiza\u00e7\u00e3o markdown leg\u00edvel**.\n- Motivo: o formato atual em pseudo-YAML dentro de `## Entry points` fica ruim no preview humano.\n- Objetivo: adotar formato markdown nativo (leg\u00edvel no preview) sem perder determinismo para scripts.\n- Encadeamento: `yoda-0055` depende de `yoda-0048` (modelo de issue markdown 0.3.0) e entrou como depend\u00eancia de valida\u00e7\u00e3o final em `yoda-0054`.\n\nBacklog interno segue rastreado por `extern_issue_file: ../extern_issues/github-3.json`.\n",
+      "url": "https://github.com/alexdundes/yoda/issues/3#issuecomment-4001001525"
+    },
+    {
+      "type": "comment",
+      "id": "4001101565",
+      "author": "alexdundes",
+      "created_at": "2026-03-05T00:07:21Z",
+      "updated_at": "2026-03-05T00:07:21Z",
+      "body": "Atualiza\u00e7\u00e3o de escopo (0.3.0): adicionei mais dois pontos de simplifica\u00e7\u00e3o no desmembramento interno, al\u00e9m do ajuste de `Entry points`.\n\n### Novos pontos inclu\u00eddos\n\n1. **Eliminar redund\u00e2ncia de depend\u00eancias**\n- Problema: hoje h\u00e1 `depends_on` no front matter e tamb\u00e9m `## Dependencies` no corpo da issue.\n- Dire\u00e7\u00e3o adotada: manter **apenas** `depends_on` no front matter como fonte \u00fanica de depend\u00eancias.\n- Micro-issue interna: `yoda-0056`.\n\n2. **Eliminar redund\u00e2ncia de ID**\n- Problema: `id` aparece no front matter e tamb\u00e9m no nome do arquivo da issue.\n- Dire\u00e7\u00e3o adotada: remover `id` do front matter e derivar o ID a partir do nome do arquivo (`<id>-<slug>.md`).\n- Micro-issue interna: `yoda-0057`.\n\n### Alinhamento com a base documental\n\nA issue base de especifica\u00e7\u00e3o (`yoda-0047`) foi atualizada para prever explicitamente esses dois pontos na documenta\u00e7\u00e3o 0.3.0 (Document First), junto do ajuste de `Entry points` (`yoda-0055`).\n\n### Encadeamento no backlog\n\n- `yoda-0055`, `yoda-0056` e `yoda-0057` dependem de `yoda-0048` (modelo de issue markdown 0.3.0).\n- `yoda-0054` (valida\u00e7\u00e3o/release) depende de `yoda-0052`, `yoda-0053`, `yoda-0055`, `yoda-0056` e `yoda-0057`.\n\nRastreabilidade mantida via `extern_issue_file: ../extern_issues/github-3.json`.\n",
+      "url": "https://github.com/alexdundes/yoda/issues/3#issuecomment-4001101565"
+    }
+  ]
+}

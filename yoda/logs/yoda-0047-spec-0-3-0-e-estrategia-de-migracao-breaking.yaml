@@ -1,0 +1,17 @@
+schema_version: '1.0'
+issue_id: yoda-0047
+issue_path: yoda/project/issues/yoda-0047-spec-0-3-0-e-estrategia-de-migracao-breaking.md
+todo_id: yoda-0047
+status: to-do
+entries:
+- timestamp: '2026-03-04T20:33:41-03:00'
+  message: '[yoda-0047] issue_add created
+
+    title: Spec 0.3.0 e estrategia de migracao breaking
+
+    description: Definir em project/specs o redesenho 0.3.0 do YODA Flow, incluindo
+    escopo breaking, compatibilidade temporaria e plano de migracao deterministico.
+
+    slug: spec-0-3-0-e-estrategia-de-migracao-breaking
+
+    extern_issue_file: external issue linked'

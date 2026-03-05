@@ -2,7 +2,7 @@ schema_version: '1.02'
 developer_name: Yoda
 developer_slug: yoda
 timezone: America/Sao_Paulo
-updated_at: '2026-03-03T15:15:53-03:00'
+updated_at: '2026-03-04T20:59:15-03:00'
 issues:
 - schema_version: '1.02'
   id: yoda-0014
@@ -501,3 +501,137 @@ issues:
   extern_issue_file: ../extern_issues/github-2.json
   created_at: '2026-02-26T19:27:28-03:00'
   updated_at: '2026-03-03T15:05:09-03:00'
+- schema_version: '1.02'
+  id: yoda-0047
+  status: to-do
+  title: Spec 0.3.0 e estrategia de migracao breaking
+  description: Definir em project/specs o redesenho 0.3.0 do YODA Flow, incluindo
+    escopo breaking, compatibilidade temporaria e plano de migracao deterministico.
+  priority: 5
+  extern_issue_file: ../extern_issues/github-3.json
+  created_at: '2026-03-04T20:33:41-03:00'
+  updated_at: '2026-03-04T20:33:41-03:00'
+- schema_version: '1.02'
+  id: yoda-0048
+  status: to-do
+  depends_on:
+  - yoda-0047
+  title: Modelo de issue markdown 0.3.0 com phase e log embutido
+  description: Especificar front matter e estrutura de log no proprio arquivo .md
+    da issue, com formato legivel para humanos e edicao deterministica por script.
+  priority: 5
+  extern_issue_file: ../extern_issues/github-3.json
+  created_at: '2026-03-04T20:33:41-03:00'
+  updated_at: '2026-03-04T20:34:07-03:00'
+- schema_version: '1.02'
+  id: yoda-0049
+  status: to-do
+  depends_on:
+  - yoda-0048
+  title: Camada de leitura deterministica baseada apenas em issues markdown
+  description: Implementar leitura e indexacao de yoda/project/issues/*.md para montar
+    estado em memoria sem dependencia de TODO.<dev>.yaml.
+  priority: 5
+  extern_issue_file: ../extern_issues/github-3.json
+  created_at: '2026-03-04T20:33:41-03:00'
+  updated_at: '2026-03-04T20:34:07-03:00'
+- schema_version: '1.02'
+  id: yoda-0050
+  status: to-do
+  depends_on:
+  - yoda-0049
+  title: Criar yoda_flow_next.py com selecao e runbook por fase
+  description: Introduzir comando que seleciona issue elegivel de forma deterministica
+    e retorna runbook compacto para Study, Document, Implement ou Evaluate.
+  priority: 5
+  extern_issue_file: ../extern_issues/github-3.json
+  created_at: '2026-03-04T20:33:41-03:00'
+  updated_at: '2026-03-04T20:34:07-03:00'
+- schema_version: '1.02'
+  id: yoda-0051
+  status: to-do
+  depends_on:
+  - yoda-0050
+  title: Evoluir yoda_flow_next.py com transicoes de estado e log automatico
+  description: Adicionar parametros de transicao e registro automatico de eventos
+    no log embutido da issue, retirando log_add.py do fluxo padrao.
+  priority: 5
+  extern_issue_file: ../extern_issues/github-3.json
+  created_at: '2026-03-04T20:33:41-03:00'
+  updated_at: '2026-03-04T20:34:07-03:00'
+- schema_version: '1.02'
+  id: yoda-0052
+  status: to-do
+  depends_on:
+  - yoda-0051
+  title: Migracao de legado TODO e logs YAML para issue markdown
+  description: Criar migracao em update.py para converter TODO.<dev>.yaml e yoda/logs/*.yaml
+    para o modelo 0.3.0 baseado em issue markdown unica.
+  priority: 5
+  extern_issue_file: ../extern_issues/github-3.json
+  created_at: '2026-03-04T20:33:42-03:00'
+  updated_at: '2026-03-04T20:34:08-03:00'
+- schema_version: '1.02'
+  id: yoda-0053
+  status: to-do
+  depends_on:
+  - yoda-0051
+  title: Atualizar playbook yoda md e deprecacoes operacionais
+  description: Reescrever yoda/yoda.md para o novo fluxo guiado por runbooks compactos
+    e definir deprecacoes de scripts antigos no modo de compatibilidade.
+  priority: 5
+  extern_issue_file: ../extern_issues/github-3.json
+  created_at: '2026-03-04T20:33:42-03:00'
+  updated_at: '2026-03-04T20:34:08-03:00'
+- schema_version: '1.02'
+  id: yoda-0054
+  status: to-do
+  depends_on:
+  - yoda-0052
+  - yoda-0053
+  - yoda-0055
+  - yoda-0056
+  - yoda-0057
+  title: Validacao end to end e preparacao de release 0.3.0
+  description: Cobrir testes de selecao deterministica, retomada por fase e migracao
+    de dados, garantindo criterios de aceite para empacotamento da versao 0.3.0.
+  priority: 5
+  extern_issue_file: ../extern_issues/github-3.json
+  created_at: '2026-03-04T20:33:42-03:00'
+  updated_at: '2026-03-04T20:59:15-03:00'
+- schema_version: '1.02'
+  id: yoda-0055
+  status: to-do
+  depends_on:
+  - yoda-0048
+  title: Padronizar secao Entry points para renderizacao markdown legivel
+  description: Substituir o formato pseudo-YAML da secao Entry points por formato
+    markdown legivel no preview humano, mantendo estrutura deterministica para scripts.
+  priority: 5
+  extern_issue_file: ../extern_issues/github-3.json
+  created_at: '2026-03-04T20:42:02-03:00'
+  updated_at: '2026-03-04T20:42:18-03:00'
+- schema_version: '1.02'
+  id: yoda-0056
+  status: to-do
+  depends_on:
+  - yoda-0048
+  title: Eliminar redundancia de Dependencies no corpo da issue
+  description: 'Remover a secao ## Dependencies do corpo das issues e manter apenas
+    depends_on no front matter como fonte unica de dependencia.'
+  priority: 5
+  extern_issue_file: ../extern_issues/github-3.json
+  created_at: '2026-03-04T20:55:15-03:00'
+  updated_at: '2026-03-04T20:56:02-03:00'
+- schema_version: '1.02'
+  id: yoda-0057
+  status: to-do
+  depends_on:
+  - yoda-0048
+  title: Remover id do front matter e derivar ID pelo nome do arquivo
+  description: Eliminar o campo id do front matter no modelo 0.3.0 e definir o nome
+    do arquivo da issue como fonte canonica para derivacao do ID.
+  priority: 5
+  extern_issue_file: ../extern_issues/github-3.json
+  created_at: '2026-03-04T20:58:43-03:00'
+  updated_at: '2026-03-04T20:59:15-03:00'

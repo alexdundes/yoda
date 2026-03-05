@@ -1,0 +1,21 @@
+schema_version: '1.0'
+issue_id: yoda-0051
+issue_path: yoda/project/issues/yoda-0051-evoluir-yoda-flow-next-py-com-transicoes-de-estado-e-log-automatico.md
+todo_id: yoda-0051
+status: to-do
+entries:
+- timestamp: '2026-03-04T20:33:41-03:00'
+  message: '[yoda-0051] issue_add created
+
+    title: Evoluir yoda_flow_next.py com transicoes de estado e log automatico
+
+    description: Adicionar parametros de transicao e registro automatico de eventos
+    no log embutido da issue, retirando log_add.py do fluxo padrao.
+
+    slug: evoluir-yoda-flow-next-py-com-transicoes-de-estado-e-log-automatico
+
+    extern_issue_file: external issue linked'
+- timestamp: '2026-03-04T20:34:08-03:00'
+  message: '[yoda-0051] todo_update
+
+    depends_on:  -> yoda-0050'
