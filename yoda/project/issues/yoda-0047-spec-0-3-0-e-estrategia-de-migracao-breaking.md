@@ -1,14 +1,14 @@
 ---
 schema_version: '1.02'
 id: yoda-0047
-status: to-do
+status: done
 title: Spec 0.3.0 e estrategia de migracao breaking
 description: Definir em project/specs o redesenho 0.3.0 do YODA Flow, incluindo escopo
   breaking, compatibilidade temporaria e plano de migracao deterministico.
 priority: 5
 extern_issue_file: ../extern_issues/github-3.json
 created_at: '2026-03-04T20:33:41-03:00'
-updated_at: '2026-03-04T20:33:41-03:00'
+updated_at: '2026-03-04T22:26:56-03:00'
 ---
 
 # yoda-0047 - Spec 0.3.0 e estrategia de migracao breaking
@@ -30,6 +30,12 @@ Consolidar o desenho oficial de 0.3.0 com regras normativas para guiar implement
 - Prever na documentacao 0.3.0 a padronizacao de `Entry points` em markdown legivel (desdobrada em `yoda-0055`).
 - Prever na documentacao 0.3.0 a remocao da secao `## Dependencies` do corpo da issue, mantendo apenas `depends_on` no front matter (desdobrada em `yoda-0056`).
 - Prever na documentacao 0.3.0 a remocao de `id` do front matter, com derivacao de ID pelo nome do arquivo (desdobrada em `yoda-0057`).
+- Definir contrato de `phase` condicional: existe apenas quando `status=doing`.
+- Definir contrato do `yoda_flow_next.py` como comando implicito de proximo passo, com runbook obrigatorio em `md` e `json`.
+- Formalizar `todo_update.py` e `log_add.py` como scripts permanentes (nao temporarios de migracao).
+- Remover `todo_reorder.py` do contrato 0.3.0 por perda de sentido no modelo baseado em issue markdown.
+- Formalizar logs compactos de 1 linha para fluxo e scripts auxiliares.
+- Formalizar que `--check` e `--apply` ficam no `init.py` atualizado apos update.
 
 ## Out of scope
 - Implementacao de scripts.
@@ -44,14 +50,30 @@ Consolidar o desenho oficial de 0.3.0 com regras normativas para guiar implement
 - A baseline documental deve citar a melhoria de renderizacao de `Entry points` como parte do pacote 0.3.0.
 - A baseline documental deve definir `depends_on` no front matter como unica fonte de dependencias, sem duplicacao no corpo da issue.
 - A baseline documental deve definir derivacao de ID por nome de arquivo como fonte unica, sem `id` no front matter.
+- A baseline documental deve definir `phase` apenas para status `doing`; outros status nao serializam `phase`.
+- `yoda_flow_next.py` deve operar sem subcomandos, sempre resolvendo apenas o proximo passo deterministico.
+- A saida `md` e `json` de `yoda_flow_next.py` deve conter runbook do proximo passo em uma linha curta.
+- Em bloqueios, `yoda_flow_next.py` nao deve mutar estado e deve instruir uso de `todo_update.py`.
+- `todo_update.py` deve aceitar ajuste de `phase` e registrar log direto em uma linha.
+- `log_add.py` deve permanecer como mecanismo oficial para logs fora do YODA Flow, com mensagem de uma linha.
+- `todo_next.py` deve ser removido no 0.3.0.
+- `todo_reorder.py` deve ser removido no 0.3.0.
+- `todo_update.py` e `log_add.py` devem permanecer scripts oficiais do framework.
 
 ## Acceptance criteria
-- [ ] `project/specs` documenta o alvo 0.3.0 com linguagem normativa.
-- [ ] A mudanca e marcada como breaking com orientacao de migracao.
-- [ ] Nao ha conflitos entre resumo, specs detalhadas e playbook.
-- [ ] A documentacao base 0.3.0 antecipa explicitamente a mudanca de `Entry points` (issue `yoda-0055`).
-- [ ] A documentacao base 0.3.0 antecipa explicitamente a remocao da secao `## Dependencies` do corpo (issue `yoda-0056`).
-- [ ] A documentacao base 0.3.0 antecipa explicitamente a remocao de `id` no front matter (issue `yoda-0057`).
+- [x] `project/specs` documenta o alvo 0.3.0 com linguagem normativa.
+- [x] A mudanca e marcada como breaking com orientacao de migracao.
+- [x] Nao ha conflitos entre resumo, specs detalhadas e playbook.
+- [x] A documentacao base 0.3.0 antecipa explicitamente a mudanca de `Entry points` (issue `yoda-0055`).
+- [x] A documentacao base 0.3.0 antecipa explicitamente a remocao da secao `## Dependencies` do corpo (issue `yoda-0056`).
+- [x] A documentacao base 0.3.0 antecipa explicitamente a remocao de `id` no front matter (issue `yoda-0057`).
+- [x] A documentacao base 0.3.0 define `phase` condicional (somente em `doing`).
+- [x] A documentacao base 0.3.0 define `yoda_flow_next.py` implicito com runbook obrigatorio em `md` e `json`.
+- [x] A documentacao base 0.3.0 define bloqueios sem mutacao automatica e instrucao objetiva para `todo_update.py`.
+- [x] A documentacao base 0.3.0 remove `todo_next.py` e mantem `todo_update.py` + `log_add.py` como scripts permanentes.
+- [x] A documentacao base 0.3.0 remove `todo_reorder.py` do contrato de scripts.
+- [x] A documentacao base 0.3.0 define logs compactos de uma linha para fluxo e scripts auxiliares.
+- [x] A documentacao base 0.3.0 explicita que `--check` e `--apply` ficam no `init.py` atualizado apos update.
 
 ## Dependencies
 None.
@@ -60,21 +82,37 @@ Relacionada: `yoda-0056` (fonte unica de dependencias via `depends_on` no front 
 Relacionada: `yoda-0057` (fonte unica de ID via nome do arquivo).
 
 ## Entry points
-- path: project/specs
-  type: doc
-- path: yoda/yoda.md
-  type: doc
-- path: yoda/project/extern_issues/github-3.json
-  type: data
+- `project/specs`
+- `yoda/yoda.md`
+- `yoda/project/extern_issues/github-3.json`
+- `yoda/scripts/init.py`
 
 ## Implementation notes
 Document First obrigatorio: especificacao vem antes de qualquer alteracao em scripts.
 
 ## Tests
-Validacao documental por consistencia entre arquivos de spec e ausencia de contradicoes com o playbook.
+Definir na documentacao os cenarios minimos de validacao para 0.3.0:
+- transicao feliz por fases com avancos unitarios;
+- bloqueio por dependencia com instrucao de `todo_update.py`;
+- `phase` presente apenas em `doing`;
+- ausencia de `id` no front matter com derivacao por filename;
+- ausencia de `## Dependencies` no corpo;
+- `Entry points` renderizando como lista simples;
+- `todo_update.py` atualizando `phase` com log de uma linha;
+- `log_add.py` registrando contexto fora do flow com log de uma linha;
+- update preservando backup e executando `init.py` atualizado para `--check/--apply`.
 
 ## Risks and edge cases
 - Ambiguidade de contrato pode causar implementacoes divergentes.
 - Escopo largo sem fatiamento pode travar execucao do fluxo.
 
 ## Result log
+docs(specs): consolidar contrato 0.3.0 do YODA Flow
+
+A fase Implement/Evaluate da `yoda-0047` consolidou as especificacoes e o playbook para o modelo 0.3.0: fluxo deterministico por fase com `yoda_flow_next.py` implicito, issue markdown como fonte canonica de execucao, remocao de `id` no front matter, remocao da secao `## Dependencies` do corpo, `Entry points` como lista simples, permanencia de `todo_update.py` e `log_add.py`, logs compactos em uma linha e formalizacao de `--check/--apply` no `init.py` atualizado apos update. Tambem foi removido do contrato o `todo_reorder.py` por perda de sentido no novo modelo.
+
+- **GitHub Issue** :   #3
+
+- **Issue**: `yoda-0047`
+
+- **Path**: `yoda/project/issues/yoda-0047-spec-0-3-0-e-estrategia-de-migracao-breaking.md`

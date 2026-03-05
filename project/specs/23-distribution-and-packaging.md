@@ -110,5 +110,5 @@ Rules:
 - Publication pipeline.
 
 ## Cross-references
-- Update `project/specs/summary.md` to reference this document.
+- Keep cross-references updated in relevant specs that cite this document.
 - Related issues: yoda-0016 (this spec), yoda-0018 (package command), yoda-0019 (init command), yoda-0020 (install/upgrade/rollback).

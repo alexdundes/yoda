@@ -1,10 +1,10 @@
 # Conventions
 
-This file defines normative language and common conventions for the YODA Framework specs.
+This file defines normative language and shared conventions for YODA Framework specifications.
 
 ## Normative keywords
 
-The following keywords are to be interpreted as in RFC 2119:
+Keywords are interpreted as RFC 2119:
 
 - MUST: absolute requirement
 - SHOULD: strong recommendation
@@ -12,47 +12,51 @@ The following keywords are to be interpreted as in RFC 2119:
 
 ## Formats
 
-- Dates and timestamps MUST use ISO 8601.
-- Timezone MUST be explicit.
-- UTC SHOULD be the default.
-- A project timezone MUST be defined in `yoda/todos/TODO.<dev>.yaml` as `timezone`.
-  - The timezone value MUST be `UTC` or an IANA TZ database name compatible with Python `zoneinfo` (example: `America/Sao_Paulo`).
-  - When defined, scripts SHOULD use it for generated timestamps.
-- Text files MUST be UTF-8.
+- Dates and timestamps MUST use ISO 8601 with explicit timezone.
+- UTC SHOULD be the default timezone for generated metadata.
+- Text files MUST use UTF-8.
 
-## Paths
+## Paths and naming
 
-- All paths MUST be relative to the repository root.
-- Issue and log paths embed the issue slug; slugs MUST remain immutable after creation.
+- All paths MUST be repository-relative.
+- Issue file path pattern MUST be `<dev>-<NNNN>-<slug>.md` under `yoda/project/issues/`.
+- Issue ID MUST be derived from the file name, not from front matter fields.
 
 ## Source of truth precedence
 
-- For framework definition, project/specs is the source of truth.
-- For a unit of work, the issue Markdown file is the source of truth over conversation.
-- If templates conflict with specs, specs MUST win.
+- For framework definition, `project/specs/` is the source of truth.
+- For execution in YODA Flow, the issue Markdown file is the source of truth.
+- If template text conflicts with specs, specs MUST win.
 
-## Brand voice and terminology
+## Terminology
 
-Voice guidelines:
+- Primary name: "YODA Framework" ("YODA" allowed after first mention).
+- Official cycle name: "YODA Flow".
+- Official phases: `study`, `document`, `implement`, `evaluate`.
+- Use "issue" for units of work.
+- Use "agent" for AI actor and "script" for CLI automation.
 
-- Be clear, technical, and pragmatic.
-- Prefer short sentences and active voice.
-- Avoid marketing language, hype, or vague adjectives.
-- Use normative keywords only for true requirements.
-- Canonical specs and issue templates are written in English.
-- Localized docs are allowed, but keep key terms in English.
+## Metadata conventions
 
-Terminology rules:
+- Issue front matter canonical order for 0.3.0:
+  - `schema_version`
+  - `status`
+  - `phase` (only when `status=doing`)
+  - `depends_on` (optional, omitted if empty)
+  - `title`
+  - `description`
+  - `priority`
+  - `extern_issue_file` (optional, omitted if empty)
+  - `created_at`
+  - `updated_at`
+- `id` MUST NOT exist in front matter.
+- `phase` MUST be omitted unless `status=doing`.
 
-- "YODA Framework" is the primary name; "YODA" is allowed after first mention.
-- "YODA Flow" is the official name of the cycle; phases are Study, Document, Implement, Evaluate.
-- "YODA Intake" is the discovery/triage cycle; it precedes YODA Flow.
-- When an agent enters a cycle, it assumes the corresponding skin (Flow skin or Intake skin).
-- Use "issue" for a unit of work; avoid "ticket" or "task" as the primary label.
-- `yoda/todos/TODO.<dev>.yaml` is the canonical TODO file.
-- Use "agent" for automated/AI actors and "script" for CLI automation in `yoda/scripts/`.
-- Tokens with angle brackets (example: `yoda/todos/TODO.<dev>.yaml`) must use inline code in prose to avoid Markdown tag parsing.
+## Logging conventions
+
+- Log entries MUST be compact and single-line.
+- `runbook_line` outputs MUST be single-line and imperative.
 
 ## Notes
 
-- When in doubt, prefer explicitness over inference.
+- Prefer explicit requirements over implicit interpretation.

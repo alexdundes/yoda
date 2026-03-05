@@ -44,9 +44,7 @@ Examples (translate to the human's language if needed):
    - Use `issue_add.py` to create issues and add them to the TODO.
    - Fill/update the issue Markdown from the same structured translation generated from the human free-form input.
    - Remove placeholders and complete sections.
-7) **Order**
-   - Review ordering; optionally use `todo_reorder.py`.
-8) **Handoff**
+7) **Handoff**
    - Explicitly close Intake and propose the next YODA Flow issue.
 
 External source path (when `--extern-issue <NNN>` is used):
@@ -86,7 +84,7 @@ Each issue must include at minimum:
 
 - One or more issues created and added to `TODO.<dev>.yaml`.
 - Updated issue Markdown files derived from the same structured Intake translation (placeholders resolved).
-- Backlog order reviewed and coherent.
+- Backlog reviewed and coherent.
 
 ## Exit criteria
 

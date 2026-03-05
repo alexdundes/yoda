@@ -1,37 +1,32 @@
-# YODA Framework - Minimum Structure
-
-Defines the minimum folder and file structure for a YODA Framework project.
+# YODA Framework - Minimum structure
 
 ## Required structure
 
-```
+```text
 .
 ├─ yoda/
-│  ├─ yoda.md                 # Root agent instructions
+│  ├─ yoda.md
 │  ├─ templates/
-│  │  ├─ issue.md             # Standard issue template
-│  ├─ scripts/                # Python scripts (file name = command)
-│  ├─ logs/                   # One log per issue
-│  ├─ todos/
-│  │  └─ TODO.<dev>.yaml       # Canonical TODO at yoda/todos/TODO.<dev>.yaml
-│  └─ project/
-│     └─ issues/              # Issue files (<id>-<slug>.md)
-└─ project/
-   └─ specs/                  # YODA framework specs (source of truth)
+│  │  └─ issue.md
+│  ├─ scripts/
+│  ├─ project/
+│  │  ├─ issues/
+│  │  └─ extern_issues/
+│  ├─ logs/                  # compatibility and auxiliary logs
+│  └─ todos/                 # compatibility artifacts during migration
 ```
 
-## Path purposes
+## Canonical execution data
 
-- `yoda/yoda.md`: root entry for agents in this repository.
-- `yoda/templates/`: issue templates used by agents.
-- `yoda/scripts/`: scripts that manage TODOs, logs, and scaffolding.
-- `yoda/logs/`: one log per issue (YAML by default, named `<id>-<slug>.yaml`).
-- `yoda/todos/`: canonical TODO storage (YAML).
-- `yoda/project/issues/`: issue files, one per issue, named `<id>-<slug>.md`.
-- `project/specs/`: official specs and decision source of truth.
+- Canonical flow execution data lives in `yoda/project/issues/*.md`.
+- Issue IDs are filename-derived.
 
-## Notes
+## Compatibility data
 
-- In the general framework, TODOs are YAML (`yoda/todos/TODO.<dev>.yaml`).
-- Each developer edits only their own TODO file; conflicts are resolved manually if they occur.
-- Log files use YAML in the framework and follow the required fields in `project/specs/05-scripts-and-automation.md`.
+- `yoda/todos/` and legacy log artifacts may persist during migration/compatibility.
+- Flow operation in 0.3.0 does not depend on `todo_next.py`.
+
+## Issue file requirements
+
+- Name pattern: `<dev>-<NNNN>-<slug>.md`.
+- Front matter and body follow 0.3.0 contracts from specs.

@@ -1,32 +1,30 @@
 # Document-first, YAML, and Markdown
 
-## Document-first
+## Document-first principle
 
 - Documentation comes before implementation.
-- Code is the consequence of what is documented.
-- The AI must follow the documentation, not informal conversation.
+- Code and script behavior are consequences of the documented contract.
+- Agents MUST follow documented contracts, not informal assumptions.
 
-## YAML
+## Role of Markdown
 
-- Used for metadata and structures that scripts must read.
-- Example: backlog in `yoda/todos/TODO.<dev>.yaml`, agent configuration.
-- Enables automation and structured queries.
+- Issue Markdown files are the primary execution contract for YODA Flow.
+- Narrative, scope, acceptance criteria, and result context live in Markdown.
 
-## Markdown
+## Role of YAML
 
-- Used for rich free text.
-- Example: issues in Markdown (one file per issue in `yoda/project/issues/`), UI specs, business explanations.
-- It is the main reading layer for humans and AI.
-- Issue files must include YAML front matter for metadata (mirrors TODO issue fields).
+- YAML front matter carries machine-readable issue metadata.
+- Metadata must remain minimal, deterministic, and schema-driven.
 
-## Adopted direction
+## 0.3.0 direction
 
-- YAML is the source of truth for metadata.
-- Markdown for narrative and details.
-- Scripts generate skeletons and keep consistency.
- 
+- Source of truth for flow execution is the issue `.md` file.
+- Front matter no longer stores `id`; ID is derived from filename.
+- `depends_on` remains only in front matter (no duplicate section in body).
+- `phase` is conditional and only serialized when `status=doing`.
+
 ## Guardrails
 
-- If the issue is ambiguous, return to Document before coding.
-- Do not invent files or paths; verify the repo structure first.
-- Any change to `project/specs/` must be tracked by an issue.
+- If issue text is ambiguous, return to document phase before implementing.
+- Do not invent paths or files; verify repository structure first.
+- Any spec change must be tracked by an issue.
