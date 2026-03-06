@@ -37,6 +37,7 @@ from lib.yaml_io import write_yaml
 
 
 ALLOWED_STATUS = {"to-do", "doing", "done", "pending"}
+ALLOWED_PHASE = {"study", "document", "implement", "evaluate"}
 
 
 def _parse_csv(value: str | None) -> list[str]:
@@ -80,6 +81,12 @@ def _update_issue(item: dict[str, Any], args: argparse.Namespace) -> None:
         if args.status not in ALLOWED_STATUS:
             raise YodaError("Invalid status", exit_code=ExitCode.VALIDATION)
         item["status"] = args.status
+
+    if args.phase is not None:
+        phase = args.phase.strip().lower()
+        if phase not in ALLOWED_PHASE:
+            raise YodaError("Invalid phase", exit_code=ExitCode.VALIDATION)
+        item["phase"] = phase
 
     if args.priority is not None:
         if args.priority < 0 or args.priority > 10:
@@ -139,6 +146,17 @@ def _apply_pending_rules(item: dict[str, Any], pending_reason_provided: bool) ->
     prune_empty_optionals(item)
 
 
+def _apply_phase_rules(item: dict[str, Any]) -> None:
+    if item.get("status") == "doing":
+        phase = str(item.get("phase") or "").strip().lower()
+        if phase:
+            item["phase"] = phase
+        else:
+            item.pop("phase", None)
+        return
+    item.pop("phase", None)
+
+
 def _format_value(value: Any) -> str:
     if isinstance(value, list):
         return ", ".join(str(item) for item in value) if value else "[]"
@@ -150,6 +168,7 @@ def _diff_fields(before: dict[str, Any], after: dict[str, Any]) -> tuple[list[st
         "title",
         "description",
         "status",
+        "phase",
         "priority",
         "depends_on",
         "pending_reason",
@@ -232,6 +251,7 @@ def main() -> int:
     add_global_flags(parser)
     parser.add_argument("--issue", required=False, help="Issue id (dev-####)")
     parser.add_argument("--status", help="New status")
+    parser.add_argument("--phase", help="New phase (study|document|implement|evaluate)")
     parser.add_argument("--priority", type=int, help="Priority 0-10")
     parser.add_argument("--title", help="New title")
     parser.add_argument("--description", help="New description")
@@ -277,6 +297,7 @@ def main() -> int:
         _update_issue(issue_item, args)
         pending_reason_provided = args.pending_reason is not None
         _apply_pending_rules(issue_item, pending_reason_provided)
+        _apply_phase_rules(issue_item)
         target_slug = _resolve_target_slug(args, current_slug)
         normalized_issue = canonicalize_issue_metadata(issue_item)
         issue_item.clear()
@@ -308,9 +329,9 @@ def main() -> int:
             if not renamed:
                 update_front_matter(new_issue_file, issue_item)
             if log_lines:
-                log_message = f"[{issue_id}] todo_update\n" + "\n".join(log_lines)
+                log_message = f"{issue_id}: todo_update " + "; ".join(log_lines)
             else:
-                log_message = f"[{issue_id}] todo_update (no changes)"
+                log_message = f"{issue_id}: todo_update no changes"
             _append_log(dev, issue_id, log_message, args.dry_run)
 
         print(_render_output(payload, output_format))

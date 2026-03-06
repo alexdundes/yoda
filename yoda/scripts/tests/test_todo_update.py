@@ -88,6 +88,66 @@ def test_todo_update_changes_status_and_front_matter() -> None:
     ]
 
 
+def test_todo_update_sets_phase_for_doing_and_omits_phase_for_done() -> None:
+    add_result = run_script(
+        "issue_add.py",
+        ["--dev", TEST_DEV, "--title", "Test issue", "--description", "Desc"],
+    )
+    assert add_result.returncode == 0, add_result.stderr
+
+    todo = yaml.safe_load(TEST_TODO.read_text(encoding="utf-8"))
+    issue = todo["issues"][0]
+
+    doing_result = run_script(
+        "todo_update.py",
+        [
+            "--dev",
+            TEST_DEV,
+            "--issue",
+            issue["id"],
+            "--status",
+            "doing",
+            "--phase",
+            "document",
+        ],
+    )
+    assert doing_result.returncode == 0, doing_result.stderr
+
+    updated_doing = yaml.safe_load(TEST_TODO.read_text(encoding="utf-8"))
+    updated_issue_doing = updated_doing["issues"][0]
+    assert updated_issue_doing["status"] == "doing"
+    assert updated_issue_doing["phase"] == "document"
+
+    issue_path = _issue_file_for_id(issue["id"])
+    parsed_doing = frontmatter.load(issue_path)
+    assert parsed_doing.metadata["status"] == "doing"
+    assert parsed_doing.metadata["phase"] == "document"
+
+    done_result = run_script(
+        "todo_update.py",
+        [
+            "--dev",
+            TEST_DEV,
+            "--issue",
+            issue["id"],
+            "--status",
+            "done",
+            "--phase",
+            "implement",
+        ],
+    )
+    assert done_result.returncode == 0, done_result.stderr
+
+    updated_done = yaml.safe_load(TEST_TODO.read_text(encoding="utf-8"))
+    updated_issue_done = updated_done["issues"][0]
+    assert updated_issue_done["status"] == "done"
+    assert "phase" not in updated_issue_done
+
+    parsed_done = frontmatter.load(issue_path)
+    assert parsed_done.metadata["status"] == "done"
+    assert "phase" not in parsed_done.metadata
+
+
 def test_todo_update_rejects_missing_depends_on() -> None:
     add_result = run_script(
         "issue_add.py",

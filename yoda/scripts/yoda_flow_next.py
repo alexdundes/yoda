@@ -1,21 +1,26 @@
 #!/usr/bin/env python3
-"""Resolve the next deterministic YODA Flow step from markdown issues."""
+"""Resolve and apply the next deterministic YODA Flow step from markdown issues."""
 
 from __future__ import annotations
 
 import argparse
 import logging
+import re
 import sys
 from pathlib import Path
 from typing import Any
 
+import frontmatter
+
 from lib.cli import add_global_flags, resolve_format
-from lib.dev import resolve_dev
 from lib.errors import ExitCode, YodaError
+from lib.front_matter import update_front_matter
+from lib.io import write_text_atomic
 from lib.issue_index import load_issue_index
 from lib.logging_utils import configure_logging
 from lib.output import render_output
 from lib.paths import repo_root
+from lib.time_utils import detect_local_timezone, now_iso
 from lib.validate import validate_slug
 
 
@@ -28,8 +33,11 @@ RUNBOOK_BY_STEP = {
     "study": "Run Study: gather context, list open decisions, and wait for explicit approval.",
     "document": "Run Document: update issue text with approved decisions and request explicit approval.",
     "implement": "Run Implement: execute only approved scope and keep changes aligned with the issue.",
-    "evaluate": "Run Evaluate: validate acceptance criteria, update Result log, and request final approval.",
+    "evaluate": "Run Evaluate: validate acceptance criteria and fill Result log as yoda.md (conventional-commit line, description, optional external issue, Issue, Path), then request final approval.",
 }
+RUNBOOK_DONE = "Issue moved to done. Check next issue and ask the human if flow should continue now."
+STEP_ORDER = ("study", "document", "implement", "evaluate")
+NEXT_PHASE = {"study": "document", "document": "implement", "implement": "evaluate", "evaluate": ""}
 
 
 def _relative(path_value: str) -> str:
@@ -65,18 +73,6 @@ def _collect_dependency_blocked(issues: list[dict[str, Any]]) -> list[dict[str, 
     return blocked
 
 
-def _resolve_next_step(issue: dict[str, Any]) -> str:
-    status = str(issue.get("status", ""))
-    if status == "to-do":
-        return "study"
-    if status == "doing":
-        phase = str(issue.get("phase") or "").strip().lower()
-        if phase in RUNBOOK_BY_STEP:
-            return phase
-        return "study"
-    return "blocked"
-
-
 def _blocked_reason(pending: list[dict[str, str]], blocked: list[dict[str, Any]]) -> str:
     if blocked:
         return BLOCKED_DEPENDENCY
@@ -103,6 +99,115 @@ def _pick_target(issues: list[dict[str, Any]]) -> dict[str, Any] | None:
     return None
 
 
+def _locate_flow_log_bounds(content: str) -> tuple[int, int] | None:
+    header_match = re.search(r"(?m)^## Flow log\s*$", content)
+    if header_match is None:
+        return None
+    start = header_match.end()
+    next_header = re.search(r"(?m)^##\s+", content[start:])
+    if next_header is None:
+        return start, len(content)
+    return start, start + next_header.start()
+
+
+def _append_flow_log_line(issue_path: Path, line: str) -> None:
+    content = issue_path.read_text(encoding="utf-8")
+    bounds = _locate_flow_log_bounds(content)
+    if bounds is None:
+        trimmed = content.rstrip("\n")
+        updated = f"{trimmed}\n\n## Flow log\n{line}\n"
+        write_text_atomic(issue_path, updated)
+        return
+
+    start, end = bounds
+    section = content[start:end]
+    if not section.startswith("\n"):
+        section = f"\n{section}"
+    if section and not section.endswith("\n"):
+        section = f"{section}\n"
+    updated_section = f"{section}{line}\n"
+    updated = f"{content[:start]}{updated_section}{content[end:]}"
+    write_text_atomic(issue_path, updated)
+
+
+def _now_ts() -> str:
+    return now_iso(detect_local_timezone())
+
+
+def _append_log(issue: dict[str, Any], message: str) -> str:
+    ts = _now_ts()
+    issue_path = Path(str(issue.get("path", "")))
+    _append_flow_log_line(issue_path, f"{ts} {message}")
+    return ts
+
+
+def _load_issue_front_matter(issue: dict[str, Any]) -> tuple[Path, dict[str, Any]]:
+    issue_path = Path(str(issue.get("path", "")))
+    post = frontmatter.load(str(issue_path))
+    return issue_path, dict(post.metadata)
+
+
+def _apply_transition(issue: dict[str, Any]) -> dict[str, Any]:
+    status = str(issue.get("status", "")).strip()
+    phase = str(issue.get("phase") or "").strip().lower()
+    issue_id = str(issue.get("id", ""))
+    issue_path, metadata = _load_issue_front_matter(issue)
+    ts = _now_ts()
+
+    if status == "to-do":
+        metadata["status"] = "doing"
+        metadata["phase"] = "study"
+        metadata["updated_at"] = ts
+        update_front_matter(issue_path, metadata)
+        log_ts = _append_log(issue, f"{issue_id} transition to-do->doing phase=study")
+        return {
+            "status": "doing",
+            "phase": "study",
+            "next_step": "study",
+            "runbook_line": RUNBOOK_BY_STEP["study"],
+            "log_timestamp": log_ts,
+        }
+
+    if status != "doing":
+        raise YodaError(
+            f"Invalid target state for transition: status='{status}'",
+            exit_code=ExitCode.VALIDATION,
+        )
+    if phase not in STEP_ORDER:
+        raise YodaError(
+            f"Invalid phase for doing issue: '{phase}'",
+            exit_code=ExitCode.VALIDATION,
+        )
+
+    next_phase = NEXT_PHASE[phase]
+    if next_phase:
+        metadata["status"] = "doing"
+        metadata["phase"] = next_phase
+        metadata["updated_at"] = ts
+        update_front_matter(issue_path, metadata)
+        log_ts = _append_log(issue, f"{issue_id} transition doing/{phase}->doing/{next_phase}")
+        return {
+            "status": "doing",
+            "phase": next_phase,
+            "next_step": next_phase,
+            "runbook_line": RUNBOOK_BY_STEP[next_phase],
+            "log_timestamp": log_ts,
+        }
+
+    metadata["status"] = "done"
+    metadata.pop("phase", None)
+    metadata["updated_at"] = ts
+    update_front_matter(issue_path, metadata)
+    log_ts = _append_log(issue, f"{issue_id} transition doing/{phase}->done")
+    return {
+        "status": "done",
+        "phase": "",
+        "next_step": "done",
+        "runbook_line": RUNBOOK_DONE,
+        "log_timestamp": log_ts,
+    }
+
+
 def _render_md(payload: dict[str, Any]) -> list[str]:
     lines = [
         f"Issue ID: {payload['issue_id']}",
@@ -111,6 +216,14 @@ def _render_md(payload: dict[str, Any]) -> list[str]:
         f"Phase: {payload['phase']}",
         f"Next step: {payload['next_step']}",
     ]
+    if payload.get("log_timestamp"):
+        lines.append(f"Log timestamp: {payload['log_timestamp']}")
+    if payload.get("next_issue_id"):
+        lines.append(f"Next issue ID: {payload['next_issue_id']}")
+    if payload.get("next_issue_path"):
+        lines.append(f"Next issue path: {payload['next_issue_path']}")
+    if payload.get("continue_prompt"):
+        lines.append(f"Continue prompt: {payload['continue_prompt']}")
     blocked_reason = payload.get("blocked_reason", "")
     if blocked_reason:
         lines.append(f"Blocked reason: {blocked_reason}")
@@ -146,7 +259,12 @@ def main() -> int:
     output_format = resolve_format(args)
 
     try:
-        dev = resolve_dev(args.dev).strip()
+        dev = (args.dev or "").strip()
+        if not dev:
+            raise YodaError(
+                "--dev is required. Use the developer slug from TODO filename pattern yoda/todos/TODO.<dev>.yaml.",
+                exit_code=ExitCode.VALIDATION,
+            )
         validate_slug(dev)
         index = load_issue_index(dev, ensure_flow_log=False)
         issues = list(index.get("issues", []))
@@ -165,22 +283,53 @@ def main() -> int:
                 "blocked_reason": blocked_reason,
                 "blocked_message": _blocked_message(blocked_reason),
                 "runbook_line": "No flow step available. Resolve blockers and run again.",
+                "log_timestamp": "",
                 "pending": pending,
                 "blocked": blocked,
             }
+            if blocked and blocked[0].get("id"):
+                blocked_id = str(blocked[0]["id"])
+                blocked_issue = index.get("by_id", {}).get(blocked_id)
+                if isinstance(blocked_issue, dict):
+                    payload["log_timestamp"] = _append_log(
+                        blocked_issue,
+                        f"{blocked_id} blocked dependency_blocked",
+                    )
+            elif pending and pending[0].get("id"):
+                pending_id = str(pending[0]["id"])
+                pending_issue = index.get("by_id", {}).get(pending_id)
+                if isinstance(pending_issue, dict):
+                    payload["log_timestamp"] = _append_log(
+                        pending_issue,
+                        f"{pending_id} blocked only_pending_issues",
+                    )
             print(_render_output(payload, output_format))
             return ExitCode.NOT_FOUND
 
-        next_step = _resolve_next_step(selected)
+        transition = _apply_transition(selected)
+        next_issue_id = ""
+        next_issue_path = ""
+        continue_prompt = ""
+        if transition["status"] == "done":
+            refreshed = load_issue_index(dev, ensure_flow_log=False)
+            next_target = _pick_target(list(refreshed.get("issues", [])))
+            if next_target is not None:
+                next_issue_id = str(next_target.get("id", ""))
+                next_issue_path = _relative(str(next_target.get("path", "")))
+            continue_prompt = "Issue concluida. Deseja continuar o YODA Flow para a proxima issue?"
         payload = {
             "issue_id": str(selected.get("id", "")),
             "issue_path": _relative(str(selected.get("path", ""))),
-            "status": str(selected.get("status", "")),
-            "phase": str(selected.get("phase") or ""),
-            "next_step": next_step,
+            "status": str(transition["status"]),
+            "phase": str(transition["phase"]),
+            "next_step": str(transition["next_step"]),
             "blocked_reason": "",
             "blocked_message": "",
-            "runbook_line": RUNBOOK_BY_STEP.get(next_step, RUNBOOK_BY_STEP["study"]),
+            "runbook_line": str(transition["runbook_line"]),
+            "log_timestamp": str(transition["log_timestamp"]),
+            "next_issue_id": next_issue_id,
+            "next_issue_path": next_issue_path,
+            "continue_prompt": continue_prompt,
             "pending": pending,
             "blocked": blocked,
         }
@@ -196,4 +345,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-
