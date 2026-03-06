@@ -103,10 +103,17 @@ def _normalize_phase(metadata: dict[str, Any], status: str, path: Path, issue_id
     return phase_value
 
 
-def _build_issue_record(path: Path, dev: str, source_index: int) -> dict[str, Any]:
+def _build_issue_record(
+    path: Path,
+    dev: str,
+    source_index: int,
+    *,
+    ensure_flow_log: bool,
+) -> dict[str, Any]:
     issue_id, slug = _derive_from_filename(path, dev)
     content = path.read_text(encoding="utf-8")
-    content = _ensure_flow_log(path, content)
+    if ensure_flow_log:
+        content = _ensure_flow_log(path, content)
     post = frontmatter.loads(content)
     metadata = dict(post.metadata)
 
@@ -131,7 +138,7 @@ def _build_issue_record(path: Path, dev: str, source_index: int) -> dict[str, An
         "extern_issue_file": str(metadata.get("extern_issue_file", "") or ""),
         "created_at": _require_string(metadata, "created_at", path, issue_id),
         "updated_at": _require_string(metadata, "updated_at", path, issue_id),
-        "flow_log_exists": True,
+        "flow_log_exists": _has_flow_log(content),
         "_source_index": source_index,
     }
 
@@ -158,7 +165,7 @@ def _ordered_for_selection(issues: list[dict[str, Any]]) -> list[dict[str, Any]]
     )
 
 
-def load_issue_index(dev: str) -> dict[str, Any]:
+def load_issue_index(dev: str, *, ensure_flow_log: bool = True) -> dict[str, Any]:
     """Load deterministic issue index from markdown files for one developer slug."""
     validate_slug(dev)
     files = sorted(path for path in issues_dir().glob(f"{dev}-*.md") if path.is_file())
@@ -166,7 +173,7 @@ def load_issue_index(dev: str) -> dict[str, Any]:
     issues: list[dict[str, Any]] = []
     by_id: dict[str, dict[str, Any]] = {}
     for idx, path in enumerate(files):
-        issue = _build_issue_record(path, dev, idx)
+        issue = _build_issue_record(path, dev, idx, ensure_flow_log=ensure_flow_log)
         issue_id = str(issue["id"])
         if issue_id in by_id:
             raise YodaError(
@@ -186,4 +193,3 @@ def load_issue_index(dev: str) -> dict[str, Any]:
         "by_id": {str(item["id"]): item for item in ordered},
         "errors": [],
     }
-

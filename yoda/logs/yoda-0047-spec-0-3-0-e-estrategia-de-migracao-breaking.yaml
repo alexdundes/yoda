@@ -65,3 +65,18 @@ entries:
 - timestamp: '2026-03-06T16:54:25-03:00'
   message: '[yoda-0047] yoda-0049 evaluated and closed with deterministic issue-index
     implementation.'
+- timestamp: '2026-03-06T16:56:10-03:00'
+  message: '[yoda-0047] Started Study for yoda-0050 to define implicit yoda_flow_next
+    selection and runbook behavior.'
+- timestamp: '2026-03-06T17:16:32-03:00'
+  message: '[yoda-0047] Updated yoda-0050 Document with closed Study decisions for
+    deterministic selection and runbook output.'
+- timestamp: '2026-03-06T17:25:48-03:00'
+  message: '[yoda-0047] Implemented yoda-0050 code and tests (yoda_flow_next) with
+    deterministic selection and readable runbook output.'
+- timestamp: '2026-03-06T17:30:24-03:00'
+  message: '[yoda-0047] yoda-0050 evaluated and closed with deterministic yoda_flow_next
+    implementation.'
+- timestamp: '2026-03-06T17:31:43-03:00'
+  message: 'yoda-0047: checkpoint de Evaluate sem alvo ativo; yoda-0050 permanece
+    done; proxima selecionavel yoda-0051.'
