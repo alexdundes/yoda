@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 id: yoda-0039
 status: done
 depends_on:
@@ -125,3 +125,15 @@ Implementado o fluxo completo de Intake externo com separacao de responsabilidad
 feat(yoda): add external-intake handoff with get_extern_issue and local source files
 Issue: `yoda-0039`
 Path: `yoda/project/issues/yoda-0039-integrar-backlog-externo-via-glab-e-prever-github.md`
+
+## Flow log
+2026-02-25T15:36:45-03:00 | [yoda-0039] issue_add created | title: Integrar backlog externo via glab e prever GitHub | description: Redefinir o uso de origin para mapear e traduzir backlog externo em issues YODA usando glab (GitLab CLI), permitindo que uma issue externa gere uma ou varias issues YODA. Prever tambem operacao equivalente com issues do GitHub (gh). Regra transversal: atualizar primeiro project/specs/ e depois yoda/. | slug: integrar-backlog-externo-via-glab-e-prever-github | priority: 4 | entrypoints: project/specs/:doc, yoda/scripts/:code, yoda/yoda.md:doc
+2026-02-25T15:36:56-03:00 | [yoda-0039] todo_update | depends_on: [] -> yoda-0038
+2026-02-25T18:58:03-03:00 | [yoda-0039] priority update: prioridade ajustada para 1 por decisao de planejamento.
+2026-02-25T18:58:03-03:00 | [yoda-0039] todo_update | priority: 4 -> 1
+2026-02-25T18:58:33-03:00 | [yoda-0039] planning decision: classificada como subtle para eventual impacto em schema/layout YAML.
+2026-02-26T14:39:03-03:00 | [yoda-0039] todo_update | status: to-do -> doing
+2026-02-26T14:39:11-03:00 | [yoda-0039] todo_update (no changes)
+2026-02-26T15:11:14-03:00 | [yoda-0039] document step updated\n- Added yoda_intake.py two-step flow (--dev, then --extern-issue or --no-extern-issue)\n- Added origin-based provider detection and CLI install guidance requirements\n- Added external commit association rule (#NNN only, no auto-close)\n- Expanded scope to review and align project/specs documentation
+2026-02-26T17:12:16-03:00 | [yoda-0039] evaluate completed\n- Added yoda_intake.py + get_extern_issue.py intake split\n- Added provider modules and external issue local-store flow\n- Added dedicated specs 25/26 and aligned script references\n- Tests: 49 passed
+2026-02-26T17:12:16-03:00 | [yoda-0039] todo_update | status: doing -> done

@@ -13,7 +13,7 @@ SLUG_RE = re.compile(r"^[a-z][a-z0-9-]*$")
 ISSUE_ID_RE = re.compile(r"^[a-z][a-z0-9-]*-\d{4}$")
 ALLOWED_STATUS = {"to-do", "doing", "done", "pending"}
 ALLOWED_ENTRY_TYPES = {"doc", "code", "config", "schema", "data", "asset", "other"}
-SUPPORTED_SCHEMA_VERSIONS = {"1.0", "1.01", "1.02"}
+SUPPORTED_SCHEMA_VERSIONS = {"1.0", "1.01", "1.02", "2.00"}
 
 
 def validate_slug(slug: str) -> None:

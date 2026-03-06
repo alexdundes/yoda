@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 id: yoda-0026
 status: done
 depends_on:
@@ -96,3 +96,10 @@ feat(install): add yoda-install.sh one-liner installer
 
 Issue: yoda-0026
 Path: yoda/project/issues/yoda-0026-implement-yoda-install-sh-one-liner-installer.md
+
+## Flow log
+2026-02-04T18:39:27-03:00 | [yoda-0026] issue_add created | title: Implement yoda-install.sh one-liner installer | description: Create the yoda-install.sh script to support the one-liner install flow. The script downloads the tarball, verifies sha256 via latest.json, extracts, copies the yoda/ subtree per spec, and runs init. Include security warnings and support --version/--root/--source. | slug: implement-yoda-install-sh-one-liner-installer | priority: 6 | entrypoints: project/specs/24-installation-and-upgrade.md:doc, README.md:doc
+2026-02-04T18:39:46-03:00 | [yoda-0026] todo_update | depends_on: [] -> yoda-0025
+2026-02-04T18:53:11-03:00 | [yoda-0026] todo_update | status: to-do -> doing
+2026-02-04T19:01:07-03:00 | [yoda-0026] Implemented docs/install/yoda-install.sh with checksum validation, preserve rules, and dry-run support.
+2026-02-04T19:01:10-03:00 | [yoda-0026] todo_update | status: doing -> done

@@ -5,7 +5,6 @@ from __future__ import annotations
 
 import argparse
 import logging
-import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -14,8 +13,8 @@ import frontmatter
 
 from lib.cli import add_global_flags, resolve_format
 from lib.errors import ExitCode, YodaError
+from lib.flow_log import append_flow_log_line, sanitize_flow_message
 from lib.front_matter import update_front_matter
-from lib.io import write_text_atomic
 from lib.issue_index import load_issue_index
 from lib.logging_utils import configure_logging
 from lib.output import render_output
@@ -99,37 +98,6 @@ def _pick_target(issues: list[dict[str, Any]]) -> dict[str, Any] | None:
     return None
 
 
-def _locate_flow_log_bounds(content: str) -> tuple[int, int] | None:
-    header_match = re.search(r"(?m)^## Flow log\s*$", content)
-    if header_match is None:
-        return None
-    start = header_match.end()
-    next_header = re.search(r"(?m)^##\s+", content[start:])
-    if next_header is None:
-        return start, len(content)
-    return start, start + next_header.start()
-
-
-def _append_flow_log_line(issue_path: Path, line: str) -> None:
-    content = issue_path.read_text(encoding="utf-8")
-    bounds = _locate_flow_log_bounds(content)
-    if bounds is None:
-        trimmed = content.rstrip("\n")
-        updated = f"{trimmed}\n\n## Flow log\n{line}\n"
-        write_text_atomic(issue_path, updated)
-        return
-
-    start, end = bounds
-    section = content[start:end]
-    if not section.startswith("\n"):
-        section = f"\n{section}"
-    if section and not section.endswith("\n"):
-        section = f"{section}\n"
-    updated_section = f"{section}{line}\n"
-    updated = f"{content[:start]}{updated_section}{content[end:]}"
-    write_text_atomic(issue_path, updated)
-
-
 def _now_ts() -> str:
     return now_iso(detect_local_timezone())
 
@@ -137,7 +105,8 @@ def _now_ts() -> str:
 def _append_log(issue: dict[str, Any], message: str) -> str:
     ts = _now_ts()
     issue_path = Path(str(issue.get("path", "")))
-    _append_flow_log_line(issue_path, f"{ts} {message}")
+    _line = sanitize_flow_message(message)
+    append_flow_log_line(issue_path, f"{ts} {_line}")
     return ts
 
 
@@ -262,7 +231,7 @@ def main() -> int:
         dev = (args.dev or "").strip()
         if not dev:
             raise YodaError(
-                "--dev is required. Use the developer slug from TODO filename pattern yoda/todos/TODO.<dev>.yaml.",
+                "--dev is required. Use the developer slug prefix from issue filenames <dev>-<NNNN>-<slug>.md.",
                 exit_code=ExitCode.VALIDATION,
             )
         validate_slug(dev)

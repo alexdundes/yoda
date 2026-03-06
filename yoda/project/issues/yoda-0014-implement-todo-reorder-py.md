@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 id: yoda-0014
 status: done
 title: Implement todo_reorder.py
@@ -78,3 +78,10 @@ feat(scripts): add todo_reorder command
 
 Issue: `yoda-0014`
 Path: `yoda/project/issues/yoda-0014-implement-todo-reorder-py.md`
+
+## Flow log
+2026-01-28T14:51:24-03:00 | [yoda-0014] issue_add created | title: Implement todo_reorder.py | description: Implement todo_reorder.py per spec: reorder modes, validation, output, and tests. | slug: implement-todo-reorder-py
+2026-01-28T15:14:42-03:00 | [yoda-0014] todo_update | status: to-do -> doing
+2026-01-28T15:17:31-03:00 | [yoda-0014] implement: added todo_reorder command and tests
+2026-01-28T15:17:36-03:00 | [yoda-0014] evaluate: tests pass and result log updated
+2026-01-28T15:17:41-03:00 | [yoda-0014] todo_update | status: doing -> done

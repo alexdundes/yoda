@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 id: yoda-0056
 status: to-do
 depends_on:
@@ -64,3 +64,7 @@ Criar fixtures para validar issue sem `## Dependencies` e validar selecao/depend
 - Ferramentas externas que parseiam corpo podem precisar ajuste.
 
 ## Result log
+
+## Flow log
+2026-03-04T20:55:15-03:00 | [yoda-0056] issue_add created | title: Eliminar redundancia de Dependencies no corpo da issue | description: Remover a secao ## Dependencies do corpo das issues e manter apenas depends_on no front matter como fonte unica de dependencia. | slug: eliminar-redundancia-de-dependencies-no-corpo-da-issue | extern_issue_file: external issue linked
+2026-03-04T20:56:02-03:00 | [yoda-0056] todo_update | depends_on:  -> yoda-0048

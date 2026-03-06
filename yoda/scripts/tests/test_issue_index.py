@@ -42,7 +42,7 @@ def test_load_issue_index_filters_by_dev_and_derives_id_from_filename() -> None:
     _write_issue_file(
         "test-0001-alpha.md",
         {
-            "schema_version": "1.02",
+            "schema_version": "2.00",
             "id": "WRONG-9999",
             "status": "to-do",
             "title": "Alpha",
@@ -55,7 +55,7 @@ def test_load_issue_index_filters_by_dev_and_derives_id_from_filename() -> None:
     _write_issue_file(
         "other-0001-beta.md",
         {
-            "schema_version": "1.02",
+            "schema_version": "2.00",
             "status": "to-do",
             "title": "Beta",
             "description": "Desc",
@@ -77,7 +77,7 @@ def test_load_issue_index_fail_fast_on_invalid_required_field() -> None:
     _write_issue_file(
         "test-0001-invalid.md",
         {
-            "schema_version": "1.02",
+            "schema_version": "2.00",
             "status": "to-do",
             "title": "Invalid",
             # description missing
@@ -89,7 +89,7 @@ def test_load_issue_index_fail_fast_on_invalid_required_field() -> None:
     _write_issue_file(
         "test-0002-valid.md",
         {
-            "schema_version": "1.02",
+            "schema_version": "2.00",
             "status": "to-do",
             "title": "Valid",
             "description": "Desc",
@@ -108,7 +108,7 @@ def test_load_issue_index_appends_flow_log_section_when_missing() -> None:
     issue_path = _write_issue_file(
         "test-0001-no-flow-log.md",
         {
-            "schema_version": "1.02",
+            "schema_version": "2.00",
             "status": "to-do",
             "title": "No flow",
             "description": "Desc",
@@ -129,7 +129,7 @@ def test_load_issue_index_ignores_phase_when_status_is_not_doing() -> None:
     _write_issue_file(
         "test-0001-phase.md",
         {
-            "schema_version": "1.02",
+            "schema_version": "2.00",
             "status": "to-do",
             "phase": "implement",
             "title": "Phase",
@@ -148,7 +148,7 @@ def test_load_issue_index_dependency_rules_and_selectability() -> None:
     _write_issue_file(
         "test-0001-base.md",
         {
-            "schema_version": "1.02",
+            "schema_version": "2.00",
             "status": "to-do",
             "title": "Base",
             "description": "Desc",
@@ -160,7 +160,7 @@ def test_load_issue_index_dependency_rules_and_selectability() -> None:
     _write_issue_file(
         "test-0002-missing-dep.md",
         {
-            "schema_version": "1.02",
+            "schema_version": "2.00",
             "status": "to-do",
             "depends_on": ["test-9999"],
             "title": "Missing dep",
@@ -173,7 +173,7 @@ def test_load_issue_index_dependency_rules_and_selectability() -> None:
     _write_issue_file(
         "test-0003-existing-not-done.md",
         {
-            "schema_version": "1.02",
+            "schema_version": "2.00",
             "status": "to-do",
             "depends_on": ["test-0001"],
             "title": "Blocked dep",
@@ -195,7 +195,7 @@ def test_load_issue_index_uses_priority_then_source_order() -> None:
     _write_issue_file(
         "test-0001-low.md",
         {
-            "schema_version": "1.02",
+            "schema_version": "2.00",
             "status": "to-do",
             "title": "Low",
             "description": "Desc",
@@ -207,7 +207,7 @@ def test_load_issue_index_uses_priority_then_source_order() -> None:
     _write_issue_file(
         "test-0002-high.md",
         {
-            "schema_version": "1.02",
+            "schema_version": "2.00",
             "status": "to-do",
             "title": "High",
             "description": "Desc",

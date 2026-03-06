@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 id: yoda-0027
 status: done
 depends_on:
@@ -95,3 +95,10 @@ feat(update): add update command for embedded yoda
 
 Issue: yoda-0027
 Path: yoda/project/issues/yoda-0027-implement-update-command-for-embedded-yoda.md
+
+## Flow log
+2026-02-04T18:39:33-03:00 | [yoda-0027] issue_add created | title: Implement update command for embedded YODA | description: Implement yoda/scripts/update.py with --check, --apply, --source to handle upgrades. It must fetch latest.json, validate sha256, back up to yoda/_previous/<version>, replace framework files only, preserve data, and re-run init. Provide dry-run and clear output. | slug: implement-update-command-for-embedded-yoda | priority: 6 | entrypoints: project/specs/24-installation-and-upgrade.md:doc, yoda/scripts/init.py:code
+2026-02-04T18:39:51-03:00 | [yoda-0027] todo_update | depends_on: [] -> yoda-0025
+2026-02-04T19:05:13-03:00 | [yoda-0027] todo_update | status: to-do -> doing
+2026-02-04T19:18:56-03:00 | [yoda-0027] Implemented update.py with checksum validation, backup, selective replace, and tests for check/apply.
+2026-02-04T19:19:00-03:00 | [yoda-0027] todo_update | status: doing -> done

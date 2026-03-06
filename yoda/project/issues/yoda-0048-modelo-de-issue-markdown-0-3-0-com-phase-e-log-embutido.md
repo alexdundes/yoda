@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 id: yoda-0048
 status: done
 depends_on:
@@ -110,3 +110,12 @@ Foram implementadas as definicoes do modelo de issue 0.3.0 no escopo da `yoda-00
 - **Issue**: `yoda-0048`
 
 - **Path**: `yoda/project/issues/yoda-0048-modelo-de-issue-markdown-0-3-0-com-phase-e-log-embutido.md`
+
+## Flow log
+2026-03-04T20:33:41-03:00 | [yoda-0048] issue_add created | title: Modelo de issue markdown 0.3.0 com phase e log embutido | description: Especificar front matter e estrutura de log no proprio arquivo .md da issue, com formato legivel para humanos e edicao deterministica por script. | slug: modelo-de-issue-markdown-0-3-0-com-phase-e-log-embutido | extern_issue_file: external issue linked
+2026-03-04T20:34:07-03:00 | [yoda-0048] todo_update | depends_on:  -> yoda-0047
+2026-03-05T07:31:01-03:00 | [yoda-0048] todo_update | status: to-do -> doing
+2026-03-05T07:51:35-03:00 | [yoda-0048] Document updated with definitions for issue contract, Flow log format, and init.py check/apply migration policy.
+2026-03-05T07:54:25-03:00 | [yoda-0048] Implemented 0.3.0 issue model docs: template updated for simple Entry points and Flow log format; specs 04/14 aligned.
+2026-03-05T11:45:51-03:00 | [yoda-0048] Evaluate completed: ACs checked and result log finalized for issue-model 0.3.0 contract.
+2026-03-05T11:45:51-03:00 | [yoda-0048] todo_update | status: doing -> done

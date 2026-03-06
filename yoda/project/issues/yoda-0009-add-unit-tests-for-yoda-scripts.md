@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 id: yoda-0009
 status: done
 title: Add unit tests for YODA scripts
@@ -72,3 +72,12 @@ test(scripts): add unit tests
 
 Issue: `yoda-0009`
 Path: `yoda/project/issues/yoda-0009-add-unit-tests-for-yoda-scripts.md`
+
+## Flow log
+2026-01-27T18:04:27-03:00 | [yoda-0009] issue_add created | title: Add unit tests for YODA scripts | description: Create unit tests for implemented scripts, starting with todo_next and existing helpers | slug: add-unit-tests-for-yoda-scripts
+2026-01-27T18:12:16-03:00 | [yoda-0009] todo_update | status: to-do -> doing
+2026-01-27T18:12:29-03:00 | [yoda-0009] document: expanded requirements to cover all scripts, pytest, and cleanup for dev test
+2026-01-27T18:14:06-03:00 | [yoda-0009] implement: added pytest suite for scripts with dev test fixtures and cleanup
+2026-01-27T18:14:19-03:00 | [yoda-0009] todo_update | status: doing -> done
+2026-01-27T18:14:23-03:00 | [yoda-0009] evaluate: acceptance criteria checked and result log updated in issue
+2026-01-27T18:22:43-03:00 | [yoda-0009] tests: pytest yoda/scripts/tests passed (6 tests)

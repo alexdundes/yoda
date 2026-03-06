@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 id: yoda-0047
 status: done
 title: Spec 0.3.0 e estrategia de migracao breaking
@@ -116,3 +116,27 @@ A fase Implement/Evaluate da `yoda-0047` consolidou as especificacoes e o playbo
 - **Issue**: `yoda-0047`
 
 - **Path**: `yoda/project/issues/yoda-0047-spec-0-3-0-e-estrategia-de-migracao-breaking.md`
+
+## Flow log
+2026-03-04T20:33:41-03:00 | [yoda-0047] issue_add created | title: Spec 0.3.0 e estrategia de migracao breaking | description: Definir em project/specs o redesenho 0.3.0 do YODA Flow, incluindo escopo breaking, compatibilidade temporaria e plano de migracao deterministico. | slug: spec-0-3-0-e-estrategia-de-migracao-breaking | extern_issue_file: external issue linked
+2026-03-04T21:10:11-03:00 | [yoda-0047] todo_update | status: to-do -> doing
+2026-03-04T21:56:20-03:00 | [yoda-0047] Document phase updated with final 0.3.0 decisions: phase conditional, implicit yoda_flow_next, permanent todo_update/log_add, one-line logs, check/apply in init.
+2026-03-04T22:16:13-03:00 | [yoda-0047] Removed todo_reorder.py from 0.3.0 documentation contract and specs index.
+2026-03-04T22:26:56-03:00 | [yoda-0047] Evaluate completed: ACs checked, result log finalized, issue ready to close.
+2026-03-04T22:26:56-03:00 | [yoda-0047] todo_update | status: doing -> done
+2026-03-04T22:32:20-03:00 | [yoda-0047] Removed project/specs/summary.md and cleaned references; kept yoda/yoda.md unchanged by request.
+2026-03-05T07:51:35-03:00 | [yoda-0047] Updated yoda-0048 Document text with finalized definitions for points 1, 2, and 3.
+2026-03-05T07:54:25-03:00 | [yoda-0047] Applied yoda-0048 Implement updates to issue-model docs/template (Flow log, Entry points, init check/apply normalization).
+2026-03-05T11:45:51-03:00 | [yoda-0047] Evaluate of yoda-0048 completed with issue-model contract definitions and AC closure.
+2026-03-06T16:33:20-03:00 | [yoda-0047] Started Study for yoda-0049 to map undefined points before Document.
+2026-03-06T16:33:31-03:00 | [yoda-0047] yoda-0049 Study completed with summary and undefined points list for definition before Document.
+2026-03-06T16:33:40-03:00 | [yoda-0047] Corrected yoda-0049 status back to doing to keep Study active.
+2026-03-06T16:39:24-03:00 | [yoda-0047] Logged yoda-0049 Study decisions (1-7,9,10 accepted; point 8 pending clarification).
+2026-03-06T16:41:24-03:00 | [yoda-0047] Updated yoda-0049 Document with finalized Study decisions and output-contract definition.
+2026-03-06T16:52:29-03:00 | [yoda-0047] Implemented yoda-0049 code layer (issue_index + tests) and validated with pytest.
+2026-03-06T16:54:25-03:00 | [yoda-0047] yoda-0049 evaluated and closed with deterministic issue-index implementation.
+2026-03-06T16:56:10-03:00 | [yoda-0047] Started Study for yoda-0050 to define implicit yoda_flow_next selection and runbook behavior.
+2026-03-06T17:16:32-03:00 | [yoda-0047] Updated yoda-0050 Document with closed Study decisions for deterministic selection and runbook output.
+2026-03-06T17:25:48-03:00 | [yoda-0047] Implemented yoda-0050 code and tests (yoda_flow_next) with deterministic selection and readable runbook output.
+2026-03-06T17:30:24-03:00 | [yoda-0047] yoda-0050 evaluated and closed with deterministic yoda_flow_next implementation.
+2026-03-06T17:31:43-03:00 | yoda-0047: checkpoint de Evaluate sem alvo ativo; yoda-0050 permanece done; proxima selecionavel yoda-0051.

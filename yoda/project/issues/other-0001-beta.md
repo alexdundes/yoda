@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 status: 'to-do'
 title: 'Beta'
 description: 'Desc'

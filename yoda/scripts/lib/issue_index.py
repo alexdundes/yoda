@@ -21,6 +21,7 @@ except Exception as exc:  # pragma: no cover - runtime dependency
 
 
 ALLOWED_PHASE = {"study", "document", "implement", "evaluate"}
+DEFAULT_SCHEMA_VERSIONS = {"2.00"}
 
 
 def _issue_filename_re(dev: str) -> re.Pattern[str]:
@@ -109,6 +110,7 @@ def _build_issue_record(
     source_index: int,
     *,
     ensure_flow_log: bool,
+    allowed_schema_versions: set[str],
 ) -> dict[str, Any]:
     issue_id, slug = _derive_from_filename(path, dev)
     content = path.read_text(encoding="utf-8")
@@ -116,6 +118,13 @@ def _build_issue_record(
         content = _ensure_flow_log(path, content)
     post = frontmatter.loads(content)
     metadata = dict(post.metadata)
+    schema_version = _require_string(metadata, "schema_version", path, issue_id)
+    if schema_version not in allowed_schema_versions:
+        allowed = ", ".join(sorted(allowed_schema_versions))
+        raise YodaError(
+            f"{path}: {issue_id}: unsupported 'schema_version' '{schema_version}' (allowed: {allowed})",
+            exit_code=ExitCode.VALIDATION,
+        )
 
     status = _require_string(metadata, "status", path, issue_id)
     if status not in ALLOWED_STATUS:
@@ -125,6 +134,7 @@ def _build_issue_record(
         )
 
     return {
+        "schema_version": schema_version,
         "id": issue_id,
         "dev": dev,
         "slug": slug,
@@ -165,15 +175,27 @@ def _ordered_for_selection(issues: list[dict[str, Any]]) -> list[dict[str, Any]]
     )
 
 
-def load_issue_index(dev: str, *, ensure_flow_log: bool = True) -> dict[str, Any]:
+def load_issue_index(
+    dev: str,
+    *,
+    ensure_flow_log: bool = True,
+    allowed_schema_versions: set[str] | None = None,
+) -> dict[str, Any]:
     """Load deterministic issue index from markdown files for one developer slug."""
     validate_slug(dev)
+    schema_versions = set(allowed_schema_versions or DEFAULT_SCHEMA_VERSIONS)
     files = sorted(path for path in issues_dir().glob(f"{dev}-*.md") if path.is_file())
 
     issues: list[dict[str, Any]] = []
     by_id: dict[str, dict[str, Any]] = {}
     for idx, path in enumerate(files):
-        issue = _build_issue_record(path, dev, idx, ensure_flow_log=ensure_flow_log)
+        issue = _build_issue_record(
+            path,
+            dev,
+            idx,
+            ensure_flow_log=ensure_flow_log,
+            allowed_schema_versions=schema_versions,
+        )
         issue_id = str(issue["id"])
         if issue_id in by_id:
             raise YodaError(

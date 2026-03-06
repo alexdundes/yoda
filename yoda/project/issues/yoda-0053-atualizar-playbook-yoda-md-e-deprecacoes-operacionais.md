@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 id: yoda-0053
 status: to-do
 depends_on:
@@ -69,3 +69,7 @@ Revisao de consistencia documental e verificacao cruzada com runbooks emitidos p
 - Deprecacao sem janela clara pode quebrar fluxos de quem nao migrou.
 
 ## Result log
+
+## Flow log
+2026-03-04T20:33:42-03:00 | [yoda-0053] issue_add created | title: Atualizar playbook yoda md e deprecacoes operacionais | description: Reescrever yoda/yoda.md para o novo fluxo guiado por runbooks compactos e definir deprecacoes de scripts antigos no modo de compatibilidade. | slug: atualizar-playbook-yoda-md-e-deprecacoes-operacionais | extern_issue_file: external issue linked
+2026-03-04T20:34:08-03:00 | [yoda-0053] todo_update | depends_on:  -> yoda-0051

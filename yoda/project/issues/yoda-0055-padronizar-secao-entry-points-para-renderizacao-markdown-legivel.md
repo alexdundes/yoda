@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 id: yoda-0055
 status: to-do
 depends_on:
@@ -63,3 +63,7 @@ Adicionar casos de fixture garantindo renderizacao legivel e consistencia de par
 - Conversao parcial de issues pode gerar inconsistencias temporarias.
 
 ## Result log
+
+## Flow log
+2026-03-04T20:42:02-03:00 | [yoda-0055] issue_add created | title: Padronizar secao Entry points para renderizacao markdown legivel | description: Substituir o formato pseudo-YAML da secao Entry points por formato markdown legivel no preview humano, mantendo estrutura deterministica para scripts. | slug: padronizar-secao-entry-points-para-renderizacao-markdown-legivel | extern_issue_file: external issue linked
+2026-03-04T20:42:19-03:00 | [yoda-0055] todo_update | depends_on:  -> yoda-0048

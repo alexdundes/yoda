@@ -66,7 +66,7 @@ def test_flow_next_transitions_todo_to_doing_study_and_logs() -> None:
     path = _write_issue_file(
         "test-0001-todo.md",
         {
-            "schema_version": "1.02",
+            "schema_version": "2.00",
             "status": "to-do",
             "title": "Todo",
             "description": "Desc",
@@ -98,7 +98,7 @@ def test_flow_next_advances_doing_phases_and_finishes_done() -> None:
     path = _write_issue_file(
         "test-0001-doing.md",
         {
-            "schema_version": "1.02",
+            "schema_version": "2.00",
             "status": "doing",
             "phase": "study",
             "title": "Doing",
@@ -112,7 +112,7 @@ def test_flow_next_advances_doing_phases_and_finishes_done() -> None:
     _write_issue_file(
         "test-0002-next.md",
         {
-            "schema_version": "1.02",
+            "schema_version": "2.00",
             "status": "to-do",
             "title": "Next",
             "description": "Desc",
@@ -163,7 +163,7 @@ def test_flow_next_ignores_pending_and_reports_hint() -> None:
     _write_issue_file(
         "test-0001-pending.md",
         {
-            "schema_version": "1.02",
+            "schema_version": "2.00",
             "status": "pending",
             "title": "Pending",
             "description": "Desc",
@@ -176,7 +176,7 @@ def test_flow_next_ignores_pending_and_reports_hint() -> None:
     selectable = _write_issue_file(
         "test-0002-selectable.md",
         {
-            "schema_version": "1.02",
+            "schema_version": "2.00",
             "status": "to-do",
             "title": "Selectable",
             "description": "Desc",
@@ -201,7 +201,7 @@ def test_flow_next_logs_blocked_reason_for_dependency_blocked() -> None:
     _write_issue_file(
         "test-0001-pending-dep.md",
         {
-            "schema_version": "1.02",
+            "schema_version": "2.00",
             "status": "pending",
             "title": "Dep",
             "description": "Desc",
@@ -214,7 +214,7 @@ def test_flow_next_logs_blocked_reason_for_dependency_blocked() -> None:
     blocked = _write_issue_file(
         "test-0002-todo-blocked.md",
         {
-            "schema_version": "1.02",
+            "schema_version": "2.00",
             "status": "to-do",
             "depends_on": ["test-0001"],
             "title": "Blocked",

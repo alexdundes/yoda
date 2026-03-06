@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 id: yoda-0057
 status: to-do
 depends_on:
@@ -64,3 +64,7 @@ Adicionar casos de fixture para nomes validos/invalidos e backward compatibility
 - Integracoes externas podem assumir `id` no front matter e precisar ajuste.
 
 ## Result log
+
+## Flow log
+2026-03-04T20:58:43-03:00 | [yoda-0057] issue_add created | title: Remover id do front matter e derivar ID pelo nome do arquivo | description: Eliminar o campo id do front matter no modelo 0.3.0 e definir o nome do arquivo da issue como fonte canonica para derivacao do ID. | slug: remover-id-do-front-matter-e-derivar-id-pelo-nome-do-arquivo | extern_issue_file: external issue linked
+2026-03-04T20:59:15-03:00 | [yoda-0057] todo_update | depends_on:  -> yoda-0048

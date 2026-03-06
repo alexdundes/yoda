@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 id: yoda-0031
 status: done
 title: Padronizar GEMINI.md no init
@@ -70,3 +70,9 @@ Padronizacao aplicada para `GEMINI.md` no fluxo de init: specs atualizadas para 
 fix(init): padronizar GEMINI.md como arquivo canonico de entrada
 Issue: `yoda-0031`
 Path: `yoda/project/issues/yoda-0031-padronizar-gemini-md-no-init.md`
+
+## Flow log
+2026-02-25T15:18:57-03:00 | [yoda-0031] issue_add created | title: Padronizar GEMINI.md no init | description: Ajustar o script yoda/scripts/init.py para criar/referenciar o arquivo GEMINI.md em caixa alta, substituindo a variação gemini.md. Regra transversal deste backlog: primeiro atualizar a documentação em project/specs/, e somente depois aplicar mudanças em yoda/. Neste item, não considerar compatibilidade com legado; o único consumidor atual é ../fibu. | slug: padronizar-gemini-md-no-init | priority: 3 | tags: release-0.1.2, init, docs-first | entrypoints: yoda/scripts/init.py:code, project/specs/:doc
+2026-02-25T18:35:41-03:00 | [yoda-0031] todo_update | status: to-do -> doing
+2026-02-25T18:38:56-03:00 | [yoda-0031] evaluate: init validado em /tmp/yoda-init-gemini-0031 com dois runs; primeiro cria GEMINI.md e segundo permanece unchanged (idempotente).
+2026-02-25T18:39:01-03:00 | [yoda-0031] todo_update | status: doing -> done
