@@ -45,3 +45,23 @@ entries:
 - timestamp: '2026-03-05T11:45:51-03:00'
   message: '[yoda-0047] Evaluate of yoda-0048 completed with issue-model contract
     definitions and AC closure.'
+- timestamp: '2026-03-06T16:33:20-03:00'
+  message: '[yoda-0047] Started Study for yoda-0049 to map undefined points before
+    Document.'
+- timestamp: '2026-03-06T16:33:31-03:00'
+  message: '[yoda-0047] yoda-0049 Study completed with summary and undefined points
+    list for definition before Document.'
+- timestamp: '2026-03-06T16:33:40-03:00'
+  message: '[yoda-0047] Corrected yoda-0049 status back to doing to keep Study active.'
+- timestamp: '2026-03-06T16:39:24-03:00'
+  message: '[yoda-0047] Logged yoda-0049 Study decisions (1-7,9,10 accepted; point
+    8 pending clarification).'
+- timestamp: '2026-03-06T16:41:24-03:00'
+  message: '[yoda-0047] Updated yoda-0049 Document with finalized Study decisions
+    and output-contract definition.'
+- timestamp: '2026-03-06T16:52:29-03:00'
+  message: '[yoda-0047] Implemented yoda-0049 code layer (issue_index + tests) and
+    validated with pytest.'
+- timestamp: '2026-03-06T16:54:25-03:00'
+  message: '[yoda-0047] yoda-0049 evaluated and closed with deterministic issue-index
+    implementation.'
