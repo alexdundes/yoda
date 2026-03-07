@@ -29,7 +29,7 @@
 - [ ] 
 
 ## Entry points
-<!-- AGENT: List relevant files or artifacts used as references for implementation. Use a simple list. -->
+<!-- AGENT: List relevant files or artifacts as plain markdown list items (`- <path>`). Do not use pseudo-YAML (`path:`/`type:`). -->
 - 
 
 ## Implementation notes
