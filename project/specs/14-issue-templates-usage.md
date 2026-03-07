@@ -14,7 +14,8 @@ Define how issue templates are filled and maintained under 0.3.0.
    - `- <entry point>`
 6) Include `## Flow log` and keep it empty in template.
 7) `## Flow log` entries must follow:
-   - `- <ISO8601> | <source> | <short-message>`
+   - `- <ISO8601> <short-message>`
+   - For new entries, `<short-message>` must not start with issue id (`<dev>-<NNNN>`).
 8) Keep `## Result log` empty in template; fill only during Evaluate.
 
 ## Metadata constraints

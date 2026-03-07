@@ -1,8 +1,8 @@
 # YODA Framework Package
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="yoda/favicons/yoda-dark.svg">
-  <img src="yoda/favicons/yoda-light.svg" alt="YODA Framework Logo" width="256" height="256">
+  <source media="(prefers-color-scheme: dark)" srcset="favicons/yoda-dark.svg">
+  <img src="favicons/yoda-light.svg" alt="YODA Framework Logo" width="256" height="256">
 </picture>
 
 > **YODA Framework Package — YAML-Oriented Documentation & Agents**  

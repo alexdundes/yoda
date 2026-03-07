@@ -15,7 +15,8 @@ Define behavior for `yoda_flow_next.py`, the deterministic YODA Flow driver in 0
 
 ## Inputs
 
-- `--dev <slug>` (or standard dev resolution contract)
+- `--dev <slug>` (required)
+- `--log-message "<summary>"` (optional)
 - shared global flags
 
 ## Core behavior
@@ -24,6 +25,11 @@ Define behavior for `yoda_flow_next.py`, the deterministic YODA Flow driver in 0
 2) Determine the next deterministic step.
 3) If blocked, do not mutate state and return deterministic blocked instruction for `todo_update.py`.
 4) If not blocked, perform only the single next progression action.
+
+Flow log behavior:
+- Transition entries MUST use single-line format: `- <ISO8601> transition <de->para>`.
+- For new entries, transition messages MUST NOT repeat issue id as prefix.
+- When `--log-message` is provided, append ` | <summary>` to the transition line.
 
 ## State progression
 

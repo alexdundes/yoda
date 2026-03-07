@@ -47,7 +47,8 @@ Conditional/optional fields:
 - `## Dependencies` section MUST NOT exist.
 - `## Entry points` MUST be a simple list (`- <entry point>`).
 - `## Flow log` MUST exist and use append-only single-line entries:
-  - `- <ISO8601> | <source> | <short-message>`
+  - `- <ISO8601> <short-message>`
+  - For new entries, `<short-message>` MUST NOT repeat the issue id (`<dev>-<NNNN>`) as a prefix.
 
 ## Filename validation
 

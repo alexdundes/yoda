@@ -8,13 +8,14 @@ depends_on:
 - yoda-0055
 - yoda-0056
 - yoda-0057
+- yoda-0058
 title: Validacao end to end e preparacao de release 0.3.0
 description: Cobrir testes de selecao deterministica, retomada por fase e migracao
   de dados, garantindo criterios de aceite para empacotamento da versao 0.3.0.
 priority: 5
 extern_issue_file: ../extern_issues/github-3.json
 created_at: '2026-03-04T20:33:42-03:00'
-updated_at: '2026-03-04T20:59:15-03:00'
+updated_at: '2026-03-07T11:32:29-03:00'
 ---
 
 # yoda-0054 - Validacao end to end e preparacao de release 0.3.0
@@ -80,3 +81,4 @@ Executar testes unitarios/integracao dos scripts afetados e validar dry-run de m
 2026-03-04T20:42:19-03:00 | [yoda-0054] todo_update | depends_on: yoda-0052, yoda-0053 -> yoda-0052, yoda-0053, yoda-0055
 2026-03-04T20:56:02-03:00 | [yoda-0054] todo_update | depends_on: yoda-0052, yoda-0053, yoda-0055 -> yoda-0052, yoda-0053, yoda-0055, yoda-0056
 2026-03-04T20:59:15-03:00 | [yoda-0054] todo_update | depends_on: yoda-0052, yoda-0053, yoda-0055, yoda-0056 -> yoda-0052, yoda-0053, yoda-0055, yoda-0056, yoda-0057
+2026-03-07T11:32:29-03:00 yoda-0054: todo_update depends_on: yoda-0052, yoda-0053, yoda-0055, yoda-0056, yoda-0057 -> yoda-0052, yoda-0053, yoda-0055, yoda-0056, yoda-0057, yoda-0058

@@ -6,7 +6,6 @@ from __future__ import annotations
 import argparse
 import json
 import logging
-import os
 import sys
 from typing import Any
 
@@ -62,9 +61,6 @@ def _missing_dev_runbook() -> str:
 def _resolve_dev_no_prompt(explicit_dev: str | None) -> str | None:
     if explicit_dev:
         return explicit_dev.strip()
-    env_dev = os.environ.get("YODA_DEV", "").strip()
-    if env_dev:
-        return env_dev
     return None
 
 
@@ -170,7 +166,16 @@ def _render_json(payload: dict[str, Any]) -> str:
 
 
 def run(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="YODA Intake runbook helper")
+    parser = argparse.ArgumentParser(
+        description="YODA Intake runbook helper",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=(
+            "Agent guidance:\n"
+            "- Purpose: return deterministic Intake runbooks from CLI context and external-source mode.\n"
+            "- When to use: when entering YODA Intake or branching to external/local intake paths.\n"
+            "- Mutability: read-only; does not edit issues directly."
+        ),
+    )
     add_global_flags(parser)
     parser.add_argument("--extern-issue", dest="extern_issue", help="External issue number (NNN)")
     parser.add_argument("--no-extern-issue", action="store_true", help="Run intake without external issue")

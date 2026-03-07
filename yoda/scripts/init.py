@@ -340,7 +340,16 @@ def _render_output(payload: dict[str, Any], output_format: str) -> str:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Initialize an embedded YODA project")
+    parser = argparse.ArgumentParser(
+        description="Initialize an embedded YODA project",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=(
+            "Agent guidance:\n"
+            "- Purpose: prepare/reconcile a host project with embedded YODA structure and metadata.\n"
+            "- When to use: after install/update, or to reconcile legacy files with current schema.\n"
+            "- Mutability: creates/updates project files and may migrate/remove legacy TODO/log YAML."
+        ),
+    )
     add_global_flags(parser)
     parser.add_argument("--root", help="Project root to initialize (default: cwd)")
     parser.add_argument("--force", action="store_true", help="Overwrite existing files")

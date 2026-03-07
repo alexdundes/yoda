@@ -13,7 +13,7 @@ Use script runbooks as the source of truth for operational details.
 
 1. Read `REPO_INTENT.md`.
 2. Read this file (`yoda/yoda.md`).
-3. Resolve developer slug (`--dev` > `YODA_DEV` > ask human).
+3. Resolve developer slug from `--dev`; if missing, ask human and rerun with `--dev <slug>`.
 
 ## Developer slug
 
@@ -24,9 +24,7 @@ Use script runbooks as the source of truth for operational details.
 
 - Issues markdown: `yoda/project/issues/<id>-<slug>.md`
 - Dependencies: front matter `depends_on`
-- Flow execution log: section `## Flow log` inside each issue markdown
-
-Do not use `## Dependencies` section in issue body.
+- Flow execution log: section `## Flow log` inside each issue markdown, use `log_add.py --help`
 
 ## YODA modes
 
@@ -36,6 +34,8 @@ Do not use `## Dependencies` section in issue body.
 Do not mix modes implicitly. Enter and exit each mode explicitly.
 
 ## YODA Flow
+
+for know runbook: read `python3 yoda/scripts/yoda_flow_next.py --help` 
 
 Entry:
 1. Confirm the human intent includes entering YODA Flow.
@@ -53,8 +53,8 @@ Flow policy:
 - Wait for explicit human authorization before moving to the next phase.
 - Implement only approved issue scope.
 - In `Evaluate`, validate acceptance criteria and fill `## Result log` in the issue markdown.
-- Use `todo_update.py` for manual semantic/process corrections.
-- Use `log_add.py` only for issue context outside the normal YODA Flow path.
+- Use `todo_update.py --help` for manual semantic/process corrections.
+- Use `log_add.py --help` only for issue context outside the normal YODA Flow path.
 
 Evaluate `Result log` official format:
 - `<First line: conventional commit message.>`
@@ -66,10 +66,6 @@ Evaluate `Result log` official format:
 - `- **Issue**: \`<ID>\``
 - blank line
 - `- **Path**: \`<issue path>\``
-
-Template rule:
-- Keep `## Result log` empty in `yoda/templates/issue.md`.
-- The formatting source of truth is this Evaluate section in `yoda/yoda.md`.
 
 External issue line rule:
 - Emit the line only when the issue front matter contains `extern_issue_file`.

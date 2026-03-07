@@ -132,6 +132,10 @@ def main() -> int:
         description="Create a new issue",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=(
+            "Agent guidance:\n"
+            "- Purpose: create a new issue markdown with canonical front matter and initial flow log entry.\n"
+            "- When to use: during YODA Intake after backlog review and issue structuring.\n"
+            "- Mutability: writes a new file in yoda/project/issues/.\n\n"
             "Required input: --title and (--description or --summary).\n"
             "Use --extern-issue <NNN> to link an external source.\n"
             "Priority default is 5; change only with explicit relative justification."
@@ -207,7 +211,7 @@ def main() -> int:
             if not args.dry_run:
                 write_text_atomic(issue_file, rendered_issue)
                 message = sanitize_flow_message(
-                    f"{issue_id}: issue_add created title={title}; priority={priority}"
+                    f"issue_add created title={title}; priority={priority}"
                 )
                 append_flow_log_line(issue_file, f"{timestamp} {message}")
 

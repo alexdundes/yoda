@@ -84,3 +84,15 @@ def test_todo_update_rejects_invalid_schema_version() -> None:
     )
     assert result.returncode == 2
     assert "Run init.py migration first" in result.stderr
+
+
+def test_todo_update_flow_log_entry_has_no_issue_id_prefix() -> None:
+    issue_id = _create_issue()
+    result = run_script(
+        "todo_update.py",
+        ["--dev", TEST_DEV, "--issue", issue_id, "--status", "doing", "--phase", "study"],
+    )
+    assert result.returncode == 0, result.stderr
+    text = _issue_file_for_id(issue_id).read_text(encoding="utf-8")
+    assert "todo_update status:" in text
+    assert f"{issue_id}: todo_update" not in text

@@ -45,7 +45,16 @@ def _render(payload: dict[str, Any], output_format: str) -> str:
 
 
 def run(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Fetch external issue into yoda/project/extern_issues")
+    parser = argparse.ArgumentParser(
+        description="Fetch external issue into yoda/project/extern_issues",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=(
+            "Agent guidance:\n"
+            "- Purpose: fetch one external issue and persist it as local JSON for YODA Intake.\n"
+            "- When to use: before running yoda_intake.py with --extern-issue <NNN>.\n"
+            "- Mutability: writes yoda/project/extern_issues/<provider>-<NNN>.json (unless --dry-run)."
+        ),
+    )
     add_global_flags(parser)
     parser.add_argument("--extern-issue", dest="extern_issue", required=False, help="External issue number (NNN)")
 

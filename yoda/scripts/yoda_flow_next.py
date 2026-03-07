@@ -110,16 +110,22 @@ def _append_log(issue: dict[str, Any], message: str) -> str:
     return ts
 
 
+def _compose_transition_log(base: str, log_message: str) -> str:
+    extra = sanitize_flow_message(log_message)
+    if extra:
+        return f"{base} | {extra}"
+    return base
+
+
 def _load_issue_front_matter(issue: dict[str, Any]) -> tuple[Path, dict[str, Any]]:
     issue_path = Path(str(issue.get("path", "")))
     post = frontmatter.load(str(issue_path))
     return issue_path, dict(post.metadata)
 
 
-def _apply_transition(issue: dict[str, Any]) -> dict[str, Any]:
+def _apply_transition(issue: dict[str, Any], log_message: str = "") -> dict[str, Any]:
     status = str(issue.get("status", "")).strip()
     phase = str(issue.get("phase") or "").strip().lower()
-    issue_id = str(issue.get("id", ""))
     issue_path, metadata = _load_issue_front_matter(issue)
     ts = _now_ts()
 
@@ -128,7 +134,7 @@ def _apply_transition(issue: dict[str, Any]) -> dict[str, Any]:
         metadata["phase"] = "study"
         metadata["updated_at"] = ts
         update_front_matter(issue_path, metadata)
-        log_ts = _append_log(issue, f"{issue_id} transition to-do->doing phase=study")
+        log_ts = _append_log(issue, _compose_transition_log("transition to-do->doing/study", log_message))
         return {
             "status": "doing",
             "phase": "study",
@@ -154,7 +160,10 @@ def _apply_transition(issue: dict[str, Any]) -> dict[str, Any]:
         metadata["phase"] = next_phase
         metadata["updated_at"] = ts
         update_front_matter(issue_path, metadata)
-        log_ts = _append_log(issue, f"{issue_id} transition doing/{phase}->doing/{next_phase}")
+        log_ts = _append_log(
+            issue,
+            _compose_transition_log(f"transition doing/{phase}->doing/{next_phase}", log_message),
+        )
         return {
             "status": "doing",
             "phase": next_phase,
@@ -167,7 +176,10 @@ def _apply_transition(issue: dict[str, Any]) -> dict[str, Any]:
     metadata.pop("phase", None)
     metadata["updated_at"] = ts
     update_front_matter(issue_path, metadata)
-    log_ts = _append_log(issue, f"{issue_id} transition doing/{phase}->done")
+    log_ts = _append_log(
+        issue,
+        _compose_transition_log(f"transition doing/{phase}->done", log_message),
+    )
     return {
         "status": "done",
         "phase": "",
@@ -230,10 +242,17 @@ def main() -> int:
             "  for the next phase action.\n"
             "- Use in YODA Framework: this is the primary command for YODA Flow execution.\n"
             "- Expected moment: call once per flow step, execute returned phase instructions, then call again\n"
-            "  after explicit human authorization to continue."
+            "  after explicit human authorization to continue.\n"
+            "- Optional: pass --log-message \"<what was done>\" to append a compact summary to the\n"
+            "  transition log line."
         ),
     )
     add_global_flags(parser)
+    parser.add_argument(
+        "--log-message",
+        default="",
+        help="Optional one-line summary to append to the transition log entry.",
+    )
     args = parser.parse_args()
     configure_logging(args.verbose)
     output_format = resolve_format(args)
@@ -273,7 +292,7 @@ def main() -> int:
                 if isinstance(blocked_issue, dict):
                     payload["log_timestamp"] = _append_log(
                         blocked_issue,
-                        f"{blocked_id} blocked dependency_blocked",
+                        "blocked dependency_blocked",
                     )
             elif pending and pending[0].get("id"):
                 pending_id = str(pending[0]["id"])
@@ -281,12 +300,12 @@ def main() -> int:
                 if isinstance(pending_issue, dict):
                     payload["log_timestamp"] = _append_log(
                         pending_issue,
-                        f"{pending_id} blocked only_pending_issues",
+                        "blocked only_pending_issues",
                     )
             print(_render_output(payload, output_format))
             return ExitCode.NOT_FOUND
 
-        transition = _apply_transition(selected)
+        transition = _apply_transition(selected, args.log_message)
         next_issue_id = ""
         next_issue_path = ""
         continue_prompt = ""

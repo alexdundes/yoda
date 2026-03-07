@@ -10,6 +10,17 @@ All scripts follow shared flags:
 - `--dry-run`
 - `--verbose`
 
+Developer slug contract:
+- `--dev` is the single source of developer slug for YODA commands.
+- Missing `--dev` MUST return guidance instructing the agent to ask the human for the slug.
+- Exception: `update.py` may run without `--dev`.
+
+Help guidance contract:
+- `--help` MUST include direct operator guidance/runbook text with:
+  - purpose
+  - when to use
+  - whether the command mutates state
+
 ## Exit codes
 
 - `0`: success
@@ -36,6 +47,7 @@ All scripts follow shared flags:
 
 - implicit command model
 - resolves only the next deterministic step
+- supports optional `--log-message "<summary>"` to append a compact action summary to the transition log line
 - outputs `issue_path`, `status`, `phase` (if applicable), `next_step`, `blocked_reason` (if blocked), `runbook_line`
 - `runbook_line` is mandatory in `md` and `json`
 - on block, no mutation; instruct `todo_update.py`

@@ -169,9 +169,9 @@ def _resolve_target_slug(args: argparse.Namespace, current_slug: str) -> str:
 def _append_issue_log(issue_path: Path, issue_id: str, lines: list[str], dry_run: bool) -> str:
     timestamp = now_iso(detect_local_timezone())
     if lines:
-        message = sanitize_flow_message(f"{issue_id}: todo_update " + "; ".join(lines))
+        message = sanitize_flow_message("todo_update " + "; ".join(lines))
     else:
-        message = f"{issue_id}: todo_update no changes"
+        message = "todo_update no changes"
     if not dry_run:
         append_flow_log_line(issue_path, f"{timestamp} {message}")
     return timestamp
@@ -189,7 +189,12 @@ def _render_output(payload: dict[str, Any], output_format: str) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(
         description="Update issue fields",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=(
+            "Agent guidance:\n"
+            "- Purpose: apply manual semantic/process corrections to issue front matter.\n"
+            "- When to use: exceptions outside default automated transitions in yoda_flow_next.\n"
+            "- Mutability: updates issue markdown metadata and appends flow-log line.\n\n"
             "Use this command for manual semantic/process corrections.\n"
             "Supports status/phase updates while keeping phase only for status=doing."
         ),

@@ -21,7 +21,6 @@ This README indexes the current specification set.
 14. Issue templates usage
 15. Python structure for scripts
 16. `todo_list.py` specification
-17. Removed in 0.3.0 (`todo_reorder.py`)
 18. `issue_add.py` specification
 19. `log_add.py` specification
 20. `todo_update.py` specification

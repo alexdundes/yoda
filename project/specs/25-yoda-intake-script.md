@@ -25,7 +25,7 @@ Out of scope:
 The script follows the global CLI contract in `project/specs/13-yoda-scripts-v1.md`.
 
 Inputs:
-- `--dev <slug>` (optional for initial guidance mode)
+- `--dev <slug>`
 - `--extern-issue <NNN>` (optional; mutually exclusive with `--no-extern-issue`)
 - `--no-extern-issue` (optional; mutually exclusive with `--extern-issue`)
 
@@ -39,7 +39,7 @@ Global flags:
 
 ### Mode A: missing developer slug
 
-When `--dev` is not provided and `YODA_DEV` is not set:
+When `--dev` is not provided:
 - Return a runbook that instructs the agent to ask the human exactly:
   - `What is your YODA slug?`
 - Do not prompt interactively.

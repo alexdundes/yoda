@@ -41,6 +41,7 @@ When human intent is to start YODA Flow:
 
 ## General rules
 
+- Before operating any YODA command, check `<command> --help` for command-specific runbook/guidance.
 - Do not rely on removed flow contracts (`todo_next.py`).
 - Do not duplicate dependency metadata in issue body.
 - Keep `Entry points` as simple list items.

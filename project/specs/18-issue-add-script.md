@@ -68,7 +68,8 @@ Global flags:
 
 ## Behavior
 
-1) Resolve developer slug using the standard order: `--dev`, `YODA_DEV`, interactive prompt.
+1) Resolve developer slug from `--dev`.
+   - If missing, return guidance instructing the agent to ask the human for the slug and rerun with `--dev <slug>`.
 2) Acquire an external lock file scoped by `--dev` before reading/writing TODO/issue/log artifacts.
    - Retry lock acquisition up to 3 attempts with increasing wait between attempts.
    - If lock acquisition fails after retries, exit with code 4 and an explicit message.

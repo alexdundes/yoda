@@ -40,30 +40,20 @@ def test_log_add_appends_flow_log_line() -> None:
     issue_path = _write_issue_file("test-0001-test.md", include_flow_log=True)
     result = run_script(
         "log_add.py",
-        ["--dev", TEST_DEV, "--issue", "test-0001", "--message", "test-0001: note"],
+        ["--dev", TEST_DEV, "--issue", "test-0001", "--message", "note"],
     )
     assert result.returncode == 0, result.stderr
     text = issue_path.read_text(encoding="utf-8")
-    assert "test-0001: note" in text
-
-
-def test_log_add_requires_issue_id_in_message() -> None:
-    _write_issue_file("test-0001-test.md", include_flow_log=True)
-    result = run_script(
-        "log_add.py",
-        ["--dev", TEST_DEV, "--issue", "test-0001", "--message", "note without id"],
-    )
-    assert result.returncode == 2
-    assert "must mention the issue id" in result.stderr
+    assert "note" in text
 
 
 def test_log_add_creates_flow_log_section_when_missing() -> None:
     issue_path = _write_issue_file("test-0001-test.md", include_flow_log=False)
     result = run_script(
         "log_add.py",
-        ["--dev", TEST_DEV, "--issue", "test-0001", "--message", "test-0001: created section"],
+        ["--dev", TEST_DEV, "--issue", "test-0001", "--message", "created section"],
     )
     assert result.returncode == 0, result.stderr
     text = issue_path.read_text(encoding="utf-8")
     assert "## Flow log" in text
-    assert "test-0001: created section" in text
+    assert "created section" in text

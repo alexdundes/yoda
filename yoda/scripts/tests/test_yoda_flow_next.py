@@ -91,7 +91,7 @@ def test_flow_next_transitions_todo_to_doing_study_and_logs() -> None:
     assert meta["status"] == "doing"
     assert meta["phase"] == "study"
     assert meta["updated_at"] == payload["log_timestamp"]
-    assert _last_log_line(path).endswith("test-0001 transition to-do->doing phase=study")
+    assert _last_log_line(path).endswith("transition to-do->doing/study")
 
 
 def test_flow_next_advances_doing_phases_and_finishes_done() -> None:
@@ -156,7 +156,7 @@ def test_flow_next_advances_doing_phases_and_finishes_done() -> None:
     meta = _read_front_matter(path)
     assert meta["status"] == "done"
     assert "phase" not in meta
-    assert _last_log_line(path).endswith("test-0001 transition doing/evaluate->done")
+    assert _last_log_line(path).endswith("transition doing/evaluate->done")
 
 
 def test_flow_next_ignores_pending_and_reports_hint() -> None:
@@ -194,7 +194,33 @@ def test_flow_next_ignores_pending_and_reports_hint() -> None:
     assert payload["pending"][0]["id"] == "test-0001"
     assert payload["status"] == "doing"
     assert payload["phase"] == "study"
-    assert _last_log_line(selectable).endswith("test-0002 transition to-do->doing phase=study")
+    assert _last_log_line(selectable).endswith("transition to-do->doing/study")
+
+
+def test_flow_next_appends_optional_log_message() -> None:
+    path = _write_issue_file(
+        "test-0001-log-message.md",
+        {
+            "schema_version": "2.00",
+            "status": "to-do",
+            "title": "Todo",
+            "description": "Desc",
+            "priority": 5,
+            "created_at": "2026-01-01T00:00:00+00:00",
+            "updated_at": "2026-01-01T00:00:00+00:00",
+        },
+        body="# Todo\n\n## Flow log\n",
+    )
+
+    result = run_script(
+        "yoda_flow_next.py",
+        ["--dev", TEST_DEV, "--log-message", "document decisions approved", "--format", "json"],
+    )
+    assert result.returncode == 0, result.stderr
+    payload = json.loads(result.stdout)
+    assert payload["status"] == "doing"
+    assert payload["phase"] == "study"
+    assert _last_log_line(path).endswith("transition to-do->doing/study | document decisions approved")
 
 
 def test_flow_next_logs_blocked_reason_for_dependency_blocked() -> None:
@@ -232,4 +258,4 @@ def test_flow_next_logs_blocked_reason_for_dependency_blocked() -> None:
     assert payload["next_step"] == "blocked"
     assert payload["blocked_reason"] == "dependency_blocked"
     assert payload["log_timestamp"]
-    assert _last_log_line(blocked).endswith("test-0002 blocked dependency_blocked")
+    assert _last_log_line(blocked).endswith("blocked dependency_blocked")

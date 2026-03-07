@@ -48,7 +48,6 @@ YODA_LICENSE_REL = Path("yoda/LICENSE")
 YODA_MANUAL_REL = Path("yoda/yoda.md")
 TEMPLATES_REL = Path("yoda/templates")
 SCRIPTS_REL = Path("yoda/scripts")
-FAVICONS_REL = Path("yoda/favicons")
 LATEST_JSON_REL = Path("docs/install/latest.json")
 
 INCLUDE_GLOBS = [
@@ -58,7 +57,6 @@ INCLUDE_GLOBS = [
     "yoda/yoda.md",
     "yoda/templates/**",
     "yoda/scripts/**",
-    "yoda/favicons/**",
     "CHANGELOG.yaml",
     "yoda/PACKAGE_MANIFEST.yaml",
 ]
@@ -246,16 +244,6 @@ def _collect_files(root: Path) -> list[Path]:
 
     for rel_dir in (TEMPLATES_REL, SCRIPTS_REL):
         for path in (root / rel_dir).rglob("*"):
-            if not path.is_file():
-                continue
-            rel_path = path.relative_to(root)
-            if _is_excluded(rel_path):
-                continue
-            files.add(rel_path)
-
-    favicons_dir = root / FAVICONS_REL
-    if favicons_dir.is_dir():
-        for path in favicons_dir.rglob("*"):
             if not path.is_file():
                 continue
             rel_path = path.relative_to(root)

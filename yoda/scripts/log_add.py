@@ -33,6 +33,10 @@ def main() -> int:
     parser = argparse.ArgumentParser(
         description="Append a compact one-line Flow log entry to an issue markdown.",
         epilog=(
+            "Agent guidance:\n"
+            "- Purpose: append issue context notes outside the default yoda_flow_next transition path.\n"
+            "- When to use: exceptional/manual issue logging only.\n"
+            "- Mutability: appends one line to ## Flow log in the target issue.\n\n"
             "Required: --dev, --issue, --message.\n"
             "Entry format: <timestamp> <single-line-message>.\n"
             "Use this when recording issue context outside YODA Flow automation."
@@ -57,8 +61,6 @@ def main() -> int:
         message = sanitize_flow_message((args.message or "").strip())
         if not message:
             required_flag("--message")
-        if issue_id not in message:
-            raise YodaError("Log message must mention the issue id", exit_code=ExitCode.VALIDATION)
 
         timestamp = args.timestamp or now_iso(detect_local_timezone())
         validate_timestamp(timestamp)

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 import subprocess
 import sys
 
@@ -72,3 +73,15 @@ def test_issue_add_parallel_creations_generate_unique_ids() -> None:
     files = sorted((REPO_ROOT / "yoda" / "project" / "issues").glob("test-*.md"))
     ids = [path.stem.split("-")[0] + "-" + path.stem.split("-")[1] for path in files]
     assert ids == ["test-0001", "test-0002"]
+
+
+def test_issue_add_flow_log_entry_has_no_issue_id_prefix() -> None:
+    result = run_script(
+        "issue_add.py",
+        ["--dev", TEST_DEV, "--title", "No Prefix", "--description", "Desc"],
+    )
+    assert result.returncode == 0, result.stderr
+    issue_path = _issue_file("test-0001")
+    text = issue_path.read_text(encoding="utf-8")
+    assert "issue_add created" in text
+    assert re.search(r"test-0001:\s+issue_add created", text) is None

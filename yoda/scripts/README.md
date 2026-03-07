@@ -1,42 +1,37 @@
 # yoda/scripts
 
-Scripts for YODA TODO, issue, and log automation. See `project/specs/13-yoda-scripts-v1.md`.
+Operational scripts for the YODA Framework (issue-markdown-driven flow). Primary reference: `project/specs/13-yoda-scripts-v1.md`.
+
+## Quick rules
+
+- Always check `<command> --help` before running a command.
+- `--dev` is required for YODA commands.
+- Exception: `update.py` may run without `--dev`.
+- `yoda_flow_next.py` is the primary YODA Flow command.
 
 ## Quickstart
-
-Use a virtual environment, install the requirements from `yoda/scripts/requirements.txt`, and run the scripts as needed.
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r yoda/scripts/requirements.txt
 
-python yoda/scripts/issue_add.py --title "Example issue" --description "Short description"
+python yoda/scripts/yoda_flow_next.py --dev dev
+python yoda/scripts/yoda_flow_next.py --dev dev --log-message "Study completed"
 python yoda/scripts/yoda_intake.py --dev dev
 python yoda/scripts/get_extern_issue.py --dev dev --extern-issue 123
-python yoda/scripts/todo_update.py --issue dev-0001 --status doing
-python yoda/scripts/log_add.py --issue dev-0001 --message "[dev-0001] Started work"
+python yoda/scripts/todo_update.py --dev dev --issue dev-0001 --status doing --phase study
+python yoda/scripts/log_add.py --dev dev --issue dev-0001 --message "Additional context"
 ```
 
-## Package artefact
+## Flow and Intake
 
-Build the distributable YODA package (tar.gz) and let `package.py` create the release entry in `CHANGELOG.yaml`.
+- Deterministic YODA Flow: `yoda_flow_next.py`
+- Intake runbooks: `yoda_intake.py`
+- Manual semantic/process adjustments: `todo_update.py`
+- Exceptional manual logging: `log_add.py`
 
-```bash
-python package.py --dev <slug> --next-version 1.3.0 --summary "Release summary" --dir dist
-python package.py --dev <slug> --next-version 1.3.0 --summary "Release summary" --dry-run
-```
-
-Notes:
-- Requires `README.md`, `LICENSE`, and `CHANGELOG.yaml`.
-- `--next-version` generates build metadata as `YYYYMMDD.<short-commit>` and prepends the changelog entry.
-- In non-dry-run mode, `docs/install/latest.json` is updated automatically (`version`, `build`, `package_url`, `sha256`).
-- Excludes `yoda/scripts/tests` from the package.
-- `--dev` defines `built_by` in the manifest; use `--json` or `--format json` for JSON output.
-
-## Init a host project
-
-Prepare a host project after extracting the YODA package.
+## Init in a host project
 
 ```bash
 python yoda/scripts/init.py --dev <slug>
@@ -45,26 +40,6 @@ python yoda/scripts/init.py --dev <slug> --force
 python yoda/scripts/init.py --dev <slug> --reconcile-layout
 ```
 
-Notes:
-- Creates/updates `AGENTS.md`, `GEMINI.md`, `CLAUDE.md`, plus `yoda/todos/TODO.<dev>.yaml` and required folders.
-- Preserves existing agent file content (appends the YODA block); `--force` only overwrites the TODO file.
-- `--reconcile-layout` touches `*.md` files and reconciles TODO/issue front matter metadata to the current schema/layout.
-- Reconcile also removes optional metadata keys when empty (`depends_on`, `pending_reason`, `extern_issue_file`).
+## Issue front matter (canonical order)
 
-## Optional metadata policy
-
-- Empty optional metadata is omitted from TODO and issue front matter.
-- Current optional keys: `depends_on`, `pending_reason`, `extern_issue_file`.
-- `pending_reason` is required only when `status=pending`.
-
-## Issue front matter order
-
-- Canonical order for issue metadata:
-  `schema_version`, `id`, `slug`, `status`, `pending_reason`, `depends_on`, `title`, `description`, `priority`, `extern_issue_file`, `created_at`, `updated_at`.
-- Omitted optional keys are skipped but relative order is preserved when present.
-
-## Tests
-
-```bash
-python3 -m pytest yoda/scripts/tests
-```
+`schema_version`, `status`, `phase` (when `status=doing`), `depends_on`, `title`, `description`, `priority`, `extern_issue_file`, `created_at`, `updated_at`.
