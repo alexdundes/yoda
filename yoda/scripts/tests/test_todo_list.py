@@ -157,3 +157,38 @@ def test_todo_list_grep_searches_issue_files() -> None:
     assert result.returncode == 0, result.stderr
     assert "test-0001" in result.stdout
     assert "hello world" in result.stdout
+
+
+def test_todo_list_dependency_order_moves_blocked_after_unblocked() -> None:
+    _write_issue_file(
+        "test-0001-blocked.md",
+        {
+            "schema_version": "2.00",
+            "status": "to-do",
+            "depends_on": ["test-0002"],
+            "title": "Blocked",
+            "description": "Desc",
+            "priority": 9,
+            "created_at": "2026-01-01T00:00:00+00:00",
+            "updated_at": "2026-01-01T00:00:00+00:00",
+        },
+    )
+    _write_issue_file(
+        "test-0002-unblocked.md",
+        {
+            "schema_version": "2.00",
+            "status": "to-do",
+            "title": "Unblocked",
+            "description": "Desc",
+            "priority": 5,
+            "created_at": "2026-01-01T00:00:00+00:00",
+            "updated_at": "2026-01-01T00:00:00+00:00",
+        },
+    )
+
+    result = run_script("todo_list.py", ["--dev", TEST_DEV, "--format", "json"])
+    assert result.returncode == 0, result.stderr
+    payload = json.loads(result.stdout)
+    ids = [item["id"] for item in payload["issues"]]
+    assert ids[0] == "test-0002"
+    assert ids[1] == "test-0001"

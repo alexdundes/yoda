@@ -14,6 +14,7 @@ from lib.dev import resolve_dev
 from lib.errors import ExitCode, YodaError
 from lib.issue_index import load_issue_index
 from lib.logging_utils import configure_logging
+from lib.order_utils import apply_dependency_order
 from lib.output import render_output
 from lib.paths import repo_root
 from lib.validate import validate_slug
@@ -71,7 +72,17 @@ def _pick_target(issues: list[dict[str, Any]]) -> dict[str, Any] | None:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Select next actionable issue")
+    parser = argparse.ArgumentParser(
+        description="Select next actionable YODA issue",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=(
+            "Agent runbook:\n"
+            "- Purpose: resolve which issue should be worked next (or resumed) based on status/dependencies.\n"
+            "- Use in YODA Framework: as an inspection helper when you need quick next-issue visibility,\n"
+            "  especially before entering or resuming YODA Flow.\n"
+            "- For deterministic phase execution and transitions, prefer yoda_flow_next.py."
+        ),
+    )
     add_global_flags(parser)
     args = parser.parse_args()
     configure_logging(args.verbose)
@@ -82,6 +93,13 @@ def main() -> int:
         validate_slug(dev)
         index = load_issue_index(dev, ensure_flow_log=False)
         issues = list(index.get("issues", []))
+        done_ids = {
+            str(item.get("id", ""))
+            for item in issues
+            if item.get("status") == "done"
+        }
+        order_index = {str(item.get("id", "")): idx for idx, item in enumerate(issues)}
+        issues = apply_dependency_order(issues, done_ids, order_index)
         pending = _collect_pending(issues)
         blocked = _collect_blocked(issues)
 

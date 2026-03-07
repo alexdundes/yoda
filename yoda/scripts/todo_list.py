@@ -17,6 +17,7 @@ from lib.dev import resolve_dev
 from lib.errors import ExitCode, YodaError
 from lib.issue_index import load_issue_index
 from lib.logging_utils import configure_logging
+from lib.order_utils import apply_dependency_order
 from lib.output import render_output
 from lib.parse_utils import parse_csv, parse_timestamp
 from lib.paths import repo_root
@@ -218,7 +219,17 @@ def _render_json_payload(issues: list[dict[str, Any]], matches: list[_Match] | N
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="List TODO issues")
+    parser = argparse.ArgumentParser(
+        description="List and filter YODA issues",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=(
+            "Agent runbook:\n"
+            "- Purpose: inspect backlog state from markdown issues (status, filters, order, grep).\n"
+            "- Use in YODA Framework: during YODA Intake and during Study/Document/Implement/Evaluate\n"
+            "  when you need visibility of open issues, pending items, and dependency context.\n"
+            "- Not a transition command: this command does not mutate issue state."
+        ),
+    )
     add_global_flags(parser)
     parser.add_argument("--status", help="Comma-separated status filter")
     parser.add_argument("--priority-min", type=int, dest="priority_min")
@@ -241,9 +252,16 @@ def main() -> int:
         validate_slug(dev)
         index = load_issue_index(dev, ensure_flow_log=False)
         issues = list(index.get("issues", []))
+        done_ids = {
+            str(item.get("id", ""))
+            for item in issues
+            if item.get("status") == "done"
+        }
 
         filtered = _filter_issues(issues, args)
         ordered = _base_order(filtered, args.order)
+        order_index = {str(item.get("id", "")): idx for idx, item in enumerate(ordered)}
+        ordered = apply_dependency_order(ordered, done_ids, order_index)
 
         matches: list[_Match] | None = None
         if args.grep:

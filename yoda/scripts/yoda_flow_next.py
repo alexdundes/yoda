@@ -221,7 +221,18 @@ def _render_output(payload: dict[str, Any], output_format: str) -> str:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Resolve next deterministic YODA Flow step")
+    parser = argparse.ArgumentParser(
+        description="Resolve and execute the next deterministic YODA Flow step",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=(
+            "Agent runbook:\n"
+            "- Purpose: select/resume issue, apply one valid flow transition, and return the runbook line\n"
+            "  for the next phase action.\n"
+            "- Use in YODA Framework: this is the primary command for YODA Flow execution.\n"
+            "- Expected moment: call once per flow step, execute returned phase instructions, then call again\n"
+            "  after explicit human authorization to continue."
+        ),
+    )
     add_global_flags(parser)
     args = parser.parse_args()
     configure_logging(args.verbose)
