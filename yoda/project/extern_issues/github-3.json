@@ -43,6 +43,69 @@
       "updated_at": "2026-03-05T00:07:21Z",
       "body": "Atualiza\u00e7\u00e3o de escopo (0.3.0): adicionei mais dois pontos de simplifica\u00e7\u00e3o no desmembramento interno, al\u00e9m do ajuste de `Entry points`.\n\n### Novos pontos inclu\u00eddos\n\n1. **Eliminar redund\u00e2ncia de depend\u00eancias**\n- Problema: hoje h\u00e1 `depends_on` no front matter e tamb\u00e9m `## Dependencies` no corpo da issue.\n- Dire\u00e7\u00e3o adotada: manter **apenas** `depends_on` no front matter como fonte \u00fanica de depend\u00eancias.\n- Micro-issue interna: `yoda-0056`.\n\n2. **Eliminar redund\u00e2ncia de ID**\n- Problema: `id` aparece no front matter e tamb\u00e9m no nome do arquivo da issue.\n- Dire\u00e7\u00e3o adotada: remover `id` do front matter e derivar o ID a partir do nome do arquivo (`<id>-<slug>.md`).\n- Micro-issue interna: `yoda-0057`.\n\n### Alinhamento com a base documental\n\nA issue base de especifica\u00e7\u00e3o (`yoda-0047`) foi atualizada para prever explicitamente esses dois pontos na documenta\u00e7\u00e3o 0.3.0 (Document First), junto do ajuste de `Entry points` (`yoda-0055`).\n\n### Encadeamento no backlog\n\n- `yoda-0055`, `yoda-0056` e `yoda-0057` dependem de `yoda-0048` (modelo de issue markdown 0.3.0).\n- `yoda-0054` (valida\u00e7\u00e3o/release) depende de `yoda-0052`, `yoda-0053`, `yoda-0055`, `yoda-0056` e `yoda-0057`.\n\nRastreabilidade mantida via `extern_issue_file: ../extern_issues/github-3.json`.\n",
       "url": "https://github.com/alexdundes/yoda/issues/3#issuecomment-4001101565"
+    },
+    {
+      "type": "timeline:referenced",
+      "id": "23300507784",
+      "author": "alexdundes",
+      "created_at": "2026-03-05T14:46:43Z",
+      "updated_at": "",
+      "body": "event: referenced; commit: 51cd02367be074970a7c3f902719991aa1a19137",
+      "url": ""
+    },
+    {
+      "type": "timeline:referenced",
+      "id": "23343044470",
+      "author": "alexdundes",
+      "created_at": "2026-03-06T19:55:43Z",
+      "updated_at": "",
+      "body": "event: referenced; commit: 80ccf2c685b6cf583a5ef4c5766c0ba98241adb2",
+      "url": ""
+    },
+    {
+      "type": "timeline:referenced",
+      "id": "23343937126",
+      "author": "alexdundes",
+      "created_at": "2026-03-06T20:37:55Z",
+      "updated_at": "",
+      "body": "event: referenced; commit: 64d2bf4fd7a3966167bc802a0fa94c471d0b626b",
+      "url": ""
+    },
+    {
+      "type": "timeline:referenced",
+      "id": "23344980324",
+      "author": "alexdundes",
+      "created_at": "2026-03-06T21:23:15Z",
+      "updated_at": "",
+      "body": "event: referenced; commit: 67ddedfef662b9d847e35e5a51a139cb55f6956c",
+      "url": ""
+    },
+    {
+      "type": "timeline:referenced",
+      "id": "23345763257",
+      "author": "alexdundes",
+      "created_at": "2026-03-06T22:01:38Z",
+      "updated_at": "",
+      "body": "event: referenced; commit: 3d11208a014933b5c1d62c42c8a4c1b6a11a1322",
+      "url": ""
+    },
+    {
+      "type": "timeline:referenced",
+      "id": "23348023560",
+      "author": "alexdundes",
+      "created_at": "2026-03-07T00:05:03Z",
+      "updated_at": "",
+      "body": "event: referenced; commit: 7608b7c79ddb79d9a4ce111d70de8d23c11913ed",
+      "url": ""
+    },
+    {
+      "type": "timeline:referenced",
+      "id": "23348346130",
+      "author": "alexdundes",
+      "created_at": "2026-03-07T00:26:01Z",
+      "updated_at": "",
+      "body": "event: referenced; commit: a379f435ca621019b12a3cd8b31182f31d463d59",
+      "url": ""
     }
   ]
 }
