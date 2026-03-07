@@ -1,7 +1,8 @@
 ---
 schema_version: '2.00'
 id: yoda-0057
-status: to-do
+status: doing
+phase: study
 depends_on:
 - yoda-0048
 title: Remover id do front matter e derivar ID pelo nome do arquivo
@@ -10,7 +11,7 @@ description: Eliminar o campo id do front matter no modelo 0.3.0 e definir o nom
 priority: 5
 extern_issue_file: ../extern_issues/github-3.json
 created_at: '2026-03-04T20:58:43-03:00'
-updated_at: '2026-03-04T20:59:15-03:00'
+updated_at: '2026-03-07T08:58:02-03:00'
 ---
 
 # yoda-0057 - Remover id do front matter e derivar ID pelo nome do arquivo
@@ -68,3 +69,4 @@ Adicionar casos de fixture para nomes validos/invalidos e backward compatibility
 ## Flow log
 2026-03-04T20:58:43-03:00 | [yoda-0057] issue_add created | title: Remover id do front matter e derivar ID pelo nome do arquivo | description: Eliminar o campo id do front matter no modelo 0.3.0 e definir o nome do arquivo da issue como fonte canonica para derivacao do ID. | slug: remover-id-do-front-matter-e-derivar-id-pelo-nome-do-arquivo | extern_issue_file: external issue linked
 2026-03-04T20:59:15-03:00 | [yoda-0057] todo_update | depends_on:  -> yoda-0048
+2026-03-07T08:58:02-03:00 yoda-0057 transition to-do->doing phase=study
