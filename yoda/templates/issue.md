@@ -28,13 +28,9 @@
 <!-- AGENT: List testable acceptance criteria. Use checkboxes. -->
 - [ ] 
 
-## Dependencies
-<!-- AGENT: List dependencies and related issues (IDs). If none, write "None". -->
-
 ## Entry points
-<!-- AGENT: List relevant files or artifacts used as references for implementation. -->
-- path: 
-  type: doc|code|config|schema|data|asset|other
+<!-- AGENT: List relevant files or artifacts as plain markdown list items (`- <path>`). Do not use pseudo-YAML (`path:`/`type:`). -->
+- 
 
 ## Implementation notes
 <!-- AGENT: Add technical notes, constraints, or decisions needed to implement. -->
@@ -45,5 +41,8 @@
 ## Risks and edge cases
 <!-- AGENT: List risks, edge cases, or failure scenarios to consider. -->
 - 
+
+## Flow log
+<!-- AGENT: Append single-line entries using: - <ISO8601> | <source> | <short-message> -->
 
 ## Result log

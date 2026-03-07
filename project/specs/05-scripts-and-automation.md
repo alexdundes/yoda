@@ -2,120 +2,52 @@
 
 ## Objective
 
-Standardize repetitive tasks and reduce the need for manual edits.
+Standardize deterministic operations and reduce manual metadata drift.
 
 ## Location and language
 
 - Folder: `yoda/scripts/`
 - Language: Python
-- Rule: the .py file name is the command name
+- File name equals command name.
 
-## Minimum scripts (v1)
+## Core scripts in 0.3.0
 
-- `issue_add.py`: adds an issue to `yoda/todos/TODO.<dev>.yaml`, generates issue Markdown, and may link external source JSON via `extern_issue_file` when provided
-- `yoda_intake.py`: intake runbook command; routes intake flow for external/non-external sources and can summarize external issues
-- `get_extern_issue.py`: fetches external issue data and stores local JSON for intake continuation
-- `yoda/todos/TODO.<dev>.yaml` maintenance scripts (list, update, reorder, etc.)
-- scripts to present `yoda/todos/TODO.<dev>.yaml` in a human-readable format for humans and agents
-- log scripts to record flow events
-- pending resolution script (sets status from pending and clears pending_reason)
+- `issue_add.py`: create issue artifacts.
+- `yoda_intake.py`: intake orchestration.
+- `get_extern_issue.py`: fetch external issue JSON.
+- `todo_list.py`: compatibility/backlog listing.
+- `todo_update.py`: permanent metadata correction/update tool.
+- `log_add.py`: permanent one-line contextual log tool (outside flow).
+- `yoda_flow_next.py`: deterministic flow progression driver.
 
-## Logs
+## Deprecated/removed script
 
-- One log per issue at `yoda/logs/<id>-<slug>.yaml`
+- `todo_next.py` is removed from 0.3.0 flow contract.
 
+## Logging policy
 
-Expected artifacts:
-- `yoda/todos/TODO.<dev>.yaml` updated with the issue metadata.
-- `yoda/project/issues/<id>-<slug>.md` created/updated.
-- `yoda/logs/<id>-<slug>.yaml` created/updated.
+- Logs MUST be compact single-line entries.
+- Flow and helper scripts MUST emit concise, deterministic logs.
+- `log_add.py` remains available for work performed outside YODA Flow while still related to an issue.
 
-## Log schema (YAML)
+## Validation baseline
 
-Required fields:
+Scripts that mutate metadata MUST validate:
 
-- schema_version: "1.0"
-- issue_id: canonical id (dev-####).
-- issue_path: path to the issue Markdown file.
-- todo_id: same as issue_id.
-- status: to-do | doing | done | pending.
-- entries: list of log entries.
+- filename-derived issue ID format
+- status enum validity
+- `phase` only when `status=doing`
+- `pending_reason` required when `status=pending`
+- `depends_on` references valid issue IDs
+- timestamps format validity
 
-Each entry must contain:
+## Versioning and migrations
 
-- timestamp: ISO 8601 with offset.
-- message: log message text.
-
-Rules:
-
-- Log files are append-only; new entries are added at the end.
-- Any script action must append a log entry.
-- Manual log entries are allowed through the `log_add.py` script.
-- Log entries must be traceable: describe the change with one field per line in the form `field: old -> new` when updates occur.
-- Issue creation logs must include the initial values provided (omit fields not supplied).
-
-## Minimal validation (baseline)
-
-Validation is mandatory and embedded in all scripts that mutate metadata. It runs whenever scripts update metadata or change issue status to done.
-
-Checks:
-- TODO schema is valid (root + issue items).
-- developer_slug follows slug rules; issues list exists (can be empty).
-- timezone is present and valid (`UTC` or IANA TZ database name compatible with Python `zoneinfo`).
-- Issue IDs are unique and match dev-#### format.
-- status enum is valid; pending_reason required when status = pending.
-- priority is 0..10 (default 5).
-- depends_on references existing IDs.
-- created_at and updated_at use ISO 8601 with offset.
-- Issue front matter exists and mirrors TODO fields.
-- Issue id matches filename and title.
-- Log file exists per issue; log status enum is valid.
-- Log entries use ISO 8601 with offset and mention the issue id.
-- schema_version is present and supported; major mismatches are errors.
-
-Failure behavior:
-- Exit with code 2 (validation error).
-- Write errors to stderr.
-- Do not write changes when validation fails.
-
-## Schema versioning and migrations
-
-- TODO and issue metadata use `schema_version` (current target: "1.02").
-- Log metadata uses `schema_version` "1.0".
-- Versions follow semantic versioning (major.minor).
-- Major version changes are breaking and must be rejected by scripts.
-- Minor version changes are backward compatible and accepted.
-- A migration script is required to upgrade schema versions when needed.
-
-Classification policy for YAML layout/schema changes:
-- Subtle change (minor bump within same major): does not require migration of existing persisted metadata and remains readable/writable by current scripts.
-- Breaking change (major bump): requires migration logic for persisted metadata and coordinated rollout.
-
-Operational rollout policy (internal YODA development):
-- For subtle changes:
-  - bump `schema_version` minor;
-  - keep scripts backward compatible for current stored metadata;
-  - no mandatory migration step in `update.py`.
-- For breaking changes:
-  - bump `schema_version` major;
-  - implement explicit migration in `yoda/scripts/update.py`;
-  - `update.py` must execute migration before final validation;
-  - run `init.py` at the end of update flow to re-sync framework entry files and defaults when needed.
-
-Examples:
-- Subtle: add an optional metadata field with safe default and no required rewrite of existing TODO/log/issue files.
-- Subtle: tighten validation wording or output formatting without changing persisted YAML contract.
-- Breaking: remove or rename a required field in TODO/issue/log schema.
-- Breaking: change field semantics that require rewriting existing metadata to preserve behavior.
+- 0.3.0 introduces breaking model updates.
+- Legacy update flow keeps backup behavior.
+- `--check` and `--apply` are defined on updated `init.py` after update completion.
 
 ## Principles
 
-- Scripts are the official way to change metadata.
-- The human or orchestrator executes the commands.
-- When scripts are available, they are mandatory for metadata changes.
-
-## Benefits
-
-- Consistent structure.
-- Fewer errors when handling metadata.
-- Easier auditing and reproducibility.
+- Scripts are mandatory for metadata changes when available.
+- Human/agent should avoid direct manual metadata mutation when script coverage exists.

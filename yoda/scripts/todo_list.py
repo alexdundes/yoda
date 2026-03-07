@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""List and filter TODO issues."""
+"""List and filter issues from markdown source of truth."""
 
 from __future__ import annotations
 
@@ -9,18 +9,18 @@ import logging
 import re
 import sys
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any, Iterable
 
 from lib.cli import add_global_flags, resolve_format
 from lib.dev import resolve_dev
 from lib.errors import ExitCode, YodaError
-from lib.issue_utils import resolve_issue_file_by_id
+from lib.issue_index import load_issue_index
 from lib.logging_utils import configure_logging
 from lib.order_utils import apply_dependency_order
 from lib.output import render_output
 from lib.parse_utils import parse_csv, parse_timestamp
-from lib.paths import repo_root, todo_path
-from lib.todo_utils import load_todo_file
+from lib.paths import repo_root
 from lib.time_utils import parse_timestamp as parse_issue_timestamp
 from lib.validate import validate_slug
 
@@ -82,9 +82,7 @@ def _filter_issues(issues: list[dict[str, Any]], args: argparse.Namespace) -> li
     return filtered
 
 
-def _base_order(
-    issues: list[dict[str, Any]], yaml_index: dict[str, int], order: str | None
-) -> list[dict[str, Any]]:
+def _base_order(issues: list[dict[str, Any]], order: str | None) -> list[dict[str, Any]]:
     if order in ORDER_MODES:
         reverse = order.endswith("desc")
         field = "created_at" if order.startswith("created") else "updated_at"
@@ -92,13 +90,13 @@ def _base_order(
             issues,
             key=lambda item: (
                 parse_issue_timestamp(str(item.get(field, "")), field),
-                yaml_index[str(item.get("id"))],
+                str(item.get("id", "")),
             ),
             reverse=reverse,
         )
     return sorted(
         issues,
-        key=lambda item: (-int(item.get("priority", 0)), yaml_index[str(item.get("id"))]),
+        key=lambda item: (-int(item.get("priority", 0)), str(item.get("id", ""))),
     )
 
 
@@ -116,12 +114,9 @@ def _find_matches(
     matches: list[_Match] = []
     for issue in issues:
         issue_id = str(issue.get("id"))
+        issue_path = Path(str(issue.get("path", "")))
         try:
-            path = resolve_issue_file_by_id(issue_id)
-        except YodaError:
-            continue
-        try:
-            lines = path.read_text(encoding="utf-8").splitlines()
+            lines = issue_path.read_text(encoding="utf-8").splitlines()
         except OSError:
             continue
         for idx, line in enumerate(lines, start=1):
@@ -178,20 +173,15 @@ def _render_table(issues: list[dict[str, Any]]) -> str:
 def _render_pending_block(issues: list[dict[str, Any]]) -> str:
     lines = ["## Pending issues", "", "ALERT: pending issues require attention.", ""]
     for issue in issues:
-        line = (
-            f"- {issue.get('id')} | {issue.get('title')} "
-            f"({issue.get('status')})"
-        )
+        line = f"- {issue.get('id')} | {issue.get('title')} ({issue.get('status')})"
         reason = str(issue.get("pending_reason", "")).strip()
         if reason:
-            line += f" — {reason}"
+            line += f" - {reason}"
         lines.append(line)
     return "\n".join(lines)
 
 
-def _render_grep_output(
-    issues: list[dict[str, Any]], matches: list[_Match]
-) -> str:
+def _render_grep_output(issues: list[dict[str, Any]], matches: list[_Match]) -> str:
     if not matches:
         return "No matches found."
 
@@ -205,21 +195,20 @@ def _render_grep_output(
         issue = id_to_issue.get(issue_id)
         if not issue:
             continue
+        path = Path(str(issue.get("path", "")))
         try:
-            path = resolve_issue_file_by_id(issue_id).relative_to(repo_root())
-        except YodaError:
-            continue
+            rel_path = path.relative_to(repo_root())
+        except Exception:
+            rel_path = path
         lines.append(f"## {issue_id} - {issue.get('title')}")
-        lines.append(f"Path: {path}")
+        lines.append(f"Path: {rel_path}")
         for match in matches_by_issue[issue_id]:
             lines.append(f"- L{match.line_no}: {match.line}")
         lines.append("")
     return "\n".join(lines).rstrip()
 
 
-def _render_json_payload(
-    issues: list[dict[str, Any]], matches: list[_Match] | None
-) -> dict[str, Any]:
+def _render_json_payload(issues: list[dict[str, Any]], matches: list[_Match] | None) -> dict[str, Any]:
     payload: dict[str, Any] = {"issues": issues}
     if matches is not None:
         payload["matches"] = [
@@ -230,7 +219,17 @@ def _render_json_payload(
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="List TODO issues")
+    parser = argparse.ArgumentParser(
+        description="List and filter YODA issues",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=(
+            "Agent runbook:\n"
+            "- Purpose: inspect backlog state from markdown issues (status, filters, order, grep).\n"
+            "- Use in YODA Framework: during YODA Intake and during Study/Document/Implement/Evaluate\n"
+            "  when you need visibility of open issues, pending items, and dependency context.\n"
+            "- Not a transition command: this command does not mutate issue state."
+        ),
+    )
     add_global_flags(parser)
     parser.add_argument("--status", help="Comma-separated status filter")
     parser.add_argument("--priority-min", type=int, dest="priority_min")
@@ -251,20 +250,17 @@ def main() -> int:
     try:
         dev = resolve_dev(args.dev).strip()
         validate_slug(dev)
-
-        todo_file = todo_path(dev)
-        todo = load_todo_file(todo_file, dev)
-        issues = list(todo.get("issues", []))
-        yaml_index = {str(item.get("id")): idx for idx, item in enumerate(issues)}
+        index = load_issue_index(dev, ensure_flow_log=False)
+        issues = list(index.get("issues", []))
         done_ids = {
-            str(item.get("id"))
+            str(item.get("id", ""))
             for item in issues
             if item.get("status") == "done"
         }
 
         filtered = _filter_issues(issues, args)
-        ordered = _base_order(filtered, yaml_index, args.order)
-        order_index = {str(item.get("id")): idx for idx, item in enumerate(ordered)}
+        ordered = _base_order(filtered, args.order)
+        order_index = {str(item.get("id", "")): idx for idx, item in enumerate(ordered)}
         ordered = apply_dependency_order(ordered, done_ids, order_index)
 
         matches: list[_Match] | None = None
@@ -290,7 +286,7 @@ def main() -> int:
         if table_items:
             lines.append(_render_table(table_items))
         else:
-            lines.append("No issues found.")
+            lines.append("No issues to execute. Nothing needs to be done.")
 
         payload = {"issues": ordered, "dry_run": bool(args.dry_run)}
         print(render_output(payload, output_format, lines, dry_run=bool(args.dry_run)))

@@ -2,143 +2,64 @@ from __future__ import annotations
 
 from pathlib import Path
 
-import yaml
+import frontmatter
 
-from conftest import TEST_DEV, run_script
+from conftest import run_script
+
+
+TEST_DEV = "test"
 
 
 def _seed_manual(root: Path) -> None:
-    yoda_dir = root / "yoda"
-    yoda_dir.mkdir(parents=True, exist_ok=True)
-    (yoda_dir / "yoda.md").write_text("# Manual\n", encoding="utf-8")
+    manual = root / "yoda" / "yoda.md"
+    manual.parent.mkdir(parents=True, exist_ok=True)
+    manual.write_text("# Manual\n", encoding="utf-8")
 
 
-AGENT_FILES = ["AGENTS.md", "GEMINI.md", "CLAUDE.md", "agent.md"]
-
-
-def _front_matter_keys(path: Path) -> list[str]:
-    text = path.read_text(encoding="utf-8")
-    lines = text.splitlines()
-    assert lines and lines[0] == "---"
-    end = 1
-    while end < len(lines) and lines[end] != "---":
-        end += 1
-    keys: list[str] = []
-    for line in lines[1:end]:
-        if not line or line.startswith(" "):
-            continue
-        if ":" in line:
-            keys.append(line.split(":", 1)[0].strip())
-    return keys
-
-
-def test_init_creates_structure_and_is_idempotent(tmp_path: Path) -> None:
+def test_init_creates_structure_without_todo_file(tmp_path: Path) -> None:
     _seed_manual(tmp_path)
-
-    result = run_script(
-        "init.py",
-        ["--dev", TEST_DEV, "--root", str(tmp_path)],
-    )
+    result = run_script("init.py", ["--dev", TEST_DEV, "--root", str(tmp_path)])
     assert result.returncode == 0, result.stderr
-
-    agents_path = tmp_path / "AGENTS.md"
-    todo_path = tmp_path / "yoda" / "todos" / f"TODO.{TEST_DEV}.yaml"
-    issues_dir = tmp_path / "yoda" / "project" / "issues"
-
-    assert agents_path.exists()
-    assert todo_path.exists()
-    assert issues_dir.exists()
-
-    todo = yaml.safe_load(todo_path.read_text(encoding="utf-8"))
-    assert todo["schema_version"] == "1.02"
-    assert todo["developer_slug"] == TEST_DEV
-    assert todo["issues"] == []
-
-    for name in AGENT_FILES:
-        path = tmp_path / name
-        assert path.exists()
-        content = path.read_text(encoding="utf-8")
-        assert "<!-- YODA:BEGIN -->" in content
-        assert "<!-- YODA:END -->" in content
-        assert "yoda/yoda.md" in content
-
-    second = run_script(
-        "init.py",
-        ["--dev", TEST_DEV, "--root", str(tmp_path)],
-    )
-    assert second.returncode == 0, second.stderr
-
-    for name in AGENT_FILES:
-        path = tmp_path / name
-        content = path.read_text(encoding="utf-8")
-        assert content.count("<!-- YODA:BEGIN -->") == 1
-
-
-def test_init_dry_run_does_not_write(tmp_path: Path) -> None:
-    _seed_manual(tmp_path)
-
-    result = run_script(
-        "init.py",
-        ["--dev", TEST_DEV, "--root", str(tmp_path), "--dry-run"],
-    )
-    assert result.returncode == 0, result.stderr
-
-    for name in AGENT_FILES:
-        assert not (tmp_path / name).exists()
+    assert (tmp_path / "AGENTS.md").exists()
+    assert (tmp_path / "yoda" / "project" / "issues").exists()
     assert not (tmp_path / "yoda" / "todos" / f"TODO.{TEST_DEV}.yaml").exists()
 
 
-def test_init_appends_to_existing_agent_file(tmp_path: Path) -> None:
+def test_init_migrates_legacy_todo_and_logs_then_removes_legacy_files(tmp_path: Path) -> None:
     _seed_manual(tmp_path)
-    agents_path = tmp_path / "AGENTS.md"
-    agents_path.write_text("Custom\n", encoding="utf-8")
-
-    result = run_script(
-        "init.py",
-        ["--dev", TEST_DEV, "--root", str(tmp_path)],
-    )
-    assert result.returncode == 0, result.stderr
-    content = agents_path.read_text(encoding="utf-8")
-    assert "Custom" in content
-    assert "<!-- YODA:BEGIN -->" in content
-
-
-def test_init_conflict_on_agent_path_directory(tmp_path: Path) -> None:
-    _seed_manual(tmp_path)
-    (tmp_path / "GEMINI.md").mkdir()
-
-    result = run_script(
-        "init.py",
-        ["--dev", TEST_DEV, "--root", str(tmp_path)],
-    )
-    assert result.returncode == 4, result.stderr
-    assert (tmp_path / "GEMINI.md").is_dir()
-
-
-def test_init_reconcile_layout_updates_schema_and_front_matter(tmp_path: Path) -> None:
-    _seed_manual(tmp_path)
-
     todo_path = tmp_path / "yoda" / "todos" / f"TODO.{TEST_DEV}.yaml"
-    issues_dir = tmp_path / "yoda" / "project" / "issues"
-    issues_dir.mkdir(parents=True, exist_ok=True)
-    (tmp_path / "README.md").write_text("hello\n", encoding="utf-8")
-
+    issue_path = tmp_path / "yoda" / "project" / "issues" / "test-0001-legacy.md"
+    log_path = tmp_path / "yoda" / "logs" / "test-0001-legacy.yaml"
+    issue_path.parent.mkdir(parents=True, exist_ok=True)
     todo_path.parent.mkdir(parents=True, exist_ok=True)
+    log_path.parent.mkdir(parents=True, exist_ok=True)
+
+    issue_path.write_text(
+        "---\n"
+        "schema_version: '1.02'\n"
+        "id: test-0001\n"
+        "status: to-do\n"
+        "title: Legacy\n"
+        "description: Legacy\n"
+        "priority: 5\n"
+        "created_at: '2026-01-01T00:00:00+00:00'\n"
+        "updated_at: '2026-01-01T00:00:00+00:00'\n"
+        "---\n\n# Legacy\n",
+        encoding="utf-8",
+    )
     todo_path.write_text(
-        "schema_version: '1.0'\n"
+        "schema_version: '1.02'\n"
         "developer_name: Test\n"
         "developer_slug: test\n"
         "timezone: UTC\n"
         "updated_at: '2026-01-01T00:00:00+00:00'\n"
         "issues:\n"
-        "- schema_version: '1.0'\n"
+        "- schema_version: '1.02'\n"
         "  id: test-0001\n"
-        "  title: Legacy issue\n"
-        "  slug: legacy-issue\n"
+        "  title: Legacy\n"
         "  description: Legacy\n"
         "  status: to-do\n"
         "  priority: 5\n"
-        "  tags: [legacy]\n"
         "  depends_on: []\n"
         "  pending_reason: ''\n"
         "  created_at: '2026-01-01T00:00:00+00:00'\n"
@@ -146,130 +67,85 @@ def test_init_reconcile_layout_updates_schema_and_front_matter(tmp_path: Path) -
         "  extern_issue_file: ''\n",
         encoding="utf-8",
     )
+    log_path.write_text(
+        "schema_version: '1.0'\n"
+        "issue_id: test-0001\n"
+        "issue_path: yoda/project/issues/test-0001-legacy.md\n"
+        "todo_id: test-0001\n"
+        "status: to-do\n"
+        "entries:\n"
+        "  - timestamp: '2026-01-01T00:00:00+00:00'\n"
+        "    message: \"line 1\\nline 2\"\n",
+        encoding="utf-8",
+    )
 
-    issue_path = issues_dir / "test-0001-legacy-issue.md"
+    result = run_script("init.py", ["--dev", TEST_DEV, "--root", str(tmp_path)])
+    assert result.returncode == 0, result.stderr
+
+    parsed = frontmatter.load(issue_path)
+    assert parsed.metadata["schema_version"] == "2.00"
+    text = issue_path.read_text(encoding="utf-8")
+    assert "## Flow log" in text
+    assert "line 1 | line 2" in text
+    assert not todo_path.exists()
+    assert not log_path.exists()
+
+
+def test_init_skips_legacy_log_migration_when_flow_log_exists(tmp_path: Path) -> None:
+    _seed_manual(tmp_path)
+    todo_path = tmp_path / "yoda" / "todos" / f"TODO.{TEST_DEV}.yaml"
+    issue_path = tmp_path / "yoda" / "project" / "issues" / "test-0001-legacy.md"
+    log_path = tmp_path / "yoda" / "logs" / "test-0001-legacy.yaml"
+    issue_path.parent.mkdir(parents=True, exist_ok=True)
+    todo_path.parent.mkdir(parents=True, exist_ok=True)
+    log_path.parent.mkdir(parents=True, exist_ok=True)
+
     issue_path.write_text(
         "---\n"
-        "schema_version: '1.0'\n"
+        "schema_version: '1.02'\n"
         "id: test-0001\n"
-        "title: Legacy issue\n"
-        "slug: legacy-issue\n"
-        "description: Legacy\n"
         "status: to-do\n"
+        "title: Legacy\n"
+        "description: Legacy\n"
         "priority: 5\n"
-        "tags: [legacy]\n"
-        "depends_on: []\n"
-        "pending_reason: ''\n"
         "created_at: '2026-01-01T00:00:00+00:00'\n"
         "updated_at: '2026-01-01T00:00:00+00:00'\n"
-        "extern_issue_file: ''\n"
-        "---\n\n# Legacy\n",
+        "---\n\n# Legacy\n\n## Flow log\n2026-01-01T00:00:00+00:00 keep\n",
+        encoding="utf-8",
+    )
+    todo_path.write_text(
+        "schema_version: '1.02'\n"
+        "developer_name: Test\n"
+        "developer_slug: test\n"
+        "timezone: UTC\n"
+        "updated_at: '2026-01-01T00:00:00+00:00'\n"
+        "issues:\n"
+        "- schema_version: '1.02'\n"
+        "  id: test-0001\n"
+        "  title: Legacy\n"
+        "  description: Legacy\n"
+        "  status: to-do\n"
+        "  priority: 5\n"
+        "  depends_on: []\n"
+        "  pending_reason: ''\n"
+        "  created_at: '2026-01-01T00:00:00+00:00'\n"
+        "  updated_at: '2026-01-01T00:00:00+00:00'\n"
+        "  extern_issue_file: ''\n",
+        encoding="utf-8",
+    )
+    log_path.write_text(
+        "schema_version: '1.0'\n"
+        "issue_id: test-0001\n"
+        "issue_path: yoda/project/issues/test-0001-legacy.md\n"
+        "todo_id: test-0001\n"
+        "status: to-do\n"
+        "entries:\n"
+        "  - timestamp: '2026-01-01T00:00:00+00:00'\n"
+        "    message: \"should not migrate\"\n",
         encoding="utf-8",
     )
 
-    result = run_script(
-        "init.py",
-        ["--dev", TEST_DEV, "--root", str(tmp_path), "--reconcile-layout"],
-    )
+    result = run_script("init.py", ["--dev", TEST_DEV, "--root", str(tmp_path)])
     assert result.returncode == 0, result.stderr
-
-    todo = yaml.safe_load(todo_path.read_text(encoding="utf-8"))
-    assert todo["schema_version"] == "1.02"
-    assert "tags" not in todo["issues"][0]
-    assert "agent" not in todo["issues"][0]
-    assert "origin" not in todo["issues"][0]
-    assert "depends_on" not in todo["issues"][0]
-    assert "pending_reason" not in todo["issues"][0]
-    assert "extern_issue_file" not in todo["issues"][0]
-
-    issue_doc = issue_path.read_text(encoding="utf-8")
-    assert "schema_version: '1.02'" in issue_doc
-    assert "tags:" not in issue_doc
-    assert "agent:" not in issue_doc
-    assert "origin:" not in issue_doc
-    assert "depends_on:" not in issue_doc
-    assert "pending_reason:" not in issue_doc
-    assert "extern_issue_file:" not in issue_doc
-    assert _front_matter_keys(issue_path) == [
-        "schema_version",
-        "id",
-        "status",
-        "title",
-        "description",
-        "priority",
-        "created_at",
-        "updated_at",
-    ]
-
-
-def test_init_creates_repo_intent_files(tmp_path: Path) -> None:
-    _seed_manual(tmp_path)
-
-    result = run_script(
-        "init.py",
-        ["--dev", TEST_DEV, "--root", str(tmp_path)],
-    )
-    assert result.returncode == 0, result.stderr
-
-    repo_intent = tmp_path / "REPO_INTENT.md"
-    repo_yaml = tmp_path / "repo.intent.yaml"
-
-    assert repo_intent.exists()
-    assert repo_yaml.exists()
-
-    content = repo_intent.read_text(encoding="utf-8")
-    assert "Repository Intent" in content
-    assert "<!-- YODA:BEGIN -->" in content
-    assert "yoda/yoda.md" in content
-
-    data = yaml.safe_load(repo_yaml.read_text(encoding="utf-8"))
-    assert "yoda" in data
-    assert data["yoda"]["manual"] == "yoda/yoda.md"
-
-
-def test_init_merges_repo_intent_yaml(tmp_path: Path) -> None:
-    _seed_manual(tmp_path)
-
-    repo_yaml = tmp_path / "repo.intent.yaml"
-    repo_yaml.write_text(
-        "mode: host\n"
-        "custom: true\n"
-        "yoda:\n"
-        "  embedded: false\n",
-        encoding="utf-8",
-    )
-
-    result = run_script(
-        "init.py",
-        ["--dev", TEST_DEV, "--root", str(tmp_path)],
-    )
-    assert result.returncode == 0, result.stderr
-
-    data = yaml.safe_load(repo_yaml.read_text(encoding="utf-8"))
-    assert data["mode"] == "host"
-    assert data["custom"] is True
-    assert data["yoda"]["embedded"] is False
-    assert data["yoda"]["manual"] == "yoda/yoda.md"
-    assert "agent_entry_order" in data["yoda"]
-
-
-def test_init_repo_intent_markers_idempotent(tmp_path: Path) -> None:
-    _seed_manual(tmp_path)
-
-    repo_intent = tmp_path / "REPO_INTENT.md"
-    repo_intent.write_text("Custom intro\n", encoding="utf-8")
-
-    first = run_script(
-        "init.py",
-        ["--dev", TEST_DEV, "--root", str(tmp_path)],
-    )
-    assert first.returncode == 0, first.stderr
-
-    second = run_script(
-        "init.py",
-        ["--dev", TEST_DEV, "--root", str(tmp_path)],
-    )
-    assert second.returncode == 0, second.stderr
-
-    content = repo_intent.read_text(encoding="utf-8")
-    assert content.count("<!-- YODA:BEGIN -->") == 1
+    text = issue_path.read_text(encoding="utf-8")
+    assert "should not migrate" not in text

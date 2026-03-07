@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create a new issue entry and issue Markdown file."""
+"""Create a new markdown issue in schema 2.00."""
 
 from __future__ import annotations
 
@@ -14,30 +14,21 @@ from typing import Any
 
 from lib.cli import add_global_flags, resolve_format
 from lib.dev import resolve_dev
+from lib.error_messages import conflict_issue_file, required_flag
 from lib.errors import ExitCode, YodaError
-from lib.error_messages import (
-    conflict_issue_file,
-    conflict_issue_id,
-    conflict_log_file,
-    required_flag,
-)
 from lib.external_issue_utils import detect_origin_url, parse_origin, provider_from_host
+from lib.flow_log import append_flow_log_line, sanitize_flow_message
 from lib.front_matter import render_issue
 from lib.io import write_text_atomic
 from lib.issue_metadata import canonicalize_issue_metadata
+from lib.issue_utils import find_issue_files_by_id
 from lib.logging_utils import configure_logging
 from lib.output import render_output
-from lib.paths import issue_path, log_path, repo_root, template_path, todo_path
+from lib.paths import issue_path, repo_root, template_path
 from lib.slug_utils import generate_issue_slug
 from lib.templates import load_template
 from lib.time_utils import detect_local_timezone, now_iso
-from lib.validate import (
-    ISSUE_ID_RE,
-    validate_slug,
-    validate_todo,
-    validate_todo_root,
-)
-from lib.yaml_io import read_yaml, write_yaml_atomic
+from lib.validate import validate_slug
 
 
 LOCK_RETRIES = 3
@@ -68,39 +59,36 @@ def _issue_add_lock(dev: str) -> Any:
                     exit_code=ExitCode.CONFLICT,
                 )
             time.sleep(LOCK_BASE_WAIT_SECONDS * attempt)
-
     if not acquired:
         raise YodaError("Unexpected lock acquisition failure", exit_code=ExitCode.ERROR)
-
     try:
         yield
     finally:
         lock_file.unlink(missing_ok=True)
 
 
-def _create_default_todo(dev: str) -> dict[str, Any]:
-    timezone = detect_local_timezone()
-    return {
-        "schema_version": "1.02",
-        "developer_name": dev.title(),
-        "developer_slug": dev,
-        "timezone": timezone,
-        "updated_at": now_iso(timezone),
-        "issues": [],
-    }
+def _resolve_extern_issue_file(extern_issue: str | None) -> str:
+    external_id = (extern_issue or "").strip()
+    if not external_id:
+        return ""
+    if not external_id.isdigit():
+        raise YodaError("--extern-issue must be numeric (NNN).", exit_code=ExitCode.VALIDATION)
+    origin_url = detect_origin_url()
+    host, _ = parse_origin(origin_url)
+    provider = provider_from_host(host)
+    return f"../extern_issues/{provider}-{external_id}.json"
 
 
-def _next_issue_id(dev: str, issues: list[dict[str, Any]]) -> str:
+def _next_issue_id(dev: str) -> str:
     max_num = 0
-    for item in issues:
-        issue_id = str(item.get("id", ""))
-        match = ISSUE_ID_RE.match(issue_id)
-        if not match:
+    for path in sorted((repo_root() / "yoda" / "project" / "issues").glob(f"{dev}-*.md")):
+        parts = path.stem.split("-")
+        if len(parts) < 3:
             continue
-        if not issue_id.startswith(f"{dev}-"):
+        if parts[0] != dev:
             continue
         try:
-            num = int(issue_id.split("-")[-1])
+            num = int(parts[1])
         except ValueError:
             continue
         max_num = max(max_num, num)
@@ -115,12 +103,11 @@ def _build_issue_item(
     extern_issue_file: str,
     timestamp: str,
 ) -> dict[str, Any]:
-    item = {
-        "schema_version": "1.02",
+    item: dict[str, Any] = {
+        "schema_version": "2.00",
         "id": issue_id,
         "status": "to-do",
         "depends_on": [],
-        "pending_reason": "",
         "title": title,
         "description": description,
         "priority": priority,
@@ -131,84 +118,13 @@ def _build_issue_item(
     return canonicalize_issue_metadata(item)
 
 
-def _build_log(
-    issue_id: str,
-    issue_path_str: str,
-    status: str,
-    timestamp: str,
-    message: str,
-) -> dict[str, Any]:
-    return {
-        "schema_version": "1.0",
-        "issue_id": issue_id,
-        "issue_path": issue_path_str,
-        "todo_id": issue_id,
-        "status": status,
-        "entries": [
-            {
-                "timestamp": timestamp,
-                "message": message,
-            }
-        ],
-    }
-
-
-def _flag_present(flag: str) -> bool:
-    return any(arg == flag or arg.startswith(f"{flag}=") for arg in sys.argv)
-
-
-def _build_issue_log_message(
-    issue_id: str,
-    title: str,
-    description: str,
-    slug: str,
-    priority: int,
-) -> str:
-    lines = [f"[{issue_id}] issue_add created"]
-    lines.append(f"title: {title}")
-    lines.append(f"description: {description}")
-    lines.append(f"slug: {slug}")
-
-    if _flag_present("--priority"):
-        lines.append(f"priority: {priority}")
-    if _flag_present("--extern-issue"):
-        lines.append("extern_issue_file: external issue linked")
-
-    return "\n".join(lines)
-
-
-def _resolve_extern_issue_file(extern_issue: str | None) -> str:
-    external_id = (extern_issue or "").strip()
-    if not external_id:
-        return ""
-    if not external_id.isdigit():
-        raise YodaError("--extern-issue must be numeric (NNN).", exit_code=ExitCode.VALIDATION)
-    try:
-        origin_url = detect_origin_url()
-        host, _ = parse_origin(origin_url)
-        provider = provider_from_host(host)
-    except YodaError as exc:
-        raise YodaError(
-            f"Could not infer provider for --extern-issue {external_id}. Check git remote origin.",
-            exit_code=exc.exit_code,
-        ) from exc
-    return f"../extern_issues/{provider}-{external_id}.json"
-
-
 def _render_output(payload: dict[str, Any], output_format: str) -> str:
     lines = [
         f"Issue ID: {payload['issue_id']}",
         f"Issue path: {payload['issue_path']}",
-        f"TODO path: {payload['todo_path']}",
-        f"Log path: {payload['log_path']}",
         f"Template: {payload['template']}",
     ]
-    return render_output(
-        payload,
-        output_format,
-        lines,
-        dry_run=bool(payload.get("dry_run")),
-    )
+    return render_output(payload, output_format, lines, dry_run=bool(payload.get("dry_run")))
 
 
 def main() -> int:
@@ -216,10 +132,13 @@ def main() -> int:
         description="Create a new issue",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=(
+            "Agent guidance:\n"
+            "- Purpose: create a new issue markdown with canonical front matter and initial flow log entry.\n"
+            "- When to use: during YODA Intake after backlog review and issue structuring.\n"
+            "- Mutability: writes a new file in yoda/project/issues/.\n\n"
             "Required input: --title and (--description or --summary).\n"
             "Use --extern-issue <NNN> to link an external source.\n"
-            "When --extern-issue is provided, extern_issue_file is generated as a relative path to yoda/project/extern_issues/.\n"
-            "Priority default is 5; change it only with justified higher/lower importance versus other open issues."
+            "Priority default is 5; change only with explicit relative justification."
         ),
     )
     add_global_flags(parser)
@@ -250,32 +169,19 @@ def main() -> int:
 
         slug = args.slug.strip() if args.slug else generate_issue_slug(title)
         validate_slug(slug)
-
         template_file = template_path()
         template_text = load_template(template_file)
+
         with _issue_add_lock(dev):
-            todo_file = todo_path(dev)
-            if todo_file.exists():
-                todo = read_yaml(todo_file)
-            else:
-                todo = _create_default_todo(dev)
-
-            validate_todo_root(todo, dev)
-
-            issue_id = _next_issue_id(dev, todo.get("issues", []))
-            issues = list(todo.get("issues", []))
-            if any(item.get("id") == issue_id for item in issues):
-                conflict_issue_id(issue_id)
-
+            issue_id = _next_issue_id(dev)
+            if find_issue_files_by_id(issue_id):
+                raise YodaError(f"Issue id already exists: {issue_id}", exit_code=ExitCode.CONFLICT)
             issue_file = issue_path(issue_id, slug)
-            log_file = log_path(issue_id, slug)
             if issue_file.exists():
                 conflict_issue_file(issue_file)
-            if log_file.exists():
-                conflict_log_file(log_file)
 
-            timestamp = now_iso(todo.get("timezone"))
-            issue_item = _build_issue_item(
+            timestamp = now_iso(detect_local_timezone())
+            issue_metadata = _build_issue_item(
                 issue_id=issue_id,
                 title=title,
                 description=description,
@@ -283,16 +189,6 @@ def main() -> int:
                 extern_issue_file=extern_issue_file,
                 timestamp=timestamp,
             )
-
-            issues.append(issue_item)
-            todo["issues"] = issues
-            todo["updated_at"] = timestamp
-            validate_todo(todo, dev)
-
-            issue_metadata = issue_item.copy()
-            issue_metadata.pop("schema_version", None)
-            issue_metadata["schema_version"] = "1.02"
-
             rendered_issue = render_issue(
                 template_text,
                 metadata=issue_metadata,
@@ -305,40 +201,26 @@ def main() -> int:
                 },
             )
 
-            log_payload = _build_log(
-                issue_id=issue_id,
-                issue_path_str=str(issue_file.relative_to(repo_root())),
-                status="to-do",
-                timestamp=timestamp,
-                message=_build_issue_log_message(
-                    issue_id=issue_id,
-                    title=title,
-                    description=description,
-                    slug=slug,
-                    priority=priority,
-                ),
-            )
-
             payload = {
                 "issue_id": issue_id,
                 "issue_path": str(issue_file.relative_to(repo_root())),
-                "todo_path": str(todo_file.relative_to(repo_root())),
-                "log_path": str(log_file.relative_to(repo_root())),
                 "template": str(template_file.relative_to(repo_root())),
                 "dry_run": bool(args.dry_run),
             }
 
             if not args.dry_run:
                 write_text_atomic(issue_file, rendered_issue)
-                write_yaml_atomic(log_file, log_payload)
-                write_yaml_atomic(todo_file, todo)
+                message = sanitize_flow_message(
+                    f"issue_add created title={title}; priority={priority}"
+                )
+                append_flow_log_line(issue_file, f"{timestamp} {message}")
 
         print(_render_output(payload, output_format))
         return ExitCode.SUCCESS
     except YodaError as exc:
         logging.error(str(exc))
         return exc.exit_code
-    except Exception as exc:  # pragma: no cover - catch-all
+    except Exception as exc:  # pragma: no cover
         logging.error("Unexpected error: %s", exc)
         return ExitCode.ERROR
 

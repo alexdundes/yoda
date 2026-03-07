@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Update fields in yoda/todos/TODO.<dev>.yaml."""
+"""Update issue front matter fields in markdown source-of-truth."""
 
 from __future__ import annotations
 
@@ -7,7 +7,6 @@ import argparse
 import logging
 import os
 import sys
-from copy import deepcopy
 from pathlib import Path
 from typing import Any
 
@@ -15,28 +14,22 @@ import frontmatter
 
 from lib.cli import add_global_flags, resolve_format
 from lib.dev import resolve_dev
-from lib.error_messages import required_flag
 from lib.errors import ExitCode, YodaError
 from lib.external_issue_utils import detect_origin_url, parse_origin, provider_from_host
-from lib.front_matter import render_issue_document, update_front_matter
-from lib.io import write_text_atomic
-from lib.issue_utils import (
-    issue_slug_from_path,
-    resolve_issue_file_by_id,
-    resolve_log_file_by_id,
-)
+from lib.flow_log import append_flow_log_line, sanitize_flow_message
+from lib.front_matter import update_front_matter
 from lib.issue_metadata import canonicalize_issue_metadata, prune_empty_optionals
+from lib.issue_utils import issue_slug_from_path, resolve_issue_file_by_id
 from lib.logging_utils import configure_logging
 from lib.output import render_output
-from lib.paths import log_path, repo_root, todo_path
+from lib.paths import repo_root
 from lib.slug_utils import generate_issue_slug
-from lib.time_utils import now_iso
-from lib.todo_utils import find_issue, load_todo_file
-from lib.validate import validate_issue_id, validate_slug, validate_todo
-from lib.yaml_io import write_yaml
+from lib.time_utils import detect_local_timezone, now_iso
+from lib.validate import validate_issue_id, validate_slug
 
 
 ALLOWED_STATUS = {"to-do", "doing", "done", "pending"}
+ALLOWED_PHASE = {"study", "document", "implement", "evaluate"}
 
 
 def _parse_csv(value: str | None) -> list[str]:
@@ -45,18 +38,32 @@ def _parse_csv(value: str | None) -> list[str]:
     return [item.strip() for item in value.split(",") if item.strip()]
 
 
-def _render_output(payload: dict[str, Any], output_format: str) -> str:
-    lines = [
-        f"Issue ID: {payload['issue_id']}",
-        f"Updated fields: {', '.join(payload['updated_fields'])}",
-        f"TODO path: {payload['todo_path']}",
+def _format_value(value: Any) -> str:
+    if isinstance(value, list):
+        return ", ".join(str(item) for item in value) if value else "[]"
+    return "" if value is None else str(value)
+
+
+def _diff_fields(before: dict[str, Any], after: dict[str, Any]) -> tuple[list[str], list[str]]:
+    fields = [
+        "title",
+        "description",
+        "status",
+        "phase",
+        "priority",
+        "depends_on",
+        "pending_reason",
+        "extern_issue_file",
     ]
-    return render_output(
-        payload,
-        output_format,
-        lines,
-        dry_run=bool(payload.get("dry_run")),
-    )
+    updated_fields: list[str] = []
+    lines: list[str] = []
+    for field in fields:
+        before_val = before.get(field)
+        after_val = after.get(field)
+        if before_val != after_val:
+            updated_fields.append(field)
+            lines.append(f"{field}: {_format_value(before_val)} -> {_format_value(after_val)}")
+    return updated_fields, lines
 
 
 def _update_issue(item: dict[str, Any], args: argparse.Namespace) -> None:
@@ -81,6 +88,12 @@ def _update_issue(item: dict[str, Any], args: argparse.Namespace) -> None:
             raise YodaError("Invalid status", exit_code=ExitCode.VALIDATION)
         item["status"] = args.status
 
+    if args.phase is not None:
+        phase = args.phase.strip().lower()
+        if phase not in ALLOWED_PHASE:
+            raise YodaError("Invalid phase", exit_code=ExitCode.VALIDATION)
+        item["phase"] = phase
+
     if args.priority is not None:
         if args.priority < 0 or args.priority > 10:
             raise YodaError("priority must be between 0 and 10", exit_code=ExitCode.VALIDATION)
@@ -104,7 +117,7 @@ def _update_issue(item: dict[str, Any], args: argparse.Namespace) -> None:
         item["depends_on"] = _parse_csv(args.depends_on)
 
     if args.pending_reason is not None:
-        item["pending_reason"] = args.pending_reason
+        item["pending_reason"] = args.pending_reason.strip()
 
     if args.clear_extern_issue_file:
         item["extern_issue_file"] = ""
@@ -112,18 +125,12 @@ def _update_issue(item: dict[str, Any], args: argparse.Namespace) -> None:
         external_id = str(args.extern_issue).strip()
         if not external_id.isdigit():
             raise YodaError("--extern-issue must be numeric (NNN).", exit_code=ExitCode.VALIDATION)
-        try:
-            origin_url = detect_origin_url()
-            host, _ = parse_origin(origin_url)
-            provider = provider_from_host(host)
-        except YodaError as exc:
-            raise YodaError(
-                f"Could not infer provider for --extern-issue {external_id}. Check git remote origin.",
-                exit_code=exc.exit_code,
-            ) from exc
+        origin_url = detect_origin_url()
+        host, _ = parse_origin(origin_url)
+        provider = provider_from_host(host)
         item["extern_issue_file"] = f"../extern_issues/{provider}-{external_id}.json"
     elif args.extern_issue_file is not None:
-        item["extern_issue_file"] = args.extern_issue_file
+        item["extern_issue_file"] = args.extern_issue_file.strip()
 
 
 def _apply_pending_rules(item: dict[str, Any], pending_reason_provided: bool) -> None:
@@ -132,48 +139,20 @@ def _apply_pending_rules(item: dict[str, Any], pending_reason_provided: bool) ->
         if not item.get("pending_reason"):
             raise YodaError("pending_reason required for pending status", exit_code=ExitCode.VALIDATION)
     else:
-        if pending_reason_provided:
-            return
-        if item.get("pending_reason"):
+        if not pending_reason_provided and item.get("pending_reason"):
             item["pending_reason"] = ""
     prune_empty_optionals(item)
 
 
-def _format_value(value: Any) -> str:
-    if isinstance(value, list):
-        return ", ".join(str(item) for item in value) if value else "[]"
-    return "" if value is None else str(value)
-
-
-def _diff_fields(before: dict[str, Any], after: dict[str, Any]) -> tuple[list[str], list[str]]:
-    fields = [
-        "title",
-        "description",
-        "status",
-        "priority",
-        "depends_on",
-        "pending_reason",
-        "extern_issue_file",
-    ]
-    updated_fields = []
-    lines = []
-    for field in fields:
-        before_val = before.get(field)
-        after_val = after.get(field)
-        if before_val != after_val:
-            updated_fields.append(field)
-            lines.append(f"{field}: {_format_value(before_val)} -> {_format_value(after_val)}")
-    return updated_fields, lines
-
-
-def _append_log(dev: str, issue_id: str, message: str, dry_run: bool) -> None:
-    if dry_run:
+def _apply_phase_rules(item: dict[str, Any]) -> None:
+    if item.get("status") == "doing":
+        phase = str(item.get("phase") or "").strip().lower()
+        if phase:
+            item["phase"] = phase
+        else:
+            item.pop("phase", None)
         return
-    script = repo_root() / "yoda" / "scripts" / "log_add.py"
-    cmd = [sys.executable, str(script), "--dev", dev, "--issue", issue_id, "--message", message]
-    result = os.spawnv(os.P_WAIT, sys.executable, cmd)
-    if result != 0:
-        raise YodaError("Failed to append log entry", exit_code=ExitCode.ERROR)
+    item.pop("phase", None)
 
 
 def _resolve_target_slug(args: argparse.Namespace, current_slug: str) -> str:
@@ -187,51 +166,43 @@ def _resolve_target_slug(args: argparse.Namespace, current_slug: str) -> str:
     return current_slug
 
 
-def _prepare_renamed_issue_file(
-    issue_file: Path,
-    issue_id: str,
-    target_slug: str,
-    metadata: dict[str, Any],
-) -> tuple[Path, bool]:
-    target_issue_file = issue_file.with_name(f"{issue_id}-{target_slug}.md")
-    renamed = target_issue_file != issue_file
-    if renamed and target_issue_file.exists():
-        raise YodaError(
-            f"Issue file already exists: {target_issue_file}",
-            exit_code=ExitCode.CONFLICT,
-        )
-    if not renamed:
-        return issue_file, False
-
-    post = frontmatter.load(str(issue_file))
-    rendered = render_issue_document(post.content, metadata)
-    write_text_atomic(target_issue_file, rendered)
-    issue_file.unlink(missing_ok=True)
-    return target_issue_file, True
+def _append_issue_log(issue_path: Path, issue_id: str, lines: list[str], dry_run: bool) -> str:
+    timestamp = now_iso(detect_local_timezone())
+    if lines:
+        message = sanitize_flow_message("todo_update " + "; ".join(lines))
+    else:
+        message = "todo_update no changes"
+    if not dry_run:
+        append_flow_log_line(issue_path, f"{timestamp} {message}")
+    return timestamp
 
 
-def _prepare_renamed_log_file(issue_id: str, target_slug: str, dry_run: bool) -> None:
-    if dry_run:
-        return
-    current_log = resolve_log_file_by_id(issue_id)
-    if current_log is None:
-        return
-    target_log = log_path(issue_id, target_slug)
-    if target_log == current_log:
-        return
-    if target_log.exists():
-        raise YodaError(
-            f"Log file already exists: {target_log}",
-            exit_code=ExitCode.CONFLICT,
-        )
-    os.replace(current_log, target_log)
+def _render_output(payload: dict[str, Any], output_format: str) -> str:
+    lines = [
+        f"Issue ID: {payload['issue_id']}",
+        f"Updated fields: {', '.join(payload['updated_fields']) if payload['updated_fields'] else '(none)'}",
+        f"Issue path: {payload['issue_path']}",
+    ]
+    return render_output(payload, output_format, lines, dry_run=bool(payload.get("dry_run")))
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Update TODO issue fields")
+    parser = argparse.ArgumentParser(
+        description="Update issue fields",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=(
+            "Agent guidance:\n"
+            "- Purpose: apply manual semantic/process corrections to issue front matter.\n"
+            "- When to use: exceptions outside default automated transitions in yoda_flow_next.\n"
+            "- Mutability: updates issue markdown metadata and appends flow-log line.\n\n"
+            "Use this command for manual semantic/process corrections.\n"
+            "Supports status/phase updates while keeping phase only for status=doing."
+        ),
+    )
     add_global_flags(parser)
     parser.add_argument("--issue", required=False, help="Issue id (dev-####)")
     parser.add_argument("--status", help="New status")
+    parser.add_argument("--phase", help="New phase (study|document|implement|evaluate)")
     parser.add_argument("--priority", type=int, help="Priority 0-10")
     parser.add_argument("--title", help="New title")
     parser.add_argument("--description", help="New description")
@@ -249,11 +220,7 @@ def main() -> int:
         dest="extern_issue",
         help="External issue number (NNN); generates extern_issue_file automatically",
     )
-    parser.add_argument(
-        "--clear-extern-issue-file",
-        action="store_true",
-        help="Clear extern_issue_file",
-    )
+    parser.add_argument("--clear-extern-issue-file", action="store_true", help="Clear extern_issue_file")
 
     args = parser.parse_args()
     configure_logging(args.verbose)
@@ -264,54 +231,47 @@ def main() -> int:
         validate_slug(dev)
         issue_id = (args.issue or "").strip()
         if not issue_id:
-            required_flag("--issue")
+            raise YodaError("--issue is required", exit_code=ExitCode.VALIDATION)
         validate_issue_id(issue_id, dev)
 
-        todo_file = todo_path(dev)
-        todo = load_todo_file(todo_file, dev)
-        issue_item = find_issue(todo, issue_id)
         issue_file = resolve_issue_file_by_id(issue_id)
         current_slug = issue_slug_from_path(issue_file, issue_id)
+        post = frontmatter.load(str(issue_file))
+        metadata = dict(post.metadata)
+        schema_version = str(metadata.get("schema_version", "")).strip()
+        if schema_version != "2.00":
+            raise YodaError(
+                f"Unsupported schema_version '{schema_version}'. Run init.py migration first.",
+                exit_code=ExitCode.VALIDATION,
+            )
 
-        before_item = deepcopy(issue_item)
-        _update_issue(issue_item, args)
-        pending_reason_provided = args.pending_reason is not None
-        _apply_pending_rules(issue_item, pending_reason_provided)
+        before_item = dict(metadata)
+        _update_issue(metadata, args)
+        _apply_pending_rules(metadata, args.pending_reason is not None)
+        _apply_phase_rules(metadata)
+        metadata["updated_at"] = now_iso(detect_local_timezone())
+        metadata["schema_version"] = "2.00"
+        normalized = canonicalize_issue_metadata(metadata)
+
         target_slug = _resolve_target_slug(args, current_slug)
-        normalized_issue = canonicalize_issue_metadata(issue_item)
-        issue_item.clear()
-        issue_item.update(normalized_issue)
+        target_issue_file = issue_file.with_name(f"{issue_id}-{target_slug}.md")
+        if target_issue_file != issue_file and target_issue_file.exists():
+            raise YodaError(f"Issue file already exists: {target_issue_file}", exit_code=ExitCode.CONFLICT)
 
-        timestamp = now_iso(todo.get("timezone"))
-        issue_item["updated_at"] = timestamp
-        todo["updated_at"] = timestamp
-
-        validate_todo(todo, dev)
-
-        updated_fields, log_lines = _diff_fields(before_item, issue_item)
+        updated_fields, log_lines = _diff_fields(before_item, normalized)
         payload = {
             "issue_id": issue_id,
             "updated_fields": updated_fields,
-            "todo_path": str(todo_file.relative_to(repo_root())),
+            "issue_path": str(target_issue_file.relative_to(repo_root())),
             "dry_run": bool(args.dry_run),
         }
 
         if not args.dry_run:
-            _prepare_renamed_log_file(issue_id, target_slug, args.dry_run)
-            new_issue_file, renamed = _prepare_renamed_issue_file(
-                issue_file=issue_file,
-                issue_id=issue_id,
-                target_slug=target_slug,
-                metadata=issue_item,
-            )
-            write_yaml(todo_file, todo)
-            if not renamed:
-                update_front_matter(new_issue_file, issue_item)
-            if log_lines:
-                log_message = f"[{issue_id}] todo_update\n" + "\n".join(log_lines)
-            else:
-                log_message = f"[{issue_id}] todo_update (no changes)"
-            _append_log(dev, issue_id, log_message, args.dry_run)
+            if target_issue_file != issue_file:
+                issue_file.rename(target_issue_file)
+                issue_file = target_issue_file
+            update_front_matter(issue_file, normalized)
+            _append_issue_log(issue_file, issue_id, log_lines, args.dry_run)
 
         print(_render_output(payload, output_format))
         return ExitCode.SUCCESS

@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 id: yoda-0042
 status: done
 title: Simplificar origem externa para extern_issue_file
@@ -97,3 +97,11 @@ Path: `yoda/project/issues/yoda-0042-simplificar-origem-externa-para-extern-issu
 - Template de issue, validacao e paths de intake/coleta externa foram alinhados ao novo contrato.
 - Pasta de dados externos foi renomeada para `yoda/project/extern_issues/`.
 - Suite validada com `python3 -m pytest yoda/scripts/tests` (49 passed).
+
+## Flow log
+2026-02-26T18:50:40-03:00 | [yoda-0042] issue_add created | title: Simplificar origem externa para extern_issue_file | description: Substituir origin.system, origin.external_id e origin.requester por um único campo extern_issue_file com caminho relativo para o JSON da issue externa (ex.: ../github-2.json). | slug: simplificar-origem-externa-para-extern-issue-file | priority: 5 | origin: external issue linked
+2026-03-03T08:34:23-03:00 | [yoda-0042] todo_update | status: to-do -> doing
+2026-03-03T11:27:00-03:00 | [yoda-0042] Evaluate\nImplemented extern_issue_file contract with schema 1.02 and extern_issues path; no update/init migration flow by decision; tests: python3 -m pytest yoda/scripts/tests (49 passed).
+2026-03-03T11:27:00-03:00 | [yoda-0042] todo_update | status: doing -> done
+2026-03-03T11:51:27-03:00 | [yoda-0042] todo_update (no changes)
+2026-03-03T12:10:21-03:00 | [yoda-0042] todo_update | status: to-do -> done

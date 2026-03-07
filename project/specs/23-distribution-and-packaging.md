@@ -22,7 +22,6 @@ Defines the distributable artefact of the YODA Framework and the contract expect
 - `yoda/yoda.md` (or successors) — embedded manual for agents.
 - `yoda/templates/` — issue templates.
 - `yoda/scripts/` — official scripts (`todo_*`, `issue_add`, `log_add`, etc.), excluding `yoda/scripts/tests/`.
-- `yoda/favicons/` (if present) — lightweight assets referenced by the manual/UI.
 - `LICENSE` — short license file for the package.
 - `yoda/LICENSE` — embedded YODA license for host projects.
 - `README.md` — concise package README.
@@ -34,6 +33,7 @@ Defines the distributable artefact of the YODA Framework and the contract expect
 - `bootstrap-legacy/`, any top-level `project/` content outside `yoda/`.
 - Runtime data: `yoda/logs/`, `yoda/todos/`, `yoda/project/issues/`.
 - `yoda/scripts/tests/`.
+- Root-level UI assets such as `favicons/`.
 - Caches, VCS data, virtualenvs, test artefacts, temporary files.
 
 ## Internal layout
@@ -110,5 +110,5 @@ Rules:
 - Publication pipeline.
 
 ## Cross-references
-- Update `project/specs/summary.md` to reference this document.
+- Keep cross-references updated in relevant specs that cite this document.
 - Related issues: yoda-0016 (this spec), yoda-0018 (package command), yoda-0019 (init command), yoda-0020 (install/upgrade/rollback).

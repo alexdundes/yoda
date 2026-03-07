@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 id: yoda-0019
 status: done
 depends_on:
@@ -96,3 +96,10 @@ feat: add init command for embedded yoda
 Issue: yoda-0019
 Path: yoda/project/issues/yoda-0019-comando-de-init-p-s-embutido.md
 ```
+
+## Flow log
+2026-01-28T19:02:12-03:00 | [yoda-0019] issue_add created | title: Comando de init pós-embutido | description: Criar script que prepara um projeto host após receber o pacote YODA: ajusta AGENTS.md, estrutura mínima, TODO.<dev>.yaml, idempotente e com dry-run. | slug: comando-de-init-p-s-embutido | priority: 7 | agent: Human
+2026-01-28T19:05:21-03:00 | [yoda-0019] todo_update | depends_on: [] -> yoda-0016, yoda-0018
+2026-02-02T08:35:18-03:00 | [yoda-0019] todo_update | status: to-do -> doing
+2026-02-02T08:57:07-03:00 | [yoda-0019] Implemented init command with YODA block append for agent files, updated specs/docs, and added tests.
+2026-02-02T08:57:11-03:00 | [yoda-0019] todo_update | status: doing -> done

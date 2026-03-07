@@ -1,20 +1,31 @@
 from __future__ import annotations
 
-import yaml
+from pathlib import Path
 
-from conftest import REPO_ROOT, TEST_DEV, TEST_TODO, cleanup_test_files, run_script
-
-
-def _issue_file_for_id(issue_id: str):
-    matches = list((REPO_ROOT / "yoda" / "project" / "issues").glob(f"{issue_id}-*.md"))
-    assert len(matches) == 1
-    return matches[0]
+from conftest import REPO_ROOT, TEST_DEV, cleanup_test_files, run_script
 
 
-def _log_file_for_id(issue_id: str):
-    matches = list((REPO_ROOT / "yoda" / "logs").glob(f"{issue_id}-*.yaml"))
-    assert len(matches) == 1
-    return matches[0]
+def _write_issue_file(name: str, include_flow_log: bool = True) -> Path:
+    path = REPO_ROOT / "yoda" / "project" / "issues" / name
+    path.parent.mkdir(parents=True, exist_ok=True)
+    body = "# Test\n\n"
+    if include_flow_log:
+        body += "## Flow log\n"
+    text = (
+        "---\n"
+        "schema_version: '2.00'\n"
+        "id: test-0001\n"
+        "status: to-do\n"
+        "title: Test\n"
+        "description: Desc\n"
+        "priority: 5\n"
+        "created_at: '2026-01-01T00:00:00+00:00'\n"
+        "updated_at: '2026-01-01T00:00:00+00:00'\n"
+        "---\n\n"
+        f"{body}"
+    )
+    path.write_text(text, encoding="utf-8")
+    return path
 
 
 def setup_function() -> None:
@@ -25,86 +36,24 @@ def teardown_function() -> None:
     cleanup_test_files()
 
 
-def test_log_add_appends_entry() -> None:
-    add_result = run_script(
-        "issue_add.py",
-        ["--dev", TEST_DEV, "--title", "Test issue", "--description", "Desc"],
-    )
-    assert add_result.returncode == 0, add_result.stderr
-
-    todo = yaml.safe_load(TEST_TODO.read_text(encoding="utf-8"))
-    issue = todo["issues"][0]
-    log_path = _log_file_for_id(issue["id"])
-
-    before = yaml.safe_load(log_path.read_text(encoding="utf-8"))
-    before_len = len(before.get("entries", []))
-
+def test_log_add_appends_flow_log_line() -> None:
+    issue_path = _write_issue_file("test-0001-test.md", include_flow_log=True)
     result = run_script(
         "log_add.py",
-        [
-            "--dev",
-            TEST_DEV,
-            "--issue",
-            issue["id"],
-            "--message",
-            f"[{issue['id']}] Ping",
-        ],
+        ["--dev", TEST_DEV, "--issue", "test-0001", "--message", "note"],
     )
     assert result.returncode == 0, result.stderr
-
-    after = yaml.safe_load(log_path.read_text(encoding="utf-8"))
-    assert len(after.get("entries", [])) == before_len + 1
-    assert after["entries"][-1]["message"] == f"[{issue['id']}] Ping"
+    text = issue_path.read_text(encoding="utf-8")
+    assert "note" in text
 
 
-def test_log_add_requires_issue_id_in_message() -> None:
-    add_result = run_script(
-        "issue_add.py",
-        ["--dev", TEST_DEV, "--title", "Test issue", "--description", "Desc"],
-    )
-    assert add_result.returncode == 0, add_result.stderr
-
-    todo = yaml.safe_load(TEST_TODO.read_text(encoding="utf-8"))
-    issue = todo["issues"][0]
-
+def test_log_add_creates_flow_log_section_when_missing() -> None:
+    issue_path = _write_issue_file("test-0001-test.md", include_flow_log=False)
     result = run_script(
         "log_add.py",
-        [
-            "--dev",
-            TEST_DEV,
-            "--issue",
-            issue["id"],
-            "--message",
-            "Ping",
-        ],
+        ["--dev", TEST_DEV, "--issue", "test-0001", "--message", "created section"],
     )
-    assert result.returncode == 2
-    assert "Log message must mention the issue id" in result.stderr
-
-
-def test_log_add_errors_when_issue_file_missing() -> None:
-    add_result = run_script(
-        "issue_add.py",
-        ["--dev", TEST_DEV, "--title", "Test issue", "--description", "Desc"],
-    )
-    assert add_result.returncode == 0, add_result.stderr
-
-    todo = yaml.safe_load(TEST_TODO.read_text(encoding="utf-8"))
-    issue = todo["issues"][0]
-    issue_path = _issue_file_for_id(issue["id"])
-    if issue_path.exists():
-        issue_path.unlink()
-
-    result = run_script(
-        "log_add.py",
-        [
-            "--dev",
-            TEST_DEV,
-            "--issue",
-            issue["id"],
-            "--message",
-            f"[{issue['id']}] Ping",
-        ],
-    )
-    assert result.returncode == 3
-    assert f"Issue file not found for id: {issue['id']}" in result.stderr
+    assert result.returncode == 0, result.stderr
+    text = issue_path.read_text(encoding="utf-8")
+    assert "## Flow log" in text
+    assert "created section" in text

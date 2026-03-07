@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 id: yoda-0005
 status: done
 title: Fix markdown list indentation
@@ -57,3 +57,11 @@ docs(specs): fix notes indentation
 
 Issue: `yoda-0005`
 Path: `yoda/project/issues/yoda-0005-fix-markdown-list-indentation.md`
+
+## Flow log
+2026-01-27T16:41:51-03:00 | [yoda-0005] issue_add created | title: Fix markdown list indentation | description: Adjust indentation in 02-yoda-flow-process.md for list consistency | slug: fix-markdown-list-indentation
+2026-01-27T17:15:07-03:00 | [yoda-0005] docs: removed obsolete result-log comment from issue markdown
+2026-01-27T17:16:16-03:00 | [yoda-0005] document: scope confirmed for indentation fix in project/specs/02-yoda-flow-process.md
+2026-01-27T17:16:40-03:00 | [yoda-0005] implement: fixed indentation in 02-yoda-flow-process.md
+2026-01-27T17:16:44-03:00 | [yoda-0005] todo_update | status: to-do -> done
+2026-01-27T17:16:48-03:00 | [yoda-0005] evaluate: acceptance criteria checked and result log updated in issue

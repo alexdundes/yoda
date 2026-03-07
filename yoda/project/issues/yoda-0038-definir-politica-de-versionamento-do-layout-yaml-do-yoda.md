@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 id: yoda-0038
 status: done
 title: Definir politica de versionamento do layout YAML do YODA
@@ -73,3 +73,9 @@ Politica de versionamento de layout/schema YAML formalizada no contexto interno 
 docs(specs): definir politica de versionamento de layout YAML com rollout update/init
 Issue: `yoda-0038`
 Path: `yoda/project/issues/yoda-0038-definir-politica-de-versionamento-do-layout-yaml-do-yoda.md`
+
+## Flow log
+2026-02-25T15:36:45-03:00 | [yoda-0038] issue_add created | title: Definir politica de versionamento do layout YAML do YODA | description: Definir e documentar regra obrigatoria de versionamento de schema/layout YAML do YODA: mudancas sutis incrementam versao menor (1.x), mudancas breaking que exigem tratamento em update.py incrementam versao maior. Incluir como regra operacional em specs e yoda.md, com criterio claro para classificacao e rollout. | slug: definir-politica-de-versionamento-do-layout-yaml-do-yoda | priority: 2 | entrypoints: project/specs/:doc, yoda/yoda.md:doc, yoda/scripts/update.py:code
+2026-02-25T18:47:26-03:00 | [yoda-0038] todo_update | status: to-do -> doing
+2026-02-25T18:51:16-03:00 | [yoda-0038] implement: politica de versionamento YAML definida em specs com classificacao sutil/breaking e regra de rollout update.py + init.py; sem incluir yoda/yoda.md.
+2026-02-25T18:51:16-03:00 | [yoda-0038] todo_update | status: doing -> done

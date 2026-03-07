@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 id: yoda-0016
 status: done
 title: "Specs: empacotamento e distribui\xE7\xE3o do YODA Framework"
@@ -90,3 +90,11 @@ docs: define distribution and packaging contract
 Issue: yoda-0016
 Path: project/specs/23-distribution-and-packaging.md
 ```
+
+## Flow log
+2026-01-28T19:02:03-03:00 | [yoda-0016] issue_add created | title: Specs: empacotamento e distribuição do YODA Framework | description: Especificar no project/specs como o YODA será empacotado/embutido, o que entra e sai do artefato, comandos de build/init e alinhamento com meta-implementação. | slug: specs-empacotamento-e-distribui-o-do-yoda-framework | priority: 10 | agent: Human
+2026-01-29T06:14:47-03:00 | [yoda-0016] todo_update | status: to-do -> doing
+2026-01-29T06:34:46-03:00 | [yoda-0016] Implement: criada spec 23-distribution-and-packaging.md definindo artefato tar.gz, manifesto, changelog estruturado, referências atualizadas no summary.
+2026-01-29T06:34:51-03:00 | [yoda-0016] todo_update | status: doing -> done
+2026-01-29T06:35:17-03:00 | [yoda-0016] Evaluate: issue concluída; spec 23-distribution-and-packaging.md + summary atualizado; follow-ups criados (yoda-0021, yoda-0022).
+2026-01-29T06:44:02-03:00 | [yoda-0016] Added spec index entry for 23-distribution-and-packaging in project/specs/README.md.

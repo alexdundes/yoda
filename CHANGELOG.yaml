@@ -1,3 +1,25 @@
+- version: 0.3.0
+  build: 20260307.5c2f8fc
+  date: '2026-03-07T19:45:55-03:00'
+  summary:
+  - Migrated YODA backlog source of truth to markdown issues with deterministic flow
+    orchestration
+  - Finalized pre-0.3.0 CLI contracts, runbooks, and packaging boundaries
+  breaking: []
+  additions:
+  - Added yoda_flow_next deterministic phase runbook with transition logging and optional
+    --log-message
+  - Added yoda_intake orchestration for external issue ingestion and issue creation
+    contracts
+  - Standardized --help guidance across scripts and unified --dev contract (except
+    update.py)
+  fixes:
+  - Removed redundant issue ID suffixes from new Flow log transition messages with
+    forward-only policy
+  - Excluded favicons from package payload and moved them outside the yoda package
+    tree
+  notes: ''
+  commit: 5c2f8fc9aa819e1cc796971c2caa737c92d1c9d4
 - version: 0.2.0
   build: 20260303.4c59ae0
   date: '2026-03-03T17:53:32-03:00'

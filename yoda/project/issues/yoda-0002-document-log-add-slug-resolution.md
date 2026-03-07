@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 id: yoda-0002
 status: done
 title: Document log_add slug resolution
@@ -63,3 +63,11 @@ docs(specs): clarify log_add slug resolution
 
 Issue: `yoda-0002`
 Path: `yoda/project/issues/yoda-0002-document-log-add-slug-resolution.md`
+
+## Flow log
+2026-01-27T16:41:42-03:00 | [yoda-0002] issue_add created | title: Document log_add slug resolution | description: Add spec text: log_add resolves slug via TODO and fails if id missing | slug: document-log-add-slug-resolution
+2026-01-27T17:03:41-03:00 | [yoda-0002] document: scope constrained to project/specs/19-log-add-script.md
+2026-01-27T17:04:43-03:00 | [yoda-0002] implement: clarified slug resolution (TODO-derived) and no slug input in log_add spec
+2026-01-27T17:04:47-03:00 | [yoda-0002] todo_update | status: to-do -> done
+2026-01-27T17:04:51-03:00 | [yoda-0002] evaluate: acceptance criteria checked and result log updated in issue
+2026-01-27T17:14:55-03:00 | [yoda-0002] docs: removed obsolete result-log comment from issue markdown

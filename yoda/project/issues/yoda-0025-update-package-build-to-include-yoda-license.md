@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 id: yoda-0025
 status: done
 title: Update package build to include yoda/LICENSE
@@ -74,3 +74,9 @@ docs: include embedded license in package build
 Issue: yoda-0025
 Path: yoda/project/issues/yoda-0025-update-package-build-to-include-yoda-license.md
 ```
+
+## Flow log
+2026-02-04T18:39:22-03:00 | [yoda-0025] issue_add created | title: Update package build to include yoda/LICENSE | description: Update package generation to include yoda/LICENSE in the artefact and validate its presence. Adjust include list and tests as needed to ensure embedded license ships with the package. | slug: update-package-build-to-include-yoda-license | priority: 7 | entrypoints: yoda/scripts/package.py:code, project/specs/23-distribution-and-packaging.md:doc
+2026-02-04T18:47:39-03:00 | [yoda-0025] todo_update | status: to-do -> doing
+2026-02-04T18:51:27-03:00 | [yoda-0025] Included yoda/LICENSE in package build and tests; clarified spec that licenses need not match.
+2026-02-04T18:51:31-03:00 | [yoda-0025] todo_update | status: doing -> done

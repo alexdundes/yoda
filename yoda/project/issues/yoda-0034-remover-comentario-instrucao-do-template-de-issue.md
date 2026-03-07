@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 id: yoda-0034
 status: done
 title: Remover comentario-instrucao do template de issue
@@ -64,3 +64,9 @@ Criar issue de teste via script e validar especificamente ausencia do comentario
 - Reintroducao de comentarios em futuros templates se nao houver regra de revisao.
 
 ## Result log
+
+## Flow log
+2026-02-25T15:36:44-03:00 | [yoda-0034] issue_add created | title: Remover comentario-instrucao do template de issue | description: Eliminar os comentarios de instrucao do agente no template de issue que nao sao substituidos e acabam vazando para os arquivos finais. A issue gerada deve nascer limpa, sem blocos de comentario operacional do template. Regra transversal: atualizar primeiro project/specs/ e depois yoda/. | slug: remover-comentario-instrucao-do-template-de-issue | priority: 4 | entrypoints: yoda/templates/issue.md:doc, yoda/scripts/issue_add.py:code, project/specs/:doc
+2026-02-25T15:40:58-03:00 | [yoda-0034] todo_update | status: to-do -> doing
+2026-02-25T18:28:17-03:00 | [yoda-0034] evaluate: comentario inicial AGENT removido dos templates issue.md e issue-lightweight-process.md (commit 5070dbb).
+2026-02-25T18:28:21-03:00 | [yoda-0034] todo_update | status: doing -> done

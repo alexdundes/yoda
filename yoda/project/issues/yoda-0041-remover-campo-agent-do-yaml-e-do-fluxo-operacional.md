@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 id: yoda-0041
 status: done
 title: Remover campo agent do YAML e do fluxo operacional
@@ -103,3 +103,10 @@ Remocao completa do campo `agent` do schema operacional (TODO/front matter), fla
 refactor(yoda): remove operational agent field from TODO and issue metadata
 Issue: `yoda-0041`
 Path: `yoda/project/issues/yoda-0041-remover-conceito-de-agent-do-yoda.md`
+
+## Flow log
+2026-02-25T19:53:46-03:00 | [yoda-0041] issue_add created | title: Remover conceito de agent do YODA | description: Eliminar o campo agent do modelo YAML e do fluxo operacional, seguindo a mesma abordagem usada para lightweight, entrypoints e tags: docs-first, classificacao subtle, ajuste de scripts e reconciliacao via init.py --reconcile-layout quando aplicavel. | slug: remover-conceito-de-agent-do-yoda | priority: 3
+2026-02-25T19:55:07-03:00 | [yoda-0041] todo_update | status: to-do -> doing
+2026-02-25T20:07:42-03:00 | [yoda-0041] evaluate completed\n- Acceptance criteria validated\n- Tests: 37 passed\n- Reconcile executed with init.py --reconcile-layout\n- Ready to mark done
+2026-02-25T20:07:45-03:00 | [yoda-0041] todo_update | status: doing -> done
+2026-03-03T15:15:53-03:00 | [yoda-0041] todo_update | title: Remover conceito de agent do YODA -> Remover campo agent do YAML e do fluxo operacional

@@ -73,6 +73,8 @@ def test_package_builds_and_excludes_tests(tmp_path: Path) -> None:
         assert "yoda/PACKAGE_MANIFEST.yaml" in names
         assert "CHANGELOG.yaml" in names
         assert not any(name.startswith("yoda/scripts/tests") for name in names)
+        assert not any(name.startswith("yoda/favicons/") for name in names)
+        assert not any(name.startswith("favicons/") for name in names)
     finally:
         _restore_file(changelog_path, changelog_backup)
         _restore_file(latest_json_path, latest_backup)

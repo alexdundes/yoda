@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 id: yoda-0004
 status: done
 title: Happy path end-to-end
@@ -66,3 +66,11 @@ docs(specs): add happy path flow
 
 Issue: `yoda-0004`
 Path: `yoda/project/issues/yoda-0004-happy-path-end-to-end.md`
+
+## Flow log
+2026-01-27T16:41:48-03:00 | [yoda-0004] issue_add created | title: Happy path end-to-end | description: Add a one-page flow: create issue, update TODO, add log, finish | slug: happy-path-end-to-end
+2026-01-27T17:09:19-03:00 | [yoda-0004] document: location confirmed for happy path section in project/specs/05-scripts-and-automation.md
+2026-01-27T17:10:09-03:00 | [yoda-0004] implement: added happy path section with script commands and artifacts
+2026-01-27T17:10:13-03:00 | [yoda-0004] todo_update | status: to-do -> done
+2026-01-27T17:10:17-03:00 | [yoda-0004] evaluate: acceptance criteria checked and result log updated in issue
+2026-01-27T17:15:02-03:00 | [yoda-0004] docs: removed obsolete result-log comment from issue markdown

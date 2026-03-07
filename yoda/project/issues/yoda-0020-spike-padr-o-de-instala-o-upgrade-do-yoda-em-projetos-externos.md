@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 id: yoda-0020
 status: done
 depends_on:
@@ -93,3 +93,10 @@ docs: define installation and upgrade strategy
 Issue: yoda-0020
 Path: yoda/project/issues/yoda-0020-spike-padr-o-de-instala-o-upgrade-do-yoda-em-projetos-externos.md
 ```
+
+## Flow log
+2026-01-28T19:02:16-03:00 | [yoda-0020] issue_add created | title: Spike: padrão de instalação/upgrade do YODA em projetos externos | description: Explorar opções para embutir/atualizar o YODA Framework em repositórios externos, cobrindo pacote+init, versionamento, upgrade/rollback e riscos. | slug: spike-padr-o-de-instala-o-upgrade-do-yoda-em-projetos-externos | priority: 6 | agent: Human
+2026-01-28T19:05:24-03:00 | [yoda-0020] todo_update | depends_on: [] -> yoda-0016
+2026-02-02T21:59:53-03:00 | [yoda-0020] todo_update | status: to-do -> doing
+2026-02-04T07:22:45-03:00 | [yoda-0020] Added installation/upgrade spec (one-liner + manual), update/rollback rules, latest.json metadata, and aligned packaging spec for yoda/LICENSE.
+2026-02-04T07:22:50-03:00 | [yoda-0020] todo_update | status: doing -> done

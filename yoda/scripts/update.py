@@ -151,7 +151,17 @@ def _render_output(payload: dict[str, Any], output_format: str) -> str:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Update an embedded YODA package")
+    parser = argparse.ArgumentParser(
+        description="Update an embedded YODA package",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=(
+            "Agent guidance:\n"
+            "- Purpose: check/apply package updates for embedded YODA in a host project.\n"
+            "- When to use: upgrade workflow after new package publication.\n"
+            "- Mutability: in --apply mode, replaces framework files and may run init.py.\n"
+            "- Note: --dev is optional only for this command; without it, init.py is skipped."
+        ),
+    )
     add_global_flags(parser)
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--check", action="store_true", help="Check for updates only")

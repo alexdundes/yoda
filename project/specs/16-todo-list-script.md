@@ -47,7 +47,8 @@ Global flags:
 
 ## Behavior
 
-1) Resolve developer slug using the standard order: `--dev`, `YODA_DEV`, interactive prompt.
+1) Resolve developer slug from `--dev`.
+   - If missing, return guidance instructing the agent to ask the human for the slug and rerun with `--dev <slug>`.
 2) Load `yoda/todos/TODO.<dev>.yaml`. If missing, exit with code 3.
 3) Validate the TODO schema. If validation fails, exit with code 2.
 4) Apply filters (see Filters).

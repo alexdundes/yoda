@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 id: yoda-0033
 status: done
 depends_on:
@@ -85,3 +85,12 @@ Implementado controle de concorrencia em `issue_add.py` com lock externo por `--
 fix(yoda): make issue_add concurrency-safe with per-dev lock and atomic writes
 Issue: `yoda-0033`
 Path: `yoda/project/issues/yoda-0033-corrigir-concorrencia-no-issue-add-para-criacoes-simultaneas.md`
+
+## Flow log
+2026-02-25T15:23:19-03:00 | [yoda-0033] issue_add created | title: Corrigir concorrencia no issue_add para criacoes simultaneas | description: Ao executar dois issue_add em paralelo, ambos podem receber o mesmo proximo ID (ex.: yoda-0031), gerando colisao de arquivos e corrupcao estrutural no TODO YAML. Corrigir a alocacao de ID e a escrita de artefatos para suportar concorrencia segura (locking/atomicidade/retry). Regra transversal deste backlog: primeiro atualizar a documentacao em project/specs/ e somente depois aplicar mudancas em yoda/. | slug: corrigir-concorrencia-no-issue-add-para-criacoes-simultaneas | priority: 2 | tags: release-0.1.2, bug, concurrency, issue-add, docs-first | entrypoints: yoda/scripts/issue_add.py:code, yoda/todos/TODO.yoda.yaml:data, project/specs/:doc
+2026-02-25T18:46:21-03:00 | [yoda-0033] dependency update: depends_on ajustado para yoda-0038 por decisao de priorizacao do fluxo.
+2026-02-25T18:46:21-03:00 | [yoda-0033] todo_update | depends_on: [] -> yoda-0038
+2026-02-26T14:24:41-03:00 | [yoda-0033] todo_update | status: to-do -> doing
+2026-02-26T14:29:57-03:00 | [yoda-0033] Study decisions finalized\n- Retry policy: 3 attempts with increasing wait\n- Failure mode: explicit error, no rollback\n- Lock strategy: external lock file per --dev (atomicity scope by dev)
+2026-02-26T14:34:36-03:00 | [yoda-0033] evaluate completed\n- Docs-first specs updated for issue_add concurrency\n- Implemented per-dev lock + retry(3) + atomic writes\n- No rollback policy kept explicit\n- Tests: 39 passed
+2026-02-26T14:34:40-03:00 | [yoda-0033] todo_update | status: doing -> done

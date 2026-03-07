@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 id: yoda-0035
 status: done
 depends_on:
@@ -77,3 +77,12 @@ test: `python3 -m pytest yoda/scripts/tests` => 33 passed.
 refactor(yoda): remover conceito de lightweight do fluxo e schema
 Issue: `yoda-0035`
 Path: `yoda/project/issues/yoda-0035-remover-conceito-de-lightweight-do-yoda.md`
+
+## Flow log
+2026-02-25T15:36:44-03:00 | [yoda-0035] issue_add created | title: Remover conceito de lightweight do YODA | description: O conceito de lightweight esta subutilizado e deve ser removido por completo do YODA (schema, scripts, templates e playbooks). Regra transversal: atualizar primeiro project/specs/ e depois yoda/. Como envolve layout YAML, aplicar politica de versao de schema e tratamento de compatibilidade conforme update.py quando aplicavel. | slug: remover-conceito-de-lightweight-do-yoda | priority: 3 | entrypoints: project/specs/:doc, yoda/yoda.md:doc, yoda/scripts/:code
+2026-02-25T15:36:56-03:00 | [yoda-0035] todo_update | depends_on: [] -> yoda-0038
+2026-02-25T18:58:33-03:00 | [yoda-0035] planning decision: classificada como subtle; rollout coordenado com yoda-0036/yoda-0037 com um unico bump menor de schema na release 0.1.3.
+2026-02-25T19:01:58-03:00 | [yoda-0035] todo_update | status: to-do -> doing
+2026-02-25T19:06:01-03:00 | [yoda-0035] implement: removido conceito lightweight de specs, yoda/yoda.md, scripts issue_add/todo_list, template lightweight e campo lightweight dos artefatos TODO/issues.
+2026-02-25T19:06:01-03:00 | [yoda-0035] evaluate: suite yoda/scripts/tests executada com sucesso (33 passed), sem regressao apos remocao de lightweight.
+2026-02-25T19:06:01-03:00 | [yoda-0035] todo_update | status: doing -> done

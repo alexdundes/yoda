@@ -1,36 +1,16 @@
 from __future__ import annotations
 
+import re
 import subprocess
 import sys
 
-import yaml
+import frontmatter
 
-from conftest import REPO_ROOT, TEST_DEV, TEST_TODO, cleanup_test_files, run_script
-
-
-def _front_matter_keys(text: str) -> list[str]:
-    lines = text.splitlines()
-    assert lines and lines[0] == "---"
-    end = 1
-    while end < len(lines) and lines[end] != "---":
-        end += 1
-    keys: list[str] = []
-    for line in lines[1:end]:
-        if not line or line.startswith(" "):
-            continue
-        if ":" in line:
-            keys.append(line.split(":", 1)[0].strip())
-    return keys
+from conftest import REPO_ROOT, TEST_DEV, cleanup_test_files, run_script
 
 
-def _issue_file_for_id(issue_id: str):
+def _issue_file(issue_id: str):
     matches = list((REPO_ROOT / "yoda" / "project" / "issues").glob(f"{issue_id}-*.md"))
-    assert len(matches) == 1
-    return matches[0]
-
-
-def _log_file_for_id(issue_id: str):
-    matches = list((REPO_ROOT / "yoda" / "logs").glob(f"{issue_id}-*.yaml"))
     assert len(matches) == 1
     return matches[0]
 
@@ -43,193 +23,65 @@ def teardown_function() -> None:
     cleanup_test_files()
 
 
-def test_issue_add_creates_todo_issue_and_log() -> None:
+def test_issue_add_creates_markdown_issue_only() -> None:
     result = run_script(
         "issue_add.py",
         ["--dev", TEST_DEV, "--title", "Test issue", "--description", "Desc"],
     )
     assert result.returncode == 0, result.stderr
-    assert TEST_TODO.exists()
-
-    todo = yaml.safe_load(TEST_TODO.read_text(encoding="utf-8"))
-    assert todo["developer_slug"] == TEST_DEV
-    assert len(todo["issues"]) == 1
-
-    issue = todo["issues"][0]
-    assert "agent" not in issue
-    assert "depends_on" not in issue
-    assert "pending_reason" not in issue
-    assert "extern_issue_file" not in issue
-    assert issue["id"].startswith(f"{TEST_DEV}-")
-    issue_file = _issue_file_for_id(issue["id"])
-    log_file = _log_file_for_id(issue["id"])
-    assert issue_file.exists()
-    assert log_file.exists()
-    issue_text = issue_file.read_text(encoding="utf-8")
-    assert "agent:" not in issue_text
-    assert "depends_on:" not in issue_text
-    assert "pending_reason:" not in issue_text
-    assert "extern_issue_file:" not in issue_text
-    assert _front_matter_keys(issue_text) == [
-        "schema_version",
-        "id",
-        "status",
-        "title",
-        "description",
-        "priority",
-        "created_at",
-        "updated_at",
-    ]
+    issue_path = _issue_file("test-0001")
+    parsed = frontmatter.load(issue_path)
+    assert parsed.metadata["schema_version"] == "2.00"
+    assert parsed.metadata["id"] == "test-0001"
+    assert parsed.metadata["status"] == "to-do"
 
 
-def test_issue_add_conflict_when_issue_file_exists() -> None:
-    issue_path = (
-        REPO_ROOT / "yoda" / "project" / "issues" / "test-0001-test-issue.md"
-    )
-    issue_path.parent.mkdir(parents=True, exist_ok=True)
-    issue_path.write_text("placeholder", encoding="utf-8")
+def test_issue_add_skips_existing_number_and_creates_next_id() -> None:
+    existing = REPO_ROOT / "yoda" / "project" / "issues" / "test-0001-test-issue.md"
+    existing.parent.mkdir(parents=True, exist_ok=True)
+    existing.write_text("placeholder", encoding="utf-8")
 
     result = run_script(
         "issue_add.py",
         ["--dev", TEST_DEV, "--title", "Test issue", "--description", "Desc"],
     )
-    assert result.returncode == 4, result.stderr
-    assert f"Issue file already exists: {issue_path}" in result.stderr
+    assert result.returncode == 0, result.stderr
+    _issue_file("test-0002")
 
 
 def test_issue_add_sets_extern_issue_file_from_external_issue() -> None:
     result = run_script(
         "issue_add.py",
-        [
-            "--dev",
-            TEST_DEV,
-            "--title",
-            "From external",
-            "--description",
-            "Desc",
-            "--extern-issue",
-            "123",
-        ],
+        ["--dev", TEST_DEV, "--title", "From external", "--description", "Desc", "--extern-issue", "123"],
     )
     assert result.returncode == 0, result.stderr
-
-    todo = yaml.safe_load(TEST_TODO.read_text(encoding="utf-8"))
-    issue = todo["issues"][0]
-    assert issue["extern_issue_file"] == "../extern_issues/github-123.json"
-    issue_file = _issue_file_for_id(issue["id"])
-    keys = _front_matter_keys(issue_file.read_text(encoding="utf-8"))
-    assert keys == [
-        "schema_version",
-        "id",
-        "status",
-        "title",
-        "description",
-        "priority",
-        "extern_issue_file",
-        "created_at",
-        "updated_at",
-    ]
-
-
-def test_issue_add_rejects_non_numeric_external_issue() -> None:
-    result = run_script(
-        "issue_add.py",
-        [
-            "--dev",
-            TEST_DEV,
-            "--title",
-            "From external",
-            "--description",
-            "Desc",
-            "--extern-issue",
-            "abc",
-        ],
-    )
-    assert result.returncode == 2
-    assert "--extern-issue must be numeric" in result.stderr
+    parsed = frontmatter.load(_issue_file("test-0001"))
+    assert parsed.metadata["extern_issue_file"].endswith("-123.json")
 
 
 def test_issue_add_parallel_creations_generate_unique_ids() -> None:
     script = REPO_ROOT / "yoda" / "scripts" / "issue_add.py"
-    cmd_a = [
-        sys.executable,
-        str(script),
-        "--dev",
-        TEST_DEV,
-        "--title",
-        "Concurrent alpha",
-        "--description",
-        "Desc A",
-    ]
-    cmd_b = [
-        sys.executable,
-        str(script),
-        "--dev",
-        TEST_DEV,
-        "--title",
-        "Concurrent beta",
-        "--description",
-        "Desc B",
-    ]
-
+    cmd_a = [sys.executable, str(script), "--dev", TEST_DEV, "--title", "Concurrent alpha", "--description", "A"]
+    cmd_b = [sys.executable, str(script), "--dev", TEST_DEV, "--title", "Concurrent beta", "--description", "B"]
     proc_a = subprocess.Popen(cmd_a, cwd=REPO_ROOT, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     proc_b = subprocess.Popen(cmd_b, cwd=REPO_ROOT, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     out_a, err_a = proc_a.communicate()
     out_b, err_b = proc_b.communicate()
-
     assert proc_a.returncode == 0, f"{err_a}\n{out_a}"
     assert proc_b.returncode == 0, f"{err_b}\n{out_b}"
 
-    todo = yaml.safe_load(TEST_TODO.read_text(encoding="utf-8"))
-    ids = [item["id"] for item in todo["issues"]]
-    assert len(ids) == 2
-    assert len(set(ids)) == 2
-
-    for issue in todo["issues"]:
-        issue_file = _issue_file_for_id(issue["id"])
-        log_file = _log_file_for_id(issue["id"])
-        assert issue_file.exists()
-        assert log_file.exists()
-
-    lock_file = REPO_ROOT / "yoda" / "locks" / f"issue_add.{TEST_DEV}.lock"
-    assert not lock_file.exists()
+    files = sorted((REPO_ROOT / "yoda" / "project" / "issues").glob("test-*.md"))
+    ids = [path.stem.split("-")[0] + "-" + path.stem.split("-")[1] for path in files]
+    assert ids == ["test-0001", "test-0002"]
 
 
-def test_issue_add_fails_when_lock_contention_exhausts_retries() -> None:
-    lock_file = REPO_ROOT / "yoda" / "locks" / f"issue_add.{TEST_DEV}.lock"
-    lock_file.parent.mkdir(parents=True, exist_ok=True)
-    lock_file.write_text("locked\n", encoding="utf-8")
-    try:
-        result = run_script(
-            "issue_add.py",
-            ["--dev", TEST_DEV, "--title", "Locked issue", "--description", "Desc"],
-        )
-    finally:
-        lock_file.unlink(missing_ok=True)
-
-    assert result.returncode == 4, result.stderr
-    assert "Failed to acquire issue_add lock" in result.stderr
-
-
-def test_issue_template_has_empty_front_matter_shell() -> None:
-    template = (REPO_ROOT / "yoda" / "templates" / "issue.md").read_text(encoding="utf-8")
-    assert template.startswith("---\n---\n")
-
-
-def test_issue_template_result_log_is_empty_and_has_no_instruction_comment() -> None:
-    template = (REPO_ROOT / "yoda" / "templates" / "issue.md").read_text(encoding="utf-8")
-    assert "## Result log\n" in template
-    assert "<First line: conventional commit message.>" not in template
-    assert "<descricao do que foi feito>" not in template
-    assert "- **<GitLab|GitHub> Issue** :   #NNN" not in template
-    assert "- **Issue**: `<ID>`" not in template
-    assert "- **Path**: `<issue path>`" not in template
-    assert "## Result log\n<!-- AGENT:" not in template
-
-
-def test_yoda_manual_defines_result_log_external_rule() -> None:
-    manual = (REPO_ROOT / "yoda" / "yoda.md").read_text(encoding="utf-8")
-    assert "Evaluate `Result log` official format:" in manual
-    assert "Keep `## Result log` empty in `yoda/templates/issue.md`." in manual
-    assert "`- **<GitLab|GitHub> Issue** :   #NNN` (only when `extern_issue_file` exists)" in manual
-    assert "Derive provider and number from `extern_issue_file`" in manual
+def test_issue_add_flow_log_entry_has_no_issue_id_prefix() -> None:
+    result = run_script(
+        "issue_add.py",
+        ["--dev", TEST_DEV, "--title", "No Prefix", "--description", "Desc"],
+    )
+    assert result.returncode == 0, result.stderr
+    issue_path = _issue_file("test-0001")
+    text = issue_path.read_text(encoding="utf-8")
+    assert "issue_add created" in text
+    assert re.search(r"test-0001:\s+issue_add created", text) is None

@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 id: yoda-0015
 status: done
 title: Specify YODA Intake
@@ -79,3 +79,10 @@ docs(specs): add YODA Intake cycle
 
 Issue: `yoda-0015`
 Path: `yoda/project/issues/yoda-0015-specify-yoda-intake.md`
+
+## Flow log
+2026-01-28T17:35:28-03:00 | [yoda-0015] issue_add created | title: Specify YODA Intake | description: Create a spec and update docs to define the YODA Intake concept. | slug: specify-yoda-intake
+2026-01-28T17:41:58-03:00 | [yoda-0015] todo_update | status: to-do -> doing
+2026-01-28T17:45:30-03:00 | [yoda-0015] implement: added YODA Intake spec and updated playbook/flow docs
+2026-01-28T17:45:36-03:00 | [yoda-0015] evaluate: result log updated
+2026-01-28T17:45:41-03:00 | [yoda-0015] todo_update | status: doing -> done

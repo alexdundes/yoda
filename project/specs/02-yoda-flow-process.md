@@ -2,73 +2,50 @@
 
 ## Base cycle
 
-YODA Flow is the standard work cycle of the framework:
+YODA Flow is the standard deterministic cycle:
 
-1) Study
-2) Document
-3) Implement
-4) Evaluate
+1) study
+2) document
+3) implement
+4) evaluate
 
-When the agent enters YODA Flow, it assumes the **Flow skin** and follows the rules and deliverables of this cycle.
+## Flow driver
 
-## Step details
+- `yoda_flow_next.py` is the flow entry and progression driver.
+- The command is implicit (no subcommands).
+- Each execution resolves only the next deterministic step.
 
-### 1) Study
+## Phase transitions
 
-- Open conversation between human and AI.
-- Focus on understanding context, rules, and constraints.
-- No repository artifacts are produced in this step.
-- Deliverable is the conversation summary plus pending questions/decisions.
-- At the end, the AI is ready to document an issue (Markdown file).
+- `to-do -> doing` starts the cycle with `phase=study`.
+- While `status=doing`, phase advances one step per execution:
+  - `study -> document -> implement -> evaluate`
+- Completion after `evaluate` transitions to `done` and removes `phase`.
+- `pending` requires `pending_reason` and hides `phase`.
 
-### 2) Document
+## Blocking policy
 
-- The AI creates or updates the issue Markdown file based on what was discussed.
-- The human reviews and corrects the text to remove ambiguity.
-- The issue (Markdown file) becomes the official contract for implementation.
-
-### 3) Implement
-
-- The AI implements only what is defined in the issue Markdown file.
-- If something changes, return to the Document step and update the issue Markdown file.
-
-### 4) Evaluate
-
-- The human validates the result.
-- The AI fixes code and documentation based on feedback.
-- At the end, the issue receives a summary of what was done and a suggested commit message.
-
-## Notes
-
-- The cycle is designed to be iterative and not waterfall.
-  - Next issue selection must follow deterministic rules defined in specs (priority, order, pending, dependencies, and no issue in `doing`).
-- YODA Flow is issue-centric and starts only after issues are ready (see YODA Intake for the discovery/triage cycle).
+- On blockers, `yoda_flow_next.py` MUST NOT mutate metadata.
+- It MUST return a deterministic blocked response and instruct `todo_update.py`.
 
 ## Deliverables per phase
 
-| Phase     | Deliverables |
-|-----------|--------------|
-| Study     | Chat summary in developer language; questions and pending decisions list; explicit human confirmation to proceed. |
-| Document  | Issue Markdown updated with Study details; human confirmation that the issue text is OK. |
-| Implement | Changes match the issue; tests updated or marked not applicable; acceptance criteria checked when satisfied. |
-| Evaluate  | Result log updated; commit suggestion written (required format); TODO status updated; log entry recorded. |
+| Phase | Deliverable |
+|---|---|
+| study | clarified scope, open decisions, and next deterministic action |
+| document | issue text approved and unambiguous |
+| implement | changes aligned with issue contract |
+| evaluate | acceptance validated and result log completed |
 
-## Study requirements
+## Output contract for yoda_flow_next.py
 
-- The agent must summarize the issue in developer language.
-- If the issue is incomplete, the agent must ask for missing information.
-- If the issue exists, the agent must ask about remaining decisions until none remain.
-- The agent must wait for an explicit human instruction before moving to the next step.
+Both `md` and `json` outputs MUST include:
 
-## Document requirements
+- `issue_path`
+- `status`
+- `phase` (when applicable)
+- `next_step`
+- `blocked_reason` (when blocked)
+- `runbook_line`
 
-- The agent must update the issue file with all Study outcomes.
-- The agent must ask the human to approve the issue text.
-- If the human rejects the text, return to Study.
-
-## Implement requirements
-
-- Implement only what the issue specifies.
-- If tests are required, they must be implemented.
-- If the project expects unit tests, they must be added.
-- Acceptance criteria checkboxes must be marked when satisfied.
+`runbook_line` MUST be compact (single line).

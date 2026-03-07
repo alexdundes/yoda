@@ -1,5 +1,5 @@
 ---
-schema_version: '1.02'
+schema_version: '2.00'
 id: yoda-0001
 status: done
 title: Slug immutability rule
@@ -68,3 +68,11 @@ docs(specs): enforce slug immutability
 
 Issue: `yoda-0001`
 Path: `yoda/project/issues/yoda-0001-slug-immutability-rule.md`
+
+## Flow log
+2026-01-27T16:41:37-03:00 | [yoda-0001] issue_add created | title: Slug immutability rule | description: Document that issue slugs are immutable; renames require migration | slug: slug-immutability-rule
+2026-01-27T16:56:25-03:00 | [yoda-0001] todo_update | status: to-do -> doing
+2026-01-27T16:56:28-03:00 | [yoda-0001] issue updated: Document step updated summary/objective/scope/criteria to anchor 04-todo-dev-yaml-issues.md as primary
+2026-01-27T16:57:20-03:00 | [yoda-0001] implement: documented slug immutability in 04-todo-dev-yaml-issues.md and added conventions note
+2026-01-27T16:58:55-03:00 | [yoda-0001] todo_update | status: doing -> done
+2026-01-27T16:58:59-03:00 | [yoda-0001] evaluate: acceptance criteria checked and result log updated in issue
