@@ -286,7 +286,7 @@ def main() -> int:
         if table_items:
             lines.append(_render_table(table_items))
         else:
-            lines.append("No issues found.")
+            lines.append("No issues to execute. Nothing needs to be done.")
 
         payload = {"issues": ordered, "dry_run": bool(args.dry_run)}
         print(render_output(payload, output_format, lines, dry_run=bool(args.dry_run)))

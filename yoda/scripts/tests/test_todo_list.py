@@ -192,3 +192,9 @@ def test_todo_list_dependency_order_moves_blocked_after_unblocked() -> None:
     ids = [item["id"] for item in payload["issues"]]
     assert ids[0] == "test-0002"
     assert ids[1] == "test-0001"
+
+
+def test_todo_list_empty_backlog_outputs_expected_message() -> None:
+    result = run_script("todo_list.py", ["--dev", TEST_DEV])
+    assert result.returncode == 0, result.stderr
+    assert "No issues to execute. Nothing needs to be done." in result.stdout
