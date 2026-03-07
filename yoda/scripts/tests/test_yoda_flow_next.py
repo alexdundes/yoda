@@ -259,3 +259,77 @@ def test_flow_next_logs_blocked_reason_for_dependency_blocked() -> None:
     assert payload["blocked_reason"] == "dependency_blocked"
     assert payload["log_timestamp"]
     assert _last_log_line(blocked).endswith("blocked dependency_blocked")
+
+
+def test_flow_next_dry_run_simulates_without_writing_transition() -> None:
+    path = _write_issue_file(
+        "test-0001-dry-run.md",
+        {
+            "schema_version": "2.00",
+            "status": "to-do",
+            "title": "Todo",
+            "description": "Desc",
+            "priority": 5,
+            "created_at": "2026-01-01T00:00:00+00:00",
+            "updated_at": "2026-01-01T00:00:00+00:00",
+        },
+        body="# Todo\n\n## Flow log\n",
+    )
+    before_text = path.read_text(encoding="utf-8")
+
+    result = run_script("yoda_flow_next.py", ["--dev", TEST_DEV, "--dry-run", "--format", "json"])
+    assert result.returncode == 0, result.stderr
+    payload = json.loads(result.stdout)
+    assert payload["status"] == "doing"
+    assert payload["phase"] == "study"
+    assert payload["next_step"] == "study"
+    assert payload["log_timestamp"]
+
+    after_text = path.read_text(encoding="utf-8")
+    assert after_text == before_text
+    meta = _read_front_matter(path)
+    assert meta["status"] == "to-do"
+    assert "phase" not in meta
+    assert _read_flow_log_lines(path) == []
+
+
+def test_flow_next_dry_run_blocked_keeps_exit_code_without_writing_log() -> None:
+    _write_issue_file(
+        "test-0001-pending-dry-run.md",
+        {
+            "schema_version": "2.00",
+            "status": "pending",
+            "title": "Dep",
+            "description": "Desc",
+            "priority": 7,
+            "created_at": "2026-01-01T00:00:00+00:00",
+            "updated_at": "2026-01-01T00:00:00+00:00",
+        },
+        body="# Dep\n\n## Flow log\n",
+    )
+    blocked = _write_issue_file(
+        "test-0002-todo-blocked-dry-run.md",
+        {
+            "schema_version": "2.00",
+            "status": "to-do",
+            "depends_on": ["test-0001"],
+            "title": "Blocked",
+            "description": "Desc",
+            "priority": 9,
+            "created_at": "2026-01-01T00:00:00+00:00",
+            "updated_at": "2026-01-01T00:00:00+00:00",
+        },
+        body="# Blocked\n\n## Flow log\n",
+    )
+    before_text = blocked.read_text(encoding="utf-8")
+
+    result = run_script("yoda_flow_next.py", ["--dev", TEST_DEV, "--dry-run", "--format", "json"])
+    assert result.returncode == 3, result.stderr
+    payload = json.loads(result.stdout)
+    assert payload["next_step"] == "blocked"
+    assert payload["blocked_reason"] == "dependency_blocked"
+    assert payload["log_timestamp"] == ""
+
+    after_text = blocked.read_text(encoding="utf-8")
+    assert after_text == before_text
+    assert _read_flow_log_lines(blocked) == []
