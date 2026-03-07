@@ -1,72 +1,82 @@
 ---
 schema_version: '2.00'
 id: yoda-0057
-status: doing
-phase: study
+status: done
 depends_on:
 - yoda-0048
-title: Remover id do front matter e derivar ID pelo nome do arquivo
-description: Eliminar o campo id do front matter no modelo 0.3.0 e definir o nome
-  do arquivo da issue como fonte canonica para derivacao do ID.
+title: Verificar contrato de ID derivado do nome do arquivo (forward-only)
+description: Verificar, por varredura manual e sem migracao retroativa, que o contrato
+  vigente define ID derivado do filename e nao orienta campo id no front matter.
 priority: 5
 extern_issue_file: ../extern_issues/github-3.json
 created_at: '2026-03-04T20:58:43-03:00'
-updated_at: '2026-03-07T08:58:02-03:00'
+updated_at: '2026-03-07T08:59:15-03:00'
 ---
 
-# yoda-0057 - Remover id do front matter e derivar ID pelo nome do arquivo
+# yoda-0057 - Verificar contrato de ID derivado do nome do arquivo (forward-only)
 
 ## Summary
-No modelo atual, o identificador da issue aparece no nome do arquivo e no front matter (`id`), gerando redundancia. Esta issue define o nome do arquivo como fonte canonica do ID e remove o campo `id` do front matter no 0.3.0.
+Esta issue deixa de ser uma alteracao estrutural e passa a ser uma verificacao de consistencia do contrato vigente sobre identificacao de issues. O objetivo e confirmar que o ID e derivado do nome do arquivo e que o contrato documental nao orienta `id` no front matter para novos artefatos.
 
 ## Context
-A duplicidade de ID aumenta chance de divergencia em renomeacoes, migracoes e edicoes manuais.
+A direcao tecnica ja foi definida na spec 0.3.0 e na orientacao de template. O trabalho restante desta issue e validar coerencia documental e registrar o resultado.
 
 ## Objective
-Simplificar o schema da issue e eliminar inconsistencias mantendo derivacao deterministica do ID pelo path.
+Executar verificacao forward-only do contrato de ID por filename no YODA, sem migracao retroativa de issues antigas.
 
 ## Scope
-- Atualizar specs para definir ID derivado do nome do arquivo.
-- Remover `id` do template/front matter 0.3.0.
-- Ajustar scripts e validacoes para nao exigir `id` no front matter.
-- Definir regras de erro para arquivos com nome invalido.
+- Verificar em `project/specs` que o ID canonico e derivado do filename.
+- Verificar em `project/specs/14-issue-templates-usage.md` que o contrato nao orienta `id` no front matter.
+- Registrar nesta issue o resultado da varredura manual.
 
 ## Out of scope
-- Alterar o formato canonico do nome de arquivo `<id>-<slug>.md`.
-- Mudar semantica de slug alem do necessario para derivacao do ID.
+- Migrar issues antigas para remover `id`.
+- Alterar scripts/validacoes automatizadas.
+- Criar novos testes automatizados.
 
 ## Requirements
-- Scripts devem extrair ID do nome do arquivo com validacao forte.
-- Front matter nao deve conter `id` no modelo 0.3.0.
-- Mensagens de erro devem apontar arquivo e regra violada.
+- A verificacao deve ser apenas por varredura manual.
+- O criterio de conformidade deve considerar apenas o contrato vigente para frente.
+- O corpo desta issue nao deve conter secao `## Dependencies`.
 
 ## Acceptance criteria
-- [ ] Specs 0.3.0 declaram ID derivado do nome do arquivo.
-- [ ] Template de issue remove o campo `id` do front matter.
-- [ ] Testes cobrem parse de ID, nomes invalidos e ausencia de `id`.
-
-## Dependencies
-Depende de `yoda-0048`.
+- [x] `project/specs` confirma ID derivado do nome do arquivo.
+- [x] `project/specs/14-issue-templates-usage.md` nao orienta `id` no front matter.
+- [x] Resultado da varredura manual esta registrado nesta issue.
 
 ## Entry points
-- `project/specs`
-- `yoda/templates/issue.md`
-- `yoda/scripts`
-- `yoda/project/issues`
+- `project/specs/04-todo-dev-yaml-issues.md`
+- `project/specs/14-issue-templates-usage.md`
+- `yoda/yoda.md`
+- `yoda/project/issues/yoda-0057-remover-id-do-front-matter-e-derivar-id-pelo-nome-do-arquivo.md`
 
 ## Implementation notes
-Padronizar funcao unica de derivacao de ID para evitar divergencia entre scripts.
+Issue de verificacao apenas; nao aplicar mudancas de migracao em lote.
 
 ## Tests
-Adicionar casos de fixture para nomes validos/invalidos e backward compatibility durante migracao.
+Nao aplicavel. Validacao por varredura manual.
 
 ## Risks and edge cases
-- Rename manual de arquivo pode quebrar rastreabilidade se nao houver validacao.
-- Integracoes externas podem assumir `id` no front matter e precisar ajuste.
+- Interpretacao incorreta de conformidade ao incluir issues legadas fora do escopo forward-only.
 
 ## Result log
+docs(verification): confirmar contrato forward-only de ID por filename
+
+Foi executada varredura manual dos pontos de entrada da issue para confirmar que o contrato vigente permanece consistente: a spec define o identificador canonico derivado do nome do arquivo e a regra de template nao orienta campo `id` no front matter para novas issues. A issue foi mantida como verificacao (forward-only), sem migracao retroativa, sem alteracoes de scripts e sem testes automatizados.
+
+- **GitHub Issue** :   #3
+
+- **Issue**: `yoda-0057`
+
+- **Path**: `yoda/project/issues/yoda-0057-remover-id-do-front-matter-e-derivar-id-pelo-nome-do-arquivo.md`
 
 ## Flow log
 2026-03-04T20:58:43-03:00 | [yoda-0057] issue_add created | title: Remover id do front matter e derivar ID pelo nome do arquivo | description: Eliminar o campo id do front matter no modelo 0.3.0 e definir o nome do arquivo da issue como fonte canonica para derivacao do ID. | slug: remover-id-do-front-matter-e-derivar-id-pelo-nome-do-arquivo | extern_issue_file: external issue linked
 2026-03-04T20:59:15-03:00 | [yoda-0057] todo_update | depends_on:  -> yoda-0048
 2026-03-07T08:58:02-03:00 yoda-0057 transition to-do->doing phase=study
+2026-03-07T08:58:23-03:00 yoda-0057 transition doing/study->doing/document
+2026-03-07T08:58:27-03:00 | [yoda-0057] Document scope updated: issue reframed to forward-only verification with manual sweep and no automated changes.
+2026-03-07T08:58:50-03:00 yoda-0057 transition doing/document->doing/implement
+2026-03-07T08:58:54-03:00 yoda-0057 transition doing/implement->doing/evaluate
+2026-03-07T08:59:01-03:00 | [yoda-0057] Evaluate completed: ACs validated by manual sweep and Result log finalized.
+2026-03-07T08:59:15-03:00 yoda-0057 transition doing/evaluate->done
