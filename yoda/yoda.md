@@ -73,29 +73,40 @@ Template rule:
 
 External issue line rule:
 - Emit the line only when the issue front matter contains `extern_issue_file`.
-- Derive provider and number from `extern_issue_file`.
+- Derive provider and number from `extern_issue_file` (for example, `../extern_issues/github-2.json` => `GitHub` and `#2`).
 - Omit the line when no external association exists.
 
 ## YODA Intake
 
 Entry:
 1. Confirm the human intent includes entering YODA Intake.
-2. Run `python3 yoda/scripts/yoda_intake.py --dev <slug>`.
+2. Run:
+```bash
+python3 yoda/scripts/yoda_intake.py --dev <slug>
+```
 3. Follow the returned runbook exactly.
 
 External source path:
-1. Ask human to run `python3 yoda/scripts/get_extern_issue.py --dev <slug> --extern-issue <NNN>`.
-2. After JSON is created in `yoda/project/extern_issues/`, run `python3 yoda/scripts/yoda_intake.py --dev <slug> --extern-issue <NNN>`.
-3. Follow returned runbook.
+1. If the runbook indicates external issue intake, ask the human to run:
+```bash
+python3 yoda/scripts/get_extern_issue.py --dev <slug> --extern-issue <NNN>
+```
+2. After the JSON file is created in `yoda/project/extern_issues/`, run:
+```bash
+python3 yoda/scripts/yoda_intake.py --dev <slug> --extern-issue <NNN>
+```
+3. Follow the returned runbook and use the referenced JSON file as the external source.
 
 No external source path:
-- `python3 yoda/scripts/yoda_intake.py --dev <slug> --no-extern-issue`
+```bash
+python3 yoda/scripts/yoda_intake.py --dev <slug> --no-extern-issue
+```
 
 Intake policy:
 - Review current backlog before adding new issues.
 - Translate human free text into structured issue content.
-- Priority baseline is `5`; change only with explicit relative justification.
-- Keep `extern_issue_file` when external source exists.
+- Priority baseline is `5`; change only with explicit relative justification against open issues.
+- Keep `extern_issue_file` traceability when external source exists.
 - Before creating issues, run `python3 yoda/scripts/issue_add.py --help` and follow its runbook.
 
 ## Script authority map
