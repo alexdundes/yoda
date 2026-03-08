@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0016
 status: done
 title: "Specs: empacotamento e distribui\xE7\xE3o do YODA Framework"
 description: "Especificar no project/specs como o YODA ser\xE1 empacotado/embutido,\

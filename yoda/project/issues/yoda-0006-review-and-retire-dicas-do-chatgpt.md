@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0006
 status: done
 title: Review and retire dicas-do-chatgpt
 description: Review yoda/dicas-do-chatgpt.md; if contents are fully captured elsewhere,

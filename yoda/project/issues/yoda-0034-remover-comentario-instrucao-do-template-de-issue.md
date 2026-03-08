@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0034
 status: done
 title: Remover comentario-instrucao do template de issue
 description: 'Eliminar os comentarios de instrucao do agente no template de issue

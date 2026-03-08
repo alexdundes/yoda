@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0059
 status: done
 title: Corrigir yoda_flow_next --dry-run sem mutacao de arquivos
 description: 'Garantir que yoda_flow_next.py respeite --dry-run de forma estrita:

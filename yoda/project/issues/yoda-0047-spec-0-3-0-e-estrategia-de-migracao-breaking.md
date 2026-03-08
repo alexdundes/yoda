@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0047
 status: done
 title: Spec 0.3.0 e estrategia de migracao breaking
 description: Definir em project/specs o redesenho 0.3.0 do YODA Flow, incluindo escopo

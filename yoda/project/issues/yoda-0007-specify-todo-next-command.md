@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0007
 status: done
 title: Specify todo_next command
 description: Write a spec for todo_next.py behavior, inputs, outputs, and error handling

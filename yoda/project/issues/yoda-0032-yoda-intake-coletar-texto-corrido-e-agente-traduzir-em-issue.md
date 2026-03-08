@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0032
 status: done
 title: 'YODA Intake: coletar texto corrido e agente traduzir em issue'
 description: "No modo YODA Intake, o agente deve pedir ao dev a descri\xE7\xE3o da\

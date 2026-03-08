@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0046
 status: done
 title: Unificar formato de Result log e remover comentario do template
 description: Remover comentario instrucional do Result log no template e alinhar o

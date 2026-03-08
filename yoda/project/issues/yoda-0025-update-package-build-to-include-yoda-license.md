@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0025
 status: done
 title: Update package build to include yoda/LICENSE
 description: Update package generation to include yoda/LICENSE in the artefact and

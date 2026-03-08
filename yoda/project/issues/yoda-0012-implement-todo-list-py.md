@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0012
 status: done
 title: Implement todo_list.py
 description: 'Implement todo_list.py per spec: filters, ordering, md/json output,

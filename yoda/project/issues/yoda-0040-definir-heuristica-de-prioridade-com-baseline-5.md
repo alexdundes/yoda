@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0040
 status: done
 title: Definir heuristica de prioridade com baseline 5
 description: 'Orientar o agente para tratar prioridade 5 como baseline padrao e ajustar

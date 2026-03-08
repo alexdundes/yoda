@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0003
 status: done
 title: Define JSON output minimums
 description: Document minimal JSON fields for issue_add, todo_update, log_add

@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0038
 status: done
 title: Definir politica de versionamento do layout YAML do YODA
 description: 'Definir e documentar regra obrigatoria de versionamento de schema/layout

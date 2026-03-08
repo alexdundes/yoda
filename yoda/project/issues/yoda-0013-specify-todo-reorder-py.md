@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0013
 status: done
 title: Specify todo_reorder.py
 description: Define CLI, ordering behaviors, and output formats for todo_reorder.py.

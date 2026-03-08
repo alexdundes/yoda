@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0004
 status: done
 title: Happy path end-to-end
 description: 'Add a one-page flow: create issue, update TODO, add log, finish'

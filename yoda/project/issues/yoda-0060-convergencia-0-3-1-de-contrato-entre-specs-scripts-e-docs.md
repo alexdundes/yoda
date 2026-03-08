@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0060
 status: done
 title: Convergencia 0.3.1 de contrato entre specs, scripts e docs
 description: 'Executar uma rodada curta de convergencia final pos-0.3.0: validar e

@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0010
 status: done
 title: Update agent playbook to use scripts
 description: Revise 06-agent-playbook.md and yoda/yoda.md to reflect YODA Flow with

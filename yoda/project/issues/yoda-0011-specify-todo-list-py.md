@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0011
 status: done
 title: Specify todo_list.py
 description: Define CLI, filters, ordering, output formats, and text search behavior

@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0042
 status: done
 title: Simplificar origem externa para extern_issue_file
 description: "Substituir origin.system, origin.external_id e origin.requester por\

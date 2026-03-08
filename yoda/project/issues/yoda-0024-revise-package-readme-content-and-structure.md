@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0024
 status: done
 title: Revise package README content and structure
 description: Define the full content and structure for the package README.md (English,

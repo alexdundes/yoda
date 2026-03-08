@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0045
 status: done
 title: Permitir update de descricao e rename por slug derivado do arquivo
 description: "Permitir alterar descricao e rename do arquivo da issue; remover campo\

@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0031
 status: done
 title: Padronizar GEMINI.md no init
 description: "Ajustar o script yoda/scripts/init.py para criar/referenciar o arquivo\

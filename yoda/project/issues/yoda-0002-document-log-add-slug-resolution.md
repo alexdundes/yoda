@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0002
 status: done
 title: Document log_add slug resolution
 description: 'Add spec text: log_add resolves slug via TODO and fails if id missing'

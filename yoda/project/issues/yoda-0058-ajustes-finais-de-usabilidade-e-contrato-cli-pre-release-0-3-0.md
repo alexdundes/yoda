@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0058
 status: done
 title: Ajustes finais de usabilidade e contrato CLI pre-release 0.3.0
 description: 'Consolidar ajustes document-first antes da validacao final: padrao de

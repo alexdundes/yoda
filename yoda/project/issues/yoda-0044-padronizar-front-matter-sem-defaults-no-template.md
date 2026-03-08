@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0044
 status: done
 title: Padronizar front matter sem defaults no template
 description: Remover valores padrao do front matter no template markdown; issue_add.py

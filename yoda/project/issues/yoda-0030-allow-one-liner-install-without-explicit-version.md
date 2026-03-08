@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0030
 status: done
 title: Allow one-liner install without explicit version
 description: Make the one-liner install flow default to latest when --version is omitted

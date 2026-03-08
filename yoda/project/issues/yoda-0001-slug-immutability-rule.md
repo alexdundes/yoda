@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0001
 status: done
 title: Slug immutability rule
 description: Document that issue slugs are immutable; renames require migration

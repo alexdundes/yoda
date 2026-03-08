@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0039
 status: done
 depends_on:
 - yoda-0038

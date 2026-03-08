@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0009
 status: done
 title: Add unit tests for YODA scripts
 description: Create unit tests for implemented scripts, starting with todo_next and

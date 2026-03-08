@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0015
 status: done
 title: Specify YODA Intake
 description: Create a spec and update docs to define the YODA Intake concept.

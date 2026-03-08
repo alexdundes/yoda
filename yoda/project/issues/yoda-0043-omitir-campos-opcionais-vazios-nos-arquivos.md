@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0043
 status: done
 title: Omitir campos opcionais vazios nos arquivos
 description: Quando um campo opcional estiver vazio, ele nao deve ser definido/persistido

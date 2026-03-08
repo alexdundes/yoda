@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0008
 status: done
 title: Implement todo_next with single-issue rule
 description: Implement todo_next.py to select only to-do items and block when any
