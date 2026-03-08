@@ -1,15 +1,13 @@
 ---
 schema_version: '2.00'
-id: yoda-0061
-status: doing
-phase: implement
+status: done
 title: Corrigir scripts para remover id do front matter e aplicar saneamento no init
 description: 'Alinhar implementacao ao contrato vigente sem id no front matter: issue_add/todo_update/front_matter
   nao devem persistir id, e init deve detectar/remover id em issues existentes quando
   necessario sem alterar o ID derivado do filename.'
 priority: 5
 created_at: '2026-03-07T21:09:00-03:00'
-updated_at: '2026-03-07T21:15:27-03:00'
+updated_at: '2026-03-07T21:20:21-03:00'
 ---
 
 # yoda-0061 - Corrigir scripts para remover id do front matter e aplicar saneamento no init
@@ -47,11 +45,11 @@ Garantir que scripts nao escrevam mais `id` no front matter e que `init` possa n
 - A normalizacao de front matter deve ser separada da normalizacao de TODO legado para evitar regressao em `validate_todo`.
 
 ## Acceptance criteria
-- [ ] `issue_add.py` cria issue sem campo `id` no front matter.
-- [ ] Fluxos de update/rewrite de front matter nao reintroduzem `id`.
-- [ ] `init.py` remove `id` legado de issue existente e mantem arquivo consistente.
-- [ ] Suite de testes cobre criacao sem `id`, saneamento no `init` e ausencia de regressao no flow/index.
-- [ ] Fluxo de compatibilidade com TODO YAML legado continua valido quando aplicavel.
+- [x] `issue_add.py` cria issue sem campo `id` no front matter.
+- [x] Fluxos de update/rewrite de front matter nao reintroduzem `id`.
+- [x] `init.py` remove `id` legado de issue existente e mantem arquivo consistente.
+- [x] Suite de testes cobre criacao sem `id`, saneamento no `init` e ausencia de regressao no flow/index.
+- [x] Fluxo de compatibilidade com TODO YAML legado continua valido quando aplicavel.
 
 ## Entry points
 - `yoda/scripts/issue_add.py`
@@ -80,9 +78,22 @@ Adicionar cobertura em `test_todo_update.py` para garantir que update de issue n
 - Issues historicas sem `## Flow log` exigem cuidado no mesmo passo de saneamento.
 
 ## Result log
+fix(metadata): remover id do front matter e sanear legado via init
+
+Foi implementado um caminho dedicado de normalizacao para front matter de issues sem persistir `id`, mantendo o ID canonico derivado exclusivamente do nome do arquivo. A camada de escrita (`front_matter.py`) passou a usar essa normalizacao, evitando que `issue_add` e `todo_update` reintroduzam `id` em metadados de issue markdown.
+
+No `init.py`, foi adicionado saneamento explicito para remover `id` de issues existentes (`<dev>-*.md`), inclusive em cenarios sem TODO legado. A compatibilidade com fluxo legado de TODO YAML foi preservada ao manter separacao entre normalizacao de front matter e normalizacao de dados de reconcile/migracao.
+
+Foram atualizados testes em `test_issue_add.py`, `test_todo_update.py` e `test_init.py`, incluindo caso dedicado de saneamento sem TODO legado, e executada regressao completa com sucesso (`python3 -m pytest yoda/scripts/tests`: 59 passed).
+
+- **Issue**: `yoda-0061`
+
+- **Path**: `yoda/project/issues/yoda-0061-corrigir-scripts-para-remover-id-do-front-matter-e-aplicar-saneamento-no-init.md`
 
 ## Flow log
 2026-03-07T21:09:00-03:00 issue_add created title=Corrigir scripts para remover id do front matter e aplicar saneamento no init; priority=5
 2026-03-07T21:10:08-03:00 transition to-do->doing/study
 2026-03-07T21:12:33-03:00 transition doing/study->doing/document | Study aprovado: separar normalizacao de front matter sem id e preservar compatibilidade do TODO legado
 2026-03-07T21:15:27-03:00 transition doing/document->doing/implement | Document aprovado: implementar escrita de front matter sem id com compatibilidade de TODO legado preservada
+2026-03-07T21:19:47-03:00 transition doing/implement->doing/evaluate | Implement concluido: scripts sem id no front matter, saneamento no init e suite 59/59
+2026-03-07T21:20:21-03:00 transition doing/evaluate->done | Evaluate aprovado: ACs e result log validados para encerramento
