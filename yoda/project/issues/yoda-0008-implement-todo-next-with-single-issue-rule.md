@@ -74,8 +74,8 @@ Issue: `yoda-0008`
 Path: `yoda/project/issues/yoda-0008-implement-todo-next-with-single-issue-rule.md`
 
 ## Flow log
-2026-01-27T17:57:51-03:00 | [yoda-0008] issue_add created | title: Implement todo_next with single-issue rule | description: Implement todo_next.py to select only to-do items and block when any issue is doing | slug: implement-todo-next-with-single-issue-rule
-2026-01-27T18:00:20-03:00 | [yoda-0008] todo_update | status: to-do -> doing
-2026-01-27T18:01:15-03:00 | [yoda-0008] implement: added todo_next.py with single-issue blocking and to-do-only selection
-2026-01-27T18:01:19-03:00 | [yoda-0008] todo_update | status: doing -> done
-2026-01-27T18:01:24-03:00 | [yoda-0008] evaluate: acceptance criteria checked and result log updated in issue
+- 2026-01-27T17:57:51-03:00 issue_add created | title: Implement todo_next with single-issue rule | description: Implement todo_next.py to select only to-do items and block when any issue is doing | slug: implement-todo-next-with-single-issue-rule
+- 2026-01-27T18:00:20-03:00 todo_update | status: to-do -> doing
+- 2026-01-27T18:01:15-03:00 implement: added todo_next.py with single-issue blocking and to-do-only selection
+- 2026-01-27T18:01:19-03:00 todo_update | status: doing -> done
+- 2026-01-27T18:01:24-03:00 evaluate: acceptance criteria checked and result log updated in issue

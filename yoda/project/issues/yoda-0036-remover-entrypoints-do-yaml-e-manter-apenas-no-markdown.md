@@ -75,12 +75,12 @@ Issue: `yoda-0036`
 Path: `yoda/project/issues/yoda-0036-remover-entrypoints-do-yaml-e-manter-apenas-no-markdown.md`
 
 ## Flow log
-2026-02-25T15:36:44-03:00 | [yoda-0036] issue_add created | title: Remover entrypoints do YAML e manter apenas no markdown | description: Hoje entrypoints aparecem no front matter YAML e tambem no corpo do markdown da issue. Simplificar para manter entrypoints apenas no markdown e remover esse campo do YAML de issue/TODO/log quando aplicavel. Regra transversal: atualizar primeiro project/specs/ e depois yoda/. Como envolve layout YAML, aplicar politica de versao de schema e tratamento de compatibilidade conforme update.py quando aplicavel. | slug: remover-entrypoints-do-yaml-e-manter-apenas-no-markdown | priority: 3 | entrypoints: project/specs/:doc, yoda/templates/issue.md:doc, yoda/scripts/:code
-2026-02-25T15:36:56-03:00 | [yoda-0036] todo_update | depends_on: [] -> yoda-0038
-2026-02-25T18:58:33-03:00 | [yoda-0036] planning decision: classificada como subtle; rollout coordenado com yoda-0035/yoda-0037 com um unico bump menor de schema na release 0.1.3.
-2026-02-25T19:09:30-03:00 | [yoda-0036] todo_update | status: to-do -> doing
-2026-02-25T19:11:56-03:00 | [yoda-0036] evaluate: migracao de dados legados concluida (entrypoints removido de TODO/issues) e testes yoda/scripts/tests aprovados (33 passed).
-2026-02-25T19:12:32-03:00 | [yoda-0036] implement: removido entrypoints do YAML (TODO/front matter/log contract), issue_add sem --entrypoint e specs alinhadas para manter entrypoints apenas no markdown.
-2026-02-25T19:12:32-03:00 | [yoda-0036] todo_update (no changes)
-2026-02-25T19:18:57-03:00 | [yoda-0036] todo_update (no changes)
-2026-02-25T19:19:45-03:00 | [yoda-0036] closure: markdown da issue ressincronizado com criterios marcados e result log final apos revert local.
+- 2026-02-25T15:36:44-03:00 issue_add created | title: Remover entrypoints do YAML e manter apenas no markdown | description: Hoje entrypoints aparecem no front matter YAML e tambem no corpo do markdown da issue. Simplificar para manter entrypoints apenas no markdown e remover esse campo do YAML de issue/TODO/log quando aplicavel. Regra transversal: atualizar primeiro project/specs/ e depois yoda/. Como envolve layout YAML, aplicar politica de versao de schema e tratamento de compatibilidade conforme update.py quando aplicavel. | slug: remover-entrypoints-do-yaml-e-manter-apenas-no-markdown | priority: 3 | entrypoints: project/specs/:doc, yoda/templates/issue.md:doc, yoda/scripts/:code
+- 2026-02-25T15:36:56-03:00 todo_update | depends_on: [] -> yoda-0038
+- 2026-02-25T18:58:33-03:00 planning decision: classificada como subtle; rollout coordenado com yoda-0035/yoda-0037 com um unico bump menor de schema na release 0.1.3.
+- 2026-02-25T19:09:30-03:00 todo_update | status: to-do -> doing
+- 2026-02-25T19:11:56-03:00 evaluate: migracao de dados legados concluida (entrypoints removido de TODO/issues) e testes yoda/scripts/tests aprovados (33 passed).
+- 2026-02-25T19:12:32-03:00 implement: removido entrypoints do YAML (TODO/front matter/log contract), issue_add sem --entrypoint e specs alinhadas para manter entrypoints apenas no markdown.
+- 2026-02-25T19:12:32-03:00 todo_update (no changes)
+- 2026-02-25T19:18:57-03:00 todo_update (no changes)
+- 2026-02-25T19:19:45-03:00 closure: markdown da issue ressincronizado com criterios marcados e result log final apos revert local.

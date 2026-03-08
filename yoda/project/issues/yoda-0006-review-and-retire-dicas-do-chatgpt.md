@@ -68,9 +68,9 @@ Issue: `yoda-0006`
 Path: `yoda/project/issues/yoda-0006-review-and-retire-dicas-do-chatgpt.md`
 
 ## Flow log
-2026-01-27T16:47:31-03:00 | [yoda-0006] issue_add created | title: Review and retire dicas-do-chatgpt | description: Review yoda/dicas-do-chatgpt.md; if contents are fully captured elsewhere, remove the file | slug: review-and-retire-dicas-do-chatgpt
-2026-01-27T17:15:11-03:00 | [yoda-0006] docs: removed obsolete result-log comment from issue markdown
-2026-01-27T17:19:32-03:00 | [yoda-0006] document: mapped dicas items to current spec locations; proceed to remove if redundant
-2026-01-27T17:19:57-03:00 | [yoda-0006] implement: removed yoda/dicas-do-chatgpt.md after confirming coverage
-2026-01-27T17:20:00-03:00 | [yoda-0006] todo_update | status: to-do -> done
-2026-01-27T17:20:04-03:00 | [yoda-0006] evaluate: acceptance criteria checked and result log updated in issue
+- 2026-01-27T16:47:31-03:00 issue_add created | title: Review and retire dicas-do-chatgpt | description: Review yoda/dicas-do-chatgpt.md; if contents are fully captured elsewhere, remove the file | slug: review-and-retire-dicas-do-chatgpt
+- 2026-01-27T17:15:11-03:00 docs: removed obsolete result-log comment from issue markdown
+- 2026-01-27T17:19:32-03:00 document: mapped dicas items to current spec locations; proceed to remove if redundant
+- 2026-01-27T17:19:57-03:00 implement: removed yoda/dicas-do-chatgpt.md after confirming coverage
+- 2026-01-27T17:20:00-03:00 todo_update | status: to-do -> done
+- 2026-01-27T17:20:04-03:00 evaluate: acceptance criteria checked and result log updated in issue

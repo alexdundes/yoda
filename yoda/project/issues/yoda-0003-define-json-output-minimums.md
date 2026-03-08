@@ -65,9 +65,9 @@ Issue: `yoda-0003`
 Path: `yoda/project/issues/yoda-0003-define-json-output-minimums.md`
 
 ## Flow log
-2026-01-27T16:41:45-03:00 | [yoda-0003] issue_add created | title: Define JSON output minimums | description: Document minimal JSON fields for issue_add, todo_update, log_add | slug: define-json-output-minimums
-2026-01-27T17:06:41-03:00 | [yoda-0003] document: centralize JSON output contract in project/specs/13-yoda-scripts-v1.md
-2026-01-27T17:07:45-03:00 | [yoda-0003] implement: centralized JSON output contract in scripts v1 spec
-2026-01-27T17:07:50-03:00 | [yoda-0003] todo_update | status: to-do -> done
-2026-01-27T17:07:54-03:00 | [yoda-0003] evaluate: acceptance criteria checked and result log updated in issue
-2026-01-27T17:14:59-03:00 | [yoda-0003] docs: removed obsolete result-log comment from issue markdown
+- 2026-01-27T16:41:45-03:00 issue_add created | title: Define JSON output minimums | description: Document minimal JSON fields for issue_add, todo_update, log_add | slug: define-json-output-minimums
+- 2026-01-27T17:06:41-03:00 document: centralize JSON output contract in project/specs/13-yoda-scripts-v1.md
+- 2026-01-27T17:07:45-03:00 implement: centralized JSON output contract in scripts v1 spec
+- 2026-01-27T17:07:50-03:00 todo_update | status: to-do -> done
+- 2026-01-27T17:07:54-03:00 evaluate: acceptance criteria checked and result log updated in issue
+- 2026-01-27T17:14:59-03:00 docs: removed obsolete result-log comment from issue markdown

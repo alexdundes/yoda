@@ -91,9 +91,10 @@ Foram atualizados testes em `test_issue_add.py`, `test_todo_update.py` e `test_i
 - **Path**: `yoda/project/issues/yoda-0061-corrigir-scripts-para-remover-id-do-front-matter-e-aplicar-saneamento-no-init.md`
 
 ## Flow log
-2026-03-07T21:09:00-03:00 issue_add created title=Corrigir scripts para remover id do front matter e aplicar saneamento no init; priority=5
-2026-03-07T21:10:08-03:00 transition to-do->doing/study
-2026-03-07T21:12:33-03:00 transition doing/study->doing/document | Study aprovado: separar normalizacao de front matter sem id e preservar compatibilidade do TODO legado
-2026-03-07T21:15:27-03:00 transition doing/document->doing/implement | Document aprovado: implementar escrita de front matter sem id com compatibilidade de TODO legado preservada
-2026-03-07T21:19:47-03:00 transition doing/implement->doing/evaluate | Implement concluido: scripts sem id no front matter, saneamento no init e suite 59/59
-2026-03-07T21:20:21-03:00 transition doing/evaluate->done | Evaluate aprovado: ACs e result log validados para encerramento
+- 2026-03-07T21:09:00-03:00 issue_add created title=Corrigir scripts para remover id do front matter e aplicar saneamento no init; priority=5
+- 2026-03-07T21:10:08-03:00 transition to-do->doing/study
+- 2026-03-07T21:12:33-03:00 transition doing/study->doing/document | Study aprovado: separar normalizacao de front matter sem id e preservar compatibilidade do TODO legado
+- 2026-03-07T21:15:27-03:00 transition doing/document->doing/implement | Document aprovado: implementar escrita de front matter sem id com compatibilidade de TODO legado preservada
+- 2026-03-07T21:19:47-03:00 transition doing/implement->doing/evaluate | Implement concluido: scripts sem id no front matter, saneamento no init e suite 59/59
+- 2026-03-07T21:20:21-03:00 transition doing/evaluate->done | Evaluate aprovado: ACs e result log validados para encerramento
+- 2026-03-07T21:35:33-03:00 flow-log format check

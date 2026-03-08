@@ -80,8 +80,8 @@ Path: yoda/yoda.md
 ```
 
 ## Flow log
-2026-01-28T19:02:06-03:00 | [yoda-0017] issue_add created | title: Manual embarcado: reescrever yoda/yoda.md independente das specs | description: Produzir manual mínimo para agentes (YODA Flow e Intake) que funcione sem project/specs, com playbooks claros e referências às ferramentas/scripts. | slug: manual-embarcado-reescrever-yoda-yoda-md-independente-das-specs | priority: 9 | agent: Human
-2026-01-28T19:05:16-03:00 | [yoda-0017] todo_update | depends_on: [] -> yoda-0016
-2026-01-29T09:30:58-03:00 | [yoda-0017] todo_update | status: to-do -> doing
-2026-01-29T09:34:49-03:00 | [yoda-0017] Implement: rewrote yoda/yoda.md as standalone English manual (Flow/Intake playbooks, scripts reference, paths, no project/specs dependency).
-2026-01-29T09:34:53-03:00 | [yoda-0017] todo_update | status: doing -> done
+- 2026-01-28T19:02:06-03:00 issue_add created | title: Manual embarcado: reescrever yoda/yoda.md independente das specs | description: Produzir manual mínimo para agentes (YODA Flow e Intake) que funcione sem project/specs, com playbooks claros e referências às ferramentas/scripts. | slug: manual-embarcado-reescrever-yoda-yoda-md-independente-das-specs | priority: 9 | agent: Human
+- 2026-01-28T19:05:16-03:00 todo_update | depends_on: [] -> yoda-0016
+- 2026-01-29T09:30:58-03:00 todo_update | status: to-do -> doing
+- 2026-01-29T09:34:49-03:00 Implement: rewrote yoda/yoda.md as standalone English manual (Flow/Intake playbooks, scripts reference, paths, no project/specs dependency).
+- 2026-01-29T09:34:53-03:00 todo_update | status: doing -> done

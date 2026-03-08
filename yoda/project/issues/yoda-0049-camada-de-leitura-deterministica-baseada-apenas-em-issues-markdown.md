@@ -114,15 +114,15 @@ Foi implementada a camada `issue_index` em `yoda/scripts/lib/issue_index.py` par
 - **Path**: `yoda/project/issues/yoda-0049-camada-de-leitura-deterministica-baseada-apenas-em-issues-markdown.md`
 
 ## Flow log
-2026-03-04T20:33:41-03:00 | [yoda-0049] issue_add created | title: Camada de leitura deterministica baseada apenas em issues markdown | description: Implementar leitura e indexacao de yoda/project/issues/*.md para montar estado em memoria sem dependencia de TODO.<dev>.yaml. | slug: camada-de-leitura-deterministica-baseada-apenas-em-issues-markdown | extern_issue_file: external issue linked
-2026-03-04T20:34:07-03:00 | [yoda-0049] todo_update | depends_on:  -> yoda-0048
-2026-03-06T16:33:21-03:00 | [yoda-0049] todo_update | status: to-do -> doing
-2026-03-06T16:33:31-03:00 | [yoda-0049] Evaluate completed: Study summary delivered with undefined points for pre-Document decisions.
-2026-03-06T16:33:31-03:00 | [yoda-0049] todo_update | status: doing -> done
-2026-03-06T16:33:39-03:00 | [yoda-0049] todo_update | status: done -> doing
-2026-03-06T16:33:40-03:00 | [yoda-0049] Corrected flow state to doing after accidental done transition; Study remains active.
-2026-03-06T16:39:24-03:00 | [yoda-0049] Study decisions captured for points 1-7,9,10; point 8 pending clarification on in-memory output contract.
-2026-03-06T16:41:23-03:00 | [yoda-0049] Document updated with closed decisions 1-10, including in-memory output contract and fail-fast policy.
-2026-03-06T16:52:29-03:00 | [yoda-0049] Implemented issue_index library and tests for dev filtering, fail-fast, filename ID, Flow log ensure, phase ignore, dependency/selectability, and deterministic ordering.
-2026-03-06T16:54:25-03:00 | [yoda-0049] Evaluate completed: ACs checked, result log written, tests passing (6/6).
-2026-03-06T16:54:25-03:00 | [yoda-0049] todo_update | status: doing -> done
+- 2026-03-04T20:33:41-03:00 issue_add created | title: Camada de leitura deterministica baseada apenas em issues markdown | description: Implementar leitura e indexacao de yoda/project/issues/*.md para montar estado em memoria sem dependencia de TODO.<dev>.yaml. | slug: camada-de-leitura-deterministica-baseada-apenas-em-issues-markdown | extern_issue_file: external issue linked
+- 2026-03-04T20:34:07-03:00 todo_update | depends_on: -> yoda-0048
+- 2026-03-06T16:33:21-03:00 todo_update | status: to-do -> doing
+- 2026-03-06T16:33:31-03:00 Evaluate completed: Study summary delivered with undefined points for pre-Document decisions.
+- 2026-03-06T16:33:31-03:00 todo_update | status: doing -> done
+- 2026-03-06T16:33:39-03:00 todo_update | status: done -> doing
+- 2026-03-06T16:33:40-03:00 Corrected flow state to doing after accidental done transition; Study remains active.
+- 2026-03-06T16:39:24-03:00 Study decisions captured for points 1-7,9,10; point 8 pending clarification on in-memory output contract.
+- 2026-03-06T16:41:23-03:00 Document updated with closed decisions 1-10, including in-memory output contract and fail-fast policy.
+- 2026-03-06T16:52:29-03:00 Implemented issue_index library and tests for dev filtering, fail-fast, filename ID, Flow log ensure, phase ignore, dependency/selectability, and deterministic ordering.
+- 2026-03-06T16:54:25-03:00 Evaluate completed: ACs checked, result log written, tests passing (6/6).
+- 2026-03-06T16:54:25-03:00 todo_update | status: doing -> done

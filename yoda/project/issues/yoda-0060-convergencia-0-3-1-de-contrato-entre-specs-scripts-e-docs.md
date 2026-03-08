@@ -94,9 +94,9 @@ Tambem foi removido `yoda/project/issues/other-0001-beta.md` do backlog ativo e 
 - **Path**: `yoda/project/issues/yoda-0060-convergencia-0-3-1-de-contrato-entre-specs-scripts-e-docs.md`
 
 ## Flow log
-2026-03-07T20:36:29-03:00 issue_add created title=Convergencia 0.3.1 de contrato entre specs, scripts e docs; priority=5
-2026-03-07T20:50:56-03:00 transition to-do->doing/study
-2026-03-07T20:55:15-03:00 transition doing/study->doing/document | Study aprovado: alinhar contratos e tratar other-0001-beta como artefato de teste com limpeza e remocao do projeto ativo
-2026-03-07T20:57:02-03:00 transition doing/document->doing/implement | Document aprovado: implementar convergencia markdown-first e remover other-0001-beta do backlog ativo
-2026-03-07T21:03:48-03:00 transition doing/implement->doing/evaluate | Implement concluido: convergencia docs/specs markdown-first, remocao de other-0001-beta e testes verdes
-2026-03-07T21:04:30-03:00 transition doing/evaluate->done | Evaluate aprovado: convergencia 0.3.1 validada e result log finalizado
+- 2026-03-07T20:36:29-03:00 issue_add created title=Convergencia 0.3.1 de contrato entre specs, scripts e docs; priority=5
+- 2026-03-07T20:50:56-03:00 transition to-do->doing/study
+- 2026-03-07T20:55:15-03:00 transition doing/study->doing/document | Study aprovado: alinhar contratos e tratar other-0001-beta como artefato de teste com limpeza e remocao do projeto ativo
+- 2026-03-07T20:57:02-03:00 transition doing/document->doing/implement | Document aprovado: implementar convergencia markdown-first e remover other-0001-beta do backlog ativo
+- 2026-03-07T21:03:48-03:00 transition doing/implement->doing/evaluate | Implement concluido: convergencia docs/specs markdown-first, remocao de other-0001-beta e testes verdes
+- 2026-03-07T21:04:30-03:00 transition doing/evaluate->done | Evaluate aprovado: convergencia 0.3.1 validada e result log finalizado

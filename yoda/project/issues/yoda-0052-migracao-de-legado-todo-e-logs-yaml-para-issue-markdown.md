@@ -85,11 +85,11 @@ Foi implementada a migracao legado no `init.py`, convertendo front matter das is
 - **Path**: `yoda/project/issues/yoda-0052-migracao-de-legado-todo-e-logs-yaml-para-issue-markdown.md`
 
 ## Flow log
-2026-03-04T20:33:42-03:00 | [yoda-0052] issue_add created | title: Migracao de legado TODO e logs YAML para issue markdown | description: Criar migracao em update.py para converter TODO.<dev>.yaml e yoda/logs/*.yaml para o modelo 0.3.0 baseado em issue markdown unica. | slug: migracao-de-legado-todo-e-logs-yaml-para-issue-markdown | extern_issue_file: external issue linked
-2026-03-04T20:34:08-03:00 | [yoda-0052] todo_update | depends_on:  -> yoda-0051
-2026-03-06T18:23:43-03:00 | yoda-0052: todo_update status: to-do -> doing
-2026-03-06T18:23:53-03:00 | yoda-0052: Study iniciado com leitura da issue e dos scripts update/init para mapear estrategia de migracao TODO/log YAML para markdown.
-2026-03-06T18:38:52-03:00 | yoda-0052: Document concluido com decisoes finais de migracao no init.py, schema 2.00, adaptacao de todos os scripts e remocao de artefatos legados em sucesso total.
-2026-03-06T18:52:45-03:00 yoda-0052: Implement concluido com migracao no init.py, scripts operando markdown 2.00 e suite yoda/scripts/tests com 51 passed.
-2026-03-06T18:59:30-03:00 yoda-0052: Evaluate concluido com ACs validados, Result log preenchido e suite completa com 51 passed.
-2026-03-06T18:59:30-03:00 yoda-0052: todo_update status: doing -> done
+- 2026-03-04T20:33:42-03:00 issue_add created | title: Migracao de legado TODO e logs YAML para issue markdown | description: Criar migracao em update.py para converter TODO.<dev>.yaml e yoda/logs/*.yaml para o modelo 0.3.0 baseado em issue markdown unica. | slug: migracao-de-legado-todo-e-logs-yaml-para-issue-markdown | extern_issue_file: external issue linked
+- 2026-03-04T20:34:08-03:00 todo_update | depends_on: -> yoda-0051
+- 2026-03-06T18:23:43-03:00 todo_update status: to-do -> doing
+- 2026-03-06T18:23:53-03:00 Study iniciado com leitura da issue e dos scripts update/init para mapear estrategia de migracao TODO/log YAML para markdown.
+- 2026-03-06T18:38:52-03:00 Document concluido com decisoes finais de migracao no init.py, schema 2.00, adaptacao de todos os scripts e remocao de artefatos legados em sucesso total.
+- 2026-03-06T18:52:45-03:00 Implement concluido com migracao no init.py, scripts operando markdown 2.00 e suite yoda/scripts/tests com 51 passed.
+- 2026-03-06T18:59:30-03:00 Evaluate concluido com ACs validados, Result log preenchido e suite completa com 51 passed.
+- 2026-03-06T18:59:30-03:00 todo_update status: doing -> done

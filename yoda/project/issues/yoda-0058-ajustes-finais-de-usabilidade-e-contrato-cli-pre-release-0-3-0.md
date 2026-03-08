@@ -73,16 +73,17 @@ Adicionar/ajustar testes apenas onde houver mudanca comportamental (ex.: logging
 - Movimentacao de `favicons` pode impactar scripts/caminhos se houver referencias hardcoded.
 
 ## Flow log
-2026-03-07T11:31:39-03:00 yoda-0058: issue_add created title=Ajustes finais de usabilidade e contrato CLI pre-release 0.3.0; priority=5
-2026-03-07T11:31:56-03:00 | [yoda-0058] Intake created aggregated pre-release issue covering log format, yoda_flow_next logging parameter, --help guidance, --dev contract, and favicons location.
+- 2026-03-07T11:31:39-03:00 issue_add created title=Ajustes finais de usabilidade e contrato CLI pre-release 0.3.0; priority=5
+- 2026-03-07T11:31:56-03:00 Intake created aggregated pre-release issue covering log format, yoda_flow_next logging parameter, --help guidance, --dev contract, and favicons location.
 
-2026-03-07T11:42:09-03:00 yoda-0058 transition to-do->doing phase=study
-2026-03-07T11:44:58-03:00 yoda-0058 transition doing/study->doing/document
-2026-03-07T11:45:05-03:00 | [yoda-0058] Document decisions locked: --log-message in yoda_flow_next, favicons moved to /favicons, full review of 11 script helps, --dev contract unified except update.py.
-2026-03-07T11:56:30-03:00 transition doing/document->doing/implement | Implement completed: document-first specs, script contracts, help guidance, dev resolution, and favicons relocation applied with tests.
-2026-03-07T11:56:39-03:00 transition doing/implement->doing/evaluate | Evaluate started after implementation and full script test suite execution.
-2026-03-07T11:56:48-03:00 | [yoda-0058] Evaluate completed: ACs validated, result log filled, and regression tests passed.
-2026-03-07T11:57:32-03:00 transition doing/evaluate->done | Issue closed after AC validation, result log completion, and 59 passing tests.
+- 2026-03-07T11:42:09-03:00 transition to-do->doing phase=study
+- 2026-03-07T11:44:58-03:00 transition doing/study->doing/document
+- 2026-03-07T11:45:05-03:00 Document decisions locked: --log-message in yoda_flow_next, favicons moved to /favicons, full review of 11 script helps, --dev contract unified except update.py.
+- 2026-03-07T11:56:30-03:00 transition doing/document->doing/implement | Implement completed: document-first specs, script contracts, help guidance, dev resolution, and favicons relocation applied with tests.
+- 2026-03-07T11:56:39-03:00 transition doing/implement->doing/evaluate | Evaluate started after implementation and full script test suite execution.
+- 2026-03-07T11:56:48-03:00 Evaluate completed: ACs validated, result log filled, and regression tests passed.
+- 2026-03-07T11:57:32-03:00 transition doing/evaluate->done | Issue closed after AC validation, result log completion, and 59 passing tests.
+
 ## Result log
 feat(flow): consolidar ajustes finais de contrato CLI e empacotamento pre-0.3.0
 

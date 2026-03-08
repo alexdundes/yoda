@@ -71,13 +71,13 @@ Foi consolidado o escopo aprovado na `yoda-0055` com aplicacao forward-only: a i
 - **Path**: `yoda/project/issues/yoda-0055-padronizar-secao-entry-points-para-renderizacao-markdown-legivel.md`
 
 ## Flow log
-2026-03-04T20:42:02-03:00 | [yoda-0055] issue_add created | title: Padronizar secao Entry points para renderizacao markdown legivel | description: Substituir o formato pseudo-YAML da secao Entry points por formato markdown legivel no preview humano, mantendo estrutura deterministica para scripts. | slug: padronizar-secao-entry-points-para-renderizacao-markdown-legivel | extern_issue_file: external issue linked
-2026-03-04T20:42:19-03:00 | [yoda-0055] todo_update | depends_on:  -> yoda-0048
-2026-03-07T08:34:31-03:00 yoda-0055 transition to-do->doing phase=study
-2026-03-07T08:43:45-03:00 yoda-0055 transition doing/study->doing/document
-2026-03-07T08:44:05-03:00 | [yoda-0055] Document scope updated: follow spec-only list format, forward-only template guidance, manual sweep validation only.
-2026-03-07T08:47:18-03:00 yoda-0055 transition doing/document->doing/implement
-2026-03-07T08:47:28-03:00 | [yoda-0055] Implement completed: template Entry points guidance updated to plain list (`- <path>`) and manual sweep confirmed scope alignment.
-2026-03-07T08:47:57-03:00 yoda-0055 transition doing/implement->doing/evaluate
-2026-03-07T08:48:18-03:00 | [yoda-0055] Evaluate completed: ACs checked and Result log filled after manual sweep validation.
-2026-03-07T08:49:09-03:00 yoda-0055 transition doing/evaluate->done
+- 2026-03-04T20:42:02-03:00 issue_add created | title: Padronizar secao Entry points para renderizacao markdown legivel | description: Substituir o formato pseudo-YAML da secao Entry points por formato markdown legivel no preview humano, mantendo estrutura deterministica para scripts. | slug: padronizar-secao-entry-points-para-renderizacao-markdown-legivel | extern_issue_file: external issue linked
+- 2026-03-04T20:42:19-03:00 todo_update | depends_on: -> yoda-0048
+- 2026-03-07T08:34:31-03:00 transition to-do->doing phase=study
+- 2026-03-07T08:43:45-03:00 transition doing/study->doing/document
+- 2026-03-07T08:44:05-03:00 Document scope updated: follow spec-only list format, forward-only template guidance, manual sweep validation only.
+- 2026-03-07T08:47:18-03:00 transition doing/document->doing/implement
+- 2026-03-07T08:47:28-03:00 Implement completed: template Entry points guidance updated to plain list (`- <path>`) and manual sweep confirmed scope alignment.
+- 2026-03-07T08:47:57-03:00 transition doing/implement->doing/evaluate
+- 2026-03-07T08:48:18-03:00 Evaluate completed: ACs checked and Result log filled after manual sweep validation.
+- 2026-03-07T08:49:09-03:00 transition doing/evaluate->done

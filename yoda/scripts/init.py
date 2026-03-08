@@ -164,7 +164,7 @@ def _migrate_legacy_workspace(root: Path, dev: str, dry_run: bool) -> tuple[list
                 message = sanitize_flow_message(str(entry.get("message", "")))
                 if not timestamp or not message:
                     continue
-                append_flow_log_line(issue_file, f"{timestamp} | {message}")
+                append_flow_log_line(issue_file, f"{timestamp} {message}")
         written.append(f"{issue_file.relative_to(root)} (legacy log migrated)")
 
     if not dry_run:

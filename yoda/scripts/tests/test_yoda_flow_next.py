@@ -91,6 +91,7 @@ def test_flow_next_transitions_todo_to_doing_study_and_logs() -> None:
     assert meta["status"] == "doing"
     assert meta["phase"] == "study"
     assert meta["updated_at"] == payload["log_timestamp"]
+    assert _last_log_line(path).startswith("- ")
     assert _last_log_line(path).endswith("transition to-do->doing/study")
 
 

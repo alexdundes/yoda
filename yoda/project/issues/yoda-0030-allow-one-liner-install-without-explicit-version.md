@@ -65,7 +65,7 @@ Issue: yoda-0030
 Path: yoda/project/issues/yoda-0030-allow-one-liner-install-without-explicit-version.md
 
 ## Flow log
-2026-02-05T12:24:06-03:00 | [yoda-0030] issue_add created | title: Allow one-liner install without explicit version | description: Make the one-liner install flow default to latest when --version is omitted and update documentation to remove required version in the quick install command. | slug: allow-one-liner-install-without-explicit-version | priority: 7 | entrypoints: docs/install/yoda-install.sh:code, README.md:doc, project/specs/24-installation-and-upgrade.md:doc
-2026-02-06T08:54:31-03:00 | [yoda-0030] todo_update | status: to-do -> doing
-2026-02-06T08:58:24-03:00 | [yoda-0030] Updated quick install docs to remove required --version and add pinned alternative with safety guidance.
-2026-02-06T08:58:28-03:00 | [yoda-0030] todo_update | status: doing -> done
+- 2026-02-05T12:24:06-03:00 issue_add created | title: Allow one-liner install without explicit version | description: Make the one-liner install flow default to latest when --version is omitted and update documentation to remove required version in the quick install command. | slug: allow-one-liner-install-without-explicit-version | priority: 7 | entrypoints: docs/install/yoda-install.sh:code, README.md:doc, project/specs/24-installation-and-upgrade.md:doc
+- 2026-02-06T08:54:31-03:00 todo_update | status: to-do -> doing
+- 2026-02-06T08:58:24-03:00 Updated quick install docs to remove required --version and add pinned alternative with safety guidance.
+- 2026-02-06T08:58:28-03:00 todo_update | status: doing -> done
