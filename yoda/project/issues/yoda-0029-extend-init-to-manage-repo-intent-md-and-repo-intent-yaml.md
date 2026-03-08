@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0029
 status: done
 title: Extend init to manage REPO_INTENT.md and repo.intent.yaml
 description: Update init.py to create REPO_INTENT.md when missing and append a YODA
@@ -48,16 +47,11 @@ Ensure `init.py` creates or updates `REPO_INTENT.md` and `repo.intent.yaml` in a
 - [ ] `--dry-run` does not write changes.
 - [ ] Tests cover create + idempotent + preserve behaviors.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: yoda/scripts/init.py
-  type: code
-- path: REPO_INTENT.md
-  type: doc
-- path: repo.intent.yaml
-  type: config
+- `yoda/scripts/init.py`
+- `REPO_INTENT.md`
+- `repo.intent.yaml`
 
 ## Implementation notes
 - Reuse the existing YODA block markers for `REPO_INTENT.md` (or introduce a similar marker) to keep updates idempotent.
@@ -87,7 +81,7 @@ Issue: yoda-0029
 Path: yoda/project/issues/yoda-0029-extend-init-to-manage-repo-intent-md-and-repo-intent-yaml.md
 
 ## Flow log
-2026-02-04T20:16:53-03:00 | [yoda-0029] issue_add created | title: Extend init to manage REPO_INTENT.md and repo.intent.yaml | description: Update init.py to create REPO_INTENT.md when missing and append a YODA block when present; apply the same concept to repo.intent.yaml without overwriting existing content. | slug: extend-init-to-manage-repo-intent-md-and-repo-intent-yaml | priority: 6 | entrypoints: yoda/scripts/init.py:code, REPO_INTENT.md:doc, repo.intent.yaml:config
-2026-02-06T09:00:53-03:00 | [yoda-0029] todo_update | status: to-do -> doing
-2026-02-06T09:06:00-03:00 | [yoda-0029] Extended init to create/update REPO_INTENT.md and repo.intent.yaml with YODA data; added tests.
-2026-02-06T09:06:04-03:00 | [yoda-0029] todo_update | status: doing -> done
+- 2026-02-04T20:16:53-03:00 issue_add created | title: Extend init to manage REPO_INTENT.md and repo.intent.yaml | description: Update init.py to create REPO_INTENT.md when missing and append a YODA block when present; apply the same concept to repo.intent.yaml without overwriting existing content. | slug: extend-init-to-manage-repo-intent-md-and-repo-intent-yaml | priority: 6 | entrypoints: yoda/scripts/init.py:code, REPO_INTENT.md:doc, repo.intent.yaml:config
+- 2026-02-06T09:00:53-03:00 todo_update | status: to-do -> doing
+- 2026-02-06T09:06:00-03:00 Extended init to create/update REPO_INTENT.md and repo.intent.yaml with YODA data; added tests.
+- 2026-02-06T09:06:04-03:00 todo_update | status: doing -> done

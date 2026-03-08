@@ -38,7 +38,7 @@ def main() -> int:
             "- When to use: exceptional/manual issue logging only.\n"
             "- Mutability: appends one line to ## Flow log in the target issue.\n\n"
             "Required: --dev, --issue, --message.\n"
-            "Entry format: <timestamp> <single-line-message>.\n"
+            "Entry format: - <timestamp> <single-line-message>.\n"
             "Use this when recording issue context outside YODA Flow automation."
         ),
     )

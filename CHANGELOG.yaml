@@ -1,3 +1,27 @@
+- version: 0.3.1
+  build: '20260308.5638976'
+  date: '2026-03-08T10:58:09-03:00'
+  summary:
+  - Converged the 0.3.1 contract to a markdown-first issue model across docs, specs,
+    and backlog artifacts
+  - Hardened flow safety and metadata normalization in scripts and init migration
+    paths
+  breaking: []
+  additions:
+  - Added non-mutating dry-run simulation in yoda_flow_next with regression coverage
+    for selectable and blocked paths
+  - Added init sanitation for legacy issue front matter to remove id and keep filename-derived
+    IDs canonical
+  - Added centralized Flow log writer normalization to enforce '- <timestamp> <message>'
+    entries
+  fixes:
+  - Fixed yoda_flow_next --dry-run mutating issue files and blocked logs
+  - Fixed inconsistent Flow log entry format across scripts by converging to a single
+    hyphen-prefixed format
+  - Fixed test fixture drift by removing other-0001-beta from active issues and cleaning
+    generated other-*.md artifacts
+  notes: ''
+  commit: 5638976b3154068c8eab14f1a5187f0a00d74980
 - version: 0.3.0
   build: 20260307.5c2f8fc
   date: '2026-03-07T19:45:55-03:00'

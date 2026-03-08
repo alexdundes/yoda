@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0050
 status: done
 depends_on:
 - yoda-0049
@@ -60,16 +59,11 @@ Centralizar selecao e instrucao operacional de fase em um unico comando determin
 - [x] Em bloqueio, output markdown traz explicacao legivel + codigo fixo de bloqueio.
 - [x] Nenhuma mutacao de status/phase/log ocorre na `yoda-0050`.
 
-## Dependencies
-Depende de `yoda-0049`.
 
 ## Entry points
-- path: yoda/scripts/yoda_flow_next.py
-  type: code
-- path: yoda/scripts/lib
-  type: code
-- path: yoda/scripts/tests
-  type: code
+- `yoda/scripts/yoda_flow_next.py`
+- `yoda/scripts/lib`
+- `yoda/scripts/tests`
 
 ## Implementation notes
 Runbooks devem ser pequenos para reduzir tokens e variacao de interpretacao. O markdown deve priorizar legibilidade operacional para o agent (instrucao direta da fase e resumo objetivo de bloqueio quando aplicavel).
@@ -100,11 +94,11 @@ Foi implementado `yoda/scripts/yoda_flow_next.py` com modelo implicito de proxim
 - **Path**: `yoda/project/issues/yoda-0050-criar-yoda-flow-next-py-com-selecao-e-runbook-por-fase.md`
 
 ## Flow log
-2026-03-04T20:33:41-03:00 | [yoda-0050] issue_add created | title: Criar yoda_flow_next.py com selecao e runbook por fase | description: Introduzir comando que seleciona issue elegivel de forma deterministica e retorna runbook compacto para Study, Document, Implement ou Evaluate. | slug: criar-yoda-flow-next-py-com-selecao-e-runbook-por-fase | extern_issue_file: external issue linked
-2026-03-04T20:34:07-03:00 | [yoda-0050] todo_update | depends_on:  -> yoda-0049
-2026-03-06T16:56:08-03:00 | [yoda-0050] todo_update | status: to-do -> doing
-2026-03-06T17:16:32-03:00 | [yoda-0050] Document updated with fixed next_step/blocked_reason, doing-resume rule, pending hint, readable markdown runbook, and no-mutation scope.
-2026-03-06T17:25:48-03:00 | [yoda-0050] Implemented yoda_flow_next.py and tests for doing-resume, selectable selection, pending hints, fixed blocked reasons, and markdown Runbook output.
-2026-03-06T17:30:24-03:00 | [yoda-0050] Evaluate completed: ACs checked, result log finalized, yoda_flow_next tests passing.
-2026-03-06T17:30:24-03:00 | [yoda-0050] todo_update | status: doing -> done
-2026-03-06T17:31:43-03:00 | yoda-0050: nova solicitacao de Evaluate recebida apos fechamento; status permanece done.
+- 2026-03-04T20:33:41-03:00 issue_add created | title: Criar yoda_flow_next.py com selecao e runbook por fase | description: Introduzir comando que seleciona issue elegivel de forma deterministica e retorna runbook compacto para Study, Document, Implement ou Evaluate. | slug: criar-yoda-flow-next-py-com-selecao-e-runbook-por-fase | extern_issue_file: external issue linked
+- 2026-03-04T20:34:07-03:00 todo_update | depends_on: -> yoda-0049
+- 2026-03-06T16:56:08-03:00 todo_update | status: to-do -> doing
+- 2026-03-06T17:16:32-03:00 Document updated with fixed next_step/blocked_reason, doing-resume rule, pending hint, readable markdown runbook, and no-mutation scope.
+- 2026-03-06T17:25:48-03:00 Implemented yoda_flow_next.py and tests for doing-resume, selectable selection, pending hints, fixed blocked reasons, and markdown Runbook output.
+- 2026-03-06T17:30:24-03:00 Evaluate completed: ACs checked, result log finalized, yoda_flow_next tests passing.
+- 2026-03-06T17:30:24-03:00 todo_update | status: doing -> done
+- 2026-03-06T17:31:43-03:00 nova solicitacao de Evaluate recebida apos fechamento; status permanece done.

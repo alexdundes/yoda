@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0007
 status: done
 title: Specify todo_next command
 description: Write a spec for todo_next.py behavior, inputs, outputs, and error handling
@@ -49,20 +48,13 @@ Create a complete spec for `todo_next.py` to remove ambiguity before implementat
 - [x] Spec explicitly blocks selection when any issue is `doing`.
 - [x] Spec explicitly limits selectable issues to `to-do`.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: project/specs/13-yoda-scripts-v1.md
-  type: doc
-- path: project/specs/21-todo-next-script.md
-  type: doc
-- path: project/specs/04-todo-dev-yaml-issues.md
-  type: doc
-- path: project/specs/07-agent-entry-and-root-file.md
-  type: doc
-- path: project/specs/02-yoda-flow-process.md
-  type: doc
+- `project/specs/13-yoda-scripts-v1.md`
+- `project/specs/21-todo-next-script.md`
+- `project/specs/04-todo-dev-yaml-issues.md`
+- `project/specs/07-agent-entry-and-root-file.md`
+- `project/specs/02-yoda-flow-process.md`
 
 ## Implementation notes
 Keep the spec consistent with the selection rule already defined in `project/specs/04-todo-dev-yaml-issues.md`.
@@ -83,13 +75,13 @@ Issue: `yoda-0007`
 Path: `yoda/project/issues/yoda-0007-specify-todo-next-command.md`
 
 ## Flow log
-2026-01-27T17:22:15-03:00 | [yoda-0007] issue_add created | title: Specify todo_next command | description: Write a spec for todo_next.py behavior, inputs, outputs, and error handling | slug: specify-todo-next-command
-2026-01-27T17:32:45-03:00 | [yoda-0007] implement: added todo_next spec, updated scripts v1 JSON contract, and added spec index entry
-2026-01-27T17:32:49-03:00 | [yoda-0007] todo_update | status: to-do -> done
-2026-01-27T17:32:53-03:00 | [yoda-0007] evaluate: acceptance criteria checked and result log updated in issue
-2026-01-27T17:44:25-03:00 | [yoda-0007] todo_update | status: done -> doing | pending_reason:  -> Reopening to revise todo_next selection rules
-2026-01-27T17:44:33-03:00 | [yoda-0007] todo_update | pending_reason: Reopening to revise todo_next selection rules ->
-2026-01-27T17:53:30-03:00 | [yoda-0007] document: added single-issue (doing blocks) and to-do-only selection requirements
-2026-01-27T17:54:34-03:00 | [yoda-0007] implement: updated selection rules to enforce single-issue execution and to-do-only selection
-2026-01-27T17:54:38-03:00 | [yoda-0007] todo_update | status: doing -> done
-2026-01-27T17:54:44-03:00 | [yoda-0007] evaluate: acceptance criteria checked and result log updated in issue
+- 2026-01-27T17:22:15-03:00 issue_add created | title: Specify todo_next command | description: Write a spec for todo_next.py behavior, inputs, outputs, and error handling | slug: specify-todo-next-command
+- 2026-01-27T17:32:45-03:00 implement: added todo_next spec, updated scripts v1 JSON contract, and added spec index entry
+- 2026-01-27T17:32:49-03:00 todo_update | status: to-do -> done
+- 2026-01-27T17:32:53-03:00 evaluate: acceptance criteria checked and result log updated in issue
+- 2026-01-27T17:44:25-03:00 todo_update | status: done -> doing | pending_reason: -> Reopening to revise todo_next selection rules
+- 2026-01-27T17:44:33-03:00 todo_update | pending_reason: Reopening to revise todo_next selection rules ->
+- 2026-01-27T17:53:30-03:00 document: added single-issue (doing blocks) and to-do-only selection requirements
+- 2026-01-27T17:54:34-03:00 implement: updated selection rules to enforce single-issue execution and to-do-only selection
+- 2026-01-27T17:54:38-03:00 todo_update | status: doing -> done
+- 2026-01-27T17:54:44-03:00 evaluate: acceptance criteria checked and result log updated in issue

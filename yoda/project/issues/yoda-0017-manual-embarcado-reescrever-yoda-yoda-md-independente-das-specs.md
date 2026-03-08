@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0017
 status: done
 depends_on:
 - yoda-0016
@@ -49,18 +48,12 @@ Provide an English, single-file manual covering Flow/Intake entry phrases, devel
 - [x] No `project/specs` references are required to operate the embedded framework.
 - [x] Internal links/anchors function after packaging.
 
-## Dependencies
-Depends on: yoda-0016.
 
 ## Entry points
-- path: yoda/yoda.md
-  type: doc
-- path: project/specs/02-yoda-flow-process.md
-  type: doc
-- path: project/specs/11-yoda-intake.md
-  type: doc
-- path: project/specs/06-agent-playbook.md
-  type: doc
+- `yoda/yoda.md`
+- `project/specs/02-yoda-flow-process.md`
+- `project/specs/11-yoda-intake.md`
+- `project/specs/06-agent-playbook.md`
 
 ## Implementation notes
 - Manter linguagem concisa e operacional, com foco em ações e comandos.
@@ -87,8 +80,8 @@ Path: yoda/yoda.md
 ```
 
 ## Flow log
-2026-01-28T19:02:06-03:00 | [yoda-0017] issue_add created | title: Manual embarcado: reescrever yoda/yoda.md independente das specs | description: Produzir manual mínimo para agentes (YODA Flow e Intake) que funcione sem project/specs, com playbooks claros e referências às ferramentas/scripts. | slug: manual-embarcado-reescrever-yoda-yoda-md-independente-das-specs | priority: 9 | agent: Human
-2026-01-28T19:05:16-03:00 | [yoda-0017] todo_update | depends_on: [] -> yoda-0016
-2026-01-29T09:30:58-03:00 | [yoda-0017] todo_update | status: to-do -> doing
-2026-01-29T09:34:49-03:00 | [yoda-0017] Implement: rewrote yoda/yoda.md as standalone English manual (Flow/Intake playbooks, scripts reference, paths, no project/specs dependency).
-2026-01-29T09:34:53-03:00 | [yoda-0017] todo_update | status: doing -> done
+- 2026-01-28T19:02:06-03:00 issue_add created | title: Manual embarcado: reescrever yoda/yoda.md independente das specs | description: Produzir manual mínimo para agentes (YODA Flow e Intake) que funcione sem project/specs, com playbooks claros e referências às ferramentas/scripts. | slug: manual-embarcado-reescrever-yoda-yoda-md-independente-das-specs | priority: 9 | agent: Human
+- 2026-01-28T19:05:16-03:00 todo_update | depends_on: [] -> yoda-0016
+- 2026-01-29T09:30:58-03:00 todo_update | status: to-do -> doing
+- 2026-01-29T09:34:49-03:00 Implement: rewrote yoda/yoda.md as standalone English manual (Flow/Intake playbooks, scripts reference, paths, no project/specs dependency).
+- 2026-01-29T09:34:53-03:00 todo_update | status: doing -> done

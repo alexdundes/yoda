@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0023
 status: done
 depends_on:
 - yoda-0024
@@ -59,16 +58,11 @@ Document the one-liner install hosting strategy, metadata contract, and setup st
 - [ ] README placeholders are updated after yoda-0024 to use the defined base URL.
 - [ ] The issue explicitly states spec-first and no implementation.
 
-## Dependencies
-Depends on: yoda-0024.
 
 ## Entry points
-- path: README.md
-  type: doc
-- path: project/specs/24-installation-and-upgrade.md
-  type: doc
-- path: project/specs/23-distribution-and-packaging.md
-  type: doc
+- `README.md`
+- `project/specs/24-installation-and-upgrade.md`
+- `project/specs/23-distribution-and-packaging.md`
 
 ## Implementation notes
 - GitHub Pages configuration (human checklist):
@@ -101,8 +95,8 @@ Path: yoda/project/issues/yoda-0023-document-one-liner-install-flow.md
 ```
 
 ## Flow log
-2026-02-04T08:07:08-03:00 | [yoda-0023] issue_add created | title: Document one-liner install flow | description: Define and document the one-liner install script (yoda-install.sh), hosting URLs, and latest.json metadata. Include security guidance and update README.md placeholders once URLs are defined. | slug: document-one-liner-install-flow | priority: 5 | entrypoints: README.md:doc, project/specs/24-installation-and-upgrade.md:doc
-2026-02-04T09:38:26-03:00 | [yoda-0023] todo_update | depends_on: [] -> yoda-0024
-2026-02-04T11:09:01-03:00 | [yoda-0023] todo_update | status: to-do -> doing
-2026-02-04T11:10:41-03:00 | [yoda-0023] Documented GitHub Pages /docs hosting and endpoints; updated README one-liner URL and placeholder TODO.
-2026-02-04T11:10:48-03:00 | [yoda-0023] todo_update | status: doing -> done
+- 2026-02-04T08:07:08-03:00 issue_add created | title: Document one-liner install flow | description: Define and document the one-liner install script (yoda-install.sh), hosting URLs, and latest.json metadata. Include security guidance and update README.md placeholders once URLs are defined. | slug: document-one-liner-install-flow | priority: 5 | entrypoints: README.md:doc, project/specs/24-installation-and-upgrade.md:doc
+- 2026-02-04T09:38:26-03:00 todo_update | depends_on: [] -> yoda-0024
+- 2026-02-04T11:09:01-03:00 todo_update | status: to-do -> doing
+- 2026-02-04T11:10:41-03:00 Documented GitHub Pages /docs hosting and endpoints; updated README one-liner URL and placeholder TODO.
+- 2026-02-04T11:10:48-03:00 todo_update | status: doing -> done

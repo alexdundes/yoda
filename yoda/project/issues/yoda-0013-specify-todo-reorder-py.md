@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0013
 status: done
 title: Specify todo_reorder.py
 description: Define CLI, ordering behaviors, and output formats for todo_reorder.py.
@@ -54,16 +53,11 @@ Especificar completamente o comportamento de `todo_reorder.py` (inputs, regras, 
 - [x] Spec define comando `--prefer/--over` e regra de ajuste de prioridade.
 - [x] Spec define validações extras para priorização (status `to-do` e dependência).
 
-## Dependencies
-None.
 
 ## Entry points
-- path: project/specs/13-yoda-scripts-v1.md
-  type: doc
-- path: project/specs/05-scripts-and-automation.md
-  type: doc
-- path: project/specs/15-scripts-python-structure.md
-  type: doc
+- `project/specs/13-yoda-scripts-v1.md`
+- `project/specs/05-scripts-and-automation.md`
+- `project/specs/15-scripts-python-structure.md`
 
 ## Implementation notes
 A reordenação deve ser determinística e preservar a ordem relativa dos demais itens. Reaproveitar lógica de ordenação de `todo_list` quando possível. Definir como lidar com conflito de flags e IDs inexistentes.
@@ -88,11 +82,11 @@ Issue: `yoda-0013`
 Path: `yoda/project/issues/yoda-0013-specify-todo-reorder-py.md`
 
 ## Flow log
-2026-01-28T14:51:19-03:00 | [yoda-0013] issue_add created | title: Specify todo_reorder.py | description: Define CLI, ordering behaviors, and output formats for todo_reorder.py. | slug: specify-todo-reorder-py
-2026-01-28T14:54:54-03:00 | [yoda-0013] todo_update | status: to-do -> doing
-2026-01-28T15:10:29-03:00 | [yoda-0013] implement: added todo_reorder spec and updated indices
-2026-01-28T15:10:34-03:00 | [yoda-0013] todo_update | status: doing -> done
-2026-01-28T15:13:46-03:00 | [yoda-0013] todo_update | status: done -> doing
-2026-01-28T15:14:05-03:00 | [yoda-0013] document: added prioritization validation (to-do only, reject dependency)
-2026-01-28T15:14:10-03:00 | [yoda-0013] todo_update | status: doing -> done
-2026-01-28T15:26:03-03:00 | [yoda-0013] document: aligned reorder spec with implementation (updated_at only on change; no forced A before B)
+- 2026-01-28T14:51:19-03:00 issue_add created | title: Specify todo_reorder.py | description: Define CLI, ordering behaviors, and output formats for todo_reorder.py. | slug: specify-todo-reorder-py
+- 2026-01-28T14:54:54-03:00 todo_update | status: to-do -> doing
+- 2026-01-28T15:10:29-03:00 implement: added todo_reorder spec and updated indices
+- 2026-01-28T15:10:34-03:00 todo_update | status: doing -> done
+- 2026-01-28T15:13:46-03:00 todo_update | status: done -> doing
+- 2026-01-28T15:14:05-03:00 document: added prioritization validation (to-do only, reject dependency)
+- 2026-01-28T15:14:10-03:00 todo_update | status: doing -> done
+- 2026-01-28T15:26:03-03:00 document: aligned reorder spec with implementation (updated_at only on change; no forced A before B)

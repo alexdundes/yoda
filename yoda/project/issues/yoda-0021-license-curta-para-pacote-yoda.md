@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0021
 status: done
 depends_on:
 - yoda-0016
@@ -50,14 +49,10 @@ Create a concise LICENSE file (English) suitable for inclusion in the packaged a
 - [ ] Ownership/year fields are filled and accurate.
 - [ ] No other repo files need modification to distribute the license.
 
-## Dependencies
-yoda-0016
 
 ## Entry points
-- path: project/specs/23-distribution-and-packaging.md
-  type: doc
-- path: project/specs/summary.md
-  type: doc
+- `project/specs/23-distribution-and-packaging.md`
+- `project/specs/summary.md`
 
 ## Implementation notes
 - Confirm license choice with requester if unspecified; default recommendation: MIT for simplicity or Apache-2.0 if patent grant desired.
@@ -86,8 +81,8 @@ Path: yoda/project/issues/yoda-0021-license-curta-para-pacote-yoda.md
 ```
 
 ## Flow log
-2026-01-29T06:31:15-03:00 | [yoda-0021] issue_add created | title: LICENSE curta para pacote YODA | description: Definir e redigir arquivo LICENSE curto a ser incluído no artefato distribuível, alinhado às decisões de empacote e licença do projeto. | slug: license-curta-para-pacote-yoda | priority: 6 | agent: Human
-2026-01-29T06:31:21-03:00 | [yoda-0021] todo_update | depends_on: [] -> yoda-0016
-2026-02-04T07:52:34-03:00 | [yoda-0021] todo_update | status: to-do -> doing
-2026-02-04T07:58:03-03:00 | [yoda-0021] Added MIT LICENSE at repo root and mirrored it at yoda/LICENSE.
-2026-02-04T07:58:07-03:00 | [yoda-0021] todo_update | status: doing -> done
+- 2026-01-29T06:31:15-03:00 issue_add created | title: LICENSE curta para pacote YODA | description: Definir e redigir arquivo LICENSE curto a ser incluído no artefato distribuível, alinhado às decisões de empacote e licença do projeto. | slug: license-curta-para-pacote-yoda | priority: 6 | agent: Human
+- 2026-01-29T06:31:21-03:00 todo_update | depends_on: [] -> yoda-0016
+- 2026-02-04T07:52:34-03:00 todo_update | status: to-do -> doing
+- 2026-02-04T07:58:03-03:00 Added MIT LICENSE at repo root and mirrored it at yoda/LICENSE.
+- 2026-02-04T07:58:07-03:00 todo_update | status: doing -> done

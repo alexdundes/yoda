@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0025
 status: done
 title: Update package build to include yoda/LICENSE
 description: Update package generation to include yoda/LICENSE in the artefact and
@@ -41,16 +40,11 @@ Ensure `yoda/LICENSE` is required, included in the package, and verified by test
 - [ ] Tarball includes `yoda/LICENSE` alongside root `LICENSE`.
 - [ ] Tests assert presence of `yoda/LICENSE`.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: yoda/scripts/package.py
-  type: code
-- path: yoda/scripts/tests/test_package.py
-  type: code
-- path: project/specs/23-distribution-and-packaging.md
-  type: doc
+- `yoda/scripts/package.py`
+- `yoda/scripts/tests/test_package.py`
+- `project/specs/23-distribution-and-packaging.md`
 
 ## Implementation notes
 - Add `yoda/LICENSE` to the include list and required file checks.
@@ -76,7 +70,7 @@ Path: yoda/project/issues/yoda-0025-update-package-build-to-include-yoda-license
 ```
 
 ## Flow log
-2026-02-04T18:39:22-03:00 | [yoda-0025] issue_add created | title: Update package build to include yoda/LICENSE | description: Update package generation to include yoda/LICENSE in the artefact and validate its presence. Adjust include list and tests as needed to ensure embedded license ships with the package. | slug: update-package-build-to-include-yoda-license | priority: 7 | entrypoints: yoda/scripts/package.py:code, project/specs/23-distribution-and-packaging.md:doc
-2026-02-04T18:47:39-03:00 | [yoda-0025] todo_update | status: to-do -> doing
-2026-02-04T18:51:27-03:00 | [yoda-0025] Included yoda/LICENSE in package build and tests; clarified spec that licenses need not match.
-2026-02-04T18:51:31-03:00 | [yoda-0025] todo_update | status: doing -> done
+- 2026-02-04T18:39:22-03:00 issue_add created | title: Update package build to include yoda/LICENSE | description: Update package generation to include yoda/LICENSE in the artefact and validate its presence. Adjust include list and tests as needed to ensure embedded license ships with the package. | slug: update-package-build-to-include-yoda-license | priority: 7 | entrypoints: yoda/scripts/package.py:code, project/specs/23-distribution-and-packaging.md:doc
+- 2026-02-04T18:47:39-03:00 todo_update | status: to-do -> doing
+- 2026-02-04T18:51:27-03:00 Included yoda/LICENSE in package build and tests; clarified spec that licenses need not match.
+- 2026-02-04T18:51:31-03:00 todo_update | status: doing -> done

@@ -96,3 +96,14 @@ def test_todo_update_flow_log_entry_has_no_issue_id_prefix() -> None:
     text = _issue_file_for_id(issue_id).read_text(encoding="utf-8")
     assert "todo_update status:" in text
     assert f"{issue_id}: todo_update" not in text
+
+
+def test_todo_update_does_not_reintroduce_id_in_front_matter() -> None:
+    issue_id = _create_issue()
+    result = run_script(
+        "todo_update.py",
+        ["--dev", TEST_DEV, "--issue", issue_id, "--priority", "6"],
+    )
+    assert result.returncode == 0, result.stderr
+    parsed = frontmatter.load(_issue_file_for_id(issue_id))
+    assert "id" not in parsed.metadata

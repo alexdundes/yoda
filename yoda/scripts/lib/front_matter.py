@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Any
 
 from .errors import YodaError, ExitCode
-from .issue_metadata import canonicalize_issue_metadata
+from .issue_metadata import canonicalize_issue_front_matter_metadata
 from .io import write_text
 
 try:
@@ -35,7 +35,7 @@ def _dump_with_front_matter(metadata: dict[str, Any], content: str) -> str:
 
 
 def render_issue_document(content: str, metadata: dict[str, Any]) -> str:
-    return _dump_with_front_matter(canonicalize_issue_metadata(metadata), content)
+    return _dump_with_front_matter(canonicalize_issue_front_matter_metadata(metadata), content)
 
 
 def render_issue(template_text: str, metadata: dict[str, Any], replacements: dict[str, str]) -> str:

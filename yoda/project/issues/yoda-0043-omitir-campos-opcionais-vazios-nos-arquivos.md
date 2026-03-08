@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0043
 status: done
 title: Omitir campos opcionais vazios nos arquivos
 description: Quando um campo opcional estiver vazio, ele nao deve ser definido/persistido
@@ -50,24 +49,15 @@ Definir e implementar politica unica de serializacao para que campos opcionais v
 - [x] Testes automatizados cobrem criacao, update e reconciliacao com omissao de opcionais.
 - [x] Decisao de versao registrada: manter `schema_version: "1.02"` nesta entrega.
 
-## Dependencies
-Relacionada a `yoda-0042` (simplificacao de origem externa) e ao backlog externo `github #2`.
 
 ## Entry points
-- path: yoda/scripts/issue_add.py
-  type: code
-- path: yoda/scripts/todo_update.py
-  type: code
-- path: yoda/scripts/init.py
-  type: code
-- path: yoda/scripts/lib/validate.py
-  type: code
-- path: yoda/scripts/lib/front_matter.py
-  type: code
-- path: yoda/templates/issue.md
-  type: template
-- path: yoda/todos/TODO.yoda.yaml
-  type: data
+- `yoda/scripts/issue_add.py`
+- `yoda/scripts/todo_update.py`
+- `yoda/scripts/init.py`
+- `yoda/scripts/lib/validate.py`
+- `yoda/scripts/lib/front_matter.py`
+- `yoda/templates/issue.md`
+- `yoda/todos/TODO.yoda.yaml`
 
 ## Implementation notes
 A regra de "opcional vazio = omitido" deve ser centralizada em utilitario compartilhado de serializacao para evitar divergencia entre scripts. Necessario definir com precisao o que e "vazio" por tipo (string vazia, lista vazia, objeto vazio, null) e aplicar de forma uniforme.
@@ -103,10 +93,10 @@ Path: `yoda/project/issues/yoda-0043-omitir-campos-opcionais-vazios-nos-arquivos
 Implementado utilitario compartilhado para remover opcionais vazios (`depends_on`, `pending_reason`, `extern_issue_file`) e integracao em `issue_add.py`, `todo_update.py` e reconciliacao de `init.py`. A validacao foi ajustada para aceitar ausencia de opcionais e manter a regra de `pending_reason` obrigatorio quando `status=pending`. Template e documentacao dos scripts foram alinhados, com manutencao de `schema_version: "1.02"` sem bump.
 
 ## Flow log
-2026-02-26T18:57:50-03:00 | [yoda-0043] issue_add created | title: Omitir campos opcionais vazios nos arquivos | description: Quando um campo opcional estiver vazio, ele nao deve ser definido/persistido nos arquivos gerados ou atualizados. | slug: omitir-campos-opcionais-vazios-nos-arquivos | priority: 5 | origin: external issue linked
-2026-03-03T11:51:27-03:00 | [yoda-0043] todo_update (no changes)
-2026-03-03T12:11:14-03:00 | [yoda-0043] todo_update | status: to-do -> doing
-2026-03-03T12:15:26-03:00 | [yoda-0043] Document phase updated issue text\n- Registered decision to keep schema_version 1.02 (no bump)\n- Defined empty-value omission policy\n- Scoped optional fields for omission: extern_issue_file, pending_reason, depends_on\n- Kept mandatory metadata fields explicit
-2026-03-03T12:21:42-03:00 | [yoda-0043] Implement phase completed\n- Added shared optional-metadata pruning helper and wired it into issue_add, todo_update, and init reconcile\n- Validation now accepts missing optional fields while preserving pending rules\n- Updated issue template and scripts README for optional omission policy\n- Updated tests for creation/update/reconcile behavior; full yoda/scripts test suite green (54 passed)
-2026-03-03T12:25:01-03:00 | [yoda-0043] Evaluate phase completed\n- Acceptance criteria marked as done in issue markdown\n- Result log filled with conventional commit suggestion\n- Validation recorded: python3 -m pytest yoda/scripts/tests -q (54 passed)\n- Schema decision preserved: 1.02 without bump
-2026-03-03T12:25:56-03:00 | [yoda-0043] todo_update | status: doing -> done | depends_on: [] -> | pending_reason:  ->
+- 2026-02-26T18:57:50-03:00 issue_add created | title: Omitir campos opcionais vazios nos arquivos | description: Quando um campo opcional estiver vazio, ele nao deve ser definido/persistido nos arquivos gerados ou atualizados. | slug: omitir-campos-opcionais-vazios-nos-arquivos | priority: 5 | origin: external issue linked
+- 2026-03-03T11:51:27-03:00 todo_update (no changes)
+- 2026-03-03T12:11:14-03:00 todo_update | status: to-do -> doing
+- 2026-03-03T12:15:26-03:00 Document phase updated issue text\n- Registered decision to keep schema_version 1.02 (no bump)\n- Defined empty-value omission policy\n- Scoped optional fields for omission: extern_issue_file, pending_reason, depends_on\n- Kept mandatory metadata fields explicit
+- 2026-03-03T12:21:42-03:00 Implement phase completed\n- Added shared optional-metadata pruning helper and wired it into issue_add, todo_update, and init reconcile\n- Validation now accepts missing optional fields while preserving pending rules\n- Updated issue template and scripts README for optional omission policy\n- Updated tests for creation/update/reconcile behavior; full yoda/scripts test suite green (54 passed)
+- 2026-03-03T12:25:01-03:00 Evaluate phase completed\n- Acceptance criteria marked as done in issue markdown\n- Result log filled with conventional commit suggestion\n- Validation recorded: python3 -m pytest yoda/scripts/tests -q (54 passed)\n- Schema decision preserved: 1.02 without bump
+- 2026-03-03T12:25:56-03:00 todo_update | status: doing -> done | depends_on: [] -> | pending_reason: ->

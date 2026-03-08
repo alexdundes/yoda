@@ -31,6 +31,7 @@ def cleanup_test_files() -> None:
     paths = [
         TEST_TODO,
         *REPO_ROOT.glob("yoda/project/issues/test-*.md"),
+        *REPO_ROOT.glob("yoda/project/issues/other-*.md"),
         *REPO_ROOT.glob("yoda/logs/test-*.yaml"),
         *REPO_ROOT.glob("yoda/locks/issue_add.test*.lock"),
     ]

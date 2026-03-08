@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0012
 status: done
 title: Implement todo_list.py
 description: 'Implement todo_list.py per spec: filters, ordering, md/json output,
@@ -51,22 +50,14 @@ Entregar o script `todo_list.py` com comportamento determinístico e testes, ali
 - [x] Filtro de tags usa AND (todas as tags).
 - [ ] Testes cobrindo filtros, ordenação e busca passam.
 
-## Dependencies
-Depends on: yoda-0011.
 
 ## Entry points
-- path: yoda/scripts
-  type: code
-- path: yoda/scripts/lib
-  type: code
-- path: project/specs/13-yoda-scripts-v1.md
-  type: doc
-- path: project/specs/20-todo-update-script.md
-  type: doc
-- path: project/specs/21-todo-next-script.md
-  type: doc
-- path: yoda/project/issues/yoda-0011-specify-todo-list-py.md
-  type: doc
+- `yoda/scripts`
+- `yoda/scripts/lib`
+- `project/specs/13-yoda-scripts-v1.md`
+- `project/specs/20-todo-update-script.md`
+- `project/specs/21-todo-next-script.md`
+- `yoda/project/issues/yoda-0011-specify-todo-list-py.md`
 
 ## Implementation notes
 Reusar helpers em `yoda/scripts/lib` quando possível (CLI, validação, output). Implementar ordenação com dependências de forma estável e determinística. Para busca textual, ler arquivos apenas da seleção filtrada.
@@ -88,10 +79,10 @@ Issue: `yoda-0012`
 Path: `yoda/project/issues/yoda-0012-implement-todo-list-py.md`
 
 ## Flow log
-2026-01-28T12:25:58-03:00 | [yoda-0012] issue_add created | title: Implement todo_list.py | description: Implement todo_list.py per spec: filters, ordering, md/json output, and optional text/regex search in selected issue markdown files. | slug: implement-todo-list-py
-2026-01-28T14:33:16-03:00 | [yoda-0012] todo_update | status: to-do -> doing
-2026-01-28T14:37:35-03:00 | [yoda-0012] document: clarified tags filter uses AND and pending block only for selected issues
-2026-01-28T14:42:01-03:00 | [yoda-0012] implement: added todo_list command and tests
-2026-01-28T14:42:06-03:00 | [yoda-0012] evaluate: tests pass and result log updated
-2026-01-28T14:42:11-03:00 | [yoda-0012] todo_update | status: doing -> done
-2026-01-28T14:47:11-03:00 | [yoda-0012] refactor: reused lib helpers in todo_list
+- 2026-01-28T12:25:58-03:00 issue_add created | title: Implement todo_list.py | description: Implement todo_list.py per spec: filters, ordering, md/json output, and optional text/regex search in selected issue markdown files. | slug: implement-todo-list-py
+- 2026-01-28T14:33:16-03:00 todo_update | status: to-do -> doing
+- 2026-01-28T14:37:35-03:00 document: clarified tags filter uses AND and pending block only for selected issues
+- 2026-01-28T14:42:01-03:00 implement: added todo_list command and tests
+- 2026-01-28T14:42:06-03:00 evaluate: tests pass and result log updated
+- 2026-01-28T14:42:11-03:00 todo_update | status: doing -> done
+- 2026-01-28T14:47:11-03:00 refactor: reused lib helpers in todo_list

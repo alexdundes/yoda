@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0051
 status: done
 depends_on:
 - yoda-0050
@@ -61,16 +60,11 @@ Permitir que o agente avance no fluxo com comandos deterministicos e menos etapa
 - [x] Eventos operacionais sao registrados no markdown da issue em linha unica compacta.
 - [x] Cenarios de transicao invalida e de bloqueio possuem testes.
 
-## Dependencies
-Depende de `yoda-0050`.
 
 ## Entry points
-- path: yoda/scripts/yoda_flow_next.py
-  type: code
-- path: yoda/scripts/lib
-  type: code
-- path: yoda/project/issues
-  type: data
+- `yoda/scripts/yoda_flow_next.py`
+- `yoda/scripts/lib`
+- `yoda/project/issues`
 
 ## Implementation notes
 Runbook permanece compacto e orienta somente a fase atual. A automacao deve registrar decisao em todas as execucoes (inclusive bloqueio) para rastreabilidade, mantendo formato de log em uma linha curta.
@@ -100,12 +94,12 @@ Foi implementada a evolucao do `yoda_flow_next.py` para executar transicoes dete
 - **Path**: `yoda/project/issues/yoda-0051-evoluir-yoda-flow-next-py-com-transicoes-de-estado-e-log-automatico.md`
 
 ## Flow log
-2026-03-04T20:33:41-03:00 | [yoda-0051] issue_add created | title: Evoluir yoda_flow_next.py com transicoes de estado e log automatico | description: Adicionar parametros de transicao e registro automatico de eventos no log embutido da issue, retirando log_add.py do fluxo padrao. | slug: evoluir-yoda-flow-next-py-com-transicoes-de-estado-e-log-automatico | extern_issue_file: external issue linked
-2026-03-04T20:34:08-03:00 | [yoda-0051] todo_update | depends_on:  -> yoda-0050
-2026-03-06T17:42:34-03:00 | [yoda-0051] todo_update | status: to-do -> doing
-2026-03-06T17:42:46-03:00 | yoda-0051: fase Study iniciada; issue movida para doing e contexto tecnico de transicoes+log automatico levantado.
-2026-03-06T17:55:31-03:00 | yoda-0051: Document concluido com contrato aprovado de interface implicita, transicoes fixas, log 1 linha e YAML como legado.
-2026-03-06T18:01:47-03:00 | yoda-0051: Implement concluido com transicao automatica no yoda_flow_next, log embutido 1 linha, suporte --phase no todo_update e testes passando.
-2026-03-06T18:06:39-03:00 | yoda-0051: ajuste por review aplicado no yoda_flow_next com runbook Evaluate detalhando Result log e saida done com proxima issue + confirmacao.
-2026-03-06T18:09:11-03:00 | yoda-0051: Evaluate concluido com ACs validados, Result log preenchido e testes 24 passed.
-2026-03-06T18:09:11-03:00 | yoda-0051: todo_update status: doing -> done
+- 2026-03-04T20:33:41-03:00 issue_add created | title: Evoluir yoda_flow_next.py com transicoes de estado e log automatico | description: Adicionar parametros de transicao e registro automatico de eventos no log embutido da issue, retirando log_add.py do fluxo padrao. | slug: evoluir-yoda-flow-next-py-com-transicoes-de-estado-e-log-automatico | extern_issue_file: external issue linked
+- 2026-03-04T20:34:08-03:00 todo_update | depends_on: -> yoda-0050
+- 2026-03-06T17:42:34-03:00 todo_update | status: to-do -> doing
+- 2026-03-06T17:42:46-03:00 fase Study iniciada; issue movida para doing e contexto tecnico de transicoes+log automatico levantado.
+- 2026-03-06T17:55:31-03:00 Document concluido com contrato aprovado de interface implicita, transicoes fixas, log 1 linha e YAML como legado.
+- 2026-03-06T18:01:47-03:00 Implement concluido com transicao automatica no yoda_flow_next, log embutido 1 linha, suporte --phase no todo_update e testes passando.
+- 2026-03-06T18:06:39-03:00 ajuste por review aplicado no yoda_flow_next com runbook Evaluate detalhando Result log e saida done com proxima issue + confirmacao.
+- 2026-03-06T18:09:11-03:00 Evaluate concluido com ACs validados, Result log preenchido e testes 24 passed.
+- 2026-03-06T18:09:11-03:00 todo_update status: doing -> done

@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0018
 status: done
 depends_on:
 - yoda-0016
@@ -57,18 +56,12 @@ Implementar um comando (ex.: `yoda/scripts/package.py`) que cria o pacote do YOD
 - [ ] `README.md` incluído e `yoda/scripts/tests` excluído.
 - [ ] `--archive-format` rejeita formatos além de `tar.gz`.
 
-## Dependencies
-Depends on: yoda-0016.
 
 ## Entry points
-- path: project/specs (nova seção de distribuição de yoda-0016)
-  type: doc
-- path: yoda/scripts/README.md
-  type: doc
-- path: yoda/yoda.md
-  type: doc
-- path: yoda/scripts
-  type: code
+- `project/specs` (nova seção de distribuição de yoda-0016)
+- `yoda/scripts/README.md`
+- `yoda/yoda.md`
+- `yoda/scripts`
 
 ## Implementation notes
 - Preferir stdlib (`tarfile`/`zipfile`) para evitar dependências novas.
@@ -97,8 +90,8 @@ Path: yoda/project/issues/yoda-0018-comando-de-empacote-do-yoda-package.md
 ```
 
 ## Flow log
-2026-01-28T19:02:09-03:00 | [yoda-0018] issue_add created | title: Comando de empacote do YODA (package) | description: Implementar comando/script que gera artefato instalável contendo apenas os arquivos necessários de yoda/, com versão e checklist de inclusão/exclusão. | slug: comando-de-empacote-do-yoda-package | priority: 8 | agent: Human
-2026-01-28T19:05:18-03:00 | [yoda-0018] todo_update | depends_on: [] -> yoda-0016
-2026-02-02T07:56:01-03:00 | [yoda-0018] todo_update | status: to-do -> doing
-2026-02-02T08:18:55-03:00 | [yoda-0018] Implemented package command, updated packaging spec for README.md/tests/tar.gz, added docs and tests.
-2026-02-02T08:19:00-03:00 | [yoda-0018] todo_update | status: doing -> done
+- 2026-01-28T19:02:09-03:00 issue_add created | title: Comando de empacote do YODA (package) | description: Implementar comando/script que gera artefato instalável contendo apenas os arquivos necessários de yoda/, com versão e checklist de inclusão/exclusão. | slug: comando-de-empacote-do-yoda-package | priority: 8 | agent: Human
+- 2026-01-28T19:05:18-03:00 todo_update | depends_on: [] -> yoda-0016
+- 2026-02-02T07:56:01-03:00 todo_update | status: to-do -> doing
+- 2026-02-02T08:18:55-03:00 Implemented package command, updated packaging spec for README.md/tests/tar.gz, added docs and tests.
+- 2026-02-02T08:19:00-03:00 todo_update | status: doing -> done

@@ -29,6 +29,14 @@ except Exception as exc:  # pragma: no cover - runtime dependency
         exit_code=ExitCode.ERROR,
     ) from exc
 
+try:
+    import frontmatter
+except Exception as exc:  # pragma: no cover - runtime dependency
+    raise YodaError(
+        "python-frontmatter is required. Install dependencies from yoda/scripts/requirements.txt.",
+        exit_code=ExitCode.ERROR,
+    ) from exc
+
 
 AGENT_FILES = ["AGENTS.md", "GEMINI.md", "CLAUDE.md"]
 REPO_INTENT_FILE = "REPO_INTENT.md"
@@ -156,7 +164,7 @@ def _migrate_legacy_workspace(root: Path, dev: str, dry_run: bool) -> tuple[list
                 message = sanitize_flow_message(str(entry.get("message", "")))
                 if not timestamp or not message:
                     continue
-                append_flow_log_line(issue_file, f"{timestamp} | {message}")
+                append_flow_log_line(issue_file, f"{timestamp} {message}")
         written.append(f"{issue_file.relative_to(root)} (legacy log migrated)")
 
     if not dry_run:
@@ -243,6 +251,30 @@ def _reconcile_todo_and_issues(
             encoding="utf-8",
         )
     written.append(f"{todo_file.relative_to(root)} (reconciled)")
+    return written, skipped
+
+
+def _sanitize_issue_front_matter_ids(
+    root: Path,
+    dev: str,
+    dry_run: bool,
+) -> tuple[list[str], list[str]]:
+    issues_root = root / "yoda" / "project" / "issues"
+    written: list[str] = []
+    skipped: list[str] = []
+    if not issues_root.exists():
+        return written, skipped
+
+    for issue_file in sorted(path for path in issues_root.glob(f"{dev}-*.md") if path.is_file()):
+        post = frontmatter.load(str(issue_file))
+        metadata = dict(post.metadata)
+        if "id" not in metadata:
+            continue
+        metadata.pop("id", None)
+        normalized = canonicalize_issue_metadata(metadata)
+        if not dry_run:
+            update_front_matter(issue_file, normalized)
+        written.append(f"{issue_file.relative_to(root)} (removed front matter id)")
     return written, skipped
 
 
@@ -585,16 +617,6 @@ def main() -> int:
         files_written.extend(migrated_written)
         files_skipped.extend(migrated_skipped)
 
-        payload = {
-            "root": str(root),
-            "dev": dev,
-            "dirs_created": dirs_created,
-            "files_written": files_written,
-            "files_skipped": files_skipped,
-            "conflicts": conflicts,
-            "dry_run": bool(args.dry_run),
-        }
-
         if args.reconcile_layout:
             touched = _touch_markdown_files(root, args.dry_run)
             files_written.append(f"*.md touched: {touched}")
@@ -605,6 +627,24 @@ def main() -> int:
             )
             files_written.extend(reconcile_written)
             files_skipped.extend(reconcile_skipped)
+
+        sanitize_written, sanitize_skipped = _sanitize_issue_front_matter_ids(
+            root=root,
+            dev=dev,
+            dry_run=bool(args.dry_run),
+        )
+        files_written.extend(sanitize_written)
+        files_skipped.extend(sanitize_skipped)
+
+        payload = {
+            "root": str(root),
+            "dev": dev,
+            "dirs_created": dirs_created,
+            "files_written": files_written,
+            "files_skipped": files_skipped,
+            "conflicts": conflicts,
+            "dry_run": bool(args.dry_run),
+        }
 
         print(_render_output(payload, output_format))
         return exit_code

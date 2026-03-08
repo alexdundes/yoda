@@ -47,3 +47,14 @@ def canonicalize_issue_metadata(item: dict[str, Any]) -> dict[str, Any]:
         if key not in ordered:
             ordered[key] = value
     return ordered
+
+
+def canonicalize_issue_front_matter_metadata(item: dict[str, Any]) -> dict[str, Any]:
+    """Return canonical issue metadata for markdown front matter.
+
+    The canonical issue id is derived from the filename and must not be
+    persisted in front matter.
+    """
+    normalized = canonicalize_issue_metadata(item)
+    normalized.pop("id", None)
+    return normalized

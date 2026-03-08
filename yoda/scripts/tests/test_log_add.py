@@ -45,6 +45,7 @@ def test_log_add_appends_flow_log_line() -> None:
     assert result.returncode == 0, result.stderr
     text = issue_path.read_text(encoding="utf-8")
     assert "note" in text
+    assert "\n- " in text
 
 
 def test_log_add_creates_flow_log_section_when_missing() -> None:
@@ -57,3 +58,4 @@ def test_log_add_creates_flow_log_section_when_missing() -> None:
     text = issue_path.read_text(encoding="utf-8")
     assert "## Flow log" in text
     assert "created section" in text
+    assert "\n- " in text

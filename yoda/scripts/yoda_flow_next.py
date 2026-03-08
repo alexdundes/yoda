@@ -189,6 +189,50 @@ def _apply_transition(issue: dict[str, Any], log_message: str = "") -> dict[str,
     }
 
 
+def _simulate_transition(issue: dict[str, Any]) -> dict[str, Any]:
+    status = str(issue.get("status", "")).strip()
+    phase = str(issue.get("phase") or "").strip().lower()
+    ts = _now_ts()
+
+    if status == "to-do":
+        return {
+            "status": "doing",
+            "phase": "study",
+            "next_step": "study",
+            "runbook_line": RUNBOOK_BY_STEP["study"],
+            "log_timestamp": ts,
+        }
+
+    if status != "doing":
+        raise YodaError(
+            f"Invalid target state for transition: status='{status}'",
+            exit_code=ExitCode.VALIDATION,
+        )
+    if phase not in STEP_ORDER:
+        raise YodaError(
+            f"Invalid phase for doing issue: '{phase}'",
+            exit_code=ExitCode.VALIDATION,
+        )
+
+    next_phase = NEXT_PHASE[phase]
+    if next_phase:
+        return {
+            "status": "doing",
+            "phase": next_phase,
+            "next_step": next_phase,
+            "runbook_line": RUNBOOK_BY_STEP[next_phase],
+            "log_timestamp": ts,
+        }
+
+    return {
+        "status": "done",
+        "phase": "",
+        "next_step": "done",
+        "runbook_line": RUNBOOK_DONE,
+        "log_timestamp": ts,
+    }
+
+
 def _render_md(payload: dict[str, Any]) -> list[str]:
     lines = [
         f"Issue ID: {payload['issue_id']}",
@@ -286,7 +330,7 @@ def main() -> int:
                 "pending": pending,
                 "blocked": blocked,
             }
-            if blocked and blocked[0].get("id"):
+            if not args.dry_run and blocked and blocked[0].get("id"):
                 blocked_id = str(blocked[0]["id"])
                 blocked_issue = index.get("by_id", {}).get(blocked_id)
                 if isinstance(blocked_issue, dict):
@@ -294,7 +338,7 @@ def main() -> int:
                         blocked_issue,
                         "blocked dependency_blocked",
                     )
-            elif pending and pending[0].get("id"):
+            elif not args.dry_run and pending and pending[0].get("id"):
                 pending_id = str(pending[0]["id"])
                 pending_issue = index.get("by_id", {}).get(pending_id)
                 if isinstance(pending_issue, dict):
@@ -305,7 +349,10 @@ def main() -> int:
             print(_render_output(payload, output_format))
             return ExitCode.NOT_FOUND
 
-        transition = _apply_transition(selected, args.log_message)
+        if args.dry_run:
+            transition = _simulate_transition(selected)
+        else:
+            transition = _apply_transition(selected, args.log_message)
         next_issue_id = ""
         next_issue_path = ""
         continue_prompt = ""

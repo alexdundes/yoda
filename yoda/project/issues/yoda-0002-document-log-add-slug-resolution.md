@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0002
 status: done
 title: Document log_add slug resolution
 description: 'Add spec text: log_add resolves slug via TODO and fails if id missing'
@@ -37,14 +36,10 @@ Align the written contract with the implemented behavior of `log_add.py`, docume
 - [x] Error behavior for missing issue id/file is documented.
 - [x] No code changes are required.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: project/specs/19-log-add-script.md
-  type: doc
-- path: yoda/scripts/log_add.py
-  type: code
+- `project/specs/19-log-add-script.md`
+- `yoda/scripts/log_add.py`
 
 ## Implementation notes
 Match the documented steps to the current implementation order: load TODO, find issue item, resolve slug, build issue/log paths.
@@ -65,9 +60,9 @@ Issue: `yoda-0002`
 Path: `yoda/project/issues/yoda-0002-document-log-add-slug-resolution.md`
 
 ## Flow log
-2026-01-27T16:41:42-03:00 | [yoda-0002] issue_add created | title: Document log_add slug resolution | description: Add spec text: log_add resolves slug via TODO and fails if id missing | slug: document-log-add-slug-resolution
-2026-01-27T17:03:41-03:00 | [yoda-0002] document: scope constrained to project/specs/19-log-add-script.md
-2026-01-27T17:04:43-03:00 | [yoda-0002] implement: clarified slug resolution (TODO-derived) and no slug input in log_add spec
-2026-01-27T17:04:47-03:00 | [yoda-0002] todo_update | status: to-do -> done
-2026-01-27T17:04:51-03:00 | [yoda-0002] evaluate: acceptance criteria checked and result log updated in issue
-2026-01-27T17:14:55-03:00 | [yoda-0002] docs: removed obsolete result-log comment from issue markdown
+- 2026-01-27T16:41:42-03:00 issue_add created | title: Document log_add slug resolution | description: Add spec text: log_add resolves slug via TODO and fails if id missing | slug: document-log-add-slug-resolution
+- 2026-01-27T17:03:41-03:00 document: scope constrained to project/specs/19-log-add-script.md
+- 2026-01-27T17:04:43-03:00 implement: clarified slug resolution (TODO-derived) and no slug input in log_add spec
+- 2026-01-27T17:04:47-03:00 todo_update | status: to-do -> done
+- 2026-01-27T17:04:51-03:00 evaluate: acceptance criteria checked and result log updated in issue
+- 2026-01-27T17:14:55-03:00 docs: removed obsolete result-log comment from issue markdown

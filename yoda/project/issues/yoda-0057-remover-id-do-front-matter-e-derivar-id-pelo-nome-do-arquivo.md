@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0057
 status: done
 depends_on:
 - yoda-0048
@@ -71,12 +70,12 @@ Foi executada varredura manual dos pontos de entrada da issue para confirmar que
 - **Path**: `yoda/project/issues/yoda-0057-remover-id-do-front-matter-e-derivar-id-pelo-nome-do-arquivo.md`
 
 ## Flow log
-2026-03-04T20:58:43-03:00 | [yoda-0057] issue_add created | title: Remover id do front matter e derivar ID pelo nome do arquivo | description: Eliminar o campo id do front matter no modelo 0.3.0 e definir o nome do arquivo da issue como fonte canonica para derivacao do ID. | slug: remover-id-do-front-matter-e-derivar-id-pelo-nome-do-arquivo | extern_issue_file: external issue linked
-2026-03-04T20:59:15-03:00 | [yoda-0057] todo_update | depends_on:  -> yoda-0048
-2026-03-07T08:58:02-03:00 yoda-0057 transition to-do->doing phase=study
-2026-03-07T08:58:23-03:00 yoda-0057 transition doing/study->doing/document
-2026-03-07T08:58:27-03:00 | [yoda-0057] Document scope updated: issue reframed to forward-only verification with manual sweep and no automated changes.
-2026-03-07T08:58:50-03:00 yoda-0057 transition doing/document->doing/implement
-2026-03-07T08:58:54-03:00 yoda-0057 transition doing/implement->doing/evaluate
-2026-03-07T08:59:01-03:00 | [yoda-0057] Evaluate completed: ACs validated by manual sweep and Result log finalized.
-2026-03-07T08:59:15-03:00 yoda-0057 transition doing/evaluate->done
+- 2026-03-04T20:58:43-03:00 issue_add created | title: Remover id do front matter e derivar ID pelo nome do arquivo | description: Eliminar o campo id do front matter no modelo 0.3.0 e definir o nome do arquivo da issue como fonte canonica para derivacao do ID. | slug: remover-id-do-front-matter-e-derivar-id-pelo-nome-do-arquivo | extern_issue_file: external issue linked
+- 2026-03-04T20:59:15-03:00 todo_update | depends_on: -> yoda-0048
+- 2026-03-07T08:58:02-03:00 transition to-do->doing phase=study
+- 2026-03-07T08:58:23-03:00 transition doing/study->doing/document
+- 2026-03-07T08:58:27-03:00 Document scope updated: issue reframed to forward-only verification with manual sweep and no automated changes.
+- 2026-03-07T08:58:50-03:00 transition doing/document->doing/implement
+- 2026-03-07T08:58:54-03:00 transition doing/implement->doing/evaluate
+- 2026-03-07T08:59:01-03:00 Evaluate completed: ACs validated by manual sweep and Result log finalized.
+- 2026-03-07T08:59:15-03:00 transition doing/evaluate->done

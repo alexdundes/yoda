@@ -42,7 +42,4 @@
 <!-- AGENT: List risks, edge cases, or failure scenarios to consider. -->
 - 
 
-## Flow log
-<!-- AGENT: Append single-line entries using: - <ISO8601> | <source> | <short-message> -->
-
 ## Result log

@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0015
 status: done
 title: Specify YODA Intake
 description: Create a spec and update docs to define the YODA Intake concept.
@@ -49,18 +48,12 @@ Especificar o YODA Intake e atualizar a documentação para que o agente saiba q
 - [x] DoR mínimo documentado para issues criadas pelo Intake.
 - [x] Handoff para YODA Flow documentado.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: project/specs/02-yoda-flow-process.md
-  type: doc
-- path: project/specs/06-agent-playbook.md
-  type: doc
-- path: project/specs/13-yoda-scripts-v1.md
-  type: doc
-- path: yoda/yoda.md
-  type: doc
+- `project/specs/02-yoda-flow-process.md`
+- `project/specs/06-agent-playbook.md`
+- `project/specs/13-yoda-scripts-v1.md`
+- `yoda/yoda.md`
 
 ## Implementation notes
 Tratar YODA Intake como ciclo “backlog-centric” distinto do YODA Flow (issue-centric). Definir regras operacionais do agente (consultar `todo_list.py`, não criar issue sem DoR, encerrar ciclo explicitamente).
@@ -81,8 +74,8 @@ Issue: `yoda-0015`
 Path: `yoda/project/issues/yoda-0015-specify-yoda-intake.md`
 
 ## Flow log
-2026-01-28T17:35:28-03:00 | [yoda-0015] issue_add created | title: Specify YODA Intake | description: Create a spec and update docs to define the YODA Intake concept. | slug: specify-yoda-intake
-2026-01-28T17:41:58-03:00 | [yoda-0015] todo_update | status: to-do -> doing
-2026-01-28T17:45:30-03:00 | [yoda-0015] implement: added YODA Intake spec and updated playbook/flow docs
-2026-01-28T17:45:36-03:00 | [yoda-0015] evaluate: result log updated
-2026-01-28T17:45:41-03:00 | [yoda-0015] todo_update | status: doing -> done
+- 2026-01-28T17:35:28-03:00 issue_add created | title: Specify YODA Intake | description: Create a spec and update docs to define the YODA Intake concept. | slug: specify-yoda-intake
+- 2026-01-28T17:41:58-03:00 todo_update | status: to-do -> doing
+- 2026-01-28T17:45:30-03:00 implement: added YODA Intake spec and updated playbook/flow docs
+- 2026-01-28T17:45:36-03:00 evaluate: result log updated
+- 2026-01-28T17:45:41-03:00 todo_update | status: doing -> done

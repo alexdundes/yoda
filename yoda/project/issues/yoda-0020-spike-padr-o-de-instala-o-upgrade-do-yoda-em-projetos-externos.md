@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0020
 status: done
 depends_on:
 - yoda-0016
@@ -57,16 +56,11 @@ Produzir análise curta e recomendação prática sobre como embutir e atualizar
 - [ ] Inclui fluxo “one-liner” primeiro (com alertas), e fluxo manual recomendado em seguida.
 - [ ] Define comportamento de update/rollback, metadata `latest.json`, e regras de preservação de arquivos.
 
-## Dependencies
-Depends on: yoda-0016 (usar specs de distribuição como base).
 
 ## Entry points
-- path: project/specs (distribuição, yoda-0016)
-  type: doc
-- path: yoda/yoda.md
-  type: doc
-- path: yoda/scripts
-  type: code
+- `project/specs` (distribuição, yoda-0016)
+- `yoda/yoda.md`
+- `yoda/scripts`
 
 ## Implementation notes
 - Documento como spec normativa em `project/specs/` (proposto: `project/specs/24-installation-and-upgrade.md`).
@@ -95,8 +89,8 @@ Path: yoda/project/issues/yoda-0020-spike-padr-o-de-instala-o-upgrade-do-yoda-em
 ```
 
 ## Flow log
-2026-01-28T19:02:16-03:00 | [yoda-0020] issue_add created | title: Spike: padrão de instalação/upgrade do YODA em projetos externos | description: Explorar opções para embutir/atualizar o YODA Framework em repositórios externos, cobrindo pacote+init, versionamento, upgrade/rollback e riscos. | slug: spike-padr-o-de-instala-o-upgrade-do-yoda-em-projetos-externos | priority: 6 | agent: Human
-2026-01-28T19:05:24-03:00 | [yoda-0020] todo_update | depends_on: [] -> yoda-0016
-2026-02-02T21:59:53-03:00 | [yoda-0020] todo_update | status: to-do -> doing
-2026-02-04T07:22:45-03:00 | [yoda-0020] Added installation/upgrade spec (one-liner + manual), update/rollback rules, latest.json metadata, and aligned packaging spec for yoda/LICENSE.
-2026-02-04T07:22:50-03:00 | [yoda-0020] todo_update | status: doing -> done
+- 2026-01-28T19:02:16-03:00 issue_add created | title: Spike: padrão de instalação/upgrade do YODA em projetos externos | description: Explorar opções para embutir/atualizar o YODA Framework em repositórios externos, cobrindo pacote+init, versionamento, upgrade/rollback e riscos. | slug: spike-padr-o-de-instala-o-upgrade-do-yoda-em-projetos-externos | priority: 6 | agent: Human
+- 2026-01-28T19:05:24-03:00 todo_update | depends_on: [] -> yoda-0016
+- 2026-02-02T21:59:53-03:00 todo_update | status: to-do -> doing
+- 2026-02-04T07:22:45-03:00 Added installation/upgrade spec (one-liner + manual), update/rollback rules, latest.json metadata, and aligned packaging spec for yoda/LICENSE.
+- 2026-02-04T07:22:50-03:00 todo_update | status: doing -> done

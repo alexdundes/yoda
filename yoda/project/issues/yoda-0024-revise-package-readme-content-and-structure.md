@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0024
 status: done
 title: Revise package README content and structure
 description: Define the full content and structure for the package README.md (English,
@@ -103,24 +102,15 @@ Deliver a clear, friendly, English package README with all required blocks and T
 - [ ] Specs/playbook/yoda manual are updated to include the agent-skin-in-cycle concept.
 - [ ] yoda-0023 depends on this issue.
 
-## Dependencies
-None. (This issue blocks yoda-0023.)
 
 ## Entry points
-- path: README.md
-  type: doc
-- path: project/specs/00-conventions.md
-  type: doc
-- path: project/specs/02-yoda-flow-process.md
-  type: doc
-- path: project/specs/11-yoda-intake.md
-  type: doc
-- path: project/specs/06-agent-playbook.md
-  type: doc
-- path: yoda/yoda.md
-  type: doc
-- path: project/specs/24-installation-and-upgrade.md
-  type: doc
+- `README.md`
+- `project/specs/00-conventions.md`
+- `project/specs/02-yoda-flow-process.md`
+- `project/specs/11-yoda-intake.md`
+- `project/specs/06-agent-playbook.md`
+- `yoda/yoda.md`
+- `project/specs/24-installation-and-upgrade.md`
 
 ## Implementation notes
 - Use "cycle" as the canonical term; "skin" is an agent stance when entering a cycle.
@@ -165,7 +155,7 @@ Path: yoda/project/issues/yoda-0024-revise-package-readme-content-and-structure.
 ```
 
 ## Flow log
-2026-02-04T09:38:21-03:00 | [yoda-0024] issue_add created | title: Revise package README content and structure | description: Define the full content and structure for the package README.md (English, friendly). Include logo block, short tagline, cycles + agent skin concept, inspirations (DocDD, Docs-as-Code, Design-first/Contract-first, Literate Programming parallel), quick one-liner install with warnings, manual install, init, contents, version/integrity, upgrade/rollback, source-of-truth link to upstream specs (TODO placeholder), and license note. Add TODO comments for unresolved URLs/hosting. Require updates to specs/playbook/yoda/yoda.md to include the agent-skin-in-cycle concept. This issue must be higher priority than yoda-0023; yoda-0023 should depend on this. | slug: revise-package-readme-content-and-structure | priority: 7 | entrypoints: README.md:doc, project/specs/00-conventions.md:doc, project/specs/02-yoda-flow-process.md:doc, project/specs/11-yoda-intake.md:doc, project/specs/06-agent-playbook.md:doc, yoda/yoda.md:doc, project/specs/24-installation-and-upgrade.md:doc
-2026-02-04T10:22:45-03:00 | [yoda-0024] todo_update | status: to-do -> doing
-2026-02-04T10:49:57-03:00 | [yoda-0024] Expanded package README and codified cycle skin concept in specs and manual.
-2026-02-04T10:50:03-03:00 | [yoda-0024] todo_update | status: doing -> done
+- 2026-02-04T09:38:21-03:00 issue_add created | title: Revise package README content and structure | description: Define the full content and structure for the package README.md (English, friendly). Include logo block, short tagline, cycles + agent skin concept, inspirations (DocDD, Docs-as-Code, Design-first/Contract-first, Literate Programming parallel), quick one-liner install with warnings, manual install, init, contents, version/integrity, upgrade/rollback, source-of-truth link to upstream specs (TODO placeholder), and license note. Add TODO comments for unresolved URLs/hosting. Require updates to specs/playbook/yoda/yoda.md to include the agent-skin-in-cycle concept. This issue must be higher priority than yoda-0023; yoda-0023 should depend on this. | slug: revise-package-readme-content-and-structure | priority: 7 | entrypoints: README.md:doc, project/specs/00-conventions.md:doc, project/specs/02-yoda-flow-process.md:doc, project/specs/11-yoda-intake.md:doc, project/specs/06-agent-playbook.md:doc, yoda/yoda.md:doc, project/specs/24-installation-and-upgrade.md:doc
+- 2026-02-04T10:22:45-03:00 todo_update | status: to-do -> doing
+- 2026-02-04T10:49:57-03:00 Expanded package README and codified cycle skin concept in specs and manual.
+- 2026-02-04T10:50:03-03:00 todo_update | status: doing -> done

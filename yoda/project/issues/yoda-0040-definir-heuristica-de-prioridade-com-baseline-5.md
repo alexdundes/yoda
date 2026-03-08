@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0040
 status: done
 title: Definir heuristica de prioridade com baseline 5
 description: 'Orientar o agente para tratar prioridade 5 como baseline padrao e ajustar
@@ -44,14 +43,10 @@ Padronizar a atribuicao de prioridade com baseline `5` e ajuste comparativo.
 - [x] `yoda/yoda.md` instrui explicitamente esse comportamento no trecho de Intake e referencia de script.
 - [x] Exemplos de Intake/issue creation refletem a regra.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: project/specs/
-  type: doc
-- path: yoda/yoda.md
-  type: doc
+- `project/specs/`
+- `yoda/yoda.md`
 
 ## Implementation notes
 Manter a regra simples para favorecer aplicacao consistente em conversas de Intake.
@@ -72,8 +67,8 @@ Issue: `yoda-0040`
 Path: `yoda/project/issues/yoda-0040-definir-heuristica-de-prioridade-com-baseline-5.md`
 
 ## Flow log
-2026-02-25T15:36:45-03:00 | [yoda-0040] issue_add created | title: Definir heuristica de prioridade com baseline 5 | description: Orientar o agente para tratar prioridade 5 como baseline padrao e ajustar para cima/baixo apenas por importancia relativa frente as demais issues abertas. Documentar isso em yoda/yoda.md e alinhar com specs. Regra transversal: atualizar primeiro project/specs/ e depois yoda/. | slug: definir-heuristica-de-prioridade-com-baseline-5 | priority: 4 | entrypoints: project/specs/:doc, yoda/yoda.md:doc
-2026-02-25T18:28:57-03:00 | [yoda-0040] todo_update | status: to-do -> doing
-2026-02-25T18:31:50-03:00 | [yoda-0040] implement: baseline de prioridade 5 documentado nas specs e no manual yoda, com regra de justificativa para desvios.
-2026-02-25T18:32:00-03:00 | [yoda-0040] evaluate: criterios de aceite conferidos; baseline 5 e justificativa para desvios presentes em specs e yoda/yoda.md.
-2026-02-25T18:32:04-03:00 | [yoda-0040] todo_update | status: doing -> done
+- 2026-02-25T15:36:45-03:00 issue_add created | title: Definir heuristica de prioridade com baseline 5 | description: Orientar o agente para tratar prioridade 5 como baseline padrao e ajustar para cima/baixo apenas por importancia relativa frente as demais issues abertas. Documentar isso em yoda/yoda.md e alinhar com specs. Regra transversal: atualizar primeiro project/specs/ e depois yoda/. | slug: definir-heuristica-de-prioridade-com-baseline-5 | priority: 4 | entrypoints: project/specs/:doc, yoda/yoda.md:doc
+- 2026-02-25T18:28:57-03:00 todo_update | status: to-do -> doing
+- 2026-02-25T18:31:50-03:00 implement: baseline de prioridade 5 documentado nas specs e no manual yoda, com regra de justificativa para desvios.
+- 2026-02-25T18:32:00-03:00 evaluate: criterios de aceite conferidos; baseline 5 e justificativa para desvios presentes em specs e yoda/yoda.md.
+- 2026-02-25T18:32:04-03:00 todo_update | status: doing -> done

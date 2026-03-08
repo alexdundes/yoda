@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0056
 status: done
 depends_on:
 - yoda-0048
@@ -73,12 +72,12 @@ Foi executada varredura manual dos pontos de entrada da issue para confirmar que
 - **Path**: `yoda/project/issues/yoda-0056-eliminar-redundancia-de-dependencies-no-corpo-da-issue.md`
 
 ## Flow log
-2026-03-04T20:55:15-03:00 | [yoda-0056] issue_add created | title: Eliminar redundancia de Dependencies no corpo da issue | description: Remover a secao ## Dependencies do corpo das issues e manter apenas depends_on no front matter como fonte unica de dependencia. | slug: eliminar-redundancia-de-dependencies-no-corpo-da-issue | extern_issue_file: external issue linked
-2026-03-04T20:56:02-03:00 | [yoda-0056] todo_update | depends_on:  -> yoda-0048
-2026-03-07T08:51:29-03:00 yoda-0056 transition to-do->doing phase=study
-2026-03-07T08:54:05-03:00 yoda-0056 transition doing/study->doing/document
-2026-03-07T08:54:08-03:00 | [yoda-0056] Document scope updated: issue reframed to forward-only verification with manual sweep and no automated changes.
-2026-03-07T08:56:34-03:00 yoda-0056 transition doing/document->doing/implement
-2026-03-07T08:56:39-03:00 yoda-0056 transition doing/implement->doing/evaluate
-2026-03-07T08:56:43-03:00 | [yoda-0056] Evaluate completed: ACs validated by manual sweep and Result log finalized.
-2026-03-07T08:56:59-03:00 yoda-0056 transition doing/evaluate->done
+- 2026-03-04T20:55:15-03:00 issue_add created | title: Eliminar redundancia de Dependencies no corpo da issue | description: Remover a secao ## Dependencies do corpo das issues e manter apenas depends_on no front matter como fonte unica de dependencia. | slug: eliminar-redundancia-de-dependencies-no-corpo-da-issue | extern_issue_file: external issue linked
+- 2026-03-04T20:56:02-03:00 todo_update | depends_on: -> yoda-0048
+- 2026-03-07T08:51:29-03:00 transition to-do->doing phase=study
+- 2026-03-07T08:54:05-03:00 transition doing/study->doing/document
+- 2026-03-07T08:54:08-03:00 Document scope updated: issue reframed to forward-only verification with manual sweep and no automated changes.
+- 2026-03-07T08:56:34-03:00 transition doing/document->doing/implement
+- 2026-03-07T08:56:39-03:00 transition doing/implement->doing/evaluate
+- 2026-03-07T08:56:43-03:00 Evaluate completed: ACs validated by manual sweep and Result log finalized.
+- 2026-03-07T08:56:59-03:00 transition doing/evaluate->done

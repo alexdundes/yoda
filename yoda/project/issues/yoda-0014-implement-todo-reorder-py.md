@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0014
 status: done
 title: Implement todo_reorder.py
 description: 'Implement todo_reorder.py per spec: reorder modes, validation, output,
@@ -45,20 +44,13 @@ Entregar o script `todo_reorder.py` com comportamento determinístico e testes, 
 - [x] Timestamps atualizados corretamente.
 - [x] Testes cobrindo casos principais passam.
 
-## Dependencies
-Depends on: yoda-0013.
 
 ## Entry points
-- path: yoda/scripts
-  type: code
-- path: yoda/scripts/lib
-  type: code
-- path: project/specs/13-yoda-scripts-v1.md
-  type: doc
-- path: project/specs/15-scripts-python-structure.md
-  type: doc
-- path: yoda/project/issues/yoda-0013-specify-todo-reorder-py.md
-  type: doc
+- `yoda/scripts`
+- `yoda/scripts/lib`
+- `project/specs/13-yoda-scripts-v1.md`
+- `project/specs/15-scripts-python-structure.md`
+- `yoda/project/issues/yoda-0013-specify-todo-reorder-py.md`
 
 ## Implementation notes
 Reusar helpers em `yoda/scripts/lib` quando possível. A reordenação deve ser estável para itens não movidos.
@@ -80,8 +72,8 @@ Issue: `yoda-0014`
 Path: `yoda/project/issues/yoda-0014-implement-todo-reorder-py.md`
 
 ## Flow log
-2026-01-28T14:51:24-03:00 | [yoda-0014] issue_add created | title: Implement todo_reorder.py | description: Implement todo_reorder.py per spec: reorder modes, validation, output, and tests. | slug: implement-todo-reorder-py
-2026-01-28T15:14:42-03:00 | [yoda-0014] todo_update | status: to-do -> doing
-2026-01-28T15:17:31-03:00 | [yoda-0014] implement: added todo_reorder command and tests
-2026-01-28T15:17:36-03:00 | [yoda-0014] evaluate: tests pass and result log updated
-2026-01-28T15:17:41-03:00 | [yoda-0014] todo_update | status: doing -> done
+- 2026-01-28T14:51:24-03:00 issue_add created | title: Implement todo_reorder.py | description: Implement todo_reorder.py per spec: reorder modes, validation, output, and tests. | slug: implement-todo-reorder-py
+- 2026-01-28T15:14:42-03:00 todo_update | status: to-do -> doing
+- 2026-01-28T15:17:31-03:00 implement: added todo_reorder command and tests
+- 2026-01-28T15:17:36-03:00 evaluate: tests pass and result log updated
+- 2026-01-28T15:17:41-03:00 todo_update | status: doing -> done

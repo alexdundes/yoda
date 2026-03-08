@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0045
 status: done
 title: Permitir update de descricao e rename por slug derivado do arquivo
 description: "Permitir alterar descricao e rename do arquivo da issue; remover campo\
@@ -64,28 +63,17 @@ Permitir update de `title`/`description` e rename de issue com regras explicitas
 - [x] Migracao/reconciliacao via `init.py --reconcile-layout` remove `slug` legado e mantem compatibilidade.
 - [x] Testes automatizados cobrem cenarios de rename e derivacao.
 
-## Dependencies
-Relacionada a `yoda-0042` (extern_issue_file), `yoda-0043` (omissao de opcionais vazios), `yoda-0044` (front matter ordenado/sem defaults) e origem externa `github #2`.
 
 ## Entry points
-- path: yoda/scripts/todo_update.py
-  type: code
-- path: yoda/scripts/issue_add.py
-  type: code
-- path: yoda/scripts/todo_list.py
-  type: code
-- path: yoda/scripts/lib/validate.py
-  type: code
-- path: yoda/scripts/lib/front_matter.py
-  type: code
-- path: yoda/scripts/update.py
-  type: code
-- path: yoda/scripts/init.py
-  type: code
-- path: yoda/project/issues/
-  type: data
-- path: yoda/todos/TODO.yoda.yaml
-  type: data
+- `yoda/scripts/todo_update.py`
+- `yoda/scripts/issue_add.py`
+- `yoda/scripts/todo_list.py`
+- `yoda/scripts/lib/validate.py`
+- `yoda/scripts/lib/front_matter.py`
+- `yoda/scripts/update.py`
+- `yoda/scripts/init.py`
+- `yoda/project/issues/`
+- `yoda/todos/TODO.yoda.yaml`
 
 ## Implementation notes
 Mudanca classificada como `subtle`: apesar de remover o campo persistido `slug`, ele nao e utilizado operacionalmente no fluxo atual, portanto a retirada nao deve gerar quebra de compatibilidade. Ainda assim, manter reconciliacao/migracao por `yoda/scripts/update.py` e `yoda/scripts/init.py` para padronizar artefatos legados.
@@ -123,11 +111,11 @@ Path: `yoda/project/issues/yoda-0045-permitir-update-de-descricao-e-rename-por-s
 Implementado update de `title` e `description` com suporte a rename de arquivo de issue e de log, removendo `slug` persistido de TODO/front matter e adotando resolucao operacional por `id` (`<id>-*.md`/`<id>-*.yaml`). `todo_update.py` agora recalcula slug a partir de `title` quando necessario, aceita override por `--slug`, e falha explicitamente em casos de colisao/duplicidade. `init.py --reconcile-layout` foi alinhado para limpar `slug` legado e reconciliar metadata no novo contrato.
 
 ## Flow log
-2026-02-26T19:12:53-03:00 | [yoda-0045] issue_add created | title: Permitir update de descricao e rename por slug derivado do arquivo | description: Permitir alterar descricao e rename do arquivo da issue; remover campo slug do modelo e derivar slug sempre do nome do arquivo (sem ID), com regras claras de recálculo no update. | slug: permitir-update-de-descricao-e-rename-por-slug-derivado-do-arquivo | priority: 5 | origin: external issue linked
-2026-03-03T11:51:27-03:00 | [yoda-0045] todo_update (no changes)
-2026-03-03T14:04:22-03:00 | [yoda-0045] todo_update | status: to-do -> doing
-2026-03-03T14:05:05-03:00 | [yoda-0045] Study completed\n- todo_update currently cannot update description or trigger rename; it only updates status/priority/depends/pending/extern_issue_file\n- slug is currently required in TODO validation and used as source of truth for issue/log paths across todo_update, todo_next, todo_list, log_add, and init reconcile\n- paths API and helpers are slug-dependent (issue_path/log_path require slug argument)\n- log files are currently named with id+slug and log_add resolves file path using slug from TODO\n- implementing this issue will require a repository-wide shift to derived slug from filename plus rename-safe path resolution\n- key design decisions needed for implementation: collision policy on rename, log filename policy after rename, and backward compatibility for legacy slug fields
-2026-03-03T14:21:37-03:00 | [yoda-0045] Document phase updated issue text\n- Scope/requirements updated to include title update as first-class input\n- Confirmed slug derivation source as title and explicit override via --slug\n- Added collision policy: duplicate <id>-*.md or destination file conflict must fail\n- Added log rename requirement during issue rename\n- Confirmed lookup by id pattern and legacy migration via init --reconcile-layout\n- Canonical metadata order kept from yoda-0044, without slug field
-2026-03-03T14:32:25-03:00 | [yoda-0045] Implement phase completed\n- Removed persisted slug from issue metadata in TODO/front matter and canonical order now excludes slug\n- Added id-based issue/log file resolution (<id>-*.md / <id>-*.yaml) with conflict detection for duplicates\n- issue_add now keeps slug only as filename artifact; metadata no longer stores slug\n- todo_update now supports --title, --description, and --slug with rename behavior; title changes derive slug and rename issue plus log files\n- init reconcile drops legacy slug metadata and updates front matter by resolving issue files by id\n- todo_next, todo_list, and log_add migrated to id-based path resolution\n- Added/updated tests for slugless metadata and rename flows\n- Validation run: python3 -m pytest yoda/scripts/tests -q (58 passed)
-2026-03-03T14:38:25-03:00 | [yoda-0045] Evaluate phase completed\n- Acceptance criteria marked as done in issue markdown\n- Result log filled with conventional commit suggestion\n- Validation recorded: python3 -m pytest yoda/scripts/tests -q (58 passed)\n- Reconcile validation recorded: python3 yoda/scripts/init.py --dev yoda --reconcile-layout (success)
-2026-03-03T14:38:25-03:00 | [yoda-0045] todo_update | status: doing -> done
+- 2026-02-26T19:12:53-03:00 issue_add created | title: Permitir update de descricao e rename por slug derivado do arquivo | description: Permitir alterar descricao e rename do arquivo da issue; remover campo slug do modelo e derivar slug sempre do nome do arquivo (sem ID), com regras claras de recálculo no update. | slug: permitir-update-de-descricao-e-rename-por-slug-derivado-do-arquivo | priority: 5 | origin: external issue linked
+- 2026-03-03T11:51:27-03:00 todo_update (no changes)
+- 2026-03-03T14:04:22-03:00 todo_update | status: to-do -> doing
+- 2026-03-03T14:05:05-03:00 Study completed\n- todo_update currently cannot update description or trigger rename; it only updates status/priority/depends/pending/extern_issue_file\n- slug is currently required in TODO validation and used as source of truth for issue/log paths across todo_update, todo_next, todo_list, log_add, and init reconcile\n- paths API and helpers are slug-dependent (issue_path/log_path require slug argument)\n- log files are currently named with id+slug and log_add resolves file path using slug from TODO\n- implementing this issue will require a repository-wide shift to derived slug from filename plus rename-safe path resolution\n- key design decisions needed for implementation: collision policy on rename, log filename policy after rename, and backward compatibility for legacy slug fields
+- 2026-03-03T14:21:37-03:00 Document phase updated issue text\n- Scope/requirements updated to include title update as first-class input\n- Confirmed slug derivation source as title and explicit override via --slug\n- Added collision policy: duplicate <id>-*.md or destination file conflict must fail\n- Added log rename requirement during issue rename\n- Confirmed lookup by id pattern and legacy migration via init --reconcile-layout\n- Canonical metadata order kept from yoda-0044, without slug field
+- 2026-03-03T14:32:25-03:00 Implement phase completed\n- Removed persisted slug from issue metadata in TODO/front matter and canonical order now excludes slug\n- Added id-based issue/log file resolution (<id>-*.md / <id>-*.yaml) with conflict detection for duplicates\n- issue_add now keeps slug only as filename artifact; metadata no longer stores slug\n- todo_update now supports --title, --description, and --slug with rename behavior; title changes derive slug and rename issue plus log files\n- init reconcile drops legacy slug metadata and updates front matter by resolving issue files by id\n- todo_next, todo_list, and log_add migrated to id-based path resolution\n- Added/updated tests for slugless metadata and rename flows\n- Validation run: python3 -m pytest yoda/scripts/tests -q (58 passed)
+- 2026-03-03T14:38:25-03:00 Evaluate phase completed\n- Acceptance criteria marked as done in issue markdown\n- Result log filled with conventional commit suggestion\n- Validation recorded: python3 -m pytest yoda/scripts/tests -q (58 passed)\n- Reconcile validation recorded: python3 yoda/scripts/init.py --dev yoda --reconcile-layout (success)
+- 2026-03-03T14:38:25-03:00 todo_update | status: doing -> done

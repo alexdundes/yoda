@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0022
 status: done
 depends_on:
 - yoda-0016
@@ -55,16 +54,11 @@ Create a lightweight `README` placed at package root that orients users to the b
 - [ ] README contains TODO comments for unresolved placeholders (URL/hosting).
 - [ ] Follow-up issue created for one-liner install documentation, referencing README TODOs.
 
-## Dependencies
-yoda-0016
 
 ## Entry points
-- path: project/specs/23-distribution-and-packaging.md
-  type: doc
-- path: project/specs/summary.md
-  type: doc
-- path: yoda/yoda.md
-  type: doc
+- `project/specs/23-distribution-and-packaging.md`
+- `project/specs/summary.md`
+- `yoda/yoda.md`
 
 ## Implementation notes
 - Keep to plain Markdown, no badges or heavy formatting.
@@ -93,8 +87,8 @@ Path: yoda/project/issues/yoda-0022-readme-curto-do-pacote-yoda.md
 ```
 
 ## Flow log
-2026-01-29T06:31:28-03:00 | [yoda-0022] issue_add created | title: README curto do pacote YODA | description: Criar README conciso para o artefato distribuível, com instruções rápidas de uso, comandos package/init, conteúdo do pacote e links essenciais. | slug: readme-curto-do-pacote-yoda | priority: 5 | agent: Human
-2026-01-29T06:31:31-03:00 | [yoda-0022] todo_update | depends_on: [] -> yoda-0016
-2026-02-04T07:58:45-03:00 | [yoda-0022] todo_update | status: to-do -> doing
-2026-02-04T08:07:37-03:00 | [yoda-0022] Added concise package README with one-liner install first, manual steps, and TODO placeholders; created follow-up issue for one-liner doc.
-2026-02-04T08:07:40-03:00 | [yoda-0022] todo_update | status: doing -> done
+- 2026-01-29T06:31:28-03:00 issue_add created | title: README curto do pacote YODA | description: Criar README conciso para o artefato distribuível, com instruções rápidas de uso, comandos package/init, conteúdo do pacote e links essenciais. | slug: readme-curto-do-pacote-yoda | priority: 5 | agent: Human
+- 2026-01-29T06:31:31-03:00 todo_update | depends_on: [] -> yoda-0016
+- 2026-02-04T07:58:45-03:00 todo_update | status: to-do -> doing
+- 2026-02-04T08:07:37-03:00 Added concise package README with one-liner install first, manual steps, and TODO placeholders; created follow-up issue for one-liner doc.
+- 2026-02-04T08:07:40-03:00 todo_update | status: doing -> done

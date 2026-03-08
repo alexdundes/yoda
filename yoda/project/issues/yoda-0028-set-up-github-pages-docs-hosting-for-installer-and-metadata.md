@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0028
 status: done
 depends_on:
 - yoda-0026
@@ -47,14 +46,10 @@ Publish `yoda-install.sh` and `latest.json` under `/docs/install`, and ensure Gi
 - [ ] Pages is enabled and endpoints resolve under `https://alexdundes.github.io/yoda/`.
 - [ ] A documented checklist exists for updating `latest.json` on new releases.
 
-## Dependencies
-Depends on: yoda-0026.
 
 ## Entry points
-- path: project/specs/24-installation-and-upgrade.md
-  type: doc
-- path: README.md
-  type: doc
+- `project/specs/24-installation-and-upgrade.md`
+- `README.md`
 
 ## Implementation notes
 - Use the base URL `https://alexdundes.github.io/yoda/` and serve assets from `/docs/install/`.
@@ -81,8 +76,8 @@ Issue: yoda-0028
 Path: yoda/project/issues/yoda-0028-set-up-github-pages-docs-hosting-for-installer-and-metadata.md
 
 ## Flow log
-2026-02-04T18:39:41-03:00 | [yoda-0028] issue_add created | title: Set up GitHub Pages /docs hosting for installer and metadata | description: Create the docs/install structure and publish yoda-install.sh and latest.json via GitHub Pages (/docs). Document the base URL and ensure latest.json points to GitHub Releases assets. Include a simple checklist for updating latest.json per release. | slug: set-up-github-pages-docs-hosting-for-installer-and-metadata | priority: 5 | entrypoints: project/specs/24-installation-and-upgrade.md:doc, README.md:doc
-2026-02-04T18:39:57-03:00 | [yoda-0028] todo_update | depends_on: [] -> yoda-0026
-2026-02-04T19:21:25-03:00 | [yoda-0028] todo_update | status: to-do -> doing
-2026-02-04T19:23:33-03:00 | [yoda-0028] Added docs/install/latest.json placeholder and documented Pages setup + latest.json checklist.
-2026-02-04T19:23:38-03:00 | [yoda-0028] todo_update | status: doing -> done
+- 2026-02-04T18:39:41-03:00 issue_add created | title: Set up GitHub Pages /docs hosting for installer and metadata | description: Create the docs/install structure and publish yoda-install.sh and latest.json via GitHub Pages (/docs). Document the base URL and ensure latest.json points to GitHub Releases assets. Include a simple checklist for updating latest.json per release. | slug: set-up-github-pages-docs-hosting-for-installer-and-metadata | priority: 5 | entrypoints: project/specs/24-installation-and-upgrade.md:doc, README.md:doc
+- 2026-02-04T18:39:57-03:00 todo_update | depends_on: [] -> yoda-0026
+- 2026-02-04T19:21:25-03:00 todo_update | status: to-do -> doing
+- 2026-02-04T19:23:33-03:00 Added docs/install/latest.json placeholder and documented Pages setup + latest.json checklist.
+- 2026-02-04T19:23:38-03:00 todo_update | status: doing -> done

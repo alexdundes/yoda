@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0053
 status: done
 depends_on:
 - yoda-0051
@@ -55,16 +54,11 @@ Garantir que a documentacao operacional esteja alinhada ao comportamento real do
 - [x] Entrada de YODA Flow no playbook usa `yoda_flow_next.py` como comando deterministico principal.
 - [x] O texto final de `yoda/yoda.md` e estritamente operacional (estado atual), sem topicos de migracao ou historico de versao.
 
-## Dependencies
-Depende de `yoda-0051`.
 
 ## Entry points
-- path: yoda/yoda.md
-  type: doc
-- path: project/specs
-  type: doc
-- path: yoda/scripts/yoda_flow_next.py
-  type: code
+- `yoda/yoda.md`
+- `project/specs`
+- `yoda/scripts/yoda_flow_next.py`
 
 ## Implementation notes
 Documentar apenas estado atual de operacao: entrada, modos, fases e comandos vigentes. Evitar texto historico (migracao/versionamento) no `yoda/yoda.md`.
@@ -91,12 +85,12 @@ Foi reescrito o `yoda/yoda.md` com foco estritamente operacional no estado atual
 - **Path**: `yoda/project/issues/yoda-0053-atualizar-playbook-yoda-md-e-deprecacoes-operacionais.md`
 
 ## Flow log
-2026-03-04T20:33:42-03:00 | [yoda-0053] issue_add created | title: Atualizar playbook yoda md e deprecacoes operacionais | description: Reescrever yoda/yoda.md para o novo fluxo guiado por runbooks compactos e definir deprecacoes de scripts antigos no modo de compatibilidade. | slug: atualizar-playbook-yoda-md-e-deprecacoes-operacionais | extern_issue_file: external issue linked
-2026-03-04T20:34:08-03:00 | [yoda-0053] todo_update | depends_on:  -> yoda-0051
-2026-03-06T19:02:01-03:00 yoda-0053: todo_update status: to-do -> doing
-2026-03-06T19:02:06-03:00 yoda-0053: Study iniciado; playbook atual lido e divergencias 0.3.0 mapeadas (TODO/log YAML, fluxo manual antigo e deprecacoes).
-2026-03-06T19:09:33-03:00 yoda-0053: Document concluido com contrato 0.3.0 para playbook (flow via yoda_flow_next, markdown-only schema 2.00 e deprecacoes explicitas).
-2026-03-06T19:13:34-03:00 yoda-0053: diretriz confirmada no Document: yoda.md sera somente operacional do estado atual, sem migracao/versionamento.
-2026-03-06T20:54:51-03:00 yoda-0053: Implement concluido com reescrita operacional do yoda.md para Intake/Flow atuais, sem migracao/versionamento, e testes 51 passed.
-2026-03-06T21:03:24-03:00 yoda-0053: Evaluate concluido com ACs validados, yoda.md final operacional e testes 51 passed.
-2026-03-06T21:03:24-03:00 yoda-0053: todo_update status: doing -> done
+- 2026-03-04T20:33:42-03:00 issue_add created | title: Atualizar playbook yoda md e deprecacoes operacionais | description: Reescrever yoda/yoda.md para o novo fluxo guiado por runbooks compactos e definir deprecacoes de scripts antigos no modo de compatibilidade. | slug: atualizar-playbook-yoda-md-e-deprecacoes-operacionais | extern_issue_file: external issue linked
+- 2026-03-04T20:34:08-03:00 todo_update | depends_on: -> yoda-0051
+- 2026-03-06T19:02:01-03:00 todo_update status: to-do -> doing
+- 2026-03-06T19:02:06-03:00 Study iniciado; playbook atual lido e divergencias 0.3.0 mapeadas (TODO/log YAML, fluxo manual antigo e deprecacoes).
+- 2026-03-06T19:09:33-03:00 Document concluido com contrato 0.3.0 para playbook (flow via yoda_flow_next, markdown-only schema 2.00 e deprecacoes explicitas).
+- 2026-03-06T19:13:34-03:00 diretriz confirmada no Document: yoda.md sera somente operacional do estado atual, sem migracao/versionamento.
+- 2026-03-06T20:54:51-03:00 Implement concluido com reescrita operacional do yoda.md para Intake/Flow atuais, sem migracao/versionamento, e testes 51 passed.
+- 2026-03-06T21:03:24-03:00 Evaluate concluido com ACs validados, yoda.md final operacional e testes 51 passed.
+- 2026-03-06T21:03:24-03:00 todo_update status: doing -> done

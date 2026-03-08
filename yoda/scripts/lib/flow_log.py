@@ -25,11 +25,17 @@ def locate_flow_log_bounds(content: str) -> tuple[int, int] | None:
 
 
 def append_flow_log_line(issue_path: Path, line: str) -> None:
+    normalized = line.strip()
+    if normalized.startswith("- "):
+        formatted = normalized
+    else:
+        formatted = f"- {normalized}"
+
     content = issue_path.read_text(encoding="utf-8")
     bounds = locate_flow_log_bounds(content)
     if bounds is None:
         trimmed = content.rstrip("\n")
-        updated = f"{trimmed}\n\n## Flow log\n{line}\n"
+        updated = f"{trimmed}\n\n## Flow log\n{formatted}\n"
         write_text_atomic(issue_path, updated)
         return
 
@@ -39,6 +45,6 @@ def append_flow_log_line(issue_path: Path, line: str) -> None:
         section = f"\n{section}"
     if section and not section.endswith("\n"):
         section = f"{section}\n"
-    updated_section = f"{section}{line}\n"
+    updated_section = f"{section}{formatted}\n"
     updated = f"{content[:start]}{updated_section}{content[end:]}"
     write_text_atomic(issue_path, updated)

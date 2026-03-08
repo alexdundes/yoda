@@ -2,7 +2,7 @@
 
 ## Objective
 
-Define the required behavior for `issue_add.py`, the script that creates a new issue entry in `yoda/todos/TODO.<dev>.yaml` and generates the corresponding issue Markdown file.
+Define the required behavior for `issue_add.py`, the script that creates a new markdown issue file in `yoda/project/issues/`.
 
 ## Scope
 
@@ -19,11 +19,10 @@ Out of scope:
 ## Location
 
 - Script path: `yoda/scripts/issue_add.py`
-- TODO path: `yoda/todos/TODO.<dev>.yaml`
-- Issue path: `yoda/project/issues/<id>-<slug>.md`
+- Canonical issue path: `yoda/project/issues/<dev>-<NNNN>-<slug>.md`
 - Templates:
   - Standard: `yoda/templates/issue.md`
-- Log path: `yoda/logs/<id>-<slug>.yaml`
+- Flow log path: section `## Flow log` in the issue markdown file.
 
 ## CLI
 
@@ -31,7 +30,7 @@ The script follows the global CLI contract in `project/specs/13-yoda-scripts-v1.
 
 Required inputs:
 - `--title <text>`: issue title.
-- `--description <text>`: short description used as the TODO description and issue front matter description.
+- `--description <text>`: short description used in issue front matter.
 
 Optional inputs:
 - `--summary <text>`: alias for description (if provided, it overrides `--description`).
@@ -49,7 +48,7 @@ Global flags:
 ## ID generation
 
 - The canonical ID is `<dev>-<NNNN>` where `NNNN` is a zero-padded 4-digit number.
-- The next ID is computed by scanning existing issue IDs in the target TODO and incrementing the highest value.
+- The next ID is computed by scanning existing issue filenames for the same `<dev>` and incrementing the highest value.
 - If no issues exist, start at `0001`.
 
 ## Slug generation
@@ -70,25 +69,21 @@ Global flags:
 
 1) Resolve developer slug from `--dev`.
    - If missing, return guidance instructing the agent to ask the human for the slug and rerun with `--dev <slug>`.
-2) Acquire an external lock file scoped by `--dev` before reading/writing TODO/issue/log artifacts.
+2) Acquire an external lock file scoped by `--dev` before reading/writing issue artifacts.
    - Retry lock acquisition up to 3 attempts with increasing wait between attempts.
    - If lock acquisition fails after retries, exit with code 4 and an explicit message.
-3) Load `yoda/todos/TODO.<dev>.yaml`. If it does not exist, create a new TODO file with default root fields (see "TODO file creation") before continuing.
-4) Validate the TODO schema and inputs. If validation fails, exit with code 2.
+3) Validate inputs and template availability. If validation fails, exit with code 2.
 5) Generate the next canonical ID and slug.
-6) Construct the issue path and log path.
+6) Construct the issue path.
 7) Check for conflicts:
-   - If the ID already exists in the TODO, exit with code 4.
    - If the issue file already exists, exit with code 4.
-   - If the log file already exists, exit with code 4.
 8) Load the selected template. If missing, exit with code 3.
-9) Populate the issue front matter fields to mirror the TODO item fields.
+9) Populate issue front matter fields using canonical metadata.
 10) Create the issue Markdown file from the template with the populated fields.
     - The generated issue file must not include the opening template instruction comment that asks to replace `[ID]` and `[TITLE]`.
-11) Create the log file with a single entry describing the issue creation.
-12) Create or update the TODO entry (append to the end of the issues list).
-13) File writes during creation MUST be atomic per file (temporary file + replace).
-14) If `--dry-run` is set, perform all steps except file writes. Output a summary and exit 0.
+11) Append an initial creation entry to `## Flow log` in the issue file.
+12) File writes during creation MUST be atomic per file (temporary file + replace).
+13) If `--dry-run` is set, perform all steps except file writes. Output a summary and exit 0.
 
 Failure policy:
 - If a write step fails after lock acquisition, return explicit error and abort.
@@ -96,8 +91,8 @@ Failure policy:
 
 ## Metadata population
 
-The TODO issue item and issue front matter must include:
-- `schema_version: "1.02"`
+The issue front matter must include:
+- `schema_version: "2.00"`
 - `id`, `title`, `description`
 - `status: to-do`
 - `priority`
@@ -107,7 +102,7 @@ The TODO issue item and issue front matter must include:
   - example: `../extern_issues/github-2.json`.
 
 Metadata policy:
-- `slug` is represented by the issue filename (`<id>-<slug>.md`) and must not be persisted in TODO/front matter.
+- `slug` is represented by the issue filename (`<id>-<slug>.md`) and must not be persisted in front matter.
 - Optional empty fields (`depends_on`, `pending_reason`, `extern_issue_file`) must be omitted.
 - `depends_on` starts empty by default and is written only when non-empty.
 
@@ -119,29 +114,17 @@ Timestamps:
 - Use the timezone defined in the TODO root field `timezone`.
 - Format timestamps as ISO 8601 with explicit offset.
 
-## TODO file creation
-
-If `yoda/todos/TODO.<dev>.yaml` does not exist, `issue_add.py` must create it with these defaults before creating the issue:
-- `schema_version: "1.02"`
-- `developer_name`: derive from `<dev>` by title-casing (example: `dev` -> `Dev`).
-- `developer_slug`: `<dev>`
-- `timezone`: local machine timezone (IANA TZ name when available)
-- `updated_at`: current timestamp
-- `issues`: empty array
-
 ## Logging
 
-- The script must create `yoda/logs/<id>-<slug>.yaml` if it does not exist.
-- The log file must follow the log schema in `project/specs/05-scripts-and-automation.md`.
-- The initial log entry message should mention the issue id and include initial values provided (one per line, omit fields not supplied).
+- The script must append a line in the issue `## Flow log` section on successful creation.
+- The initial message should mention issue creation, title, and priority.
+- `--dry-run` must not append flow log entries.
 
 ## Output
 
 On success, the script outputs a short summary in the chosen format, including:
 - Issue ID
 - Issue path
-- TODO path
-- Log path
 - Template used
 
 ## Error handling
@@ -150,6 +133,6 @@ On success, the script outputs a short summary in the chosen format, including:
   - `0`: success
   - `1`: general error
   - `2`: validation error
-  - `3`: not found (missing TODO or template)
-  - `4`: conflict (ID or file already exists)
+  - `3`: not found (missing template)
+  - `4`: conflict (ID or issue file already exists)
 - Errors must be written to stderr and include an actionable message.

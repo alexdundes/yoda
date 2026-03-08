@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0011
 status: done
 title: Specify todo_list.py
 description: Define CLI, filters, ordering, output formats, and text search behavior
@@ -62,18 +61,12 @@ Especificar completamente o comportamento de `todo_list.py` para permitir implem
 - [x] Spec define tratamento visual de pending na saída Markdown (bloco antes da tabela; pending fora da tabela).
 - [x] Spec define JSON com todos os campos do item de issue.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: project/specs/13-yoda-scripts-v1.md
-  type: doc
-- path: project/specs/05-scripts-and-automation.md
-  type: doc
-- path: project/specs/15-scripts-python-structure.md
-  type: doc
-- path: project/specs/04-todo-dev-yaml-issues.md
-  type: doc
+- `project/specs/13-yoda-scripts-v1.md`
+- `project/specs/05-scripts-and-automation.md`
+- `project/specs/15-scripts-python-structure.md`
+- `project/specs/04-todo-dev-yaml-issues.md`
 
 ## Implementation notes
 Definir a regra de ordenação com dependências de forma determinística (ex.: ordenação estável que move itens bloqueados para depois da dependência não concluída). Definir colunas da tabela MD com largura ajustada para leitura humana e por agent. Definir formato do texto fluído na busca textual (issue + linha encontrada).
@@ -97,11 +90,11 @@ Issue: `yoda-0011`
 Path: `yoda/project/issues/yoda-0011-specify-todo-list-py.md`
 
 ## Flow log
-2026-01-28T12:25:53-03:00 | [yoda-0011] issue_add created | title: Specify todo_list.py | description: Define CLI, filters, ordering, output formats, and text search behavior for todo_list.py. | slug: specify-todo-list-py
-2026-01-28T13:57:46-03:00 | [yoda-0011] todo_update | status: to-do -> doing
-2026-01-28T14:05:15-03:00 | [yoda-0011] document: clarified filters, ordering options, json fields, and search behavior
-2026-01-28T14:13:26-03:00 | [yoda-0011] implement: added todo_list spec and updated indices
-2026-01-28T14:13:32-03:00 | [yoda-0011] todo_update | status: doing -> done
-2026-01-28T14:23:03-03:00 | [yoda-0011] todo_update | status: done -> doing
-2026-01-28T14:26:36-03:00 | [yoda-0011] document: added pending alert block in md output and full issue items in json
-2026-01-28T14:26:41-03:00 | [yoda-0011] todo_update | status: doing -> done
+- 2026-01-28T12:25:53-03:00 issue_add created | title: Specify todo_list.py | description: Define CLI, filters, ordering, output formats, and text search behavior for todo_list.py. | slug: specify-todo-list-py
+- 2026-01-28T13:57:46-03:00 todo_update | status: to-do -> doing
+- 2026-01-28T14:05:15-03:00 document: clarified filters, ordering options, json fields, and search behavior
+- 2026-01-28T14:13:26-03:00 implement: added todo_list spec and updated indices
+- 2026-01-28T14:13:32-03:00 todo_update | status: doing -> done
+- 2026-01-28T14:23:03-03:00 todo_update | status: done -> doing
+- 2026-01-28T14:26:36-03:00 document: added pending alert block in md output and full issue items in json
+- 2026-01-28T14:26:41-03:00 todo_update | status: doing -> done

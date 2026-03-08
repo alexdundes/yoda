@@ -1,6 +1,5 @@
 ---
 schema_version: '2.00'
-id: yoda-0008
 status: done
 title: Implement todo_next with single-issue rule
 description: Implement todo_next.py to select only to-do items and block when any
@@ -47,22 +46,14 @@ Create `yoda/scripts/todo_next.py` with deterministic selection and the updated 
 - [x] Any `doing` issue produces a conflict error and includes the doing list.
 - [x] Success output includes pending hints when pending issues exist.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: project/specs/21-todo-next-script.md
-  type: doc
-- path: project/specs/13-yoda-scripts-v1.md
-  type: doc
-- path: project/specs/04-todo-dev-yaml-issues.md
-  type: doc
-- path: yoda/scripts/lib/cli.py
-  type: code
-- path: yoda/scripts/lib/validate.py
-  type: code
-- path: yoda/scripts/lib/paths.py
-  type: code
+- `project/specs/21-todo-next-script.md`
+- `project/specs/13-yoda-scripts-v1.md`
+- `project/specs/04-todo-dev-yaml-issues.md`
+- `yoda/scripts/lib/cli.py`
+- `yoda/scripts/lib/validate.py`
+- `yoda/scripts/lib/paths.py`
 
 ## Implementation notes
 Implement selection logic in a pure function to simplify testing.
@@ -83,8 +74,8 @@ Issue: `yoda-0008`
 Path: `yoda/project/issues/yoda-0008-implement-todo-next-with-single-issue-rule.md`
 
 ## Flow log
-2026-01-27T17:57:51-03:00 | [yoda-0008] issue_add created | title: Implement todo_next with single-issue rule | description: Implement todo_next.py to select only to-do items and block when any issue is doing | slug: implement-todo-next-with-single-issue-rule
-2026-01-27T18:00:20-03:00 | [yoda-0008] todo_update | status: to-do -> doing
-2026-01-27T18:01:15-03:00 | [yoda-0008] implement: added todo_next.py with single-issue blocking and to-do-only selection
-2026-01-27T18:01:19-03:00 | [yoda-0008] todo_update | status: doing -> done
-2026-01-27T18:01:24-03:00 | [yoda-0008] evaluate: acceptance criteria checked and result log updated in issue
+- 2026-01-27T17:57:51-03:00 issue_add created | title: Implement todo_next with single-issue rule | description: Implement todo_next.py to select only to-do items and block when any issue is doing | slug: implement-todo-next-with-single-issue-rule
+- 2026-01-27T18:00:20-03:00 todo_update | status: to-do -> doing
+- 2026-01-27T18:01:15-03:00 implement: added todo_next.py with single-issue blocking and to-do-only selection
+- 2026-01-27T18:01:19-03:00 todo_update | status: doing -> done
+- 2026-01-27T18:01:24-03:00 evaluate: acceptance criteria checked and result log updated in issue
