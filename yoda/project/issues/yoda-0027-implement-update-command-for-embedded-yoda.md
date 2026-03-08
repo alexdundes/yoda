@@ -55,16 +55,11 @@ Create `yoda/scripts/update.py` with `--check`, `--apply`, and `--source`, align
 - [ ] `--source` works for a local tarball.
 - [ ] Re-running update does not corrupt state.
 
-## Dependencies
-Depends on: yoda-0025.
 
 ## Entry points
-- path: project/specs/24-installation-and-upgrade.md
-  type: doc
-- path: yoda/scripts/init.py
-  type: code
-- path: yoda/scripts/package.py
-  type: code
+- `project/specs/24-installation-and-upgrade.md`
+- `yoda/scripts/init.py`
+- `yoda/scripts/package.py`
 
 ## Implementation notes
 - Reuse shared helpers from `yoda/scripts/lib` for output, validation, and paths.

@@ -46,14 +46,10 @@ Definir e documentar no playbook que o Intake parte de texto corrido fornecido p
 - [x] O fluxo documentado conecta abertura da issue e atualizacao do markdown da issue a partir da mesma base textual.
 - [x] Nao ha contradicao entre specs e manual embutido para o comportamento de Intake.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: project/specs/
-  type: doc
-- path: yoda/yoda.md
-  type: doc
+- `project/specs/`
+- `yoda/yoda.md`
 
 ## Implementation notes
 A revisao deve focar o playbook de Intake, evitando expandir escopo para outras fases sem necessidade. Preservar linguagem operacional e objetiva para agentes.

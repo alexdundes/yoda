@@ -47,16 +47,11 @@ Remover completamente `lightweight` do modelo operacional e dos artefatos do YOD
 - [x] Scripts funcionam sem flags/filtros `lightweight`.
 - [x] Testes cobrindo fluxo principal passam apos remocao.
 
-## Dependencies
-`yoda-0038` (politica de versionamento de layout YAML).
 
 ## Entry points
-- path: project/specs/
-  type: doc
-- path: yoda/yoda.md
-  type: doc
-- path: yoda/scripts/
-  type: code
+- `project/specs/`
+- `yoda/yoda.md`
+- `yoda/scripts/`
 
 ## Implementation notes
 Decisao de planejamento: tratar esta mudanca como `subtle` e coordenar com `yoda-0036`/`yoda-0037` para um unico bump menor de schema na release `0.1.3`.

@@ -44,8 +44,6 @@ Padronizar `Entry points` no formato canonico definido em `project/specs` (lista
 - [x] Template de issue orienta preenchimento de `Entry points` conforme a spec.
 - [x] Varredura manual confirma que as alteracoes desta issue estao corretas.
 
-## Dependencies
-Depende de `yoda-0048`.
 
 ## Entry points
 - `project/specs`

@@ -51,24 +51,15 @@ Definir e implementar o novo contrato de issue interna com `extern_issue_file` c
 - [ ] Nao ha migracao/reconciliacao automatica em `update.py`/`init.py`; abordagem adotada e destrutiva para campos legados.
 - [ ] Suite de testes cobre criacao e validacao do novo contrato.
 
-## Dependencies
-`github #2` (origem externa)
 
 ## Entry points
-- path: yoda/project/extern_issues/github-2.json
-  type: data
-- path: yoda/scripts/issue_add.py
-  type: code
-- path: yoda/scripts/yoda_intake.py
-  type: code
-- path: yoda/scripts/lib/validate.py
-  type: code
-- path: yoda/templates/issue.md
-  type: template
-- path: yoda/todos/TODO.yoda.yaml
-  type: data
-- path: yoda/scripts/update.py
-  type: code
+- `yoda/project/extern_issues/github-2.json`
+- `yoda/scripts/issue_add.py`
+- `yoda/scripts/yoda_intake.py`
+- `yoda/scripts/lib/validate.py`
+- `yoda/templates/issue.md`
+- `yoda/todos/TODO.yoda.yaml`
+- `yoda/scripts/update.py`
 
 ## Implementation notes
 Esta mudanca e de schema/layout e foi classificada como `subtle` para rollout interno, com bump para `schema_version` `1.02` e sem implementar migracao/reconciliacao em `yoda/scripts/update.py`/`yoda/scripts/init.py`.

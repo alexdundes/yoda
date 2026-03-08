@@ -46,14 +46,10 @@ Publish `yoda-install.sh` and `latest.json` under `/docs/install`, and ensure Gi
 - [ ] Pages is enabled and endpoints resolve under `https://alexdundes.github.io/yoda/`.
 - [ ] A documented checklist exists for updating `latest.json` on new releases.
 
-## Dependencies
-Depends on: yoda-0026.
 
 ## Entry points
-- path: project/specs/24-installation-and-upgrade.md
-  type: doc
-- path: README.md
-  type: doc
+- `project/specs/24-installation-and-upgrade.md`
+- `README.md`
 
 ## Implementation notes
 - Use the base URL `https://alexdundes.github.io/yoda/` and serve assets from `/docs/install/`.

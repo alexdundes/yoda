@@ -48,16 +48,11 @@ Manter `entrypoints` somente na secao markdown da issue e remover do YAML.
 - [x] Scripts de criacao/atualizacao continuam funcionais sem esse campo no YAML.
 - [x] Migracao dos dados existentes e validada.
 
-## Dependencies
-`yoda-0038` (politica de versionamento de layout YAML).
 
 ## Entry points
-- path: project/specs/
-  type: doc
-- path: yoda/templates/issue.md
-  type: doc
-- path: yoda/scripts/
-  type: code
+- `project/specs/`
+- `yoda/templates/issue.md`
+- `yoda/scripts/`
 
 ## Implementation notes
 Decisao de planejamento: tratar esta mudanca como `subtle` e coordenar com `yoda-0035`/`yoda-0037` para um unico bump menor de schema na release `0.1.3`.

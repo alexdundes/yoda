@@ -39,18 +39,12 @@ Document the required JSON keys for each script and note that consumers must ign
 - [x] Specs clarify forward-compatibility (ignore unknown keys).
 - [x] No code changes are required.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: project/specs/13-yoda-scripts-v1.md
-  type: doc
-- path: yoda/scripts/issue_add.py
-  type: code
-- path: yoda/scripts/todo_update.py
-  type: code
-- path: yoda/scripts/log_add.py
-  type: code
+- `project/specs/13-yoda-scripts-v1.md`
+- `yoda/scripts/issue_add.py`
+- `yoda/scripts/todo_update.py`
+- `yoda/scripts/log_add.py`
 
 ## Implementation notes
 Match the documented keys to the payloads emitted by the scripts today; avoid promising values that are not always present.

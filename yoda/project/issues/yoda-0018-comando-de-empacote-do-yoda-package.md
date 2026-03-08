@@ -56,18 +56,12 @@ Implementar um comando (ex.: `yoda/scripts/package.py`) que cria o pacote do YOD
 - [ ] `README.md` incluído e `yoda/scripts/tests` excluído.
 - [ ] `--archive-format` rejeita formatos além de `tar.gz`.
 
-## Dependencies
-Depends on: yoda-0016.
 
 ## Entry points
-- path: project/specs (nova seção de distribuição de yoda-0016)
-  type: doc
-- path: yoda/scripts/README.md
-  type: doc
-- path: yoda/yoda.md
-  type: doc
-- path: yoda/scripts
-  type: code
+- `project/specs` (nova seção de distribuição de yoda-0016)
+- `yoda/scripts/README.md`
+- `yoda/yoda.md`
+- `yoda/scripts`
 
 ## Implementation notes
 - Preferir stdlib (`tarfile`/`zipfile`) para evitar dependências novas.

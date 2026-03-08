@@ -55,22 +55,14 @@ Separar claramente template e preenchimento de dados: template sem defaults, scr
 - [x] A ordem relativa `status -> pending_reason -> depends_on` e respeitada quando os campos existem.
 - [x] `title` aparece antes de `description` no front matter final.
 
-## Dependencies
-Relacionada a `yoda-0043` (omissao de opcionais vazios) e `yoda-0042` (simplificacao de origem externa); origem externa `github #2`.
 
 ## Entry points
-- path: yoda/templates/issue.md
-  type: template
-- path: yoda/scripts/issue_add.py
-  type: code
-- path: yoda/scripts/todo_update.py
-  type: code
-- path: yoda/scripts/lib/front_matter.py
-  type: code
-- path: yoda/scripts/lib/validate.py
-  type: code
-- path: yoda/project/issues/
-  type: data
+- `yoda/templates/issue.md`
+- `yoda/scripts/issue_add.py`
+- `yoda/scripts/todo_update.py`
+- `yoda/scripts/lib/front_matter.py`
+- `yoda/scripts/lib/validate.py`
+- `yoda/project/issues/`
 
 ## Implementation notes
 Se `todo_update.py` ainda nao cobrir update de front matter no fluxo atual, definir explicitamente o caminho responsavel por essa atualizacao e manter nomenclatura/documentacao consistente. A ordem canonica pode ser centralizada em utilitario unico para evitar divergencia entre criacao e update.

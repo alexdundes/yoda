@@ -51,18 +51,12 @@ Fornecer caminho seguro de upgrade para 0.3.0 sem perda de rastreabilidade.
 - [x] Scripts operacionais do fluxo funcionam sem dependencia de TODO YAML apos migracao.
 - [x] Scripts (exceto `init.py`) rejeitam layout anterior e operam apenas com schema 2.00.
 
-## Dependencies
-Depende de `yoda-0051`.
 
 ## Entry points
-- path: yoda/scripts/update.py
-  type: code
-- path: yoda/todos
-  type: data
-- path: yoda/logs
-  type: data
-- path: yoda/project/issues
-  type: data
+- `yoda/scripts/update.py`
+- `yoda/todos`
+- `yoda/logs`
+- `yoda/project/issues`
 
 ## Implementation notes
 A migracao e de execucao unica por workspace: inexistencia de `TODO.<dev>.yaml` indica ambiente ja convertido. O `init.py` faz a ponte de transicao (1.02->2.00), enquanto os demais scripts passam a tratar 2.00 como unico layout valido.

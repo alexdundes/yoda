@@ -58,16 +58,11 @@ Deliver `docs/install/yoda-install.sh` with a clear, safe, repeatable install fl
 - [ ] YODA data directories are preserved.
 - [ ] `--version` optional (defaults to latest) and `--dry-run` works.
 
-## Dependencies
-Depends on: yoda-0025.
 
 ## Entry points
-- path: project/specs/24-installation-and-upgrade.md
-  type: doc
-- path: README.md
-  type: doc
-- path: yoda/scripts/init.py
-  type: code
+- `project/specs/24-installation-and-upgrade.md`
+- `README.md`
+- `yoda/scripts/init.py`
 
 ## Implementation notes
 - Use `/bin/sh` or bash with `set -euo pipefail`.

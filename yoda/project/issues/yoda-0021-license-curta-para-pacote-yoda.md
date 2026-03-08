@@ -49,14 +49,10 @@ Create a concise LICENSE file (English) suitable for inclusion in the packaged a
 - [ ] Ownership/year fields are filled and accurate.
 - [ ] No other repo files need modification to distribute the license.
 
-## Dependencies
-yoda-0016
 
 ## Entry points
-- path: project/specs/23-distribution-and-packaging.md
-  type: doc
-- path: project/specs/summary.md
-  type: doc
+- `project/specs/23-distribution-and-packaging.md`
+- `project/specs/summary.md`
 
 ## Implementation notes
 - Confirm license choice with requester if unspecified; default recommendation: MIT for simplicity or Apache-2.0 if patent grant desired.

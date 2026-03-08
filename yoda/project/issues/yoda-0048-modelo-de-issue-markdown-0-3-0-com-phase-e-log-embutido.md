@@ -73,16 +73,11 @@ Estabelecer contrato final da issue `.md` para 0.3.0 e explicitar como a transic
 - [x] O modelo 0.3.0 define `## Entry points` apenas como lista simples.
 - [x] A migracao estrutural esta definida como responsabilidade do `init.py --apply`, com `--check` sem mutacao.
 
-## Dependencies
-Depende de `yoda-0047`.
 
 ## Entry points
-- path: project/specs
-  type: doc
-- path: yoda/templates/issue.md
-  type: template
-- path: yoda/project/extern_issues/github-3.json
-  type: data
+- `project/specs`
+- `yoda/templates/issue.md`
+- `yoda/project/extern_issues/github-3.json`
 
 ## Implementation notes
 Nao executar mudancas estruturais manuais em massa nesta issue. A normalizacao de arquivos existentes deve ocorrer de forma coordenada via `init.py --apply`.

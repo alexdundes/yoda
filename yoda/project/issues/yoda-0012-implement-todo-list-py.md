@@ -50,22 +50,14 @@ Entregar o script `todo_list.py` com comportamento determinístico e testes, ali
 - [x] Filtro de tags usa AND (todas as tags).
 - [ ] Testes cobrindo filtros, ordenação e busca passam.
 
-## Dependencies
-Depends on: yoda-0011.
 
 ## Entry points
-- path: yoda/scripts
-  type: code
-- path: yoda/scripts/lib
-  type: code
-- path: project/specs/13-yoda-scripts-v1.md
-  type: doc
-- path: project/specs/20-todo-update-script.md
-  type: doc
-- path: project/specs/21-todo-next-script.md
-  type: doc
-- path: yoda/project/issues/yoda-0011-specify-todo-list-py.md
-  type: doc
+- `yoda/scripts`
+- `yoda/scripts/lib`
+- `project/specs/13-yoda-scripts-v1.md`
+- `project/specs/20-todo-update-script.md`
+- `project/specs/21-todo-next-script.md`
+- `yoda/project/issues/yoda-0011-specify-todo-list-py.md`
 
 ## Implementation notes
 Reusar helpers em `yoda/scripts/lib` quando possível (CLI, validação, output). Implementar ordenação com dependências de forma estável e determinística. Para busca textual, ler arquivos apenas da seleção filtrada.

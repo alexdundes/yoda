@@ -48,20 +48,13 @@ Create a complete spec for `todo_next.py` to remove ambiguity before implementat
 - [x] Spec explicitly blocks selection when any issue is `doing`.
 - [x] Spec explicitly limits selectable issues to `to-do`.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: project/specs/13-yoda-scripts-v1.md
-  type: doc
-- path: project/specs/21-todo-next-script.md
-  type: doc
-- path: project/specs/04-todo-dev-yaml-issues.md
-  type: doc
-- path: project/specs/07-agent-entry-and-root-file.md
-  type: doc
-- path: project/specs/02-yoda-flow-process.md
-  type: doc
+- `project/specs/13-yoda-scripts-v1.md`
+- `project/specs/21-todo-next-script.md`
+- `project/specs/04-todo-dev-yaml-issues.md`
+- `project/specs/07-agent-entry-and-root-file.md`
+- `project/specs/02-yoda-flow-process.md`
 
 ## Implementation notes
 Keep the spec consistent with the selection rule already defined in `project/specs/04-todo-dev-yaml-issues.md`.

@@ -48,18 +48,12 @@ Especificar o YODA Intake e atualizar a documentação para que o agente saiba q
 - [x] DoR mínimo documentado para issues criadas pelo Intake.
 - [x] Handoff para YODA Flow documentado.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: project/specs/02-yoda-flow-process.md
-  type: doc
-- path: project/specs/06-agent-playbook.md
-  type: doc
-- path: project/specs/13-yoda-scripts-v1.md
-  type: doc
-- path: yoda/yoda.md
-  type: doc
+- `project/specs/02-yoda-flow-process.md`
+- `project/specs/06-agent-playbook.md`
+- `project/specs/13-yoda-scripts-v1.md`
+- `yoda/yoda.md`
 
 ## Implementation notes
 Tratar YODA Intake como ciclo “backlog-centric” distinto do YODA Flow (issue-centric). Definir regras operacionais do agente (consultar `todo_list.py`, não criar issue sem DoR, encerrar ciclo explicitamente).

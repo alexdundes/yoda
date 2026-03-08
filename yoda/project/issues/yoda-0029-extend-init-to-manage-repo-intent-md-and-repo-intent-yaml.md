@@ -47,16 +47,11 @@ Ensure `init.py` creates or updates `REPO_INTENT.md` and `repo.intent.yaml` in a
 - [ ] `--dry-run` does not write changes.
 - [ ] Tests cover create + idempotent + preserve behaviors.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: yoda/scripts/init.py
-  type: code
-- path: REPO_INTENT.md
-  type: doc
-- path: repo.intent.yaml
-  type: config
+- `yoda/scripts/init.py`
+- `REPO_INTENT.md`
+- `repo.intent.yaml`
 
 ## Implementation notes
 - Reuse the existing YODA block markers for `REPO_INTENT.md` (or introduce a similar marker) to keep updates idempotent.

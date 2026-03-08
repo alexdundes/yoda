@@ -43,14 +43,10 @@ Padronizar a atribuicao de prioridade com baseline `5` e ajuste comparativo.
 - [x] `yoda/yoda.md` instrui explicitamente esse comportamento no trecho de Intake e referencia de script.
 - [x] Exemplos de Intake/issue creation refletem a regra.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: project/specs/
-  type: doc
-- path: yoda/yoda.md
-  type: doc
+- `project/specs/`
+- `yoda/yoda.md`
 
 ## Implementation notes
 Manter a regra simples para favorecer aplicacao consistente em conversas de Intake.

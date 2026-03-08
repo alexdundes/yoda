@@ -39,14 +39,10 @@ Either absorb remaining valid guidance into specs/issues or remove the file if i
 - [x] Any missing guidance is moved into specs or tracked by issues.
 - [x] The file is removed if redundant.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: yoda/dicas-do-chatgpt.md
-  type: doc
-- path: project/specs
-  type: doc
+- `yoda/dicas-do-chatgpt.md`
+- `project/specs`
 
 ## Implementation notes
 Cross-check against the recent issues created from dicas-do-chatgpt feedback and confirm the current locations:

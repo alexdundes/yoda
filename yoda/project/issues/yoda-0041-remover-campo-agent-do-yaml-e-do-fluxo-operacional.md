@@ -52,32 +52,19 @@ Eliminar o conceito de `agent` como atributo operacional no schema e no fluxo de
 - [x] Suite de testes relevante passa sem regressao.
 - [x] Logs existentes nao sao reescritos para remover mencoes historicas de `agent`.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: project/specs/04-todo-dev-yaml-issues.md
-  type: schema
-- path: project/specs/16-todo-list-script.md
-  type: doc
-- path: project/specs/18-issue-add-script.md
-  type: doc
-- path: project/specs/20-todo-update-script.md
-  type: doc
-- path: yoda/scripts/lib/validate.py
-  type: code
-- path: yoda/scripts/issue_add.py
-  type: code
-- path: yoda/scripts/todo_update.py
-  type: code
-- path: yoda/scripts/todo_list.py
-  type: code
-- path: yoda/scripts/init.py
-  type: code
-- path: yoda/templates/issue.md
-  type: template
-- path: yoda/todos/TODO.yoda.yaml
-  type: data
+- `project/specs/04-todo-dev-yaml-issues.md`
+- `project/specs/16-todo-list-script.md`
+- `project/specs/18-issue-add-script.md`
+- `project/specs/20-todo-update-script.md`
+- `yoda/scripts/lib/validate.py`
+- `yoda/scripts/issue_add.py`
+- `yoda/scripts/todo_update.py`
+- `yoda/scripts/todo_list.py`
+- `yoda/scripts/init.py`
+- `yoda/templates/issue.md`
+- `yoda/todos/TODO.yoda.yaml`
 
 ## Implementation notes
 - Classificacao: subtle (sem breaking change intencional no fluxo de uso esperado).

@@ -53,16 +53,11 @@ Eliminar `tags` de todo o fluxo YODA mantendo os comandos coerentes e previsivei
 - [x] Testes cobrem comportamento apos remocao.
 - [x] `init.py` possui parametro de manutencao para touch/reconciliacao e ele corrige `TODO.<dev>.yaml` e front matter dos `*.md` conforme schema alvo `1.01`.
 
-## Dependencies
-`yoda-0038` (politica de versionamento de layout YAML).
 
 ## Entry points
-- path: project/specs/
-  type: doc
-- path: yoda/scripts/
-  type: code
-- path: yoda/templates/issue.md
-  type: doc
+- `project/specs/`
+- `yoda/scripts/`
+- `yoda/templates/issue.md`
 
 ## Implementation notes
 Decisao de planejamento: tratar esta mudanca como `subtle` e coordenar com `yoda-0035`/`yoda-0036` para um unico bump menor de schema na release `0.1.3`.

@@ -63,28 +63,17 @@ Permitir update de `title`/`description` e rename de issue com regras explicitas
 - [x] Migracao/reconciliacao via `init.py --reconcile-layout` remove `slug` legado e mantem compatibilidade.
 - [x] Testes automatizados cobrem cenarios de rename e derivacao.
 
-## Dependencies
-Relacionada a `yoda-0042` (extern_issue_file), `yoda-0043` (omissao de opcionais vazios), `yoda-0044` (front matter ordenado/sem defaults) e origem externa `github #2`.
 
 ## Entry points
-- path: yoda/scripts/todo_update.py
-  type: code
-- path: yoda/scripts/issue_add.py
-  type: code
-- path: yoda/scripts/todo_list.py
-  type: code
-- path: yoda/scripts/lib/validate.py
-  type: code
-- path: yoda/scripts/lib/front_matter.py
-  type: code
-- path: yoda/scripts/update.py
-  type: code
-- path: yoda/scripts/init.py
-  type: code
-- path: yoda/project/issues/
-  type: data
-- path: yoda/todos/TODO.yoda.yaml
-  type: data
+- `yoda/scripts/todo_update.py`
+- `yoda/scripts/issue_add.py`
+- `yoda/scripts/todo_list.py`
+- `yoda/scripts/lib/validate.py`
+- `yoda/scripts/lib/front_matter.py`
+- `yoda/scripts/update.py`
+- `yoda/scripts/init.py`
+- `yoda/project/issues/`
+- `yoda/todos/TODO.yoda.yaml`
 
 ## Implementation notes
 Mudanca classificada como `subtle`: apesar de remover o campo persistido `slug`, ele nao e utilizado operacionalmente no fluxo atual, portanto a retirada nao deve gerar quebra de compatibilidade. Ainda assim, manter reconciliacao/migracao por `yoda/scripts/update.py` e `yoda/scripts/init.py` para padronizar artefatos legados.

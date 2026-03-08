@@ -40,16 +40,11 @@ Ensure `yoda/LICENSE` is required, included in the package, and verified by test
 - [ ] Tarball includes `yoda/LICENSE` alongside root `LICENSE`.
 - [ ] Tests assert presence of `yoda/LICENSE`.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: yoda/scripts/package.py
-  type: code
-- path: yoda/scripts/tests/test_package.py
-  type: code
-- path: project/specs/23-distribution-and-packaging.md
-  type: doc
+- `yoda/scripts/package.py`
+- `yoda/scripts/tests/test_package.py`
+- `project/specs/23-distribution-and-packaging.md`
 
 ## Implementation notes
 - Add `yoda/LICENSE` to the include list and required file checks.

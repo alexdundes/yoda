@@ -41,18 +41,12 @@ Create a minimal, repeatable test suite for the scripts and supporting utilities
 - [x] Basic tests exist for `issue_add.py`, `todo_update.py`, and `log_add.py`.
 - [x] Tests document how to run them.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: yoda/scripts/todo_next.py
-  type: code
-- path: yoda/scripts/lib/validate.py
-  type: code
-- path: yoda/scripts/lib/cli.py
-  type: code
-- path: project/specs/15-scripts-python-structure.md
-  type: doc
+- `yoda/scripts/todo_next.py`
+- `yoda/scripts/lib/validate.py`
+- `yoda/scripts/lib/cli.py`
+- `project/specs/15-scripts-python-structure.md`
 
 ## Implementation notes
 Use temporary TODO fixtures in tests; avoid modifying real TODO files.

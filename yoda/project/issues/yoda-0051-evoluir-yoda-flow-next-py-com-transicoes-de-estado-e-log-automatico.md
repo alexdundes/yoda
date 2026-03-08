@@ -60,16 +60,11 @@ Permitir que o agente avance no fluxo com comandos deterministicos e menos etapa
 - [x] Eventos operacionais sao registrados no markdown da issue em linha unica compacta.
 - [x] Cenarios de transicao invalida e de bloqueio possuem testes.
 
-## Dependencies
-Depende de `yoda-0050`.
 
 ## Entry points
-- path: yoda/scripts/yoda_flow_next.py
-  type: code
-- path: yoda/scripts/lib
-  type: code
-- path: yoda/project/issues
-  type: data
+- `yoda/scripts/yoda_flow_next.py`
+- `yoda/scripts/lib`
+- `yoda/project/issues`
 
 ## Implementation notes
 Runbook permanece compacto e orienta somente a fase atual. A automacao deve registrar decisao em todas as execucoes (inclusive bloqueio) para rastreabilidade, mantendo formato de log em uma linha curta.

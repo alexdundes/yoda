@@ -73,28 +73,17 @@ Padronizar o Intake via `yoda_intake.py` com fluxo em duas etapas e mover a cole
 - [x] Fluxo suporta uma issue externa originando uma ou multiplas issues YODA com rastreabilidade via `origin`.
 - [x] Specs dedicadas criadas para `yoda_intake.py` e `get_extern_issue.py`.
 
-## Dependencies
-`yoda-0038` caso haja alteracao de layout YAML/origin.
 
 ## Entry points
-- path: project/specs/
-  type: doc
-- path: yoda/scripts/yoda_intake.py
-  type: code
-- path: yoda/scripts/get_extern_issue.py
-  type: code
-- path: yoda/scripts/lib/provider_gitlab.py
-  type: code
-- path: yoda/scripts/lib/provider_github.py
-  type: code
-- path: project/specs/25-yoda-intake-script.md
-  type: doc
-- path: project/specs/26-get-extern-issue-script.md
-  type: doc
-- path: yoda/yoda.md
-  type: doc
-- path: .git/config
-  type: config
+- `project/specs/`
+- `yoda/scripts/yoda_intake.py`
+- `yoda/scripts/get_extern_issue.py`
+- `yoda/scripts/lib/provider_gitlab.py`
+- `yoda/scripts/lib/provider_github.py`
+- `project/specs/25-yoda-intake-script.md`
+- `project/specs/26-get-extern-issue-script.md`
+- `yoda/yoda.md`
+- `.git/config`
 
 ## Implementation notes
 - Decisao de planejamento: tratar esta issue como `subtle`.

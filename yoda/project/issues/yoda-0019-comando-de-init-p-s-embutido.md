@@ -55,18 +55,12 @@ Implementar script de init que, ao rodar no projeto host, crie/ajuste estrutura 
 - [ ] `--dry-run` mostra ações sem escrever no disco.
 - [ ] Documentação de uso e exemplos atualizada (manual ou README de scripts).
 
-## Dependencies
-Depends on: yoda-0016, yoda-0018.
 
 ## Entry points
-- path: yoda/scripts
-  type: code
-- path: yoda/templates
-  type: asset
-- path: yoda/yoda.md
-  type: doc
-- path: project/specs (distribuição definida em yoda-0016)
-  type: doc
+- `yoda/scripts`
+- `yoda/templates`
+- `yoda/yoda.md`
+- `project/specs` (distribuição definida em yoda-0016)
 
 ## Implementation notes
 - Reutilizar utilitários existentes (`lib.paths`, `lib.dev`, etc.) para consistência.

@@ -54,16 +54,11 @@ Garantir que a documentacao operacional esteja alinhada ao comportamento real do
 - [x] Entrada de YODA Flow no playbook usa `yoda_flow_next.py` como comando deterministico principal.
 - [x] O texto final de `yoda/yoda.md` e estritamente operacional (estado atual), sem topicos de migracao ou historico de versao.
 
-## Dependencies
-Depende de `yoda-0051`.
 
 ## Entry points
-- path: yoda/yoda.md
-  type: doc
-- path: project/specs
-  type: doc
-- path: yoda/scripts/yoda_flow_next.py
-  type: code
+- `yoda/yoda.md`
+- `project/specs`
+- `yoda/scripts/yoda_flow_next.py`
 
 ## Implementation notes
 Documentar apenas estado atual de operacao: entrada, modos, fases e comandos vigentes. Evitar texto historico (migracao/versionamento) no `yoda/yoda.md`.

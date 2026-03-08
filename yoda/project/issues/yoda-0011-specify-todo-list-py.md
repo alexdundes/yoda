@@ -61,18 +61,12 @@ Especificar completamente o comportamento de `todo_list.py` para permitir implem
 - [x] Spec define tratamento visual de pending na saída Markdown (bloco antes da tabela; pending fora da tabela).
 - [x] Spec define JSON com todos os campos do item de issue.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: project/specs/13-yoda-scripts-v1.md
-  type: doc
-- path: project/specs/05-scripts-and-automation.md
-  type: doc
-- path: project/specs/15-scripts-python-structure.md
-  type: doc
-- path: project/specs/04-todo-dev-yaml-issues.md
-  type: doc
+- `project/specs/13-yoda-scripts-v1.md`
+- `project/specs/05-scripts-and-automation.md`
+- `project/specs/15-scripts-python-structure.md`
+- `project/specs/04-todo-dev-yaml-issues.md`
 
 ## Implementation notes
 Definir a regra de ordenação com dependências de forma determinística (ex.: ordenação estável que move itens bloqueados para depois da dependência não concluída). Definir colunas da tabela MD com largura ajustada para leitura humana e por agent. Definir formato do texto fluído na busca textual (issue + linha encontrada).

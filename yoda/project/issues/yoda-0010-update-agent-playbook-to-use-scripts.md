@@ -51,14 +51,10 @@ Document a script-backed YODA Flow in `project/specs/06-agent-playbook.md` and a
 - [x] `yoda/yoda.md` entry instructions reflect the YODA Flow entry phrases and `todo_next.py` usage.
 - [x] Out-of-scope note clearly excludes issue creation from the YODA Flow.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: project/specs/06-agent-playbook.md
-  type: doc
-- path: yoda/yoda.md
-  type: doc
+- `project/specs/06-agent-playbook.md`
+- `yoda/yoda.md`
 
 ## Implementation notes
 Keep the flow rules consistent with existing specs (single issue doing, pending handling, to-do-only selection).

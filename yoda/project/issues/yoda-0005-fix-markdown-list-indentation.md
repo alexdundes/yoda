@@ -32,12 +32,9 @@ Align the indentation of the stray bullet with the rest of the list in the Notes
 - [x] The Notes list renders as a consistent bullet list.
 - [x] No wording changes are introduced.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: project/specs/02-yoda-flow-process.md
-  type: doc
+- `project/specs/02-yoda-flow-process.md`
 
 ## Implementation notes
 Keep the bullet text unchanged; only adjust whitespace.

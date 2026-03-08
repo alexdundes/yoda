@@ -49,24 +49,15 @@ Definir e implementar politica unica de serializacao para que campos opcionais v
 - [x] Testes automatizados cobrem criacao, update e reconciliacao com omissao de opcionais.
 - [x] Decisao de versao registrada: manter `schema_version: "1.02"` nesta entrega.
 
-## Dependencies
-Relacionada a `yoda-0042` (simplificacao de origem externa) e ao backlog externo `github #2`.
 
 ## Entry points
-- path: yoda/scripts/issue_add.py
-  type: code
-- path: yoda/scripts/todo_update.py
-  type: code
-- path: yoda/scripts/init.py
-  type: code
-- path: yoda/scripts/lib/validate.py
-  type: code
-- path: yoda/scripts/lib/front_matter.py
-  type: code
-- path: yoda/templates/issue.md
-  type: template
-- path: yoda/todos/TODO.yoda.yaml
-  type: data
+- `yoda/scripts/issue_add.py`
+- `yoda/scripts/todo_update.py`
+- `yoda/scripts/init.py`
+- `yoda/scripts/lib/validate.py`
+- `yoda/scripts/lib/front_matter.py`
+- `yoda/templates/issue.md`
+- `yoda/todos/TODO.yoda.yaml`
 
 ## Implementation notes
 A regra de "opcional vazio = omitido" deve ser centralizada em utilitario compartilhado de serializacao para evitar divergencia entre scripts. Necessario definir com precisao o que e "vazio" por tipo (string vazia, lista vazia, objeto vazio, null) e aplicar de forma uniforme.

@@ -44,20 +44,13 @@ Entregar o script `todo_reorder.py` com comportamento determinístico e testes, 
 - [x] Timestamps atualizados corretamente.
 - [x] Testes cobrindo casos principais passam.
 
-## Dependencies
-Depends on: yoda-0013.
 
 ## Entry points
-- path: yoda/scripts
-  type: code
-- path: yoda/scripts/lib
-  type: code
-- path: project/specs/13-yoda-scripts-v1.md
-  type: doc
-- path: project/specs/15-scripts-python-structure.md
-  type: doc
-- path: yoda/project/issues/yoda-0013-specify-todo-reorder-py.md
-  type: doc
+- `yoda/scripts`
+- `yoda/scripts/lib`
+- `project/specs/13-yoda-scripts-v1.md`
+- `project/specs/15-scripts-python-structure.md`
+- `yoda/project/issues/yoda-0013-specify-todo-reorder-py.md`
 
 ## Implementation notes
 Reusar helpers em `yoda/scripts/lib` quando possível. A reordenação deve ser estável para itens não movidos.

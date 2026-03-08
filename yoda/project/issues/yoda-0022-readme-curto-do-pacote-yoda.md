@@ -54,16 +54,11 @@ Create a lightweight `README` placed at package root that orients users to the b
 - [ ] README contains TODO comments for unresolved placeholders (URL/hosting).
 - [ ] Follow-up issue created for one-liner install documentation, referencing README TODOs.
 
-## Dependencies
-yoda-0016
 
 ## Entry points
-- path: project/specs/23-distribution-and-packaging.md
-  type: doc
-- path: project/specs/summary.md
-  type: doc
-- path: yoda/yoda.md
-  type: doc
+- `project/specs/23-distribution-and-packaging.md`
+- `project/specs/summary.md`
+- `yoda/yoda.md`
 
 ## Implementation notes
 - Keep to plain Markdown, no badges or heavy formatting.

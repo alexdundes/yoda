@@ -44,14 +44,10 @@ Garantir que o init do YODA trate `GEMINI.md` como nome canonico, sem referencia
 - [x] Uma execucao de init em projeto limpo gera/referencia `GEMINI.md`.
 - [x] Execucoes repetidas nao criam efeitos colaterais indevidos.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: project/specs/
-  type: doc
-- path: yoda/scripts/init.py
-  type: code
+- `project/specs/`
+- `yoda/scripts/init.py`
 
 ## Implementation notes
 Decisao explicita deste backlog: nao priorizar legado nesse item. Validar impacto apenas no fluxo atual usado por `../fibu`.

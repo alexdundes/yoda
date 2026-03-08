@@ -48,18 +48,12 @@ Provide an English, single-file manual covering Flow/Intake entry phrases, devel
 - [x] No `project/specs` references are required to operate the embedded framework.
 - [x] Internal links/anchors function after packaging.
 
-## Dependencies
-Depends on: yoda-0016.
 
 ## Entry points
-- path: yoda/yoda.md
-  type: doc
-- path: project/specs/02-yoda-flow-process.md
-  type: doc
-- path: project/specs/11-yoda-intake.md
-  type: doc
-- path: project/specs/06-agent-playbook.md
-  type: doc
+- `yoda/yoda.md`
+- `project/specs/02-yoda-flow-process.md`
+- `project/specs/11-yoda-intake.md`
+- `project/specs/06-agent-playbook.md`
 
 ## Implementation notes
 - Manter linguagem concisa e operacional, com foco em ações e comandos.

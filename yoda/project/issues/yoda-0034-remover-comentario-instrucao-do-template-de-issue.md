@@ -42,16 +42,11 @@ Garantir que o template final de issue nao inclua o comentario inicial de substi
 - [ ] Templates padrao e lightweight nao contem o comentario inicial `Replace [ID] ...`.
 - [ ] Nova issue criada via `issue_add.py` nao contem o comentario inicial `Replace [ID] ...`.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: project/specs/
-  type: doc
-- path: yoda/templates/issue.md
-  type: doc
-- path: yoda/scripts/issue_add.py
-  type: code
+- `project/specs/`
+- `yoda/templates/issue.md`
+- `yoda/scripts/issue_add.py`
 
 ## Implementation notes
 Manter os demais comentarios de orientacao das secoes; remover somente o comentario inicial de substituicao de ID/titulo.

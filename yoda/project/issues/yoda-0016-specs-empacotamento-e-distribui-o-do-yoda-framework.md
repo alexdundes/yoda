@@ -49,20 +49,13 @@ Produzir uma ou mais specs em `project/specs/` que normatizem o empacotamento e 
 - [x] `project/specs/summary.md` (ou equivalente) referencia o novo conteúdo.
 - [x] Nenhuma dependência obrigatória de `project/specs` permanece no pacote final (apontada explicitamente na spec).
 
-## Dependencies
-None.
 
 ## Entry points
-- path: project/specs/summary.md
-  type: doc
-- path: project/specs/23-distribution-and-packaging.md
-  type: doc
-- path: project/specs/02-yoda-flow-process.md
-  type: doc
-- path: project/specs/06-agent-playbook.md
-  type: doc
-- path: yoda/yoda.md
-  type: doc
+- `project/specs/summary.md`
+- `project/specs/23-distribution-and-packaging.md`
+- `project/specs/02-yoda-flow-process.md`
+- `project/specs/06-agent-playbook.md`
+- `yoda/yoda.md`
 
 ## Implementation notes
 - Manter linguagem concisa (orientada a agentes), mas dentro do padrão das specs atuais.

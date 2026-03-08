@@ -37,16 +37,11 @@ Provide a compact, copyable workflow example aligned with existing scripts and p
 - [x] Example commands match current script interfaces.
 - [x] The section references the canonical artifact paths.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: project/specs/05-scripts-and-automation.md
-  type: doc
-- path: project/specs/06-agent-playbook.md
-  type: doc
-- path: yoda/scripts/README.md
-  type: doc
+- `project/specs/05-scripts-and-automation.md`
+- `project/specs/06-agent-playbook.md`
+- `yoda/scripts/README.md`
 
 ## Implementation notes
 Place the section in `project/specs/05-scripts-and-automation.md` to keep it close to script usage guidance.

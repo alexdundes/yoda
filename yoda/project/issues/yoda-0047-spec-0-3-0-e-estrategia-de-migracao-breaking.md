@@ -74,11 +74,6 @@ Consolidar o desenho oficial de 0.3.0 com regras normativas para guiar implement
 - [x] A documentacao base 0.3.0 define logs compactos de uma linha para fluxo e scripts auxiliares.
 - [x] A documentacao base 0.3.0 explicita que `--check` e `--apply` ficam no `init.py` atualizado apos update.
 
-## Dependencies
-None.
-Relacionada: `yoda-0055` (desdobramento de UX documental previsto no pacote 0.3.0).
-Relacionada: `yoda-0056` (fonte unica de dependencias via `depends_on` no front matter).
-Relacionada: `yoda-0057` (fonte unica de ID via nome do arquivo).
 
 ## Entry points
 - `project/specs`

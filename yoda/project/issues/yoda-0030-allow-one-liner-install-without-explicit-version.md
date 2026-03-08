@@ -39,16 +39,11 @@ Make the one‑liner install work without specifying `--version`, and update doc
 - [ ] Spec quick install section mirrors the same two commands and guidance.
 - [ ] Safety guidance still recommends pinning a version for production.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: docs/install/yoda-install.sh
-  type: code
-- path: README.md
-  type: doc
-- path: project/specs/24-installation-and-upgrade.md
-  type: doc
+- `docs/install/yoda-install.sh`
+- `README.md`
+- `project/specs/24-installation-and-upgrade.md`
 
 ## Implementation notes
 - Installer behavior already defaults to latest; only documentation changes are required.

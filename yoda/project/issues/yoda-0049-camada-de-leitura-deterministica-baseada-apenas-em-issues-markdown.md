@@ -77,16 +77,11 @@ Entregar API/utilitarios internos que leem front matter e corpo das issues, apli
 - [x] Contrato de saida em memoria (por issue e global) esta definido.
 - [x] Erros de parse/schema sao reportados com contexto util (`path`, `id`, campo/regra).
 
-## Dependencies
-Depende de `yoda-0048`.
 
 ## Entry points
-- path: yoda/scripts/lib
-  type: code
-- path: yoda/project/issues
-  type: data
-- path: yoda/scripts/tests
-  type: code
+- `yoda/scripts/lib`
+- `yoda/project/issues`
+- `yoda/scripts/tests`
 
 ## Implementation notes
 Criar unidade reutilizavel para evitar duplicacao de parse em comandos futuros. Esta issue deve permanecer limitada a leitura/indexacao/validacao, sem implementar transicoes de fluxo.

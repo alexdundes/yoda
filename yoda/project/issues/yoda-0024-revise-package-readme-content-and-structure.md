@@ -102,24 +102,15 @@ Deliver a clear, friendly, English package README with all required blocks and T
 - [ ] Specs/playbook/yoda manual are updated to include the agent-skin-in-cycle concept.
 - [ ] yoda-0023 depends on this issue.
 
-## Dependencies
-None. (This issue blocks yoda-0023.)
 
 ## Entry points
-- path: README.md
-  type: doc
-- path: project/specs/00-conventions.md
-  type: doc
-- path: project/specs/02-yoda-flow-process.md
-  type: doc
-- path: project/specs/11-yoda-intake.md
-  type: doc
-- path: project/specs/06-agent-playbook.md
-  type: doc
-- path: yoda/yoda.md
-  type: doc
-- path: project/specs/24-installation-and-upgrade.md
-  type: doc
+- `README.md`
+- `project/specs/00-conventions.md`
+- `project/specs/02-yoda-flow-process.md`
+- `project/specs/11-yoda-intake.md`
+- `project/specs/06-agent-playbook.md`
+- `yoda/yoda.md`
+- `project/specs/24-installation-and-upgrade.md`
 
 ## Implementation notes
 - Use "cycle" as the canonical term; "skin" is an agent stance when entering a cycle.

@@ -45,16 +45,11 @@ Padronizar classificacao de mudancas de layout YAML e o procedimento de release/
 - [x] Ha criterio claro para obrigatoriedade de migracao em `update.py` e uso de `init.py` no rollout.
 - [x] Demais issues de alteracao de YAML podem referenciar esta politica sem ambiguidade.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: project/specs/
-  type: doc
-- path: yoda/scripts/update.py
-  type: code
-- path: yoda/scripts/init.py
-  type: code
+- `project/specs/`
+- `yoda/scripts/update.py`
+- `yoda/scripts/init.py`
 
 ## Implementation notes
 Documentar a regra em linguagem operacional curta para evitar interpretacoes subjetivas.

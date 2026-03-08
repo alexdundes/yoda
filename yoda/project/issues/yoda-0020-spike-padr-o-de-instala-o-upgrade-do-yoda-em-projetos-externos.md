@@ -56,16 +56,11 @@ Produzir análise curta e recomendação prática sobre como embutir e atualizar
 - [ ] Inclui fluxo “one-liner” primeiro (com alertas), e fluxo manual recomendado em seguida.
 - [ ] Define comportamento de update/rollback, metadata `latest.json`, e regras de preservação de arquivos.
 
-## Dependencies
-Depends on: yoda-0016 (usar specs de distribuição como base).
 
 ## Entry points
-- path: project/specs (distribuição, yoda-0016)
-  type: doc
-- path: yoda/yoda.md
-  type: doc
-- path: yoda/scripts
-  type: code
+- `project/specs` (distribuição, yoda-0016)
+- `yoda/yoda.md`
+- `yoda/scripts`
 
 ## Implementation notes
 - Documento como spec normativa em `project/specs/` (proposto: `project/specs/24-installation-and-upgrade.md`).

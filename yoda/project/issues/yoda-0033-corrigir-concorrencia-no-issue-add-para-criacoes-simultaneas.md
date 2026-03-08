@@ -53,16 +53,11 @@ Tornar `issue_add.py` seguro para concorrencia, impedindo IDs duplicados e garan
 - [x] Ao esgotar retries ou falhar durante escrita, o comando retorna erro explicito (sem rollback automatico).
 - [x] Ha teste automatizado reproduzindo o cenario e validando a correcao.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: project/specs/
-  type: doc
-- path: yoda/scripts/issue_add.py
-  type: code
-- path: yoda/todos/TODO.yoda.yaml
-  type: data
+- `project/specs/`
+- `yoda/scripts/issue_add.py`
+- `yoda/todos/TODO.yoda.yaml`
 
 ## Implementation notes
 - Lock externo por `--dev` (arquivo `.lock` dedicado), sem necessidade de estrategia intra-dev adicional.

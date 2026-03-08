@@ -36,14 +36,10 @@ Align the written contract with the implemented behavior of `log_add.py`, docume
 - [x] Error behavior for missing issue id/file is documented.
 - [x] No code changes are required.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: project/specs/19-log-add-script.md
-  type: doc
-- path: yoda/scripts/log_add.py
-  type: code
+- `project/specs/19-log-add-script.md`
+- `yoda/scripts/log_add.py`
 
 ## Implementation notes
 Match the documented steps to the current implementation order: load TODO, find issue item, resolve slug, build issue/log paths.

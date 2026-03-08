@@ -53,16 +53,11 @@ Especificar completamente o comportamento de `todo_reorder.py` (inputs, regras, 
 - [x] Spec define comando `--prefer/--over` e regra de ajuste de prioridade.
 - [x] Spec define validações extras para priorização (status `to-do` e dependência).
 
-## Dependencies
-None.
 
 ## Entry points
-- path: project/specs/13-yoda-scripts-v1.md
-  type: doc
-- path: project/specs/05-scripts-and-automation.md
-  type: doc
-- path: project/specs/15-scripts-python-structure.md
-  type: doc
+- `project/specs/13-yoda-scripts-v1.md`
+- `project/specs/05-scripts-and-automation.md`
+- `project/specs/15-scripts-python-structure.md`
 
 ## Implementation notes
 A reordenação deve ser determinística e preservar a ordem relativa dos demais itens. Reaproveitar lógica de ordenação de `todo_list` quando possível. Definir como lidar com conflito de flags e IDs inexistentes.

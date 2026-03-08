@@ -58,16 +58,11 @@ Padronizar `Result log` com um unico formato oficial, remover comentario residua
 - [x] Caso com issue externa inclui linha `GitLab|GitHub Issue` com `#NNN`.
 - [x] Caso sem issue externa nao inclui a linha `GitLab|GitHub Issue`.
 
-## Dependencies
-Origem externa `github #2`.
 
 ## Entry points
-- path: yoda/templates/issue.md
-  type: template
-- path: yoda/yoda.md
-  type: doc
-- path: yoda/project/issues/
-  type: data
+- `yoda/templates/issue.md`
+- `yoda/yoda.md`
+- `yoda/project/issues/`
 
 ## Implementation notes
 Classificacao sugerida: `subtle` (ajuste de padronizacao e instrucao operacional, sem quebra de compatibilidade funcional esperada). A regra condicional da issue externa deve ser objetiva e testavel para evitar ambiguidade de output.

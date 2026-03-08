@@ -46,22 +46,14 @@ Create `yoda/scripts/todo_next.py` with deterministic selection and the updated 
 - [x] Any `doing` issue produces a conflict error and includes the doing list.
 - [x] Success output includes pending hints when pending issues exist.
 
-## Dependencies
-None.
 
 ## Entry points
-- path: project/specs/21-todo-next-script.md
-  type: doc
-- path: project/specs/13-yoda-scripts-v1.md
-  type: doc
-- path: project/specs/04-todo-dev-yaml-issues.md
-  type: doc
-- path: yoda/scripts/lib/cli.py
-  type: code
-- path: yoda/scripts/lib/validate.py
-  type: code
-- path: yoda/scripts/lib/paths.py
-  type: code
+- `project/specs/21-todo-next-script.md`
+- `project/specs/13-yoda-scripts-v1.md`
+- `project/specs/04-todo-dev-yaml-issues.md`
+- `yoda/scripts/lib/cli.py`
+- `yoda/scripts/lib/validate.py`
+- `yoda/scripts/lib/paths.py`
 
 ## Implementation notes
 Implement selection logic in a pure function to simplify testing.
