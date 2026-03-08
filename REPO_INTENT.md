@@ -6,7 +6,8 @@ This repository is a meta-implementation of the YODA Framework.
 
 - project/specs/ is the source of truth for the future YODA Framework.
 - yoda/ is the implementation workspace under construction.
-- yoda/ is aligned with the framework specs and uses YAML-based TODOs and logs.
+- yoda/ is aligned with the framework specs and uses issue Markdown as operational source of truth.
+- YAML TODO/log artifacts are compatibility/legacy support, not the canonical execution path.
 - bootstrap-legacy/ preserves artifacts generated during the bootstrap of this meta-implementation.
 
 ## bootstrap-legacy/ (historical)

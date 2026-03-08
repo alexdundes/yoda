@@ -26,5 +26,5 @@ Agent tools do not agree on which file to read (`AGENTS.md`, `GEMINI.md`, etc.).
    - --dev `<slug>` flag
    - Ask the user when `--dev` is missing
    - Slug format: lowercase ASCII, digits, and hyphens only; must start with a letter; no spaces.
-5) Agent loads `yoda/todos/TODO.<dev>.yaml`, selects the highest-priority selectable issue (status `to-do`, dependencies resolved, and no issue `doing`) using the canonical id, and follows the flow.
-   - If the expected TODO file is missing, ask the user which TODO to use.
+5) Agent executes `yoda/scripts/yoda_flow_next.py --dev <slug>` to select/resume the deterministic issue from markdown index (`yoda/project/issues/<dev>-<NNNN>-<slug>.md`) and follow the returned runbook.
+   - If no selectable issue exists, the script returns blocker guidance and the agent must ask for resolution/next action.

@@ -2,7 +2,7 @@
 
 ## Objective
 
-Define the required behavior for `todo_list.py`, the script that lists and filters issues from `yoda/todos/TODO.<dev>.yaml`.
+Define the required behavior for `todo_list.py`, the script that lists and filters issues from markdown index files in `yoda/project/issues/`.
 
 ## Scope
 
@@ -18,8 +18,8 @@ Out of scope:
 ## Location
 
 - Script path: `yoda/scripts/todo_list.py`
-- TODO path: `yoda/todos/TODO.<dev>.yaml`
-- Issue path: `yoda/project/issues/<id>-<slug>.md`
+- Canonical issue path: `yoda/project/issues/<dev>-<NNNN>-<slug>.md`
+- TODO YAML path (`yoda/todos/TODO.<dev>.yaml`) is compatibility-only and not the primary source for this command.
 
 ## CLI
 
@@ -49,8 +49,8 @@ Global flags:
 
 1) Resolve developer slug from `--dev`.
    - If missing, return guidance instructing the agent to ask the human for the slug and rerun with `--dev <slug>`.
-2) Load `yoda/todos/TODO.<dev>.yaml`. If missing, exit with code 3.
-3) Validate the TODO schema. If validation fails, exit with code 2.
+2) Load markdown issue index for `<dev>` from `yoda/project/issues/`.
+3) Validate per-issue metadata/schema. If validation fails, exit with code 2.
 4) Apply filters (see Filters).
 5) Apply ordering (see Ordering).
 6) If `--grep` is provided, apply text search to the selected issues (see Text search).
@@ -127,7 +127,7 @@ Output when `--grep` is used (Markdown format):
 
 ### JSON (`--format json` or `--json`)
 
-- The JSON output should include an array of issues with **all issue fields** from the TODO item (including `pending_reason`).
+- The JSON output should include an array of issues with fields derived from markdown front matter and filename (including `id`, `slug`, `path`, `status`, `phase`, `depends_on`, `priority`, timestamps).
 
 ## Error handling
 
@@ -135,6 +135,6 @@ Output when `--grep` is used (Markdown format):
   - `0`: success
   - `1`: general error
   - `2`: validation error
-  - `3`: not found (missing TODO)
+  - `3`: not found (unused in the canonical markdown path)
   - `4`: conflict (unused by todo_list in v1)
 - Errors must be written to stderr and include an actionable message.

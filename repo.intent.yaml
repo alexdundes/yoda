@@ -12,12 +12,20 @@ bootstrap_legacy:
   - Later, scripts generated YAML from Markdown records to validate concepts.
   - Not used by the current workflow; kept for historical verification.
 target:
-  todo:
-    format: yaml
-    pattern: yoda/todos/TODO.<dev>.yaml
-  logs:
-    format: yaml
-    pattern: yoda/logs/<id>-<slug>.yaml
+  canonical:
+    issues:
+      format: markdown
+      pattern: yoda/project/issues/<dev>-<NNNN>-<slug>.md
+    flow_log:
+      location: section
+      pattern: yoda/project/issues/<dev>-<NNNN>-<slug>.md::## Flow log
+  compatibility:
+    todo:
+      format: yaml
+      pattern: yoda/todos/TODO.<dev>.yaml
+    logs:
+      format: yaml
+      pattern: yoda/logs/<id>-<slug>.yaml
 agent_entry_order:
 - REPO_INTENT.md
 - yoda/yoda.md

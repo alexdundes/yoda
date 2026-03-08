@@ -1,15 +1,14 @@
 ---
 schema_version: '2.00'
 id: yoda-0059
-status: doing
-phase: evaluate
+status: done
 title: Corrigir yoda_flow_next --dry-run sem mutacao de arquivos
 description: 'Garantir que yoda_flow_next.py respeite --dry-run de forma estrita:
   sem alterar front matter e sem escrever em Flow log, inclusive em caminhos bloqueados
   (no selectable/dependency/pending).'
 priority: 5
 created_at: '2026-03-07T20:36:29-03:00'
-updated_at: '2026-03-07T20:49:33-03:00'
+updated_at: '2026-03-07T20:50:25-03:00'
 ---
 
 # yoda-0059 - Corrigir yoda_flow_next --dry-run sem mutacao de arquivos
@@ -96,3 +95,4 @@ Foram adicionados testes de regressao em `yoda/scripts/tests/test_yoda_flow_next
 2026-03-07T20:44:17-03:00 transition doing/study->doing/document | Study approved: dry-run simulado sem escrita; payload simulado mantido; bloqueio preserva exit 3 sem escrita
 2026-03-07T20:44:45-03:00 transition doing/document->doing/implement | Document approved: implementar dry-run estrito sem escrita com payload simulado e bloqueio exit 3
 2026-03-07T20:49:33-03:00 transition doing/implement->doing/evaluate | Implement concluido: dry-run sem escrita, simulacao de transicao, e testes de regressao adicionados
+2026-03-07T20:50:25-03:00 transition doing/evaluate->done | Evaluate aprovado: ACs validados e Result log concluido

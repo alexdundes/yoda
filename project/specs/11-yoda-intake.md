@@ -41,7 +41,7 @@ Examples (translate to the human's language if needed):
 5) **Definition of Ready (DoR)**
    - Ensure each issue meets the minimal readiness criteria (see below).
 6) **Create**
-   - Use `issue_add.py` to create issues and add them to the TODO.
+   - Use `issue_add.py` to create markdown issues.
    - Fill/update the issue Markdown from the same structured translation generated from the human free-form input.
    - Remove placeholders and complete sections.
 7) **Handoff**
@@ -82,7 +82,7 @@ Each issue must include at minimum:
 
 ## Outputs
 
-- One or more issues created and added to `TODO.<dev>.yaml`.
+- One or more markdown issues created in `yoda/project/issues/`.
 - Updated issue Markdown files derived from the same structured Intake translation (placeholders resolved).
 - Backlog reviewed and coherent.
 
