@@ -22,6 +22,7 @@ pip install -r yoda/scripts/requirements.txt
 
 python yoda/scripts/yoda_flow_next.py --dev dev
 python yoda/scripts/yoda_flow_next.py --dev dev --log-message "Study completed"
+python yoda/scripts/yoda_prep_flow.py --dev dev --issue dev-0001
 python yoda/scripts/yoda_intake.py --dev dev
 python yoda/scripts/get_extern_issue.py --dev dev --extern-issue 123
 python yoda/scripts/todo_update.py --dev dev --issue dev-0001 --status doing --phase study
@@ -31,6 +32,7 @@ python yoda/scripts/log_add.py --dev dev --issue dev-0001 --message "Additional 
 ## Flow and Intake
 
 - Deterministic YODA Flow: `yoda_flow_next.py`
+- Explicit issue Study/Document preparation: `yoda_prep_flow.py`
 - Intake runbooks: `yoda_intake.py`
 - Manual semantic/process adjustments: `todo_update.py`
 - Exceptional manual logging: `log_add.py`
