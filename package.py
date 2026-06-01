@@ -62,7 +62,6 @@ INCLUDE_GLOBS = [
 ]
 EXCLUDE_GLOBS = [
     "project/**",
-    "project/specs/**",
     "bootstrap-legacy/**",
     "yoda/logs/**",
     "yoda/todos/**",
@@ -83,8 +82,9 @@ HELP_EPILOG = """Agent runbook (read this before packaging):
 Goal:
 - Produce one release archive with traceable metadata and a matching changelog entry.
 
-1) Read the packaging contract first:
-   - project/specs/23-distribution-and-packaging.md
+1) Treat this help output as the packaging contract:
+   - package.py is the source of truth for included files, excluded files,
+     release metadata, and changelog entry creation.
 
 2) Build release notes from repository history (never guess):
    - Check working tree: git status --short

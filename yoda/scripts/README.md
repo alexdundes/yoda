@@ -1,6 +1,10 @@
 # yoda/scripts
 
-Operational scripts for the YODA Framework (issue-markdown-driven flow). Primary reference: `project/specs/13-yoda-scripts-v1.md`.
+Operational scripts for the YODA Framework (issue-markdown-driven flow).
+
+This directory is self-contained for embedded YODA usage. For operational details,
+read each command's `--help` output and follow the Agent guidance/runbook printed
+by the command.
 
 ## Quick rules
 

@@ -77,7 +77,9 @@ Check `yoda/PACKAGE_MANIFEST.yaml` for version/build metadata and `CHANGELOG.yam
 Upgrades replace only the framework files under `yoda/` and preserve project data. Keep a backup at `yoda/_previous/<version>` to rollback by restoring the prior subtree.
 
 ## Source of truth
-The authoritative specification lives in the upstream repo: https://github.com/alexdundes/yoda (see `project/specs/`).
+For embedded projects, the operational source of truth is inside the package:
+issue Markdown under `yoda/project/issues/`, the embedded manual at
+`yoda/yoda.md`, and the runbooks printed by `yoda/scripts/*.py --help`.
 
 ## Where to read more
 - `yoda/yoda.md` for the embedded manual
