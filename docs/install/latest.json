@@ -1,6 +1,6 @@
 {
-  "version": "0.3.1",
-  "build": "20260308.5638976",
-  "package_url": "https://github.com/alexdundes/yoda/releases/download/v0.3.1/yoda-framework-0.3.1+20260308.5638976.tar.gz",
-  "sha256": "45d73e14edfe40d2b51d78b632b2a317d78234b3fe2455cb2f33274bb4df6914"
+  "version": "0.4.0",
+  "build": "20260602.5cd734b",
+  "package_url": "https://github.com/alexdundes/yoda/releases/download/v0.4.0/yoda-framework-0.4.0+20260602.5cd734b.tar.gz",
+  "sha256": "371e7fa5797cf43c5ae99713ed42ef62d8c328c90c64b7a1db53e3c526c6e656"
 }

@@ -1,3 +1,21 @@
+- version: 0.4.0
+  build: 20260602.5cd734b
+  date: '2026-06-02T10:23:10-03:00'
+  summary:
+  - Added a preparation flow for running Study and Document independently of issue
+    ordering
+  - Made YODA initialization self-contained under yoda/ without mutating host agent
+    files
+  breaking: []
+  additions:
+  - Added yoda_prep_flow.py with tests and manual guidance for preparation-only Study
+    and Document work
+  - Added YODA-local agent entry files for AGENTS.md, GEMINI.md, and CLAUDE.md
+  fixes:
+  - Stopped init.py from creating or modifying host-root agent and intent files
+  - Updated packaging, specs, and documentation to include YODA-local agent entries
+  notes: ''
+  commit: 5cd734b7f1606934442fd0103a86afb64d4a2c1a
 - version: 0.3.1
   build: '20260308.5638976'
   date: '2026-03-08T10:58:09-03:00'
