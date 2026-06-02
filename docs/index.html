@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YODA Framework</title>
+  <meta name="description" content="YODA Framework: uma odisséia document-first para desenvolver com agentes sem perder o juízo.">
+  <link rel="icon" href="assets/yoda-light.svg" type="image/svg+xml">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #15181d;
+      --muted: #606977;
+      --paper: #f3f5f7;
+      --panel: #ffffff;
+      --panel-soft: #eef1f5;
+      --line: #d7dce3;
+      --line-strong: #aeb7c3;
+      --blue: #1167d8;
+      --blue-dark: #0b3f88;
+      --blue-soft: #e7f0ff;
+      --code: #101720;
+      --shadow: 0 20px 46px rgba(16, 23, 32, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(17, 103, 216, 0.16), transparent 360px),
+        linear-gradient(180deg, #ffffff, transparent 420px),
+        var(--paper);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 17px;
+      line-height: 1.68;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
+    }
+
+    .page {
+      width: min(1040px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 44px 0 22px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue-dark);
+    }
+
+    .brand-logo {
+      display: block;
+      width: 52px;
+      height: 52px;
+      padding: 6px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow: 0 6px 18px rgba(16, 23, 32, 0.08);
+    }
+
+    .hero-title {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .hero-logo {
+      width: clamp(78px, 12vw, 132px);
+      height: clamp(78px, 12vw, 132px);
+      flex: 0 0 auto;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.76);
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 54px 0 30px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-media {
+      margin: 0;
+    }
+
+    .hero-media img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      border: 1px solid var(--line-strong);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      filter: saturate(0.72) contrast(1.04);
+    }
+
+    h1,
+    h2,
+    h3 {
+      line-height: 1.08;
+      letter-spacing: 0;
+      margin: 0;
+      color: var(--code);
+    }
+
+    h1 {
+      font-size: clamp(44px, 6vw, 72px);
+      max-width: 820px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      margin-bottom: 22px;
+    }
+
+    h3 {
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    .lead {
+      max-width: 760px;
+      margin: 26px 0 0;
+      font-size: clamp(21px, 2.5vw, 29px);
+      line-height: 1.45;
+      color: #29313b;
+    }
+
+    .side-note {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 22px;
+      margin-top: 24px;
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .side-note strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--blue);
+      font-size: 16px;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 18px 0 36px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .nav a {
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.74);
+      color: var(--blue-dark);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav a:hover {
+      border-color: var(--blue);
+      background: var(--blue-soft);
+      color: var(--blue-dark);
+    }
+
+    section {
+      padding: 48px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .story {
+      max-width: 820px;
+    }
+
+    .story p {
+      margin: 0 0 22px;
+    }
+
+    .callout {
+      margin: 34px 0;
+      padding: 26px 28px;
+      border-left: 6px solid var(--blue);
+      background: var(--blue-soft);
+      font-size: 22px;
+      line-height: 1.48;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px;
+      box-shadow: 0 8px 24px rgba(16, 23, 32, 0.08);
+    }
+
+    .card h3 {
+      color: var(--blue-dark);
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      line-height: 1.58;
+    }
+
+    .series {
+      counter-reset: post;
+      display: grid;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .post {
+      counter-increment: post;
+      display: grid;
+      grid-template-columns: 56px minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+      padding: 20px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: inherit;
+      text-decoration: none;
+      transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+    }
+
+    .post:hover {
+      border-color: var(--blue);
+      box-shadow: 0 10px 28px rgba(17, 103, 216, 0.12);
+      transform: translateY(-1px);
+    }
+
+    .post::before {
+      content: counter(post, decimal-leading-zero);
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      background: var(--code);
+      color: white;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .post h3 {
+      color: var(--ink);
+    }
+
+    .post p {
+      margin: 0;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .moment {
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr);
+      gap: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px dashed var(--line);
+    }
+
+    .moment time {
+      color: var(--blue);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .moment p {
+      margin: 0;
+    }
+
+    .install {
+      padding: 24px;
+      background: var(--code);
+      border-radius: 8px;
+      color: #dce8ff;
+      overflow-x: auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    footer {
+      padding: 42px 0 58px;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+    }
+
+    @media (max-width: 820px) {
+      .hero,
+      .grid,
+      .moment {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        gap: 24px;
+        padding-top: 34px;
+      }
+
+      .hero-media {
+        order: -1;
+      }
+
+      .post {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-title {
+        gap: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">
+        <img class="brand-logo" src="assets/yoda-light.svg" alt="Logotipo do YODA Framework" width="52" height="52">
+        <span>YAML-Oriented Documentation &amp; Agents</span>
+      </div>
+
+      <div class="hero">
+        <div>
+          <div class="hero-title">
+            <img class="hero-logo" src="assets/yoda-light.svg" alt="" width="132" height="132">
+            <h1>YODA Framework</h1>
+          </div>
+          <p class="lead">
+            Uma tentativa, meio teimosa e meio desesperada, de fazer agentes de IA
+            trabalharem com menos adivinhação e mais combinado escrito.
+          </p>
+
+          <aside class="side-note">
+            <strong>Pois é.</strong>
+            Eu só queria escrever um markdown, pedir para o agente implementar e seguir
+            a vida. Parecia simples. Como toda boa idéia simples, logo virou uma
+            pequena odisséia.
+          </aside>
+        </div>
+
+        <figure class="hero-media">
+          <img src="assets/yoda-odyssey.jpg" alt="Ilustração bem-humorada de um desenvolvedor segurando uma especificação enquanto um agente tenta correr para o código" width="1536" height="1024">
+        </figure>
+      </div>
+
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="#framework">O framework</a>
+        <a href="#odisseia">A odisséia</a>
+        <a href="#serie">A série</a>
+        <a href="#linha-do-tempo">Linha do tempo</a>
+        <a href="#instalacao">Instalação</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="framework">
+        <div class="story">
+          <h2>O combinado antes do código</h2>
+          <p>
+            O YODA Framework nasceu de uma dor besta. Besta nada, daquelas que
+            parecem pequenas e depois roubam o domingo inteiro.
+          </p>
+          <p>
+            Eu queria trabalhar com agentes de IA sem precisar explicar tudo de novo
+            a cada conversa. Queria que o agente chegasse no projeto, respirasse
+            fundo, lesse os arquivos certos e entendesse o que tinha que fazer.
+            Sem chute. Sem aquela confiança esquisita de quem acabou de inventar um
+            caminho bonito para o lugar errado.
+          </p>
+          <p>
+            Então veio a idéia: documentar primeiro. Criar uma issue em Markdown.
+            Colocar contexto, objetivo, escopo, critérios de aceite, riscos,
+            dependências. Só depois deixar o agente mexer no código.
+          </p>
+
+          <div class="callout">
+            O YODA é isso: documentação como fonte de verdade, scripts como
+            guardiões do combinado e agentes trabalhando dentro de um fluxo que dá
+            para auditar depois.
+          </div>
+
+          <p>
+            O nome ficou YODA: YAML-Oriented Documentation &amp; Agents. Bonitinho,
+            nerd, com cara de coisa pensada. Mas a verdade é que a história ficou
+            mais engraçada quando o projeto começou a descobrir que o Markdown era o
+            coração da brincadeira, e que o YAML tinha que parar de querer aparecer
+            tanto.
+          </p>
+        </div>
+
+        <div class="grid" aria-label="Pilares do YODA Framework">
+          <article class="card">
+            <h3>Intake</h3>
+            <p>
+              O momento em que uma idéia solta vira issue pronta. O agente pergunta,
+              organiza, compara com o backlog e transforma conversa em contrato.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Flow</h3>
+            <p>
+              O ciclo Study, Document, Implement e Evaluate. Um passo por vez,
+              porque agente empolgado demais também precisa de freio.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Scripts</h3>
+            <p>
+              As regras que não podem depender de interpretação viram comandos.
+              Ajuda muito quando o entusiasmo quer atropelar o combinado.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="odisseia">
+        <div class="story">
+          <h2>A odisséia</h2>
+          <p>
+            Esta página também é o começo de uma série de posts sobre a criação do
+            YODA Framework. Não vai ser uma documentação oficial engravatada. Já
+            temos arquivos suficientes para isso.
+          </p>
+          <p>
+            A idéia aqui é contar a saga. Aquele tipo de saga que começa com:
+            “vou só organizar umas instruções para o agente”, e termina com
+            versionamento de schema, instalador, pacote, rollback, issue externa,
+            fluxo de preparação e um respeito renovado por qualquer pessoa que já
+            tentou explicar uma tarefa para uma máquina teimosa.
+          </p>
+          <p>
+            Teve bootstrap. Teve conceito que nasceu bonito e morreu cedo. Teve YAML
+            querendo carregar o mundo nas costas. Teve Markdown entrando em campo
+            como quem não quer nada e virando titular absoluto. Teve script salvando
+            a pátria. Teve release. Teve ajuste. Teve “UFA!”.
+          </p>
+          <p>
+            E teve, principalmente, a descoberta de que desenvolvimento com IA não é
+            só pedir melhor. É preparar melhor.
+          </p>
+        </div>
+      </section>
+
+      <section id="serie">
+        <h2>A série da odisséia</h2>
+        <div class="series">
+          <a class="post" href="posts/01-eu-so-queria-que-o-agente-lesse-o-markdown.html">
+            <div>
+              <h3>Eu só queria que o agente lesse o markdown</h3>
+              <p>
+                A motivação inicial: por que spec driven development parece tão
+                óbvio quando dá certo e tão necessário quando dá errado.
+              </p>
+            </div>
+          </a>
+
+          <a class="post" href="posts/02-o-bootstrap-do-bootstrap.html">
+            <div>
+              <h3>O bootstrap do bootstrap</h3>
+              <p>
+                A fase em que o framework ainda não existia, mas já precisava ser
+                usado para criar o próprio framework. Sim, a piada veio pronta.
+              </p>
+            </div>
+          </a>
+
+          <a class="post" href="posts/03-um-agente-com-contexto-zero-entra-num-repositorio.html">
+            <div>
+              <h3>Um agente com contexto zero entra num repositório</h3>
+              <p>
+                A importância dos arquivos de entrada: onde o humano lê, onde o
+                agente lê e como evitar que todo mundo comece pelo lugar errado.
+              </p>
+            </div>
+          </a>
+
+          <a class="post" href="posts/04-quando-a-issue-deixa-de-ser-lembrete-e-vira-contrato.html">
+            <div>
+              <h3>Quando a issue deixa de ser lembrete e vira contrato</h3>
+              <p>
+                Contexto, objetivo, escopo, critérios de aceite, riscos e logs. A
+                issue Markdown como o tênis amarrado antes da corrida.
+              </p>
+            </div>
+          </a>
+
+          <a class="post" href="posts/05-scripts-porque-prompt-nao-deveria-fazer-trabalho-de-juiz.html">
+            <div>
+              <h3>Scripts: porque prompt não deveria fazer trabalho de juiz</h3>
+              <p>
+                A chegada dos comandos que colocam ordem na casa: criar issue,
+                listar backlog, avançar fase, registrar log e atualizar estado.
+              </p>
+            </div>
+          </a>
+
+          <a class="post" href="posts/06-yoda-intake-ou-como-transformar-desabafo-em-backlog.html">
+            <div>
+              <h3>YODA Intake, ou como transformar desabafo em backlog</h3>
+              <p>
+                O ciclo que pega texto corrido, organiza a bagunça, consulta o que
+                já existe e entrega uma issue pronta para execução.
+              </p>
+            </div>
+          </a>
+
+          <a class="post" href="posts/07-study-document-implement-evaluate.html">
+            <div>
+              <h3>Study, Document, Implement, Evaluate</h3>
+              <p>
+                O Flow como antídoto contra a pressa. Primeiro entender, depois
+                documentar, só então implementar e avaliar.
+              </p>
+            </div>
+          </a>
+
+          <a class="post" href="posts/08-a-grande-virada-markdown-first.html">
+            <div>
+              <h3>A grande virada Markdown-first</h3>
+              <p>
+                O momento em que o YODA aceitou que o Markdown era a fonte de
+                verdade operacional e que o YAML deveria ser minimalista.
+              </p>
+            </div>
+          </a>
+
+          <a class="post" href="posts/09-empacotar-uma-teimosia.html">
+            <div>
+              <h3>Empacotar uma teimosia</h3>
+              <p>
+                Installer, checksum, latest.json, update, rollback e a tentativa de
+                levar o YODA para outros projetos sem levar junto a bagunça da sala.
+              </p>
+            </div>
+          </a>
+
+          <a class="post" href="posts/10-o-que-morreu-no-caminho.html">
+            <div>
+              <h3>O que morreu no caminho</h3>
+              <p>
+                Lightweight, metadata demais, entrypoints no YAML, init mexendo onde
+                não devia. Nem toda idéia merece sobreviver. Algumas só servem para
+                ensinar.
+              </p>
+            </div>
+          </a>
+
+          <a class="post" href="posts/11-preparar-antes-de-executar.html">
+            <div>
+              <h3>Preparar antes de executar</h3>
+              <p>
+                O YODA Prep Flow e a descoberta de que às vezes o melhor trabalho é
+                só deixar a issue madura, sem sair implementando na mesma hora.
+              </p>
+            </div>
+          </a>
+
+          <a class="post" href="posts/12-vamo-vamo-vamo.html">
+            <div>
+              <h3>Vamo, vamo, vamo</h3>
+              <p>
+                O fechamento da primeira temporada: o que essa odisséia ensinou
+                sobre agentes, documentação, paciência e vergonha na cara.
+              </p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section id="linha-do-tempo">
+        <h2>Linha do tempo</h2>
+        <div class="timeline">
+          <div class="moment">
+            <time>Jan/2026</time>
+            <p>
+              As primeiras specs aparecem. O projeto começa como meta-implementação:
+              usar o YODA para construir o YODA. Meio ousado. Meio confuso. Bem útil.
+            </p>
+          </div>
+          <div class="moment">
+            <time>Jan/2026</time>
+            <p>
+              O bootstrap termina e vira histórico em <code>bootstrap-legacy/</code>.
+              Aquela caixa de lembranças que ninguém usa no dia a dia, mas que prova
+              que a bagunça teve método.
+            </p>
+          </div>
+          <div class="moment">
+            <time>Fev/2026</time>
+            <p>
+              Chegam pacote, init, instalador, update e README curto. O YODA começa
+              a parecer algo que pode sair de casa.
+            </p>
+          </div>
+          <div class="moment">
+            <time>Mar/2026</time>
+            <p>
+              A versão 0.3.0 consolida a virada Markdown-first, com fluxo
+              determinístico, logs embutidos e menos metadado carregando piano.
+            </p>
+          </div>
+          <div class="moment">
+            <time>Jun/2026</time>
+            <p>
+              A versão 0.4.0 traz o Prep Flow e deixa o init menos intrusivo. O
+              framework aprende a bater na porta antes de entrar na casa dos outros.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="instalacao">
+        <div class="story">
+          <h2>Quer testar?</h2>
+          <p>
+            O caminho mais rápido é o instalador. O caminho mais prudente é revisar
+            antes, escolher uma versão fixa e manter o projeto sob versionamento.
+            Porque aventura é bom, mas rollback também é carinho.
+          </p>
+        </div>
+        <pre class="install"><code>curl -fsSL https://alexdundes.github.io/yoda/install/yoda-install.sh | sh -s -- --root .</code></pre>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        YODA Framework. Documentar primeiro, implementar depois, respirar no meio.
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
