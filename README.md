@@ -45,10 +45,11 @@ python yoda/scripts/init.py --dev <slug> --root .
 ```
 
 ## First run / Init
-`init` appends the YODA entry block to agent files and creates the YODA folder structure if needed. It is idempotent and safe to rerun.
+`init` creates/reconciles YODA-managed structure under `yoda/` and does not create or edit host-project agent files such as `AGENTS.md`, `GEMINI.md`, `CLAUDE.md`, `REPO_INTENT.md`, or `repo.intent.yaml`. Host projects may point their own agent files to `yoda/yoda.md` manually.
 
 ## What's inside
 - `yoda/yoda.md` (embedded manual)
+- `yoda/AGENTS.md`, `yoda/GEMINI.md`, `yoda/CLAUDE.md` (YODA-local agent entries)
 - `yoda/scripts/` (CLI tools)
 - `yoda/templates/` (issue templates)
 - `yoda/PACKAGE_MANIFEST.yaml` (build metadata)
@@ -77,7 +78,9 @@ Check `yoda/PACKAGE_MANIFEST.yaml` for version/build metadata and `CHANGELOG.yam
 Upgrades replace only the framework files under `yoda/` and preserve project data. Keep a backup at `yoda/_previous/<version>` to rollback by restoring the prior subtree.
 
 ## Source of truth
-The authoritative specification lives in the upstream repo: https://github.com/alexdundes/yoda (see `project/specs/`).
+For embedded projects, the operational source of truth is inside the package:
+issue Markdown under `yoda/project/issues/`, the embedded manual at
+`yoda/yoda.md`, and the runbooks printed by `yoda/scripts/*.py --help`.
 
 ## Where to read more
 - `yoda/yoda.md` for the embedded manual

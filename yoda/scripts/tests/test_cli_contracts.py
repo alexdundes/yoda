@@ -14,6 +14,7 @@ def test_help_contains_agent_guidance_for_all_scripts() -> None:
         "todo_update.py",
         "update.py",
         "yoda_flow_next.py",
+        "yoda_prep_flow.py",
         "yoda_intake.py",
     ]
     for script in scripts:
@@ -40,6 +41,7 @@ def test_commands_require_explicit_dev_without_env_or_prompt(monkeypatch) -> Non
         ("todo_next.py", []),
         ("todo_update.py", ["--issue", "test-0001"]),
         ("yoda_flow_next.py", []),
+        ("yoda_prep_flow.py", ["--issue", "test-0001"]),
     ]
     for script, args in commands:
         result = run_script(script, args)

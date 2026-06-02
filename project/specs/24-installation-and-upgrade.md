@@ -22,6 +22,10 @@ Upgrade/install processes MUST preserve:
 2) Keep backup before replacement.
 3) Run updated `init.py` to finalize sync and migration checks.
 
+`init.py` finalization is non-intrusive: it must operate only on YODA-managed
+files under `yoda/` and must not create or modify host-root agent or intent
+files.
+
 ## check/apply rule (0.3.0)
 
 - `--check` and `--apply` are defined on updated `init.py` after update.

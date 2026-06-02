@@ -70,11 +70,28 @@ def test_package_builds_and_excludes_tests(tmp_path: Path) -> None:
         assert "LICENSE" in names
         assert "yoda/LICENSE" in names
         assert "yoda/yoda.md" in names
+        assert "yoda/AGENTS.md" in names
+        assert "yoda/GEMINI.md" in names
+        assert "yoda/CLAUDE.md" in names
         assert "yoda/PACKAGE_MANIFEST.yaml" in names
         assert "CHANGELOG.yaml" in names
         assert not any(name.startswith("yoda/scripts/tests") for name in names)
         assert not any(name.startswith("yoda/favicons/") for name in names)
         assert not any(name.startswith("favicons/") for name in names)
+
+        packaged_text = ""
+        with tarfile.open(output_path, "r:gz") as tar:
+            for member in tar.getmembers():
+                if not member.isfile():
+                    continue
+                if not member.name.endswith((".md", ".py", ".txt", ".yaml", ".yml", ".json")):
+                    continue
+                extracted = tar.extractfile(member)
+                if extracted is None:
+                    continue
+                packaged_text += extracted.read().decode("utf-8")
+
+        assert "project/specs" not in packaged_text
     finally:
         _restore_file(changelog_path, changelog_backup)
         _restore_file(latest_json_path, latest_backup)

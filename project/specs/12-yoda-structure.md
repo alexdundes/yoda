@@ -5,6 +5,9 @@
 ```text
 .
 ├─ yoda/
+│  ├─ AGENTS.md
+│  ├─ GEMINI.md
+│  ├─ CLAUDE.md
 │  ├─ yoda.md
 │  ├─ templates/
 │  │  └─ issue.md
@@ -20,6 +23,12 @@
 
 - Canonical flow execution data lives in `yoda/project/issues/*.md`.
 - Issue IDs are filename-derived.
+
+## Agent entry files
+
+- YODA-local agent entry files live in `yoda/AGENTS.md`, `yoda/GEMINI.md`, and `yoda/CLAUDE.md`.
+- These files point to `yoda/yoda.md` and are framework files.
+- Host-root agent files are outside YODA ownership and are not created or modified by `init.py`.
 
 ## Compatibility data
 

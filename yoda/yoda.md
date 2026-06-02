@@ -11,7 +11,7 @@ Use script runbooks as the source of truth for operational details.
 
 ## Entry order
 
-1. Read `REPO_INTENT.md`.
+1. Read the YODA-local agent entry file when present (`yoda/AGENTS.md`, `yoda/GEMINI.md`, or `yoda/CLAUDE.md`).
 2. Read this file (`yoda/yoda.md`).
 3. Resolve developer slug from `--dev`; if missing, ask human and rerun with `--dev <slug>`.
 
@@ -22,6 +22,7 @@ Use script runbooks as the source of truth for operational details.
 
 ## Source of truth
 
+- Agent entry files: `yoda/AGENTS.md`, `yoda/GEMINI.md`, `yoda/CLAUDE.md`
 - Issues markdown: `yoda/project/issues/<id>-<slug>.md`
 - Dependencies: front matter `depends_on`
 - Flow execution log: section `## Flow log` inside each issue markdown, use `log_add.py --help`
@@ -29,6 +30,7 @@ Use script runbooks as the source of truth for operational details.
 ## YODA modes
 
 - `YODA Flow`: execute one issue through phases.
+- `YODA Prep Flow`: prepare Study/Document for one issue without implementation.
 - `YODA Intake`: create/refine backlog issues.
 
 Do not mix modes implicitly. Enter and exit each mode explicitly.
@@ -72,6 +74,26 @@ External issue line rule:
 - Derive provider and number from `extern_issue_file` (for example, `../extern_issues/github-2.json` => `GitHub` and `#2`).
 - Omit the line when no external association exists.
 
+## YODA Prep Flow
+
+Use YODA Prep Flow only when the human explicitly wants to prepare an issue's
+Study/Document work without entering implementation.
+
+Before using it, read the script runbook:
+```bash
+python3 yoda/scripts/yoda_prep_flow.py --help
+```
+
+Entry:
+1. Confirm the human intent includes entering YODA Prep Flow.
+2. Run `python3 yoda/scripts/yoda_prep_flow.py --dev <slug> --issue <id>`.
+3. Follow the returned runbook for the selected prep step.
+
+Prep policy:
+- YODA Prep Flow works on the explicit `--issue`; it does not select by backlog order.
+- It is allowed to prepare documentation independent of dependencies, but it does not authorize implementation.
+- When prep reaches Document, the issue remains `to-do` and YODA Flow later starts it at Implement.
+
 ## YODA Intake
 
 Entry:
@@ -108,6 +130,7 @@ Intake policy:
 ## Script authority map
 
 - `yoda_flow_next.py`: deterministic next-step selection + flow transition/runbook.
+- `yoda_prep_flow.py`: explicit issue Study/Document preparation without implementation.
 - `todo_update.py`: manual status/phase/metadata corrections.
 - `log_add.py`: compact one-line issue log outside normal flow path.
 - `todo_next.py`: next selectable issue (inspection helper).

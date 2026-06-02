@@ -95,6 +95,38 @@ def test_flow_next_transitions_todo_to_doing_study_and_logs() -> None:
     assert _last_log_line(path).endswith("transition to-do->doing/study")
 
 
+def test_flow_next_starts_prepared_issue_at_implement() -> None:
+    path = _write_issue_file(
+        "test-0001-prepared.md",
+        {
+            "schema_version": "2.00",
+            "status": "to-do",
+            "flow_prepared_until": "document",
+            "title": "Prepared",
+            "description": "Desc",
+            "priority": 5,
+            "created_at": "2026-01-01T00:00:00+00:00",
+            "updated_at": "2026-01-01T00:00:00+00:00",
+        },
+        body="# Prepared\n\n## Flow log\n",
+    )
+
+    result = run_script("yoda_flow_next.py", ["--dev", TEST_DEV, "--format", "json"])
+    assert result.returncode == 0, result.stderr
+    payload = json.loads(result.stdout)
+    assert payload["issue_id"] == "test-0001"
+    assert payload["status"] == "doing"
+    assert payload["phase"] == "implement"
+    assert payload["next_step"] == "implement"
+    assert payload["runbook_line"].startswith("Run Implement:")
+
+    meta = _read_front_matter(path)
+    assert meta["status"] == "doing"
+    assert meta["phase"] == "implement"
+    assert meta["flow_prepared_until"] == "document"
+    assert _last_log_line(path).endswith("transition to-do->doing/implement | prepared_until=document")
+
+
 def test_flow_next_advances_doing_phases_and_finishes_done() -> None:
     path = _write_issue_file(
         "test-0001-doing.md",

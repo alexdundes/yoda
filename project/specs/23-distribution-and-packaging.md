@@ -20,6 +20,7 @@ Defines the distributable artefact of the YODA Framework and the contract expect
 
 ## Included content
 - `yoda/yoda.md` (or successors) — embedded manual for agents.
+- `yoda/AGENTS.md`, `yoda/GEMINI.md`, `yoda/CLAUDE.md` — YODA-local agent entry files.
 - `yoda/templates/` — issue templates.
 - `yoda/scripts/` — official scripts (`todo_*`, `issue_add`, `log_add`, etc.), excluding `yoda/scripts/tests/`.
 - `LICENSE` — short license file for the package.
@@ -42,6 +43,9 @@ Defines the distributable artefact of the YODA Framework and the contract expect
 <root>/LICENSE
 <root>/README.md
 <root>/yoda/LICENSE
+<root>/yoda/AGENTS.md
+<root>/yoda/GEMINI.md
+<root>/yoda/CLAUDE.md
 <root>/yoda/PACKAGE_MANIFEST.yaml
 <root>/CHANGELOG.yaml
 ```
@@ -98,7 +102,8 @@ Rules:
 
 ## `init` command requirements (consumer; implemented separately)
 - Assumes the layout defined here.
-- Creates the host project skeleton (AGENTS.md, `yoda/todos/TODO.<dev>.yaml`, etc.) without relying on `project/specs/`.
+- Creates/reconciles only YODA-owned structure under `yoda/` without relying on `project/specs/`.
+- MUST NOT create or mutate host-root agent or intent files (`AGENTS.md`, `GEMINI.md`, `CLAUDE.md`, `REPO_INTENT.md`, `repo.intent.yaml`).
 - MUST validate package version/build and warn on incompatibilities (MAJOR or older build).
 
 ## Compatibility and upgrade

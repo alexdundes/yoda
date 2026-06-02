@@ -21,6 +21,7 @@ except Exception as exc:  # pragma: no cover - runtime dependency
 
 
 ALLOWED_PHASE = {"study", "document", "implement", "evaluate"}
+ALLOWED_FLOW_PREPARED_UNTIL = {"study", "document"}
 DEFAULT_SCHEMA_VERSIONS = {"2.00"}
 
 
@@ -104,6 +105,19 @@ def _normalize_phase(metadata: dict[str, Any], status: str, path: Path, issue_id
     return phase_value
 
 
+def _normalize_flow_prepared_until(metadata: dict[str, Any], path: Path, issue_id: str) -> str:
+    value = metadata.get("flow_prepared_until")
+    if value in (None, ""):
+        return ""
+    normalized = str(value).strip().lower()
+    if normalized not in ALLOWED_FLOW_PREPARED_UNTIL:
+        raise YodaError(
+            f"{path}: {issue_id}: invalid 'flow_prepared_until' value '{normalized}'",
+            exit_code=ExitCode.VALIDATION,
+        )
+    return normalized
+
+
 def _build_issue_record(
     path: Path,
     dev: str,
@@ -141,6 +155,7 @@ def _build_issue_record(
         "path": str(path),
         "status": status,
         "phase": _normalize_phase(metadata, status, path, issue_id),
+        "flow_prepared_until": _normalize_flow_prepared_until(metadata, path, issue_id),
         "depends_on": _normalize_depends_on(metadata, path, issue_id),
         "title": _require_string(metadata, "title", path, issue_id),
         "description": _require_string(metadata, "description", path, issue_id),

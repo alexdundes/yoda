@@ -5,12 +5,19 @@ from __future__ import annotations
 from typing import Any
 
 
-OPTIONAL_EMPTY_KEYS = ("phase", "depends_on", "pending_reason", "extern_issue_file")
+OPTIONAL_EMPTY_KEYS = (
+    "phase",
+    "flow_prepared_until",
+    "depends_on",
+    "pending_reason",
+    "extern_issue_file",
+)
 CANONICAL_ISSUE_FIELD_ORDER = (
     "schema_version",
     "id",
     "status",
     "phase",
+    "flow_prepared_until",
     "pending_reason",
     "depends_on",
     "title",

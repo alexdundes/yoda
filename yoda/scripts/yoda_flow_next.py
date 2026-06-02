@@ -37,6 +37,7 @@ RUNBOOK_BY_STEP = {
 RUNBOOK_DONE = "Issue moved to done. Check next issue and ask the human if flow should continue now."
 STEP_ORDER = ("study", "document", "implement", "evaluate")
 NEXT_PHASE = {"study": "document", "document": "implement", "implement": "evaluate", "evaluate": ""}
+PREPARED_UNTIL_DOCUMENT = "document"
 
 
 def _relative(path_value: str) -> str:
@@ -126,20 +127,28 @@ def _load_issue_front_matter(issue: dict[str, Any]) -> tuple[Path, dict[str, Any
 def _apply_transition(issue: dict[str, Any], log_message: str = "") -> dict[str, Any]:
     status = str(issue.get("status", "")).strip()
     phase = str(issue.get("phase") or "").strip().lower()
+    flow_prepared_until = str(issue.get("flow_prepared_until") or "").strip().lower()
     issue_path, metadata = _load_issue_front_matter(issue)
     ts = _now_ts()
 
     if status == "to-do":
         metadata["status"] = "doing"
-        metadata["phase"] = "study"
+        if flow_prepared_until == PREPARED_UNTIL_DOCUMENT:
+            metadata["phase"] = "implement"
+            transition_log = "transition to-do->doing/implement | prepared_until=document"
+            next_step = "implement"
+        else:
+            metadata["phase"] = "study"
+            transition_log = "transition to-do->doing/study"
+            next_step = "study"
         metadata["updated_at"] = ts
         update_front_matter(issue_path, metadata)
-        log_ts = _append_log(issue, _compose_transition_log("transition to-do->doing/study", log_message))
+        log_ts = _append_log(issue, _compose_transition_log(transition_log, log_message))
         return {
             "status": "doing",
-            "phase": "study",
-            "next_step": "study",
-            "runbook_line": RUNBOOK_BY_STEP["study"],
+            "phase": next_step,
+            "next_step": next_step,
+            "runbook_line": RUNBOOK_BY_STEP[next_step],
             "log_timestamp": log_ts,
         }
 
@@ -192,14 +201,16 @@ def _apply_transition(issue: dict[str, Any], log_message: str = "") -> dict[str,
 def _simulate_transition(issue: dict[str, Any]) -> dict[str, Any]:
     status = str(issue.get("status", "")).strip()
     phase = str(issue.get("phase") or "").strip().lower()
+    flow_prepared_until = str(issue.get("flow_prepared_until") or "").strip().lower()
     ts = _now_ts()
 
     if status == "to-do":
+        next_step = "implement" if flow_prepared_until == PREPARED_UNTIL_DOCUMENT else "study"
         return {
             "status": "doing",
-            "phase": "study",
-            "next_step": "study",
-            "runbook_line": RUNBOOK_BY_STEP["study"],
+            "phase": next_step,
+            "next_step": next_step,
+            "runbook_line": RUNBOOK_BY_STEP[next_step],
             "log_timestamp": ts,
         }
 
