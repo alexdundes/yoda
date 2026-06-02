@@ -11,7 +11,7 @@ Use script runbooks as the source of truth for operational details.
 
 ## Entry order
 
-1. Read `REPO_INTENT.md`.
+1. Read the YODA-local agent entry file when present (`yoda/AGENTS.md`, `yoda/GEMINI.md`, or `yoda/CLAUDE.md`).
 2. Read this file (`yoda/yoda.md`).
 3. Resolve developer slug from `--dev`; if missing, ask human and rerun with `--dev <slug>`.
 
@@ -22,6 +22,7 @@ Use script runbooks as the source of truth for operational details.
 
 ## Source of truth
 
+- Agent entry files: `yoda/AGENTS.md`, `yoda/GEMINI.md`, `yoda/CLAUDE.md`
 - Issues markdown: `yoda/project/issues/<id>-<slug>.md`
 - Dependencies: front matter `depends_on`
 - Flow execution log: section `## Flow log` inside each issue markdown, use `log_add.py --help`

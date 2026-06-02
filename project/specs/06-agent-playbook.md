@@ -41,6 +41,7 @@ When human intent is to start YODA Flow:
 
 ## General rules
 
+- For embedded YODA, use the YODA-local entry files under `yoda/` and `yoda/yoda.md`; do not assume YODA controls host-root agent files.
 - Before operating any YODA command, check `<command> --help` for command-specific runbook/guidance.
 - Do not rely on removed flow contracts (`todo_next.py`).
 - Do not duplicate dependency metadata in issue body.

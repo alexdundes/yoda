@@ -70,6 +70,9 @@ def test_package_builds_and_excludes_tests(tmp_path: Path) -> None:
         assert "LICENSE" in names
         assert "yoda/LICENSE" in names
         assert "yoda/yoda.md" in names
+        assert "yoda/AGENTS.md" in names
+        assert "yoda/GEMINI.md" in names
+        assert "yoda/CLAUDE.md" in names
         assert "yoda/PACKAGE_MANIFEST.yaml" in names
         assert "CHANGELOG.yaml" in names
         assert not any(name.startswith("yoda/scripts/tests") for name in names)

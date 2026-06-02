@@ -20,9 +20,43 @@ def test_init_creates_structure_without_todo_file(tmp_path: Path) -> None:
     _seed_manual(tmp_path)
     result = run_script("init.py", ["--dev", TEST_DEV, "--root", str(tmp_path)])
     assert result.returncode == 0, result.stderr
-    assert (tmp_path / "AGENTS.md").exists()
+    assert not (tmp_path / "AGENTS.md").exists()
+    assert not (tmp_path / "GEMINI.md").exists()
+    assert not (tmp_path / "CLAUDE.md").exists()
+    assert not (tmp_path / "REPO_INTENT.md").exists()
+    assert not (tmp_path / "repo.intent.yaml").exists()
     assert (tmp_path / "yoda" / "project" / "issues").exists()
     assert not (tmp_path / "yoda" / "todos" / f"TODO.{TEST_DEV}.yaml").exists()
+
+
+def test_init_does_not_modify_existing_host_agent_or_intent_files(tmp_path: Path) -> None:
+    _seed_manual(tmp_path)
+    existing_files = {
+        "AGENTS.md": "# Host agents\n",
+        "GEMINI.md": "# Host gemini\n",
+        "CLAUDE.md": "# Host claude\n",
+        "REPO_INTENT.md": "# Host intent\n",
+        "repo.intent.yaml": "project: host\n",
+    }
+    for name, content in existing_files.items():
+        (tmp_path / name).write_text(content, encoding="utf-8")
+
+    result = run_script("init.py", ["--dev", TEST_DEV, "--root", str(tmp_path)])
+    assert result.returncode == 0, result.stderr
+
+    for name, content in existing_files.items():
+        assert (tmp_path / name).read_text(encoding="utf-8") == content
+
+
+def test_init_dry_run_does_not_report_host_agent_or_intent_writes(tmp_path: Path) -> None:
+    _seed_manual(tmp_path)
+    result = run_script("init.py", ["--dev", TEST_DEV, "--root", str(tmp_path), "--dry-run"])
+    assert result.returncode == 0, result.stderr
+    assert "AGENTS.md" not in result.stdout
+    assert "GEMINI.md" not in result.stdout
+    assert "CLAUDE.md" not in result.stdout
+    assert "REPO_INTENT.md" not in result.stdout
+    assert "repo.intent.yaml" not in result.stdout
 
 
 def test_init_sanitizes_existing_issue_front_matter_id_without_legacy_todo(tmp_path: Path) -> None:

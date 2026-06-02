@@ -39,6 +39,9 @@ python yoda/scripts/log_add.py --dev dev --issue dev-0001 --message "Additional 
 
 ## Init in a host project
 
+`init.py` manages YODA-owned structure under `yoda/`; it does not create or edit
+host-root agent or intent files.
+
 ```bash
 python yoda/scripts/init.py --dev <slug>
 python yoda/scripts/init.py --dev <slug> --root /path/to/project --dry-run

@@ -45,10 +45,11 @@ python yoda/scripts/init.py --dev <slug> --root .
 ```
 
 ## First run / Init
-`init` appends the YODA entry block to agent files and creates the YODA folder structure if needed. It is idempotent and safe to rerun.
+`init` creates/reconciles YODA-managed structure under `yoda/` and does not create or edit host-project agent files such as `AGENTS.md`, `GEMINI.md`, `CLAUDE.md`, `REPO_INTENT.md`, or `repo.intent.yaml`. Host projects may point their own agent files to `yoda/yoda.md` manually.
 
 ## What's inside
 - `yoda/yoda.md` (embedded manual)
+- `yoda/AGENTS.md`, `yoda/GEMINI.md`, `yoda/CLAUDE.md` (YODA-local agent entries)
 - `yoda/scripts/` (CLI tools)
 - `yoda/templates/` (issue templates)
 - `yoda/PACKAGE_MANIFEST.yaml` (build metadata)

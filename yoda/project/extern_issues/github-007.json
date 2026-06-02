@@ -1,0 +1,30 @@
+{
+  "provider": "github",
+  "number": "7",
+  "title": "init.py n\u00e3o atua sobre arquivos de agente do projeto",
+  "description": "Atualmente o init.py est\u00e1 atualizando arquivos markdown voltados para agentes na pasta do projeto em que o YODA est\u00e1 embarcado.\n\nDevemos alterar para o init.py n\u00e3o fazer mais essas altera\u00e7\u00f5es.\n\nE vamos tamb\u00e9m alterar para os arquivos voltados para os agentes ficarem todos dentro da pasta yoda/ ,\nO YODA \u00e9 auto contido, esses arquivos ir\u00e3o na atualiza\u00e7\u00e3o (update, package) e ser\u00e3o sempre substituidos.\n\n\u00c9 uma mudan\u00e7a de abordagem.\n\nO YODA passa a ser algo n\u00e3o intrusivo com as instru\u00e7\u00f5es do projeto. ",
+  "state": "open",
+  "author": "alexdundes",
+  "url": "https://github.com/alexdundes/yoda/issues/7",
+  "labels": [],
+  "log": [
+    {
+      "type": "timeline:added_to_project_v2",
+      "id": "26235759525",
+      "author": "github-project-automation[bot]",
+      "created_at": "2026-06-02T12:06:42Z",
+      "updated_at": "",
+      "body": "event: added_to_project_v2; commit: None",
+      "url": ""
+    },
+    {
+      "type": "timeline:project_v2_item_status_changed",
+      "id": "26235759996",
+      "author": "github-project-automation[bot]",
+      "created_at": "2026-06-02T12:06:43Z",
+      "updated_at": "",
+      "body": "event: project_v2_item_status_changed; commit: None",
+      "url": ""
+    }
+  ]
+}
