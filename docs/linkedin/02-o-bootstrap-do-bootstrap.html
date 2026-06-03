@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LinkedIn 02 - O bootstrap do bootstrap</title>
+  <style>
+    :root {
+      --ink: #15181d;
+      --muted: #606977;
+      --paper: #f3f5f7;
+      --panel: #ffffff;
+      --line: #d7dce3;
+      --blue: #1167d8;
+      --blue-soft: #e7f0ff;
+      --code: #101720;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .page {
+      width: min(920px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    header {
+      margin-bottom: 28px;
+    }
+
+    .kicker {
+      color: var(--blue);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-weight: 800;
+      margin: 0 0 10px;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--code);
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 760px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 20px;
+    }
+
+    .cover {
+      margin: 30px 0;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .cover img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .copy-note {
+      margin: 28px 0 14px;
+      padding: 16px 18px;
+      border-left: 5px solid var(--blue);
+      background: var(--blue-soft);
+      border-radius: 8px;
+      color: #26384f;
+      font-size: 15px;
+    }
+
+    article {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: clamp(22px, 4vw, 42px);
+    }
+
+    article h2 {
+      margin: 34px 0 14px;
+      color: var(--code);
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    article p {
+      margin: 0 0 18px;
+    }
+
+    .hook {
+      margin-top: 28px;
+      padding: 20px;
+      background: var(--blue-soft);
+      border-radius: 8px;
+      font-weight: 650;
+    }
+
+    .hashtags {
+      color: var(--blue);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <p class="kicker">LinkedIn - Post 02</p>
+      <h1>O bootstrap do bootstrap</h1>
+      <p class="lead">
+        Segunda publicação da série sobre a odisséia de criação do YODA Framework,
+        pronta para copiar e publicar no LinkedIn.
+      </p>
+    </header>
+
+    <figure class="cover">
+      <img src="assets/02-capa-bootstrap.jpg" alt="Capa ilustrada do post sobre o bootstrap do YODA Framework">
+    </figure>
+
+    <div class="copy-note">
+      Selecione o texto abaixo e cole no LinkedIn. A imagem acima pode ser usada como capa do post.
+    </div>
+
+    <article>
+      <p>Este é o segundo texto da série sobre a odisséia de criação do YODA Framework.</p>
+
+      <p>No primeiro post, eu contei de onde veio a dor inicial:</p>
+
+      <p>Eu só queria que o agente lesse o markdown.</p>
+
+      <p>Só isso.</p>
+
+      <p>Escrever uma spec, entregar para o agente, ele implementar direitinho e seguir a vida.</p>
+
+      <p>Mas aí apareceu o problema do “entendi”.</p>
+
+      <p>O agente dizia que tinha entendido, implementava algo plausível, e eu descobria no diff que uma parte importante do combinado tinha virado interpretação.</p>
+
+      <p>Daí veio a primeira tese do YODA:</p>
+
+      <p>Antes do código, o combinado.</p>
+
+      <p>Só que essa frase bonita trouxe um problema novo.</p>
+
+      <p>Como construir um framework para organizar agentes se o próprio framework ainda não existia?</p>
+
+      <p>Pois é.</p>
+
+      <p>Bem-vindo ao bootstrap do bootstrap.</p>
+
+      <h2>O framework que ainda não existia</h2>
+
+      <p>Tem uma ironia bonita em usar um processo para construir o processo.</p>
+
+      <p>Bonita depois.</p>
+
+      <p>Na hora, parecia mais uma daquelas idéias que começam com “vai ser rápido”.</p>
+
+      <p>Depois você pisca e está discutindo schema, TODO, log, formato de issue, regra de seleção, slug imutável, timezone, validação mínima e o motivo pelo qual um agente não deveria sair editando arquivo só porque o nome parece familiar.</p>
+
+      <p>No começo, não havia fluxo redondo.</p>
+
+      <p>Não havia pacote.</p>
+
+      <p>Não havia instalador.</p>
+
+      <p>Não havia script apontando o próximo passo com aquela calma irritante de quem sabe exatamente o que fazer.</p>
+
+      <p>Havia specs.</p>
+
+      <p>Havia um TODO meio artesanal.</p>
+
+      <p>Havia decisões sendo tomadas e registradas no calor da corrida.</p>
+
+      <p>E havia uma fé moderada de que, se eu escrevesse o suficiente, em algum momento aquilo deixaria de ser improviso e viraria método.</p>
+
+      <p>Meta-implementação é um nome bonito para isso.</p>
+
+      <p>Na prática, era mais ou menos como montar a bicicleta enquanto descia a ladeira.</p>
+
+      <h2>Primeiro a placa, depois o guardrail</h2>
+
+      <p>O bootstrap foi o período das primeiras placas.</p>
+
+      <p>Leia por aqui.</p>
+
+      <p>Nomeie assim.</p>
+
+      <p>Registre desse jeito.</p>
+
+      <p>Não pule dependência.</p>
+
+      <p>Não invente caminho.</p>
+
+      <p>Não confunda issue com lembrete.</p>
+
+      <p>No começo, muita coisa ainda era orientação escrita.</p>
+
+      <p>O agente precisava obedecer porque estava no documento.</p>
+
+      <p>Só que documento sozinho ajuda, mas não garante.</p>
+
+      <p>Então as placas começaram a pedir guardrail.</p>
+
+      <p>Se a próxima issue deve ser escolhida por uma regra determinística, isso precisa virar script.</p>
+
+      <p>Se o log precisa ter formato, isso precisa virar script.</p>
+
+      <p>Se o status muda de forma controlada, isso precisa virar script.</p>
+
+      <p>Foi assim que o YODA começou a sair do “agente, por favor leia isso” para “agente, execute este comando e siga o runbook”.</p>
+
+      <h2>A gaveta histórica</h2>
+
+      <p>Todo projeto que amadurece deixa umas conchas na praia.</p>
+
+      <p>No YODA, essas conchas ficaram em uma pasta chamada bootstrap-legacy.</p>
+
+      <p>Ali ficaram TODOs antigos, logs em Markdown, logs em YAML, issues com formatos que já não são o caminho oficial, nomes que mudaram, campos que depois morreram e pequenas evidências de que a primeira versão da idéia ainda estava procurando o próprio corpo.</p>
+
+      <p>Dava para apagar?</p>
+
+      <p>Dava.</p>
+
+      <p>Mas apagar teria sido uma mentira elegante.</p>
+
+      <p>Porque aqueles arquivos contam uma coisa importante:</p>
+
+      <p>O framework não nasceu pronto.</p>
+
+      <p>Ele foi sendo descoberto.</p>
+
+      <p>E algumas regras só ficaram óbvias depois de serem quebradas, ajustadas, repetidas e finalmente transformadas em contrato.</p>
+
+      <h2>O que ficou dessa fase</h2>
+
+      <p>O bootstrap deixou algumas lições que continuam no YODA atual.</p>
+
+      <p>Primeira: agente precisa de entrada explícita.</p>
+
+      <p>Segunda: documentação só é fonte de verdade se o processo aponta para ela sem ambiguidade.</p>
+
+      <p>Terceira: toda regra repetida muitas vezes está pedindo um script.</p>
+
+      <p>Quarta: legado não precisa mandar no presente, mas pode explicar o passado.</p>
+
+      <p>Quinta: criar o framework usando o próprio framework é uma péssima idéia ótima.</p>
+
+      <p>Péssima porque dói.</p>
+
+      <p>Ótima porque revela rapidamente onde o processo é frágil.</p>
+
+      <p>No fim, o bootstrap foi isso:</p>
+
+      <p>A fase em que o YODA ainda não tinha maturidade para resolver todos os problemas, mas já tinha coragem suficiente para registrar os problemas certos.</p>
+
+      <div class="hook">
+        <p>No próximo post, a pergunta muda de lugar:</p>
+        <p>Se o framework vai depender de agentes, como garantir que um agente com contexto zero entre no repositório pelo lugar certo?</p>
+        <p>Um agente com contexto zero entra num repositório.</p>
+        <p>Promete.</p>
+      </div>
+
+      <p class="hashtags">#IA #AIDevelopment #SpecDrivenDevelopment #Documentacao #EngenhariaDeSoftware #YODAFramework</p>
+    </article>
+  </div>
+</body>
+</html>

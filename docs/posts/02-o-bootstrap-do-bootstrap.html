@@ -11,8 +11,9 @@
     .page { width:min(820px, calc(100% - 32px)); margin:0 auto; padding:34px 0 60px; } header { display:flex; justify-content:space-between; gap:18px; align-items:center; margin-bottom:54px; }
     .brand { display:flex; gap:12px; align-items:center; color:var(--blue-dark); font-size:13px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; text-decoration:none; } .brand img { width:42px; height:42px; padding:5px; border:1px solid var(--line); border-radius:8px; background:white; }
     a { color:var(--blue); text-underline-offset:3px; } .back { color:var(--muted); font-size:14px; font-weight:700; text-decoration:none; }
-    h1 { margin:0; color:var(--code); font-size:clamp(38px, 7vw, 68px); line-height:1.05; letter-spacing:0; } .kicker { color:var(--blue); font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-weight:800; margin-bottom:18px; }
-    .lead { color:#29313b; font-size:24px; line-height:1.45; margin:26px 0 34px; } article p { margin:0 0 24px; } .callout { margin:34px 0; padding:24px; background:var(--blue-soft); border-left:6px solid var(--blue); border-radius:8px; font-size:21px; line-height:1.5; }
+    h1 { margin:0; color:var(--code); font-size:clamp(38px, 7vw, 68px); line-height:1.05; letter-spacing:0; } h2 { margin:44px 0 18px; color:var(--code); font-size:30px; line-height:1.18; letter-spacing:0; } .kicker { color:var(--blue); font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-weight:800; margin-bottom:18px; }
+    .lead { color:#29313b; font-size:24px; line-height:1.45; margin:26px 0 34px; } .post-cover { margin:0 0 38px; padding:10px; background:var(--panel); border:1px solid var(--line); border-radius:8px; } .post-cover img { display:block; width:100%; height:auto; border-radius:6px; } article p { margin:0 0 24px; } .callout { margin:34px 0; padding:24px; background:var(--blue-soft); border-left:6px solid var(--blue); border-radius:8px; font-size:21px; line-height:1.5; }
+    .aside { margin:34px 0; padding:22px 24px; background:var(--panel); border:1px solid var(--line); border-radius:8px; color:var(--muted); } .aside strong { color:var(--blue-dark); }
     .list { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:24px; margin:34px 0; } .list h2 { margin:0 0 16px; font-size:24px; } .list ul { margin:0; padding-left:22px; }
     .nav { display:flex; justify-content:space-between; gap:18px; border-top:1px solid var(--line); margin-top:44px; padding-top:24px; }
   </style>
@@ -23,11 +24,209 @@
     <div class="kicker">Post 02</div>
     <h1>O bootstrap do bootstrap</h1>
     <p class="lead">A fase mais honesta do projeto: o framework ainda não existia, mas já precisava ajudar a criar o próprio framework.</p>
-    <p>Tem uma ironia bonita em usar um processo para construir o processo. Bonita depois. Na hora, parecia mais uma daquelas idéias que começam com “vai ser rápido”.</p>
-    <p>No começo, não havia script suficiente, não havia pacote, não havia fluxo redondo. Havia specs, TODOs, arquivos temporários, decisões sendo registradas no calor da corrida e uma fé moderada de que aquilo tudo ia se organizar.</p>
-    <p>Foi o período do <code>bootstrap-legacy/</code>. A gaveta histórica. O lugar onde ficaram os artefatos que não são mais o caminho oficial, mas contam como a caminhada realmente aconteceu.</p>
+
+    <figure class="post-cover">
+      <img src="../linkedin/assets/02-capa-bootstrap.jpg" alt="Ilustração de um desenvolvedor montando um framework enquanto um agente de IA observa com uma checklist" width="1735" height="906">
+    </figure>
+
+    <p>Tem uma ironia bonita em usar um processo para construir o processo.</p>
+
+    <p>Bonita depois.</p>
+
+    <p>Na hora, parecia mais uma daquelas idéias que começam com “vai ser rápido”.</p>
+
+    <p>Depois você pisca e está discutindo schema, TODO, log, formato de issue, regra de seleção, slug imutável, timezone, validação mínima e o motivo pelo qual um agente não deveria sair editando arquivo só porque o nome parece familiar.</p>
+
+    <p>Pois é.</p>
+
+    <p>O YODA começou assim: tentando organizar a própria bagunça enquanto ainda descobria qual era a bagunça.</p>
+
+    <h2>O framework que ainda não existia</h2>
+
+    <p>No começo, não havia fluxo redondo.</p>
+
+    <p>Não havia pacote.</p>
+
+    <p>Não havia instalador.</p>
+
+    <p>Não havia <code>yoda_flow_next.py</code> apontando o próximo passo com aquela calma irritante de quem sabe exatamente o que fazer.</p>
+
+    <p>Havia specs.</p>
+
+    <p>Havia um TODO meio artesanal.</p>
+
+    <p>Havia decisões sendo tomadas e registradas no calor da corrida.</p>
+
+    <p>E havia uma fé moderada de que, se eu escrevesse o suficiente, em algum momento aquilo deixaria de ser improviso e viraria método.</p>
+
+    <p>Essa é a parte engraçada: o YODA nasceu defendendo documentação como fonte de verdade, mas a primeira fonte de verdade dele também estava em construção.</p>
+
+    <p>Meta-implementação é um nome bonito para isso.</p>
+
+    <p>Na prática, era mais ou menos como montar a bicicleta enquanto descia a ladeira.</p>
+
     <div class="callout">O bootstrap foi o YODA de chinelo: ainda sem uniforme, mas já tentando ensinar o agente a não atravessar a rua sem olhar.</div>
-    <p>Esse post conta essa fase meio improvisada, meio necessária. Porque antes de ter script determinístico, alguém precisa descobrir quais regras merecem virar script.</p>
-    <section class="list"><h2>O que este post vai cobrir</h2><ul><li>Como o projeto começou como meta-implementação.</li><li>Por que o legado foi preservado em vez de apagado.</li><li>O valor de registrar decisões mesmo quando o processo ainda está torto.</li></ul></section>
+
+    <h2>Primeiro a placa, depois o guardrail</h2>
+
+    <p>O histórico do projeto mostra bem essa fase.</p>
+
+    <p>Primeiro vieram as specs, templates e o meta TODO. Depois vieram logs e regras de pendência. Depois a tradução das specs para inglês. Depois os arquivos de entrada do agente. Depois estrutura mínima. Depois interface dos scripts. Depois contrato de CLI.</p>
+
+    <p>Era uma sequência de pequenas placas:</p>
+
+    <p>Leia por aqui.</p>
+
+    <p>Nomeie assim.</p>
+
+    <p>Registre desse jeito.</p>
+
+    <p>Não pule dependência.</p>
+
+    <p>Não invente caminho.</p>
+
+    <p>Não confunda issue com lembrete.</p>
+
+    <p>No começo, muita coisa ainda era orientação escrita. O agente precisava obedecer porque estava no documento. Só que, como vimos no post anterior, documento sozinho ajuda, mas não garante.</p>
+
+    <p>Então as placas começaram a pedir guardrail.</p>
+
+    <p>Se a próxima issue deve ser escolhida por uma regra determinística, isso precisa virar script.</p>
+
+    <p>Se o log precisa ter formato, isso precisa virar script.</p>
+
+    <p>Se o status muda de forma controlada, isso precisa virar script.</p>
+
+    <p>O bootstrap foi o período em que essas dores foram ficando claras uma por uma.</p>
+
+    <div class="aside">
+      <strong>Resumo técnico sem glamour:</strong> antes de automatizar o processo, foi preciso descobrir quais partes do processo eram importantes o bastante para não dependerem de memória, boa vontade ou interpretação.
+    </div>
+
+    <h2>A fase dos artefatos estranhos</h2>
+
+    <p>Todo projeto que amadurece deixa umas conchas na praia.</p>
+
+    <p>No YODA, essas conchas estão em <code>bootstrap-legacy/</code>.</p>
+
+    <p>Ali ficaram TODOs antigos, logs em Markdown, logs em YAML, issues com formatos que já não são o caminho oficial, nomes que mudaram, campos que depois morreram e pequenas evidências de que a primeira versão da idéia ainda estava procurando o próprio corpo.</p>
+
+    <p>Dava para apagar?</p>
+
+    <p>Dava.</p>
+
+    <p>Mas apagar teria sido uma mentira elegante.</p>
+
+    <p>Porque aqueles arquivos contam uma coisa importante: o framework não nasceu pronto. Ele foi sendo descoberto. E algumas regras só ficaram óbvias depois de serem quebradas, ajustadas, repetidas e finalmente transformadas em contrato.</p>
+
+    <p>Por isso o <code>bootstrap-legacy/</code> ficou.</p>
+
+    <p>Não como parte do fluxo atual.</p>
+
+    <p>Mas como fóssil útil.</p>
+
+    <p>Aquela gaveta que você não abre todo dia, mas que prova que a história aconteceu.</p>
+
+    <h2>O agente também precisava de entrada</h2>
+
+    <p>Uma das primeiras dores foi ridiculamente básica: por onde o agente começa?</p>
+
+    <p>Para um humano, o README costuma ser suficiente para entender a proposta geral. Para um agente, principalmente quando ele chega com contexto zero, “suficiente” é uma palavra perigosa.</p>
+
+    <p>Ele precisa de ordem de leitura.</p>
+
+    <p>Precisa saber qual arquivo tem intenção do repositório.</p>
+
+    <p>Precisa saber onde estão as specs.</p>
+
+    <p>Precisa saber qual issue manda naquele momento.</p>
+
+    <p>Foi assim que arquivos como <code>REPO_INTENT.md</code> e <code>yoda/yoda.md</code> começaram a ganhar importância. O projeto precisava dizer para o agente: entra por aqui, lê isso primeiro, não finja que entendeu antes da hora.</p>
+
+    <p>Essa preocupação parece pequena.</p>
+
+    <p>Não é.</p>
+
+    <p>Sem entrada clara, cada sessão vira um recomeço. E recomeço demais é onde mora o retrabalho.</p>
+
+    <h2>Quando o improviso virou decisão</h2>
+
+    <p>O momento decisivo do bootstrap não foi um commit específico.</p>
+
+    <p>Foi uma mudança de postura.</p>
+
+    <p>No começo, muita coisa era “por enquanto”.</p>
+
+    <p>TODO em Markdown por enquanto.</p>
+
+    <p>Logs manuais por enquanto.</p>
+
+    <p>Regras descritas em texto por enquanto.</p>
+
+    <p>Scripts incompletos por enquanto.</p>
+
+    <p>Mas todo “por enquanto” tem prazo de validade. Se ele funciona, vira contrato. Se atrapalha, vira legado. Se está no meio, vira dívida.</p>
+
+    <p>O bootstrap foi justamente essa triagem.</p>
+
+    <p>O que fica?</p>
+
+    <p>O que muda?</p>
+
+    <p>O que precisa ser automatizado?</p>
+
+    <p>O que era só muleta da fase inicial?</p>
+
+    <p>Quando os primeiros scripts começaram a aparecer, a história mudou de tom. <code>issue_add.py</code>, <code>log_add.py</code>, <code>todo_update.py</code>. Pequenos, específicos, ainda longe do framework final, mas já carregando uma idéia central:</p>
+
+    <p>Se uma regra é importante, ela não pode morar só na cabeça do agente.</p>
+
+    <div class="callout">O fim do bootstrap não foi o fim da bagunça. Foi só o momento em que a bagunça ganhou endereço fixo.</div>
+
+    <h2>Por que preservar o legado</h2>
+
+    <p>Eu gosto que o projeto tenha mantido o <code>bootstrap-legacy/</code>.</p>
+
+    <p>Não porque ele seja bonito.</p>
+
+    <p>Ele não é.</p>
+
+    <p>Mas porque ele é honesto.</p>
+
+    <p>Frameworks costumam ser apresentados como se tivessem nascido de uma visão clara, polida, com uma arquitetura inevitável. A realidade costuma ser mais suada: tentativa, ajuste, arrependimento, rename, campo que parecia bom, script que faltava, regra que só ficou óbvia depois do terceiro tropeço.</p>
+
+    <p>O legado mostra isso.</p>
+
+    <p>Mostra que o YODA não veio de uma grande epifania. Veio de fricção acumulada.</p>
+
+    <p>E fricção acumulada, quando bem registrada, vira design.</p>
+
+    <h2>O que ficou dessa fase</h2>
+
+    <p>O bootstrap deixou algumas lições que continuam no YODA atual.</p>
+
+    <p>Primeira: agente precisa de entrada explícita.</p>
+
+    <p>Segunda: documentação só é fonte de verdade se o processo aponta para ela sem ambiguidade.</p>
+
+    <p>Terceira: toda regra repetida muitas vezes está pedindo um script.</p>
+
+    <p>Quarta: legado não precisa mandar no presente, mas pode explicar o passado.</p>
+
+    <p>Quinta: criar o framework usando o próprio framework é uma péssima idéia ótima.</p>
+
+    <p>Péssima porque dói.</p>
+
+    <p>Ótima porque revela rapidamente onde o processo é frágil.</p>
+
+    <p>No fim, o bootstrap foi isso: a fase em que o YODA ainda não tinha maturidade para resolver todos os problemas, mas já tinha coragem suficiente para registrar os problemas certos.</p>
+
+    <p>E isso foi o bastante para passar para a próxima pergunta.</p>
+
+    <p>Se o framework vai depender de agentes, como garantir que um agente com contexto zero entre no repositório pelo lugar certo?</p>
+
+    <p>Pois é.</p>
+
+    <p>No próximo post, um agente com contexto zero entra num repositório.</p>
   </article><nav class="nav"><a href="01-eu-so-queria-que-o-agente-lesse-o-markdown.html">Anterior</a><a href="03-um-agente-com-contexto-zero-entra-num-repositorio.html">Próximo</a></nav></main>
 </div></body></html>
