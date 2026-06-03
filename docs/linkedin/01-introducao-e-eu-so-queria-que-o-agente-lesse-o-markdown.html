@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LinkedIn 01 - Eu só queria que o agente lesse o markdown</title>
+  <style>
+    :root {
+      --ink: #15181d;
+      --muted: #606977;
+      --paper: #f3f5f7;
+      --panel: #ffffff;
+      --line: #d7dce3;
+      --blue: #1167d8;
+      --blue-soft: #e7f0ff;
+      --code: #101720;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .page {
+      width: min(920px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    header {
+      margin-bottom: 28px;
+    }
+
+    .kicker {
+      color: var(--blue);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-weight: 800;
+      margin: 0 0 10px;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--code);
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 760px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 20px;
+    }
+
+    .cover {
+      margin: 30px 0;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .cover img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .copy-note {
+      margin: 28px 0 14px;
+      padding: 16px 18px;
+      border-left: 5px solid var(--blue);
+      background: var(--blue-soft);
+      border-radius: 8px;
+      color: #26384f;
+      font-size: 15px;
+    }
+
+    article {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: clamp(22px, 4vw, 42px);
+    }
+
+    article h2 {
+      margin: 34px 0 14px;
+      color: var(--code);
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    article p {
+      margin: 0 0 18px;
+    }
+
+    .hook {
+      margin-top: 28px;
+      padding: 20px;
+      background: var(--blue-soft);
+      border-radius: 8px;
+      font-weight: 650;
+    }
+
+    .hashtags {
+      color: var(--blue);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <p class="kicker">LinkedIn - Post 01</p>
+      <h1>Eu só queria que o agente lesse o markdown</h1>
+      <p class="lead">
+        Introdução da série sobre a odisséia de criação do YODA Framework, pronta
+        para copiar e publicar no LinkedIn.
+      </p>
+    </header>
+
+    <figure class="cover">
+      <img src="assets/01-capa-spec-markdown.jpg" alt="Capa ilustrada do post sobre spec-driven development com agentes de IA">
+    </figure>
+
+    <div class="copy-note">
+      Selecione o texto abaixo e cole no LinkedIn. A imagem acima pode ser usada como capa do post.
+    </div>
+
+    <article>
+      <p>Eu só queria que o agente lesse o markdown.</p>
+
+      <p>Só isso.</p>
+
+      <p>Escrever uma spec, entregar para o agente, ele implementar direitinho e todo mundo seguir feliz.</p>
+
+      <p>Parecia simples.</p>
+
+      <p>Como toda idéia simples que resolve visitar a vida real, logo virou uma pequena odisséia.</p>
+
+      <p>Nos últimos meses, eu venho criando o YODA Framework: um jeito document-first de trabalhar com agentes de IA, onde a issue em Markdown vira o contrato operacional da execução.</p>
+
+      <p>A idéia é bem direta:</p>
+
+      <p>Antes do código, o combinado.</p>
+
+      <p>Antes da implementação, contexto, escopo, critérios de aceite, riscos, dependências e uma trilha mínima para auditar o que aconteceu.</p>
+
+      <p>Bonito, né?</p>
+
+      <p>Na prática, começou bem menos elegante.</p>
+
+      <h2>O problema do “entendi”</h2>
+
+      <p>Agente de IA tem uma característica curiosa: ele consegue parecer muito confiante mesmo quando acabou de preencher uma lacuna com imaginação.</p>
+
+      <p>Não é má vontade. Não é preguiça. Não é nem burrice.</p>
+
+      <p>É pior: é plausibilidade.</p>
+
+      <p>Ele lê um pedaço, infere outro, costura uma intenção, escolhe um caminho e entrega algo que, olhando rápido, parece certo.</p>
+
+      <p>Aí você abre o diff e sente aquele ventinho frio na nuca.</p>
+
+      <p>Um arquivo que ele não devia ter tocado.</p>
+
+      <p>Uma decisão que ele assumiu.</p>
+
+      <p>Um detalhe que estava óbvio para mim, mas não estava escrito em lugar nenhum.</p>
+
+      <p>Uma regra que estava escrita, mas escondida num canto que ele não leu.</p>
+
+      <p>UFA.</p>
+
+      <p>Na verdade, não. UFA nada.</p>
+
+      <p>Lá ia eu explicar tudo de novo.</p>
+
+      <h2>Pedir não é especificar</h2>
+
+      <p>Essa foi a primeira pancada.</p>
+
+      <p>Eu achava que estava especificando. Muitas vezes eu estava só pedindo com mais palavras.</p>
+
+      <p>“Implementa isso aqui” com três parágrafos continua sendo pedido se não tem escopo claro, fora de escopo, critério de aceite, dependência, risco e um jeito objetivo de saber quando acabou.</p>
+
+      <p>E pedido é perigoso.</p>
+
+      <p>Pedido depende de interpretação.</p>
+
+      <p>Interpretação depende de contexto.</p>
+
+      <p>Contexto depende de memória.</p>
+
+      <p>Memória depende da conversa.</p>
+
+      <p>Conversa depende do dia, do modelo, da ferramenta, do humor do universo e de mais umas coisas que eu prefiro nem listar.</p>
+
+      <p>Especificação, por outro lado, precisa ser menos charmosa e mais teimosa.</p>
+
+      <p>Ela precisa dizer:</p>
+
+      <p>Isto é o que queremos.</p>
+
+      <p>Isto é o que não queremos.</p>
+
+      <p>Isto é o que já sabemos.</p>
+
+      <p>Isto é o que ainda está em aberto.</p>
+
+      <p>Isto é como vamos validar.</p>
+
+      <p>Chato?</p>
+
+      <p>Um pouco.</p>
+
+      <p>Melhor do que revisar uma implementação criativa às onze da noite?</p>
+
+      <p>Muito.</p>
+
+      <h2>O markdown como largada</h2>
+
+      <p>Foi aí que o markdown começou a ganhar outro papel.</p>
+
+      <p>Ele deixou de ser só uma anotação para virar largada.</p>
+
+      <p>O lugar onde a corrida começa.</p>
+
+      <p>O documento que o agente precisa ler antes de calçar o tênis e sair feliz mexendo no código.</p>
+
+      <p>Mas só largada também não bastava.</p>
+
+      <p>Porque largada sem percurso vira passeio.</p>
+
+      <p>E passeio com agente empolgado vira trilha alternativa.</p>
+
+      <p>Então a pergunta foi ficando mais específica:</p>
+
+      <p>Se a issue é o contrato, quem garante que ela está pronta?</p>
+
+      <p>Quem escolhe a próxima?</p>
+
+      <p>Quem registra a passagem de fase?</p>
+
+      <p>Quem atualiza o log?</p>
+
+      <p>Quem impede o agente de pular direto para a implementação porque “parece claro”?</p>
+
+      <p>Pronto.</p>
+
+      <p>A pequena idéia já tinha colocado a mão na cintura e pedido uma arquitetura.</p>
+
+      <h2>O primeiro rascunho do YODA</h2>
+
+      <p>O primeiro YODA não nasceu com esse nome todo pomposo.</p>
+
+      <p>Nasceu como uma sensação incômoda:</p>
+
+      <p>Se o agente vai executar, ele precisa saber onde começa.</p>
+
+      <p>Se ele precisa saber onde começa, o projeto precisa ter uma entrada clara.</p>
+
+      <p>Se a tarefa precisa ser respeitada, ela precisa estar escrita de um jeito que dê para auditar.</p>
+
+      <p>Se o fluxo precisa ser seguido, não dá para depender só de boa vontade.</p>
+
+      <p>E se eu preciso repetir a mesma orientação para todo agente, toda hora, em toda conversa, então eu não tenho um processo.</p>
+
+      <p>Tenho um discurso decorado.</p>
+
+      <p>Foi daí que veio a base:</p>
+
+      <p>Documentação como fonte de verdade.</p>
+
+      <p>Issue Markdown como contrato operacional.</p>
+
+      <p>Scripts como guardiões das regras que não deveriam ficar soltas no prompt.</p>
+
+      <p>Bonito, né?</p>
+
+      <p>Na prática, foi mais parecido com tropeçar numa pedra, xingar a pedra, colocar uma placa avisando da pedra e depois escrever uma spec para o agente não remover a placa achando que estava limpando o caminho.</p>
+
+      <h2>Por que isso importa</h2>
+
+      <p>Spec driven development com agentes não é sobre escrever documento para parecer organizado.</p>
+
+      <p>É sobre reduzir a área de adivinhação.</p>
+
+      <p>É sobre transformar intenção em contrato.</p>
+
+      <p>É sobre dar ao agente um mapa, e não só entusiasmo.</p>
+
+      <p>É sobre o humano também se obrigar a pensar melhor antes de pedir.</p>
+
+      <p>Porque, sejamos honestos, nem sempre o problema é o agente.</p>
+
+      <p>Às vezes a gente também chega com um “faz aí” disfarçado de requisito.</p>
+
+      <p>O YODA começou quando eu aceitei que, se eu queria menos surpresa na implementação, precisava colocar mais verdade antes da implementação.</p>
+
+      <p>Esse é o ponto de partida da odisséia.</p>
+
+      <p>Não tem instalador ainda. Não tem pacote. Não tem versão. Não tem fluxo bonito.</p>
+
+      <p>Tem só uma teimosia:</p>
+
+      <p>Antes do código, o combinado.</p>
+
+      <div class="hook">
+        <p>No próximo post, vou contar a parte mais irônica da história: como usar um framework que ainda não existia para construir o próprio framework.</p>
+        <p>O bootstrap do bootstrap.</p>
+        <p>Pois é.</p>
+      </div>
+
+      <p class="hashtags">#IA #AIDevelopment #SpecDrivenDevelopment #Documentacao #EngenhariaDeSoftware #YODAFramework</p>
+    </article>
+  </div>
+</body>
+</html>
