@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LinkedIn 10 - O que morreu no caminho</title>
+  <style>
+    :root {
+      --ink: #15181d;
+      --muted: #606977;
+      --paper: #f3f5f7;
+      --panel: #ffffff;
+      --line: #d7dce3;
+      --blue: #1167d8;
+      --blue-soft: #e7f0ff;
+      --code: #101720;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .page {
+      width: min(920px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    header {
+      margin-bottom: 28px;
+    }
+
+    .kicker {
+      color: var(--blue);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-weight: 800;
+      margin: 0 0 10px;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--code);
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 760px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 20px;
+    }
+
+    .cover {
+      margin: 30px 0;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .cover img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .copy-note {
+      margin: 28px 0 14px;
+      padding: 16px 18px;
+      border-left: 5px solid var(--blue);
+      background: var(--blue-soft);
+      border-radius: 8px;
+      color: #26384f;
+      font-size: 15px;
+    }
+
+    article {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: clamp(22px, 4vw, 42px);
+    }
+
+    article h2 {
+      margin: 34px 0 14px;
+      color: var(--code);
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    article p {
+      margin: 0 0 18px;
+    }
+
+    .hook {
+      margin-top: 28px;
+      padding: 20px;
+      background: var(--blue-soft);
+      border-radius: 8px;
+      font-weight: 650;
+    }
+
+    .hashtags {
+      color: var(--blue);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <p class="kicker">LinkedIn - Post 10</p>
+      <h1>O que morreu no caminho</h1>
+      <p class="lead">
+        Décima publicação da série sobre a odisséia de criação do YODA Framework,
+        pronta para copiar e publicar no LinkedIn.
+      </p>
+    </header>
+
+    <figure class="cover">
+      <img src="assets/10-capa-o-que-morreu.jpg" alt="Capa ilustrada do post sobre conceitos removidos no YODA Framework">
+    </figure>
+
+    <div class="copy-note">
+      Selecione o texto abaixo e cole no LinkedIn. A imagem acima pode ser usada como capa do post.
+    </div>
+
+    <article>
+      <p>Este é o décimo texto da série sobre a odisséia de criação do YODA Framework.</p>
+
+      <p>No post anterior, falei sobre empacotar uma teimosia.</p>
+
+      <p>Ou seja: tirar o YODA do conforto do meu próprio repositório e transformar aquilo em pacote distribuível.</p>
+
+      <p>Com manifest.</p>
+
+      <p>Changelog.</p>
+
+      <p>latest.json.</p>
+
+      <p>Checksum.</p>
+
+      <p>Instalador.</p>
+
+      <p>Update.</p>
+
+      <p>Rollback.</p>
+
+      <p>Foi ali que o projeto começou a se comportar como framework de verdade.</p>
+
+      <p>Mas framework de verdade não amadurece só adicionando coisa.</p>
+
+      <p>Ele amadurece removendo também.</p>
+
+      <p>E esse post é sobre isso.</p>
+
+      <p>O que morreu no caminho.</p>
+
+      <h2>Remover parece derrota</h2>
+
+      <p>Criar conceito é gostoso.</p>
+
+      <p>Dá sensação de avanço.</p>
+
+      <p>Você nomeia uma coisa e, por alguns minutos, parece que resolveu um problema.</p>
+
+      <p>Às vezes resolveu mesmo.</p>
+
+      <p>Às vezes só colocou um crachá no problema e deu uma cadeira para ele na reunião.</p>
+
+      <p>Remover é mais difícil.</p>
+
+      <p>Remover parece admitir erro.</p>
+
+      <p>E ninguém gosta de olhar para uma issue antiga e pensar:</p>
+
+      <p>“olha que bela complicação eu inventei com convicção”.</p>
+
+      <p>Mas remover nem sempre é derrota.</p>
+
+      <p>Muitas vezes é o projeto ficando mais honesto.</p>
+
+      <h2>O fim do lightweight</h2>
+
+      <p>O lightweight nasceu com uma intenção boa.</p>
+
+      <p>Ter um caminho mais leve.</p>
+
+      <p>Uma variação menor.</p>
+
+      <p>Um modo menos cerimonial.</p>
+
+      <p>Quem nunca quis isso?</p>
+
+      <p>O problema é que um modo alternativo nunca é gratuito.</p>
+
+      <p>Ele aparece no schema.</p>
+
+      <p>Nos scripts.</p>
+
+      <p>Nos templates.</p>
+
+      <p>Nos testes.</p>
+
+      <p>Na cabeça do agente.</p>
+
+      <p>Na cabeça do humano.</p>
+
+      <p>E cria uma pergunta que não ajuda:</p>
+
+      <p>“isso aqui é flow normal ou lightweight?”</p>
+
+      <p>No uso real, não pagava a própria manutenção.</p>
+
+      <p>Então saiu.</p>
+
+      <h2>Tags e agent</h2>
+
+      <p>Tags também pareciam uma boa idéia.</p>
+
+      <p>Tags sempre parecem.</p>
+
+      <p>Elas prometem organização sem compromisso.</p>
+
+      <p>Até ninguém saber qual tag usar.</p>
+
+      <p>Ou duas tags significarem quase a mesma coisa.</p>
+
+      <p>Ou o filtro existir e ninguém filtrar.</p>
+
+      <p>No YODA, tags viraram schema a mais para valor de menos.</p>
+
+      <p>Morreram também.</p>
+
+      <p>O campo agent foi parecido.</p>
+
+      <p>Ele soava correto.</p>
+
+      <p>Afinal, estamos falando de agentes.</p>
+
+      <p>Mas o YODA não precisava desse campo para selecionar issue, avançar fase ou validar aceite.</p>
+
+      <p>Era semanticamente bonito.</p>
+
+      <p>Operacionalmente dispensável.</p>
+
+      <p>Foi embora.</p>
+
+      <h2>Duplicação disfarçada de segurança</h2>
+
+      <p>Algumas mortes vieram da mesma doença:</p>
+
+      <p>duplicação.</p>
+
+      <p>Entry points no YAML e no Markdown.</p>
+
+      <p>ID no filename e no front matter.</p>
+
+      <p>Dependencies no front matter e no corpo.</p>
+
+      <p>Parece seguro repetir.</p>
+
+      <p>Mas repetição de estado quase sempre vira convite para divergência.</p>
+
+      <p>Um lugar atualiza.</p>
+
+      <p>O outro não.</p>
+
+      <p>E pronto.</p>
+
+      <p>Você não tem fonte de verdade.</p>
+
+      <p>Tem duas testemunhas discordando.</p>
+
+      <p>O YODA foi limpando isso.</p>
+
+      <p>Entry points ficam no Markdown.</p>
+
+      <p>ID vem do filename.</p>
+
+      <p>Dependência operacional fica em depends_on.</p>
+
+      <p>Um dado.</p>
+
+      <p>Um lugar.</p>
+
+      <p>Menos reconciliação depois.</p>
+
+      <h2>Template sem fingir intenção</h2>
+
+      <p>Template com default demais é uma mentira confortável.</p>
+
+      <p>Ele parece pronto.</p>
+
+      <p>Mas parte daquilo é só preenchimento automático fingindo intenção.</p>
+
+      <p>No YODA, o template chegou a carregar metadata operacional demais.</p>
+
+      <p>Aí a responsabilidade ficava espalhada.</p>
+
+      <p>O template define?</p>
+
+      <p>O script define?</p>
+
+      <p>O update preserva?</p>
+
+      <p>O init reconcilia?</p>
+
+      <p>Quando muita gente manda no mesmo campo, o campo vira condomínio.</p>
+
+      <p>E condomínio tem reunião.</p>
+
+      <p>A solução foi tirar defaults operacionais do template.</p>
+
+      <p>Template virou estrutura.</p>
+
+      <p>Scripts viraram fonte de preenchimento.</p>
+
+      <h2>Init não é dono da casa</h2>
+
+      <p>Essa foi uma remoção mais recente e importante.</p>
+
+      <p>O init.py já foi mais intrusivo.</p>
+
+      <p>Ele mexia em arquivos de agente e intent na raiz do projeto host.</p>
+
+      <p>Isso parecia útil para onboarding.</p>
+
+      <p>Até você lembrar que o projeto host tem dono.</p>
+
+      <p>Ele pode ter seu próprio AGENTS.md.</p>
+
+      <p>Seu próprio GEMINI.md.</p>
+
+      <p>Seu próprio CLAUDE.md.</p>
+
+      <p>Seu próprio contexto.</p>
+
+      <p>O YODA não deveria entrar e reorganizar a geladeira.</p>
+
+      <p>A solução foi deixar as instruções autocontidas dentro de yoda/.</p>
+
+      <p>O host aponta para elas se quiser.</p>
+
+      <p>Mas o YODA não invade a raiz.</p>
+
+      <h2>O padrão</h2>
+
+      <p>O padrão se repetiu várias vezes.</p>
+
+      <p>Uma idéia parecia útil.</p>
+
+      <p>Entrava no schema.</p>
+
+      <p>Ganhava flag.</p>
+
+      <p>Ganhava teste.</p>
+
+      <p>Ganhava documentação.</p>
+
+      <p>Depois o uso real mostrava que ela não pagava a própria manutenção.</p>
+
+      <p>O YODA ficou melhor quando parou de confundir completude com quantidade de campos.</p>
+
+      <p>Menos metadata.</p>
+
+      <p>Menos duplicação.</p>
+
+      <p>Menos modos alternativos.</p>
+
+      <p>Menos invasão no projeto host.</p>
+
+      <p>Mais fonte única.</p>
+
+      <p>Mais Markdown onde a história importa.</p>
+
+      <p>Mais script onde regra precisa ser chata.</p>
+
+      <p>Adicionar mostra imaginação.</p>
+
+      <p>Remover mostra critério.</p>
+
+      <div class="hook">
+        No próximo texto, a história muda de direção: depois de remover, limpar e estabilizar,
+        apareceu a necessidade de preparar antes de executar. Às vezes a melhor coisa que o agente pode fazer hoje é não implementar nada.
+      </div>
+
+      <p class="hashtags">#IA #AIDevelopment #SpecDrivenDevelopment #Documentacao #EngenhariaDeSoftware #YODAFramework</p>
+    </article>
+  </div>
+</body>
+</html>

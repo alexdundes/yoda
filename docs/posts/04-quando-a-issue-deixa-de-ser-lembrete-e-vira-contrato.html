@@ -1,13 +1,290 @@
 <!doctype html>
 <html lang="pt-BR">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Quando a issue deixa de ser lembrete e vira contrato | YODA Framework</title><link rel="icon" href="../assets/yoda-light.svg" type="image/svg+xml"><style>:root{--ink:#15181d;--muted:#606977;--paper:#f3f5f7;--panel:#fff;--line:#d7dce3;--blue:#1167d8;--blue-dark:#0b3f88;--blue-soft:#e7f0ff;--code:#101720}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top left,rgba(17,103,216,.14),transparent 360px),var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:18px;line-height:1.72}.page{width:min(820px,calc(100% - 32px));margin:0 auto;padding:34px 0 60px}header{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:54px}.brand{display:flex;gap:12px;align-items:center;color:var(--blue-dark);font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}.brand img{width:42px;height:42px;padding:5px;border:1px solid var(--line);border-radius:8px;background:white}a{color:var(--blue);text-underline-offset:3px}.back{color:var(--muted);font-size:14px;font-weight:700;text-decoration:none}h1{margin:0;color:var(--code);font-size:clamp(38px,7vw,68px);line-height:1.05;letter-spacing:0}.kicker{color:var(--blue);font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-weight:800;margin-bottom:18px}.lead{color:#29313b;font-size:24px;line-height:1.45;margin:26px 0 34px}article p{margin:0 0 24px}.callout{margin:34px 0;padding:24px;background:var(--blue-soft);border-left:6px solid var(--blue);border-radius:8px;font-size:21px;line-height:1.5}.list{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:24px;margin:34px 0}.list h2{margin:0 0 16px;font-size:24px}.list ul{margin:0;padding-left:22px}.nav{display:flex;justify-content:space-between;gap:18px;border-top:1px solid var(--line);margin-top:44px;padding-top:24px}</style></head>
-<body><div class="page"><header><a class="brand" href="../index.html"><img src="../assets/yoda-light.svg" alt="">YODA Framework</a><a class="back" href="../index.html#serie">Voltar para a série</a></header><main><article>
-<div class="kicker">Post 04</div><h1>Quando a issue deixa de ser lembrete e vira contrato</h1>
-<p class="lead">Uma issue ruim é uma lembrança. Uma issue boa é um combinado. Uma issue YODA tenta ser aquele amigo chato que pergunta: “mas o que exatamente você quer dizer com isso?”.</p>
-<p>No começo, issue parecia só um lugar para escrever a tarefa. Título, duas frases, talvez um acceptance criteria para parecer adulto. Funcionava até o agente encontrar uma brecha.</p>
-<p>A brecha é sempre elegante. Ele implementa algo plausível. Não necessariamente o que você queria, mas algo defensável. E aí começa a discussão filosófica que ninguém queria ter numa terça-feira.</p>
-<p>O YODA empurrou a issue para outro lugar: contexto, objetivo, escopo, fora de escopo, critérios de aceite, dependências, riscos, logs. Não para burocratizar. Para evitar telepatia.</p>
-<div class="callout">A issue vira o tênis amarrado antes da corrida. Dá para correr sem isso? Dá. Mas uma hora você tropeça.</div>
-<p>Esse post é sobre a transformação da issue Markdown em contrato operacional. O lugar onde a história é contada, os limites são marcados e o agente perde a desculpa de “achei que era isso”.</p>
-<section class="list"><h2>O que este post vai cobrir</h2><ul><li>Por que Markdown virou a camada narrativa do YODA.</li><li>Como acceptance criteria mudam a conversa.</li><li>Por que logs dentro da issue ajudam na memória do projeto.</li></ul></section>
-</article><nav class="nav"><a href="03-um-agente-com-contexto-zero-entra-num-repositorio.html">Anterior</a><a href="05-scripts-porque-prompt-nao-deveria-fazer-trabalho-de-juiz.html">Próximo</a></nav></main></div></body></html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quando a issue deixa de ser lembrete e vira contrato | YODA Framework</title>
+  <link rel="icon" href="../assets/yoda-light.svg" type="image/svg+xml">
+  <style>
+    :root { --ink:#15181d; --muted:#606977; --paper:#f3f5f7; --panel:#fff; --line:#d7dce3; --blue:#1167d8; --blue-dark:#0b3f88; --blue-soft:#e7f0ff; --code:#101720; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:radial-gradient(circle at top left,rgba(17,103,216,.14),transparent 360px),var(--paper); color:var(--ink); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:18px; line-height:1.72; }
+    .page { width:min(820px,calc(100% - 32px)); margin:0 auto; padding:34px 0 60px; }
+    header { display:flex; justify-content:space-between; gap:18px; align-items:center; margin-bottom:54px; }
+    .brand { display:flex; gap:12px; align-items:center; color:var(--blue-dark); font-size:13px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; text-decoration:none; }
+    .brand img { width:42px; height:42px; padding:5px; border:1px solid var(--line); border-radius:8px; background:white; }
+    a { color:var(--blue); text-underline-offset:3px; }
+    .back { color:var(--muted); font-size:14px; font-weight:700; text-decoration:none; }
+    h1 { margin:0; color:var(--code); font-size:clamp(38px,7vw,68px); line-height:1.05; letter-spacing:0; }
+    h2 { margin:44px 0 18px; color:var(--code); font-size:30px; line-height:1.18; letter-spacing:0; }
+    .kicker { color:var(--blue); font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace; font-weight:800; margin-bottom:18px; }
+    .lead { color:#29313b; font-size:24px; line-height:1.45; margin:26px 0 34px; }
+    .post-cover { margin:0 0 38px; padding:10px; background:var(--panel); border:1px solid var(--line); border-radius:8px; }
+    .post-cover img { display:block; width:100%; height:auto; border-radius:6px; }
+    article p { margin:0 0 24px; }
+    .callout { margin:34px 0; padding:24px; background:var(--blue-soft); border-left:6px solid var(--blue); border-radius:8px; font-size:21px; line-height:1.5; }
+    .aside { margin:34px 0; padding:22px 24px; background:var(--panel); border:1px solid var(--line); border-radius:8px; color:var(--muted); }
+    .aside strong { color:var(--blue-dark); }
+    .nav { display:flex; justify-content:space-between; gap:18px; border-top:1px solid var(--line); margin-top:44px; padding-top:24px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a class="brand" href="../index.html"><img src="../assets/yoda-light.svg" alt="">YODA Framework</a>
+      <a class="back" href="../index.html#serie">Voltar para a série</a>
+    </header>
+    <main>
+      <article>
+        <div class="kicker">Post 04</div>
+        <h1>Quando a issue deixa de ser lembrete e vira contrato</h1>
+        <p class="lead">Uma issue ruim é uma lembrança. Uma issue boa é um combinado. Uma issue YODA tenta ser aquele amigo chato que pergunta: “mas o que exatamente você quer dizer com isso?”.</p>
+
+        <figure class="post-cover">
+          <img src="../linkedin/assets/04-capa-issue-contrato.jpg" alt="Ilustração de uma issue Markdown virando contrato operacional entre desenvolvedor e agente de IA" width="1735" height="906">
+        </figure>
+
+        <p>No começo, issue parecia só um lugar para escrever a tarefa.</p>
+
+        <p>Título.</p>
+
+        <p>Duas frases.</p>
+
+        <p>Talvez um acceptance criteria para parecer adulto.</p>
+
+        <p>Funcionava.</p>
+
+        <p>Até o agente encontrar uma brecha.</p>
+
+        <p>A brecha é sempre elegante. Ele implementa algo plausível. Não necessariamente o que você queria, mas algo defensável.</p>
+
+        <p>E aí começa a discussão filosófica que ninguém queria ter numa terça-feira.</p>
+
+        <p>“Mas eu achei que era isso.”</p>
+
+        <p>Pois é.</p>
+
+        <p>Achou.</p>
+
+        <h2>O problema da telepatia</h2>
+
+        <p>Muita issue nasce esperando telepatia.</p>
+
+        <p>Ela diz “ajustar fluxo de intake”.</p>
+
+        <p>Ou “corrigir comportamento do script”.</p>
+
+        <p>Ou “melhorar template”.</p>
+
+        <p>Para um humano que estava na conversa original, talvez isso baste.</p>
+
+        <p>Talvez.</p>
+
+        <p>Para um agente chegando com contexto parcial, isso é um convite para preencher lacunas.</p>
+
+        <p>E agente preenchendo lacuna é como autocomplete em porta de avião: pode até acertar, mas você fica torcendo para ninguém testar em produção.</p>
+
+        <p>A issue precisa matar a telepatia.</p>
+
+        <p>Não porque o agente seja incapaz.</p>
+
+        <p>Mas porque a capacidade dele precisa ser apontada para uma direção verificável.</p>
+
+        <div class="callout">A issue vira o tênis amarrado antes da corrida. Dá para correr sem isso? Dá. Mas uma hora você tropeça.</div>
+
+        <h2>Contrato não é burocracia</h2>
+
+        <p>Eu sei.</p>
+
+        <p>Quando a gente começa a falar em contrato, escopo, fora de escopo, critério de aceite, dependência e risco, dá aquela coceira.</p>
+
+        <p>Parece reunião.</p>
+
+        <p>Parece documento corporativo.</p>
+
+        <p>Parece alguém transformando uma tarefa simples num ritual com vela, formulário e ata.</p>
+
+        <p>Mas aqui o contrato não é burocracia.</p>
+
+        <p>É proteção contra adivinhação.</p>
+
+        <p>Contexto diz de onde veio o problema.</p>
+
+        <p>Objetivo diz onde queremos chegar.</p>
+
+        <p>Escopo diz o que pode ser tocado.</p>
+
+        <p>Fora de escopo diz o que não deve ser tocado mesmo que pareça uma boa idéia.</p>
+
+        <p>Acceptance criteria dizem como saber que acabou.</p>
+
+        <p>Riscos dizem onde a tarefa pode morder.</p>
+
+        <p>Dependências dizem o que precisa estar resolvido antes.</p>
+
+        <p>Isso não é enfeite.</p>
+
+        <p>É o mapa.</p>
+
+        <h2>Markdown virou a sala da conversa</h2>
+
+        <p>No YODA, a issue Markdown virou o lugar onde a conversa fica.</p>
+
+        <p>Não só a ordem seca.</p>
+
+        <p>A conversa.</p>
+
+        <p>Por que isso importa.</p>
+
+        <p>O que já foi decidido.</p>
+
+        <p>O que não deve ser confundido.</p>
+
+        <p>Quais arquivos são entrada provável.</p>
+
+        <p>Quais critérios precisam ser validados no Evaluate.</p>
+
+        <p>YAML continua útil, mas para metadado.</p>
+
+        <p>Status.</p>
+
+        <p>Prioridade.</p>
+
+        <p>Dependências.</p>
+
+        <p>Coisas que script precisa ler sem drama.</p>
+
+        <p>Mas a história da tarefa mora melhor em Markdown.</p>
+
+        <p>Porque humano lê Markdown.</p>
+
+        <p>Agente também.</p>
+
+        <p>E, quando os dois precisam se entender, legibilidade deixa de ser luxo.</p>
+
+        <div class="aside">
+          <strong>A virada mental:</strong> a issue não é um bilhete para o agente. É o acordo entre humano, agente e projeto sobre o que será feito.
+        </div>
+
+        <h2>O corpo da issue como trilha</h2>
+
+        <p>Uma boa issue YODA não tenta ser romance.</p>
+
+        <p>Mas também não tenta ser telegrama.</p>
+
+        <p>Ela precisa conter o suficiente para orientar o trabalho sem obrigar o agente a arqueologia infinita.</p>
+
+        <p>Um resumo claro.</p>
+
+        <p>Contexto.</p>
+
+        <p>Objetivo.</p>
+
+        <p>Escopo.</p>
+
+        <p>Fora de escopo.</p>
+
+        <p>Critérios de aceite testáveis.</p>
+
+        <p>Riscos e casos chatos.</p>
+
+        <p>Notas de implementação quando ajudam.</p>
+
+        <p>Logs para registrar o que aconteceu.</p>
+
+        <p>Sem isso, o agente até pode acertar.</p>
+
+        <p>Mas, se acertar, fica difícil saber se acertou por contrato ou por sorte.</p>
+
+        <h2>Acceptance criteria mudam a conversa</h2>
+
+        <p>Acceptance criteria são uma das partes mais subestimadas da história.</p>
+
+        <p>Sem critério de aceite, a pergunta final vira:</p>
+
+        <p>“Ficou bom?”</p>
+
+        <p>Essa pergunta é perigosa.</p>
+
+        <p>Bom para quem?</p>
+
+        <p>Comparado com o quê?</p>
+
+        <p>Validado como?</p>
+
+        <p>Com critério de aceite, a pergunta muda:</p>
+
+        <p>“O contrato foi cumprido?”</p>
+
+        <p>Aí a conversa fica menos mística.</p>
+
+        <p>O Evaluate deixa de ser um aplauso final e vira conferência.</p>
+
+        <p>O agente não entrega só um diff. Entrega uma resposta para critérios que estavam escritos antes.</p>
+
+        <p>Isso muda tudo.</p>
+
+        <h2>Logs são memória, não decoração</h2>
+
+        <p>Outra peça importante: log.</p>
+
+        <p>Durante muito tempo, log pareceu acessório.</p>
+
+        <p>Algo que a gente preenche quando sobra paciência.</p>
+
+        <p>No YODA, o log virou parte da memória operacional.</p>
+
+        <p>Quando uma issue avança de fase, isso precisa deixar rastro.</p>
+
+        <p>Quando algo bloqueia, isso precisa ficar visível.</p>
+
+        <p>Quando o resultado é avaliado, isso precisa ser registrado de um jeito que o próximo agente consiga entender sem sessão espírita.</p>
+
+        <p>O log não existe para decorar a issue.</p>
+
+        <p>Existe para impedir que o projeto dependa da memória da última conversa.</p>
+
+        <div class="callout">Uma issue boa reduz o espaço entre “eu queria isso” e “foi isso que foi feito”.</div>
+
+        <h2>O que ficou dessa fase</h2>
+
+        <p>A transformação da issue em contrato deixou algumas regras fortes.</p>
+
+        <p>Primeira: se está ambíguo, não implemente. Volte para documentar.</p>
+
+        <p>Segunda: se é importante para o fluxo, não esconda no meio de uma frase solta.</p>
+
+        <p>Terceira: metadado é para máquina; contexto é para humano e agente entenderem a história.</p>
+
+        <p>Quarta: critério de aceite precisa ser verificável, não decorativo.</p>
+
+        <p>Quinta: log é memória do trabalho, não rodapé cerimonial.</p>
+
+        <p>Foi aqui que o YODA começou a ficar menos “um monte de instruções” e mais um sistema de execução.</p>
+
+        <p>Mas uma coisa ainda estava pendente.</p>
+
+        <p>Mesmo com issue boa, ainda havia regras demais dependendo de interpretação.</p>
+
+        <p>Selecionar próxima issue.</p>
+
+        <p>Registrar log.</p>
+
+        <p>Atualizar status.</p>
+
+        <p>Avançar fase.</p>
+
+        <p>Tudo isso podia estar escrito.</p>
+
+        <p>Mas, se era tão importante assim, talvez não devesse depender só do prompt.</p>
+
+        <p>No próximo post: scripts, porque prompt não deveria fazer trabalho de juiz.</p>
+      </article>
+      <nav class="nav">
+        <a href="03-um-agente-com-contexto-zero-entra-num-repositorio.html">Anterior</a>
+        <a href="05-scripts-porque-prompt-nao-deveria-fazer-trabalho-de-juiz.html">Próximo</a>
+      </nav>
+    </main>
+  </div>
+</body>
+</html>

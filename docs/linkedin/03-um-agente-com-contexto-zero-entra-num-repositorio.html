@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LinkedIn 03 - Um agente com contexto zero entra num repositório</title>
+  <style>
+    :root {
+      --ink: #15181d;
+      --muted: #606977;
+      --paper: #f3f5f7;
+      --panel: #ffffff;
+      --line: #d7dce3;
+      --blue: #1167d8;
+      --blue-soft: #e7f0ff;
+      --code: #101720;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .page {
+      width: min(920px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    header {
+      margin-bottom: 28px;
+    }
+
+    .kicker {
+      color: var(--blue);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-weight: 800;
+      margin: 0 0 10px;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--code);
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 760px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 20px;
+    }
+
+    .cover {
+      margin: 30px 0;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .cover img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .copy-note {
+      margin: 28px 0 14px;
+      padding: 16px 18px;
+      border-left: 5px solid var(--blue);
+      background: var(--blue-soft);
+      border-radius: 8px;
+      color: #26384f;
+      font-size: 15px;
+    }
+
+    article {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: clamp(22px, 4vw, 42px);
+    }
+
+    article h2 {
+      margin: 34px 0 14px;
+      color: var(--code);
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    article p {
+      margin: 0 0 18px;
+    }
+
+    .hook {
+      margin-top: 28px;
+      padding: 20px;
+      background: var(--blue-soft);
+      border-radius: 8px;
+      font-weight: 650;
+    }
+
+    .hashtags {
+      color: var(--blue);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <p class="kicker">LinkedIn - Post 03</p>
+      <h1>Um agente com contexto zero entra num repositório</h1>
+      <p class="lead">
+        Terceira publicação da série sobre a odisséia de criação do YODA Framework,
+        pronta para copiar e publicar no LinkedIn.
+      </p>
+    </header>
+
+    <figure class="cover">
+      <img src="assets/03-capa-contexto-zero.jpg" alt="Capa ilustrada do post sobre agente com contexto zero entrando em um repositório">
+    </figure>
+
+    <div class="copy-note">
+      Selecione o texto abaixo e cole no LinkedIn. A imagem acima pode ser usada como capa do post.
+    </div>
+
+    <article>
+      <p>Este é o terceiro texto da série sobre a odisséia de criação do YODA Framework.</p>
+
+      <p>No post anterior, contei a fase do bootstrap do bootstrap.</p>
+
+      <p>Aquela fase bonita só depois que passa.</p>
+
+      <p>O framework ainda não existia, mas já precisava ser usado para criar o próprio framework.</p>
+
+      <p>Tinha spec, TODO, log, arquivo temporário, regra escrita em documento e uma fé moderada de que aquilo tudo ia virar método.</p>
+
+      <p>Virou.</p>
+
+      <p>Mas, quando o bootstrap começou a se organizar, apareceu outra pergunta básica.</p>
+
+      <p>Se o YODA depende de agentes, por onde exatamente um agente começa?</p>
+
+      <p>Parece detalhe.</p>
+
+      <p>Não é.</p>
+
+      <h2>O agente acabou de chegar</h2>
+
+      <p>Esse é um dos momentos mais perigosos do desenvolvimento com IA:</p>
+
+      <p>O agente acabou de chegar.</p>
+
+      <p>Não conhece o projeto.</p>
+
+      <p>Não conhece as manias do repositório.</p>
+
+      <p>Não sabe quais arquivos são atuais, quais são históricos, quais são armadilhas arqueológicas e quais existem só porque alguém, em algum dia difícil, precisou resolver um problema às pressas.</p>
+
+      <p>Mesmo assim, ele quer ajudar.</p>
+
+      <p>E agente querendo ajudar é uma coisa linda.</p>
+
+      <p>Até ele começar pelo arquivo errado.</p>
+
+      <h2>O repositório tem cheiro</h2>
+
+      <p>Para um humano, um repositório tem cheiro.</p>
+
+      <p>Você bate o olho e percebe algumas coisas.</p>
+
+      <p>O README parece ser para usuário.</p>
+
+      <p>A pasta docs talvez seja site publicado.</p>
+
+      <p>Uma pasta chamada bootstrap-legacy tem cara de museu.</p>
+
+      <p>Um arquivo chamado REPO_INTENT provavelmente não está ali para decorar.</p>
+
+      <p>Um diretório de scripts indica que talvez exista automação e talvez seja melhor não sair editando markdown na mão como quem passa manteiga no pão.</p>
+
+      <p>Humano experiente faz essa leitura meio no faro.</p>
+
+      <p>O agente não.</p>
+
+      <p>O agente chega num repositório como quem entra numa cidade nova sem mapa, mas com muita disposição para dirigir.</p>
+
+      <p>Contexto zero não é problema.</p>
+
+      <p>Problema é fingir que contexto zero é contexto suficiente.</p>
+
+      <h2>README não é playbook</h2>
+
+      <p>Eu gosto de README.</p>
+
+      <p>README é a porta de entrada humana.</p>
+
+      <p>É onde a gente explica o que o projeto é, como instala, como usa, qual é a idéia geral.</p>
+
+      <p>Mas README não resolve tudo.</p>
+
+      <p>Principalmente quando o leitor não é exatamente um humano curioso, mas um agente prestes a modificar arquivos.</p>
+
+      <p>O humano lê o README e entende a proposta.</p>
+
+      <p>O agente precisa de outra coisa também:</p>
+
+      <p>Instrução operacional.</p>
+
+      <p>Qual arquivo ler primeiro?</p>
+
+      <p>Qual fonte de verdade vence em caso de conflito?</p>
+
+      <p>Onde estão as issues?</p>
+
+      <p>Qual script seleciona o próximo trabalho?</p>
+
+      <p>Quando ele pode implementar?</p>
+
+      <p>Quando ele deve parar e pedir confirmação?</p>
+
+      <h2>A porta da frente do agente</h2>
+
+      <p>Foi assim que a entrada do agente virou uma preocupação central.</p>
+
+      <p>Não bastava dizer “leia a documentação”.</p>
+
+      <p>Isso é quase o mesmo que dizer “seja responsável”.</p>
+
+      <p>Bonito, mas pouco executável.</p>
+
+      <p>O agente precisava de uma trilha:</p>
+
+      <p>Leia o arquivo de intenção do repositório.</p>
+
+      <p>Leia o playbook do YODA.</p>
+
+      <p>Entenda onde estão as specs.</p>
+
+      <p>Use a issue atual como contrato.</p>
+
+      <p>Quando houver script, siga o runbook do script.</p>
+
+      <p>Não invente processo paralelo porque a pasta parece simpática.</p>
+
+      <p>Isso parece óbvio depois que está escrito.</p>
+
+      <p>Antes, não era.</p>
+
+      <h2>A vida real dos arquivos de agente</h2>
+
+      <p>Outra parte divertida:</p>
+
+      <p>As ferramentas não combinam entre si qual arquivo de instrução devem procurar.</p>
+
+      <p>Uma olha para AGENTS.</p>
+
+      <p>Outra usa GEMINI.</p>
+
+      <p>Outra pode ter outro arquivo.</p>
+
+      <p>E o projeto host pode já ter suas próprias instruções, que não deveriam ser sequestradas por um framework embutido.</p>
+
+      <p>Esse detalhe parece pequeno até você perceber o tamanho do estrago de um init que sai criando ou alterando arquivos na raiz do projeto dos outros.</p>
+
+      <p>Por isso o YODA foi ficando mais cuidadoso.</p>
+
+      <p>Ele passou a ter arquivos de entrada próprios dentro do diretório yoda.</p>
+
+      <p>O host pode apontar para eles se quiser.</p>
+
+      <p>Mas o YODA não precisa entrar na casa dos outros trocando a fechadura.</p>
+
+      <p>Essa decisão parece administrativa.</p>
+
+      <p>Na verdade, é uma decisão de convivência.</p>
+
+      <h2>O que ficou dessa fase</h2>
+
+      <p>A grande lição do contexto zero é que nenhum agente deveria precisar adivinhar a topologia do projeto.</p>
+
+      <p>Se existe uma ordem de leitura, ela deve estar escrita.</p>
+
+      <p>Se existe uma fonte de verdade, ela deve estar nomeada.</p>
+
+      <p>Se existe um fluxo, ele deve ter uma entrada operacional.</p>
+
+      <p>Se existe um script que decide o próximo passo, o agente deve usar o script.</p>
+
+      <p>E se o agente não sabe qual desenvolvedor está operando o fluxo, ele não deveria inventar.</p>
+
+      <p>Deveria perguntar.</p>
+
+      <div class="hook">
+        <p>No próximo post, a pergunta muda de novo:</p>
+        <p>Depois de ensinar o agente a entrar no repositório, como transformar uma issue em algo mais sério do que um lembrete bonito?</p>
+        <p>Quando a issue deixa de ser lembrete e vira contrato.</p>
+      </div>
+
+      <p class="hashtags">#IA #AIDevelopment #SpecDrivenDevelopment #Documentacao #EngenhariaDeSoftware #YODAFramework</p>
+    </article>
+  </div>
+</body>
+</html>

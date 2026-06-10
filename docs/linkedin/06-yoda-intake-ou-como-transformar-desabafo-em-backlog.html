@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LinkedIn 06 - YODA Intake, ou como transformar desabafo em backlog</title>
+  <style>
+    :root {
+      --ink: #15181d;
+      --muted: #606977;
+      --paper: #f3f5f7;
+      --panel: #ffffff;
+      --line: #d7dce3;
+      --blue: #1167d8;
+      --blue-soft: #e7f0ff;
+      --code: #101720;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .page {
+      width: min(920px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    header {
+      margin-bottom: 28px;
+    }
+
+    .kicker {
+      color: var(--blue);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-weight: 800;
+      margin: 0 0 10px;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--code);
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 760px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 20px;
+    }
+
+    .cover {
+      margin: 30px 0;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .cover img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .copy-note {
+      margin: 28px 0 14px;
+      padding: 16px 18px;
+      border-left: 5px solid var(--blue);
+      background: var(--blue-soft);
+      border-radius: 8px;
+      color: #26384f;
+      font-size: 15px;
+    }
+
+    article {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: clamp(22px, 4vw, 42px);
+    }
+
+    article h2 {
+      margin: 34px 0 14px;
+      color: var(--code);
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    article p {
+      margin: 0 0 18px;
+    }
+
+    .hook {
+      margin-top: 28px;
+      padding: 20px;
+      background: var(--blue-soft);
+      border-radius: 8px;
+      font-weight: 650;
+    }
+
+    .hashtags {
+      color: var(--blue);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <p class="kicker">LinkedIn - Post 06</p>
+      <h1>YODA Intake, ou como transformar desabafo em backlog</h1>
+      <p class="lead">
+        Sexta publicação da série sobre a odisséia de criação do YODA Framework,
+        pronta para copiar e publicar no LinkedIn.
+      </p>
+    </header>
+
+    <figure class="cover">
+      <img src="assets/06-capa-yoda-intake.jpg" alt="Capa ilustrada do post sobre YODA Intake transformando desabafo em backlog estruturado">
+    </figure>
+
+    <div class="copy-note">
+      Selecione o texto abaixo e cole no LinkedIn. A imagem acima pode ser usada como capa do post.
+    </div>
+
+    <article>
+      <p>Este é o sexto texto da série sobre a odisséia de criação do YODA Framework.</p>
+
+      <p>No post anterior, falei sobre scripts.</p>
+
+      <p>Mais especificamente: sobre o motivo pelo qual prompt não deveria fazer trabalho de juiz.</p>
+
+      <p>Prompt orienta.</p>
+
+      <p>Script valida.</p>
+
+      <p>Prompt explica intenção.</p>
+
+      <p>Script diz sim ou não sem acordar inspirado.</p>
+
+      <p>Essa separação mudou bastante coisa no YODA.</p>
+
+      <p>Mas ela deixou uma pergunta nova na mesa.</p>
+
+      <p>Antes de executar uma issue com todo esse cuidado, como essa issue nasce?</p>
+
+      <p>Porque, convenhamos, demanda raramente nasce como documentação bem escrita.</p>
+
+      <p>Demanda nasce como desabafo.</p>
+
+      <p>Nasce como incômodo.</p>
+
+      <p>Nasce como:</p>
+
+      <p>“Tem uma coisa me irritando nesse fluxo.”</p>
+
+      <p>Pois é.</p>
+
+      <p>Bem-vindo ao YODA Intake.</p>
+
+      <h2>A bagunça pode entrar</h2>
+
+      <p>A idéia do Intake é simples.</p>
+
+      <p>O humano não precisa chegar com uma issue perfeita.</p>
+
+      <p>Não precisa trazer título, contexto, objetivo, escopo, fora de escopo, aceite, risco, dependência e prioridade já embrulhados para presente.</p>
+
+      <p>Às vezes ele só sabe que algo está errado.</p>
+
+      <p>Às vezes ele ainda nem sabe dar nome ao problema.</p>
+
+      <p>Tudo bem.</p>
+
+      <p>A entrada pode ser bagunçada.</p>
+
+      <p>O que não pode é a saída continuar bagunçada.</p>
+
+      <p>Intake é esse filtro.</p>
+
+      <p>Ele pega o texto livre, o incômodo, a frase torta, o “isso aqui está estranho” e transforma em uma candidata real de backlog.</p>
+
+      <p>Não é mágica.</p>
+
+      <p>É trabalho chato bem feito.</p>
+
+      <h2>Antes de criar, olha o backlog</h2>
+
+      <p>Uma das partes mais importantes do Intake é também uma das menos glamourosas:</p>
+
+      <p>olhar o backlog antes de criar uma issue nova.</p>
+
+      <p>Porque backlog sem triagem vira gaveta de cabo velho.</p>
+
+      <p>Tem três coisas iguais.</p>
+
+      <p>Duas não funcionam.</p>
+
+      <p>Uma talvez seja importante, mas ninguém sabe mais para quê.</p>
+
+      <p>No software acontece igual.</p>
+
+      <p>Você cria “melhorar intake”.</p>
+
+      <p>Depois cria “ajustar criação de issues”.</p>
+
+      <p>Depois cria “corrigir fluxo de backlog”.</p>
+
+      <p>Talvez sejam três problemas.</p>
+
+      <p>Talvez seja o mesmo problema usando três bonés.</p>
+
+      <p>O Intake precisa perceber isso antes de empilhar mais uma peça na bagunça.</p>
+
+      <h2>Shape: quando o agente vira analista</h2>
+
+      <p>Depois de coletar e comparar com o backlog, vem o shape.</p>
+
+      <p>É aqui que o agente deixa de ser anotador.</p>
+
+      <p>Ele passa a organizar a intenção.</p>
+
+      <p>Título claro.</p>
+
+      <p>Resumo curto.</p>
+
+      <p>Contexto.</p>
+
+      <p>Objetivo.</p>
+
+      <p>Escopo.</p>
+
+      <p>Fora de escopo.</p>
+
+      <p>Critérios de aceite.</p>
+
+      <p>Riscos.</p>
+
+      <p>Dependências.</p>
+
+      <p>Prioridade.</p>
+
+      <p>Essa parte é delicada.</p>
+
+      <p>O agente não pode inventar uma tese que o humano não trouxe.</p>
+
+      <p>Mas também não pode só copiar a bagunça e chamar de documentação.</p>
+
+      <p>Ele precisa interpretar o suficiente para organizar.</p>
+
+      <p>E parar antes de sequestrar a intenção.</p>
+
+      <p>Essa linha é fina.</p>
+
+      <p>Por isso ela precisa virar processo.</p>
+
+      <h2>Definition of Ready</h2>
+
+      <p>No YODA, uma issue criada pelo Intake precisa sair pronta para o Flow.</p>
+
+      <p>Não pronta no sentido “perfeita”.</p>
+
+      <p>Pronta no sentido “dá para executar sem adivinhação grosseira”.</p>
+
+      <p>Tem contexto?</p>
+
+      <p>Tem objetivo?</p>
+
+      <p>Tem escopo?</p>
+
+      <p>Tem fora de escopo?</p>
+
+      <p>Tem aceite testável?</p>
+
+      <p>Tem riscos e dependências?</p>
+
+      <p>Tem uma prioridade com alguma lógica?</p>
+
+      <p>Se não tem, talvez ainda não seja issue.</p>
+
+      <p>Talvez ainda seja só um desabafo usando crachá.</p>
+
+      <h2>Prioridade sem teatro</h2>
+
+      <p>Prioridade é uma pequena fábrica de autoengano.</p>
+
+      <p>Tudo parece urgente quando acabou de incomodar.</p>
+
+      <p>Por isso o YODA usa uma regra simples: baseline 5.</p>
+
+      <p>Nova issue começa em 5.</p>
+
+      <p>Quer subir?</p>
+
+      <p>Explique por que ela é mais importante que as outras abertas.</p>
+
+      <p>Quer descer?</p>
+
+      <p>Explique por que pode esperar.</p>
+
+      <p>O número não é uma verdade divina.</p>
+
+      <p>É uma conversa com freio.</p>
+
+      <p>E backlog sem freio vira fila onde tudo é prioridade máxima.</p>
+
+      <p>Ou seja: fila sem prioridade usando fantasia.</p>
+
+      <h2>Intake não implementa</h2>
+
+      <p>Essa foi outra separação importante.</p>
+
+      <p>Intake cria e prepara issue.</p>
+
+      <p>Flow executa issue.</p>
+
+      <p>Parece óbvio.</p>
+
+      <p>Mas óbvio é aquele tipo de coisa que desaparece quando você está empolgado.</p>
+
+      <p>O contexto está fresco.</p>
+
+      <p>O agente está ali.</p>
+
+      <p>O café ainda está quente.</p>
+
+      <p>A tentação de criar a issue e já implementar é enorme.</p>
+
+      <p>Mas aí você mistura descoberta com execução.</p>
+
+      <p>E descobre tarde demais que correu bastante.</p>
+
+      <p>Na direção errada.</p>
+
+      <p>O Intake fecha quando a issue está pronta.</p>
+
+      <p>Depois vem o handoff.</p>
+
+      <p>Aí sim o Flow começa.</p>
+
+      <div class="hook">
+        No próximo texto, eu entro no Flow de verdade: Study, Document, Implement, Evaluate.
+        Ou, em português menos elegante: pare de sair codando antes de entender o que está fazendo.
+      </div>
+
+      <p class="hashtags">#IA #AIDevelopment #SpecDrivenDevelopment #Documentacao #EngenhariaDeSoftware #YODAFramework</p>
+    </article>
+  </div>
+</body>
+</html>

@@ -1,13 +1,419 @@
 <!doctype html>
 <html lang="pt-BR">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>O que morreu no caminho | YODA Framework</title><link rel="icon" href="../assets/yoda-light.svg" type="image/svg+xml"><style>:root{--ink:#15181d;--muted:#606977;--paper:#f3f5f7;--panel:#fff;--line:#d7dce3;--blue:#1167d8;--blue-dark:#0b3f88;--blue-soft:#e7f0ff;--code:#101720}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top left,rgba(17,103,216,.14),transparent 360px),var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:18px;line-height:1.72}.page{width:min(820px,calc(100% - 32px));margin:0 auto;padding:34px 0 60px}header{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:54px}.brand{display:flex;gap:12px;align-items:center;color:var(--blue-dark);font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}.brand img{width:42px;height:42px;padding:5px;border:1px solid var(--line);border-radius:8px;background:white}a{color:var(--blue);text-underline-offset:3px}.back{color:var(--muted);font-size:14px;font-weight:700;text-decoration:none}h1{margin:0;color:var(--code);font-size:clamp(38px,7vw,68px);line-height:1.05;letter-spacing:0}.kicker{color:var(--blue);font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-weight:800;margin-bottom:18px}.lead{color:#29313b;font-size:24px;line-height:1.45;margin:26px 0 34px}article p{margin:0 0 24px}.callout{margin:34px 0;padding:24px;background:var(--blue-soft);border-left:6px solid var(--blue);border-radius:8px;font-size:21px;line-height:1.5}.list{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:24px;margin:34px 0}.list h2{margin:0 0 16px;font-size:24px}.list ul{margin:0;padding-left:22px}.nav{display:flex;justify-content:space-between;gap:18px;border-top:1px solid var(--line);margin-top:44px;padding-top:24px}</style></head>
-<body><div class="page"><header><a class="brand" href="../index.html"><img src="../assets/yoda-light.svg" alt="">YODA Framework</a><a class="back" href="../index.html#serie">Voltar para a série</a></header><main><article>
-<div class="kicker">Post 10</div><h1>O que morreu no caminho</h1>
-<p class="lead">Nem toda idéia ruim nasce feia. Algumas nascem elegantes, ganham nome e depois atrapalham com muita convicção.</p>
-<p>O YODA teve conceitos que pareciam úteis. <code>lightweight</code>. Campo <code>agent</code>. Entry points no YAML. Defaults demais em template. ID no front matter. Init mexendo em arquivo host como se estivesse em casa.</p>
-<p>Alguns morreram rápido. Outros precisaram de issue, migração, release e um pequeno velório técnico.</p>
-<p>Remover conceito é mais difícil que criar. Criar dá sensação de avanço. Remover parece admitir derrota. Mas muitas vezes é o contrário: é o projeto ficando mais honesto.</p>
-<div class="callout">A maturidade do YODA não veio só do que entrou. Veio muito do que saiu.</div>
-<p>Esse post é sobre desapegar. Sobre perceber que uma regra pode ser tecnicamente possível e ainda assim ruim para o fluxo.</p>
-<section class="list"><h2>O que este post vai cobrir</h2><ul><li>Conceitos removidos entre 0.1.x e 0.4.0.</li><li>Por que metadata demais vira ruído.</li><li>Como remoções melhoraram a clareza do contrato.</li></ul></section>
-</article><nav class="nav"><a href="09-empacotar-uma-teimosia.html">Anterior</a><a href="11-preparar-antes-de-executar.html">Próximo</a></nav></main></div></body></html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>O que morreu no caminho | YODA Framework</title>
+  <link rel="icon" href="../assets/yoda-light.svg" type="image/svg+xml">
+  <style>
+    :root { --ink:#15181d; --muted:#606977; --paper:#f3f5f7; --panel:#fff; --line:#d7dce3; --blue:#1167d8; --blue-dark:#0b3f88; --blue-soft:#e7f0ff; --code:#101720; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:radial-gradient(circle at top left,rgba(17,103,216,.14),transparent 360px),var(--paper); color:var(--ink); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:18px; line-height:1.72; }
+    .page { width:min(820px,calc(100% - 32px)); margin:0 auto; padding:34px 0 60px; }
+    header { display:flex; justify-content:space-between; gap:18px; align-items:center; margin-bottom:54px; }
+    .brand { display:flex; gap:12px; align-items:center; color:var(--blue-dark); font-size:13px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; text-decoration:none; }
+    .brand img { width:42px; height:42px; padding:5px; border:1px solid var(--line); border-radius:8px; background:white; }
+    a { color:var(--blue); text-underline-offset:3px; }
+    .back { color:var(--muted); font-size:14px; font-weight:700; text-decoration:none; }
+    h1 { margin:0; color:var(--code); font-size:clamp(38px,7vw,68px); line-height:1.05; letter-spacing:0; }
+    h2 { margin:44px 0 18px; color:var(--code); font-size:30px; line-height:1.18; letter-spacing:0; }
+    .kicker { color:var(--blue); font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace; font-weight:800; margin-bottom:18px; }
+    .lead { color:#29313b; font-size:24px; line-height:1.45; margin:26px 0 34px; }
+    .post-cover { margin:0 0 38px; padding:10px; background:var(--panel); border:1px solid var(--line); border-radius:8px; }
+    .post-cover img { display:block; width:100%; height:auto; border-radius:6px; }
+    article p { margin:0 0 24px; }
+    code { font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace; font-size:.92em; color:var(--code); background:#e9edf2; border:1px solid var(--line); border-radius:5px; padding:.08em .32em; }
+    .callout { margin:34px 0; padding:24px; background:var(--blue-soft); border-left:6px solid var(--blue); border-radius:8px; font-size:21px; line-height:1.5; }
+    .aside { margin:34px 0; padding:22px 24px; background:var(--panel); border:1px solid var(--line); border-radius:8px; color:var(--muted); }
+    .aside strong { color:var(--blue-dark); }
+    .nav { display:flex; justify-content:space-between; gap:18px; border-top:1px solid var(--line); margin-top:44px; padding-top:24px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a class="brand" href="../index.html"><img src="../assets/yoda-light.svg" alt="">YODA Framework</a>
+      <a class="back" href="../index.html#serie">Voltar para a série</a>
+    </header>
+    <main>
+      <article>
+        <div class="kicker">Post 10</div>
+        <h1>O que morreu no caminho</h1>
+        <p class="lead">Nem toda idéia ruim nasce feia. Algumas nascem elegantes, ganham nome e depois atrapalham com muita convicção.</p>
+
+        <figure class="post-cover">
+          <img src="../linkedin/assets/10-capa-o-que-morreu.jpg" alt="Ilustração de conceitos técnicos aposentados sendo removidos para simplificar o YODA Framework" width="1680" height="936">
+        </figure>
+
+        <p>Criar conceito é gostoso.</p>
+
+        <p>Dá sensação de avanço.</p>
+
+        <p>Você nomeia uma coisa e, por alguns minutos, parece que resolveu um problema.</p>
+
+        <p>Às vezes resolveu mesmo.</p>
+
+        <p>Às vezes só colocou um crachá no problema e deu uma cadeira para ele na reunião.</p>
+
+        <p>O YODA teve vários desses momentos.</p>
+
+        <p>Campos que pareciam úteis.</p>
+
+        <p>Modos que pareciam elegantes.</p>
+
+        <p>Metadata que parecia prudente.</p>
+
+        <p>Automação que parecia onboarding.</p>
+
+        <p>Depois o projeto cresceu.</p>
+
+        <p>E algumas idéias começaram a fazer barulho.</p>
+
+        <p>Não barulho grande.</p>
+
+        <p>Barulho de atrito.</p>
+
+        <p>Aquele ruído pequeno que você ignora até perceber que metade da complexidade mora nele.</p>
+
+        <div class="callout">A maturidade do YODA não veio só do que entrou. Veio muito do que saiu.</div>
+
+        <h2>Remover parece derrota</h2>
+
+        <p>Remover conceito é mais difícil que criar.</p>
+
+        <p>Criar parece construção.</p>
+
+        <p>Remover parece admitir erro.</p>
+
+        <p>E ninguém gosta de olhar para uma issue antiga e pensar:</p>
+
+        <p>“Olha que bela complicação eu inventei com convicção.”</p>
+
+        <p>Mas a verdade é que remover nem sempre é derrota.</p>
+
+        <p>Muitas vezes é o projeto ficando mais honesto.</p>
+
+        <p>Ele para de carregar coisas só porque elas já existiam.</p>
+
+        <p>Para de sustentar abstração que não paga aluguel.</p>
+
+        <p>Para de exigir que o agente entenda distinções que quase ninguém usa.</p>
+
+        <p>Foi assim que alguns conceitos começaram a sair.</p>
+
+        <h2>O fim do lightweight</h2>
+
+        <p>O <code>lightweight</code> nasceu com uma intenção boa.</p>
+
+        <p>Ter um caminho mais leve.</p>
+
+        <p>Uma variação menor.</p>
+
+        <p>Um modo menos cerimonial.</p>
+
+        <p>Quem nunca quis isso?</p>
+
+        <p>O problema é que um modo alternativo não é gratuito.</p>
+
+        <p>Ele precisa aparecer no schema.</p>
+
+        <p>Nos scripts.</p>
+
+        <p>Nos templates.</p>
+
+        <p>Nos testes.</p>
+
+        <p>Na cabeça do agente.</p>
+
+        <p>Na cabeça do humano.</p>
+
+        <p>E, pior, ele cria uma pergunta que nunca ajuda:</p>
+
+        <p>“Isso aqui é flow normal ou lightweight?”</p>
+
+        <p>No fim, o uso real não justificava a variação.</p>
+
+        <p>O YODA precisava de um fluxo claro.</p>
+
+        <p>Não de um menu degustação de processo.</p>
+
+        <p>Então o <code>lightweight</code> saiu.</p>
+
+        <p>E o projeto respirou melhor.</p>
+
+        <h2>Tags: uma gaveta que parecia útil</h2>
+
+        <p><code>tags</code> também pareciam uma boa idéia.</p>
+
+        <p>Tags sempre parecem.</p>
+
+        <p>Elas prometem organização sem compromisso.</p>
+
+        <p>Você coloca uma etiqueta e sente que ganhou controle.</p>
+
+        <p>Até perceber que ninguém sabe qual etiqueta usar.</p>
+
+        <p>Ou que duas etiquetas significam quase a mesma coisa.</p>
+
+        <p>Ou que o filtro existe, mas ninguém filtra.</p>
+
+        <p>Ou que o schema ficou maior para sustentar uma gaveta vazia.</p>
+
+        <p>No YODA, tags não estavam gerando valor proporcional à complexidade adicionada.</p>
+
+        <p>Então foram removidas do modelo ativo.</p>
+
+        <p>Sem criar outro sistema de classificação no lugar.</p>
+
+        <p>Essa parte é importante.</p>
+
+        <p>Às vezes a melhor substituição para uma feature é silêncio.</p>
+
+        <h2>O campo agent</h2>
+
+        <p>O campo <code>agent</code> parecia razoável.</p>
+
+        <p>Afinal, estamos falando de agentes.</p>
+
+        <p>Por que não registrar qual agente está associado à issue?</p>
+
+        <p>Porque, na prática, aquilo adicionava ruído ao modelo operacional.</p>
+
+        <p>O YODA não precisava saber isso para selecionar issue.</p>
+
+        <p>Não precisava disso para avançar fase.</p>
+
+        <p>Não precisava disso para validar aceite.</p>
+
+        <p>E manter um campo só porque ele parece semanticamente bonito é uma forma educada de acumular bagagem.</p>
+
+        <p>O campo saiu do schema.</p>
+
+        <p>As flags saíram da CLI.</p>
+
+        <p>Os logs antigos ficaram como história.</p>
+
+        <p>O presente ficou mais simples.</p>
+
+        <h2>Entry points fora do YAML</h2>
+
+        <p>Entry points são úteis.</p>
+
+        <p>Mas o lugar deles importava.</p>
+
+        <p>No começo, havia duplicidade.</p>
+
+        <p>Entry points no YAML.</p>
+
+        <p>Entry points no corpo Markdown.</p>
+
+        <p>Parece inofensivo.</p>
+
+        <p>Até um lugar divergir do outro.</p>
+
+        <p>Aí você não tem documentação.</p>
+
+        <p>Tem duas testemunhas discordando.</p>
+
+        <p>A decisão foi simples:</p>
+
+        <p>entry points ficam no Markdown.</p>
+
+        <p>Como lista legível.</p>
+
+        <p>Onde o humano e o agente leem o contexto.</p>
+
+        <p>O YAML não precisava carregar isso.</p>
+
+        <p>Menos duplicação.</p>
+
+        <p>Menos divergência.</p>
+
+        <p>Menos reconciliação depois.</p>
+
+        <h2>Defaults demais no template</h2>
+
+        <p>Template com default demais é um tipo de mentira confortável.</p>
+
+        <p>Ele parece pronto.</p>
+
+        <p>Mas parte daquela prontidão é só preenchimento automático fingindo intenção.</p>
+
+        <p>No YODA, o template de issue chegou a carregar metadata operacional demais.</p>
+
+        <p>Com isso, a responsabilidade ficava espalhada.</p>
+
+        <p>O template define?</p>
+
+        <p>O script define?</p>
+
+        <p>O update preserva?</p>
+
+        <p>O init reconcilia?</p>
+
+        <p>Quando muita gente manda no mesmo campo, o campo vira condomínio.</p>
+
+        <p>E condomínio tem reunião.</p>
+
+        <p>A solução foi tirar defaults operacionais do template.</p>
+
+        <p>Template virou estrutura.</p>
+
+        <p>Scripts viraram fonte de preenchimento.</p>
+
+        <p>Front matter ganhou ordem canônica.</p>
+
+        <p>Diff ficou menos barulhento.</p>
+
+        <p>A origem dos dados ficou mais clara.</p>
+
+        <h2>ID no front matter</h2>
+
+        <p>O ID no front matter também teve seu momento.</p>
+
+        <p>Até ficar redundante.</p>
+
+        <p>Se o arquivo já se chama <code>yoda-0057-alguma-coisa.md</code>, o ID está no nome.</p>
+
+        <p>Duplicar isso no front matter cria uma chance de divergência.</p>
+
+        <p>E divergência de identidade é uma daquelas pequenas tragédias administrativas que ninguém quer investigar.</p>
+
+        <p>Então o contrato ficou mais direto:</p>
+
+        <p>ID derivado do filename.</p>
+
+        <p>Front matter sem <code>id</code> como fonte para novos artefatos.</p>
+
+        <p>É um detalhe pequeno.</p>
+
+        <p>Mas o YODA é feito desses detalhes pequenos que impedem o processo de virar um sudoku de metadados.</p>
+
+        <h2>Dependencies no corpo</h2>
+
+        <p>Dependência também teve duplicação.</p>
+
+        <p><code>depends_on</code> no front matter.</p>
+
+        <p><code>## Dependencies</code> no corpo.</p>
+
+        <p>De novo: parece inofensivo.</p>
+
+        <p>Até um ficar atualizado e o outro não.</p>
+
+        <p>Dependência é dado operacional.</p>
+
+        <p>Script precisa ler.</p>
+
+        <p>Seleção determinística depende disso.</p>
+
+        <p>Então a fonte ficou no front matter.</p>
+
+        <p>O corpo não precisa repetir.</p>
+
+        <p>Se precisar explicar uma decisão sobre dependência, isso pode entrar no contexto ou nas notas.</p>
+
+        <p>Mas a lista operacional mora em um lugar só.</p>
+
+        <h2>Init mexendo na casa dos outros</h2>
+
+        <p>Essa foi uma remoção mais recente e importante.</p>
+
+        <p>O <code>init.py</code> já foi mais intrusivo.</p>
+
+        <p>Ele mexia em arquivos de agente e intent na raiz do projeto host.</p>
+
+        <p>Isso parecia útil para onboarding.</p>
+
+        <p>O projeto instalava o YODA e já ganhava instruções.</p>
+
+        <p>Conveniente.</p>
+
+        <p>Até você lembrar que o projeto host tem dono.</p>
+
+        <p>Ele pode ter seu próprio <code>AGENTS.md</code>.</p>
+
+        <p>Seu próprio <code>GEMINI.md</code>.</p>
+
+        <p>Seu próprio <code>CLAUDE.md</code>.</p>
+
+        <p>Seu próprio contexto.</p>
+
+        <p>O YODA não deveria entrar e reorganizar a geladeira.</p>
+
+        <p>A mudança foi deixar as instruções autocontidas dentro de <code>yoda/</code>.</p>
+
+        <p><code>yoda/AGENTS.md</code>.</p>
+
+        <p><code>yoda/GEMINI.md</code>.</p>
+
+        <p><code>yoda/CLAUDE.md</code>.</p>
+
+        <p><code>yoda/yoda.md</code>.</p>
+
+        <p>O host aponta para elas se quiser.</p>
+
+        <p>Mas o YODA não invade a raiz.</p>
+
+        <div class="aside">
+          <strong>Regra que ficou:</strong> framework embutido precisa saber onde termina. A pasta <code>yoda/</code> é território dele; a raiz do projeto host não é.
+        </div>
+
+        <h2>O que essas mortes ensinaram</h2>
+
+        <p>O padrão se repetiu várias vezes.</p>
+
+        <p>Uma idéia parecia útil.</p>
+
+        <p>Entrava no schema.</p>
+
+        <p>Ganhava flag.</p>
+
+        <p>Ganhava teste.</p>
+
+        <p>Ganhava documentação.</p>
+
+        <p>Depois o uso real mostrava que ela não pagava a própria manutenção.</p>
+
+        <p>O YODA foi ficando melhor quando parou de confundir completude com quantidade de campos.</p>
+
+        <p>Menos metadata.</p>
+
+        <p>Menos duplicação.</p>
+
+        <p>Menos modos alternativos.</p>
+
+        <p>Menos invasão no projeto host.</p>
+
+        <p>Mais fonte única.</p>
+
+        <p>Mais Markdown onde a história importa.</p>
+
+        <p>Mais script onde regra precisa ser chata.</p>
+
+        <p>Mais humildade no contrato.</p>
+
+        <p>Foi aqui que eu comecei a gostar mais das remoções do que das adições.</p>
+
+        <p>Porque adicionar mostra imaginação.</p>
+
+        <p>Remover mostra critério.</p>
+
+        <p>No próximo post, a história muda um pouco de direção.</p>
+
+        <p>Depois de remover, limpar e estabilizar, apareceu uma necessidade nova:</p>
+
+        <p>preparar antes de executar.</p>
+
+        <p>Ou, em termos menos elegantes:</p>
+
+        <p>às vezes a melhor coisa que o agente pode fazer hoje é não implementar nada.</p>
+      </article>
+      <nav class="nav">
+        <a href="09-empacotar-uma-teimosia.html">Anterior</a>
+        <a href="11-preparar-antes-de-executar.html">Próximo</a>
+      </nav>
+    </main>
+  </div>
+</body>
+</html>

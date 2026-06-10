@@ -1,13 +1,310 @@
 <!doctype html>
 <html lang="pt-BR">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>YODA Intake, ou como transformar desabafo em backlog | YODA Framework</title><link rel="icon" href="../assets/yoda-light.svg" type="image/svg+xml"><style>:root{--ink:#15181d;--muted:#606977;--paper:#f3f5f7;--panel:#fff;--line:#d7dce3;--blue:#1167d8;--blue-dark:#0b3f88;--blue-soft:#e7f0ff;--code:#101720}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top left,rgba(17,103,216,.14),transparent 360px),var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:18px;line-height:1.72}.page{width:min(820px,calc(100% - 32px));margin:0 auto;padding:34px 0 60px}header{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:54px}.brand{display:flex;gap:12px;align-items:center;color:var(--blue-dark);font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}.brand img{width:42px;height:42px;padding:5px;border:1px solid var(--line);border-radius:8px;background:white}a{color:var(--blue);text-underline-offset:3px}.back{color:var(--muted);font-size:14px;font-weight:700;text-decoration:none}h1{margin:0;color:var(--code);font-size:clamp(38px,7vw,68px);line-height:1.05;letter-spacing:0}.kicker{color:var(--blue);font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-weight:800;margin-bottom:18px}.lead{color:#29313b;font-size:24px;line-height:1.45;margin:26px 0 34px}article p{margin:0 0 24px}.callout{margin:34px 0;padding:24px;background:var(--blue-soft);border-left:6px solid var(--blue);border-radius:8px;font-size:21px;line-height:1.5}.list{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:24px;margin:34px 0}.list h2{margin:0 0 16px;font-size:24px}.list ul{margin:0;padding-left:22px}.nav{display:flex;justify-content:space-between;gap:18px;border-top:1px solid var(--line);margin-top:44px;padding-top:24px}</style></head>
-<body><div class="page"><header><a class="brand" href="../index.html"><img src="../assets/yoda-light.svg" alt="">YODA Framework</a><a class="back" href="../index.html#serie">Voltar para a série</a></header><main><article>
-<div class="kicker">Post 06</div><h1>YODA Intake, ou como transformar desabafo em backlog</h1>
-<p class="lead">O humano chega com uma frase torta. O agente precisa sair com uma issue reta. No meio disso mora o Intake.</p>
-<p>Nem toda demanda nasce bonita. Às vezes ela vem como reclamação. Às vezes como áudio mental. Às vezes como “tem uma coisa me incomodando nesse fluxo”.</p>
-<p>O YODA Intake nasceu para receber esse texto corrido sem exigir que o humano já pense em formato de issue. O trabalho do agente é ouvir, consultar o backlog, evitar duplicidade, separar escopo, apontar risco e deixar a tarefa pronta para execução.</p>
-<p>É a fase em que a bagunça ainda é permitida, mas não pode sair bagunçada.</p>
-<div class="callout">Intake é o pit stop da idéia. Ela entra fazendo barulho e sai com escopo, aceite e prioridade.</div>
-<p>Esse post conta por que o YODA separa descoberta de execução. Porque agente que cria issue e já implementa na mesma empolgação às vezes está só correndo mais rápido para o erro.</p>
-<section class="list"><h2>O que este post vai cobrir</h2><ul><li>Como texto livre vira issue estruturada.</li><li>Por que consultar o backlog antes de criar é obrigatório.</li><li>A prioridade baseline 5 e o drama de fingir que tudo é urgente.</li></ul></section>
-</article><nav class="nav"><a href="05-scripts-porque-prompt-nao-deveria-fazer-trabalho-de-juiz.html">Anterior</a><a href="07-study-document-implement-evaluate.html">Próximo</a></nav></main></div></body></html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YODA Intake, ou como transformar desabafo em backlog | YODA Framework</title>
+  <link rel="icon" href="../assets/yoda-light.svg" type="image/svg+xml">
+  <style>
+    :root { --ink:#15181d; --muted:#606977; --paper:#f3f5f7; --panel:#fff; --line:#d7dce3; --blue:#1167d8; --blue-dark:#0b3f88; --blue-soft:#e7f0ff; --code:#101720; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:radial-gradient(circle at top left,rgba(17,103,216,.14),transparent 360px),var(--paper); color:var(--ink); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:18px; line-height:1.72; }
+    .page { width:min(820px,calc(100% - 32px)); margin:0 auto; padding:34px 0 60px; }
+    header { display:flex; justify-content:space-between; gap:18px; align-items:center; margin-bottom:54px; }
+    .brand { display:flex; gap:12px; align-items:center; color:var(--blue-dark); font-size:13px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; text-decoration:none; }
+    .brand img { width:42px; height:42px; padding:5px; border:1px solid var(--line); border-radius:8px; background:white; }
+    a { color:var(--blue); text-underline-offset:3px; }
+    .back { color:var(--muted); font-size:14px; font-weight:700; text-decoration:none; }
+    h1 { margin:0; color:var(--code); font-size:clamp(38px,7vw,68px); line-height:1.05; letter-spacing:0; }
+    h2 { margin:44px 0 18px; color:var(--code); font-size:30px; line-height:1.18; letter-spacing:0; }
+    .kicker { color:var(--blue); font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace; font-weight:800; margin-bottom:18px; }
+    .lead { color:#29313b; font-size:24px; line-height:1.45; margin:26px 0 34px; }
+    .post-cover { margin:0 0 38px; padding:10px; background:var(--panel); border:1px solid var(--line); border-radius:8px; }
+    .post-cover img { display:block; width:100%; height:auto; border-radius:6px; }
+    article p { margin:0 0 24px; }
+    .callout { margin:34px 0; padding:24px; background:var(--blue-soft); border-left:6px solid var(--blue); border-radius:8px; font-size:21px; line-height:1.5; }
+    .aside { margin:34px 0; padding:22px 24px; background:var(--panel); border:1px solid var(--line); border-radius:8px; color:var(--muted); }
+    .aside strong { color:var(--blue-dark); }
+    .nav { display:flex; justify-content:space-between; gap:18px; border-top:1px solid var(--line); margin-top:44px; padding-top:24px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a class="brand" href="../index.html"><img src="../assets/yoda-light.svg" alt="">YODA Framework</a>
+      <a class="back" href="../index.html#serie">Voltar para a série</a>
+    </header>
+    <main>
+      <article>
+        <div class="kicker">Post 06</div>
+        <h1>YODA Intake, ou como transformar desabafo em backlog</h1>
+        <p class="lead">O humano chega com uma frase torta. O agente precisa sair com uma issue reta. No meio disso mora o Intake.</p>
+
+        <figure class="post-cover">
+          <img src="../linkedin/assets/06-capa-yoda-intake.jpg" alt="Ilustração de uma demanda humana bagunçada sendo transformada em backlog estruturado por um agente de IA" width="1735" height="906">
+        </figure>
+
+        <p>Nem toda demanda nasce bonita.</p>
+
+        <p>Às vezes ela vem como reclamação.</p>
+
+        <p>Às vezes vem como áudio mental.</p>
+
+        <p>Às vezes vem como:</p>
+
+        <p>“Tem uma coisa me incomodando nesse fluxo.”</p>
+
+        <p>Pronto.</p>
+
+        <p>Essa frase pode virar uma issue boa.</p>
+
+        <p>Ou pode virar uma tarde inteira de implementação errada com commit no final e arrependimento no começo.</p>
+
+        <p>Depende do que acontece no meio.</p>
+
+        <p>No YODA, o meio ganhou nome: Intake.</p>
+
+        <h2>A bagunça é permitida na entrada</h2>
+
+        <p>Eu gosto dessa idéia porque ela tira uma pressão falsa do humano.</p>
+
+        <p>O humano não precisa chegar com a issue pronta.</p>
+
+        <p>Não precisa já saber o título perfeito.</p>
+
+        <p>Não precisa separar escopo, fora de escopo, risco, aceite e prioridade antes de abrir a boca.</p>
+
+        <p>Às vezes a demanda ainda está crua.</p>
+
+        <p>Às vezes o problema é só uma irritação recorrente.</p>
+
+        <p>Às vezes você sabe que algo está errado, mas ainda não sabe qual é o nome certo da coisa.</p>
+
+        <p>Tudo bem.</p>
+
+        <p>Intake é justamente o lugar onde essa bagunça pode entrar.</p>
+
+        <p>Mas ela não pode sair do mesmo jeito.</p>
+
+        <div class="callout">Intake é o pit stop da idéia. Ela entra fazendo barulho e sai com escopo, aceite e prioridade.</div>
+
+        <h2>Coletar não é só perguntar</h2>
+
+        <p>O primeiro trabalho do Intake é coletar.</p>
+
+        <p>Mas coletar não é fazer uma entrevista burocrática com prancheta imaginária.</p>
+
+        <p>É ouvir o texto corrido e procurar estrutura dentro dele.</p>
+
+        <p>Qual é a dor?</p>
+
+        <p>Qual é o objetivo?</p>
+
+        <p>O que está dentro?</p>
+
+        <p>O que está fora?</p>
+
+        <p>Que comportamento precisa mudar?</p>
+
+        <p>Como vamos saber que mudou?</p>
+
+        <p>Existe risco?</p>
+
+        <p>Existe dependência?</p>
+
+        <p>Isso já está no backlog com outro nome?</p>
+
+        <p>Essa última pergunta é importante.</p>
+
+        <p>Muito.</p>
+
+        <h2>Antes de criar, olhe o backlog</h2>
+
+        <p>Backlog sem triagem vira gaveta de cabo velho.</p>
+
+        <p>Você abre e tem três carregadores iguais, dois que não funcionam e um adaptador que talvez seja importante demais para jogar fora.</p>
+
+        <p>No software é parecido.</p>
+
+        <p>Se toda demanda vira issue nova sem olhar o que já existe, o backlog começa a duplicar dor.</p>
+
+        <p>Uma issue fala “melhorar intake”.</p>
+
+        <p>Outra fala “ajustar criação de issues”.</p>
+
+        <p>Outra fala “corrigir fluxo de backlog”.</p>
+
+        <p>Talvez sejam três coisas.</p>
+
+        <p>Talvez sejam a mesma usando três bonés.</p>
+
+        <p>Por isso o YODA Intake exige revisar o backlog antes de criar.</p>
+
+        <p>Não é frescura.</p>
+
+        <p>É higiene.</p>
+
+        <div class="aside">
+          <strong>Regra antipreguiça:</strong> criar issue é fácil. Criar a issue certa, no tamanho certo, sem duplicar outra, é onde o trabalho começa.
+        </div>
+
+        <h2>Shape: a tradução da bagunça</h2>
+
+        <p>Depois de coletar e triagem, vem o shape.</p>
+
+        <p>É aqui que o agente deixa de ser anotador e vira analista.</p>
+
+        <p>Ele pega o texto livre e traduz para estrutura.</p>
+
+        <p>Título claro.</p>
+
+        <p>Resumo curto.</p>
+
+        <p>Contexto.</p>
+
+        <p>Objetivo.</p>
+
+        <p>Escopo.</p>
+
+        <p>Fora de escopo.</p>
+
+        <p>Acceptance criteria.</p>
+
+        <p>Riscos.</p>
+
+        <p>Dependências.</p>
+
+        <p>Prioridade.</p>
+
+        <p>Essa tradução é delicada.</p>
+
+        <p>O agente não pode inventar uma tese que o humano não trouxe.</p>
+
+        <p>Mas também não pode copiar a bagunça e fingir que estruturou.</p>
+
+        <p>Ele precisa interpretar o suficiente para organizar, mas não tanto a ponto de substituir a intenção.</p>
+
+        <p>É uma linha fina.</p>
+
+        <p>Por isso Intake precisa ser explícito.</p>
+
+        <h2>Definition of Ready</h2>
+
+        <p>Uma issue criada no Intake precisa sair pronta para o Flow.</p>
+
+        <p>Não pronta no sentido “perfeita”.</p>
+
+        <p>Pronta no sentido “dá para executar sem adivinhação grosseira”.</p>
+
+        <p>O YODA chama isso de Definition of Ready.</p>
+
+        <p>Tem título claro?</p>
+
+        <p>Tem contexto?</p>
+
+        <p>Tem objetivo?</p>
+
+        <p>Tem escopo e fora de escopo?</p>
+
+        <p>Tem aceite testável?</p>
+
+        <p>Tem riscos?</p>
+
+        <p>Tem dependências?</p>
+
+        <p>Tem prioridade com alguma lógica?</p>
+
+        <p>Se não tem, talvez ainda não seja issue.</p>
+
+        <p>Talvez ainda seja só um desabafo bem-intencionado.</p>
+
+        <h2>O drama da prioridade</h2>
+
+        <p>Prioridade é uma pequena fábrica de autoengano.</p>
+
+        <p>Tudo parece urgente quando acabou de incomodar.</p>
+
+        <p>Por isso o YODA usa uma regra simples: baseline 5.</p>
+
+        <p>Nova issue começa em 5 por padrão.</p>
+
+        <p>Quer subir?</p>
+
+        <p>Explique por que ela é mais importante que outras abertas.</p>
+
+        <p>Quer descer?</p>
+
+        <p>Explique por que pode esperar.</p>
+
+        <p>O número não é uma verdade divina.</p>
+
+        <p>É uma conversa com freio.</p>
+
+        <p>Sem esse freio, todo backlog vira fila de prioridade máxima.</p>
+
+        <p>E fila onde tudo é prioridade máxima é só fila sem prioridade usando fantasia.</p>
+
+        <h2>Intake não é implementação disfarçada</h2>
+
+        <p>Essa separação é crucial.</p>
+
+        <p>Intake cria e prepara issue.</p>
+
+        <p>Flow executa issue.</p>
+
+        <p>Não misturar esses dois modos evita muita confusão.</p>
+
+        <p>Porque existe uma tentação enorme de criar a issue e já sair implementando.</p>
+
+        <p>Afinal, o contexto está fresco.</p>
+
+        <p>A vontade está alta.</p>
+
+        <p>O agente está ali.</p>
+
+        <p>O café ainda está quente.</p>
+
+        <p>Mas essa empolgação é perigosa.</p>
+
+        <p>Intake fecha quando a issue está pronta.</p>
+
+        <p>Depois vem o handoff.</p>
+
+        <p>Aí sim o Flow pode começar, com outra postura e outro contrato.</p>
+
+        <div class="callout">Agente que cria issue e já implementa na mesma empolgação às vezes só está correndo mais rápido para o erro.</div>
+
+        <h2>O que ficou dessa fase</h2>
+
+        <p>O Intake trouxe algumas idéias fundamentais para o YODA.</p>
+
+        <p>Primeira: o humano pode chegar com texto livre.</p>
+
+        <p>Segunda: o agente deve transformar esse texto em estrutura, não só formatar bonito.</p>
+
+        <p>Terceira: backlog precisa ser consultado antes de criar nova issue.</p>
+
+        <p>Quarta: uma issue precisa passar por Definition of Ready antes de virar candidata real ao Flow.</p>
+
+        <p>Quinta: descoberta e execução são ciclos diferentes.</p>
+
+        <p>Com isso, o YODA passou a ter duas respirações.</p>
+
+        <p>Intake para descobrir e preparar.</p>
+
+        <p>Flow para executar.</p>
+
+        <p>No próximo post, entramos no Flow de verdade.</p>
+
+        <p>Study, Document, Implement, Evaluate.</p>
+
+        <p>Ou, em português menos bonito: pare de sair codando antes de entender o que está fazendo.</p>
+      </article>
+      <nav class="nav">
+        <a href="05-scripts-porque-prompt-nao-deveria-fazer-trabalho-de-juiz.html">Anterior</a>
+        <a href="07-study-document-implement-evaluate.html">Próximo</a>
+      </nav>
+    </main>
+  </div>
+</body>
+</html>

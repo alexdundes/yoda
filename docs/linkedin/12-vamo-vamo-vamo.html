@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LinkedIn 12 - Vamo, vamo, vamo</title>
+  <style>
+    :root {
+      --ink: #15181d;
+      --muted: #606977;
+      --paper: #f3f5f7;
+      --panel: #ffffff;
+      --line: #d7dce3;
+      --blue: #1167d8;
+      --blue-soft: #e7f0ff;
+      --code: #101720;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .page {
+      width: min(920px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    header {
+      margin-bottom: 28px;
+    }
+
+    .kicker {
+      color: var(--blue);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-weight: 800;
+      margin: 0 0 10px;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--code);
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 760px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 20px;
+    }
+
+    .cover {
+      margin: 30px 0;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .cover img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .copy-note {
+      margin: 28px 0 14px;
+      padding: 16px 18px;
+      border-left: 5px solid var(--blue);
+      background: var(--blue-soft);
+      border-radius: 8px;
+      color: #26384f;
+      font-size: 15px;
+    }
+
+    article {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: clamp(22px, 4vw, 42px);
+    }
+
+    article h2 {
+      margin: 34px 0 14px;
+      color: var(--code);
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    article p {
+      margin: 0 0 18px;
+    }
+
+    .hook {
+      margin-top: 28px;
+      padding: 20px;
+      background: var(--blue-soft);
+      border-radius: 8px;
+      font-weight: 650;
+    }
+
+    .hashtags {
+      color: var(--blue);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <p class="kicker">LinkedIn - Post 12</p>
+      <h1>Vamo, vamo, vamo</h1>
+      <p class="lead">
+        Décima segunda publicação da série sobre a odisséia de criação do YODA Framework,
+        pronta para copiar e publicar no LinkedIn.
+      </p>
+    </header>
+
+    <figure class="cover">
+      <img src="assets/12-capa-vamo-vamo-vamo.jpg" alt="Capa ilustrada do fechamento da primeira temporada do YODA Framework">
+    </figure>
+
+    <div class="copy-note">
+      Selecione o texto abaixo e cole no LinkedIn. A imagem acima pode ser usada como capa do post.
+    </div>
+
+    <article>
+      <p>Este é o décimo segundo texto da série sobre a odisséia de criação do YODA Framework.</p>
+
+      <p>E é o fechamento desta primeira temporada.</p>
+
+      <p>No post anterior, falei sobre o Prep Flow.</p>
+
+      <p>A idéia era simples e um pouco contraintuitiva:</p>
+
+      <p>às vezes o melhor que o agente pode fazer hoje é não implementar nada.</p>
+
+      <p>Preparar.</p>
+
+      <p>Estudar.</p>
+
+      <p>Documentar.</p>
+
+      <p>Deixar a issue menos nebulosa.</p>
+
+      <p>E parar.</p>
+
+      <p>Sem “só uma coisinha”.</p>
+
+      <p>Sem diff de brinde.</p>
+
+      <p>Sem transformar contexto fresco em ansiedade operacional.</p>
+
+      <p>Hoje eu fecho o ciclo inteiro.</p>
+
+      <h2>Era só para ler o markdown</h2>
+
+      <p>O YODA começou com uma frase pequena:</p>
+
+      <p>eu só queria que o agente lesse o markdown.</p>
+
+      <p>Era uma vontade honesta.</p>
+
+      <p>Quase humilde.</p>
+
+      <p>Daquelas que você fala e acredita que vai resolver com dois arquivos, uma convenção e talvez um README bem-intencionado.</p>
+
+      <p>Depois você pisca.</p>
+
+      <p>Tem issue com front matter.</p>
+
+      <p>Tem script decidindo fase.</p>
+
+      <p>Tem Intake.</p>
+
+      <p>Tem Flow.</p>
+
+      <p>Tem Prep Flow.</p>
+
+      <p>Tem pacote.</p>
+
+      <p>Tem install.</p>
+
+      <p>Tem update.</p>
+
+      <p>Tem log.</p>
+
+      <p>Tem schema.</p>
+
+      <p>Tem changelog.</p>
+
+      <p>E tem você olhando para a tela com aquela cara clássica de:</p>
+
+      <p>“como foi que eu vim parar aqui?”</p>
+
+      <h2>A lição principal</h2>
+
+      <p>A odisséia do YODA foi descobrir que pedir para o agente “seguir o contexto” não é processo.</p>
+
+      <p>É desejo.</p>
+
+      <p>Contexto solto não governa trabalho.</p>
+
+      <p>Ele ajuda.</p>
+
+      <p>Mas não garante.</p>
+
+      <p>Para virar processo, contexto precisa ter lugar.</p>
+
+      <p>Ordem.</p>
+
+      <p>Entrada.</p>
+
+      <p>Saída.</p>
+
+      <p>Critério.</p>
+
+      <p>Autorização.</p>
+
+      <p>Memória.</p>
+
+      <p>Foi aí que Markdown deixou de ser enfeite e começou a virar contrato.</p>
+
+      <h2>Agente bom também precisa de trilho</h2>
+
+      <p>Existe uma tentação forte de achar que modelo melhor resolve tudo.</p>
+
+      <p>Modelo melhor ajuda.</p>
+
+      <p>Prompt melhor ajuda.</p>
+
+      <p>Ferramenta melhor ajuda.</p>
+
+      <p>Mas nada disso substitui contrato.</p>
+
+      <p>Um agente ótimo ainda pode escolher a issue errada.</p>
+
+      <p>Pode implementar antes de documentar.</p>
+
+      <p>Pode confundir intenção com autorização.</p>
+
+      <p>Pode estar tecnicamente certo e operacionalmente fora do combinado.</p>
+
+      <p>O YODA nasceu dessa desconfiança saudável.</p>
+
+      <p>Não uma desconfiança cínica.</p>
+
+      <p>Uma desconfiança de engenharia.</p>
+
+      <p>Aquela que pergunta:</p>
+
+      <p>onde isso quebra quando eu estiver cansado?</p>
+
+      <p>Onde isso quebra quando o contexto estiver grande?</p>
+
+      <p>Onde isso quebra quando o agente estiver confiante demais?</p>
+
+      <h2>Script é memória com dentes</h2>
+
+      <p>Uma das viradas foi tirar regra importante do prompt e colocar em script.</p>
+
+      <p>Prompt é ótimo para intenção.</p>
+
+      <p>Script é melhor para regra.</p>
+
+      <p>Script não acorda inspirado.</p>
+
+      <p>Script não interpreta “talvez” como “pode seguir”.</p>
+
+      <p>Script não esquece que uma issue bloqueada não deveria ser selecionada.</p>
+
+      <p>Script é chato.</p>
+
+      <p>E por isso mesmo é útil.</p>
+
+      <p>O agente interpreta.</p>
+
+      <p>O script arbitra.</p>
+
+      <h2>O que o YODA virou</h2>
+
+      <p>Depois de toda essa volta, eu não diria que o YODA é só um framework para “fazer IA programar”.</p>
+
+      <p>Isso seria pequeno demais.</p>
+
+      <p>O YODA é uma tentativa de organizar a relação entre humano, agente e repositório.</p>
+
+      <p>O humano traz intenção.</p>
+
+      <p>O repositório guarda memória.</p>
+
+      <p>O agente executa trabalho.</p>
+
+      <p>O script segura o contrato.</p>
+
+      <p>Quando uma dessas partes tenta fazer o trabalho da outra, começa a confusão.</p>
+
+      <p>Humano tentando lembrar tudo de cabeça.</p>
+
+      <p>Agente tentando adivinhar prioridade.</p>
+
+      <p>Markdown virando enfeite.</p>
+
+      <p>Script virando sugestão.</p>
+
+      <p>Issue virando lembrete solto.</p>
+
+      <p>O YODA tenta colocar cada coisa no seu lugar.</p>
+
+      <p>Não perfeitamente.</p>
+
+      <p>Mas melhor do que “vai lá e vê o que dá”.</p>
+
+      <h2>Vamo, vamo, vamo</h2>
+
+      <p>No fim, a frase ficou mais engraçada do que planejada.</p>
+
+      <p>Vamo, vamo, vamo.</p>
+
+      <p>Não como pressa.</p>
+
+      <p>Como ritmo.</p>
+
+      <p>Vamo estudar antes.</p>
+
+      <p>Vamo documentar direito.</p>
+
+      <p>Vamo implementar dentro do combinado.</p>
+
+      <p>Vamo avaliar sem fingir que deu certo.</p>
+
+      <p>Vamo remover o que atrapalha.</p>
+
+      <p>Vamo empacotar o que precisa sair de casa.</p>
+
+      <p>Vamo aceitar que agente bom não elimina processo.</p>
+
+      <p>Ele torna processo bom ainda mais valioso.</p>
+
+      <p>Era só para o agente ler o markdown.</p>
+
+      <p>Virou uma odisséia.</p>
+
+      <p>Como quase tudo que começa com “vai ser rápido”.</p>
+
+      <div class="hook">
+        Fecho essa primeira temporada por aqui. A próxima pergunta é a que realmente interessa: como esse processo se comporta em projetos reais, com prazos reais, dívida técnica real e humanos reais tentando não enlouquecer no meio do caminho?
+      </div>
+
+      <p class="hashtags">#IA #AIDevelopment #SpecDrivenDevelopment #Documentacao #EngenhariaDeSoftware #YODAFramework</p>
+    </article>
+  </div>
+</body>
+</html>

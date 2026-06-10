@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LinkedIn 11 - Preparar antes de executar</title>
+  <style>
+    :root {
+      --ink: #15181d;
+      --muted: #606977;
+      --paper: #f3f5f7;
+      --panel: #ffffff;
+      --line: #d7dce3;
+      --blue: #1167d8;
+      --blue-soft: #e7f0ff;
+      --code: #101720;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .page {
+      width: min(920px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    header {
+      margin-bottom: 28px;
+    }
+
+    .kicker {
+      color: var(--blue);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-weight: 800;
+      margin: 0 0 10px;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--code);
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 760px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 20px;
+    }
+
+    .cover {
+      margin: 30px 0;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .cover img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .copy-note {
+      margin: 28px 0 14px;
+      padding: 16px 18px;
+      border-left: 5px solid var(--blue);
+      background: var(--blue-soft);
+      border-radius: 8px;
+      color: #26384f;
+      font-size: 15px;
+    }
+
+    article {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: clamp(22px, 4vw, 42px);
+    }
+
+    article h2 {
+      margin: 34px 0 14px;
+      color: var(--code);
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    article p {
+      margin: 0 0 18px;
+    }
+
+    .hook {
+      margin-top: 28px;
+      padding: 20px;
+      background: var(--blue-soft);
+      border-radius: 8px;
+      font-weight: 650;
+    }
+
+    .hashtags {
+      color: var(--blue);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <p class="kicker">LinkedIn - Post 11</p>
+      <h1>Preparar antes de executar</h1>
+      <p class="lead">
+        Décima primeira publicação da série sobre a odisséia de criação do YODA Framework,
+        pronta para copiar e publicar no LinkedIn.
+      </p>
+    </header>
+
+    <figure class="cover">
+      <img src="assets/11-capa-prep-flow.jpg" alt="Capa ilustrada do post sobre preparar uma issue antes de executar no YODA Framework">
+    </figure>
+
+    <div class="copy-note">
+      Selecione o texto abaixo e cole no LinkedIn. A imagem acima pode ser usada como capa do post.
+    </div>
+
+    <article>
+      <p>Este é o décimo primeiro texto da série sobre a odisséia de criação do YODA Framework.</p>
+
+      <p>No post anterior, falei sobre o que morreu no caminho.</p>
+
+      <p>Lightweight.</p>
+
+      <p>Tags.</p>
+
+      <p>Campo agent.</p>
+
+      <p>Duplicidades.</p>
+
+      <p>Coisas que nasceram com boa intenção, ganharam nome bonito e depois começaram a cobrar aluguel emocional do projeto.</p>
+
+      <p>Foi um texto sobre remoção.</p>
+
+      <p>Sobre perceber que framework também amadurece quando para de carregar conceito que não paga a conta.</p>
+
+      <p>Hoje o assunto é outro tipo de maturidade.</p>
+
+      <p>A maturidade de olhar para uma issue e dizer:</p>
+
+      <p>“ainda não é hora de implementar”.</p>
+
+      <h2>A ansiedade pelo diff</h2>
+
+      <p>A gente chama um agente porque quer andamento.</p>
+
+      <p>Quer ver arquivo mudando.</p>
+
+      <p>Quer diff.</p>
+
+      <p>Quer aquele pequeno comprovante visual de que alguma coisa aconteceu.</p>
+
+      <p>O problema é que nem todo progresso aparece como código.</p>
+
+      <p>Às vezes progresso é entender melhor.</p>
+
+      <p>Às vezes progresso é documentar melhor.</p>
+
+      <p>Às vezes progresso é sair da conversa sem implementação nenhuma, mas com uma issue muito menos nebulosa.</p>
+
+      <p>Isso parece pouco.</p>
+
+      <p>Principalmente quando a gente está acostumado a medir trabalho por diff.</p>
+
+      <p>Mas foi exatamente daí que nasceu o YODA Prep Flow.</p>
+
+      <h2>Preparar não é executar</h2>
+
+      <p>O YODA Flow normal já tinha uma sequência clara:</p>
+
+      <p>Study.</p>
+
+      <p>Document.</p>
+
+      <p>Implement.</p>
+
+      <p>Evaluate.</p>
+
+      <p>Uma fase por vez.</p>
+
+      <p>Com autorização humana entre elas.</p>
+
+      <p>Isso funciona muito bem quando a issue chegou na vez dela.</p>
+
+      <p>Mas existia uma situação atravessada.</p>
+
+      <p>Às vezes eu queria preparar uma issue específica antes de executar.</p>
+
+      <p>Estudar agora.</p>
+
+      <p>Documentar agora.</p>
+
+      <p>Deixar escopo, riscos e critérios mais claros.</p>
+
+      <p>Mas sem abrir a porteira para o agente sair implementando.</p>
+
+      <p>Porque agente, quando sente cheiro de execução, começa a procurar arquivo para mexer.</p>
+
+      <p>E nem sempre era isso que eu queria.</p>
+
+      <p>Às vezes a frase correta era:</p>
+
+      <p>“hoje ninguém implementa nada”.</p>
+
+      <h2>Uma issue explícita</h2>
+
+      <p>O Prep Flow não escolhe a próxima issue da fila.</p>
+
+      <p>Ele não finge que aquela issue virou prioridade.</p>
+
+      <p>Ele não passa por cima do backlog.</p>
+
+      <p>Ele trabalha em uma issue explícita.</p>
+
+      <p>Você aponta a issue.</p>
+
+      <p>Ele prepara.</p>
+
+      <p>Só isso.</p>
+
+      <p>Essa separação é importante.</p>
+
+      <p>Preparar fora de ordem pode ser útil.</p>
+
+      <p>Implementar fora de ordem pode virar bagunça.</p>
+
+      <p>O Prep Flow permite a primeira coisa.</p>
+
+      <p>Mas não autoriza a segunda.</p>
+
+      <h2>O marcador da memória</h2>
+
+      <p>Para isso funcionar, o YODA precisava deixar rastro.</p>
+
+      <p>Não bastava escrever no corpo da issue:</p>
+
+      <p>“estudei e documentei”.</p>
+
+      <p>O Flow normal precisava entender operacionalmente que aquela issue já tinha passado por Study e Document.</p>
+
+      <p>Então entrou o marcador flow_prepared_until.</p>
+
+      <p>Primeiro pode marcar study.</p>
+
+      <p>Depois document.</p>
+
+      <p>E a issue continua to-do.</p>
+
+      <p>Esse detalhe é o coração da coisa.</p>
+
+      <p>Ela foi preparada.</p>
+
+      <p>Mas ainda não começou a execução.</p>
+
+      <p>Quando o Flow normal selecionar aquela issue no futuro, ele reconhece o preparo e entra direto em Implement.</p>
+
+      <p>Não porque pulou fase.</p>
+
+      <p>Mas porque as fases já foram feitas antes, com outro contrato.</p>
+
+      <h2>A disciplina de parar</h2>
+
+      <p>Prep Flow não tem Implement.</p>
+
+      <p>Não tem Evaluate.</p>
+
+      <p>Não fecha issue.</p>
+
+      <p>Não muda produto.</p>
+
+      <p>Não resolve “só uma coisinha”.</p>
+
+      <p>Se apareceu uma solução óbvia durante o preparo, ótimo.</p>
+
+      <p>Registra.</p>
+
+      <p>Documenta.</p>
+
+      <p>Melhora critério de aceite.</p>
+
+      <p>Mas não implementa.</p>
+
+      <p>Parece detalhe.</p>
+
+      <p>Não é.</p>
+
+      <p>É o tipo de trava pequena que impede o processo de virar ansiedade com YAML.</p>
+
+      <p>O Prep Flow me ensinou uma coisa simples:</p>
+
+      <p>nem todo trabalho útil precisa terminar em diff.</p>
+
+      <p>Às vezes o melhor avanço é deixar a próxima implementação menos cega.</p>
+
+      <div class="hook">
+        No próximo texto, eu fecho essa primeira temporada da odisséia: o que ficou depois de markdown, intake, flow, prep flow, pacote, install, update e um número pouco confortável de lições aprendidas. Vamo, vamo, vamo.
+      </div>
+
+      <p class="hashtags">#IA #AIDevelopment #SpecDrivenDevelopment #Documentacao #EngenhariaDeSoftware #YODAFramework</p>
+    </article>
+  </div>
+</body>
+</html>

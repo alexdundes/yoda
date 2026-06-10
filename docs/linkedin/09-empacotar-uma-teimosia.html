@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LinkedIn 09 - Empacotar uma teimosia</title>
+  <style>
+    :root {
+      --ink: #15181d;
+      --muted: #606977;
+      --paper: #f3f5f7;
+      --panel: #ffffff;
+      --line: #d7dce3;
+      --blue: #1167d8;
+      --blue-soft: #e7f0ff;
+      --code: #101720;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .page {
+      width: min(920px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    header {
+      margin-bottom: 28px;
+    }
+
+    .kicker {
+      color: var(--blue);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-weight: 800;
+      margin: 0 0 10px;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--code);
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 760px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 20px;
+    }
+
+    .cover {
+      margin: 30px 0;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .cover img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .copy-note {
+      margin: 28px 0 14px;
+      padding: 16px 18px;
+      border-left: 5px solid var(--blue);
+      background: var(--blue-soft);
+      border-radius: 8px;
+      color: #26384f;
+      font-size: 15px;
+    }
+
+    article {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: clamp(22px, 4vw, 42px);
+    }
+
+    article h2 {
+      margin: 34px 0 14px;
+      color: var(--code);
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    article p {
+      margin: 0 0 18px;
+    }
+
+    .hook {
+      margin-top: 28px;
+      padding: 20px;
+      background: var(--blue-soft);
+      border-radius: 8px;
+      font-weight: 650;
+    }
+
+    .hashtags {
+      color: var(--blue);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <p class="kicker">LinkedIn - Post 09</p>
+      <h1>Empacotar uma teimosia</h1>
+      <p class="lead">
+        Nona publicação da série sobre a odisséia de criação do YODA Framework,
+        pronta para copiar e publicar no LinkedIn.
+      </p>
+    </header>
+
+    <figure class="cover">
+      <img src="assets/09-capa-empacotar-teimosia.jpg" alt="Capa ilustrada do post sobre empacotar o YODA Framework">
+    </figure>
+
+    <div class="copy-note">
+      Selecione o texto abaixo e cole no LinkedIn. A imagem acima pode ser usada como capa do post.
+    </div>
+
+    <article>
+      <p>Este é o nono texto da série sobre a odisséia de criação do YODA Framework.</p>
+
+      <p>No post anterior, falei sobre a grande virada Markdown-first.</p>
+
+      <p>O YODA nasceu com YAML no nome.</p>
+
+      <p>Mas, em algum momento, ficou claro que YAML era ótimo para metadado e péssimo para contar história.</p>
+
+      <p>A issue Markdown virou fonte operacional de verdade.</p>
+
+      <p>O YAML ficou como etiqueta.</p>
+
+      <p>O Markdown ficou como documento.</p>
+
+      <p>Bonito.</p>
+
+      <p>Organizado.</p>
+
+      <p>Quase maduro.</p>
+
+      <p>Aí veio a pergunta que estraga qualquer conforto:</p>
+
+      <p>tá, mas como isso sai do meu repositório?</p>
+
+      <p>Pois é.</p>
+
+      <p>Uma coisa é funcionar no meu projeto.</p>
+
+      <p>Outra é virar pacote.</p>
+
+      <h2>O pacote é onde a fantasia acaba</h2>
+
+      <p>Enquanto o YODA estava só no próprio repositório, muita coisa funcionava por proximidade.</p>
+
+      <p>O script estava ali.</p>
+
+      <p>A spec estava ali.</p>
+
+      <p>O histórico estava ali.</p>
+
+      <p>A bagunça também estava ali, mas pelo menos era uma bagunça conhecida.</p>
+
+      <p>É como morar sozinho.</p>
+
+      <p>A cadeira no meio da sala não é problema.</p>
+
+      <p>É layout.</p>
+
+      <p>Mas, quando o framework precisa entrar em outro projeto, a história muda.</p>
+
+      <p>Ele precisa se comportar como visita educada.</p>
+
+      <p>Não pode quebrar a casa dos outros.</p>
+
+      <p>Não pode levar bastidor demais.</p>
+
+      <p>Não pode apagar dado local.</p>
+
+      <p>Não pode sair mexendo em README da raiz como se fosse dono do lugar.</p>
+
+      <p>Empacotar é quando a fantasia acaba.</p>
+
+      <h2>O que entra e o que fica fora</h2>
+
+      <p>A primeira decisão foi simples:</p>
+
+      <p>o pacote não podia ser o repositório inteiro.</p>
+
+      <p>Não fazia sentido levar project/specs para todo projeto consumidor.</p>
+
+      <p>Não fazia sentido levar bootstrap histórico.</p>
+
+      <p>Não fazia sentido levar testes, cache, arquivos temporários e lembranças emocionais.</p>
+
+      <p>O pacote precisava carregar só o que o projeto host precisava para usar o YODA.</p>
+
+      <p>Manual embutido.</p>
+
+      <p>Entrypoints locais para agentes.</p>
+
+      <p>Scripts.</p>
+
+      <p>Templates.</p>
+
+      <p>Licença.</p>
+
+      <p>README curto.</p>
+
+      <p>Changelog.</p>
+
+      <p>Manifest.</p>
+
+      <p>Só.</p>
+
+      <p>O resto é bastidor.</p>
+
+      <p>E bastidor não deveria cair na mochila do usuário.</p>
+
+      <h2>package.py: o adulto responsável</h2>
+
+      <p>O package.py virou a fonte da verdade do empacotamento.</p>
+
+      <p>Porque empacotar na mão é uma forma criativa de gerar releases com personalidade própria.</p>
+
+      <p>Uma inclui arquivo demais.</p>
+
+      <p>Outra esquece um script.</p>
+
+      <p>Outra sai com spec interna.</p>
+
+      <p>Outra tem changelog escrito no improviso.</p>
+
+      <p>E depois, claro, ninguém arruma.</p>
+
+      <p>Então o pacote virou comando.</p>
+
+      <p>Determinístico.</p>
+
+      <p>Com lista de inclusão.</p>
+
+      <p>Com lista de exclusão.</p>
+
+      <p>Com tar.gz.</p>
+
+      <p>Com versão.</p>
+
+      <p>Com build metadata.</p>
+
+      <p>Com changelog estruturado.</p>
+
+      <p>Com latest.json.</p>
+
+      <p>Com checksum.</p>
+
+      <p>Menos “acho que gerei certo”.</p>
+
+      <p>Mais “o comando sabe o contrato”.</p>
+
+      <h2>Checksum e latest.json</h2>
+
+      <p>O latest.json virou o cartão de visita remoto do pacote.</p>
+
+      <p>Ele diz a versão.</p>
+
+      <p>Diz o build.</p>
+
+      <p>Diz onde baixar.</p>
+
+      <p>Diz o sha256.</p>
+
+      <p>O instalador usa isso para baixar e verificar.</p>
+
+      <p>Não é uma solução mágica de segurança.</p>
+
+      <p>Não tenta fingir que resolveu toda a cadeia de suprimentos do planeta.</p>
+
+      <p>Mas já impede acidente bobo.</p>
+
+      <p>Baixou errado?</p>
+
+      <p>Corrompeu?</p>
+
+      <p>Hash não bateu?</p>
+
+      <p>Para.</p>
+
+      <p>Essa é uma das palavras mais bonitas da engenharia:</p>
+
+      <p>para.</p>
+
+      <h2>O instalador de uma linha</h2>
+
+      <p>Instalador de uma linha é lindo.</p>
+
+      <p>E meio assustador.</p>
+
+      <p>curl | sh é aquela coisa que todo mundo já viu, muita gente usa e quase todo mundo explica com uma tosse moral antes.</p>
+
+      <p>Por isso o YODA precisou ser honesto.</p>
+
+      <p>Existe o caminho rápido.</p>
+
+      <p>E existe o caminho mais responsável.</p>
+
+      <p>O rápido instala a última versão.</p>
+
+      <p>O responsável fixa uma versão.</p>
+
+      <p>O manual baixa, confere checksum e instala com mais controle.</p>
+
+      <p>Não é sobre fingir que facilidade não tem risco.</p>
+
+      <p>É sobre deixar o risco visível.</p>
+
+      <h2>Update, backup e rollback</h2>
+
+      <p>Instalar é só o primeiro encontro.</p>
+
+      <p>O relacionamento começa no update.</p>
+
+      <p>Atualizar framework embutido é delicado porque você quer trocar o motor sem jogar fora o porta-luvas.</p>
+
+      <p>O update precisava verificar versão.</p>
+
+      <p>Validar checksum.</p>
+
+      <p>Fazer backup.</p>
+
+      <p>Substituir só arquivos do framework.</p>
+
+      <p>Preservar dados do projeto.</p>
+
+      <p>Rodar init quando necessário.</p>
+
+      <p>E deixar uma história de volta.</p>
+
+      <p>Rollback não é pessimismo.</p>
+
+      <p>Rollback é respeito por terça-feira às 17h42.</p>
+
+      <p>Porque é exatamente nesse horário que uma atualização aparentemente simples decide testar sua humildade.</p>
+
+      <h2>Release também é fluxo</h2>
+
+      <p>No fim, empacotamento virou mais um fluxo.</p>
+
+      <p>Leia o histórico.</p>
+
+      <p>Derive changelog de mudanças reais.</p>
+
+      <p>Gere o pacote.</p>
+
+      <p>Verifique o conteúdo.</p>
+
+      <p>Confirme que não levou o que não devia.</p>
+
+      <p>Confirme que levou o que precisava.</p>
+
+      <p>Atualize metadata.</p>
+
+      <p>Entregue um artefato rastreável.</p>
+
+      <p>Release sem isso vira superstição com número de versão.</p>
+
+      <p>E superstição com número de versão ainda é superstição.</p>
+
+      <p>Empacotar ensinou uma coisa importante:</p>
+
+      <p>um framework só começa a virar framework quando consegue sair do ambiente onde nasceu.</p>
+
+      <p>Antes disso, ele é uma idéia local com bons argumentos.</p>
+
+      <div class="hook">
+        No próximo texto, a gente visita o cemitério técnico: conceitos que pareciam bons,
+        campos que nasceram confiantes e idéias que morreram no caminho porque o projeto ficou mais honesto.
+      </div>
+
+      <p class="hashtags">#IA #AIDevelopment #SpecDrivenDevelopment #Documentacao #EngenhariaDeSoftware #YODAFramework</p>
+    </article>
+  </div>
+</body>
+</html>

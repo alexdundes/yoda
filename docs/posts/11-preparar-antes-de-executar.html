@@ -1,13 +1,331 @@
 <!doctype html>
 <html lang="pt-BR">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Preparar antes de executar | YODA Framework</title><link rel="icon" href="../assets/yoda-light.svg" type="image/svg+xml"><style>:root{--ink:#15181d;--muted:#606977;--paper:#f3f5f7;--panel:#fff;--line:#d7dce3;--blue:#1167d8;--blue-dark:#0b3f88;--blue-soft:#e7f0ff;--code:#101720}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top left,rgba(17,103,216,.14),transparent 360px),var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:18px;line-height:1.72}.page{width:min(820px,calc(100% - 32px));margin:0 auto;padding:34px 0 60px}header{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:54px}.brand{display:flex;gap:12px;align-items:center;color:var(--blue-dark);font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}.brand img{width:42px;height:42px;padding:5px;border:1px solid var(--line);border-radius:8px;background:white}a{color:var(--blue);text-underline-offset:3px}.back{color:var(--muted);font-size:14px;font-weight:700;text-decoration:none}h1{margin:0;color:var(--code);font-size:clamp(38px,7vw,68px);line-height:1.05;letter-spacing:0}.kicker{color:var(--blue);font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-weight:800;margin-bottom:18px}.lead{color:#29313b;font-size:24px;line-height:1.45;margin:26px 0 34px}article p{margin:0 0 24px}.callout{margin:34px 0;padding:24px;background:var(--blue-soft);border-left:6px solid var(--blue);border-radius:8px;font-size:21px;line-height:1.5}.list{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:24px;margin:34px 0}.list h2{margin:0 0 16px;font-size:24px}.list ul{margin:0;padding-left:22px}.nav{display:flex;justify-content:space-between;gap:18px;border-top:1px solid var(--line);margin-top:44px;padding-top:24px}</style></head>
-<body><div class="page"><header><a class="brand" href="../index.html"><img src="../assets/yoda-light.svg" alt="">YODA Framework</a><a class="back" href="../index.html#serie">Voltar para a série</a></header><main><article>
-<div class="kicker">Post 11</div><h1>Preparar antes de executar</h1>
-<p class="lead">Às vezes a melhor coisa que o agente pode fazer hoje é não implementar nada.</p>
-<p>Essa frase demora para ficar confortável. A gente chama o agente porque quer andamento. Quer ver diff. Quer sentir que a fila andou. Mas nem toda issue está pronta para virar código.</p>
-<p>O YODA Prep Flow nasceu dessa percepção: Study e Document podem acontecer antes, separados da execução, mesmo quando a ordem do backlog ainda não autoriza implementar.</p>
-<p>É um jeito de amadurecer trabalho sem fingir que maturidade e pressa são a mesma coisa.</p>
-<div class="callout">Preparar issue é como deixar a mochila pronta na noite anterior. Não é a corrida, mas evita muita bobagem de manhã.</div>
-<p>Esse post conta a chegada da 0.4.0 e a idéia de preparar sem atropelar. Mais uma vez, o YODA tentando conter o entusiasmo com um pouco de procedimento.</p>
-<section class="list"><h2>O que este post vai cobrir</h2><ul><li>O que o Prep Flow resolve.</li><li>Como Study e Document podem ser antecipados.</li><li>Por que preparação não é implementação disfarçada.</li></ul></section>
-</article><nav class="nav"><a href="10-o-que-morreu-no-caminho.html">Anterior</a><a href="12-vamo-vamo-vamo.html">Próximo</a></nav></main></div></body></html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Preparar antes de executar | YODA Framework</title>
+  <link rel="icon" href="../assets/yoda-light.svg" type="image/svg+xml">
+  <style>
+    :root { --ink:#15181d; --muted:#606977; --paper:#f3f5f7; --panel:#fff; --line:#d7dce3; --blue:#1167d8; --blue-dark:#0b3f88; --blue-soft:#e7f0ff; --code:#101720; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:radial-gradient(circle at top left,rgba(17,103,216,.14),transparent 360px),var(--paper); color:var(--ink); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:18px; line-height:1.72; }
+    .page { width:min(820px,calc(100% - 32px)); margin:0 auto; padding:34px 0 60px; }
+    header { display:flex; justify-content:space-between; gap:18px; align-items:center; margin-bottom:54px; }
+    .brand { display:flex; gap:12px; align-items:center; color:var(--blue-dark); font-size:13px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; text-decoration:none; }
+    .brand img { width:42px; height:42px; padding:5px; border:1px solid var(--line); border-radius:8px; background:white; }
+    a { color:var(--blue); text-underline-offset:3px; }
+    .back { color:var(--muted); font-size:14px; font-weight:700; text-decoration:none; }
+    h1 { margin:0; color:var(--code); font-size:clamp(38px,7vw,68px); line-height:1.05; letter-spacing:0; }
+    h2 { margin:44px 0 18px; color:var(--code); font-size:30px; line-height:1.18; letter-spacing:0; }
+    .kicker { color:var(--blue); font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace; font-weight:800; margin-bottom:18px; }
+    .lead { color:#29313b; font-size:24px; line-height:1.45; margin:26px 0 34px; }
+    .post-cover { margin:0 0 38px; padding:10px; background:var(--panel); border:1px solid var(--line); border-radius:8px; }
+    .post-cover img { display:block; width:100%; height:auto; border-radius:6px; }
+    article p { margin:0 0 24px; }
+    code { font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace; font-size:.92em; color:var(--code); background:#e9edf2; border:1px solid var(--line); border-radius:5px; padding:.08em .32em; }
+    .callout { margin:34px 0; padding:24px; background:var(--blue-soft); border-left:6px solid var(--blue); border-radius:8px; font-size:21px; line-height:1.5; }
+    .aside { margin:34px 0; padding:22px 24px; background:var(--panel); border:1px solid var(--line); border-radius:8px; color:var(--muted); }
+    .aside strong { color:var(--blue-dark); }
+    .nav { display:flex; justify-content:space-between; gap:18px; border-top:1px solid var(--line); margin-top:44px; padding-top:24px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a class="brand" href="../index.html"><img src="../assets/yoda-light.svg" alt="">YODA Framework</a>
+      <a class="back" href="../index.html#serie">Voltar para a série</a>
+    </header>
+    <main>
+      <article>
+        <div class="kicker">Post 11</div>
+        <h1>Preparar antes de executar</h1>
+        <p class="lead">Às vezes a melhor coisa que o agente pode fazer hoje é não implementar nada.</p>
+
+        <figure class="post-cover">
+          <img src="../linkedin/assets/11-capa-prep-flow.jpg" alt="Ilustração do YODA Prep Flow preparando Study e Document enquanto a implementação permanece bloqueada para depois" width="1672" height="941">
+        </figure>
+
+        <p>Essa frase demora para ficar confortável.</p>
+
+        <p>A gente chama o agente porque quer andamento.</p>
+
+        <p>Quer ver diff.</p>
+
+        <p>Quer sentir que a fila andou.</p>
+
+        <p>Quer aquela pequena dopamina de abrir o editor e ver arquivo mudando.</p>
+
+        <p>Mas nem toda issue está pronta para virar código.</p>
+
+        <p>Às vezes ela está pronta para virar entendimento.</p>
+
+        <p>Às vezes está pronta para virar documentação melhor.</p>
+
+        <p>Às vezes o melhor resultado do dia é terminar sem commit de implementação.</p>
+
+        <p>Isso é irritante.</p>
+
+        <p>Principalmente para quem gosta de chamar progresso de diff.</p>
+
+        <p>Mas foi exatamente daí que nasceu o YODA Prep Flow.</p>
+
+        <div class="callout">Preparar issue é como deixar a mochila pronta na noite anterior. Não é a corrida, mas evita muita bobagem de manhã.</div>
+
+        <h2>A dor que o Flow normal não resolvia</h2>
+
+        <p>O YODA Flow já tinha uma sequência clara.</p>
+
+        <p>Study.</p>
+
+        <p>Document.</p>
+
+        <p>Implement.</p>
+
+        <p>Evaluate.</p>
+
+        <p>Uma fase por vez.</p>
+
+        <p>Com autorização humana entre elas.</p>
+
+        <p>Ótimo para executar uma issue quando chegou a hora dela.</p>
+
+        <p>Mas havia uma situação meio atravessada.</p>
+
+        <p>Às vezes eu queria preparar uma issue antes dela virar a próxima da fila.</p>
+
+        <p>Talvez porque ela fosse complexa.</p>
+
+        <p>Talvez porque dependia de uma decisão humana.</p>
+
+        <p>Talvez porque valia a pena estudar e documentar agora, mas implementar só depois.</p>
+
+        <p>Entrar no Flow normal para isso era perigoso.</p>
+
+        <p>Porque Flow normal tem cheiro de execução.</p>
+
+        <p>E agente sentindo cheiro de execução começa a procurar arquivo para mexer.</p>
+
+        <p>O que eu precisava era de um modo com uma frase clara na porta:</p>
+
+        <p>“Hoje ninguém implementa nada.”</p>
+
+        <h2>Prep Flow não escolhe a próxima issue</h2>
+
+        <p>Essa é uma diferença importante.</p>
+
+        <p>O YODA Flow normal seleciona a próxima issue elegível.</p>
+
+        <p>Ele respeita ordem, prioridade, status e dependências.</p>
+
+        <p>O Prep Flow não faz isso.</p>
+
+        <p>Ele trabalha em uma issue explícita.</p>
+
+        <p>Você diz qual issue quer preparar.</p>
+
+        <p><code>--issue &lt;id&gt;</code>.</p>
+
+        <p>Sem teatrinho de seleção.</p>
+
+        <p>Sem fingir que ela virou a próxima da fila.</p>
+
+        <p>Sem transformar preparação em permissão para executar.</p>
+
+        <p>Isso é essencial.</p>
+
+        <p>Porque preparar fora de ordem pode ser útil.</p>
+
+        <p>Implementar fora de ordem pode ser bagunça.</p>
+
+        <p>O Prep Flow aceita a primeira coisa.</p>
+
+        <p>Mas não autoriza a segunda.</p>
+
+        <h2>Study antes</h2>
+
+        <p>A primeira chamada do <code>yoda_prep_flow.py</code> leva a issue para Prep Study.</p>
+
+        <p>O objetivo é levantar contexto.</p>
+
+        <p>Mapear arquivos.</p>
+
+        <p>Entender riscos.</p>
+
+        <p>Listar decisões abertas.</p>
+
+        <p>Identificar o que ainda está ambíguo.</p>
+
+        <p>E fazer tudo isso sem mexer no produto.</p>
+
+        <p>Parece pouco.</p>
+
+        <p>Mas quantas implementações ruins começam exatamente porque ninguém fez essa etapa com calma?</p>
+
+        <p>Study antecipado muda a conversa.</p>
+
+        <p>A issue deixa de ser uma intenção genérica.</p>
+
+        <p>Passa a ter mapa.</p>
+
+        <p>Passa a ter perguntas melhores.</p>
+
+        <p>Passa a ter menos espaço para chute.</p>
+
+        <h2>Document antes</h2>
+
+        <p>Depois vem Prep Document.</p>
+
+        <p>Também sem implementar.</p>
+
+        <p>Aqui o agente atualiza a issue com o que foi aprovado.</p>
+
+        <p>Escopo mais claro.</p>
+
+        <p>Fora de escopo mais honesto.</p>
+
+        <p>Critérios de aceite melhores.</p>
+
+        <p>Riscos registrados.</p>
+
+        <p>Decisões tiradas da conversa e colocadas onde o próximo agente vai ler.</p>
+
+        <p>Essa parte é onde o Prep Flow mostra valor.</p>
+
+        <p>Porque a issue fica madura antes da execução.</p>
+
+        <p>Não madura no sentido “perfeita”.</p>
+
+        <p>Madura no sentido “o próximo passo não começa no nevoeiro”.</p>
+
+        <h2>O marcador que segura a memória</h2>
+
+        <p>O Prep Flow precisava deixar rastro.</p>
+
+        <p>Não bastava o agente escrever “estudei e documentei” no corpo da issue.</p>
+
+        <p>O Flow normal precisava saber disso de forma operacional.</p>
+
+        <p>Então nasceu o marcador <code>flow_prepared_until</code>.</p>
+
+        <p>Durante o caminho, ele pode marcar <code>study</code>.</p>
+
+        <p>Ao final, marca <code>document</code>.</p>
+
+        <p>E a issue continua <code>to-do</code>.</p>
+
+        <p>Esse detalhe é bonito.</p>
+
+        <p>Ela foi preparada.</p>
+
+        <p>Mas ainda não começou a execução.</p>
+
+        <p>Não está <code>doing</code>.</p>
+
+        <p>Não entrou em Implement.</p>
+
+        <p>Não ganhou licença poética para sair mexendo em arquivo.</p>
+
+        <p>Está pronta para quando chegar a vez.</p>
+
+        <h2>Quando chegar a vez, pula para Implement</h2>
+
+        <p>Depois, quando o YODA Flow normal selecionar aquela issue, ele reconhece o marcador.</p>
+
+        <p><code>status: to-do</code>.</p>
+
+        <p><code>flow_prepared_until: document</code>.</p>
+
+        <p>Resultado:</p>
+
+        <p>entra direto em <code>doing/implement</code>.</p>
+
+        <p>Não porque o agente decidiu pular fases.</p>
+
+        <p>Mas porque as fases já foram feitas em outro modo, com outro contrato.</p>
+
+        <p>Isso evita retrabalho.</p>
+
+        <p>E evita outro problema: o agente fingir que está estudando de novo só para cumprir tabela.</p>
+
+        <p>Se Study e Document já foram feitos, o Flow usa essa memória.</p>
+
+        <p>Mas só quando o fluxo de execução realmente começa.</p>
+
+        <div class="aside">
+          <strong>Separação mental:</strong> Prep Flow amadurece a issue. YODA Flow executa a issue. Misturar os dois é voltar para a pressa com outro nome.
+        </div>
+
+        <h2>Não é implementação disfarçada</h2>
+
+        <p>Esse ponto precisou ficar explícito.</p>
+
+        <p>Prep Flow não tem Implement.</p>
+
+        <p>Não tem Evaluate.</p>
+
+        <p>Não fecha issue.</p>
+
+        <p>Não muda produto.</p>
+
+        <p>Não resolve “só uma coisinha”.</p>
+
+        <p>Se durante o preparo aparece uma solução óbvia, ótimo.</p>
+
+        <p>Registre.</p>
+
+        <p>Documente.</p>
+
+        <p>Melhore os critérios.</p>
+
+        <p>Mas não implemente.</p>
+
+        <p>Essa é a parte que parece pequena, mas salva o processo.</p>
+
+        <p>Porque agente é muito bom em transformar contexto fresco em vontade de agir.</p>
+
+        <p>E o Prep Flow existe justamente para dizer:</p>
+
+        <p>não hoje.</p>
+
+        <h2>O que ficou dessa fase</h2>
+
+        <p>O YODA Prep Flow trouxe uma nuance importante.</p>
+
+        <p>Nem todo trabalho útil é execução.</p>
+
+        <p>Preparar também move o projeto.</p>
+
+        <p>Mas move de outro jeito.</p>
+
+        <p>Move reduzindo incerteza.</p>
+
+        <p>Move melhorando contrato.</p>
+
+        <p>Move deixando a próxima implementação menos teatral.</p>
+
+        <p>Isso completou uma peça que faltava.</p>
+
+        <p>Intake cria e estrutura.</p>
+
+        <p>Prep Flow amadurece sem executar.</p>
+
+        <p>YODA Flow executa quando chega a hora.</p>
+
+        <p>No próximo post, chegamos ao fechamento desta primeira temporada.</p>
+
+        <p>O ponto onde dá para olhar para trás e dizer:</p>
+
+        <p>eu só queria que o agente lesse o markdown.</p>
+
+        <p>Agora tem intake, flow, prep flow, scripts, pacote, install, update e um número constrangedor de lições aprendidas.</p>
+
+        <p>Vamo, vamo, vamo.</p>
+      </article>
+      <nav class="nav">
+        <a href="10-o-que-morreu-no-caminho.html">Anterior</a>
+        <a href="12-vamo-vamo-vamo.html">Próximo</a>
+      </nav>
+    </main>
+  </div>
+</body>
+</html>

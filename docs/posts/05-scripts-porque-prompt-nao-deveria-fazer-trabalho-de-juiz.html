@@ -1,13 +1,270 @@
 <!doctype html>
 <html lang="pt-BR">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Scripts: porque prompt não deveria fazer trabalho de juiz | YODA Framework</title><link rel="icon" href="../assets/yoda-light.svg" type="image/svg+xml"><style>:root{--ink:#15181d;--muted:#606977;--paper:#f3f5f7;--panel:#fff;--line:#d7dce3;--blue:#1167d8;--blue-dark:#0b3f88;--blue-soft:#e7f0ff;--code:#101720}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top left,rgba(17,103,216,.14),transparent 360px),var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:18px;line-height:1.72}.page{width:min(820px,calc(100% - 32px));margin:0 auto;padding:34px 0 60px}header{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:54px}.brand{display:flex;gap:12px;align-items:center;color:var(--blue-dark);font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}.brand img{width:42px;height:42px;padding:5px;border:1px solid var(--line);border-radius:8px;background:white}a{color:var(--blue);text-underline-offset:3px}.back{color:var(--muted);font-size:14px;font-weight:700;text-decoration:none}h1{margin:0;color:var(--code);font-size:clamp(38px,7vw,68px);line-height:1.05;letter-spacing:0}.kicker{color:var(--blue);font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-weight:800;margin-bottom:18px}.lead{color:#29313b;font-size:24px;line-height:1.45;margin:26px 0 34px}article p{margin:0 0 24px}.callout{margin:34px 0;padding:24px;background:var(--blue-soft);border-left:6px solid var(--blue);border-radius:8px;font-size:21px;line-height:1.5}.list{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:24px;margin:34px 0}.list h2{margin:0 0 16px;font-size:24px}.list ul{margin:0;padding-left:22px}.nav{display:flex;justify-content:space-between;gap:18px;border-top:1px solid var(--line);margin-top:44px;padding-top:24px}</style></head>
-<body><div class="page"><header><a class="brand" href="../index.html"><img src="../assets/yoda-light.svg" alt="">YODA Framework</a><a class="back" href="../index.html#serie">Voltar para a série</a></header><main><article>
-<div class="kicker">Post 05</div><h1>Scripts: porque prompt não deveria fazer trabalho de juiz</h1>
-<p class="lead">Tem regra que pode ficar no texto. Tem regra que, se for importante mesmo, precisa virar comando.</p>
-<p>Eu tentei deixar muita coisa no combinado. O agente deveria selecionar a próxima issue, respeitar dependências, atualizar log, não inventar estado, não esquecer o dev slug. Tudo lindo.</p>
-<p>Só que combinado em prompt é igual placa de “não corra” perto da largada. Ajuda. Mas se a pessoa estiver animada, passa batido.</p>
-<p>Foi assim que os scripts começaram a aparecer. <code>issue_add.py</code>, <code>log_add.py</code>, <code>todo_update.py</code>, <code>todo_list.py</code>, <code>yoda_flow_next.py</code>. Cada um nasceu de uma regra que eu não queria discutir de novo.</p>
-<div class="callout">Script é o amigo sem carisma que salva o projeto. Ele não interpreta clima. Ele executa contrato.</div>
-<p>Esse post é sobre tirar responsabilidade demais do prompt e colocar no lugar certo: automação pequena, determinística e testável.</p>
-<section class="list"><h2>O que este post vai cobrir</h2><ul><li>Quando uma instrução deve virar script.</li><li>Como runbooks de <code>--help</code> viraram fonte de verdade operacional.</li><li>Por que determinismo é carinho com o humano do futuro.</li></ul></section>
-</article><nav class="nav"><a href="04-quando-a-issue-deixa-de-ser-lembrete-e-vira-contrato.html">Anterior</a><a href="06-yoda-intake-ou-como-transformar-desabafo-em-backlog.html">Próximo</a></nav></main></div></body></html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scripts: porque prompt não deveria fazer trabalho de juiz | YODA Framework</title>
+  <link rel="icon" href="../assets/yoda-light.svg" type="image/svg+xml">
+  <style>
+    :root { --ink:#15181d; --muted:#606977; --paper:#f3f5f7; --panel:#fff; --line:#d7dce3; --blue:#1167d8; --blue-dark:#0b3f88; --blue-soft:#e7f0ff; --code:#101720; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:radial-gradient(circle at top left,rgba(17,103,216,.14),transparent 360px),var(--paper); color:var(--ink); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:18px; line-height:1.72; }
+    .page { width:min(820px,calc(100% - 32px)); margin:0 auto; padding:34px 0 60px; }
+    header { display:flex; justify-content:space-between; gap:18px; align-items:center; margin-bottom:54px; }
+    .brand { display:flex; gap:12px; align-items:center; color:var(--blue-dark); font-size:13px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; text-decoration:none; }
+    .brand img { width:42px; height:42px; padding:5px; border:1px solid var(--line); border-radius:8px; background:white; }
+    a { color:var(--blue); text-underline-offset:3px; }
+    .back { color:var(--muted); font-size:14px; font-weight:700; text-decoration:none; }
+    h1 { margin:0; color:var(--code); font-size:clamp(38px,7vw,68px); line-height:1.05; letter-spacing:0; }
+    h2 { margin:44px 0 18px; color:var(--code); font-size:30px; line-height:1.18; letter-spacing:0; }
+    .kicker { color:var(--blue); font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace; font-weight:800; margin-bottom:18px; }
+    .lead { color:#29313b; font-size:24px; line-height:1.45; margin:26px 0 34px; }
+    .post-cover { margin:0 0 38px; padding:10px; background:var(--panel); border:1px solid var(--line); border-radius:8px; }
+    .post-cover img { display:block; width:100%; height:auto; border-radius:6px; }
+    article p { margin:0 0 24px; }
+    .callout { margin:34px 0; padding:24px; background:var(--blue-soft); border-left:6px solid var(--blue); border-radius:8px; font-size:21px; line-height:1.5; }
+    .aside { margin:34px 0; padding:22px 24px; background:var(--panel); border:1px solid var(--line); border-radius:8px; color:var(--muted); }
+    .aside strong { color:var(--blue-dark); }
+    .nav { display:flex; justify-content:space-between; gap:18px; border-top:1px solid var(--line); margin-top:44px; padding-top:24px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a class="brand" href="../index.html"><img src="../assets/yoda-light.svg" alt="">YODA Framework</a>
+      <a class="back" href="../index.html#serie">Voltar para a série</a>
+    </header>
+    <main>
+      <article>
+        <div class="kicker">Post 05</div>
+        <h1>Scripts: porque prompt não deveria fazer trabalho de juiz</h1>
+        <p class="lead">Tem regra que pode ficar no texto. Tem regra que, se for importante mesmo, precisa virar comando.</p>
+
+        <figure class="post-cover">
+          <img src="../linkedin/assets/05-capa-scripts-juiz.jpg" alt="Ilustração de scripts atuando como juiz técnico entre prompt, issue e agente de IA" width="1735" height="906">
+        </figure>
+
+        <p>Eu tentei deixar muita coisa no combinado.</p>
+
+        <p>O agente deveria selecionar a próxima issue.</p>
+
+        <p>Respeitar dependências.</p>
+
+        <p>Atualizar log.</p>
+
+        <p>Não inventar estado.</p>
+
+        <p>Não esquecer o dev slug.</p>
+
+        <p>Não avançar fase sem autorização.</p>
+
+        <p>Tudo lindo.</p>
+
+        <p>Na teoria.</p>
+
+        <p>Só que combinado em prompt é igual placa de “não corra” perto da largada.</p>
+
+        <p>Ajuda.</p>
+
+        <p>Mas se a pessoa estiver animada, passa batido.</p>
+
+        <h2>Prompt é péssimo juiz</h2>
+
+        <p>Prompt é ótimo para orientar.</p>
+
+        <p>É ótimo para explicar intenção.</p>
+
+        <p>É ótimo para dar contexto, tom, cuidado e prioridade.</p>
+
+        <p>Mas prompt não deveria ser juiz de regra operacional.</p>
+
+        <p>Porque regra operacional precisa ser chata.</p>
+
+        <p>Precisa dizer sim ou não.</p>
+
+        <p>Precisa validar formato.</p>
+
+        <p>Precisa recusar estado inválido.</p>
+
+        <p>Precisa não acordar criativa.</p>
+
+        <p>O prompt, coitado, acorda criativo todos os dias.</p>
+
+        <p>Você pode escrever “não modifique metadata manualmente” em letras bonitas. Mas, se o agente está no meio da tarefa e acha que consegue resolver rápido, a tentação aparece.</p>
+
+        <p>Uma linha ali.</p>
+
+        <p>Um status aqui.</p>
+
+        <p>Um log “só para registrar”.</p>
+
+        <p>E pronto: metadata drift com boa intenção.</p>
+
+        <div class="callout">Script é o amigo sem carisma que salva o projeto. Ele não interpreta clima. Ele executa contrato.</div>
+
+        <h2>Quando uma regra pede comando</h2>
+
+        <p>A pergunta que começou a guiar o YODA foi simples:</p>
+
+        <p>Essa regra pode ser interpretada sem muito risco?</p>
+
+        <p>Se sim, tudo bem ficar no texto.</p>
+
+        <p>Mas se a regra muda estado, escolhe próxima issue, valida dependência, registra log ou altera metadata, aí a conversa muda.</p>
+
+        <p>Isso precisa virar comando.</p>
+
+        <p>Foi assim que os scripts começaram a aparecer.</p>
+
+        <p><code>issue_add.py</code> para criar issue.</p>
+
+        <p><code>todo_list.py</code> para inspecionar backlog.</p>
+
+        <p><code>todo_update.py</code> para correções semânticas e metadata.</p>
+
+        <p><code>log_add.py</code> para registrar contexto fora do fluxo normal.</p>
+
+        <p><code>yoda_flow_next.py</code> para resolver o próximo passo determinístico.</p>
+
+        <p>Cada um nasceu de uma regra que eu não queria discutir de novo.</p>
+
+        <h2>O script não precisa ser grande</h2>
+
+        <p>Esse ponto é importante.</p>
+
+        <p>Quando falo “script”, não estou falando de uma plataforma gigantesca, cheia de abstração e cerimônia.</p>
+
+        <p>Às vezes o melhor script é pequeno.</p>
+
+        <p>Feio até.</p>
+
+        <p>Mas claro.</p>
+
+        <p>Ele recebe entrada, valida, decide, escreve saída e não tenta bancar o poeta.</p>
+
+        <p>Esse tipo de automação parece banal até você comparar com a alternativa: pedir para um agente lembrar a mesma regra em toda conversa, em todo contexto, em todo modelo.</p>
+
+        <p>Não obrigado.</p>
+
+        <p>Se é para repetir, automatiza.</p>
+
+        <p>Se é para validar, automatiza.</p>
+
+        <p>Se é para mutar estado, automatiza com ainda mais carinho.</p>
+
+        <div class="aside">
+          <strong>Regra prática:</strong> prompt explica o porquê. Issue define o contrato. Script executa a parte que não pode depender de interpretação.
+        </div>
+
+        <h2>Runbook no --help</h2>
+
+        <p>Uma das decisões que eu mais gosto no YODA é tratar o <code>--help</code> como runbook.</p>
+
+        <p>Não só aquele help seco, que lista flags e desaparece correndo.</p>
+
+        <p>Help de operador.</p>
+
+        <p>Para que serve.</p>
+
+        <p>Quando usar.</p>
+
+        <p>Se muta estado.</p>
+
+        <p>Qual é o próximo passo.</p>
+
+        <p>Isso é especialmente útil com agente.</p>
+
+        <p>Porque o agente não precisa decorar todos os detalhes operacionais do script. Ele precisa saber que, antes de usar, deve consultar o runbook que o próprio script imprime.</p>
+
+        <p>O script vira uma fonte de verdade viva.</p>
+
+        <p>E, se o comportamento muda, o runbook muda junto.</p>
+
+        <h2>Determinismo é carinho</h2>
+
+        <p>Existe uma frase que parece contraditória, mas ficou cada vez mais verdadeira no projeto:</p>
+
+        <p>Determinismo é carinho.</p>
+
+        <p>Não carinho fofo.</p>
+
+        <p>Carinho operacional.</p>
+
+        <p>É você impedir que o humano do futuro precise reconstruir a intenção olhando para três arquivos, uma conversa perdida e um commit com mensagem misteriosa.</p>
+
+        <p>É você impedir que o agente escolha uma issue diferente porque interpretou prioridade de outro jeito.</p>
+
+        <p>É você impedir que um dry-run mude arquivo.</p>
+
+        <p>É você garantir que um bloqueio não faça mutação escondida.</p>
+
+        <p>É você dizer: se isto aconteceu, aconteceu por este caminho.</p>
+
+        <p>Chato?</p>
+
+        <p>Sim.</p>
+
+        <p>Maravilhoso?</p>
+
+        <p>Também.</p>
+
+        <h2>O que os scripts tiraram das costas do agente</h2>
+
+        <p>Os scripts não tornaram o agente menos importante.</p>
+
+        <p>Pelo contrário.</p>
+
+        <p>Tiraram dele um tipo de responsabilidade que ele não deveria carregar.</p>
+
+        <p>O agente ainda estuda.</p>
+
+        <p>Ainda documenta.</p>
+
+        <p>Ainda implementa.</p>
+
+        <p>Ainda avalia.</p>
+
+        <p>Mas ele não precisa inventar a regra de seleção.</p>
+
+        <p>Não precisa decidir sozinho como escrever metadata.</p>
+
+        <p>Não precisa lembrar o formato do log por inspiração.</p>
+
+        <p>Não precisa ser juiz, escrivão, auditor e executor ao mesmo tempo.</p>
+
+        <p>Isso melhora o trabalho dele.</p>
+
+        <p>E melhora muito a minha paciência.</p>
+
+        <div class="callout">Quanto mais importante a regra, menos ela deveria depender de memória de conversa.</div>
+
+        <h2>O que ficou dessa fase</h2>
+
+        <p>A fase dos scripts consolidou algumas idéias fortes.</p>
+
+        <p>Primeira: scripts são obrigatórios para mudanças de metadata quando existem.</p>
+
+        <p>Segunda: comando que muda estado precisa validar antes de escrever.</p>
+
+        <p>Terceira: ajuda de CLI precisa orientar operação, não só listar flag.</p>
+
+        <p>Quarta: dry-run não pode ser “quase dry-run”. Ou não muta, ou não merece o nome.</p>
+
+        <p>Quinta: o agente deve seguir o script, e não competir com ele.</p>
+
+        <p>Foi aqui que o YODA começou a sair do campo da orientação e entrar no campo da orquestração.</p>
+
+        <p>Mas ainda faltava uma peça importante.</p>
+
+        <p>Como transformar uma demanda humana bagunçada em uma issue pronta para esse fluxo todo?</p>
+
+        <p>No próximo post: YODA Intake, ou como transformar desabafo em backlog.</p>
+      </article>
+      <nav class="nav">
+        <a href="04-quando-a-issue-deixa-de-ser-lembrete-e-vira-contrato.html">Anterior</a>
+        <a href="06-yoda-intake-ou-como-transformar-desabafo-em-backlog.html">Próximo</a>
+      </nav>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LinkedIn 08 - A grande virada Markdown-first</title>
+  <style>
+    :root {
+      --ink: #15181d;
+      --muted: #606977;
+      --paper: #f3f5f7;
+      --panel: #ffffff;
+      --line: #d7dce3;
+      --blue: #1167d8;
+      --blue-soft: #e7f0ff;
+      --code: #101720;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .page {
+      width: min(920px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    header {
+      margin-bottom: 28px;
+    }
+
+    .kicker {
+      color: var(--blue);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-weight: 800;
+      margin: 0 0 10px;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--code);
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 760px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 20px;
+    }
+
+    .cover {
+      margin: 30px 0;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .cover img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .copy-note {
+      margin: 28px 0 14px;
+      padding: 16px 18px;
+      border-left: 5px solid var(--blue);
+      background: var(--blue-soft);
+      border-radius: 8px;
+      color: #26384f;
+      font-size: 15px;
+    }
+
+    article {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: clamp(22px, 4vw, 42px);
+    }
+
+    article h2 {
+      margin: 34px 0 14px;
+      color: var(--code);
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    article p {
+      margin: 0 0 18px;
+    }
+
+    .hook {
+      margin-top: 28px;
+      padding: 20px;
+      background: var(--blue-soft);
+      border-radius: 8px;
+      font-weight: 650;
+    }
+
+    .hashtags {
+      color: var(--blue);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <p class="kicker">LinkedIn - Post 08</p>
+      <h1>A grande virada Markdown-first</h1>
+      <p class="lead">
+        Oitava publicação da série sobre a odisséia de criação do YODA Framework,
+        pronta para copiar e publicar no LinkedIn.
+      </p>
+    </header>
+
+    <figure class="cover">
+      <img src="assets/08-capa-markdown-first.jpg" alt="Capa ilustrada do post sobre a virada Markdown-first do YODA Framework">
+    </figure>
+
+    <div class="copy-note">
+      Selecione o texto abaixo e cole no LinkedIn. A imagem acima pode ser usada como capa do post.
+    </div>
+
+    <article>
+      <p>Este é o oitavo texto da série sobre a odisséia de criação do YODA Framework.</p>
+
+      <p>No post anterior, falei sobre o YODA Flow.</p>
+
+      <p>Study.</p>
+
+      <p>Document.</p>
+
+      <p>Implement.</p>
+
+      <p>Evaluate.</p>
+
+      <p>Quatro fases para fazer o agente desacelerar antes de sair codando como quem viu uma porta aberta.</p>
+
+      <p>O Flow colocou disciplina na execução.</p>
+
+      <p>Mas, enquanto o fluxo amadurecia, outra coisa começou a incomodar.</p>
+
+      <p>O formato.</p>
+
+      <p>Porque o YODA nasceu com YAML no nome.</p>
+
+      <p>YAML-Oriented Documentation &amp; Agents.</p>
+
+      <p>Bonito.</p>
+
+      <p>Organizado.</p>
+
+      <p>Com cara de arquitetura.</p>
+
+      <p>E, como quase tudo que tem cara de arquitetura cedo demais, começou a cobrar aluguel.</p>
+
+      <h2>YAML ajudou</h2>
+
+      <p>Para ser justo: YAML ajudou.</p>
+
+      <p>No começo, fazia sentido.</p>
+
+      <p>YAML para TODO.</p>
+
+      <p>YAML para log.</p>
+
+      <p>YAML para metadado.</p>
+
+      <p>YAML para dar aquela sensação de que a máquina finalmente teria uma planilha espiritual para obedecer.</p>
+
+      <p>YAML é bom para dado estruturado.</p>
+
+      <p>Campo.</p>
+
+      <p>Valor.</p>
+
+      <p>Lista.</p>
+
+      <p>Flag.</p>
+
+      <p>Coisa que script lê sem drama.</p>
+
+      <p>O problema começou quando YAML tentou virar diário.</p>
+
+      <h2>Issue não é formulário</h2>
+
+      <p>Uma issue não é só um formulário.</p>
+
+      <p>Ela tem contexto.</p>
+
+      <p>Tem decisão.</p>
+
+      <p>Tem hesitação.</p>
+
+      <p>Tem “isso parece simples, mas cuidado com aquele detalhe”.</p>
+
+      <p>Tem a frase atravessada que explica por que uma alternativa foi descartada.</p>
+
+      <p>Tem o medo pequeno que não cabe em boolean.</p>
+
+      <p>YAML não gosta disso.</p>
+
+      <p>Ele até aceita.</p>
+
+      <p>Mas aceita com aquela cara de quem está segurando um móvel no elevador.</p>
+
+      <p>Você começa a escrever texto longo dentro de campo.</p>
+
+      <p>Depois quebra linha.</p>
+
+      <p>Depois indenta.</p>
+
+      <p>Depois um caractere inocente vira incidente diplomático.</p>
+
+      <p>E aí você percebe:</p>
+
+      <p>talvez eu esteja usando o armário como sala de estar.</p>
+
+      <h2>A duplicação começou a feder</h2>
+
+      <p>No modelo inicial, havia estado em mais de um lugar.</p>
+
+      <p>Um TODO YAML dizia uma coisa.</p>
+
+      <p>A issue Markdown dizia outra.</p>
+
+      <p>O log YAML guardava histórico.</p>
+
+      <p>O markdown tentava contar a história.</p>
+
+      <p>O agente precisava montar o quebra-cabeça antes de entender o que estava acontecendo.</p>
+
+      <p>Isso funciona por um tempo.</p>
+
+      <p>Como muita coisa funciona por um tempo em software.</p>
+
+      <p>Esse é o perigo.</p>
+
+      <p>Funciona o suficiente para você confiar.</p>
+
+      <p>Depois quebra no pior momento, com uma divergência pequena e educada.</p>
+
+      <p>Um status aqui.</p>
+
+      <p>Uma fase ali.</p>
+
+      <p>Um log que ficou no arquivo antigo.</p>
+
+      <p>Uma dependência certa em um lugar e ausente no outro.</p>
+
+      <p>Pronto.</p>
+
+      <p>Agora você não tem fonte de verdade.</p>
+
+      <p>Tem fonte de debate.</p>
+
+      <h2>Markdown tomou o centro</h2>
+
+      <p>A virada foi simples de explicar e trabalhosa de assumir:</p>
+
+      <p>a issue Markdown virou a fonte operacional de verdade.</p>
+
+      <p>Metadados no front matter.</p>
+
+      <p>Contexto no corpo.</p>
+
+      <p>Critérios de aceite no corpo.</p>
+
+      <p>Notas de implementação no corpo.</p>
+
+      <p>Resultado no corpo.</p>
+
+      <p>Flow log no corpo.</p>
+
+      <p>Um arquivo só contando a história inteira.</p>
+
+      <p>O YAML não morreu.</p>
+
+      <p>Ele só parou de querer ser protagonista.</p>
+
+      <p>Virou etiqueta.</p>
+
+      <p>Markdown virou documento.</p>
+
+      <h2>Menos duplicação, menos teatro</h2>
+
+      <p>Outra decisão pequena, mas libertadora:</p>
+
+      <p>o ID passou a ser derivado do nome do arquivo.</p>
+
+      <p>Se o arquivo se chama yoda-0049-alguma-coisa.md, o ID é yoda-0049.</p>
+
+      <p>Fim.</p>
+
+      <p>Não precisa duplicar.</p>
+
+      <p>Não precisa reconciliar.</p>
+
+      <p>Não precisa abrir investigação porque o filename diz uma coisa e o front matter diz outra.</p>
+
+      <p>O log também mudou de casa.</p>
+
+      <p>Foi para dentro da issue.</p>
+
+      <p>Porque a pergunta sempre era:</p>
+
+      <p>“O que aconteceu com essa issue?”</p>
+
+      <p>E a resposta não deveria exigir caça ao tesouro.</p>
+
+      <h2>A virada 0.3.0</h2>
+
+      <p>Na prática, isso virou a transição do modelo 0.3.0.</p>
+
+      <p>TODO YAML legado virou metadado em issue Markdown.</p>
+
+      <p>Logs YAML foram consolidados no Flow log.</p>
+
+      <p>Scripts passaram a operar a partir de yoda/project/issues/*.md.</p>
+
+      <p>Com filtro por dev.</p>
+
+      <p>Com ID derivado do filename.</p>
+
+      <p>Com validação de schema.</p>
+
+      <p>Com erro claro quando algo estava errado.</p>
+
+      <p>Foi a hora em que a preferência estética virou contrato operacional.</p>
+
+      <p>Markdown venceu porque é legível.</p>
+
+      <p>Porque aceita contexto.</p>
+
+      <p>Porque carrega decisão.</p>
+
+      <p>Porque conversa bem com git.</p>
+
+      <p>Porque o humano realmente lê.</p>
+
+      <p>E porque o agente opera melhor quando não precisa montar a história a partir de pedaços espalhados.</p>
+
+      <p>YAML continuou útil.</p>
+
+      <p>Só perdeu a mania de querer narrar a novela.</p>
+
+      <div class="hook">
+        No próximo texto, a dor muda de lugar: depois de organizar o fluxo, chegou a hora de empacotar uma teimosia.
+        Porque criar um framework no próprio repositório é uma coisa. Fazer ele caber num pacote instalável é outra história.
+      </div>
+
+      <p class="hashtags">#IA #AIDevelopment #SpecDrivenDevelopment #Documentacao #EngenhariaDeSoftware #YODAFramework</p>
+    </article>
+  </div>
+</body>
+</html>

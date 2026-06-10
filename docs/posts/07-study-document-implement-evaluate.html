@@ -1,13 +1,323 @@
 <!doctype html>
 <html lang="pt-BR">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Study, Document, Implement, Evaluate | YODA Framework</title><link rel="icon" href="../assets/yoda-light.svg" type="image/svg+xml"><style>:root{--ink:#15181d;--muted:#606977;--paper:#f3f5f7;--panel:#fff;--line:#d7dce3;--blue:#1167d8;--blue-dark:#0b3f88;--blue-soft:#e7f0ff;--code:#101720}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top left,rgba(17,103,216,.14),transparent 360px),var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:18px;line-height:1.72}.page{width:min(820px,calc(100% - 32px));margin:0 auto;padding:34px 0 60px}header{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:54px}.brand{display:flex;gap:12px;align-items:center;color:var(--blue-dark);font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}.brand img{width:42px;height:42px;padding:5px;border:1px solid var(--line);border-radius:8px;background:white}a{color:var(--blue);text-underline-offset:3px}.back{color:var(--muted);font-size:14px;font-weight:700;text-decoration:none}h1{margin:0;color:var(--code);font-size:clamp(38px,7vw,68px);line-height:1.05;letter-spacing:0}.kicker{color:var(--blue);font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-weight:800;margin-bottom:18px}.lead{color:#29313b;font-size:24px;line-height:1.45;margin:26px 0 34px}article p{margin:0 0 24px}.callout{margin:34px 0;padding:24px;background:var(--blue-soft);border-left:6px solid var(--blue);border-radius:8px;font-size:21px;line-height:1.5}.list{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:24px;margin:34px 0}.list h2{margin:0 0 16px;font-size:24px}.list ul{margin:0;padding-left:22px}.nav{display:flex;justify-content:space-between;gap:18px;border-top:1px solid var(--line);margin-top:44px;padding-top:24px}</style></head>
-<body><div class="page"><header><a class="brand" href="../index.html"><img src="../assets/yoda-light.svg" alt="">YODA Framework</a><a class="back" href="../index.html#serie">Voltar para a série</a></header><main><article>
-<div class="kicker">Post 07</div><h1>Study, Document, Implement, Evaluate</h1>
-<p class="lead">Quatro fases para fazer o agente desacelerar o suficiente para entender o que está fazendo.</p>
-<p>O fluxo parece simples: estudar, documentar, implementar, avaliar. Simples o bastante para caber numa linha. Difícil o bastante para salvar uma tarde.</p>
-<p>A tentação é sempre pular para o código. O agente quer ser útil. O humano quer ver progresso. A issue parece clara. A vida é curta. Vamo.</p>
-<p>Aí vem o YODA e fala: calma. Primeiro Study. Depois Document. Só então Implement. E no final Evaluate, porque entregar sem conferir é basicamente jogar a mochila por cima do muro e chamar de logística.</p>
-<div class="callout">O Flow é a placa de “devagar” na descida. Ninguém gosta dela até perceber o tamanho da curva.</div>
-<p>Esse post é sobre a disciplina de avançar uma fase por vez e deixar rastros suficientes para saber o que aconteceu, quando aconteceu e por quê.</p>
-<section class="list"><h2>O que este post vai cobrir</h2><ul><li>O papel de cada fase do YODA Flow.</li><li>Por que o avanço é explícito e humano-guiado.</li><li>Como o Evaluate fecha a história com resultado auditável.</li></ul></section>
-</article><nav class="nav"><a href="06-yoda-intake-ou-como-transformar-desabafo-em-backlog.html">Anterior</a><a href="08-a-grande-virada-markdown-first.html">Próximo</a></nav></main></div></body></html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Study, Document, Implement, Evaluate | YODA Framework</title>
+  <link rel="icon" href="../assets/yoda-light.svg" type="image/svg+xml">
+  <style>
+    :root { --ink:#15181d; --muted:#606977; --paper:#f3f5f7; --panel:#fff; --line:#d7dce3; --blue:#1167d8; --blue-dark:#0b3f88; --blue-soft:#e7f0ff; --code:#101720; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:radial-gradient(circle at top left,rgba(17,103,216,.14),transparent 360px),var(--paper); color:var(--ink); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:18px; line-height:1.72; }
+    .page { width:min(820px,calc(100% - 32px)); margin:0 auto; padding:34px 0 60px; }
+    header { display:flex; justify-content:space-between; gap:18px; align-items:center; margin-bottom:54px; }
+    .brand { display:flex; gap:12px; align-items:center; color:var(--blue-dark); font-size:13px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; text-decoration:none; }
+    .brand img { width:42px; height:42px; padding:5px; border:1px solid var(--line); border-radius:8px; background:white; }
+    a { color:var(--blue); text-underline-offset:3px; }
+    .back { color:var(--muted); font-size:14px; font-weight:700; text-decoration:none; }
+    h1 { margin:0; color:var(--code); font-size:clamp(38px,7vw,68px); line-height:1.05; letter-spacing:0; }
+    h2 { margin:44px 0 18px; color:var(--code); font-size:30px; line-height:1.18; letter-spacing:0; }
+    .kicker { color:var(--blue); font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace; font-weight:800; margin-bottom:18px; }
+    .lead { color:#29313b; font-size:24px; line-height:1.45; margin:26px 0 34px; }
+    .post-cover { margin:0 0 38px; padding:10px; background:var(--panel); border:1px solid var(--line); border-radius:8px; }
+    .post-cover img { display:block; width:100%; height:auto; border-radius:6px; }
+    article p { margin:0 0 24px; }
+    code { font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace; font-size:.92em; color:var(--code); background:#e9edf2; border:1px solid var(--line); border-radius:5px; padding:.08em .32em; }
+    .callout { margin:34px 0; padding:24px; background:var(--blue-soft); border-left:6px solid var(--blue); border-radius:8px; font-size:21px; line-height:1.5; }
+    .aside { margin:34px 0; padding:22px 24px; background:var(--panel); border:1px solid var(--line); border-radius:8px; color:var(--muted); }
+    .aside strong { color:var(--blue-dark); }
+    .nav { display:flex; justify-content:space-between; gap:18px; border-top:1px solid var(--line); margin-top:44px; padding-top:24px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a class="brand" href="../index.html"><img src="../assets/yoda-light.svg" alt="">YODA Framework</a>
+      <a class="back" href="../index.html#serie">Voltar para a série</a>
+    </header>
+    <main>
+      <article>
+        <div class="kicker">Post 07</div>
+        <h1>Study, Document, Implement, Evaluate</h1>
+        <p class="lead">Quatro fases para fazer o agente desacelerar o suficiente para entender o que está fazendo.</p>
+
+        <figure class="post-cover">
+          <img src="../linkedin/assets/07-capa-flow.jpg" alt="Ilustração do YODA Flow com quatro fases: estudar, documentar, implementar e avaliar" width="1736" height="906">
+        </figure>
+
+        <p>O fluxo parece simples.</p>
+
+        <p>Study.</p>
+
+        <p>Document.</p>
+
+        <p>Implement.</p>
+
+        <p>Evaluate.</p>
+
+        <p>Quatro palavras.</p>
+
+        <p>Uma linha.</p>
+
+        <p>Uma daquelas coisas que, olhando de longe, dá vontade de falar:</p>
+
+        <p>“Nossa, precisava mesmo de um framework para isso?”</p>
+
+        <p>Precisava.</p>
+
+        <p>Infelizmente.</p>
+
+        <p>Porque o problema nunca foi saber que seria bom estudar antes de codar.</p>
+
+        <p>Todo mundo sabe.</p>
+
+        <p>O problema é fazer isso quando o agente está animado, o humano está com pressa e a issue parece clara o suficiente para começar.</p>
+
+        <p>Parece.</p>
+
+        <p>Essa palavra já deveria vir com sirene.</p>
+
+        <h2>A tentação de pular para o código</h2>
+
+        <p>A IA tem uma qualidade que também é um defeito.</p>
+
+        <p>Ela quer ajudar.</p>
+
+        <p>Rápido.</p>
+
+        <p>Muito rápido.</p>
+
+        <p>Você descreve uma dor e, antes de terminar a frase, ela já está mentalmente abrindo três arquivos, criando uma função, mexendo no CSS e sugerindo um teste que talvez nem rode.</p>
+
+        <p>É sedutor.</p>
+
+        <p>Dá sensação de produtividade.</p>
+
+        <p>Dá aquela ilusão gostosa de que o projeto está andando porque a tela está mudando.</p>
+
+        <p>Mas movimento não é progresso.</p>
+
+        <p>Às vezes é só um erro com boa velocidade.</p>
+
+        <p>O YODA Flow nasceu para colocar uma catraca nesse impulso.</p>
+
+        <p>Não uma catraca burocrática de repartição pública.</p>
+
+        <p>Uma catraca de segurança.</p>
+
+        <p>Daquelas que impedem você de entrar na obra sem capacete enquanto fala “é rapidinho”.</p>
+
+        <div class="callout">O Flow é a placa de “devagar” na descida. Ninguém gosta dela até perceber o tamanho da curva.</div>
+
+        <h2>Study: antes de mexer, entenda</h2>
+
+        <p>Study é a fase mais humilhante.</p>
+
+        <p>Ela obriga o agente a admitir que ainda não sabe o suficiente.</p>
+
+        <p>E, pior, obriga o humano a admitir que talvez a issue também não esteja tão clara assim.</p>
+
+        <p>Nessa fase, o trabalho não é implementar.</p>
+
+        <p>Não é “só ajustar uma coisinha”.</p>
+
+        <p>Não é aproveitar que já abriu o arquivo e corrigir um negócio ali.</p>
+
+        <p>Study é leitura.</p>
+
+        <p>É mapa.</p>
+
+        <p>É entender onde a mudança entra, o que ela toca, que contrato existe, que teste protege aquilo e que parte da história ainda está escondida.</p>
+
+        <p>É o agente dizendo:</p>
+
+        <p>“Acho que entendi. Mas antes de sair cortando fio, deixa eu ver para onde ele vai.”</p>
+
+        <p>Isso parece lento.</p>
+
+        <p>Até você comparar com o tempo de desfazer uma implementação plausível que nasceu em cima de uma leitura errada.</p>
+
+        <h2>Document: transforme entendimento em contrato</h2>
+
+        <p>Depois vem Document.</p>
+
+        <p>Essa é a fase onde o entendimento deixa de morar na cabeça do agente e passa para o papel.</p>
+
+        <p>Ou melhor: para o markdown.</p>
+
+        <p>É aqui que a issue é refinada.</p>
+
+        <p>Escopo.</p>
+
+        <p>Fora de escopo.</p>
+
+        <p>Critérios de aceite.</p>
+
+        <p>Decisões.</p>
+
+        <p>Riscos.</p>
+
+        <p>Pontos de validação.</p>
+
+        <p>Document é onde a conversa vira contrato executável.</p>
+
+        <p>Não executável no sentido “rodar como código”.</p>
+
+        <p>Executável no sentido “dá para alguém seguir sem precisar adivinhar o espírito da reunião”.</p>
+
+        <p>Essa fase também tem um efeito colateral ótimo.</p>
+
+        <p>Ela expõe mentira cedo.</p>
+
+        <p>Se você não consegue documentar o que vai fazer, talvez ainda não saiba o que vai fazer.</p>
+
+        <p>Dói um pouco.</p>
+
+        <p>Mas dói barato.</p>
+
+        <h2>Implement: agora sim, mas só agora</h2>
+
+        <p>Implement é a fase que todo mundo queria desde o começo.</p>
+
+        <p>É onde o código muda.</p>
+
+        <p>É onde a coisa finalmente anda.</p>
+
+        <p>Mas no YODA ela chega depois de Study e Document por um motivo simples:</p>
+
+        <p>implementação sem contrato é chute com autocomplete.</p>
+
+        <p>Pode acertar.</p>
+
+        <p>Inclusive muitas vezes acerta.</p>
+
+        <p>Esse é o perigo.</p>
+
+        <p>Quando dá certo de vez em quando, a pressa ganha confiança.</p>
+
+        <p>E aí você começa a tratar sorte como método.</p>
+
+        <p>No Flow, Implement tem limite.</p>
+
+        <p>O agente implementa apenas o escopo aprovado.</p>
+
+        <p>Não pega carona em arquivo aberto.</p>
+
+        <p>Não corrige dívida lateral porque “já que estamos aqui”.</p>
+
+        <p>Não transforma uma issue pequena numa reforma do apartamento inteiro.</p>
+
+        <p>Implement é execução.</p>
+
+        <p>Não é turismo arquitetural.</p>
+
+        <div class="aside">
+          <strong>Regra de sanidade:</strong> se apareceu uma idéia ótima no meio da implementação, ela provavelmente merece uma nova issue. Não uma invasão silenciosa no escopo atual.
+        </div>
+
+        <h2>Evaluate: entregar não é declarar vitória</h2>
+
+        <p>Evaluate é a fase que salva a dignidade do commit.</p>
+
+        <p>É aqui que o agente precisa parar e conferir.</p>
+
+        <p>Os critérios de aceite foram cumpridos?</p>
+
+        <p>Os testes relevantes rodaram?</p>
+
+        <p>O comportamento esperado está mesmo lá?</p>
+
+        <p>Alguma coisa ficou pendente?</p>
+
+        <p>O resultado foi registrado?</p>
+
+        <p>Sem Evaluate, o fim do trabalho vira uma frase otimista.</p>
+
+        <p>“Pronto.”</p>
+
+        <p>Pronto segundo quem?</p>
+
+        <p>Com base em quê?</p>
+
+        <p>Validado onde?</p>
+
+        <p>Evaluate transforma o “acho que foi” em evidência.</p>
+
+        <p>E é por isso que o YODA exige preencher o <code>Result log</code> no final.</p>
+
+        <p>Não para enfeitar a issue.</p>
+
+        <p>Para deixar rastro.</p>
+
+        <p>Porque daqui a duas semanas ninguém lembra se aquilo foi testado, se ficou pendência, se tinha issue externa, se a decisão foi consciente ou se todo mundo só estava cansado.</p>
+
+        <p>O log lembra.</p>
+
+        <h2>Uma chamada por fase</h2>
+
+        <p>O detalhe que parece pequeno, mas muda tudo, é este:</p>
+
+        <p>o Flow avança uma fase por vez.</p>
+
+        <p>O comando <code>yoda_flow_next.py</code> não é uma esteira desgovernada.</p>
+
+        <p>Ele resolve o próximo passo determinístico, aplica uma transição válida e devolve a linha de runbook daquela fase.</p>
+
+        <p>Depois disso, o agente trabalha.</p>
+
+        <p>E espera.</p>
+
+        <p>Espera autorização humana explícita para avançar.</p>
+
+        <p>Isso é irritante no começo.</p>
+
+        <p>Principalmente quando você está no modo “vamo, vamo, vamo”.</p>
+
+        <p>Mas é justamente aí que a regra importa.</p>
+
+        <p>O humano continua no circuito.</p>
+
+        <p>O agente não se promove sozinho.</p>
+
+        <p>E o projeto ganha uma trilha de decisão em vez de uma sequência de palpites bem escritos.</p>
+
+        <h2>O que ficou dessa fase</h2>
+
+        <p>O YODA Flow trouxe uma idéia muito simples para o centro do framework:</p>
+
+        <p>não basta ter uma issue boa.</p>
+
+        <p>Também é preciso ter um rito de execução bom.</p>
+
+        <p>Study evita a pressa ignorante.</p>
+
+        <p>Document evita a memória seletiva.</p>
+
+        <p>Implement evita a expansão silenciosa de escopo.</p>
+
+        <p>Evaluate evita a vitória imaginária.</p>
+
+        <p>Quatro fases.</p>
+
+        <p>Uma por vez.</p>
+
+        <p>Com o humano segurando a chave da próxima porta.</p>
+
+        <p>No próximo post, a história dá uma virada importante.</p>
+
+        <p>Porque, no começo, o YODA parecia muito YAML-oriented.</p>
+
+        <p>Até ficar claro que YAML demais é péssimo para contar história.</p>
+
+        <p>A grande virada foi aceitar o óbvio que eu demorei para admitir:</p>
+
+        <p>markdown first.</p>
+      </article>
+      <nav class="nav">
+        <a href="06-yoda-intake-ou-como-transformar-desabafo-em-backlog.html">Anterior</a>
+        <a href="08-a-grande-virada-markdown-first.html">Próximo</a>
+      </nav>
+    </main>
+  </div>
+</body>
+</html>

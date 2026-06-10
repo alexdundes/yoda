@@ -1,13 +1,405 @@
 <!doctype html>
 <html lang="pt-BR">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Empacotar uma teimosia | YODA Framework</title><link rel="icon" href="../assets/yoda-light.svg" type="image/svg+xml"><style>:root{--ink:#15181d;--muted:#606977;--paper:#f3f5f7;--panel:#fff;--line:#d7dce3;--blue:#1167d8;--blue-dark:#0b3f88;--blue-soft:#e7f0ff;--code:#101720}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top left,rgba(17,103,216,.14),transparent 360px),var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:18px;line-height:1.72}.page{width:min(820px,calc(100% - 32px));margin:0 auto;padding:34px 0 60px}header{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:54px}.brand{display:flex;gap:12px;align-items:center;color:var(--blue-dark);font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}.brand img{width:42px;height:42px;padding:5px;border:1px solid var(--line);border-radius:8px;background:white}a{color:var(--blue);text-underline-offset:3px}.back{color:var(--muted);font-size:14px;font-weight:700;text-decoration:none}h1{margin:0;color:var(--code);font-size:clamp(38px,7vw,68px);line-height:1.05;letter-spacing:0}.kicker{color:var(--blue);font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-weight:800;margin-bottom:18px}.lead{color:#29313b;font-size:24px;line-height:1.45;margin:26px 0 34px}article p{margin:0 0 24px}.callout{margin:34px 0;padding:24px;background:var(--blue-soft);border-left:6px solid var(--blue);border-radius:8px;font-size:21px;line-height:1.5}.list{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:24px;margin:34px 0}.list h2{margin:0 0 16px;font-size:24px}.list ul{margin:0;padding-left:22px}.nav{display:flex;justify-content:space-between;gap:18px;border-top:1px solid var(--line);margin-top:44px;padding-top:24px}</style></head>
-<body><div class="page"><header><a class="brand" href="../index.html"><img src="../assets/yoda-light.svg" alt="">YODA Framework</a><a class="back" href="../index.html#serie">Voltar para a série</a></header><main><article>
-<div class="kicker">Post 09</div><h1>Empacotar uma teimosia</h1>
-<p class="lead">Uma coisa é funcionar no meu repositório. Outra é sair de casa sem quebrar a casa dos outros.</p>
-<p>Quando o YODA começou a virar pacote, o problema deixou de ser só processo. Agora tinha distribuição, instalação, atualização, checksum, rollback, metadata, versão e aquele frio na barriga de publicar algo que alguém pode executar.</p>
-<p>Foi aí que o projeto precisou ficar menos artesanal. O pacote tinha que levar o framework, mas preservar o projeto host. Tinha que atualizar, mas permitir voltar. Tinha que ser fácil, mas não mágico demais.</p>
-<p>Instalador de uma linha é bonito. Versão pinada é mais responsável. Os dois precisavam conviver.</p>
-<div class="callout">Empacotar o YODA foi transformar uma mania local em algo que sobrevive fora do meu colo.</div>
-<p>Esse post conta a parte menos glamourosa e mais necessária: fazer a odisséia virar artefato distribuível.</p>
-<section class="list"><h2>O que este post vai cobrir</h2><ul><li><code>package.py</code>, manifest e changelog.</li><li><code>latest.json</code>, checksum e instalador.</li><li>Upgrade, rollback e limites do pacote dentro de outro projeto.</li></ul></section>
-</article><nav class="nav"><a href="08-a-grande-virada-markdown-first.html">Anterior</a><a href="10-o-que-morreu-no-caminho.html">Próximo</a></nav></main></div></body></html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Empacotar uma teimosia | YODA Framework</title>
+  <link rel="icon" href="../assets/yoda-light.svg" type="image/svg+xml">
+  <style>
+    :root { --ink:#15181d; --muted:#606977; --paper:#f3f5f7; --panel:#fff; --line:#d7dce3; --blue:#1167d8; --blue-dark:#0b3f88; --blue-soft:#e7f0ff; --code:#101720; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:radial-gradient(circle at top left,rgba(17,103,216,.14),transparent 360px),var(--paper); color:var(--ink); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:18px; line-height:1.72; }
+    .page { width:min(820px,calc(100% - 32px)); margin:0 auto; padding:34px 0 60px; }
+    header { display:flex; justify-content:space-between; gap:18px; align-items:center; margin-bottom:54px; }
+    .brand { display:flex; gap:12px; align-items:center; color:var(--blue-dark); font-size:13px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; text-decoration:none; }
+    .brand img { width:42px; height:42px; padding:5px; border:1px solid var(--line); border-radius:8px; background:white; }
+    a { color:var(--blue); text-underline-offset:3px; }
+    .back { color:var(--muted); font-size:14px; font-weight:700; text-decoration:none; }
+    h1 { margin:0; color:var(--code); font-size:clamp(38px,7vw,68px); line-height:1.05; letter-spacing:0; }
+    h2 { margin:44px 0 18px; color:var(--code); font-size:30px; line-height:1.18; letter-spacing:0; }
+    .kicker { color:var(--blue); font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace; font-weight:800; margin-bottom:18px; }
+    .lead { color:#29313b; font-size:24px; line-height:1.45; margin:26px 0 34px; }
+    .post-cover { margin:0 0 38px; padding:10px; background:var(--panel); border:1px solid var(--line); border-radius:8px; }
+    .post-cover img { display:block; width:100%; height:auto; border-radius:6px; }
+    article p { margin:0 0 24px; }
+    code { font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace; font-size:.92em; color:var(--code); background:#e9edf2; border:1px solid var(--line); border-radius:5px; padding:.08em .32em; }
+    .callout { margin:34px 0; padding:24px; background:var(--blue-soft); border-left:6px solid var(--blue); border-radius:8px; font-size:21px; line-height:1.5; }
+    .aside { margin:34px 0; padding:22px 24px; background:var(--panel); border:1px solid var(--line); border-radius:8px; color:var(--muted); }
+    .aside strong { color:var(--blue-dark); }
+    .nav { display:flex; justify-content:space-between; gap:18px; border-top:1px solid var(--line); margin-top:44px; padding-top:24px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a class="brand" href="../index.html"><img src="../assets/yoda-light.svg" alt="">YODA Framework</a>
+      <a class="back" href="../index.html#serie">Voltar para a série</a>
+    </header>
+    <main>
+      <article>
+        <div class="kicker">Post 09</div>
+        <h1>Empacotar uma teimosia</h1>
+        <p class="lead">Uma coisa é funcionar no meu repositório. Outra é sair de casa sem quebrar a casa dos outros.</p>
+
+        <figure class="post-cover">
+          <img src="../linkedin/assets/09-capa-empacotar-teimosia.jpg" alt="Ilustração de uma esteira de empacotamento do YODA Framework com checksum, instalador e artefato distribuível" width="1735" height="906">
+        </figure>
+
+        <p>Até aqui, o YODA estava crescendo dentro do próprio repositório.</p>
+
+        <p>Isso é confortável.</p>
+
+        <p>Perigosamente confortável.</p>
+
+        <p>Porque, dentro do próprio repositório, muita coisa funciona por proximidade.</p>
+
+        <p>O arquivo está ali.</p>
+
+        <p>O script está ali.</p>
+
+        <p>A spec está ali.</p>
+
+        <p>O histórico está ali.</p>
+
+        <p>A bagunça também está ali, mas você já conhece a bagunça pelo nome.</p>
+
+        <p>É como morar sozinho: a cadeira no meio da sala não é problema, é “layout”.</p>
+
+        <p>Aí você decide que o framework precisa sair de casa.</p>
+
+        <p>E tudo muda.</p>
+
+        <p>Porque uma coisa é o YODA funcionar comigo olhando.</p>
+
+        <p>Outra é ele entrar em outro projeto e se comportar como visita educada.</p>
+
+        <h2>O pacote é onde a fantasia acaba</h2>
+
+        <p>Empacotar parece uma etapa administrativa.</p>
+
+        <p>Não é.</p>
+
+        <p>Empacotar é responder perguntas inconvenientes.</p>
+
+        <p>O que entra?</p>
+
+        <p>O que fica fora?</p>
+
+        <p>Qual é a versão?</p>
+
+        <p>Como eu sei de qual commit isso veio?</p>
+
+        <p>Como eu provo que esse arquivo não foi alterado no caminho?</p>
+
+        <p>Como instalo sem apagar dados do projeto host?</p>
+
+        <p>Como atualizo?</p>
+
+        <p>Como volto atrás se der ruim?</p>
+
+        <p>De repente, a discussão deixa de ser só processo de agente.</p>
+
+        <p>Vira distribuição.</p>
+
+        <p>E distribuição tem um talento especial para humilhar otimismo.</p>
+
+        <div class="callout">Empacotar o YODA foi transformar uma mania local em algo que sobrevive fora do meu colo.</div>
+
+        <h2>O artefato precisava ser pequeno e rastreável</h2>
+
+        <p>A primeira decisão foi dolorosamente simples:</p>
+
+        <p>o pacote não podia ser o repositório inteiro.</p>
+
+        <p>Não fazia sentido levar <code>project/specs/</code> para dentro de todo projeto consumidor.</p>
+
+        <p>Não fazia sentido levar material de bootstrap.</p>
+
+        <p>Não fazia sentido levar teste, cache, arquivo temporário, poeira histórica e lembrança emocional.</p>
+
+        <p>O pacote precisava carregar o que o projeto host precisa para usar o YODA.</p>
+
+        <p>Manual embutido.</p>
+
+        <p>Entrypoints locais para agentes.</p>
+
+        <p>Scripts.</p>
+
+        <p>Templates.</p>
+
+        <p>Licença.</p>
+
+        <p>README curto.</p>
+
+        <p>Changelog.</p>
+
+        <p>Manifest.</p>
+
+        <p>Só.</p>
+
+        <p>O resto é bastidor.</p>
+
+        <p>E bastidor não deveria cair na mochila do usuário.</p>
+
+        <h2>O package.py virou adulto responsável</h2>
+
+        <p>O <code>package.py</code> virou a fonte da verdade do empacotamento.</p>
+
+        <p>Isso foi importante.</p>
+
+        <p>Porque empacotar na mão é uma forma criativa de criar versões com personalidade própria.</p>
+
+        <p>Uma release inclui arquivo demais.</p>
+
+        <p>Outra esquece um script.</p>
+
+        <p>Outra saiu com spec interna.</p>
+
+        <p>Outra nasceu com nome parecido, mas não igual.</p>
+
+        <p>Outra tem changelog escrito no improviso porque “depois a gente arruma”.</p>
+
+        <p>Depois nunca arruma.</p>
+
+        <p>Então o pacote virou comando.</p>
+
+        <p>Determinístico.</p>
+
+        <p>Com lista de inclusão.</p>
+
+        <p>Com lista de exclusão.</p>
+
+        <p>Com <code>tar.gz</code>.</p>
+
+        <p>Com nome versionado.</p>
+
+        <p>Com build metadata.</p>
+
+        <p>Com changelog estruturado.</p>
+
+        <p>Com <code>latest.json</code> atualizado.</p>
+
+        <p>Com checksum.</p>
+
+        <p>Ou seja: menos “eu acho que gerei certo” e mais “o comando sabe o que precisa acontecer”.</p>
+
+        <h2>Manifest: o RG do pacote</h2>
+
+        <p>O manifest entrou para responder uma pergunta básica:</p>
+
+        <p>“Que pacote é esse?”</p>
+
+        <p>Versão.</p>
+
+        <p>Build.</p>
+
+        <p>Commit de origem.</p>
+
+        <p>Data de build.</p>
+
+        <p>Quem construiu.</p>
+
+        <p>Hash do pacote.</p>
+
+        <p>O que entrou.</p>
+
+        <p>O que ficou fora.</p>
+
+        <p>Isso parece burocracia.</p>
+
+        <p>Até você precisar descobrir por que dois projetos dizem estar na mesma versão, mas um deles se comporta diferente.</p>
+
+        <p>Aí o manifest deixa de ser burocracia.</p>
+
+        <p>Vira lanterna.</p>
+
+        <h2>latest.json e checksum: confiança sem teatro</h2>
+
+        <p>O <code>latest.json</code> ficou como o cartão de visita remoto do pacote.</p>
+
+        <p>Ele diz a versão.</p>
+
+        <p>Diz o build.</p>
+
+        <p>Diz a URL do artefato.</p>
+
+        <p>Diz o <code>sha256</code>.</p>
+
+        <p>O instalador usa isso para baixar e verificar.</p>
+
+        <p>Não é assinatura criptográfica sofisticada.</p>
+
+        <p>Não tenta fingir que resolveu toda a segurança do planeta.</p>
+
+        <p>Mas já impede uma classe inteira de acidentes bobos.</p>
+
+        <p>Baixou errado?</p>
+
+        <p>Corrompeu?</p>
+
+        <p>Não bateu o hash?</p>
+
+        <p>Para.</p>
+
+        <p>Isso é uma palavra pequena e maravilhosa em software:</p>
+
+        <p>para.</p>
+
+        <h2>O instalador de uma linha</h2>
+
+        <p>Instalador de uma linha é bonito.</p>
+
+        <p>Também é um pouco assustador.</p>
+
+        <p><code>curl | sh</code> é aquela coisa que todo mundo já viu, muita gente usa e quase todo mundo explica com uma tosse moral antes.</p>
+
+        <p>Por isso o YODA precisou tratar isso com honestidade.</p>
+
+        <p>Existe o caminho rápido.</p>
+
+        <p>E existe o caminho mais responsável.</p>
+
+        <p>O rápido instala a última versão pelo <code>latest.json</code>.</p>
+
+        <p>O responsável fixa a versão.</p>
+
+        <p>O manual baixa, confere checksum e instala com mais controle.</p>
+
+        <p>Não é sobre fingir que facilidade não tem risco.</p>
+
+        <p>É sobre deixar o risco visível e dar opção.</p>
+
+        <div class="aside">
+          <strong>Pequena verdade operacional:</strong> quanto mais fácil é instalar, mais importante é deixar claro o que será baixado, verificado, copiado e preservado.
+        </div>
+
+        <h2>Não quebrar a casa dos outros</h2>
+
+        <p>Essa foi a regra que mais importou.</p>
+
+        <p>O YODA é embutido dentro de outro projeto.</p>
+
+        <p>Logo, ele não é dono da casa.</p>
+
+        <p>Ele não deve sair alterando <code>README.md</code> da raiz.</p>
+
+        <p>Não deve tomar controle dos arquivos de agente do projeto host.</p>
+
+        <p>Não deve apagar issues do usuário.</p>
+
+        <p>Não deve tratar dados locais como se fossem parte descartável do pacote.</p>
+
+        <p>O pacote pode substituir framework files.</p>
+
+        <p>Scripts.</p>
+
+        <p>Templates.</p>
+
+        <p>Manual.</p>
+
+        <p>Entrypoints locais do próprio YODA.</p>
+
+        <p>Mas precisa preservar dados.</p>
+
+        <p><code>yoda/project/issues/</code>.</p>
+
+        <p><code>yoda/project/extern_issues/</code>.</p>
+
+        <p>Pastas legadas quando aplicável.</p>
+
+        <p>Esse limite mudou o tom do projeto.</p>
+
+        <p>O YODA deixou de ser um script esperto dentro do meu repo e passou a ser um hóspede com regras.</p>
+
+        <h2>Update e rollback</h2>
+
+        <p>Instalar é só o primeiro encontro.</p>
+
+        <p>O relacionamento começa no update.</p>
+
+        <p>Atualizar framework embutido é delicado porque você quer trocar o motor sem jogar fora o porta-luvas.</p>
+
+        <p>O update precisava verificar versão.</p>
+
+        <p>Baixar ou receber fonte local.</p>
+
+        <p>Validar checksum.</p>
+
+        <p>Fazer backup.</p>
+
+        <p>Substituir só arquivos do framework.</p>
+
+        <p>Preservar dados.</p>
+
+        <p>Rodar init para finalizar sync e migração.</p>
+
+        <p>E, se algo desse errado, existir uma história de volta.</p>
+
+        <p>Rollback não é pessimismo.</p>
+
+        <p>Rollback é respeito por terça-feira às 17h42.</p>
+
+        <p>Porque é exatamente nesse horário que uma atualização aparentemente simples decide testar sua humildade.</p>
+
+        <h2>Release também é fluxo</h2>
+
+        <p>O mais curioso é que empacotamento acabou virando mais um tipo de Flow.</p>
+
+        <p>Não com Study, Document, Implement, Evaluate no nome.</p>
+
+        <p>Mas com o mesmo espírito.</p>
+
+        <p>Leia o histórico.</p>
+
+        <p>Derive changelog de mudanças reais.</p>
+
+        <p>Gere o pacote.</p>
+
+        <p>Verifique o conteúdo.</p>
+
+        <p>Confirme que não levou o que não devia.</p>
+
+        <p>Confirme que levou o que precisava.</p>
+
+        <p>Atualize metadata.</p>
+
+        <p>Entregue um artefato rastreável.</p>
+
+        <p>Release sem esse cuidado vira superstição com número de versão.</p>
+
+        <p>E superstição com número de versão ainda é superstição.</p>
+
+        <h2>O que ficou dessa fase</h2>
+
+        <p>Empacotar o YODA trouxe uma lição simples:</p>
+
+        <p>um framework só começa a virar framework quando consegue sair do ambiente onde nasceu.</p>
+
+        <p>Antes disso, ele é uma idéia local com bons argumentos.</p>
+
+        <p>O pacote obrigou o projeto a separar essência de bastidor.</p>
+
+        <p>Obrigou a pensar em preservação.</p>
+
+        <p>Obrigou a pensar em integridade.</p>
+
+        <p>Obrigou a pensar em rollback.</p>
+
+        <p>Obrigou a admitir que facilidade sem cuidado é só uma forma mais rápida de criar problema.</p>
+
+        <p>No próximo post, a gente visita o cemitério técnico.</p>
+
+        <p>As coisas que pareciam boas.</p>
+
+        <p>As idéias que nasceram com confiança.</p>
+
+        <p>E os conceitos que morreram no caminho porque, felizmente, o projeto ficou mais honesto do que a primeira versão da minha cabeça.</p>
+      </article>
+      <nav class="nav">
+        <a href="08-a-grande-virada-markdown-first.html">Anterior</a>
+        <a href="10-o-que-morreu-no-caminho.html">Próximo</a>
+      </nav>
+    </main>
+  </div>
+</body>
+</html>
