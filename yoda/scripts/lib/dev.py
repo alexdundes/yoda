@@ -10,6 +10,7 @@ def resolve_dev(explicit_dev: str | None) -> str:
     if value:
         return value
     raise YodaError(
-        "--dev is required. Ask the human for the developer slug and rerun the command with --dev <slug>.",
+        "--dev is required. Ask the human for the developer slug and rerun the command with "
+        "--dev <developer-slug>.",
         exit_code=ExitCode.VALIDATION,
     )

@@ -20,7 +20,7 @@ Define behavior for `yoda_flow_next.py`, the deterministic YODA Flow driver in 0
 
 ## Inputs
 
-- `--dev <slug>` (required)
+- `--dev <developer-slug>` (required)
 - `--log-message "<summary>"` (optional)
 - shared global flags
 

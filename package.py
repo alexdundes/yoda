@@ -120,11 +120,11 @@ Goal:
    - SemVer rules: breaking=MAJOR, additive=MINOR, fixes=PATCH.
 
 7) Validate content with dry-run:
-   - python3 package.py --dev <slug> --next-version <semver> --summary "<summary>" --dry-run
+   - python3 package.py --dev <developer-slug> --next-version <semver> --summary "<summary>" --dry-run
    - Confirm only allowed files are included and excluded paths are absent.
 
 8) Build the final archive:
-   - python3 package.py --dev <slug> --next-version <semver> --summary "<summary>" --dir dist
+   - python3 package.py --dev <developer-slug> --next-version <semver> --summary "<summary>" --dir dist
    - Output folder: dist/
    - Output file: dist/yoda-framework-<semver+build>.tar.gz
 

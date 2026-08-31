@@ -53,7 +53,7 @@ def _missing_dev_runbook() -> str:
         "1. Ask the human exactly: **What is your YODA slug?**",
         "2. After receiving the slug, run:",
     ]
-    lines.extend(_cmd_block("python3 yoda/scripts/yoda_intake.py --dev <slug>"))
+    lines.extend(_cmd_block("python3 yoda/scripts/yoda_intake.py --dev <developer-slug>"))
     lines.extend(["", "Do not continue Intake until the developer slug is defined."])
     return "\n".join(lines)
 
@@ -73,7 +73,7 @@ def _full_runbook(dev: str, external: bool, external_file: str | None = None) ->
             f"Developer: `{dev}`",
             "",
             f"1. Read external source details from `{file_hint}` to help the human define local micro issues.",
-            "2. Review current backlog with `todo_list.py --dev <DEV>` to know what is already covered.",
+            "2. Review current backlog with `todo_list.py --dev <developer-slug>` to know what is already covered.",
             "3. Deliver a short summary of step 1, point out what is already covered in step 2, then ask the human what they want to execute now.",
             "4. Translate human demand into structured issue content (Summary/Context/Objective/Scope/AC).",
             "5. Create issue(s) with `issue_add.py` and complete issue markdown sections.",
@@ -93,7 +93,7 @@ def _full_runbook(dev: str, external: bool, external_file: str | None = None) ->
             "",
             f"Developer: `{dev}`",
             "",
-            "1. Review current backlog with `todo_list.py --dev <DEV>` to know what is already covered.",
+            "1. Review current backlog with `todo_list.py --dev <developer-slug>` to know what is already covered.",
             "2. Translate human demand into structured issue content (Summary/Context/Objective/Scope/AC).",
             "3. Create issue(s) with `issue_add.py` and complete issue markdown sections.",
             "4. Before creating issues, run this command to review usage details:",

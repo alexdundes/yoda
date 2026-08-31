@@ -34,8 +34,8 @@ Agent tools do not agree on which file to read (`AGENTS.md`, `GEMINI.md`, etc.).
      during Intake.
 3) Agent reads the relevant YODA-local entry file (`yoda/AGENTS.md`, `yoda/GEMINI.md`, or `yoda/CLAUDE.md`) when available, then reads `yoda/yoda.md`.
 4) Agent resolves the developer slug in this order:
-   - --dev `<slug>` flag
+   - `--dev <developer-slug>` flag
    - Ask the user when `--dev` is missing
    - Slug format: lowercase ASCII, digits, and hyphens only; must start with a letter; no spaces.
-5) Agent executes `yoda/scripts/yoda_flow_next.py --dev <slug>` to select/resume the deterministic issue from markdown index (`yoda/project/issues/<dev>-<NNNN>-<slug>.md`) and follow the returned runbook.
+5) Agent executes `yoda/scripts/yoda_flow_next.py --dev <developer-slug>` to select/resume the deterministic issue from markdown index (`yoda/project/issues/<dev>-<NNNN>-<slug>.md`) and follow the returned runbook.
    - If no selectable issue exists, the script returns blocker guidance and the agent must ask for resolution/next action.

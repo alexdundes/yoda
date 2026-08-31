@@ -3,6 +3,22 @@ from __future__ import annotations
 from conftest import run_script
 
 
+SHARED_DEV_COMMANDS = [
+    "get_extern_issue.py",
+    "init.py",
+    "issue_add.py",
+    "log_add.py",
+    "todo_list.py",
+    "todo_next.py",
+    "todo_update.py",
+    "update.py",
+    "yoda_flow_next.py",
+    "yoda_prep_flow.py",
+    "yoda_intake.py",
+    "package.py",
+]
+
+
 def test_help_contains_agent_guidance_for_all_scripts() -> None:
     scripts = [
         "get_extern_issue.py",
@@ -45,6 +61,19 @@ def test_help_carries_the_agent_output_rule_for_every_command() -> None:
         assert "Agent output rule:" in result.stdout, script
         assert "Follow the runbook this command returns" in result.stdout, script
         assert "Never discard, silence, or redirect this output" in result.stdout, script
+
+
+def test_shared_dev_help_is_explicit_for_all_twelve_commands() -> None:
+    for script in SHARED_DEV_COMMANDS:
+        result = run_script(script, ["--help"])
+        assert result.returncode == 0, f"{script}: {result.stderr}"
+        help_text = " ".join(result.stdout.split())
+        assert "--dev <developer-slug>" in help_text, script
+        assert "--dev <slug>" not in help_text, script
+        assert "Developer namespace: lowercase ASCII letters" in help_text, script
+        assert "digits, and hyphens" in help_text, script
+        assert "must start with a letter" in help_text, script
+        assert "example: mynick" in help_text, script
 
 
 def test_yoda_flow_next_help_states_the_phase_boundary() -> None:

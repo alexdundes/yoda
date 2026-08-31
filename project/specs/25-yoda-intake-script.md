@@ -25,7 +25,7 @@ Out of scope:
 The script follows the global CLI contract in `project/specs/13-yoda-scripts-v1.md`.
 
 Inputs:
-- `--dev <slug>`
+- `--dev <developer-slug>`
 - `--extern-issue <NNN>` (optional; mutually exclusive with `--no-extern-issue`)
 - `--no-extern-issue` (optional; mutually exclusive with `--extern-issue`)
 

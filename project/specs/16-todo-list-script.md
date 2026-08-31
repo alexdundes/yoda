@@ -26,7 +26,7 @@ Out of scope:
 The script follows the global CLI contract in `project/specs/13-yoda-scripts-v1.md`.
 
 Optional inputs:
-- `--dev <slug>`
+- `--dev <developer-slug>`
 - `--status <csv>`: filter by status (comma-separated).
 - `--priority-min <n>`: minimum priority (0..10).
 - `--priority-max <n>`: maximum priority (0..10).
@@ -48,7 +48,7 @@ Global flags:
 ## Behavior
 
 1) Resolve developer slug from `--dev`.
-   - If missing, return guidance instructing the agent to ask the human for the slug and rerun with `--dev <slug>`.
+   - If missing, return guidance instructing the agent to ask the human for the developer slug and rerun with `--dev <developer-slug>`.
 2) Load markdown issue index for `<dev>` from `yoda/project/issues/`.
 3) Validate per-issue metadata/schema. If validation fails, exit with code 2.
 4) Apply filters (see Filters).

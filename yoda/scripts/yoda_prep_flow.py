@@ -168,7 +168,8 @@ def main() -> int:
         dev = (args.dev or "").strip()
         if not dev:
             raise YodaError(
-                "--dev is required. Use the developer slug prefix from issue filenames <dev>-<NNNN>-<slug>.md.",
+                "--dev is required. Use the <developer-slug> prefix from issue filenames "
+                "<dev>-<NNNN>-<slug>.md.",
                 exit_code=ExitCode.VALIDATION,
             )
         validate_slug(dev)

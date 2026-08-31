@@ -15,13 +15,14 @@ DRY_RUN=0
 
 usage() {
   cat <<'USAGE'
-Usage: yoda-install.sh [--version <semver+build>] [--root <path>] [--source <url|path>] [--dev <slug>] [--dry-run]
+Usage: yoda-install.sh [--version <semver+build>] [--root <path>] [--source <url|path>] [--dev <developer-slug>] [--dry-run]
 
 Options:
   --version   Expected version (defaults to latest.json version+build).
   --root      Project root to install into (default: current directory).
   --source    Override package_url with a URL or local tar.gz path.
-  --dev       Developer slug to run init after install.
+  --dev       Developer namespace for init: lowercase ASCII letters, digits, and hyphens;
+              must start with a letter (example: mynick).
   --dry-run   Show planned actions without writing to the project root.
 USAGE
 }

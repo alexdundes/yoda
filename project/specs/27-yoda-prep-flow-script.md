@@ -8,13 +8,13 @@ one explicit issue without entering Implement or Evaluate.
 ## Location and entry
 
 - Script path: `yoda/scripts/yoda_prep_flow.py`
-- Invocation: `python3 yoda/scripts/yoda_prep_flow.py --dev <slug> --issue <id>`
+- Invocation: `python3 yoda/scripts/yoda_prep_flow.py --dev <developer-slug> --issue <id>`
 - YODA Prep Flow MUST be entered only from explicit human intent.
 - Agents MUST read the command `--help` before using the flow.
 
 ## Inputs
 
-- `--dev <slug>` (required)
+- `--dev <developer-slug>` (required)
 - `--issue <dev-NNNN>` (required)
 - shared `--format md|json`, `--json`, `--dry-run`, and `--verbose` flags
 

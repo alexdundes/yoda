@@ -12,7 +12,16 @@ All scripts follow shared flags:
 
 Developer slug contract:
 - `--dev` is the single source of developer slug for YODA commands.
-- Missing `--dev` MUST return guidance instructing the agent to ask the human for the slug.
+- The developer slug is a stable namespace used as the issue ID prefix.
+- Accepted format is lowercase ASCII letters, digits, and hyphens, beginning
+  with a letter; `mynick` is a valid example.
+- Shared CLI help MUST render `--dev <developer-slug>` and include both the
+  accepted format and example.
+- `<developer-slug>` is a placeholder to replace; angle brackets are not part
+  of the value. It is distinct from `<slug>`, which denotes the title-derived
+  suffix in an issue filename.
+- Missing `--dev` MUST return guidance instructing the agent to ask the human
+  for the developer slug and rerun with `--dev <developer-slug>`.
 - Exception: `update.py` may run without `--dev`.
 
 Help guidance contract:

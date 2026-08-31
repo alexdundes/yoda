@@ -40,7 +40,7 @@ Optional inputs:
 - `--extern-issue <NNN>`: generate `extern_issue_file` pointing to `../extern_issues/<provider>-<NNN>.json`.
 
 Global flags:
-- `--dev <slug>`
+- `--dev <developer-slug>`
 - `--format md|json`
 - `--json`
 - `--dry-run`
@@ -69,7 +69,7 @@ Global flags:
 ## Behavior
 
 1) Resolve developer slug from `--dev`.
-   - If missing, return guidance instructing the agent to ask the human for the slug and rerun with `--dev <slug>`.
+   - If missing, return guidance instructing the agent to ask the human for the developer slug and rerun with `--dev <developer-slug>`.
 2) Acquire an external lock file scoped by `--dev` before reading/writing issue artifacts.
    - Retry lock acquisition up to 3 attempts with increasing wait between attempts.
    - If lock acquisition fails after retries, exit with code 4 and an explicit message.

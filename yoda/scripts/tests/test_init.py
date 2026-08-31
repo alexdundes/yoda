@@ -16,6 +16,18 @@ def _seed_manual(root: Path) -> None:
     manual.write_text("# Manual\n", encoding="utf-8")
 
 
+def test_init_help_explains_first_use_flags() -> None:
+    result = run_script("init.py", ["--help"])
+    assert result.returncode == 0, result.stderr
+    help_text = " ".join(result.stdout.split())
+    assert "--root" in help_text
+    assert "default: current directory" in help_text
+    assert "--reconcile-layout" in help_text
+    assert "Advanced migration/reconciliation" in help_text
+    assert "touch Markdown files under the project root" in help_text
+    assert "not needed for first use" in help_text
+
+
 def test_init_creates_structure_without_todo_file(tmp_path: Path) -> None:
     _seed_manual(tmp_path)
     result = run_script("init.py", ["--dev", TEST_DEV, "--root", str(tmp_path)])

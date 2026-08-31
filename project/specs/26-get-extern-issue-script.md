@@ -28,7 +28,7 @@ Out of scope:
 The script follows the global CLI contract in `project/specs/13-yoda-scripts-v1.md`.
 
 Required inputs:
-- `--dev <slug>`
+- `--dev <developer-slug>`
 - `--extern-issue <NNN>`
 
 Global flags:
@@ -69,7 +69,7 @@ Global flags:
 9) Report transport as `authenticated-cli` or `public-http` in command output,
    but do not add transport metadata to the stored external-issue JSON.
 10) Output one explicit continuation command:
-   - `python3 yoda/scripts/yoda_intake.py --dev <slug> --extern-issue <NNN>`
+   - `python3 yoda/scripts/yoda_intake.py --dev <developer-slug> --extern-issue <NNN>`
 
 For GitHub timeline collection, failure of the timeline endpoint may fall back
 to the events endpoint only when that endpoint is specifically unavailable.

@@ -9,7 +9,7 @@ Define deterministic agent behavior for YODA Flow and YODA Intake.
 When human intent is to start YODA Flow:
 
 1) Resolve developer slug.
-2) Run `python3 yoda/scripts/yoda_flow_next.py --dev <slug>` to enter the phase
+2) Run `python3 yoda/scripts/yoda_flow_next.py --dev <developer-slug>` to enter the phase
    before doing any of its work.
 3) Present returned issue context and `runbook_line`.
 4) Execute only that phase, present its deliverable, and stop.
@@ -32,7 +32,7 @@ silence, or redirect the output of a YODA command.
 When human intent explicitly names YODA Prep Flow:
 
 1) Read `python3 yoda/scripts/yoda_prep_flow.py --help`.
-2) Run it with `--dev <slug> --issue <id>`.
+2) Run it with `--dev <developer-slug> --issue <id>`.
 3) Execute only the returned Study or Document instruction.
 4) Wait for explicit human authorization before the next prep step.
 5) Do not implement while operating YODA Prep Flow.

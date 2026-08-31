@@ -304,12 +304,14 @@ def main() -> int:
         + AGENT_OUTPUT_RULE,
     )
     add_global_flags(parser)
-    parser.add_argument("--root", help="Project root to initialize (default: cwd)")
-    parser.add_argument("--force", action="store_true", help="Overwrite existing files")
+    parser.add_argument("--root", help="Project root to initialize (default: current directory)")
     parser.add_argument(
         "--reconcile-layout",
         action="store_true",
-        help="Touch markdown files and reconcile TODO/issues front matter to current schema",
+        help=(
+            "Advanced migration/reconciliation: touch Markdown files under the project root "
+            "and reconcile legacy TODO/issues metadata; not needed for first use"
+        ),
     )
 
     args = parser.parse_args()

@@ -57,7 +57,7 @@ this order:
 YODA Prep Flow is an explicit alternative for preparing one issue through
 Study and Document without entering implementation:
 
-- entrypoint: `yoda_prep_flow.py --dev <slug> --issue <id>`
+- entrypoint: `yoda_prep_flow.py --dev <developer-slug> --issue <id>`
 - operates on the explicit issue, independent of backlog order/dependencies
 - advances one preparation stage per human interaction:
   `none -> study -> document`; each stage requires explicit human

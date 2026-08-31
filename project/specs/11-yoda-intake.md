@@ -23,7 +23,7 @@ Examples (translate to the human's language if needed):
 ## Cycle steps
 
 1) **Start via script**
-   - Call `yoda_intake.py --dev <slug>` when entering Intake.
+   - Call `yoda_intake.py --dev <developer-slug>` when entering Intake.
    - Follow the returned initial runbook to decide:
      - external issue path (`--extern-issue <NNN>`)
      - no external issue path (`--no-extern-issue`)
@@ -86,9 +86,9 @@ Invalid exception example:
 > This issue is very important to the project.
 
 External source path (when `--extern-issue <NNN>` is used):
-- Ask the human to run `get_extern_issue.py --dev <slug> --extern-issue <NNN>`.
+- Ask the human to run `get_extern_issue.py --dev <developer-slug> --extern-issue <NNN>`.
 - `get_extern_issue.py` stores source data at `yoda/project/extern_issues/<provider>-<NNN>.json`.
-- Re-run `yoda_intake.py --dev <slug> --extern-issue <NNN>` to continue with local source file.
+- Re-run `yoda_intake.py --dev <developer-slug> --extern-issue <NNN>` to continue with local source file.
 - Associate commits with external issue using `#NNN` only; do not auto-close external issues.
 
 External log usage (from `extern_issues/<provider>-<NNN>.json`):

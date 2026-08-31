@@ -677,6 +677,36 @@
           </p>
         </div>
         <pre class="install"><code>curl -fsSL https://alexdundes.github.io/yoda/install/yoda-install.sh | sh -s -- --root .</code></pre>
+
+        <div class="story">
+          <h3>Primeira execução</h3>
+          <p>
+            Antes do init, escolha seu <strong>developer slug</strong>: um
+            identificador curto e estável que vira o prefixo das suas issues,
+            como <code>mynick-0001</code>. Use letras ASCII minúsculas, números
+            e hífens, começando por uma letra. Exemplos válidos:
+            <code>mynick</code>, <code>fernando</code> e
+            <code>time-backend</code>. Exemplos inválidos:
+            <code>MeuNick</code>, <code>123fernando</code> e
+            <code>fernando_silva</code>.
+          </p>
+          <p>
+            Nos comandos da documentação, texto entre <code>&lt;...&gt;</code> é
+            um placeholder a substituir; os sinais não devem ser digitados.
+            O comando abaixo é concreto: troque <code>mynick</code> pelo seu
+            developer slug e reutilize o mesmo valor depois. O
+            <code>--root .</code> indica o diretório atual.
+          </p>
+        </div>
+        <pre class="install"><code>python3 yoda/scripts/init.py --dev mynick --root .</code></pre>
+        <div class="story">
+          <p>
+            Confira na saída os diretórios e arquivos criados, migrados,
+            reconciliados ou ignorados. Depois, inicie o YODA Intake para criar
+            a primeira issue:
+          </p>
+        </div>
+        <pre class="install"><code>python3 yoda/scripts/yoda_intake.py --dev mynick</code></pre>
       </section>
     </main>
 

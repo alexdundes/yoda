@@ -29,7 +29,14 @@ INTAKE_PRIORITY_GUIDANCE = (
 
 
 def add_global_flags(parser: argparse.ArgumentParser) -> None:
-    parser.add_argument("--dev", help="Developer slug")
+    parser.add_argument(
+        "--dev",
+        metavar="<developer-slug>",
+        help=(
+            "Developer namespace: lowercase ASCII letters, digits, and hyphens; "
+            "must start with a letter (example: mynick)"
+        ),
+    )
     parser.add_argument("--format", choices=["md", "json"], default="md")
     parser.add_argument("--json", action="store_true", help="Shorthand for --format json")
     parser.add_argument("--dry-run", action="store_true", help="Simulate changes")

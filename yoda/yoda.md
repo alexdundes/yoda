@@ -13,12 +13,18 @@ Use script runbooks as the source of truth for operational details.
 
 1. Read the YODA-local agent entry file when present (`yoda/AGENTS.md`, `yoda/GEMINI.md`, or `yoda/CLAUDE.md`).
 2. Read this file (`yoda/yoda.md`).
-3. Resolve developer slug from `--dev`; if missing, ask human and rerun with `--dev <slug>`.
+3. Resolve developer slug from `--dev`; if missing, ask human and rerun with
+   `--dev <developer-slug>`.
 
 ## Developer slug
 
 - Required by YODA scripts.
-- Format: lowercase ASCII, digits, hyphens; must start with a letter.
+- Stable namespace used as the issue ID prefix (`mynick` -> `mynick-0001`).
+- Format: lowercase ASCII letters, digits, and hyphens; must start with a letter.
+- Valid examples: `mynick`, `fernando`, `time-backend`.
+- Invalid examples: `MeuNick`, `123fernando`, `fernando_silva`.
+- `<developer-slug>` is a placeholder to replace; do not type the angle brackets.
+- Reuse the same developer slug in later YODA commands.
 
 ## Source of truth
 
@@ -41,7 +47,7 @@ for know runbook: read `python3 yoda/scripts/yoda_flow_next.py --help`
 
 Entry:
 1. Confirm the human intent includes entering YODA Flow.
-2. Run `python3 yoda/scripts/yoda_flow_next.py --dev <slug>`.
+2. Run `python3 yoda/scripts/yoda_flow_next.py --dev <developer-slug>`.
 3. Present the returned runbook to the human, then execute that phase only.
 
 Execution phases:
@@ -111,7 +117,7 @@ python3 yoda/scripts/yoda_prep_flow.py --help
 
 Entry:
 1. Confirm the human intent includes entering YODA Prep Flow.
-2. Run `python3 yoda/scripts/yoda_prep_flow.py --dev <slug> --issue <id>`.
+2. Run `python3 yoda/scripts/yoda_prep_flow.py --dev <developer-slug> --issue <id>`.
 3. Follow the returned runbook for the selected prep step.
 
 Prep policy:
@@ -125,14 +131,14 @@ Entry:
 1. Confirm the human intent includes entering YODA Intake.
 2. Run:
 ```bash
-python3 yoda/scripts/yoda_intake.py --dev <slug>
+python3 yoda/scripts/yoda_intake.py --dev <developer-slug>
 ```
 3. Follow the returned runbook exactly.
 
 External source path:
 1. If the runbook indicates external issue intake, ask the human to run:
 ```bash
-python3 yoda/scripts/get_extern_issue.py --dev <slug> --extern-issue <NNN>
+python3 yoda/scripts/get_extern_issue.py --dev <developer-slug> --extern-issue <NNN>
 ```
 2. Expect the collector to prefer the authenticated provider CLI. For public
    `github.com` issues it falls back to unauthenticated HTTP when `gh` is absent
@@ -142,13 +148,13 @@ python3 yoda/scripts/get_extern_issue.py --dev <slug> --extern-issue <NNN>
    external issue JSON remains transport-independent.
 4. After the JSON file is created in `yoda/project/extern_issues/`, run:
 ```bash
-python3 yoda/scripts/yoda_intake.py --dev <slug> --extern-issue <NNN>
+python3 yoda/scripts/yoda_intake.py --dev <developer-slug> --extern-issue <NNN>
 ```
 5. Follow the returned runbook and use the referenced JSON file as the external source.
 
 No external source path:
 ```bash
-python3 yoda/scripts/yoda_intake.py --dev <slug> --no-extern-issue
+python3 yoda/scripts/yoda_intake.py --dev <developer-slug> --no-extern-issue
 ```
 
 Intake policy:

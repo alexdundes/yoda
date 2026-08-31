@@ -78,7 +78,7 @@ Recommended dependencies for v1:
 - Each script MUST expose a `main()` entrypoint.
 - Use `argparse` for CLI parsing.
 - Global flags are defined once in `yoda/scripts/lib/cli.py` and reused:
-  - `--dev <slug>`
+  - `--dev <developer-slug>`
   - `--format md|json`
   - `--json`
   - `--dry-run`

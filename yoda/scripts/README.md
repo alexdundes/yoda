@@ -13,6 +13,11 @@ by the command.
 - Exception: `update.py` may run without `--dev`.
 - `yoda_flow_next.py` is the primary YODA Flow command.
 
+`--dev` receives a developer slug: a stable namespace used as the issue ID
+prefix. Use lowercase ASCII letters, digits, and hyphens, beginning with a
+letter (example: `mynick`). In command examples, `<developer-slug>` is a
+placeholder to replace; do not type the angle brackets.
+
 ## Quickstart
 
 ```bash
@@ -70,11 +75,14 @@ exist.
 host-root agent or intent files.
 
 ```bash
-python yoda/scripts/init.py --dev <slug>
-python yoda/scripts/init.py --dev <slug> --root /path/to/project --dry-run
-python yoda/scripts/init.py --dev <slug> --force
-python yoda/scripts/init.py --dev <slug> --reconcile-layout
+python yoda/scripts/init.py --dev <developer-slug>
+python yoda/scripts/init.py --dev <developer-slug> --root /path/to/project --dry-run
+python yoda/scripts/init.py --dev <developer-slug> --reconcile-layout
 ```
+
+Normal first use does not need `--reconcile-layout`. That option is an advanced
+migration operation that touches Markdown files under the project root and
+reconciles legacy TODO/issue metadata.
 
 ## Issue front matter (canonical order)
 

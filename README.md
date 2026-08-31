@@ -21,6 +21,23 @@ Visit the [YODA Framework site](https://alexdundes.github.io/yoda/) for the
 published guide and project story. The site is maintained from this
 repository's `docs/` directory.
 
+## Command placeholders
+
+Text inside angle brackets, such as `<semver+build>` or `<target>`, is a
+placeholder that must be replaced. Do not type the `<` and `>` characters.
+
+## Choose your developer slug
+
+The **developer slug** is a short, stable namespace used as the prefix of your
+YODA issue IDs. For example, the developer slug `mynick` produces issue IDs
+such as `mynick-0001`. Reuse the same value in later YODA commands.
+
+Use lowercase ASCII letters, digits, and hyphens, and start with a letter.
+
+- Valid: `mynick`, `fernando`, `time-backend`
+- Invalid: `MeuNick` (uppercase), `123fernando` (starts with a digit),
+  `fernando_silva` (underscore)
+
 ## Quick install (one-liner)
 This is the fastest path, but it executes a remote script directly. Use it only if you trust the source.
 
@@ -49,11 +66,33 @@ tar -xzf yoda-framework-<semver+build>.tar.gz -C <target>
 4) Copy the `yoda/` subtree into the project root (preserve `yoda/project/issues/` and `yoda/project/extern_issues/` if already present).
 5) Run init:
 ```bash
-python yoda/scripts/init.py --dev <slug> --root .
+python3 yoda/scripts/init.py --dev mynick --root .
 ```
 
+`mynick` is a concrete example: replace it with your chosen developer slug.
+`--root .` initializes the current directory.
+
 ## First run / Init
-`init` creates/reconciles YODA-managed structure under `yoda/` and does not create or edit host-project agent files such as `AGENTS.md`, `GEMINI.md`, `CLAUDE.md`, `REPO_INTENT.md`, or `repo.intent.yaml`. Host projects may point their own agent files to `yoda/yoda.md` manually.
+
+The minimal first-run flow is:
+
+1. Install or extract YODA into the project.
+2. Choose and remember your developer slug.
+3. Run `python3 yoda/scripts/init.py --dev mynick --root .`, replacing
+   `mynick` with your value.
+4. Review the reported directories and files created, migrated, reconciled, or
+   skipped.
+5. Start YODA Intake to create the first issue:
+
+```bash
+python3 yoda/scripts/yoda_intake.py --dev mynick
+```
+
+`init` creates or reconciles YODA-managed structure and compatible metadata
+under `yoda/`. It does not create or edit host-project agent files such as
+`AGENTS.md`, `GEMINI.md`, `CLAUDE.md`, `REPO_INTENT.md`, or
+`repo.intent.yaml`. Host projects may point their own agent files to
+`yoda/yoda.md` manually.
 
 ## What's inside
 - `yoda/yoda.md` (embedded manual)
