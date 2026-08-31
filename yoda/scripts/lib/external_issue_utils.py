@@ -6,10 +6,17 @@ import os
 import re
 import shutil
 import subprocess
+from dataclasses import dataclass
 from pathlib import Path
 
 from .errors import ExitCode, YodaError
 from .paths import repo_root
+
+
+@dataclass(frozen=True)
+class CliAuthState:
+    ready: bool
+    error: YodaError | None = None
 
 
 def parse_origin(origin_url: str) -> tuple[str, str]:
@@ -59,7 +66,7 @@ def detect_origin_url() -> str:
     return result.stdout.strip()
 
 
-def ensure_cli_and_auth(provider: str) -> None:
+def check_cli_and_auth(provider: str) -> CliAuthState:
     cli = "glab" if provider == "gitlab" else "gh"
     if shutil.which(cli) is None:
         install = (
@@ -67,20 +74,32 @@ def ensure_cli_and_auth(provider: str) -> None:
             if provider == "gitlab"
             else "Install GitHub CLI (gh): https://cli.github.com/"
         )
-        raise YodaError(
-            f"Required CLI '{cli}' is not installed.\n{install}",
-            exit_code=ExitCode.NOT_FOUND,
+        return CliAuthState(
+            ready=False,
+            error=YodaError(
+                f"Required CLI '{cli}' is not installed.\n{install}",
+                exit_code=ExitCode.NOT_FOUND,
+            ),
         )
 
     auth_cmd = [cli, "auth", "status"]
     auth_result = subprocess.run(auth_cmd, capture_output=True, text=True)
     if auth_result.returncode != 0:
         hint = "Run: glab auth login" if provider == "gitlab" else "Run: gh auth login"
-        stderr = auth_result.stderr.strip() or auth_result.stdout.strip() or "authentication failed"
-        raise YodaError(
-            f"{cli} authentication is not ready: {stderr}\n{hint}",
-            exit_code=ExitCode.NOT_FOUND,
+        return CliAuthState(
+            ready=False,
+            error=YodaError(
+                f"{cli} authentication is not ready.\n{hint}",
+                exit_code=ExitCode.NOT_FOUND,
+            ),
         )
+    return CliAuthState(ready=True)
+
+
+def ensure_cli_and_auth(provider: str) -> None:
+    state = check_cli_and_auth(provider)
+    if state.error is not None:
+        raise state.error
 
 
 def extern_issue_dir() -> Path:

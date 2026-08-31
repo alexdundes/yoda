@@ -134,11 +134,17 @@ External source path:
 ```bash
 python3 yoda/scripts/get_extern_issue.py --dev <slug> --extern-issue <NNN>
 ```
-2. After the JSON file is created in `yoda/project/extern_issues/`, run:
+2. Expect the collector to prefer the authenticated provider CLI. For public
+   `github.com` issues it falls back to unauthenticated HTTP when `gh` is absent
+   or authentication is unavailable. Private repositories, GitHub Enterprise,
+   and GitLab continue to require their authenticated CLI.
+3. Read the reported `authenticated-cli` or `public-http` transport. The stored
+   external issue JSON remains transport-independent.
+4. After the JSON file is created in `yoda/project/extern_issues/`, run:
 ```bash
 python3 yoda/scripts/yoda_intake.py --dev <slug> --extern-issue <NNN>
 ```
-3. Follow the returned runbook and use the referenced JSON file as the external source.
+5. Follow the returned runbook and use the referenced JSON file as the external source.
 
 No external source path:
 ```bash

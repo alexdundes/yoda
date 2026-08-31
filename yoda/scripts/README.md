@@ -37,6 +37,19 @@ python yoda/scripts/log_add.py --dev dev --issue dev-0001 --message "Additional 
 - Manual semantic/process adjustments: `todo_update.py`
 - Exceptional manual logging: `log_add.py`
 
+### External issue collection
+
+`get_extern_issue.py` prefers the authenticated provider CLI. When the origin
+is `github.com`, a public issue is fetched through unauthenticated HTTP if `gh`
+is missing or its authentication is unavailable. Private repositories, GitHub
+Enterprise, and GitLab still require valid CLI authentication.
+
+The command reports `authenticated-cli` or `public-http`; this operational
+detail is not written into the external issue JSON consumed by Intake. Public
+GitHub access has a lower rate limit, and an ambiguous access/404 error directs
+the operator to `gh auth login` rather than asserting that the issue does not
+exist.
+
 ## Init in a host project
 
 `init.py` manages YODA-owned structure under `yoda/`; it does not create or edit
