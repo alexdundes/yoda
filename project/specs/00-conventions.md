@@ -28,6 +28,18 @@ Keywords are interpreted as RFC 2119:
 - For execution in YODA Flow, the issue Markdown file is the source of truth.
 - If template text conflicts with specs, specs MUST win.
 
+## Independence and self-containment
+
+- `project/specs/` is a portable unit: a normative rule MUST be interpretable
+  from the specification set alone, without an issue backlog, Flow logs, or Git
+  history.
+- A concrete issue identifier, an issue file link, or a commit MUST NOT be used
+  as normative authority; the rule and its rationale belong in the spec.
+- Generic references to the issue model the product implements, such as
+  `yoda/project/issues/<dev>-<NNNN>-<slug>.md`, remain part of the contract.
+- Traceability runs `issue -> spec`, never `spec -> issue`.
+- Full rules in `project/specs/28-spec-independence-and-portability.md`.
+
 ## Terminology
 
 - Primary name: "YODA Framework" ("YODA" allowed after first mention).

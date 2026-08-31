@@ -90,6 +90,26 @@ For embedded projects, the operational source of truth is inside the package:
 issue Markdown under `yoda/project/issues/`, the embedded manual at
 `yoda/yoda.md`, and the runbooks printed by `yoda/scripts/*.py --help`.
 
+## Test suites (development repository)
+Two suites, each with its own scope:
+
+```bash
+python3 -m pytest yoda/scripts/tests
+```
+
+Validates the product: scripts, flow transitions, issue index, packaging, and
+CLI contracts. This suite ships with the source tree but is excluded from the
+distribution package.
+
+```bash
+python3 -m pytest project/tests
+```
+
+Validates the boundary between this repository and the distributed product:
+that the specification set stays portable and free of references to the
+development history, and that the package neither ships nor needs it. This
+suite exists only in the development repository.
+
 ## Where to read more
 - `yoda/yoda.md` for the embedded manual
 - `yoda/scripts/README.md` for script usage

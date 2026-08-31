@@ -53,8 +53,11 @@ Scripts that mutate metadata MUST validate:
 - `created_at` and `updated_at` require ISO 8601 with an explicit timezone.
 - `pending` requires a non-empty `pending_reason`.
 - `flow_prepared_until` accepts only `study` or `document`.
-- By explicit yoda-0049 decisions, `phase` outside `doing` is ignored and a
-  missing dependency target is treated as resolved.
+- `phase` outside `doing` is ignored rather than rejected, because a stale phase
+  value carries no meaning once the issue left `doing`.
+- A missing dependency target is treated as resolved, so that a backlog migrated
+  from an earlier layout, or one whose dependency lies outside the loaded index,
+  stays operable instead of blocking every dependent issue.
 - Index loading is fail-fast: one invalid issue prevents `todo_list.py`,
   `todo_next.py`, and `yoda_flow_next.py` from operating for that developer.
 - Remediation: set a missing pending reason with `todo_update.py --status

@@ -119,10 +119,9 @@ final archive consumed by installer/update.
   when the target changes the SemVer MAJOR or is older than the installed
   version/build.
 
-Classification recorded by yoda-0064: this was `implementation drift`, not a
-stale normative rule. The compatibility warning requirement introduced by
-[yoda-0016](../../yoda/project/issues/yoda-0016-specs-empacotamento-e-distribui-o-do-yoda-framework.md)
-is retained and enforced by `update.py`.
+The warnings are non-blocking on purpose: a MAJOR change may require manual
+steps and a downgrade may be deliberate, so the operator MUST be informed
+without having the operation refused.
 
 ## Non-goals
 - UX details of the CLIs (handled in implementation issues).
@@ -130,4 +129,5 @@ is retained and enforced by `update.py`.
 
 ## Cross-references
 - Keep cross-references updated in relevant specs that cite this document.
-- Related issues: yoda-0016 (this spec), yoda-0018 (package command), yoda-0019 (init command), yoda-0020 (install/upgrade/rollback).
+- Related specs: `project/specs/24-installation-and-upgrade.md` (install, update,
+  and rollback) and `project/specs/22-out-of-scope.md` (distribution boundary).

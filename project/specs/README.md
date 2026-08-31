@@ -31,6 +31,7 @@ This README indexes the current specification set.
 25. `yoda_intake.py` specification
 26. `get_extern_issue.py` specification
 27. `yoda_prep_flow.py` specification
+28. Spec independence and portability
 
 ## Notes
 
