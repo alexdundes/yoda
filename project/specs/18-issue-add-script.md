@@ -35,7 +35,8 @@ Required inputs:
 Optional inputs:
 - `--summary <text>`: alias for description (if provided, it overrides `--description`).
 - `--slug <slug>`: explicit slug for the issue. If omitted, the slug is generated from the title.
-- `--priority <0..10>`: integer priority (default 5 baseline).
+- `--priority <0..10>`: optional integer priority. Omit it for the normal
+  baseline `5`; provide it only for a justified exception to natural order.
 - `--extern-issue <NNN>`: generate `extern_issue_file` pointing to `../extern_issues/<provider>-<NNN>.json`.
 
 Global flags:
@@ -109,7 +110,26 @@ Metadata policy:
 
 Priority policy for issue creation:
 - If `--priority` is omitted, the created issue must use `5` (baseline).
-- In YODA Intake, values different from `5` should be used only with explicit comparative justification in the issue Markdown.
+- Omitting `--priority` is the normal path. The agent must not rank issues in a
+  batch or assign different values to encode their planned sequence.
+- Natural order resumes `doing`, defers unresolved real dependencies, and then
+  follows stable issue ID order among baseline-priority issues. Create a batch
+  in its desired natural order and use `depends_on` only when one issue cannot
+  be executed correctly before another.
+- Values above `5` anticipate and values below `5` postpone an issue relative to
+  natural order. Either direction requires a relative reason recorded in the
+  issue Markdown; no new front-matter field is introduced.
+- A human request to advance or postpone work is valid justification. Generic
+  importance is not.
+
+Valid exception example:
+
+> Use a value above `5` so this issue precedes the available backlog because
+> every new capture continues losing data needed for recovery.
+
+Invalid exception example:
+
+> Use priority `9` because this issue is very important.
 
 Timestamps:
 - Detect the local system timezone; do not depend on a TODO YAML root.

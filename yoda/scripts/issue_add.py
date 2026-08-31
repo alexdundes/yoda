@@ -12,7 +12,7 @@ from contextlib import contextmanager
 from pathlib import Path
 from typing import Any
 
-from lib.cli import AGENT_OUTPUT_RULE, add_global_flags, resolve_format
+from lib.cli import AGENT_OUTPUT_RULE, INTAKE_PRIORITY_GUIDANCE, add_global_flags, resolve_format
 from lib.dev import resolve_dev
 from lib.error_messages import conflict_issue_file, required_flag
 from lib.errors import ExitCode, YodaError
@@ -137,8 +137,8 @@ def main() -> int:
             "- When to use: during YODA Intake after backlog review and issue structuring.\n"
             "- Mutability: writes a new file in yoda/project/issues/.\n\n"
             "Required input: --title and (--description or --summary).\n"
-            "Use --extern-issue <NNN> to link an external source.\n"
-            "Priority default is 5; change only with explicit relative justification."
+            "Use --extern-issue <NNN> to link an external source.\n\n"
+            f"{INTAKE_PRIORITY_GUIDANCE}"
         )
         + AGENT_OUTPUT_RULE,
     )

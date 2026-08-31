@@ -154,7 +154,16 @@ python3 yoda/scripts/yoda_intake.py --dev <slug> --no-extern-issue
 Intake policy:
 - Review current backlog before adding new issues.
 - Translate human free text into structured issue content.
-- Priority baseline is `5`; change only with explicit relative justification against open issues.
+- Keep `priority: 5` by default; omitting `--priority` is the normal path.
+- Do not rank issues in a batch or use priority to encode planned sequence.
+- Natural order resumes the current `doing` issue, defers unresolved real
+  dependencies, then follows stable issue ID order. Create batch issues in that
+  desired natural order.
+- Use `depends_on` only when one issue cannot be executed correctly before
+  another. Do not create artificial dependencies to organize the backlog.
+- Change priority only as a justified exception: above `5` runs before and below
+  `5` runs after natural order. Record the relative reason in the issue Markdown;
+  generic importance is insufficient.
 - Keep `extern_issue_file` traceability when external source exists.
 - Before creating issues, run `python3 yoda/scripts/issue_add.py --help` and follow its runbook.
 
@@ -164,8 +173,8 @@ Intake policy:
 - `yoda_prep_flow.py`: explicit issue Study/Document preparation without implementation.
 - `todo_update.py`: manual status/phase/metadata corrections.
 - `log_add.py`: compact one-line issue log outside normal flow path.
-- `todo_next.py`: next selectable issue (inspection helper).
-- `todo_list.py`: backlog inspection and filtering.
+- `todo_next.py`: inspect the issue that would be resumed/selected; no transition.
+- `todo_list.py`: ordered backlog view for inspection/filtering, not an execution plan.
 - `issue_add.py`: issue creation contract and required fields.
 - `yoda_intake.py`: Intake decision and AGENT runbook output.
 - `get_extern_issue.py`: fetch/store external issue JSON.
@@ -173,7 +182,8 @@ Intake policy:
 ## Compatibility notes
 
 - Default YODA Flow path: `yoda_flow_next.py`.
-- `todo_next.py` and `todo_list.py` are helper commands for inspection.
+- `todo_list.py` displays a backlog view, `todo_next.py` inspects the next
+  selection, and `yoda_flow_next.py` owns selection and phase transitions.
 - `todo_update.py` and `log_add.py` are auxiliary commands for manual adjustments outside the default automated flow step.
 
 ## Key paths

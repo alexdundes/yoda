@@ -31,11 +31,25 @@ python yoda/scripts/log_add.py --dev dev --issue dev-0001 --message "Additional 
 
 ## Flow and Intake
 
-- Deterministic YODA Flow: `yoda_flow_next.py`
+- Deterministic issue selection and phase transitions: `yoda_flow_next.py`
+- Next-selection inspection without mutation: `todo_next.py`
+- Ordered backlog view, not an execution plan: `todo_list.py`
 - Explicit issue Study/Document preparation: `yoda_prep_flow.py`
 - Intake runbooks: `yoda_intake.py`
 - Manual semantic/process adjustments: `todo_update.py`
 - Exceptional manual logging: `log_add.py`
+
+### Intake priority policy
+
+Keep `priority: 5` by default and do not rank issues in a batch or encode their
+planned sequence with priority. Natural order resumes the current `doing` issue,
+defers unresolved real dependencies, and then follows stable issue ID order.
+Create batch issues in that desired order and use `depends_on` only for real
+precedence.
+
+Values above `5` anticipate and values below `5` postpone work against natural
+order. Either is an exception: record the relative reason in the issue Markdown.
+Omitting `--priority` in `issue_add.py` is the normal path.
 
 ### External issue collection
 

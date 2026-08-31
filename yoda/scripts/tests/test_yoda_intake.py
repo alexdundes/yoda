@@ -26,6 +26,15 @@ def _load_module():
     return module
 
 
+def _assert_priority_guidance(output: str) -> None:
+    assert "Keep priority 5 by default" in output
+    assert "Do not rank issues in a batch" in output
+    assert "Natural order resumes the current doing issue" in output
+    assert "Use depends_on only for real precedence" in output
+    assert "before (>5) or after (<5)" in output
+    assert "relative reason in the issue Markdown" in output
+
+
 def setup_function() -> None:
     for name in (f"github-{TEST_EXTERN_ISSUE}.json", f"gitlab-{TEST_EXTERN_ISSUE}.json"):
         path = EXTERN_DIR / name
@@ -64,6 +73,7 @@ def test_yoda_intake_no_external_runbook(capsys) -> None:
     assert code == 0
     assert "## AGENT runbook" in captured.out
     assert "No external source was declared" in captured.out
+    _assert_priority_guidance(captured.out)
 
 
 def test_yoda_intake_rejects_non_numeric_external_issue(caplog) -> None:
@@ -106,3 +116,4 @@ def test_yoda_intake_external_issue_success_from_saved_file(monkeypatch, capsys)
     assert "## External Issue Summary" in captured.out
     assert f"External ID: `#{TEST_EXTERN_ISSUE}`" in captured.out
     assert f"gitlab-{TEST_EXTERN_ISSUE}.json" in captured.out
+    _assert_priority_guidance(captured.out)

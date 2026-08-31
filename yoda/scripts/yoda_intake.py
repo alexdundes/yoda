@@ -9,7 +9,7 @@ import logging
 import sys
 from typing import Any
 
-from lib.cli import AGENT_OUTPUT_RULE, add_global_flags, resolve_format
+from lib.cli import AGENT_OUTPUT_RULE, INTAKE_PRIORITY_GUIDANCE, add_global_flags, resolve_format
 from lib.errors import ExitCode, YodaError
 from lib.external_issue_utils import (
     detect_origin_url,
@@ -80,7 +80,13 @@ def _full_runbook(dev: str, external: bool, external_file: str | None = None) ->
             "6. Before creating issues, run this command to review usage details:",
         ]
         lines.extend(_cmd_block("python3 yoda/scripts/issue_add.py --help"))
-        lines.extend(["7. For each generated YODA issue, keep `extern_issue_file` traceability to external source."])
+        lines.extend(
+            [
+                "7. For each generated YODA issue, keep `extern_issue_file` traceability to external source.",
+                "",
+                INTAKE_PRIORITY_GUIDANCE,
+            ]
+        )
     else:
         lines = [
             "## AGENT runbook",
@@ -93,7 +99,13 @@ def _full_runbook(dev: str, external: bool, external_file: str | None = None) ->
             "4. Before creating issues, run this command to review usage details:",
         ]
         lines.extend(_cmd_block("python3 yoda/scripts/issue_add.py --help"))
-        lines.extend(["5. No external source was declared; document assumptions directly in issue markdown."])
+        lines.extend(
+            [
+                "5. No external source was declared; document assumptions directly in issue markdown.",
+                "",
+                INTAKE_PRIORITY_GUIDANCE,
+            ]
+        )
     return "\n".join(lines)
 
 

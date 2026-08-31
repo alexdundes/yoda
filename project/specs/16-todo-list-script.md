@@ -74,11 +74,22 @@ Date filters:
 
 ## Ordering
 
-### Default (execution order)
+### Default backlog view
 
 - Primary: priority (descending).
 - Tie-breaker: filename-derived issue ID (ascending).
 - Dependency adjustment: if an issue depends on another issue that is not `done`, the dependent issue must appear **after** that dependency.
+
+This is an ordered backlog view, not a complete execution plan. In particular,
+the table does not own the operational rule that resumes an existing `doing`
+issue before starting a new one. `todo_next.py` may inspect the next selection,
+while `yoda_flow_next.py` is the canonical command that selects/resumes an issue
+and mutates its Flow phase.
+
+When issues retain the default `priority: 5`, their base view follows stable ID
+order. A value above or below `5` represents a justified exception that moves
+an issue before or after that natural order; it must not encode the ordinal
+position of an Intake batch.
 
 Dependency adjustment must be stable and deterministic:
 - Start from the priority/ID ordered list.

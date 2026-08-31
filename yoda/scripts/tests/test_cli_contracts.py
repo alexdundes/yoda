@@ -61,6 +61,17 @@ def test_yoda_flow_next_help_exposes_log_message_flag() -> None:
     assert "--log-message" in result.stdout
 
 
+def test_issue_add_help_carries_intake_priority_policy() -> None:
+    result = run_script("issue_add.py", ["--help"])
+    assert result.returncode == 0, result.stderr
+    assert "Keep priority 5 by default; omitting --priority is the normal path" in result.stdout
+    assert "Do not rank issues in a batch" in result.stdout
+    assert "Natural order resumes the current doing issue" in result.stdout
+    assert "Use depends_on only for real precedence" in result.stdout
+    assert "before (>5) or after (<5)" in result.stdout
+    assert "relative reason in the issue Markdown" in result.stdout
+
+
 def test_commands_require_explicit_dev_without_env_or_prompt(monkeypatch) -> None:
     monkeypatch.delenv("YODA_DEV", raising=False)
 

@@ -37,7 +37,8 @@ Examples (translate to the human's language if needed):
    - Translate the free-form input into structured issue content.
    - Decompose into well-sized issues (epic vs tasks).
    - Define scope, out of scope, acceptance criteria, and risks.
-   - Assign priority using baseline `5` by default; only adjust above/below `5` with a comparative reason against current open issues.
+   - Apply the priority policy below; do not rank a batch or encode its planned
+     sequence with priority values.
 5) **Definition of Ready (DoR)**
    - Ensure each issue meets the minimal readiness criteria (see below).
 6) **Create**
@@ -46,6 +47,43 @@ Examples (translate to the human's language if needed):
    - Remove placeholders and complete sections.
 7) **Handoff**
    - Explicitly close Intake and propose the next YODA Flow issue.
+
+## Natural order, dependencies, and priority
+
+Natural order is determined by the execution model:
+
+1. Resume the current `doing` issue before starting another issue.
+2. Defer an issue while any real dependency is unresolved.
+3. Among the remaining issues at baseline `priority: 5`, use stable issue ID
+   order.
+
+`depends_on` expresses real precedence: an issue cannot be executed correctly
+before its dependency is complete. It must not be created merely to arrange the
+backlog. `priority` expresses a deliberate exception for work that could follow
+natural order but has a concrete reason to run earlier or later. The two fields
+must not substitute for each other.
+
+Intake rules:
+
+- Keep `priority: 5` by default. Omitting `--priority` in `issue_add.py` is the
+  normal creation path.
+- Do not rank issues in a batch or use priority as an ordinal plan.
+- Create batch issues in the desired natural order. Add `depends_on` only for
+  real precedence.
+- Values above `5` move an issue before natural order; values below `5` move it
+  after natural order. Both are exceptions and require a relative reason in the
+  issue Markdown explaining why natural order is unsuitable.
+- An explicit human request to advance or postpone work is a valid reason. A
+  generic statement that work is important is not.
+
+Valid exception example:
+
+> Raise the priority so this issue precedes the available backlog because each
+> additional capture continues losing data required for recovery.
+
+Invalid exception example:
+
+> This issue is very important to the project.
 
 External source path (when `--extern-issue <NNN>` is used):
 - Ask the human to run `get_extern_issue.py --dev <slug> --extern-issue <NNN>`.
@@ -56,8 +94,11 @@ External source path (when `--extern-issue <NNN>` is used):
 External log usage (from `extern_issues/<provider>-<NNN>.json`):
 - Treat `log` as auxiliary context for Intake decisions, not as the single source of truth.
 - Use `log` events to detect recency and state changes (for example: reopened, closed, referenced commits, project moves).
-- Use these signals to adjust triage and priority when justified, especially when recent events indicate new urgency or reopened work.
-- Keep issue shaping anchored in human intent and external issue description; use `log` to refine scope and ordering.
+- Use these signals to refine triage. Change priority only when a signal provides
+  a relative reason to depart from natural order, such as continuing data loss
+  or an explicit request to postpone reopened work.
+- Keep issue shaping anchored in human intent and external issue description;
+  use `log` to refine scope and identify justified ordering exceptions.
 - When relevant, reference meaningful `log` events in the Intake rationale for traceability.
 
 ## Definition of Ready (DoR)
@@ -68,7 +109,8 @@ Each issue must include at minimum:
 - Scope and out-of-scope.
 - Acceptance criteria (testable).
 - Dependencies and risks.
-- Priority set with baseline `5`, with comparative justification when different from `5`.
+- Priority set to baseline `5`, or a relative justification recorded in the
+  issue Markdown when different from `5`.
 
 ## Agent rules (Intake)
 
@@ -77,7 +119,9 @@ Each issue must include at minimum:
 - Always consult `todo_list.py` before proposing new issues.
 - Keep the cycle explicit: enter Intake, exit Intake, then offer YODA Flow.
 - Use clear, analyst-style language.
-- Use priority `5` as the default for new issues; when using another value, record why this issue is relatively more/less important than open issues.
+- Keep priority `5` by default. Do not rank a batch or encode planned sequence
+  with priority. When using another value, record why this issue must run before
+  or after the natural order.
 - The agent is responsible for converting free-form human input into structured issue fields and Markdown updates.
 
 ## Outputs

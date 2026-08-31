@@ -27,6 +27,11 @@ Agent tools do not agree on which file to read (`AGENTS.md`, `GEMINI.md`, etc.).
 2) User types a natural phrase indicating entering YODA Flow and taking the highest-priority selectable issue (with all dependencies resolved, and no issue currently `doing`).
    - The phrase must explicitly mention "YODA Flow" (or "YODA") and intent to take the highest-priority selectable issue (with all dependencies resolved).
    - Example: "Vamos entrar no YODA Flow e pegar a issue prioritaria sem dependencias."
+   - "Highest-priority selectable" is the result of the natural-order policy:
+     resume an existing `doing` issue, defer unresolved dependencies, then use
+     stable issue ID order among baseline-priority issues. A priority different
+     from `5` is a justified exception to that order, not a batch rank created
+     during Intake.
 3) Agent reads the relevant YODA-local entry file (`yoda/AGENTS.md`, `yoda/GEMINI.md`, or `yoda/CLAUDE.md`) when available, then reads `yoda/yoda.md`.
 4) Agent resolves the developer slug in this order:
    - --dev `<slug>` flag
