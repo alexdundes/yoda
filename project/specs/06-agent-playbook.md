@@ -9,9 +9,14 @@ Define deterministic agent behavior for YODA Flow and YODA Intake.
 When human intent is to start YODA Flow:
 
 1) Resolve developer slug.
-2) Run `python3 yoda/scripts/yoda_flow_next.py --dev <slug>`.
+2) Run `python3 yoda/scripts/yoda_flow_next.py --dev <slug>` to enter the phase
+   before doing any of its work.
 3) Present returned issue context and `runbook_line`.
-4) Ask human confirmation before moving to next phase action.
+4) Execute only that phase, present its deliverable, and stop.
+5) Ask human authorization before the next transition.
+
+Command output is the input of the next step. The agent MUST NOT discard,
+silence, or redirect the output of a YODA command.
 
 ## YODA Flow rules
 

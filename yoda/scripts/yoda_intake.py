@@ -9,7 +9,7 @@ import logging
 import sys
 from typing import Any
 
-from lib.cli import add_global_flags, resolve_format
+from lib.cli import AGENT_OUTPUT_RULE, add_global_flags, resolve_format
 from lib.errors import ExitCode, YodaError
 from lib.external_issue_utils import (
     detect_origin_url,
@@ -174,7 +174,8 @@ def run(argv: list[str] | None = None) -> int:
             "- Purpose: return deterministic Intake runbooks from CLI context and external-source mode.\n"
             "- When to use: when entering YODA Intake or branching to external/local intake paths.\n"
             "- Mutability: read-only; does not edit issues directly."
-        ),
+        )
+        + AGENT_OUTPUT_RULE,
     )
     add_global_flags(parser)
     parser.add_argument("--extern-issue", dest="extern_issue", help="External issue number (NNN)")

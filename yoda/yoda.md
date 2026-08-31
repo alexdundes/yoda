@@ -42,7 +42,7 @@ for know runbook: read `python3 yoda/scripts/yoda_flow_next.py --help`
 Entry:
 1. Confirm the human intent includes entering YODA Flow.
 2. Run `python3 yoda/scripts/yoda_flow_next.py --dev <slug>`.
-3. Follow the returned runbook for the selected phase.
+3. Present the returned runbook to the human, then execute that phase only.
 
 Execution phases:
 1. Study
@@ -50,13 +50,38 @@ Execution phases:
 3. Implement
 4. Evaluate
 
+Phase boundary — run every phase in this order:
+1. Wait for the human to authorize the next phase.
+2. Run `yoda_flow_next.py` to enter it. Do this BEFORE doing the work.
+3. Present the returned runbook to the human.
+4. Execute only the work of that phase.
+5. Present the phase deliverable and stop.
+
 Flow policy:
-- Execute one step per `yoda_flow_next.py` call.
-- Wait for explicit human authorization before moving to the next phase.
+- One step is one phase per human interaction, not one phase per command call.
+  Never chain phases inside a single interaction.
+- Never apply a transition to stamp work already finished. The transition starts
+  the phase; it does not record it.
+- Never discard, silence, or redirect the output of a YODA command. Do not send
+  it to `/dev/null` and do not hide it behind command chaining. The runbook is
+  your instruction for the phase, and the human must see it.
+- Treat a generic "go ahead" as authorization for the next boundary only. Ask
+  again after presenting each deliverable.
 - Implement only approved issue scope.
 - In `Evaluate`, validate acceptance criteria and fill `## Result log` in the issue markdown.
 - Use `todo_update.py --help` for manual semantic/process corrections.
 - Use `log_add.py --help` only for issue context outside the normal YODA Flow path.
+
+Phase deliverables — present these before asking to continue:
+- `Study`: findings, constraints, and the open decisions the human must settle.
+- `Document`: the updated issue with approved decisions and a closed contract.
+- `Implement`: the code and artifacts of the approved scope, with the
+  verifications you ran.
+- `Evaluate`: acceptance criteria checked, remaining findings, and the
+  `## Result log` filled in when approved.
+
+Close timestamps in `## Flow log` may indicate chaining and justify review, but
+a short phase is not by itself a violation.
 
 Evaluate `Result log` official format:
 - `<First line: conventional commit message.>`

@@ -12,7 +12,7 @@ from contextlib import contextmanager
 from pathlib import Path
 from typing import Any
 
-from lib.cli import add_global_flags, resolve_format
+from lib.cli import AGENT_OUTPUT_RULE, add_global_flags, resolve_format
 from lib.dev import resolve_dev
 from lib.error_messages import conflict_issue_file, required_flag
 from lib.errors import ExitCode, YodaError
@@ -139,7 +139,8 @@ def main() -> int:
             "Required input: --title and (--description or --summary).\n"
             "Use --extern-issue <NNN> to link an external source.\n"
             "Priority default is 5; change only with explicit relative justification."
-        ),
+        )
+        + AGENT_OUTPUT_RULE,
     )
     add_global_flags(parser)
     parser.add_argument("--title", required=False, help="Issue title")

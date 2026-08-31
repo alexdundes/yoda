@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
-from lib.cli import add_global_flags, resolve_format
+from lib.cli import AGENT_OUTPUT_RULE, add_global_flags, resolve_format
 from lib.dev import resolve_dev
 from lib.errors import ExitCode, YodaError
 from lib.issue_index import load_issue_index
@@ -81,7 +81,8 @@ def main() -> int:
             "- Use in YODA Framework: as an inspection helper when you need quick next-issue visibility,\n"
             "  especially before entering or resuming YODA Flow.\n"
             "- For deterministic phase execution and transitions, prefer yoda_flow_next.py."
-        ),
+        )
+        + AGENT_OUTPUT_RULE,
     )
     add_global_flags(parser)
     args = parser.parse_args()

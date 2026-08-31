@@ -9,7 +9,7 @@ import logging
 import sys
 from typing import Any
 
-from lib.cli import add_global_flags, resolve_format
+from lib.cli import AGENT_OUTPUT_RULE, add_global_flags, resolve_format
 from lib.errors import ExitCode, YodaError
 from lib.error_messages import required_flag
 from lib.external_issue_utils import (
@@ -53,7 +53,8 @@ def run(argv: list[str] | None = None) -> int:
             "- Purpose: fetch one external issue and persist it as local JSON for YODA Intake.\n"
             "- When to use: before running yoda_intake.py with --extern-issue <NNN>.\n"
             "- Mutability: writes yoda/project/extern_issues/<provider>-<NNN>.json (unless --dry-run)."
-        ),
+        )
+        + AGENT_OUTPUT_RULE,
     )
     add_global_flags(parser)
     parser.add_argument("--extern-issue", dest="extern_issue", required=False, help="External issue number (NNN)")

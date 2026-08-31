@@ -24,8 +24,9 @@ preparation and does not make the issue selectable for implementation.
 
 ## State contract
 
-YODA Prep Flow advances one step per call and requires explicit human approval
-between calls:
+YODA Prep Flow advances one preparation stage per human interaction. Each stage
+requires explicit human authorization, presents its deliverable, and stops
+before another stage can begin:
 
 1. No `flow_prepared_until` -> `flow_prepared_until: study`
 2. `flow_prepared_until: study` -> `flow_prepared_until: document`
@@ -44,10 +45,12 @@ an absent value means normal YODA Flow behavior.
 
 ## Runbooks
 
-- Study: gather context, list open decisions, do not implement, and wait for
-  approval.
-- Document: update issue text with approved decisions, do not implement, and
-  wait for approval.
+- Study: gather context and list open decisions without implementing; present
+  those findings and decisions as the deliverable, then stop for explicit human
+  authorization.
+- Document: update issue text with approved decisions without implementing;
+  present the updated issue as the deliverable, then stop for explicit human
+  authorization before normal YODA Flow can continue.
 - After Document, the issue remains `to-do` until selected by normal YODA Flow.
 - `yoda_flow_next.py` MUST start a selected `to-do` issue with
   `flow_prepared_until: document` at `doing/implement`.
@@ -66,7 +69,8 @@ Markdown and JSON outputs include:
 - `log_timestamp`
 - `dry_run`
 
-`runbook_line` is a compact, single-line imperative instruction.
+`runbook_line` is an imperative instruction, as compact as it can be while
+staying understandable; it MAY span more than one line.
 
 ## Validation and errors
 

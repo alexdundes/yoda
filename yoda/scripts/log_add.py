@@ -7,7 +7,7 @@ import argparse
 import logging
 import sys
 
-from lib.cli import add_global_flags, resolve_format
+from lib.cli import AGENT_OUTPUT_RULE, add_global_flags, resolve_format
 from lib.dev import resolve_dev
 from lib.error_messages import required_flag
 from lib.errors import ExitCode, YodaError
@@ -32,6 +32,7 @@ def _render_output(payload: dict[str, str], output_format: str) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(
         description="Append a compact one-line Flow log entry to an issue markdown.",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=(
             "Agent guidance:\n"
             "- Purpose: append issue context notes outside the default yoda_flow_next transition path.\n"
@@ -40,7 +41,8 @@ def main() -> int:
             "Required: --dev, --issue, --message.\n"
             "Entry format: - <timestamp> <single-line-message>.\n"
             "Use this when recording issue context outside YODA Flow automation."
-        ),
+        )
+        + AGENT_OUTPUT_RULE,
     )
     add_global_flags(parser)
     parser.add_argument("--issue", required=False, help="Issue id (dev-####)")

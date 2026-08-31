@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
-from lib.cli import add_global_flags, resolve_format
+from lib.cli import AGENT_OUTPUT_RULE, add_global_flags, resolve_format
 from lib.dev import resolve_dev
 from lib.errors import ExitCode, YodaError
 from lib.flow_log import append_flow_log_line, locate_flow_log_bounds, sanitize_flow_message
@@ -300,7 +300,8 @@ def main() -> int:
             "- Mutability: creates/updates only YODA-managed files under yoda/ and may\n"
             "  migrate/remove legacy TODO/log YAML. It does not create or edit host-root\n"
             "  agent or intent files."
-        ),
+        )
+        + AGENT_OUTPUT_RULE,
     )
     add_global_flags(parser)
     parser.add_argument("--root", help="Project root to initialize (default: cwd)")

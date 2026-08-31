@@ -54,6 +54,8 @@ Help guidance contract:
 
 - implicit command model
 - resolves only the next deterministic step
+- this technical one-step resolution is subordinate to the human-interaction
+  phase boundary defined in `project/specs/02-yoda-flow-process.md`
 - supports optional `--log-message "<summary>"` to append a compact action summary to the transition log line
 - outputs `issue_path`, `status`, `phase` (if applicable), `next_step`, `blocked_reason` (if blocked), `runbook_line`
 - `runbook_line` is mandatory in `md` and `json`
@@ -64,7 +66,8 @@ Help guidance contract:
 
 - requires explicit `--issue`
 - ignores backlog order/dependencies for preparation only
-- advances one authorized Study/Document step per call
+- advances one authorized Study/Document preparation stage per human
+  interaction
 - keeps issue `to-do` and persists `flow_prepared_until`
 - never enters Implement or Evaluate
 

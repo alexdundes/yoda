@@ -399,3 +399,61 @@ def test_flow_next_dry_run_blocked_keeps_exit_code_without_writing_log() -> None
     after_text = blocked.read_text(encoding="utf-8")
     assert after_text == before_text
     assert _read_flow_log_lines(blocked) == []
+
+
+def test_every_phase_runbook_states_the_boundary() -> None:
+    _write_issue_file(
+        "test-0001-todo.md",
+        {
+            "schema_version": "2.01",
+            "status": "to-do",
+            "title": "Todo",
+            "description": "Desc",
+            "priority": 5,
+            "created_at": "2026-01-01T00:00:00+00:00",
+            "updated_at": "2026-01-01T00:00:00+00:00",
+        },
+        body="# Todo\n\n## Flow log\n",
+    )
+
+    expected = {
+        "study": "Do not start Document without new authorization.",
+        "document": "Do not start Implement without new authorization.",
+        "implement": "Do not start Evaluate without new authorization.",
+        "evaluate": "then request final approval.",
+    }
+    for phase, sentence in expected.items():
+        result = run_script("yoda_flow_next.py", ["--dev", TEST_DEV, "--format", "json"])
+        assert result.returncode == 0, result.stderr
+        payload = json.loads(result.stdout)
+        assert payload["next_step"] == phase
+        runbook = payload["runbook_line"]
+        assert sentence in runbook, f"{phase}: {runbook}"
+        assert "Present" in runbook, f"{phase}: {runbook}"
+
+
+def test_multiline_runbook_stays_inside_one_markdown_list_item() -> None:
+    _write_issue_file(
+        "test-0001-todo.md",
+        {
+            "schema_version": "2.01",
+            "status": "to-do",
+            "title": "Todo",
+            "description": "Desc",
+            "priority": 5,
+            "created_at": "2026-01-01T00:00:00+00:00",
+            "updated_at": "2026-01-01T00:00:00+00:00",
+        },
+        body="# Todo\n\n## Flow log\n",
+    )
+
+    result = run_script("yoda_flow_next.py", ["--dev", TEST_DEV])
+    assert result.returncode == 0, result.stderr
+
+    lines = result.stdout.splitlines()
+    start = lines.index("Runbook:")
+    body = lines[start + 1 :]
+    assert len(body) > 1, "expected a multi-line runbook"
+    assert body[0].startswith("- ")
+    for continuation in body[1:]:
+        assert continuation.startswith("  ") and not continuation.startswith("- "), continuation

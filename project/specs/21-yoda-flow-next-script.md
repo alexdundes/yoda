@@ -11,7 +11,12 @@ Define behavior for `yoda_flow_next.py`, the deterministic YODA Flow driver in 0
 ## Command model
 
 - Implicit command model (no subcommands, no `--action`).
-- Each execution resolves exactly one next deterministic step.
+- Each execution resolves exactly one next deterministic step. This is a
+  technical property of the command and is subordinate to the process boundary
+  in `project/specs/02-yoda-flow-process.md`: one phase per human interaction.
+  Chaining several executions into one interaction is invalid even though each
+  execution is individually well formed.
+- The execution starts a phase; it MUST precede the work of that phase.
 
 ## Inputs
 
@@ -58,8 +63,10 @@ Both formats MUST include:
 `runbook_line` requirements:
 
 - mandatory
-- compact
-- single-line imperative instruction
+- imperative
+- as compact as the instruction allows; MAY span more than one line when a
+  single line cannot carry it
+- presented to the human, never discarded or silenced
 
 ## Error handling
 

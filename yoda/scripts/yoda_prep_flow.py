@@ -11,7 +11,7 @@ from typing import Any
 
 import frontmatter
 
-from lib.cli import add_global_flags, resolve_format
+from lib.cli import AGENT_OUTPUT_RULE, add_global_flags, resolve_format
 from lib.errors import ExitCode, YodaError
 from lib.flow_log import append_flow_log_line, sanitize_flow_message
 from lib.front_matter import update_front_matter
@@ -22,7 +22,7 @@ from lib.issue_metadata import (
 )
 from lib.issue_utils import resolve_issue_file_by_id
 from lib.logging_utils import configure_logging
-from lib.output import render_output
+from lib.output import render_output, runbook_md_lines
 from lib.paths import repo_root
 from lib.time_utils import detect_local_timezone, now_iso
 from lib.validate import validate_issue_id, validate_slug
@@ -31,8 +31,16 @@ from lib.validate import validate_issue_id, validate_slug
 ALLOWED_PREPARED_UNTIL = {"", "study", "document"}
 NEXT_PREP_STEP = {"": "study", "study": "document", "document": "document"}
 RUNBOOK_BY_STEP = {
-    "study": "Run Prep Study: gather context and list open decisions for this issue; do not implement.",
-    "document": "Run Prep Document: update issue text with approved decisions; do not implement.",
+    "study": (
+        "Run Prep Study: gather context and list open decisions for this issue; do not implement. "
+        "Present the findings and open decisions as the deliverable, then stop and wait for "
+        "explicit human authorization before Prep Document."
+    ),
+    "document": (
+        "Run Prep Document: update issue text with approved decisions; do not implement. "
+        "Present the updated issue as the deliverable, then stop and wait for explicit human "
+        "authorization before normal YODA Flow can continue."
+    ),
 }
 
 
@@ -124,7 +132,7 @@ def _render_md(payload: dict[str, Any]) -> list[str]:
     if payload.get("log_timestamp"):
         lines.append(f"Log timestamp: {payload['log_timestamp']}")
     lines.append("Runbook:")
-    lines.append(f"- {payload['runbook_line']}")
+    lines.extend(runbook_md_lines(payload["runbook_line"]))
     return lines
 
 
@@ -141,11 +149,13 @@ def main() -> int:
             "- Purpose: prepare Study/Document for one issue without entering implementation.\n"
             "- Use in YODA Framework: run this when the human explicitly enters YODA Prep Flow.\n"
             "- Selection: requires --issue and ignores backlog order/dependencies for preparation only.\n"
-            "- Expected moment: call once per prep step, execute returned Study/Document instructions,\n"
-            "  then call again after explicit human authorization to continue.\n"
+            "- Phase boundary: execute one preparation stage per human interaction. Present the\n"
+            "  returned runbook, execute only that stage, present its deliverable, and stop.\n"
+            "  Call again only after explicit human authorization to continue.\n"
             "- Result: after Document, the issue remains to-do with flow_prepared_until=document;\n"
             "  YODA Flow later starts it directly in Implement."
-        ),
+        )
+        + AGENT_OUTPUT_RULE,
     )
     add_global_flags(parser)
     parser.add_argument("--issue", required=False, help="Issue id (dev-####)")

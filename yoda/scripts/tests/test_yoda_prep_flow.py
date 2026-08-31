@@ -68,6 +68,43 @@ def test_prep_flow_help_contains_agent_guidance() -> None:
     assert "Agent guidance:" in result.stdout
 
 
+def test_prep_runbooks_present_deliverable_and_stop_per_human_interaction() -> None:
+    cases = [
+        ("test-0001-prep-study.md", {}, "Run Prep Study:"),
+        (
+            "test-0002-prep-document.md",
+            {"flow_prepared_until": "study"},
+            "Run Prep Document:",
+        ),
+    ]
+
+    for filename, extra_metadata, prefix in cases:
+        issue_id = "-".join(filename.split("-")[:2])
+        metadata = {
+            "schema_version": "2.00",
+            "status": "to-do",
+            "title": "Prep boundary",
+            "description": "Desc",
+            "priority": 5,
+            "created_at": "2026-01-01T00:00:00+00:00",
+            "updated_at": "2026-01-01T00:00:00+00:00",
+            **extra_metadata,
+        }
+        _write_issue_file(filename, metadata, body="# Prep boundary\n\n## Flow log\n")
+
+        result = run_script(
+            "yoda_prep_flow.py",
+            ["--dev", TEST_DEV, "--issue", issue_id, "--dry-run", "--format", "json"],
+        )
+        assert result.returncode == 0, result.stderr
+        runbook = json.loads(result.stdout)["runbook_line"]
+        assert runbook.startswith(prefix)
+        assert "Present the" in runbook
+        assert "deliverable" in runbook
+        assert "then stop" in runbook
+        assert "explicit human authorization" in runbook
+
+
 def test_prep_flow_targets_explicit_issue_and_ignores_priority_order() -> None:
     _write_issue_file(
         "test-0001-high-priority.md",

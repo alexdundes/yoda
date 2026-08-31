@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
 
-from lib.cli import add_global_flags, resolve_format
+from lib.cli import AGENT_OUTPUT_RULE, add_global_flags, resolve_format
 from lib.errors import ExitCode, YodaError
 from lib.logging_utils import configure_logging
 from lib.output import render_output
@@ -207,7 +207,8 @@ def main() -> int:
             "- When to use: upgrade workflow after new package publication.\n"
             "- Mutability: in --apply mode, replaces framework files and may run init.py.\n"
             "- Note: --dev is optional only for this command; without it, init.py is skipped."
-        ),
+        )
+        + AGENT_OUTPUT_RULE,
     )
     add_global_flags(parser)
     group = parser.add_mutually_exclusive_group(required=True)

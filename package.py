@@ -21,7 +21,7 @@ LIB_ROOT = SCRIPT_DIR / "yoda" / "scripts"
 if str(LIB_ROOT) not in sys.path:
     sys.path.insert(0, str(LIB_ROOT))
 
-from lib.cli import add_global_flags, resolve_format
+from lib.cli import AGENT_OUTPUT_RULE, add_global_flags, resolve_format
 from lib.dev import resolve_dev
 from lib.errors import ExitCode, YodaError
 from lib.logging_utils import configure_logging
@@ -456,7 +456,7 @@ def _render_output(payload: dict[str, Any], output_format: str) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(
         description=HELP_DESCRIPTION,
-        epilog=HELP_EPILOG,
+        epilog=HELP_EPILOG + AGENT_OUTPUT_RULE,
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     add_global_flags(parser)

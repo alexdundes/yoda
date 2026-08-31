@@ -12,7 +12,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Iterable
 
-from lib.cli import add_global_flags, resolve_format
+from lib.cli import AGENT_OUTPUT_RULE, add_global_flags, resolve_format
 from lib.dev import resolve_dev
 from lib.errors import ExitCode, YodaError
 from lib.issue_index import load_issue_index
@@ -226,7 +226,8 @@ def main() -> int:
             "- Use in YODA Framework: during YODA Intake and during Study/Document/Implement/Evaluate\n"
             "  when you need visibility of open issues, pending items, and dependency context.\n"
             "- Not a transition command: this command does not mutate issue state."
-        ),
+        )
+        + AGENT_OUTPUT_RULE,
     )
     add_global_flags(parser)
     parser.add_argument("--status", help="Comma-separated status filter")

@@ -6,6 +6,16 @@ import json
 from typing import Any, Iterable
 
 
+def runbook_md_lines(runbook_line: str) -> list[str]:
+    """Render a runbook as one Markdown list item, tolerating multiple lines.
+
+    `runbook_line` is no longer restricted to a single line, so continuation
+    lines are indented to stay inside the same list item.
+    """
+    first, *rest = str(runbook_line).splitlines() or [""]
+    return [f"- {first}", *(f"  {line}" for line in rest)]
+
+
 def render_output(
     payload: dict[str, Any],
     output_format: str,

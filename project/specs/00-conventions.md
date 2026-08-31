@@ -82,7 +82,9 @@ updates the schema marker but does not invent these values.
 ## Logging conventions
 
 - Log entries MUST be compact and single-line.
-- `runbook_line` outputs MUST be single-line and imperative.
+- `runbook_line` outputs MUST be imperative and as compact as the instruction
+  allows; they MAY span more than one line. This does not relax the single-line
+  rule for log entries above.
 
 ## Notes
 

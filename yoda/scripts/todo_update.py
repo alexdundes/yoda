@@ -12,7 +12,7 @@ from typing import Any
 
 import frontmatter
 
-from lib.cli import add_global_flags, resolve_format
+from lib.cli import AGENT_OUTPUT_RULE, add_global_flags, resolve_format
 from lib.dev import resolve_dev
 from lib.errors import ExitCode, YodaError
 from lib.external_issue_utils import detect_origin_url, parse_origin, provider_from_host
@@ -203,7 +203,8 @@ def main() -> int:
             "- Mutability: updates issue markdown metadata and appends flow-log line.\n\n"
             "Use this command for manual semantic/process corrections.\n"
             "Supports status/phase updates while keeping phase only for status=doing."
-        ),
+        )
+        + AGENT_OUTPUT_RULE,
     )
     add_global_flags(parser)
     parser.add_argument("--issue", required=False, help="Issue id (dev-####)")

@@ -11,14 +11,14 @@ from typing import Any
 
 import frontmatter
 
-from lib.cli import add_global_flags, resolve_format
+from lib.cli import AGENT_OUTPUT_RULE, add_global_flags, resolve_format
 from lib.errors import ExitCode, YodaError
 from lib.flow_log import append_flow_log_line, sanitize_flow_message
 from lib.front_matter import update_front_matter
 from lib.issue_index import load_issue_index
 from lib.issue_metadata import CURRENT_ISSUE_SCHEMA_VERSION
 from lib.logging_utils import configure_logging
-from lib.output import render_output
+from lib.output import render_output, runbook_md_lines
 from lib.paths import repo_root
 from lib.time_utils import detect_local_timezone, now_iso
 from lib.validate import validate_slug
@@ -30,10 +30,26 @@ BLOCKED_DEPENDENCY = "dependency_blocked"
 
 
 RUNBOOK_BY_STEP = {
-    "study": "Run Study: gather context, list open decisions, and wait for explicit approval.",
-    "document": "Run Document: update issue text with approved decisions and request explicit approval.",
-    "implement": "Run Implement: execute only approved scope and keep changes aligned with the issue.",
-    "evaluate": "Run Evaluate: validate acceptance criteria and fill Result log as yoda.md (conventional-commit line, description, optional external issue, Issue, Path), then request final approval.",
+    "study": (
+        "Run Study: gather context and produce findings, constraints, and the open decisions "
+        "the human must settle.\n"
+        "Present that deliverable and stop. Do not start Document without new authorization."
+    ),
+    "document": (
+        "Run Document: update the issue with the approved decisions and close the "
+        "document-first contract.\n"
+        "Present that deliverable and stop. Do not start Implement without new authorization."
+    ),
+    "implement": (
+        "Run Implement: execute only approved scope and keep changes aligned with the issue.\n"
+        "Present the changes and the verifications you ran, then stop. Do not start Evaluate "
+        "without new authorization."
+    ),
+    "evaluate": (
+        "Run Evaluate: validate acceptance criteria and fill Result log as yoda.md "
+        "(conventional-commit line, description, optional external issue, Issue, Path).\n"
+        "Present the checked criteria and any remaining findings, then request final approval."
+    ),
 }
 RUNBOOK_DONE = "Issue moved to done. Check next issue and ask the human if flow should continue now."
 STEP_ORDER = ("study", "document", "implement", "evaluate")
@@ -283,7 +299,7 @@ def _render_md(payload: dict[str, Any]) -> list[str]:
             lines.append(f"- {item.get('id', '')}: {deps}")
 
     lines.append("Runbook:")
-    lines.append(f"- {payload['runbook_line']}")
+    lines.extend(runbook_md_lines(payload["runbook_line"]))
     return lines
 
 
@@ -300,11 +316,14 @@ def main() -> int:
             "- Purpose: select/resume issue, apply one valid flow transition, and return the runbook line\n"
             "  for the next phase action.\n"
             "- Use in YODA Framework: this is the primary command for YODA Flow execution.\n"
-            "- Expected moment: call once per flow step, execute returned phase instructions, then call again\n"
-            "  after explicit human authorization to continue.\n"
+            "- Expected moment: run this to ENTER a phase, before doing any of its work. Never run it\n"
+            "  afterwards to stamp work already finished.\n"
+            "- Boundary: one phase per human interaction, not one phase per call. Execute only that\n"
+            "  phase, present its deliverable, and stop. Never chain phases in a single interaction.\n"
             "- Optional: pass --log-message \"<what was done>\" to append a compact summary to the\n"
             "  transition log line."
-        ),
+        )
+        + AGENT_OUTPUT_RULE,
     )
     add_global_flags(parser)
     parser.add_argument(
