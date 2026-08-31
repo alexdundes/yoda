@@ -2,9 +2,9 @@
 
 ## Objective
 
-Define the 0.3.0 issue-centric model and how legacy TODO data coexists during migration.
+Define the current issue-centric model and how legacy TODO data coexists during migration.
 
-## Canonical execution model (0.3.0)
+## Canonical execution model (0.4.0)
 
 - YODA Flow execution is driven by issue Markdown files in `yoda/project/issues/`.
 - Canonical issue identifier is derived from filename `<dev>-<NNNN>-<slug>.md`.
@@ -17,6 +17,8 @@ Canonical order:
 - `schema_version`
 - `status`: `to-do | doing | pending | done`
 - `phase`: `study | document | implement | evaluate` (only when `status=doing`)
+- `flow_prepared_until`: `study | document` (omit when empty)
+- `pending_reason`: required when `status=pending` (omit otherwise)
 - `depends_on`: list of issue IDs (omit when empty)
 - `title`
 - `description`
@@ -38,6 +40,7 @@ Required fields:
 Conditional/optional fields:
 
 - `phase`: `study | document | implement | evaluate` (only when `status=doing`)
+- `flow_prepared_until`: `study | document` (omit when empty)
 - `depends_on`: list of issue IDs (omit when empty)
 - `pending_reason`: required when `status=pending`
 - `extern_issue_file`: path to external issue JSON (omit when empty)
@@ -59,14 +62,19 @@ Conditional/optional fields:
 ## Legacy TODO compatibility
 
 - `yoda/todos/TODO.<dev>.yaml` may exist during migration and compatibility operations.
-- Legacy TODO is not the canonical execution source for YODA Flow in 0.3.0.
+- Legacy TODO is not the canonical execution source for YODA Flow.
 - Structural normalization is centralized in `init.py`:
-  - `--check`: audit differences without mutation.
-  - `--apply`: normalize to the 0.3.0 issue contract.
+  - normal init/update finalization migrates supported issue schemas
+  - `--reconcile-layout` performs explicit layout reconciliation
+- Package update modes belong to `update.py`:
+  - `--check`: audit package updates without applying them
+  - `--apply`: apply a package update, preserve project data, and run init when
+    `--dev` is provided
 - During transition, scripts may read legacy and new formats; structural conversion must not be implicit in helper scripts.
 
 ## Constraints
 
 - `depends_on` references issues in the same repository scope.
-- Empty optional metadata (`depends_on`, `extern_issue_file`, `phase`) MUST be omitted.
+- Empty optional metadata (`flow_prepared_until`, `depends_on`,
+  `pending_reason`, `extern_issue_file`, `phase`) MUST be omitted.
 - Timestamps use ISO 8601 with explicit timezone.

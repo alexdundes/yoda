@@ -107,3 +107,19 @@ def test_todo_update_does_not_reintroduce_id_in_front_matter() -> None:
     assert result.returncode == 0, result.stderr
     parsed = frontmatter.load(_issue_file_for_id(issue_id))
     assert "id" not in parsed.metadata
+
+
+def test_todo_update_accepts_200_and_persists_201() -> None:
+    issue_id = _create_issue()
+    issue_path = _issue_file_for_id(issue_id)
+    parsed = frontmatter.load(issue_path)
+    parsed.metadata["schema_version"] = "2.00"
+    issue_path.write_text(frontmatter.dumps(parsed), encoding="utf-8")
+
+    result = run_script(
+        "todo_update.py",
+        ["--dev", TEST_DEV, "--issue", issue_id, "--priority", "6", "--format", "json"],
+    )
+    assert result.returncode == 0, result.stderr
+    updated = frontmatter.load(issue_path)
+    assert updated.metadata["schema_version"] == "2.01"

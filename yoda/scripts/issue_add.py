@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create a new markdown issue in schema 2.00."""
+"""Create a new markdown issue in the current schema."""
 
 from __future__ import annotations
 
@@ -20,7 +20,7 @@ from lib.external_issue_utils import detect_origin_url, parse_origin, provider_f
 from lib.flow_log import append_flow_log_line, sanitize_flow_message
 from lib.front_matter import render_issue
 from lib.io import write_text_atomic
-from lib.issue_metadata import canonicalize_issue_metadata
+from lib.issue_metadata import CURRENT_ISSUE_SCHEMA_VERSION, canonicalize_issue_metadata
 from lib.issue_utils import find_issue_files_by_id
 from lib.logging_utils import configure_logging
 from lib.output import render_output
@@ -104,7 +104,7 @@ def _build_issue_item(
     timestamp: str,
 ) -> dict[str, Any]:
     item: dict[str, Any] = {
-        "schema_version": "2.00",
+        "schema_version": CURRENT_ISSUE_SCHEMA_VERSION,
         "id": issue_id,
         "status": "to-do",
         "depends_on": [],

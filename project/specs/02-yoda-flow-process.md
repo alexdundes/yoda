@@ -18,10 +18,30 @@ YODA Flow is the standard deterministic cycle:
 ## Phase transitions
 
 - `to-do -> doing` starts the cycle with `phase=study`.
+- `to-do + flow_prepared_until=document -> doing/implement` resumes an issue
+  already prepared through YODA Prep Flow.
+- `to-do + flow_prepared_until=study -> doing/study`: Study is executed again in
+  normal YODA Flow because only completed Document authorizes skipping directly
+  to Implement.
 - While `status=doing`, phase advances one step per execution:
   - `study -> document -> implement -> evaluate`
 - Completion after `evaluate` transitions to `done` and removes `phase`.
 - `pending` requires `pending_reason` and hides `phase`.
+
+## YODA Prep Flow
+
+YODA Prep Flow is an explicit alternative for preparing one issue through
+Study and Document without entering implementation:
+
+- entrypoint: `yoda_prep_flow.py --dev <slug> --issue <id>`
+- operates on the explicit issue, independent of backlog order/dependencies
+- advances one step per authorized call: `none -> study -> document`
+- keeps the issue `to-do` and omits `phase`
+- persists `flow_prepared_until: document` after Document
+- causes the normal YODA Flow to resume that issue at Implement
+
+Its complete CLI contract is defined in
+`project/specs/27-yoda-prep-flow-script.md`.
 
 ## Blocking policy
 

@@ -33,9 +33,12 @@
 ## Compatibility data
 
 - `yoda/todos/` and legacy log artifacts may persist during migration/compatibility.
-- Flow operation in 0.3.0 does not depend on `todo_next.py`.
+- Flow operation does not depend on TODO/log YAML.
+- `todo_next.py` remains an inspection helper; Flow transitions are owned by
+  `yoda_flow_next.py`.
 
 ## Issue file requirements
 
 - Name pattern: `<dev>-<NNNN>-<slug>.md`.
-- Front matter and body follow 0.3.0 contracts from specs.
+- Front matter and body follow the current 0.4.0/schema 2.01 contracts, with
+  schema 2.00 accepted during migration.

@@ -92,8 +92,8 @@ Failure policy:
 ## Metadata population
 
 The issue front matter must include:
-- `schema_version: "2.00"`
-- `id`, `title`, `description`
+- `schema_version: "2.01"`
+- `title`, `description`
 - `status: to-do`
 - `priority`
 - `created_at`, `updated_at` (same timestamp)
@@ -102,6 +102,7 @@ The issue front matter must include:
   - example: `../extern_issues/github-2.json`.
 
 Metadata policy:
+- `id` is derived from the filename and MUST NOT be persisted in front matter.
 - `slug` is represented by the issue filename (`<id>-<slug>.md`) and must not be persisted in front matter.
 - Optional empty fields (`depends_on`, `pending_reason`, `extern_issue_file`) must be omitted.
 - `depends_on` starts empty by default and is written only when non-empty.
@@ -111,7 +112,7 @@ Priority policy for issue creation:
 - In YODA Intake, values different from `5` should be used only with explicit comparative justification in the issue Markdown.
 
 Timestamps:
-- Use the timezone defined in the TODO root field `timezone`.
+- Detect the local system timezone; do not depend on a TODO YAML root.
 - Format timestamps as ISO 8601 with explicit offset.
 
 ## Logging
@@ -123,9 +124,10 @@ Timestamps:
 ## Output
 
 On success, the script outputs a short summary in the chosen format, including:
-- Issue ID
-- Issue path
-- Template used
+- `issue_id`
+- `issue_path`
+- `template`
+- `dry_run`
 
 ## Error handling
 

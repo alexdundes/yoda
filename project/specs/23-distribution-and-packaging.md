@@ -81,34 +81,48 @@ Rules:
   - `fixes` (list)
   - `notes` (optional)
   - `commit` (SHA or tag)
-  - `package_sha256` (optional; filled by `package`)
 - `package` MUST:
   - Support creating a release entry from CLI input (`--next-version`, `--summary`, `--addition`, `--fix`, `--breaking`, `--notes`).
   - Generate `build` as `YYYYMMDD.<short-commit>` from the current git `HEAD`.
   - Prepend the generated entry to `CHANGELOG.yaml` before packaging (skip write on `--dry-run`).
-  - Allow packaging from an existing entry via explicit `--version <semver+build>`.
   - Compute a digest of the entry and record it in `PACKAGE_MANIFEST.yaml`.
   - Copy `CHANGELOG.yaml` into the package.
+  - Update `docs/install/latest.json` with `version`, `build`, package URL, and
+    the final archive SHA-256 after a successful non-dry-run build.
 
-## `package` command requirements (will be implemented separately)
+The changelog does not store a package checksum. The manifest stores its
+deterministic content checksum, while `latest.json` stores the checksum of the
+final archive consumed by installer/update.
+
+## `package` command requirements
 - Release mode flags: `--next-version <semver>` plus at least one `--summary`.
-- Existing-entry mode flag: `--version <semver+build>`.
-- Output flags: `--output` (or directory), `--archive-format` (default tar.gz), `--dry-run`.
-- `--archive-format` only accepts `tar.gz` in v1.
+- Release-text flags: repeatable `--summary`, `--addition`, `--fix`,
+  `--breaking`, plus optional `--notes`.
+- Output flags: `--dir <directory>` and `--dry-run`.
+- Format is fixed to `tar.gz`; there is no format-selection flag.
 - Uses the include/exclude rules above; fails if a required item is missing.
 - Generates `PACKAGE_MANIFEST.yaml` and a checksum of the package.
 - Orders files deterministically for reproducible builds.
-- Supports `--changelog` to point to a custom changelog path (default `CHANGELOG.yaml`).
+- Uses repository-root `CHANGELOG.yaml`; no custom changelog flag is exposed.
 
 ## `init` command requirements (consumer; implemented separately)
 - Assumes the layout defined here.
 - Creates/reconciles only YODA-owned structure under `yoda/` without relying on `project/specs/`.
 - MUST NOT create or mutate host-root agent or intent files (`AGENTS.md`, `GEMINI.md`, `CLAUDE.md`, `REPO_INTENT.md`, `repo.intent.yaml`).
-- MUST validate package version/build and warn on incompatibilities (MAJOR or older build).
+- Package version/build and archive integrity are validated by installer/update;
+  `init.py` finalizes YODA-owned layout and schema reconciliation.
 
 ## Compatibility and upgrade
 - Consumers SHOULD keep the previous package to allow rollback; keeping the manifest is recommended.
 - MAJOR updates MAY require manual steps; record them under `breaking` in the changelog.
+- `update.py --check` and `update.py --apply` MUST emit non-blocking warnings
+  when the target changes the SemVer MAJOR or is older than the installed
+  version/build.
+
+Classification recorded by yoda-0064: this was `implementation drift`, not a
+stale normative rule. The compatibility warning requirement introduced by
+[yoda-0016](../../yoda/project/issues/yoda-0016-specs-empacotamento-e-distribui-o-do-yoda-framework.md)
+is retained and enforced by `update.py`.
 
 ## Non-goals
 - UX details of the CLIs (handled in implementation issues).

@@ -11,8 +11,10 @@ YODA = YAML-Oriented Documentation & Agents
 ## Core principles
 
 - Documentation as source of truth: the project is described before implementation.
-- YAML as the gravity center: metadata and structure live in YAML.
-- Markdown as the narrative layer: context, criteria, and details live in free text.
+- Issue Markdown as the operational center: flow state, metadata, context,
+  criteria, and results live in the issue file.
+- YAML remains appropriate for structured release artifacts, external metadata,
+  and explicitly supported migration/compatibility data.
 - Agents and scripts execute what is documented.
 - Agents can start with zero context by reading the right files.
 - Human entrypoint: repo `README.md`. Agent entrypoint: `yoda/yoda.md`.

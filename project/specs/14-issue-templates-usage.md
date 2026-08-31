@@ -2,12 +2,12 @@
 
 ## Objective
 
-Define how issue templates are filled and maintained under 0.3.0.
+Define how issue templates are filled and maintained under the current 0.4.0 contract.
 
 ## Rules
 
 1) Issue file name follows `<dev>-<NNNN>-<slug>.md`.
-2) Front matter follows the 0.3.0 canonical order.
+2) Front matter follows the schema 2.01 canonical order.
 3) Do not include `id` in front matter.
 4) Do not include `## Dependencies` section in body.
 5) `## Entry points` must be simple list items:
@@ -21,10 +21,14 @@ Define how issue templates are filled and maintained under 0.3.0.
 ## Metadata constraints
 
 - `phase` only when `status=doing`.
+- `flow_prepared_until` omitted when empty; accepted values are `study` and
+  `document`.
+- `pending_reason` required only for `status=pending` and omitted otherwise.
 - `depends_on` omitted when empty.
 - `extern_issue_file` omitted when empty.
 
 ## Migration and normalization
 
-- Existing issues are normalized by `init.py` (`--check`/`--apply`) according to 0.3.0.
+- Existing schema 2.00 issues are migrated by `init.py` to 2.01; package
+  `--check`/`--apply` modes belong to `update.py`.
 - Do not rely on manual bulk edits to enforce template shape across existing issues.

@@ -14,7 +14,11 @@ from lib.dev import resolve_dev
 from lib.errors import ExitCode, YodaError
 from lib.flow_log import append_flow_log_line, locate_flow_log_bounds, sanitize_flow_message
 from lib.front_matter import update_front_matter
-from lib.issue_metadata import canonicalize_issue_metadata
+from lib.issue_metadata import (
+    COMPATIBLE_ISSUE_SCHEMA_VERSIONS,
+    CURRENT_ISSUE_SCHEMA_VERSION,
+    canonicalize_issue_metadata,
+)
 from lib.logging_utils import configure_logging
 from lib.output import render_output
 from lib.time_utils import detect_local_timezone, now_iso
@@ -37,7 +41,7 @@ except Exception as exc:  # pragma: no cover - runtime dependency
     ) from exc
 
 
-SCHEMA_VERSION = "2.00"
+SCHEMA_VERSION = CURRENT_ISSUE_SCHEMA_VERSION
 
 
 def _apply_phase_rules(item: dict[str, Any]) -> None:
@@ -89,7 +93,7 @@ def _migrate_legacy_workspace(root: Path, dev: str, dry_run: bool) -> tuple[list
         issue_id = str(item.get("id", "")).strip()
         issue_file = resolved_paths[issue_id]
         metadata = {
-            "schema_version": "2.00",
+            "schema_version": SCHEMA_VERSION,
             "id": issue_id,
             "status": str(item.get("status", "to-do")),
             "phase": str(item.get("phase", "")),
@@ -106,7 +110,7 @@ def _migrate_legacy_workspace(root: Path, dev: str, dry_run: bool) -> tuple[list
         normalized = canonicalize_issue_metadata(metadata)
         if not dry_run:
             update_front_matter(issue_file, normalized)
-        written.append(f"{issue_file.relative_to(root)} (front matter migrated to 2.00)")
+        written.append(f"{issue_file.relative_to(root)} (front matter migrated to {SCHEMA_VERSION})")
 
         content = issue_file.read_text(encoding="utf-8")
         has_flow_log = locate_flow_log_bounds(content) is not None
@@ -228,7 +232,7 @@ def _reconcile_todo_and_issues(
     return written, skipped
 
 
-def _sanitize_issue_front_matter_ids(
+def _reconcile_issue_front_matter(
     root: Path,
     dev: str,
     dry_run: bool,
@@ -242,13 +246,22 @@ def _sanitize_issue_front_matter_ids(
     for issue_file in sorted(path for path in issues_root.glob(f"{dev}-*.md") if path.is_file()):
         post = frontmatter.load(str(issue_file))
         metadata = dict(post.metadata)
-        if "id" not in metadata:
+        changes: list[str] = []
+        if "id" in metadata:
+            metadata.pop("id", None)
+            changes.append("removed front matter id")
+
+        schema_version = str(metadata.get("schema_version", "")).strip()
+        if schema_version in COMPATIBLE_ISSUE_SCHEMA_VERSIONS and schema_version != SCHEMA_VERSION:
+            metadata["schema_version"] = SCHEMA_VERSION
+            changes.append(f"schema {schema_version}->{SCHEMA_VERSION}")
+
+        if not changes:
             continue
-        metadata.pop("id", None)
         normalized = canonicalize_issue_metadata(metadata)
         if not dry_run:
             update_front_matter(issue_file, normalized)
-        written.append(f"{issue_file.relative_to(root)} (removed front matter id)")
+        written.append(f"{issue_file.relative_to(root)} ({'; '.join(changes)})")
     return written, skipped
 
 
@@ -359,7 +372,7 @@ def main() -> int:
             files_written.extend(reconcile_written)
             files_skipped.extend(reconcile_skipped)
 
-        sanitize_written, sanitize_skipped = _sanitize_issue_front_matter_ids(
+        sanitize_written, sanitize_skipped = _reconcile_issue_front_matter(
             root=root,
             dev=dev,
             dry_run=bool(args.dry_run),

@@ -1,4 +1,4 @@
-"""Issue markdown indexing helpers for 0.3.0 flow contracts."""
+"""Issue markdown indexing helpers for current flow contracts."""
 
 from __future__ import annotations
 
@@ -8,7 +8,9 @@ from typing import Any
 
 from .errors import ExitCode, YodaError
 from .io import write_text_atomic
+from .issue_metadata import COMPATIBLE_ISSUE_SCHEMA_VERSIONS
 from .paths import issues_dir
+from .time_utils import parse_timestamp
 from .validate import ALLOWED_STATUS, validate_slug
 
 try:
@@ -22,7 +24,7 @@ except Exception as exc:  # pragma: no cover - runtime dependency
 
 ALLOWED_PHASE = {"study", "document", "implement", "evaluate"}
 ALLOWED_FLOW_PREPARED_UNTIL = {"study", "document"}
-DEFAULT_SCHEMA_VERSIONS = {"2.00"}
+DEFAULT_SCHEMA_VERSIONS = set(COMPATIBLE_ISSUE_SCHEMA_VERSIONS)
 
 
 def _issue_filename_re(dev: str) -> re.Pattern[str]:
@@ -118,6 +120,34 @@ def _normalize_flow_prepared_until(metadata: dict[str, Any], path: Path, issue_i
     return normalized
 
 
+def _normalize_pending_reason(
+    metadata: dict[str, Any], status: str, path: Path, issue_id: str
+) -> str:
+    if status != "pending":
+        return ""
+    value = metadata.get("pending_reason")
+    if not isinstance(value, str) or not value.strip():
+        raise YodaError(
+            f"{path}: {issue_id}: invalid or missing 'pending_reason'; "
+            "set it with todo_update.py --status pending --pending-reason <reason>",
+            exit_code=ExitCode.VALIDATION,
+        )
+    return value.strip()
+
+
+def _require_timestamp(metadata: dict[str, Any], key: str, path: Path, issue_id: str) -> str:
+    value = _require_string(metadata, key, path, issue_id)
+    try:
+        parse_timestamp(value, key)
+    except YodaError as exc:
+        raise YodaError(
+            f"{path}: {issue_id}: {exc}; use ISO 8601 with an explicit offset "
+            "(example: 2026-01-01T00:00:00+00:00)",
+            exit_code=ExitCode.VALIDATION,
+        ) from exc
+    return value
+
+
 def _build_issue_record(
     path: Path,
     dev: str,
@@ -156,13 +186,14 @@ def _build_issue_record(
         "status": status,
         "phase": _normalize_phase(metadata, status, path, issue_id),
         "flow_prepared_until": _normalize_flow_prepared_until(metadata, path, issue_id),
+        "pending_reason": _normalize_pending_reason(metadata, status, path, issue_id),
         "depends_on": _normalize_depends_on(metadata, path, issue_id),
         "title": _require_string(metadata, "title", path, issue_id),
         "description": _require_string(metadata, "description", path, issue_id),
         "priority": _require_int_priority(metadata, path, issue_id),
         "extern_issue_file": str(metadata.get("extern_issue_file", "") or ""),
-        "created_at": _require_string(metadata, "created_at", path, issue_id),
-        "updated_at": _require_string(metadata, "updated_at", path, issue_id),
+        "created_at": _require_timestamp(metadata, "created_at", path, issue_id),
+        "updated_at": _require_timestamp(metadata, "updated_at", path, issue_id),
         "flow_log_exists": _has_flow_log(content),
         "_source_index": source_index,
     }

@@ -8,12 +8,13 @@ from zoneinfo import ZoneInfo
 from typing import Any, Iterable
 
 from .errors import YodaError, ExitCode
+from .issue_metadata import COMPATIBLE_ISSUE_SCHEMA_VERSIONS
 
 SLUG_RE = re.compile(r"^[a-z][a-z0-9-]*$")
 ISSUE_ID_RE = re.compile(r"^[a-z][a-z0-9-]*-\d{4}$")
 ALLOWED_STATUS = {"to-do", "doing", "done", "pending"}
 ALLOWED_ENTRY_TYPES = {"doc", "code", "config", "schema", "data", "asset", "other"}
-SUPPORTED_SCHEMA_VERSIONS = {"1.0", "1.01", "1.02", "2.00"}
+SUPPORTED_SCHEMA_VERSIONS = {"1.0", "1.01", "1.02", *COMPATIBLE_ISSUE_SCHEMA_VERSIONS}
 
 
 def validate_slug(slug: str) -> None:

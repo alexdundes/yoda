@@ -31,7 +31,7 @@ def test_issue_add_creates_markdown_issue_only() -> None:
     assert result.returncode == 0, result.stderr
     issue_path = _issue_file("test-0001")
     parsed = frontmatter.load(issue_path)
-    assert parsed.metadata["schema_version"] == "2.00"
+    assert parsed.metadata["schema_version"] == "2.01"
     assert "id" not in parsed.metadata
     assert parsed.metadata["status"] == "to-do"
 

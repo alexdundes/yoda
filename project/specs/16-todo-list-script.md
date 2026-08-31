@@ -77,21 +77,21 @@ Date filters:
 ### Default (execution order)
 
 - Primary: priority (descending).
-- Tie-breaker: order in the YAML list (top to bottom).
+- Tie-breaker: filename-derived issue ID (ascending).
 - Dependency adjustment: if an issue depends on another issue that is not `done`, the dependent issue must appear **after** that dependency.
 
 Dependency adjustment must be stable and deterministic:
-- Start from the priority/YAML ordered list.
+- Start from the priority/ID ordered list.
 - For each issue, if it depends on any issue not `done`, move it after its unresolved dependencies while preserving relative order as much as possible.
-- If cycles exist, keep YAML order and do not error.
+- If cycles exist, keep the base priority/ID order and do not error.
 
 ### Alternate ordering (`--order`)
 
 Supported modes:
-- `created-asc`: `created_at` ascending, tie-breaker YAML order.
-- `created-desc`: `created_at` descending, tie-breaker YAML order.
-- `updated-asc`: `updated_at` ascending, tie-breaker YAML order.
-- `updated-desc`: `updated_at` descending, tie-breaker YAML order.
+- `created-asc`: `created_at` ascending, tie-breaker issue ID ascending.
+- `created-desc`: `created_at` descending, tie-breaker issue ID ascending.
+- `updated-asc`: `updated_at` ascending, tie-breaker issue ID ascending.
+- `updated-desc`: `updated_at` descending, tie-breaker issue ID ascending.
 
 ## Text search
 
@@ -127,7 +127,7 @@ Output when `--grep` is used (Markdown format):
 
 ### JSON (`--format json` or `--json`)
 
-- The JSON output should include an array of issues with fields derived from markdown front matter and filename (including `id`, `slug`, `path`, `status`, `phase`, `depends_on`, `priority`, timestamps).
+- The JSON output should include an array of issues with fields derived from markdown front matter and filename (including `id`, `slug`, `path`, `status`, `phase`, `flow_prepared_until`, `pending_reason`, `depends_on`, `priority`, timestamps).
 
 ## Error handling
 

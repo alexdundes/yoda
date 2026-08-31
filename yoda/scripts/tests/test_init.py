@@ -81,6 +81,30 @@ def test_init_sanitizes_existing_issue_front_matter_id_without_legacy_todo(tmp_p
     assert result.returncode == 0, result.stderr
     parsed = frontmatter.load(issue_path)
     assert "id" not in parsed.metadata
+    assert parsed.metadata["schema_version"] == "2.01"
+
+
+def test_init_migrates_markdown_schema_without_id_or_legacy_todo(tmp_path: Path) -> None:
+    _seed_manual(tmp_path)
+    issue_path = tmp_path / "yoda" / "project" / "issues" / "test-0001-existing.md"
+    issue_path.parent.mkdir(parents=True, exist_ok=True)
+    issue_path.write_text(
+        "---\n"
+        "schema_version: '2.00'\n"
+        "status: to-do\n"
+        "title: Existing\n"
+        "description: Existing\n"
+        "priority: 5\n"
+        "created_at: '2026-01-01T00:00:00+00:00'\n"
+        "updated_at: '2026-01-01T00:00:00+00:00'\n"
+        "---\n\n# Existing\n\n## Flow log\n",
+        encoding="utf-8",
+    )
+
+    result = run_script("init.py", ["--dev", TEST_DEV, "--root", str(tmp_path)])
+    assert result.returncode == 0, result.stderr
+    parsed = frontmatter.load(issue_path)
+    assert parsed.metadata["schema_version"] == "2.01"
 
 
 def test_init_migrates_legacy_todo_and_logs_then_removes_legacy_files(tmp_path: Path) -> None:
@@ -141,7 +165,7 @@ def test_init_migrates_legacy_todo_and_logs_then_removes_legacy_files(tmp_path: 
     assert result.returncode == 0, result.stderr
 
     parsed = frontmatter.load(issue_path)
-    assert parsed.metadata["schema_version"] == "2.00"
+    assert parsed.metadata["schema_version"] == "2.01"
     assert "id" not in parsed.metadata
     text = issue_path.read_text(encoding="utf-8")
     assert "## Flow log" in text

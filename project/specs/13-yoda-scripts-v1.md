@@ -29,7 +29,7 @@ Help guidance contract:
 - `3`: not found
 - `4`: conflict
 
-## Script set (0.3.0)
+## Script set (0.4.0)
 
 - `issue_add.py`
 - `yoda_intake.py`
@@ -38,10 +38,17 @@ Help guidance contract:
 - `todo_update.py` (permanent)
 - `log_add.py` (permanent)
 - `yoda_flow_next.py`
+- `yoda_prep_flow.py`
+- `todo_next.py` (inspection helper)
+- `init.py`
+- `update.py`
 
-## Removed from flow contract
+## Flow ownership
 
-- `todo_next.py`
+- `yoda_flow_next.py` owns deterministic issue selection and phase transitions.
+- `yoda_prep_flow.py` owns explicit Study/Document preparation for one issue.
+- `todo_next.py` and `todo_list.py` are read/inspection helpers and do not own
+  Flow phase transitions.
 
 ## yoda_flow_next.py
 
@@ -51,6 +58,15 @@ Help guidance contract:
 - outputs `issue_path`, `status`, `phase` (if applicable), `next_step`, `blocked_reason` (if blocked), `runbook_line`
 - `runbook_line` is mandatory in `md` and `json`
 - on block, no mutation; instruct `todo_update.py`
+- issues prepared through Document start at `doing/implement`
+
+## yoda_prep_flow.py
+
+- requires explicit `--issue`
+- ignores backlog order/dependencies for preparation only
+- advances one authorized Study/Document step per call
+- keeps issue `to-do` and persists `flow_prepared_until`
+- never enters Implement or Evaluate
 
 ## todo_update.py
 

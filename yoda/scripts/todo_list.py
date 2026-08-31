@@ -86,12 +86,10 @@ def _base_order(issues: list[dict[str, Any]], order: str | None) -> list[dict[st
     if order in ORDER_MODES:
         reverse = order.endswith("desc")
         field = "created_at" if order.startswith("created") else "updated_at"
+        id_ordered = sorted(issues, key=lambda item: str(item.get("id", "")))
         return sorted(
-            issues,
-            key=lambda item: (
-                parse_issue_timestamp(str(item.get(field, "")), field),
-                str(item.get("id", "")),
-            ),
+            id_ordered,
+            key=lambda item: parse_issue_timestamp(str(item.get(field, "")), field),
             reverse=reverse,
         )
     return sorted(

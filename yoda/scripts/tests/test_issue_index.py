@@ -220,3 +220,71 @@ def test_load_issue_index_uses_priority_then_source_order() -> None:
     index = load_issue_index("test")
     ordered_ids = [item["id"] for item in index["issues"]]
     assert ordered_ids == ["test-0002", "test-0001"]
+
+
+def test_load_issue_index_accepts_schema_201_and_exposes_pending_reason() -> None:
+    _write_issue_file(
+        "test-0001-pending.md",
+        {
+            "schema_version": "2.01",
+            "status": "pending",
+            "pending_reason": "Waiting for approval",
+            "title": "Pending",
+            "description": "Desc",
+            "priority": 5,
+            "created_at": "2026-01-01T00:00:00+00:00",
+            "updated_at": "2026-01-01T00:00:00+00:00",
+        },
+    )
+
+    issue = load_issue_index("test")["issues"][0]
+    assert issue["schema_version"] == "2.01"
+    assert issue["pending_reason"] == "Waiting for approval"
+
+
+def test_load_issue_index_requires_pending_reason_for_pending_status() -> None:
+    _write_issue_file(
+        "test-0001-pending.md",
+        {
+            "schema_version": "2.01",
+            "status": "pending",
+            "title": "Pending",
+            "description": "Desc",
+            "priority": 5,
+            "created_at": "2026-01-01T00:00:00+00:00",
+            "updated_at": "2026-01-01T00:00:00+00:00",
+        },
+    )
+
+    with pytest.raises(YodaError) as exc_info:
+        load_issue_index("test")
+    assert "invalid or missing 'pending_reason'" in str(exc_info.value)
+    assert "todo_update.py --status pending --pending-reason" in str(exc_info.value)
+
+
+@pytest.mark.parametrize(
+    ("field", "value", "expected"),
+    [
+        ("created_at", "not-a-timestamp", "Invalid created_at timestamp"),
+        ("updated_at", "2026-01-01T00:00:00", "Timestamp missing timezone: updated_at"),
+    ],
+)
+def test_load_issue_index_validates_timestamp_format_and_timezone(
+    field: str, value: str, expected: str
+) -> None:
+    metadata = {
+        "schema_version": "2.01",
+        "status": "to-do",
+        "title": "Timestamp",
+        "description": "Desc",
+        "priority": 5,
+        "created_at": "2026-01-01T00:00:00+00:00",
+        "updated_at": "2026-01-01T00:00:00+00:00",
+    }
+    metadata[field] = value
+    _write_issue_file("test-0001-timestamp.md", metadata)
+
+    with pytest.raises(YodaError) as exc_info:
+        load_issue_index("test")
+    assert expected in str(exc_info.value)
+    assert "ISO 8601 with an explicit offset" in str(exc_info.value)

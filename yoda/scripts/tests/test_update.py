@@ -79,6 +79,94 @@ def test_update_check_reports_update(tmp_path: Path) -> None:
     assert payload["latest_version"] == "1.0.1+20260204.b"
 
 
+def test_update_check_warns_on_major_change(tmp_path: Path) -> None:
+    root = tmp_path / "root"
+    root.mkdir()
+    _setup_root(root, "1.9.0", "20260204.a")
+
+    latest_path = tmp_path / "latest.json"
+    latest_path.write_text(
+        json.dumps(
+            {
+                "version": "2.0.0",
+                "build": "20260205.b",
+                "package_url": "file:///unused",
+                "sha256": "deadbeef",
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    result = run_script(
+        "update.py",
+        ["--check", "--root", str(root), "--latest", str(latest_path), "--format", "json"],
+    )
+    assert result.returncode == 0, result.stderr
+    payload = json.loads(result.stdout)
+    assert any("MAJOR compatibility change" in warning for warning in payload["warnings"])
+
+
+def test_update_check_warns_on_older_build(tmp_path: Path) -> None:
+    root = tmp_path / "root"
+    root.mkdir()
+    _setup_root(root, "1.0.0", "20260205.a")
+
+    latest_path = tmp_path / "latest.json"
+    latest_path.write_text(
+        json.dumps(
+            {
+                "version": "1.0.0",
+                "build": "20260204.b",
+                "package_url": "file:///unused",
+                "sha256": "deadbeef",
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    result = run_script(
+        "update.py",
+        ["--check", "--root", str(root), "--latest", str(latest_path), "--format", "json"],
+    )
+    assert result.returncode == 0, result.stderr
+    payload = json.loads(result.stdout)
+    assert any("Target build is older" in warning for warning in payload["warnings"])
+
+
+def test_update_rejects_historical_version_before_package_download(tmp_path: Path) -> None:
+    root = tmp_path / "root"
+    root.mkdir()
+    _setup_root(root, "1.0.0", "20260204.a")
+
+    latest_path = tmp_path / "latest.json"
+    latest_path.write_text(
+        json.dumps(
+            {
+                "version": "1.1.0",
+                "build": "20260205.b",
+                "package_url": "file:///unused",
+                "sha256": "deadbeef",
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    result = run_script(
+        "update.py",
+        [
+            "--apply",
+            "--root",
+            str(root),
+            "--latest",
+            str(latest_path),
+            "--version",
+            "1.0.1+20260204.old",
+        ],
+    )
+    assert result.returncode == 2
+    assert "historical update targets are unsupported" in result.stderr
+
+
 def test_update_apply_installs_and_preserves(tmp_path: Path) -> None:
     root = tmp_path / "root"
     root.mkdir()

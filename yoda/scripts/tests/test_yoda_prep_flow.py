@@ -109,6 +109,7 @@ def test_prep_flow_targets_explicit_issue_and_ignores_priority_order() -> None:
     assert payload["runbook_line"].startswith("Run Prep Study:")
 
     meta = _read_front_matter(target)
+    assert meta["schema_version"] == "2.01"
     assert meta["status"] == "to-do"
     assert "phase" not in meta
     assert meta["flow_prepared_until"] == "study"

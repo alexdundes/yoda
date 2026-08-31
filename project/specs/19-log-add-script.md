@@ -39,4 +39,9 @@ Optional:
 
 ## Output
 
-On success, return issue id, log path, and timestamp.
+On success, return:
+
+- `issue_id`
+- `issue_path` (the issue Markdown file containing `## Flow log`)
+- `timestamp`
+- `dry_run`

@@ -30,8 +30,11 @@ This README indexes the current specification set.
 24. Installation and upgrade
 25. `yoda_intake.py` specification
 26. `get_extern_issue.py` specification
+27. `yoda_prep_flow.py` specification
 
 ## Notes
 
+- Number 17 is intentionally retired: `17-todo-reorder-script.md` was removed
+  with the obsolete `todo_reorder.py` contract; later spec numbers remain stable.
 - Human entrypoint: repository `README.md`.
 - Agent entrypoint: `yoda/yoda.md`.

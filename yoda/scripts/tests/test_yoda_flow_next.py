@@ -88,6 +88,7 @@ def test_flow_next_transitions_todo_to_doing_study_and_logs() -> None:
     assert payload["log_timestamp"]
 
     meta = _read_front_matter(path)
+    assert meta["schema_version"] == "2.01"
     assert meta["status"] == "doing"
     assert meta["phase"] == "study"
     assert meta["updated_at"] == payload["log_timestamp"]
@@ -125,6 +126,35 @@ def test_flow_next_starts_prepared_issue_at_implement() -> None:
     assert meta["phase"] == "implement"
     assert meta["flow_prepared_until"] == "document"
     assert _last_log_line(path).endswith("transition to-do->doing/implement | prepared_until=document")
+
+
+def test_flow_next_repeats_study_when_only_prep_study_is_complete() -> None:
+    path = _write_issue_file(
+        "test-0001-study-prepared.md",
+        {
+            "schema_version": "2.00",
+            "status": "to-do",
+            "flow_prepared_until": "study",
+            "title": "Study prepared",
+            "description": "Desc",
+            "priority": 5,
+            "created_at": "2026-01-01T00:00:00+00:00",
+            "updated_at": "2026-01-01T00:00:00+00:00",
+        },
+        body="# Study prepared\n\n## Flow log\n",
+    )
+
+    result = run_script("yoda_flow_next.py", ["--dev", TEST_DEV, "--format", "json"])
+    assert result.returncode == 0, result.stderr
+    payload = json.loads(result.stdout)
+    assert payload["status"] == "doing"
+    assert payload["phase"] == "study"
+    assert payload["next_step"] == "study"
+
+    meta = _read_front_matter(path)
+    assert meta["flow_prepared_until"] == "study"
+    assert meta["phase"] == "study"
+    assert _last_log_line(path).endswith("transition to-do->doing/study")
 
 
 def test_flow_next_advances_doing_phases_and_finishes_done() -> None:
@@ -198,6 +228,7 @@ def test_flow_next_ignores_pending_and_reports_hint() -> None:
         {
             "schema_version": "2.00",
             "status": "pending",
+            "pending_reason": "Waiting",
             "title": "Pending",
             "description": "Desc",
             "priority": 9,
@@ -262,6 +293,7 @@ def test_flow_next_logs_blocked_reason_for_dependency_blocked() -> None:
         {
             "schema_version": "2.00",
             "status": "pending",
+            "pending_reason": "Waiting",
             "title": "Dep",
             "description": "Desc",
             "priority": 7,
@@ -332,6 +364,7 @@ def test_flow_next_dry_run_blocked_keeps_exit_code_without_writing_log() -> None
         {
             "schema_version": "2.00",
             "status": "pending",
+            "pending_reason": "Waiting",
             "title": "Dep",
             "description": "Desc",
             "priority": 7,

@@ -96,6 +96,7 @@ def test_todo_next_selects_selectable_and_reports_pending_blocked() -> None:
         {
             "schema_version": "2.00",
             "status": "pending",
+            "pending_reason": "Waiting",
             "title": "Pending",
             "description": "Desc",
             "priority": 9,
@@ -131,6 +132,7 @@ def test_todo_next_not_found_when_no_selectable() -> None:
         {
             "schema_version": "2.00",
             "status": "pending",
+            "pending_reason": "Waiting",
             "title": "Pending",
             "description": "Desc",
             "priority": 5,

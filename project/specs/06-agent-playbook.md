@@ -22,6 +22,16 @@ When human intent is to start YODA Flow:
 - `todo_update.py` is the permanent tool for semantic corrections and metadata adjustments.
 - `log_add.py` is the permanent tool for issue-related logging outside flow steps.
 
+## YODA Prep Flow entry
+
+When human intent explicitly names YODA Prep Flow:
+
+1) Read `python3 yoda/scripts/yoda_prep_flow.py --help`.
+2) Run it with `--dev <slug> --issue <id>`.
+3) Execute only the returned Study or Document instruction.
+4) Wait for explicit human authorization before the next prep step.
+5) Do not implement while operating YODA Prep Flow.
+
 ## Phase discipline
 
 - Move between phases only with explicit human authorization.
@@ -43,6 +53,7 @@ When human intent is to start YODA Flow:
 
 - For embedded YODA, use the YODA-local entry files under `yoda/` and `yoda/yoda.md`; do not assume YODA controls host-root agent files.
 - Before operating any YODA command, check `<command> --help` for command-specific runbook/guidance.
-- Do not rely on removed flow contracts (`todo_next.py`).
+- Use `todo_next.py` and `todo_list.py` only for inspection; do not use them to
+  replace deterministic phase transitions in `yoda_flow_next.py`.
 - Do not duplicate dependency metadata in issue body.
 - Keep `Entry points` as simple list items.

@@ -10,7 +10,7 @@ YODA v1 defines a process for agent-assisted implementation work. It does not de
 
 ## Out-of-scope list
 
-- CI/CD pipelines and release automation.
+- CI/CD pipelines, automated publication, and deployment orchestration.
 - Deployment, infrastructure, and environment management.
 - Architecture standards and technology selection.
 - Security, compliance, and governance programs.
@@ -18,6 +18,8 @@ YODA v1 defines a process for agent-assisted implementation work. It does not de
 - HR, hiring, and team management processes.
 - Legal, finance, and procurement workflows.
 
-## Future extensions
+## Current distribution boundary
 
-Tools for distribution and delivery may exist in future versions, but they are not part of the framework scope in v1.
+The repository includes package creation, installer hosting, checksum
+verification, and embedded update/rollback tools. Automating publication to a
+release platform remains outside the framework scope in v1.

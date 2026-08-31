@@ -5,6 +5,10 @@ from __future__ import annotations
 from typing import Any
 
 
+CURRENT_ISSUE_SCHEMA_VERSION = "2.01"
+COMPATIBLE_ISSUE_SCHEMA_VERSIONS = frozenset({"2.00", CURRENT_ISSUE_SCHEMA_VERSION})
+
+
 OPTIONAL_EMPTY_KEYS = (
     "phase",
     "flow_prepared_until",

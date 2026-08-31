@@ -2,7 +2,7 @@
 
 ## Objective
 
-Define behavior for `yoda_flow_next.py`, the deterministic YODA Flow driver in 0.3.0.
+Define behavior for `yoda_flow_next.py`, the deterministic YODA Flow driver in 0.4.0.
 
 ## Location
 
@@ -33,10 +33,16 @@ Flow log behavior:
 
 ## State progression
 
-- `to-do -> doing` starts with `phase=study`.
+- `to-do -> doing` starts with `phase=study` when the issue was not prepared.
+- `to-do + flow_prepared_until=document -> doing/implement` resumes an issue
+  prepared through YODA Prep Flow.
+- `to-do + flow_prepared_until=study -> doing/study`; the normal Flow repeats
+  Study because preparation has not completed Document.
 - While `status=doing`, progress is unitary:
   - `study -> document -> implement -> evaluate`
 - After `evaluate`, transition to `done` and remove `phase`.
+- Readers accept schema 2.00/2.01 during rollout; a front-matter transition
+  persists schema 2.01.
 
 ## Output contract (md/json)
 

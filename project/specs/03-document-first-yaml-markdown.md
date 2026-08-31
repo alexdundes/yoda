@@ -16,12 +16,17 @@
 - YAML front matter carries machine-readable issue metadata.
 - Metadata must remain minimal, deterministic, and schema-driven.
 
-## 0.3.0 direction
+## Current direction (0.4.0)
 
 - Source of truth for flow execution is the issue `.md` file.
 - Front matter no longer stores `id`; ID is derived from filename.
 - `depends_on` remains only in front matter (no duplicate section in body).
 - `phase` is conditional and only serialized when `status=doing`.
+- `flow_prepared_until` records explicit YODA Prep Flow progress and is omitted
+  when empty.
+
+YAML files such as `CHANGELOG.yaml`, package manifests, and external/legacy
+metadata remain structured artifacts, but they are not the YODA Flow index.
 
 ## Guardrails
 

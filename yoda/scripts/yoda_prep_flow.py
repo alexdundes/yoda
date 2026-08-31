@@ -15,7 +15,11 @@ from lib.cli import add_global_flags, resolve_format
 from lib.errors import ExitCode, YodaError
 from lib.flow_log import append_flow_log_line, sanitize_flow_message
 from lib.front_matter import update_front_matter
-from lib.issue_metadata import canonicalize_issue_metadata
+from lib.issue_metadata import (
+    COMPATIBLE_ISSUE_SCHEMA_VERSIONS,
+    CURRENT_ISSUE_SCHEMA_VERSION,
+    canonicalize_issue_metadata,
+)
 from lib.issue_utils import resolve_issue_file_by_id
 from lib.logging_utils import configure_logging
 from lib.output import render_output
@@ -48,7 +52,7 @@ def _load_issue(issue_id: str) -> tuple[Path, dict[str, Any]]:
     post = frontmatter.load(str(issue_path))
     metadata = dict(post.metadata)
     schema_version = str(metadata.get("schema_version", "")).strip()
-    if schema_version != "2.00":
+    if schema_version not in COMPATIBLE_ISSUE_SCHEMA_VERSIONS:
         raise YodaError(
             f"Unsupported schema_version '{schema_version}'. Run init.py migration first.",
             exit_code=ExitCode.VALIDATION,
@@ -87,6 +91,7 @@ def _apply_prep_step(issue_path: Path, metadata: dict[str, Any], dry_run: bool) 
     updated.pop("phase", None)
     updated["flow_prepared_until"] = next_step
     updated["updated_at"] = timestamp
+    updated["schema_version"] = CURRENT_ISSUE_SCHEMA_VERSION
     normalized = canonicalize_issue_metadata(updated)
 
     if not dry_run:

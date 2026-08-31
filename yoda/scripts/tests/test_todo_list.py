@@ -108,6 +108,7 @@ def test_todo_list_filters_status_and_depends_on() -> None:
         {
             "schema_version": "2.00",
             "status": "pending",
+            "pending_reason": "Waiting",
             "title": "Pending",
             "description": "Desc",
             "priority": 7,
@@ -198,3 +199,28 @@ def test_todo_list_empty_backlog_outputs_expected_message() -> None:
     result = run_script("todo_list.py", ["--dev", TEST_DEV])
     assert result.returncode == 0, result.stderr
     assert "No issues to execute. Nothing needs to be done." in result.stdout
+
+
+def test_todo_list_descending_timestamp_modes_keep_id_tie_breaker_ascending() -> None:
+    for issue_id in ("test-0002", "test-0001"):
+        _write_issue_file(
+            f"{issue_id}-same-time.md",
+            {
+                "schema_version": "2.01",
+                "status": "to-do",
+                "title": issue_id,
+                "description": "Desc",
+                "priority": 5,
+                "created_at": "2026-01-01T00:00:00+00:00",
+                "updated_at": "2026-01-02T00:00:00+00:00",
+            },
+        )
+
+    for mode in ("created-desc", "updated-desc"):
+        result = run_script(
+            "todo_list.py",
+            ["--dev", TEST_DEV, "--order", mode, "--format", "json"],
+        )
+        assert result.returncode == 0, result.stderr
+        payload = json.loads(result.stdout)
+        assert [item["id"] for item in payload["issues"]] == ["test-0001", "test-0002"]

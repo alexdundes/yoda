@@ -20,20 +20,37 @@ yoda/
     todo_update.py
     todo_next.py
     log_add.py
+    yoda_flow_next.py
+    yoda_prep_flow.py
+    init.py
+    update.py
     requirements.txt
     lib/
       __init__.py
       cli.py
-      paths.py
-      io.py
-      yaml_io.py
-      front_matter.py
-      templates.py
-      validate.py
+      dev.py
+      error_messages.py
       errors.py
       external_issue_utils.py
-      provider_gitlab.py
+      flow_log.py
+      front_matter.py
+      io.py
+      issue_index.py
+      issue_metadata.py
+      issue_utils.py
+      logging_utils.py
+      order_utils.py
+      output.py
+      parse_utils.py
+      paths.py
       provider_github.py
+      provider_gitlab.py
+      slug_utils.py
+      templates.py
+      time_utils.py
+      todo_utils.py
+      validate.py
+      yaml_io.py
 ```
 
 Notes:
@@ -74,7 +91,9 @@ Recommended dependencies for v1:
 - `--verbose` MUST enable DEBUG logging.
 - Errors MUST be written to stderr with short, actionable messages.
 - Exit codes must follow the CLI contract in `project/specs/13-yoda-scripts-v1.md`.
-- Every script execution that mutates metadata MUST append a log entry via `log_add.py` (or equivalent shared helper) before exiting successfully.
+- Every script execution that mutates metadata MUST append a compact entry via
+  the shared Flow-log helper (or the command's own transition logger) before
+  exiting successfully.
 - Log messages should be detailed and traceable (one change per line with `field: old -> new`), or initial values on creation.
 
 ## Validation
@@ -94,9 +113,10 @@ Recommended dependencies for v1:
 ## Paths and repo layout
 
 - All paths are relative to repo root.
-- TODO path: `yoda/todos/TODO.<dev>.yaml`.
 - Issue path: `yoda/project/issues/<id>-<slug>.md`.
-- Log path: `yoda/logs/<id>-<slug>.yaml`.
+- Flow log: `## Flow log` inside the issue Markdown file.
+- Legacy compatibility paths: `yoda/todos/TODO.<dev>.yaml` and
+  `yoda/logs/<id>-<slug>.yaml`; neither is a current Flow source of truth.
 
 ## Tests
 

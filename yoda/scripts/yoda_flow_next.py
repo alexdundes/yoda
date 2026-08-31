@@ -16,6 +16,7 @@ from lib.errors import ExitCode, YodaError
 from lib.flow_log import append_flow_log_line, sanitize_flow_message
 from lib.front_matter import update_front_matter
 from lib.issue_index import load_issue_index
+from lib.issue_metadata import CURRENT_ISSUE_SCHEMA_VERSION
 from lib.logging_utils import configure_logging
 from lib.output import render_output
 from lib.paths import repo_root
@@ -142,6 +143,7 @@ def _apply_transition(issue: dict[str, Any], log_message: str = "") -> dict[str,
             transition_log = "transition to-do->doing/study"
             next_step = "study"
         metadata["updated_at"] = ts
+        metadata["schema_version"] = CURRENT_ISSUE_SCHEMA_VERSION
         update_front_matter(issue_path, metadata)
         log_ts = _append_log(issue, _compose_transition_log(transition_log, log_message))
         return {
@@ -168,6 +170,7 @@ def _apply_transition(issue: dict[str, Any], log_message: str = "") -> dict[str,
         metadata["status"] = "doing"
         metadata["phase"] = next_phase
         metadata["updated_at"] = ts
+        metadata["schema_version"] = CURRENT_ISSUE_SCHEMA_VERSION
         update_front_matter(issue_path, metadata)
         log_ts = _append_log(
             issue,
@@ -184,6 +187,7 @@ def _apply_transition(issue: dict[str, Any], log_message: str = "") -> dict[str,
     metadata["status"] = "done"
     metadata.pop("phase", None)
     metadata["updated_at"] = ts
+    metadata["schema_version"] = CURRENT_ISSUE_SCHEMA_VERSION
     update_front_matter(issue_path, metadata)
     log_ts = _append_log(
         issue,

@@ -47,4 +47,12 @@ Core update inputs include:
 
 ## Output
 
-On success, return issue id, updated fields, target path(s), and timestamp.
+On success, return:
+
+- `issue_id`
+- `updated_fields`
+- `issue_path`
+- `dry_run`
+
+`flow_prepared_until` is managed by `yoda_prep_flow.py`; this command does not
+expose a flag for advancing Prep Flow.

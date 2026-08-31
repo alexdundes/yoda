@@ -18,7 +18,12 @@ from lib.errors import ExitCode, YodaError
 from lib.external_issue_utils import detect_origin_url, parse_origin, provider_from_host
 from lib.flow_log import append_flow_log_line, sanitize_flow_message
 from lib.front_matter import update_front_matter
-from lib.issue_metadata import canonicalize_issue_metadata, prune_empty_optionals
+from lib.issue_metadata import (
+    COMPATIBLE_ISSUE_SCHEMA_VERSIONS,
+    CURRENT_ISSUE_SCHEMA_VERSION,
+    canonicalize_issue_metadata,
+    prune_empty_optionals,
+)
 from lib.issue_utils import issue_slug_from_path, resolve_issue_file_by_id
 from lib.logging_utils import configure_logging
 from lib.output import render_output
@@ -46,6 +51,7 @@ def _format_value(value: Any) -> str:
 
 def _diff_fields(before: dict[str, Any], after: dict[str, Any]) -> tuple[list[str], list[str]]:
     fields = [
+        "schema_version",
         "title",
         "description",
         "status",
@@ -239,7 +245,7 @@ def main() -> int:
         post = frontmatter.load(str(issue_file))
         metadata = dict(post.metadata)
         schema_version = str(metadata.get("schema_version", "")).strip()
-        if schema_version != "2.00":
+        if schema_version not in COMPATIBLE_ISSUE_SCHEMA_VERSIONS:
             raise YodaError(
                 f"Unsupported schema_version '{schema_version}'. Run init.py migration first.",
                 exit_code=ExitCode.VALIDATION,
@@ -250,7 +256,7 @@ def main() -> int:
         _apply_pending_rules(metadata, args.pending_reason is not None)
         _apply_phase_rules(metadata)
         metadata["updated_at"] = now_iso(detect_local_timezone())
-        metadata["schema_version"] = "2.00"
+        metadata["schema_version"] = CURRENT_ISSUE_SCHEMA_VERSION
         normalized = canonicalize_issue_metadata(metadata)
 
         target_slug = _resolve_target_slug(args, current_slug)

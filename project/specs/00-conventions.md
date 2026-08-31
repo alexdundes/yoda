@@ -38,10 +38,16 @@ Keywords are interpreted as RFC 2119:
 
 ## Metadata conventions
 
-- Issue front matter canonical order for 0.3.0:
+- Operational baseline: YODA Framework 0.4.0.
+- Current issue schema: `2.01`.
+- Readers MUST accept conforming `2.00` data during the 2.01 migration window;
+  writers that mutate issue front matter MUST persist `2.01`.
+- Issue front matter canonical order:
   - `schema_version`
   - `status`
   - `phase` (only when `status=doing`)
+  - `flow_prepared_until` (optional, omitted if empty)
+  - `pending_reason` (required when `status=pending`, omitted otherwise)
   - `depends_on` (optional, omitted if empty)
   - `title`
   - `description`
@@ -51,6 +57,15 @@ Keywords are interpreted as RFC 2119:
   - `updated_at`
 - `id` MUST NOT exist in front matter.
 - `phase` MUST be omitted unless `status=doing`.
+- `flow_prepared_until` accepts only `study` or `document`.
+
+Schema 2.01 adds an optional field but also enforces existing normative rules
+that schema 2.00 readers previously tolerated: `pending` requires a non-empty
+`pending_reason`, and timestamps require ISO 8601 with an explicit offset.
+Index loading is fail-fast across a developer's issue set. Use
+`todo_update.py --status pending --pending-reason <reason>` for a missing reason;
+repair invalid timestamps in the issue front matter before retrying. `init.py`
+updates the schema marker but does not invent these values.
 
 ## Logging conventions
 

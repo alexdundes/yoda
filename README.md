@@ -11,7 +11,15 @@
 ## What this package is
 YODA Framework is a document-first system: we clarify intent before implementation, and we treat documentation as executable guidance. Issue Markdown captures both structured metadata and narrative context (issues, decisions, constraints), and scripts operate on those artifacts deterministically.
 
-The framework is organized around two cycles: **YODA Intake** (discovery/triage) and **YODA Flow** (execution). When the agent enters a cycle, it assumes the corresponding **skin** (Intake skin or Flow skin) to align posture, outputs, and constraints with that cycle.
+The framework is organized around two primary cycles: **YODA Intake**
+(discovery/triage) and **YODA Flow** (execution). **YODA Prep Flow** can prepare
+an explicit issue through Study and Document before it enters implementation.
+When the agent enters a cycle, it assumes the corresponding posture, outputs,
+and constraints.
+
+Visit the [YODA Framework site](https://alexdundes.github.io/yoda/) for the
+published guide and project story. The site is maintained from this
+repository's `docs/` directory.
 
 ## Quick install (one-liner)
 This is the fastest path, but it executes a remote script directly. Use it only if you trust the source.
@@ -21,7 +29,7 @@ Latest (no version, simplest):
 curl -fsSL https://alexdundes.github.io/yoda/install/yoda-install.sh | sh -s -- --root .
 ```
 
-Pinned version (recommended for production):
+Pinned expected version (fails if current `latest.json` differs):
 ```bash
 curl -fsSL https://alexdundes.github.io/yoda/install/yoda-install.sh | sh -s -- --version <semver+build> --root .
 ```
@@ -69,7 +77,7 @@ YODA stands for **YAML-Oriented Documentation & Agents**. We always pair YODA wi
 
 ## Why YAML + scripts and Markdown
 - **Markdown + scripts (canonical)**: issue Markdown is the operational contract for backlog and flow.
-- **YAML (compatibility)**: YAML artifacts may appear in migration/legacy paths, but are not the primary execution source in 0.3.x.
+- **YAML (compatibility)**: YAML artifacts may appear in migration/legacy paths, but are not the primary execution source in 0.4.x.
 
 ## Version & integrity
 Check `yoda/PACKAGE_MANIFEST.yaml` for version/build metadata and `CHANGELOG.yaml` for release notes. Integrity is validated using the `latest.json` checksum model.

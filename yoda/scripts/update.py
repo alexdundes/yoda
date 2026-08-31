@@ -8,6 +8,7 @@ import hashlib
 import json
 import logging
 import os
+import re
 import shutil
 import sys
 import tarfile
@@ -34,6 +35,8 @@ except Exception as exc:  # pragma: no cover - runtime dependency
 
 DEFAULT_LATEST_URL = "https://alexdundes.github.io/yoda/install/latest.json"
 BACKUP_GITIGNORE = "*\n!.gitignore\n"
+SEMVER_RE = re.compile(r"^(\d+)\.(\d+)\.(\d+)$")
+BUILD_DATE_RE = re.compile(r"^(\d{8})(?:\.|$)")
 
 
 def _is_url(value: str) -> bool:
@@ -90,6 +93,46 @@ def _sha256(path: Path) -> str:
     return hasher.hexdigest()
 
 
+def _parse_semver(value: str, label: str) -> tuple[int, int, int]:
+    match = SEMVER_RE.fullmatch(value)
+    if not match:
+        raise YodaError(f"Invalid {label} SemVer: {value}", exit_code=ExitCode.VALIDATION)
+    return tuple(int(part) for part in match.groups())
+
+
+def _build_date(value: str) -> int | None:
+    match = BUILD_DATE_RE.match(value)
+    return int(match.group(1)) if match else None
+
+
+def _compatibility_warnings(
+    current_version: str,
+    current_build: str,
+    target_version: str,
+    target_build: str,
+) -> list[str]:
+    current_semver = _parse_semver(current_version, "current version")
+    target_semver = _parse_semver(target_version, "target version")
+    current_full = f"{current_version}+{current_build}"
+    target_full = f"{target_version}+{target_build}"
+    warnings: list[str] = []
+
+    if current_semver[0] != target_semver[0]:
+        warnings.append(
+            f"MAJOR compatibility change: current {current_full}, target {target_full}"
+        )
+
+    if target_semver < current_semver:
+        warnings.append(f"Target version is older than current: {target_full} < {current_full}")
+    elif target_semver == current_semver:
+        current_date = _build_date(current_build)
+        target_date = _build_date(target_build)
+        if current_date is not None and target_date is not None and target_date < current_date:
+            warnings.append(f"Target build is older than current: {target_full} < {current_full}")
+
+    return warnings
+
+
 def _ensure_backup_gitignore(backup_root: Path) -> None:
     backup_root.mkdir(parents=True, exist_ok=True)
     gitignore_path = backup_root / ".gitignore"
@@ -143,6 +186,10 @@ def _render_output(payload: dict[str, Any], output_format: str) -> str:
         lines.append(f"Backup path: {payload['backup_path']}")
     if payload.get("installed_version"):
         lines.append(f"Installed version: {payload['installed_version']}")
+    if payload.get("warnings"):
+        lines.append("Compatibility warnings:")
+        for warning in payload["warnings"]:
+            lines.append(f"- {warning}")
     if payload.get("actions"):
         lines.append("Actions:")
         for action in payload["actions"]:
@@ -168,7 +215,10 @@ def main() -> int:
     group.add_argument("--apply", action="store_true", help="Apply the update")
     parser.add_argument("--root", help="Project root (default: cwd)")
     parser.add_argument("--source", help="Override package URL with local path or URL")
-    parser.add_argument("--version", help="Target SemVer+build to apply/check")
+    parser.add_argument(
+        "--version",
+        help="Expected latest SemVer+build guard; historical update targets are unsupported",
+    )
     parser.add_argument("--latest", help="Override latest.json location (path or URL)")
 
     args = parser.parse_args()
@@ -202,8 +252,20 @@ def main() -> int:
                 raise YodaError("latest.json missing required fields", exit_code=ExitCode.VALIDATION)
 
             latest_full = f"{latest_version}+{latest_build}"
+            if args.version and args.version != latest_full:
+                raise YodaError(
+                    "--version must match latest.json; historical update targets are unsupported. "
+                    "Use yoda-install.sh --version to pin the version expected from latest metadata.",
+                    exit_code=ExitCode.VALIDATION,
+                )
             target_version = args.version or latest_full
             update_available = current_full != target_version
+            compatibility_warnings = _compatibility_warnings(
+                current_version,
+                current_build,
+                latest_version,
+                latest_build,
+            )
 
             payload: dict[str, Any] = {
                 "mode": "apply" if args.apply else "check",
@@ -215,6 +277,7 @@ def main() -> int:
                 "package_source": "",
                 "backup_path": "",
                 "installed_version": "",
+                "warnings": compatibility_warnings,
                 "actions": [],
                 "dry_run": bool(args.dry_run),
             }
@@ -225,11 +288,6 @@ def main() -> int:
 
             package_source = args.source or package_url
             payload["package_source"] = package_source
-
-            if args.version and args.version != latest_full:
-                payload["actions"].append(
-                    "Requested version differs from latest.json; proceeding with provided version"
-                )
 
             if Path(package_source).expanduser().is_file():
                 tar_path = Path(package_source).expanduser().resolve()
