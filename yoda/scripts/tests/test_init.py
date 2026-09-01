@@ -246,3 +246,53 @@ def test_init_skips_legacy_log_migration_when_flow_log_exists(tmp_path: Path) ->
     assert "id" not in parsed.metadata
     text = issue_path.read_text(encoding="utf-8")
     assert "should not migrate" not in text
+
+
+def test_init_preserves_source_doc_in_canonical_order(tmp_path: Path) -> None:
+    _seed_manual(tmp_path)
+    issue_path = tmp_path / "yoda" / "project" / "issues" / "test-0001-existing.md"
+    issue_path.parent.mkdir(parents=True, exist_ok=True)
+    issue_path.write_text(
+        "---\n"
+        "schema_version: '2.00'\n"
+        "id: test-0001\n"
+        "status: to-do\n"
+        "title: Existing\n"
+        "description: Existing\n"
+        "priority: 5\n"
+        "extern_issue_file: ../extern_issues/github-12.json\n"
+        "source_doc: docs/architecture.md\n"
+        "created_at: '2026-01-01T00:00:00+00:00'\n"
+        "updated_at: '2026-01-01T00:00:00+00:00'\n"
+        "---\n\n# Existing\n\n## Flow log\n",
+        encoding="utf-8",
+    )
+
+    result = run_script("init.py", ["--dev", TEST_DEV, "--root", str(tmp_path)])
+    assert result.returncode == 0, result.stderr
+    parsed = frontmatter.load(issue_path)
+    assert parsed.metadata["source_doc"] == "docs/architecture.md"
+    keys = list(parsed.metadata.keys())
+    assert keys.index("source_doc") == keys.index("extern_issue_file") + 1
+
+
+def test_init_does_not_invent_source_doc_for_issues_without_it(tmp_path: Path) -> None:
+    _seed_manual(tmp_path)
+    issue_path = tmp_path / "yoda" / "project" / "issues" / "test-0001-existing.md"
+    issue_path.parent.mkdir(parents=True, exist_ok=True)
+    issue_path.write_text(
+        "---\n"
+        "schema_version: '2.00'\n"
+        "status: to-do\n"
+        "title: Existing\n"
+        "description: Existing\n"
+        "priority: 5\n"
+        "created_at: '2026-01-01T00:00:00+00:00'\n"
+        "updated_at: '2026-01-01T00:00:00+00:00'\n"
+        "---\n\n# Existing\n\n## Flow log\n",
+        encoding="utf-8",
+    )
+
+    result = run_script("init.py", ["--dev", TEST_DEV, "--root", str(tmp_path)])
+    assert result.returncode == 0, result.stderr
+    assert "source_doc" not in frontmatter.load(issue_path).metadata

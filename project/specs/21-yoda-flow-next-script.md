@@ -68,6 +68,33 @@ Both formats MUST include:
   single line cannot carry it
 - presented to the human, never discarded or silenced
 
+## Source references
+
+A reference stored only in front matter is invisible to every later phase, and
+the human ends up repeating it by hand so the agent notices it. Both formats
+MUST therefore expose the issue's source references when they are set:
+
+- `extern_issue_file`
+- `source_doc`
+- an alert line when `source_doc` no longer resolves under the project root
+
+The alert MUST NOT block: a stale reference cannot make any command fail, and
+it MUST NOT be dropped silently either.
+
+When `source_doc` is set, `runbook_line` MUST carry additional guidance:
+
+- in `study`: read it as qualified context rather than settled truth, confront
+  it with the current project state, and separate the decisions it already
+  settles from the questions still open;
+- in `document`: consider it when consolidating approved decisions, and state
+  that the association does not authorize editing it, since any update depends
+  on approved issue scope;
+- in `implement` and `evaluate`: no additional guidance. The reference stays
+  visible in the output without an obligation attached.
+
+When `source_doc` is unset, `runbook_line` MUST be identical to the
+unconditional text for that step.
+
 ## Error handling
 
 - Invalid issue filename must fail with:

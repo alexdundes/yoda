@@ -192,6 +192,7 @@ def _build_issue_record(
         "description": _require_string(metadata, "description", path, issue_id),
         "priority": _require_int_priority(metadata, path, issue_id),
         "extern_issue_file": str(metadata.get("extern_issue_file", "") or ""),
+        "source_doc": str(metadata.get("source_doc", "") or ""),
         "created_at": _require_timestamp(metadata, "created_at", path, issue_id),
         "updated_at": _require_timestamp(metadata, "updated_at", path, issue_id),
         "flow_log_exists": _has_flow_log(content),

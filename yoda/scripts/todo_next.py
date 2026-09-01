@@ -16,6 +16,7 @@ from lib.issue_index import load_issue_index
 from lib.logging_utils import configure_logging
 from lib.order_utils import apply_dependency_order
 from lib.output import render_output
+from lib.phase_runbook import reference_lines
 from lib.paths import repo_root
 from lib.validate import validate_slug
 
@@ -26,6 +27,7 @@ def _render_output(payload: dict[str, Any], output_format: str) -> str:
         lines.append(f"Issue ID: {payload['issue_id']}")
     if payload.get("issue_path"):
         lines.append(f"Issue path: {payload['issue_path']}")
+    lines.extend(reference_lines(payload))
 
     pending = payload.get("pending", [])
     if pending:
@@ -126,6 +128,8 @@ def main() -> int:
         payload = {
             "issue_id": str(selected.get("id", "")),
             "issue_path": issue_path,
+            "extern_issue_file": str(selected.get("extern_issue_file", "") or ""),
+            "source_doc": str(selected.get("source_doc", "") or ""),
             "pending": pending,
             "blocked": blocked,
             "dry_run": bool(args.dry_run),

@@ -72,6 +72,15 @@ Markdown and JSON outputs include:
 `runbook_line` is an imperative instruction, as compact as it can be while
 staying understandable; it MAY span more than one line.
 
+## Source references
+
+Prep Study and Prep Document MUST apply the same `source_doc` rules as the
+normal flow: the same conditional runbook guidance per step, the same exposure
+of `extern_issue_file` and `source_doc` in the output, and the same
+non-blocking alert for a `source_doc` that no longer resolves. The conditional
+text MUST be shared with the normal flow rather than duplicated, so the two
+flows cannot drift apart.
+
 ## Validation and errors
 
 - Issue ID MUST match the provided developer slug.

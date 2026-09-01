@@ -133,27 +133,42 @@ def _truncate(value: str, max_len: int) -> str:
 
 
 def _render_table(issues: list[dict[str, Any]]) -> str:
+    # Source columns appear only when some listed issue declares them, so the
+    # common backlog view stays narrow while a declared reference is never
+    # invisible.
+    show_extern = any(str(item.get("extern_issue_file", "") or "").strip() for item in issues)
+    show_source_doc = any(str(item.get("source_doc", "") or "").strip() for item in issues)
+
     headers = ["id", "status", "priority", "title"]
+    caps = [16, 10, 8, 60]
+    if show_extern:
+        headers.append("extern_issue_file")
+        caps.append(40)
+    if show_source_doc:
+        headers.append("source_doc")
+        caps.append(40)
+
     rows = []
     for item in issues:
-        rows.append(
-            [
-                str(item.get("id", "")),
-                str(item.get("status", "")),
-                str(item.get("priority", "")),
-                str(item.get("title", "")),
-            ]
-        )
+        row = [
+            str(item.get("id", "")),
+            str(item.get("status", "")),
+            str(item.get("priority", "")),
+            str(item.get("title", "")),
+        ]
+        if show_extern:
+            row.append(str(item.get("extern_issue_file", "") or ""))
+        if show_source_doc:
+            row.append(str(item.get("source_doc", "") or ""))
+        rows.append(row)
 
     max_widths = [len(header) for header in headers]
     for row in rows:
         for idx, value in enumerate(row):
             max_widths[idx] = max(max_widths[idx], len(value))
 
-    max_widths[0] = min(max_widths[0], 16)
-    max_widths[1] = min(max_widths[1], 10)
-    max_widths[2] = min(max_widths[2], 8)
-    max_widths[3] = min(max_widths[3], 60)
+    for idx, cap in enumerate(caps):
+        max_widths[idx] = min(max_widths[idx], cap)
 
     def format_row(values: Iterable[str]) -> str:
         padded = []

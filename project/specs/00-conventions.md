@@ -65,11 +65,22 @@ Keywords are interpreted as RFC 2119:
   - `description`
   - `priority`
   - `extern_issue_file` (optional, omitted if empty)
+  - `source_doc` (optional, omitted if empty)
   - `created_at`
   - `updated_at`
 - `id` MUST NOT exist in front matter.
 - `phase` MUST be omitted unless `status=doing`.
 - `flow_prepared_until` accepts only `study` or `document`.
+- `source_doc` is an optional path to base documentation that already exists in
+  the consumer project and grounded the demand. It denotes one file or one
+  directory, is stored relative to the project root with POSIX separators, and
+  carries no machine specific prefix so it stays portable. It is a source of
+  context: distinct from `extern_issue_file`, which identifies a demand kept in
+  another system; from `depends_on`, which orders execution; and from the
+  `Entry points` body section, which lists places to start investigating. An
+  issue may declare `source_doc` and `extern_issue_file` at the same time.
+  Adding this optional field does not change the schema marker: readers that
+  ignore it stay conforming, and existing issues need no migration.
 
 Schema 2.01 adds an optional field but also enforces existing normative rules
 that schema 2.00 readers previously tolerated: `pending` requires a non-empty

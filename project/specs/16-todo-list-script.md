@@ -140,6 +140,12 @@ Output when `--grep` is used (Markdown format):
 
 - The JSON output should include an array of issues with fields derived from markdown front matter and filename (including `id`, `slug`, `path`, `status`, `phase`, `flow_prepared_until`, `pending_reason`, `depends_on`, `priority`, timestamps).
 
+## Source references
+
+The backlog view MUST expose `extern_issue_file` and `source_doc`. To keep the
+common view narrow, each column MUST appear only when at least one listed issue
+declares that field.
+
 ## Error handling
 
 - Exit codes follow the global contract:

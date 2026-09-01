@@ -38,6 +38,7 @@ Optional inputs:
 - `--priority <0..10>`: optional integer priority. Omit it for the normal
   baseline `5`; provide it only for a justified exception to natural order.
 - `--extern-issue <NNN>`: generate `extern_issue_file` pointing to `../extern_issues/<provider>-<NNN>.json`.
+- `--source-doc <path>`: optional base documentation already present in the consumer project.
 
 Global flags:
 - `--dev <developer-slug>`
@@ -105,7 +106,18 @@ The issue front matter must include:
 Metadata policy:
 - `id` is derived from the filename and MUST NOT be persisted in front matter.
 - `slug` is represented by the issue filename (`<id>-<slug>.md`) and must not be persisted in front matter.
-- Optional empty fields (`depends_on`, `pending_reason`, `extern_issue_file`) must be omitted.
+- `source_doc`:
+  - when `--source-doc` is provided, MUST be normalized before writing, in this order:
+    1) expand `~`; 2) resolve a relative value against the current working directory;
+    3) resolve `..` and symlinks; 4) require containment inside the project root;
+    5) require the path to exist, as a file or a directory; 6) store the project
+    relative form with POSIX separators, without a leading `./` and without a
+    trailing slash;
+  - a value outside the project root, a value that does not exist, or the project
+    root itself MUST fail with the validation exit code and MUST NOT create the issue;
+  - the absolute prefix of the developer machine MUST NOT reach the front matter;
+  - when the flag is absent, the field MUST be omitted.
+- Optional empty fields (`depends_on`, `pending_reason`, `extern_issue_file`, `source_doc`) must be omitted.
 - `depends_on` starts empty by default and is written only when non-empty.
 
 Priority policy for issue creation:

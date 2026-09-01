@@ -91,4 +91,4 @@ Current schema is `2.01`; readers accept `2.00` during migration.
 `schema_version`, `status`, `phase` (when `status=doing`),
 `flow_prepared_until` (optional), `pending_reason` (only for `pending`),
 `depends_on`, `title`, `description`, `priority`, `extern_issue_file`,
-`created_at`, `updated_at`.
+`source_doc` (optional), `created_at`, `updated_at`.

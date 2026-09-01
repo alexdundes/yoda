@@ -82,7 +82,8 @@ def _full_runbook(dev: str, external: bool, external_file: str | None = None) ->
         lines.extend(_cmd_block("python3 yoda/scripts/issue_add.py --help"))
         lines.extend(
             [
-                "7. For each generated YODA issue, keep `extern_issue_file` traceability to external source.",
+                "7. Ask the human whether a base documentation already exists in the project for this demand. It is optional: a negative answer keeps the normal flow with no extra step in later phases. When it exists, accept one file or one directory, inventory the directory contents when it is a directory, and read the material before completing the issue. Record it with `issue_add.py --source-doc <path>`. It is a source of context, not an entry point, not a dependency, and not an external issue.",
+                "8. For each generated YODA issue, keep `extern_issue_file` traceability to external source.",
                 "",
                 INTAKE_PRIORITY_GUIDANCE,
             ]
@@ -101,7 +102,8 @@ def _full_runbook(dev: str, external: bool, external_file: str | None = None) ->
         lines.extend(_cmd_block("python3 yoda/scripts/issue_add.py --help"))
         lines.extend(
             [
-                "5. No external source was declared; document assumptions directly in issue markdown.",
+                "5. Ask the human whether a base documentation already exists in the project for this demand. It is optional: a negative answer keeps the normal flow with no extra step in later phases. When it exists, accept one file or one directory, inventory the directory contents when it is a directory, and read the material before completing the issue. Record it with `issue_add.py --source-doc <path>`. It is a source of context, not an entry point, not a dependency, and not an external issue.",
+                "6. No external source was declared; document assumptions directly in issue markdown.",
                 "",
                 INTAKE_PRIORITY_GUIDANCE,
             ]

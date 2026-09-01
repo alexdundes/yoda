@@ -24,6 +24,7 @@ Canonical order:
 - `description`
 - `priority`: integer `0..10`
 - `extern_issue_file`: path to external issue JSON (omit when empty)
+- `source_doc`: project relative path to base documentation, file or directory (omit when empty)
 - `created_at`
 - `updated_at`
 
@@ -44,6 +45,7 @@ Conditional/optional fields:
 - `depends_on`: list of issue IDs (omit when empty)
 - `pending_reason`: required when `status=pending`
 - `extern_issue_file`: path to external issue JSON (omit when empty)
+- `source_doc`: project relative path to base documentation, file or directory (omit when empty)
 
 ## Body contract
 

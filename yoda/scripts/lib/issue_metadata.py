@@ -15,6 +15,7 @@ OPTIONAL_EMPTY_KEYS = (
     "depends_on",
     "pending_reason",
     "extern_issue_file",
+    "source_doc",
 )
 CANONICAL_ISSUE_FIELD_ORDER = (
     "schema_version",
@@ -28,6 +29,7 @@ CANONICAL_ISSUE_FIELD_ORDER = (
     "description",
     "priority",
     "extern_issue_file",
+    "source_doc",
     "created_at",
     "updated_at",
 )

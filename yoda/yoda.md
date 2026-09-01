@@ -31,6 +31,7 @@ Use script runbooks as the source of truth for operational details.
 - Agent entry files: `yoda/AGENTS.md`, `yoda/GEMINI.md`, `yoda/CLAUDE.md`
 - Issues markdown: `yoda/project/issues/<id>-<slug>.md`
 - Dependencies: front matter `depends_on`
+- Base documentation: front matter `source_doc`
 - Flow execution log: section `## Flow log` inside each issue markdown, use `log_add.py --help`
 
 ## YODA modes
@@ -40,6 +41,35 @@ Use script runbooks as the source of truth for operational details.
 - `YODA Intake`: create/refine backlog issues.
 
 Do not mix modes implicitly. Enter and exit each mode explicitly.
+
+## Base documentation (`source_doc`)
+
+An issue may declare, optionally, documentation that already exists in this
+project and grounded the demand. It is stored in the front matter as
+`source_doc`, holds one file or one directory, and is written relative to the
+project root so the value stays portable across machines.
+
+Keep four relations apart. `source_doc` is the material that explains why the
+issue exists. `extern_issue_file` is a demand kept in another system.
+`depends_on` orders execution between issues. `Entry points` lists places to
+start investigating. A single file may play more than one role in a given case,
+but the concepts are not equivalent, and an issue may declare `source_doc` and
+`extern_issue_file` at the same time.
+
+Rules:
+- The association is optional. Without it, every phase behaves exactly as before.
+- Set it with `issue_add.py --source-doc <path>` or, later,
+  `todo_update.py --source-doc <path>` / `--clear-source-doc`. Absolute and
+  relative paths are accepted and normalized; the path must exist and stay
+  inside the project.
+- When present, the runbooks of Study and Document carry extra guidance, and the
+  value is shown in command output. You do not need to repeat it by hand.
+- Read it as qualified context, never as settled truth. Confront it with the
+  current state of the code, tests, and configuration, and report divergences.
+- The association alone never authorizes editing that documentation. Any update
+  depends on the approved scope of the issue.
+- A `source_doc` that stopped resolving produces an alert, never a failure.
+  Treat the alert as a finding to raise with the human.
 
 ## YODA Flow
 
@@ -176,6 +206,9 @@ Intake policy:
   `5` runs after natural order. Record the relative reason in the issue Markdown;
   generic importance is insufficient.
 - Keep `extern_issue_file` traceability when external source exists.
+- Ask whether base documentation exists. If yes, read it before closing the
+  issue, inventory the folder when the reference is a directory, and record it
+  with `--source-doc`. If no, continue normally without extra questions.
 - Before creating issues, run `python3 yoda/scripts/issue_add.py --help` and follow its runbook.
 
 ## Script authority map

@@ -29,6 +29,7 @@ from lib.logging_utils import configure_logging
 from lib.output import render_output
 from lib.paths import repo_root
 from lib.slug_utils import generate_issue_slug
+from lib.source_doc import normalize_source_doc
 from lib.time_utils import detect_local_timezone, now_iso
 from lib.validate import validate_issue_id, validate_slug
 
@@ -60,6 +61,7 @@ def _diff_fields(before: dict[str, Any], after: dict[str, Any]) -> tuple[list[st
         "depends_on",
         "pending_reason",
         "extern_issue_file",
+        "source_doc",
     ]
     updated_fields: list[str] = []
     lines: list[str] = []
@@ -86,6 +88,11 @@ def _update_issue(item: dict[str, Any], args: argparse.Namespace) -> None:
     if args.extern_issue is not None and args.extern_issue_file is not None:
         raise YodaError(
             "Use either --extern-issue or --extern-issue-file, not both.",
+            exit_code=ExitCode.VALIDATION,
+        )
+    if args.source_doc is not None and args.clear_source_doc:
+        raise YodaError(
+            "Use either --source-doc or --clear-source-doc, not both.",
             exit_code=ExitCode.VALIDATION,
         )
 
@@ -137,6 +144,11 @@ def _update_issue(item: dict[str, Any], args: argparse.Namespace) -> None:
         item["extern_issue_file"] = f"../extern_issues/{provider}-{external_id}.json"
     elif args.extern_issue_file is not None:
         item["extern_issue_file"] = args.extern_issue_file.strip()
+
+    if args.clear_source_doc:
+        item["source_doc"] = ""
+    elif args.source_doc is not None:
+        item["source_doc"] = normalize_source_doc(args.source_doc)
 
 
 def _apply_pending_rules(item: dict[str, Any], pending_reason_provided: bool) -> None:
@@ -228,6 +240,12 @@ def main() -> int:
         help="External issue number (NNN); generates extern_issue_file automatically",
     )
     parser.add_argument("--clear-extern-issue-file", action="store_true", help="Clear extern_issue_file")
+    parser.add_argument(
+        "--source-doc",
+        dest="source_doc",
+        help="Path to base documentation in the project (file or directory); stored relative to the project root",
+    )
+    parser.add_argument("--clear-source-doc", action="store_true", help="Clear source_doc")
 
     args = parser.parse_args()
     configure_logging(args.verbose)

@@ -231,3 +231,56 @@ def test_prep_flow_rejects_done_issue() -> None:
     result = run_script("yoda_prep_flow.py", ["--dev", TEST_DEV, "--issue", "test-0001"])
     assert result.returncode == 2
     assert "cannot run on done issues" in result.stderr
+
+
+def test_prep_flow_runbook_carries_source_doc_guidance() -> None:
+    _write_issue_file(
+        "test-0001-target.md",
+        {
+            "schema_version": "2.01",
+            "status": "to-do",
+            "title": "Target",
+            "description": "Desc",
+            "priority": 5,
+            "source_doc": "yoda/yoda.md",
+            "created_at": "2026-01-01T00:00:00+00:00",
+            "updated_at": "2026-01-01T00:00:00+00:00",
+        },
+        body="# Target\n\n## Flow log\n",
+    )
+
+    result = run_script(
+        "yoda_prep_flow.py",
+        ["--dev", TEST_DEV, "--issue", "test-0001", "--format", "json"],
+    )
+    assert result.returncode == 0, result.stderr
+    payload = json.loads(result.stdout)
+    assert payload["source_doc"] == "yoda/yoda.md"
+    assert payload["runbook_line"].startswith("Run Prep Study:")
+    assert "source_doc `yoda/yoda.md`" in payload["runbook_line"]
+    assert "qualified context" in payload["runbook_line"]
+
+
+def test_prep_flow_runbook_unchanged_without_source_doc() -> None:
+    _write_issue_file(
+        "test-0001-target.md",
+        {
+            "schema_version": "2.01",
+            "status": "to-do",
+            "title": "Target",
+            "description": "Desc",
+            "priority": 5,
+            "created_at": "2026-01-01T00:00:00+00:00",
+            "updated_at": "2026-01-01T00:00:00+00:00",
+        },
+        body="# Target\n\n## Flow log\n",
+    )
+
+    result = run_script(
+        "yoda_prep_flow.py",
+        ["--dev", TEST_DEV, "--issue", "test-0001", "--format", "json"],
+    )
+    assert result.returncode == 0, result.stderr
+    payload = json.loads(result.stdout)
+    assert payload["source_doc"] == ""
+    assert "source_doc" not in payload["runbook_line"]

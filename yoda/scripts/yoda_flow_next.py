@@ -19,6 +19,11 @@ from lib.issue_index import load_issue_index
 from lib.issue_metadata import CURRENT_ISSUE_SCHEMA_VERSION
 from lib.logging_utils import configure_logging
 from lib.output import render_output, runbook_md_lines
+from lib.phase_runbook import (
+    FLOW_RUNBOOK_BY_STEP as RUNBOOK_BY_STEP,
+    compose_runbook,
+    reference_lines,
+)
 from lib.paths import repo_root
 from lib.time_utils import detect_local_timezone, now_iso
 from lib.validate import validate_slug
@@ -29,28 +34,6 @@ BLOCKED_ONLY_PENDING = "only_pending_issues"
 BLOCKED_DEPENDENCY = "dependency_blocked"
 
 
-RUNBOOK_BY_STEP = {
-    "study": (
-        "Run Study: gather context and produce findings, constraints, and the open decisions "
-        "the human must settle.\n"
-        "Present that deliverable and stop. Do not start Document without new authorization."
-    ),
-    "document": (
-        "Run Document: update the issue with the approved decisions and close the "
-        "document-first contract.\n"
-        "Present that deliverable and stop. Do not start Implement without new authorization."
-    ),
-    "implement": (
-        "Run Implement: execute only approved scope and keep changes aligned with the issue.\n"
-        "Present the changes and the verifications you ran, then stop. Do not start Evaluate "
-        "without new authorization."
-    ),
-    "evaluate": (
-        "Run Evaluate: validate acceptance criteria and fill Result log as yoda.md "
-        "(conventional-commit line, description, optional external issue, Issue, Path).\n"
-        "Present the checked criteria and any remaining findings, then request final approval."
-    ),
-}
 RUNBOOK_DONE = "Issue moved to done. Check next issue and ask the human if flow should continue now."
 STEP_ORDER = ("study", "document", "implement", "evaluate")
 NEXT_PHASE = {"study": "document", "document": "implement", "implement": "evaluate", "evaluate": ""}
@@ -166,7 +149,7 @@ def _apply_transition(issue: dict[str, Any], log_message: str = "") -> dict[str,
             "status": "doing",
             "phase": next_step,
             "next_step": next_step,
-            "runbook_line": RUNBOOK_BY_STEP[next_step],
+            "runbook_line": compose_runbook(RUNBOOK_BY_STEP[next_step], next_step, issue),
             "log_timestamp": log_ts,
         }
 
@@ -196,7 +179,7 @@ def _apply_transition(issue: dict[str, Any], log_message: str = "") -> dict[str,
             "status": "doing",
             "phase": next_phase,
             "next_step": next_phase,
-            "runbook_line": RUNBOOK_BY_STEP[next_phase],
+            "runbook_line": compose_runbook(RUNBOOK_BY_STEP[next_phase], next_phase, issue),
             "log_timestamp": log_ts,
         }
 
@@ -230,7 +213,7 @@ def _simulate_transition(issue: dict[str, Any]) -> dict[str, Any]:
             "status": "doing",
             "phase": next_step,
             "next_step": next_step,
-            "runbook_line": RUNBOOK_BY_STEP[next_step],
+            "runbook_line": compose_runbook(RUNBOOK_BY_STEP[next_step], next_step, issue),
             "log_timestamp": ts,
         }
 
@@ -251,7 +234,7 @@ def _simulate_transition(issue: dict[str, Any]) -> dict[str, Any]:
             "status": "doing",
             "phase": next_phase,
             "next_step": next_phase,
-            "runbook_line": RUNBOOK_BY_STEP[next_phase],
+            "runbook_line": compose_runbook(RUNBOOK_BY_STEP[next_phase], next_phase, issue),
             "log_timestamp": ts,
         }
 
@@ -272,6 +255,7 @@ def _render_md(payload: dict[str, Any]) -> list[str]:
         f"Phase: {payload['phase']}",
         f"Next step: {payload['next_step']}",
     ]
+    lines.extend(reference_lines(payload))
     if payload.get("log_timestamp"):
         lines.append(f"Log timestamp: {payload['log_timestamp']}")
     if payload.get("next_issue_id"):
@@ -404,6 +388,8 @@ def main() -> int:
             "status": str(transition["status"]),
             "phase": str(transition["phase"]),
             "next_step": str(transition["next_step"]),
+            "extern_issue_file": str(selected.get("extern_issue_file", "") or ""),
+            "source_doc": str(selected.get("source_doc", "") or ""),
             "blocked_reason": "",
             "blocked_message": "",
             "runbook_line": str(transition["runbook_line"]),

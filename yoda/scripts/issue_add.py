@@ -26,6 +26,7 @@ from lib.logging_utils import configure_logging
 from lib.output import render_output
 from lib.paths import issue_path, repo_root, template_path
 from lib.slug_utils import generate_issue_slug
+from lib.source_doc import normalize_source_doc
 from lib.templates import load_template
 from lib.time_utils import detect_local_timezone, now_iso
 from lib.validate import validate_slug
@@ -101,6 +102,7 @@ def _build_issue_item(
     description: str,
     priority: int,
     extern_issue_file: str,
+    source_doc: str,
     timestamp: str,
 ) -> dict[str, Any]:
     item: dict[str, Any] = {
@@ -112,6 +114,7 @@ def _build_issue_item(
         "description": description,
         "priority": priority,
         "extern_issue_file": extern_issue_file,
+        "source_doc": source_doc,
         "created_at": timestamp,
         "updated_at": timestamp,
     }
@@ -137,7 +140,11 @@ def main() -> int:
             "- When to use: during YODA Intake after backlog review and issue structuring.\n"
             "- Mutability: writes a new file in yoda/project/issues/.\n\n"
             "Required input: --title and (--description or --summary).\n"
-            "Use --extern-issue <NNN> to link an external source.\n\n"
+            "Use --extern-issue <NNN> to link an external source.\n"
+            "Use --source-doc <path> to link base documentation that already exists in the\n"
+            "project. It accepts a file or a directory, absolute or relative, and stores a\n"
+            "path relative to the project root. The path must exist. It is a source of\n"
+            "context, not an entry point, not a dependency, and not an external issue.\n\n"
             f"{INTAKE_PRIORITY_GUIDANCE}"
         )
         + AGENT_OUTPUT_RULE,
@@ -149,6 +156,11 @@ def main() -> int:
     parser.add_argument("--slug", required=False, help="Explicit issue slug")
     parser.add_argument("--priority", type=int, default=None, help="Priority 0-10")
     parser.add_argument("--extern-issue", dest="extern_issue", help="External issue number (NNN)")
+    parser.add_argument(
+        "--source-doc",
+        dest="source_doc",
+        help="Path to base documentation in the project (file or directory); stored relative to the project root",
+    )
 
     args = parser.parse_args()
     configure_logging(args.verbose)
@@ -167,6 +179,7 @@ def main() -> int:
         if not isinstance(priority, int) or not (0 <= priority <= 10):
             raise YodaError("priority must be between 0 and 10", exit_code=ExitCode.VALIDATION)
         extern_issue_file = _resolve_extern_issue_file(args.extern_issue)
+        source_doc = normalize_source_doc(args.source_doc or "")
 
         slug = args.slug.strip() if args.slug else generate_issue_slug(title)
         validate_slug(slug)
@@ -188,6 +201,7 @@ def main() -> int:
                 description=description,
                 priority=priority,
                 extern_issue_file=extern_issue_file,
+                source_doc=source_doc,
                 timestamp=timestamp,
             )
             rendered_issue = render_issue(

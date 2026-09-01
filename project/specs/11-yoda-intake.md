@@ -113,6 +113,28 @@ External log usage (from `extern_issues/<provider>-<NNN>.json`):
   use `log` to refine scope and identify justified ordering exceptions.
 - When relevant, reference meaningful `log` events in the Intake rationale for traceability.
 
+## Base documentation
+
+Intake MUST ask whether base documentation already exists in the project for
+the demand. The association is optional: a negative answer MUST keep the normal
+flow, with no extra step in later phases and no loss of functionality.
+
+When it exists:
+
+- the reference MUST accept one file or one directory;
+- the agent MUST inventory the directory contents when the reference is a
+  directory, and MUST read the material before completing the issue;
+- the documentation is an additional input, not a replacement for the Intake
+  conversation, and the agent MUST NOT assume that all of its content belongs
+  to the scope of the issue;
+- the association MUST be recorded as `source_doc` on the created issue.
+
+The runbook MUST keep the concept distinct from entry points, from dependencies
+between issues, and from an external issue. An issue MAY declare base
+documentation and an external issue at the same time, since they play different
+roles: the external issue identifies a demand kept in another system, while the
+base documentation identifies local material used to understand it.
+
 ## Definition of Ready (DoR)
 
 Each issue must include at minimum:

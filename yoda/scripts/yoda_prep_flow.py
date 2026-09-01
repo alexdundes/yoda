@@ -23,6 +23,11 @@ from lib.issue_metadata import (
 from lib.issue_utils import resolve_issue_file_by_id
 from lib.logging_utils import configure_logging
 from lib.output import render_output, runbook_md_lines
+from lib.phase_runbook import (
+    PREP_RUNBOOK_BY_STEP as RUNBOOK_BY_STEP,
+    compose_runbook,
+    reference_lines,
+)
 from lib.paths import repo_root
 from lib.time_utils import detect_local_timezone, now_iso
 from lib.validate import validate_issue_id, validate_slug
@@ -30,20 +35,6 @@ from lib.validate import validate_issue_id, validate_slug
 
 ALLOWED_PREPARED_UNTIL = {"", "study", "document"}
 NEXT_PREP_STEP = {"": "study", "study": "document", "document": "document"}
-RUNBOOK_BY_STEP = {
-    "study": (
-        "Run Prep Study: gather context and list open decisions for this issue; do not implement. "
-        "Present the findings and open decisions as the deliverable, then stop and wait for "
-        "explicit human authorization before Prep Document."
-    ),
-    "document": (
-        "Run Prep Document: update issue text with approved decisions; do not implement. "
-        "Present the updated issue as the deliverable, then stop and wait for explicit human "
-        "authorization before normal YODA Flow can continue."
-    ),
-}
-
-
 def _relative(path_value: Path) -> str:
     try:
         return str(path_value.relative_to(repo_root()))
@@ -116,7 +107,9 @@ def _apply_prep_step(issue_path: Path, metadata: dict[str, Any], dry_run: bool) 
         "phase": "",
         "flow_prepared_until": next_step,
         "next_step": next_step,
-        "runbook_line": RUNBOOK_BY_STEP[next_step],
+        "extern_issue_file": str(metadata.get("extern_issue_file", "") or ""),
+        "source_doc": str(metadata.get("source_doc", "") or ""),
+        "runbook_line": compose_runbook(RUNBOOK_BY_STEP[next_step], next_step, metadata),
         "log_timestamp": log_timestamp,
     }
 
@@ -129,6 +122,7 @@ def _render_md(payload: dict[str, Any]) -> list[str]:
         f"Flow prepared until: {payload['flow_prepared_until']}",
         f"Next step: {payload['next_step']}",
     ]
+    lines.extend(reference_lines(payload))
     if payload.get("log_timestamp"):
         lines.append(f"Log timestamp: {payload['log_timestamp']}")
     lines.append("Runbook:")
@@ -187,6 +181,8 @@ def main() -> int:
             "phase": transition["phase"],
             "flow_prepared_until": transition["flow_prepared_until"],
             "next_step": transition["next_step"],
+            "extern_issue_file": transition["extern_issue_file"],
+            "source_doc": transition["source_doc"],
             "runbook_line": transition["runbook_line"],
             "log_timestamp": transition["log_timestamp"],
             "dry_run": bool(args.dry_run),

@@ -20,12 +20,22 @@ Core update inputs include:
 - `--depends-on <csv>`
 - `--pending-reason <text>`
 - `--extern-issue-file <path>` / `--extern-issue <NNN>`
+- `--source-doc <path>` / `--clear-source-doc`
 - `--phase <study|document|implement|evaluate>`
 
 ## Help behavior
 
 - `--help` MUST provide short, direct instructions for agents/operators.
 - Invocation without required parameters MUST return actionable usage guidance.
+
+## Source references
+
+- `--source-doc <path>` MUST apply the same normalization and blocking
+  validation as issue creation: project relative storage, existence required,
+  containment inside the project root required.
+- `--clear-source-doc` MUST remove the association.
+- Combining `--source-doc` with `--clear-source-doc` MUST fail.
+- `source_doc` MUST appear in the reported field diff when it changes.
 
 ## Phase rules
 

@@ -90,6 +90,17 @@ integration separate from flow orchestration. That rule was revised when public
 collection stopped requiring credentials; the runbook now delegates only after a
 failed attempt.
 
+## Base documentation step
+
+Both runbook variants, with and without an external source, MUST include a step
+that asks the human whether base documentation exists for the demand. The step
+MUST state that the association is optional and that a negative answer keeps the
+normal flow with no extra step in later phases. It MUST instruct the agent to
+accept one file or one directory, to inventory the directory contents when it is
+a directory, to read the material before completing the issue, and to record it
+with `issue_add.py --source-doc <path>`. It MUST state that the reference is a
+source of context, and not an entry point, a dependency, or an external issue.
+
 ## Output
 
 Markdown mode (default):
