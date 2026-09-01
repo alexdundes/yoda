@@ -1,3 +1,32 @@
+- version: 0.5.0
+  build: 20260901.4a141d6
+  date: '2026-09-01T16:17:55-03:00'
+  summary:
+  - Added optional base documentation association and public external issue collection
+  - Enforced schema 2.01 rules that schema 2.00 previously tolerated
+  breaking:
+  - Schema 2.01 enforces a non-empty pending_reason and ISO 8601 timestamps with an
+    explicit offset on every issue, including issues still marked 2.00. Index loading
+    is fail-fast, so one malformed issue blocks every command for that developer slug.
+    Before upgrading, repair pending issues with todo_update.py --status pending --pending-reason
+    <reason> and add explicit offsets to created_at and updated_at
+  additions:
+  - 'Added source_doc: an optional association to base documentation in the consumer
+    project, accepting one file or one directory, normalized to a project relative
+    path, blocking on write and alerting on read'
+  - Added a public HTTP fallback for public github.com issues, reporting the transport
+    used; private repositories and GitHub Enterprise still require the authenticated
+    CLI
+  - Added conditional Study and Document runbook guidance for issues declaring source_doc,
+    and made extern_issue_file visible in flow and backlog output
+  - Added compatibility warnings to update.py for divergent major versions and downgrades
+  fixes:
+  - Made the agent run get_extern_issue.py and delegate to the human only when collection
+    fails
+  - Migrated init.py to schema 2.01 and made timestamp ordering in todo_list deterministic
+    by tie-breaking on issue id
+  notes: ''
+  commit: 4a141d6f4d9b997c962bb4e42e6e018f193d8439
 - version: 0.4.0
   build: 20260602.5cd734b
   date: '2026-06-02T10:23:10-03:00'
