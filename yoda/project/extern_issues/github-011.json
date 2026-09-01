@@ -3,7 +3,7 @@
   "number": "11",
   "title": "Melhorar onboarding inicial e explicar claramente `developer slug` e `init.py`",
   "description": "### Contexto\n\nAo testar a documenta\u00e7\u00e3o pela primeira vez, um novo usu\u00e1rio teve dificuldade para entender como iniciar o YODA e o significado do argumento `--dev`.\n\nO README apresenta o comando:\n\n```bash\npython3 yoda/scripts/init.py --dev <slug> --root .\n```\n\nPor\u00e9m, antes desse ponto, n\u00e3o explica de forma suficientemente did\u00e1tica:\n\n- O que \u00e9 um `developer slug`.\n- Como escolher esse valor.\n- Quais caracteres s\u00e3o permitidos.\n- Se `<slug>` deve ser substitu\u00eddo ou digitado literalmente.\n- Por que o help mostra `--dev DEV` em letras mai\u00fasculas.\n- O que `--root .` significa.\n- Qual \u00e9 o pr\u00f3ximo passo depois do `init`.\n\nO help atual tamb\u00e9m pode induzir o usu\u00e1rio a acreditar que `DEV` \u00e9 um valor literal ou que deve ser escrito em mai\u00fasculas:\n\n```text\n--dev DEV    Developer slug\n```\n\nNa realidade, `DEV` \u00e9 apenas o metavari\u00e1vel gerado pelo parser, enquanto o valor aceito deve seguir o formato:\n\n```text\n^[a-z][a-z0-9-]*$\n```\n\nOu seja: letras ASCII min\u00fasculas, n\u00fameros e h\u00edfens, come\u00e7ando obrigatoriamente por uma letra.\n\n### Objetivo\n\nTornar o primeiro contato com o YODA autocontido e did\u00e1tico, permitindo que algu\u00e9m sem conhecimento pr\u00e9vio consiga:\n\n1. Entender o que \u00e9 o developer slug.\n2. Escolher um valor v\u00e1lido.\n3. Inicializar o YODA no projeto.\n4. Entender o resultado do comando.\n5. Saber qual \u00e9 o pr\u00f3ximo passo do fluxo.\n\n### Proposta\n\n#### README\n\nAdicionar, antes do primeiro comando de `init`, uma explica\u00e7\u00e3o semelhante a:\n\n> O developer slug \u00e9 um identificador curto e est\u00e1vel usado como namespace das suas issues. Ele aparecer\u00e1 como prefixo dos IDs, por exemplo `meunick-0001`.\n>\n> Use somente letras min\u00fasculas sem acentos, n\u00fameros e h\u00edfens. O valor deve come\u00e7ar com uma letra.\n>\n> Exemplos v\u00e1lidos: `meunick`, `fernando`, `time-backend`.\n>\n> Exemplos inv\u00e1lidos: `MeuNick`, `123fernando`, `fernando_silva`.\n\nApresentar um comando concreto e copi\u00e1vel:\n\n```bash\npython3 yoda/scripts/init.py --dev meunick --root .\n```\n\nExplicar que:\n\n- `meunick` \u00e9 um exemplo e deve ser substitu\u00eddo pelo identificador escolhido.\n- `--root .` inicializa o diret\u00f3rio atual.\n- O mesmo developer slug deve ser reutilizado nos demais comandos.\n- Os sinais `<` e `>` dos exemplos representam placeholders e n\u00e3o devem ser digitados.\n\nTamb\u00e9m incluir um pequeno fluxo de primeira execu\u00e7\u00e3o:\n\n1. Instalar ou extrair o YODA no projeto.\n2. Escolher o developer slug.\n3. Executar `init.py`.\n4. Confirmar os arquivos criados ou reconciliados.\n5. Iniciar o YODA Intake para criar a primeira issue.\n\n#### Ajuda do `init.py`\n\nAlterar a apresenta\u00e7\u00e3o de:\n\n```text\n--dev DEV    Developer slug\n```\n\nPara algo mais expl\u00edcito, por exemplo:\n\n```text\n--dev SLUG   Developer namespace: lowercase letters, digits and hyphens;\n             must start with a letter (example: meunick)\n```\n\nConsiderar configurar `metavar=\"SLUG\"` para evitar que `DEV` pare\u00e7a um valor literal ou uma exig\u00eancia de caixa alta.\n\nMelhorar tamb\u00e9m as descri\u00e7\u00f5es de:\n\n- `--root`: explicar o significado de `cwd` ou substitu\u00ed-lo por \u201ccurrent directory\u201d.\n- `--force`: alertar claramente que sobrescreve arquivos gerenciados pelo YODA.\n- `--reconcile-layout`: indicar que \u00e9 voltado a migra\u00e7\u00e3o ou reconcilia\u00e7\u00e3o, n\u00e3o ao primeiro uso normal.\n\n#### Consist\u00eancia\n\nRevisar os exemplos em:\n\n- `README.md`\n- `yoda/yoda.md`\n- `yoda/scripts/README.md`\n- Helps dos comandos que recebem `--dev`\n- Site publicado em `docs/`\n\nUsar consistentemente `developer slug`, `SLUG` ou `<developer-slug>`, evitando o placeholder gen\u00e9rico `<slug>`, que pode ser confundido com o slug de uma issue.\n\n### Crit\u00e9rios de aceite\n\n- [ ] O README explica o que \u00e9 o developer slug antes de utiliz\u00e1-lo.\n- [ ] O formato aceito \u00e9 documentado em linguagem simples.\n- [ ] Existem exemplos de valores v\u00e1lidos e inv\u00e1lidos.\n- [ ] O primeiro comando utiliza um valor concreto e copi\u00e1vel.\n- [ ] A documenta\u00e7\u00e3o explica que placeholders entre `<...>` devem ser substitu\u00eddos.\n- [ ] O help apresenta `--dev SLUG`, sem sugerir que o valor deve ser `DEV` ou estar em mai\u00fasculas.\n- [ ] O help de `--dev` informa formato e exemplo.\n- [ ] `--root .`, `--force` e `--reconcile-layout` possuem descri\u00e7\u00f5es compreens\u00edveis para iniciantes.\n- [ ] A documenta\u00e7\u00e3o informa o que acontece ap\u00f3s o `init`.\n- [ ] A documenta\u00e7\u00e3o apresenta o pr\u00f3ximo passo recomendado.\n- [ ] README, manual embarcado, site e helps utilizam terminologia consistente.\n- [ ] Testes de contrato CLI validam o novo texto essencial do help.\n\n### Motiva\u00e7\u00e3o\n\nO `init` \u00e9 a porta de entrada do YODA. Se o usu\u00e1rio precisa consultar c\u00f3digo ou documenta\u00e7\u00e3o secund\u00e1ria para entender o primeiro argumento obrigat\u00f3rio, o onboarding j\u00e1 come\u00e7ou com ambiguidade. A primeira execu\u00e7\u00e3o deve funcionar como um tutorial m\u00ednimo, n\u00e3o apenas como uma refer\u00eancia t\u00e9cnica.",
-  "state": "open",
+  "state": "closed",
   "author": "alexdundes",
   "url": "https://github.com/alexdundes/yoda/issues/11",
   "labels": [],
@@ -22,6 +22,33 @@
       "id": "30300484704",
       "author": "github-project-automation[bot]",
       "created_at": "2026-08-31T19:22:06Z",
+      "updated_at": "",
+      "body": "event: project_v2_item_status_changed; commit: None",
+      "url": ""
+    },
+    {
+      "type": "timeline:referenced",
+      "id": "30309152606",
+      "author": "alexdundes",
+      "created_at": "2026-08-31T22:26:31Z",
+      "updated_at": "",
+      "body": "event: referenced; commit: 2b26daddebfe539b4bc6fc855791d5e285ea196b",
+      "url": ""
+    },
+    {
+      "type": "timeline:closed",
+      "id": "30343423409",
+      "author": "alexdundes",
+      "created_at": "2026-09-01T11:57:25Z",
+      "updated_at": "",
+      "body": "event: closed; commit: None",
+      "url": ""
+    },
+    {
+      "type": "timeline:project_v2_item_status_changed",
+      "id": "30343487890",
+      "author": "github-project-automation[bot]",
+      "created_at": "2026-09-01T11:57:26Z",
       "updated_at": "",
       "body": "event: project_v2_item_status_changed; commit: None",
       "url": ""

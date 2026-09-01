@@ -3,7 +3,7 @@
   "number": "6",
   "title": "Flow antecipado.",
   "description": "Criar um fluxo alternativo ao YODA Flow, que apenas trate a documenta\u00e7\u00e3o da issue, sem implementar nada.\nCaso esse fluxo alternativo seja executado, quando entrar no YODA Flow, essa issue pular\u00e1 a fase de Sutdy e Document pulando direto para Implement.",
-  "state": "open",
+  "state": "closed",
   "author": "alexdundes",
   "url": "https://github.com/alexdundes/yoda/issues/6",
   "labels": [],
@@ -33,6 +33,24 @@
       "created_at": "2026-06-01T21:31:42Z",
       "updated_at": "",
       "body": "event: referenced; commit: 8a2f14b5669211f78eea5a381dafbb5a6ce910fb",
+      "url": ""
+    },
+    {
+      "type": "timeline:closed",
+      "id": "29930070622",
+      "author": "alexdundes",
+      "created_at": "2026-08-24T17:48:52Z",
+      "updated_at": "",
+      "body": "event: closed; commit: None",
+      "url": ""
+    },
+    {
+      "type": "timeline:project_v2_item_status_changed",
+      "id": "29930074440",
+      "author": "github-project-automation[bot]",
+      "created_at": "2026-08-24T17:48:53Z",
+      "updated_at": "",
+      "body": "event: project_v2_item_status_changed; commit: None",
       "url": ""
     }
   ]
