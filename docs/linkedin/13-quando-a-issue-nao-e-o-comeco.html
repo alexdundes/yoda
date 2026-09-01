@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LinkedIn 13 - Quando a issue nao e o comeco</title>
+  <style>
+    :root {
+      --ink: #15181d;
+      --muted: #606977;
+      --paper: #f3f5f7;
+      --panel: #ffffff;
+      --line: #d7dce3;
+      --blue: #1167d8;
+      --blue-soft: #e7f0ff;
+      --code: #101720;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .page {
+      width: min(920px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    header {
+      margin-bottom: 28px;
+    }
+
+    .kicker {
+      color: var(--blue);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-weight: 800;
+      margin: 0 0 10px;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--code);
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 760px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 20px;
+    }
+
+    .cover {
+      margin: 30px 0;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .cover img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .copy-note {
+      margin: 28px 0 14px;
+      padding: 16px 18px;
+      border-left: 5px solid var(--blue);
+      background: var(--blue-soft);
+      border-radius: 8px;
+      color: #26384f;
+      font-size: 15px;
+    }
+
+    article {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: clamp(22px, 4vw, 42px);
+    }
+
+    article h2 {
+      margin: 34px 0 14px;
+      color: var(--code);
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    article p {
+      margin: 0 0 18px;
+    }
+
+    .hook {
+      margin-top: 28px;
+      padding: 20px;
+      background: var(--blue-soft);
+      border-radius: 8px;
+      font-weight: 650;
+    }
+
+    .hashtags {
+      color: var(--blue);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <p class="kicker">LinkedIn - Post 13</p>
+      <h1>Quando a issue não é o começo</h1>
+      <p class="lead">
+        Décima terceira publicação da série sobre a criação do YODA Framework,
+        pronta para copiar e publicar no LinkedIn.
+      </p>
+    </header>
+
+    <figure class="cover">
+      <img src="assets/13-capa-source-doc.jpg" alt="Capa ilustrada do post sobre uma documentação-base que antecede e origina uma issue">
+    </figure>
+
+    <div class="copy-note">
+      Selecione o texto abaixo e cole no LinkedIn. A imagem acima pode ser usada como capa do post.
+    </div>
+
+    <article>
+      <p>A primeira temporada da série fechou com o Prep Flow. Esta abre com uma mudança pequena em superfície e grande em consequência: no YODA, a issue deixou de ser obrigatoriamente o ponto de partida do trabalho.</p>
+
+      <h2>O fluxo que já acontecia sem nome</h2>
+
+      <p>Tem um padrão de trabalho que aparece o tempo todo e que o YODA não representava. Você começa explorando um problema e escrevendo sobre ele. O documento cresce, acumula contexto, decisões e hipóteses. Só depois nascem as issues, cada uma cobrindo uma parte executável do que foi descrito.</p>
+
+      <p>Nesse fluxo a documentação não é anexo. Ela antecede a issue e explica por que a issue existe.</p>
+
+      <p>O YODA não tinha como registrar isso. Quando a relação existia, ela aparecia informalmente no corpo da issue ou nos entry points. Funcionava, com três limitações: a relação dependia de interpretação do agente, a referência sumia nas fases seguintes, e o caminho precisava ser repetido à mão em cada issue derivada do mesmo documento.</p>
+
+      <h2>Quatro relações parecidas e diferentes</h2>
+
+      <p>A parte difícil não foi armazenar um caminho. Foi separar conceitos que se parecem.</p>
+
+      <p>O YODA já tinha três relações vizinhas: uma para a demanda mantida em outro sistema, uma para ordenar execução entre issues, e uma lista de lugares por onde começar a investigar. Nenhuma responde à pergunta "qual material explica por que esta issue existe".</p>
+
+      <p>O campo novo aponta para um arquivo ou uma pasta do projeto e grava sempre o caminho relativo à raiz. Isso é deliberado: o caminho da máquina de quem criou a issue não pode chegar ao arquivo, senão a referência para de funcionar no clone de outra pessoa.</p>
+
+      <h2>O campo que ninguém via</h2>
+
+      <p>Este foi o achado que mudou o escopo do trabalho, e é a parte que eu levaria para qualquer projeto.</p>
+
+      <p>Durante a fase de Study, um grep pelo campo que registra a issue externa não retornou nenhuma ocorrência nos comandos de fase e de backlog. O campo era lido, colocado no registro interno, e nunca aparecia em nenhuma saída. Quem entrava no Study não recebia nenhum sinal de que existia uma issue externa associada. Só descobria abrindo o arquivo por conta própria.</p>
+
+      <p>O defeito que a funcionalidade nova queria eliminar já existia, silencioso, no campo que serviria de modelo para ela.</p>
+
+      <p>Se eu tivesse copiado o padrão existente, a funcionalidade nova nasceria com o mesmo problema e falharia o critério central da própria demanda.</p>
+
+      <p>A lição é chata e generalizável: gravar um dado não é o mesmo que operacionalizá-lo. Um campo que nenhuma saída mostra é, na prática, um campo que não existe.</p>
+
+      <h2>Rígido para escrever, tolerante para ler</h2>
+
+      <p>Uma decisão de desenho que vale registrar: a validação do caminho é assimétrica.</p>
+
+      <p>Na escrita ela bloqueia. O caminho é normalizado e precisa existir e estar dentro do projeto. É o momento em que o desenvolvedor está ali e pode corrigir.</p>
+
+      <p>Na leitura ela apenas alerta. Uma issue criada meses atrás cujo documento foi movido gera um aviso, e nenhum comando falha. O motivo é operacional: o carregamento do índice é fail-fast no conjunto inteiro. Tratar caminho quebrado como erro ali significaria uma referência obsoleta derrubando todos os comandos.</p>
+
+      <h2>O que um teste realmente prova</h2>
+
+      <p>Boa parte dos critérios de aceite dessa mudança descreve comportamento de agente: "a documentação é lida antes de concluir a issue". Uma suíte de testes não consegue verificar isso.</p>
+
+      <p>O que ela consegue afirmar é mais modesto: dado o campo preenchido, o comando emite um runbook cujo texto contém a instrução correspondente. Não é prova de comportamento. É trava de regressão sobre o contrato de texto.</p>
+
+      <p>Preferi deixar isso escrito no registro da issue do que marcar o critério como verificado e seguir em frente. A diferença entre "a instrução está presente" e "o agente obedeceu" é pequena no papel e grande quando alguém confia no relatório.</p>
+
+      <p>A revisão final, feita por outro agente, ainda encontrou duas coisas que eu não tinha visto. Uma delas foi um teste que passava por acidente de ordenação: ele limpava três campos em sequência e afirmava, no último passo, preservar dois outros, mas um deles já tinha sido removido antes. O teste verificava metade do que prometia. Confirmei a correção quebrando o código de propósito para ver o teste falhar, porque teste verde sozinho não prova nada.</p>
+
+      <h2>Compatibilidade</h2>
+
+      <p>Essa versão traz a primeira mudança incompatível registrada no changelog do projeto: o schema passou a exigir o que antes tolerava, e o carregamento é fail-fast. É uma escolha assumida, com remediação documentada. Mas é o tipo de coisa que merece ser dita em voz alta, não escondida entre as correções.</p>
+
+      <p>Para quem não usa a funcionalidade nova, nada muda. Issues sem a associação seguem exatamente o mesmo fluxo, sem perguntas extras. Isso era restrição dura, não cortesia: funcionalidade opcional que adiciona fricção para quem não usa é obrigatória disfarçada.</p>
+
+      <div class="hook">
+        A segunda temporada começa com uma pergunta mais desconfortável que a primeira: o que acontece com esse processo em projetos que não são o próprio framework, com prazos reais e dívida técnica que ninguém documentou?
+      </div>
+
+      <p class="hashtags">#IA #AIDevelopment #SpecDrivenDevelopment #Documentacao #EngenhariaDeSoftware #YODAFramework</p>
+    </article>
+  </div>
+</body>
+</html>

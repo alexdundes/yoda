@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quando a issue nao e o comeco | YODA Framework</title>
+  <link rel="icon" href="../assets/yoda-light.svg" type="image/svg+xml">
+  <style>
+    :root { --ink:#15181d; --muted:#606977; --paper:#f3f5f7; --panel:#fff; --line:#d7dce3; --blue:#1167d8; --blue-dark:#0b3f88; --blue-soft:#e7f0ff; --code:#101720; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:radial-gradient(circle at top left,rgba(17,103,216,.14),transparent 360px),var(--paper); color:var(--ink); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:18px; line-height:1.72; }
+    .page { width:min(820px,calc(100% - 32px)); margin:0 auto; padding:34px 0 60px; }
+    header { display:flex; justify-content:space-between; gap:18px; align-items:center; margin-bottom:54px; }
+    .brand { display:flex; gap:12px; align-items:center; color:var(--blue-dark); font-size:13px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; text-decoration:none; }
+    .brand img { width:42px; height:42px; padding:5px; border:1px solid var(--line); border-radius:8px; background:white; }
+    a { color:var(--blue); text-underline-offset:3px; }
+    .back { color:var(--muted); font-size:14px; font-weight:700; text-decoration:none; }
+    h1 { margin:0; color:var(--code); font-size:clamp(38px,7vw,68px); line-height:1.05; letter-spacing:0; }
+    h2 { margin:44px 0 18px; color:var(--code); font-size:30px; line-height:1.18; letter-spacing:0; }
+    .kicker { color:var(--blue); font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace; font-weight:800; margin-bottom:18px; }
+    .lead { color:#29313b; font-size:24px; line-height:1.45; margin:26px 0 34px; }
+    .post-cover { margin:0 0 38px; padding:10px; background:var(--panel); border:1px solid var(--line); border-radius:8px; }
+    .post-cover img { display:block; width:100%; height:auto; border-radius:6px; }
+    article p { margin:0 0 24px; }
+    code { font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace; font-size:.92em; color:var(--code); background:#e9edf2; border:1px solid var(--line); border-radius:5px; padding:.08em .32em; }
+    .callout { margin:34px 0; padding:24px; background:var(--blue-soft); border-left:6px solid var(--blue); border-radius:8px; font-size:21px; line-height:1.5; }
+    .aside { margin:34px 0; padding:22px 24px; background:var(--panel); border:1px solid var(--line); border-radius:8px; color:var(--muted); }
+    .aside strong { color:var(--blue-dark); }
+    .nav { display:flex; justify-content:space-between; gap:18px; border-top:1px solid var(--line); margin-top:44px; padding-top:24px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a class="brand" href="../index.html"><img src="../assets/yoda-light.svg" alt="">YODA Framework</a>
+      <a class="back" href="../index.html#serie">Voltar para a série</a>
+    </header>
+    <main>
+      <article>
+        <div class="kicker">Post 13</div>
+        <h1>Quando a issue não é o começo</h1>
+        <p class="lead">A versão 0.5.0 permite que uma issue aponte para a documentação que a originou. No caminho, o próprio Study encontrou um campo que o YODA gravava havia meses e nunca mostrava para ninguém.</p>
+
+        <figure class="post-cover">
+          <img src="../linkedin/assets/13-capa-source-doc.jpg" alt="Ilustração de uma documentação técnica existente alimentando uma issue estruturada antes do fluxo de engenharia" width="1672" height="941">
+        </figure>
+
+        <p>A primeira temporada fechou com o Prep Flow. Esta abre com uma mudança menor em superfície e maior em consequência: a issue deixa de ser obrigatoriamente o ponto de partida do trabalho.</p>
+
+        <h2>O fluxo que já acontecia sem nome</h2>
+
+        <p>Existe um padrão de trabalho que aparece com frequência e que o YODA não representava. O desenvolvedor começa explorando um problema e escrevendo sobre ele. Esse documento cresce, acumula contexto, decisões, hipóteses e uma direção provável. Só depois disso nascem as issues, cada uma cobrindo uma parte executável do que foi descrito.</p>
+
+        <p>Nesse fluxo a documentação não é anexo. Ela antecede a issue e explica por que a issue existe. Durante o Study, ela continua sendo fonte de contexto. Durante o Document, algumas decisões consolidadas precisam ser confrontadas com o que o documento dizia.</p>
+
+        <p>O YODA não tinha como registrar isso. Quando a relação existia, ela aparecia informalmente: no corpo da issue, no contexto, nos entry points, em alguma nota. Funcionava, com três limitações concretas.</p>
+
+        <p>A primeira é que a relação dependia de interpretação. Um caminho listado em <code>Entry points</code> pode ser código a alterar, teste relevante, exemplo, implementação anterior ou a própria fonte da demanda. O agente precisava adivinhar o papel.</p>
+
+        <p>A segunda é que a referência sumia nas fases seguintes. Mencionar o documento no Intake não garante nada sobre o Study. O agente podia tratar a issue como autossuficiente e investigar só pelo corpo dela e pelo código.</p>
+
+        <p>A terceira é duplicação. Quando várias issues derivam do mesmo documento, o caminho é repetido à mão em cada uma, com as variações e divergências que isso costuma produzir.</p>
+
+        <h2>Quatro relações parecidas e diferentes</h2>
+
+        <p>A parte difícil não foi armazenar um caminho. Foi separar conceitos que se parecem.</p>
+
+        <p>O YODA já tinha três relações vizinhas. <code>extern_issue_file</code> identifica uma demanda mantida em outro sistema. <code>depends_on</code> ordena execução entre issues. <code>Entry points</code> lista lugares por onde começar a investigar. Nenhuma delas responde à pergunta "qual material explica por que esta issue existe".</p>
+
+        <p>O campo novo se chama <code>source_doc</code>. Aponta para um arquivo ou uma pasta do projeto, aceita caminho absoluto ou relativo na linha de comando, e grava sempre a forma relativa à raiz do projeto. Isso é deliberado: o caminho da máquina de quem criou a issue não pode chegar ao front matter, senão a referência deixa de ser portável entre clones.</p>
+
+        <p>Uma issue pode declarar <code>source_doc</code> e <code>extern_issue_file</code> ao mesmo tempo, porque os papéis são diferentes: a issue externa é o pedido oficial, a documentação-base é a análise técnica local, e a issue do YODA é o contrato de execução.</p>
+
+        <h2>O campo que ninguém via</h2>
+
+        <p>Este foi o achado que mudou o escopo do trabalho.</p>
+
+        <p>Durante o Study, um <code>grep</code> por <code>extern_issue_file</code> nos comandos de fase e de backlog não retornou nenhuma ocorrência. O campo era lido pelo índice de issues, colocado no registro interno, e nunca aparecia em nenhuma saída de comando. Quem entrava no Study não recebia nenhum sinal de que existia uma issue externa associada. Só descobria abrindo o arquivo por conta própria.</p>
+
+        <p>Ou seja: o defeito que a nova funcionalidade queria eliminar já existia, silencioso, no campo que serviria de modelo para ela.</p>
+
+        <p>Se <code>source_doc</code> tivesse copiado o padrão de <code>extern_issue_file</code>, teria nascido com o mesmo problema e falhado o critério central da própria demanda. Armazenar o campo é condição necessária e insuficiente. A referência precisa aparecer onde a decisão é tomada.</p>
+
+        <p>A lição é chata e vale para qualquer projeto: gravar um dado não é o mesmo que operacionalizá-lo. Um campo que nenhuma saída mostra é, para efeitos práticos, um campo que não existe.</p>
+
+        <p>A 0.5.0 corrige os dois casos. <code>source_doc</code> e <code>extern_issue_file</code> passam a aparecer nas saídas do Flow, do Prep Flow, do <code>todo_list</code> e do <code>todo_next</code>. E quando a issue declara <code>source_doc</code>, os runbooks de Study e Document ganham orientação adicional: ler o material como contexto qualificado, confrontar com o estado atual do projeto, separar o que já está decidido do que ainda está em aberto. No Document, uma linha extra deixa explícito que a associação não autoriza editar a documentação — atualizar um documento compartilhado por várias issues por causa de uma delas é como se antecipam decisões erradas.</p>
+
+        <h2>Rígido para escrever, tolerante para ler</h2>
+
+        <p>Uma decisão de desenho que vale registrar: a validação do caminho é assimétrica.</p>
+
+        <p>Na escrita ela bloqueia. Ao criar ou atualizar a issue, o caminho é normalizado e precisa existir e estar dentro do projeto. É o momento em que o desenvolvedor está ali e pode corrigir na hora.</p>
+
+        <p>Na leitura ela apenas alerta. Uma issue criada meses atrás cujo documento foi movido ou removido produz uma linha de aviso na saída, e nenhum comando falha. O motivo é operacional: o carregamento do índice é fail-fast no conjunto inteiro de issues do desenvolvedor. Tratar caminho quebrado como erro de validação ali significaria uma referência obsoleta derrubando todos os comandos do YODA.</p>
+
+        <p>Rigor no ponto de entrada, degradação suave depois. Alertar sem bloquear evita o outro extremo, que seria ignorar em silêncio uma fonte que alguém declarou importante.</p>
+
+        <h2>O que um teste realmente prova</h2>
+
+        <p>Boa parte dos critérios de aceite desta issue descreve comportamento de agente: "a documentação é lida antes de concluir a issue", "o Study confronta a documentação com o projeto". Uma suíte de testes em Python não consegue verificar isso.</p>
+
+        <p>O que ela consegue afirmar é mais modesto: dado um front matter com <code>source_doc</code>, o comando emite um runbook cujo texto contém a instrução correspondente. Não é prova de comportamento. É trava de regressão sobre o contrato de texto — se alguém refatorar os runbooks daqui a seis meses e a linha sumir, o teste quebra.</p>
+
+        <p>Achei melhor deixar isso escrito no registro da issue do que marcar o critério como verificado e seguir em frente. A diferença entre "a instrução está presente" e "o agente obedeceu" é pequena no papel e grande quando alguém confia no relatório.</p>
+
+        <p>A revisão do Evaluate, feita por outro agente, ainda encontrou duas coisas que eu não tinha visto. A primeira foi um teste de coexistência que o próprio contrato exigia e que eu não escrevi. A segunda foi mais interessante: um teste que passava por acidente de ordenação. Ele limpava três campos em sequência e afirmava, no último passo, preservar dois outros — só que um deles já tinha sido removido no passo anterior. O teste verificava metade do que prometia. Confirmei a correção por mutação: quebrei o código de propósito para ver o teste falhar, porque teste verde sozinho não prova nada.</p>
+
+        <h2>2.01 ficou mais exigente</h2>
+
+        <p>Esta versão traz a primeira mudança incompatível registrada no changelog do YODA.</p>
+
+        <p>O schema 2.01 passou a exigir o que a 2.00 tolerava: <code>pending_reason</code> não vazio quando a issue está pendente, e timestamps ISO 8601 com offset explícito. As regras valem inclusive para issues ainda marcadas como 2.00, e o carregamento é fail-fast, então uma issue malformada bloqueia todos os comandos daquele desenvolvedor até ser corrigida.</p>
+
+        <p>É uma escolha de projeto assumida: dado frouxo tolerado hoje vira comportamento imprevisível depois. Quem atualiza de uma versão anterior tem a remediação documentada no changelog. Mas é o tipo de mudança que merece ser dita em voz alta, não escondida entre as correções.</p>
+
+        <h2>O que muda na prática</h2>
+
+        <p>Nada muda para quem não usa a funcionalidade. Issues sem <code>source_doc</code> percorrem exatamente o mesmo fluxo de antes, sem perguntas extras nas fases seguintes. Essa era uma restrição dura da demanda, e não uma cortesia: uma funcionalidade opcional que adiciona fricção para quem não a usa é obrigatória disfarçada.</p>
+
+        <p>Para quem trabalha documentando primeiro, a mudança é que a origem do trabalho para de depender da memória de quem criou a issue. O agente passa a saber que existe uma documentação anterior, onde encontrá-la e em quais fases considerá-la.</p>
+
+        <div class="hook">
+          A segunda temporada começa com uma pergunta mais desconfortável que a primeira: o que acontece com esse processo em projetos que não são o próprio YODA, com prazos reais e dívida técnica que ninguém documentou?
+        </div>
+      </article>
+    </main>
+  </div>
+</body>
+</html>
