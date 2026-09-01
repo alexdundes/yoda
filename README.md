@@ -21,6 +21,13 @@ Visit the [YODA Framework site](https://alexdundes.github.io/yoda/) for the
 published guide and project story. The site is maintained from this
 repository's `docs/` directory.
 
+### Who this README is for
+
+This file serves two audiences at once. Most of it — installing, initializing,
+and running YODA — applies to any project with YODA embedded. Sections marked
+**(development repository)** apply only to the repository where YODA itself is
+built, and describe files that are not part of the distributed package.
+
 ## Command placeholders
 
 Text inside angle brackets, such as `<semver+build>` or `<target>`, is a
@@ -130,7 +137,10 @@ issue Markdown under `yoda/project/issues/`, the embedded manual at
 `yoda/yoda.md`, and the runbooks printed by `yoda/scripts/*.py --help`.
 
 ## Test suites (development repository)
-Two suites, each with its own scope:
+Two suites, each with its own scope. **Run one at a time.** They cannot be
+passed to the same `pytest` invocation: each has its own `conftest.py`, and
+pytest imports them under the same module name, so a combined run fails during
+collection.
 
 ```bash
 python3 -m pytest yoda/scripts/tests
