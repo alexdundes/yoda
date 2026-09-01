@@ -136,16 +136,21 @@ python3 yoda/scripts/yoda_intake.py --dev <developer-slug>
 3. Follow the returned runbook exactly.
 
 External source path:
-1. If the runbook indicates external issue intake, ask the human to run:
+1. If the runbook indicates external issue intake, run:
 ```bash
 python3 yoda/scripts/get_extern_issue.py --dev <developer-slug> --extern-issue <NNN>
 ```
-2. Expect the collector to prefer the authenticated provider CLI. For public
-   `github.com` issues it falls back to unauthenticated HTTP when `gh` is absent
-   or authentication is unavailable. Private repositories, GitHub Enterprise,
-   and GitLab continue to require their authenticated CLI.
-3. Read the reported `authenticated-cli` or `public-http` transport. The stored
-   external issue JSON remains transport-independent.
+2. On success, present the reported transport and the saved file path to the
+   human. The transport is `authenticated-cli` or `public-http`, and it tells
+   the human whether their authenticated CLI session was used: the collector
+   prefers that session whenever it is available, and only falls back to
+   unauthenticated HTTP for public `github.com` issues. Private repositories,
+   GitHub Enterprise, and GitLab always need the authenticated CLI. The stored
+   external issue JSON is the same either way.
+3. On any failure, present the returned error and hand execution to the human,
+   offering the same command to run locally. Do not work around the failure by
+   another route and do not try to determine repository visibility beforehand.
+   The human may also run the command themselves at any point.
 4. After the JSON file is created in `yoda/project/extern_issues/`, run:
 ```bash
 python3 yoda/scripts/yoda_intake.py --dev <developer-slug> --extern-issue <NNN>

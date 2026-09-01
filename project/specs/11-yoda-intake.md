@@ -86,7 +86,19 @@ Invalid exception example:
 > This issue is very important to the project.
 
 External source path (when `--extern-issue <NNN>` is used):
-- Ask the human to run `get_extern_issue.py --dev <developer-slug> --extern-issue <NNN>`.
+- The agent runs `get_extern_issue.py --dev <developer-slug> --extern-issue <NNN>`.
+  On success it reports the returned transport and the saved file path. On any
+  non-zero exit it presents the returned error and hands execution to the human,
+  offering the same command to run locally.
+- Collection may consume the human's authenticated CLI session when one is
+  available, which is why the transport is reported rather than assumed.
+- The agent does not work around a failed collection by another route and does
+  not try to determine repository visibility beforehand.
+- The human may run the command themselves at any point.
+- Earlier YODA versions delegated this execution unconditionally, separating
+  external integration (human) from flow orchestration (agent). That separation
+  was revised once public collection became possible without credentials:
+  delegation is now the failure path, not the default.
 - `get_extern_issue.py` stores source data at `yoda/project/extern_issues/<provider>-<NNN>.json`.
 - Re-run `yoda_intake.py --dev <developer-slug> --extern-issue <NNN>` to continue with local source file.
 - Associate commits with external issue using `#NNN` only; do not auto-close external issues.

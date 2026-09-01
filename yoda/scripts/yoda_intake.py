@@ -135,14 +135,17 @@ def _extern_fetch_runbook(dev: str, issue_number: str) -> str:
         f"Developer: `{dev}`",
         f"External issue: `#{issue_number}`",
         "",
-        "1. Ask the human to run this command locally:",
+        "1. Run this command yourself:",
     ]
     lines.extend(_cmd_block(f"python3 yoda/scripts/get_extern_issue.py --dev {dev} --extern-issue {issue_number}"))
     lines.extend(
         [
-            "2. Wait for confirmation that the JSON file was created in `yoda/project/extern_issues/`.",
-            "3. Read the saved `*.json` file details to guide micro-issue decomposition with the human.",
-            "4. After confirmation, rerun this command:",
+            "2. On success, present the reported transport and saved file path to the human.",
+            "   The transport tells the human whether their authenticated CLI session was used.",
+            "3. On any failure, present the returned error and hand execution to the human,",
+            "   offering the same command to run locally. Do not work around the failure.",
+            "4. Read the saved `*.json` file details to guide micro-issue decomposition with the human.",
+            "5. After the JSON file exists in `yoda/project/extern_issues/`, rerun this command:",
         ]
     )
     lines.extend(_cmd_block(f"python3 yoda/scripts/yoda_intake.py --dev {dev} --extern-issue {issue_number}"))

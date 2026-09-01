@@ -70,14 +70,25 @@ When only `--dev` is provided:
   - provider is inferred from git `origin` when possible;
   - fallback: first matching `*-<NNN>.json`.
 - If file is missing:
-  - return runbook instructing the agent to ask the human to run `get_extern_issue.py`.
+  - return runbook instructing the agent to run `get_extern_issue.py` itself.
+  - instruct the agent to report the returned transport and saved file path on
+    success.
+  - instruct the agent to present the returned error and hand execution to the
+    human on any non-zero exit, keeping the same command available to run
+    locally.
   - include rerun instruction for `yoda_intake.py --extern-issue <NNN>`.
   - exit with success.
+
 - If file exists:
   - return full external intake runbook.
   - include external issue summary metadata (without dumping full external body).
   - include `File: <absolute path>` in the summary.
   - exit with success.
+
+Delegating this execution to the human was once unconditional, to keep external
+integration separate from flow orchestration. That rule was revised when public
+collection stopped requiring credentials; the runbook now delegates only after a
+failed attempt.
 
 ## Output
 

@@ -93,6 +93,23 @@ def test_yoda_intake_missing_external_file_returns_runbook(capsys) -> None:
     assert "Read the saved `*.json` file details" in captured.out
 
 
+def test_external_runbook_makes_the_agent_collect_and_delegate_only_on_failure(capsys) -> None:
+    module = _load_module()
+    code = module.run(["--dev", "test", "--extern-issue", TEST_EXTERN_ISSUE])
+    captured = capsys.readouterr()
+    assert code == 0
+
+    runbook = " ".join(captured.out.split())
+    assert "Run this command yourself:" in runbook
+    assert "present the reported transport and saved file path" in runbook
+    assert "authenticated CLI session was used" in runbook
+    assert "hand execution to the human" in runbook
+    assert "Do not work around the failure." in runbook
+
+    # The unconditional delegation was revised: it is now the failure path only.
+    assert "Ask the human to run this command locally" not in runbook
+
+
 def test_yoda_intake_external_issue_success_from_saved_file(monkeypatch, capsys) -> None:
     module = _load_module()
     monkeypatch.setenv("YODA_ORIGIN_URL", "https://gitlab.com/acme/proj.git")
