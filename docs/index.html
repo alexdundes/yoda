@@ -4,736 +4,385 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>YODA Framework</title>
-  <meta name="description" content="YODA Framework: uma odisséia document-first para desenvolver com agentes sem perder o juízo.">
+  <meta name="description" content="YODA Framework: desenvolvimento com agentes de IA onde a documentação é a fonte de verdade e scripts garantem o combinado. Você conversa com o agente; o agente executa o fluxo.">
   <link rel="icon" href="assets/yoda-light.svg" type="image/svg+xml">
-  <style>
-    :root {
-      color-scheme: light;
-      --ink: #15181d;
-      --muted: #606977;
-      --paper: #f3f5f7;
-      --panel: #ffffff;
-      --panel-soft: #eef1f5;
-      --line: #d7dce3;
-      --line-strong: #aeb7c3;
-      --blue: #1167d8;
-      --blue-dark: #0b3f88;
-      --blue-soft: #e7f0ff;
-      --code: #101720;
-      --shadow: 0 20px 46px rgba(16, 23, 32, 0.14);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      background:
-        radial-gradient(circle at top left, rgba(17, 103, 216, 0.16), transparent 360px),
-        linear-gradient(180deg, #ffffff, transparent 420px),
-        var(--paper);
-      color: var(--ink);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 17px;
-      line-height: 1.68;
-    }
-
-    a {
-      color: var(--blue);
-      text-decoration-thickness: 2px;
-      text-underline-offset: 3px;
-    }
-
-    .page {
-      width: min(1040px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    header {
-      padding: 44px 0 22px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 14px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--blue-dark);
-    }
-
-    .brand-logo {
-      display: block;
-      width: 52px;
-      height: 52px;
-      padding: 6px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.86);
-      box-shadow: 0 6px 18px rgba(16, 23, 32, 0.08);
-    }
-
-    .hero-title {
-      display: flex;
-      align-items: flex-start;
-      flex-direction: column;
-      gap: 18px;
-    }
-
-    .hero-logo {
-      width: clamp(78px, 12vw, 132px);
-      height: clamp(78px, 12vw, 132px);
-      flex: 0 0 auto;
-      padding: 12px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.76);
-      box-shadow: var(--shadow);
-    }
-
-    .hero {
-      padding: 54px 0 30px;
-      display: grid;
-      grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr);
-      gap: 40px;
-      align-items: center;
-    }
-
-    .hero-media {
-      margin: 0;
-    }
-
-    .hero-media img {
-      display: block;
-      width: 100%;
-      height: auto;
-      aspect-ratio: 16 / 10;
-      object-fit: cover;
-      border: 1px solid var(--line-strong);
-      border-radius: 8px;
-      background: var(--panel);
-      box-shadow: var(--shadow);
-      filter: saturate(0.72) contrast(1.04);
-    }
-
-    h1,
-    h2,
-    h3 {
-      line-height: 1.08;
-      letter-spacing: 0;
-      margin: 0;
-      color: var(--code);
-    }
-
-    h1 {
-      font-size: clamp(44px, 6vw, 72px);
-      max-width: 820px;
-    }
-
-    h2 {
-      font-size: clamp(30px, 4vw, 48px);
-      margin-bottom: 22px;
-    }
-
-    h3 {
-      font-size: 25px;
-      margin-bottom: 10px;
-    }
-
-    .lead {
-      max-width: 760px;
-      margin: 26px 0 0;
-      font-size: clamp(21px, 2.5vw, 29px);
-      line-height: 1.45;
-      color: #29313b;
-    }
-
-    .side-note {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      box-shadow: var(--shadow);
-      padding: 22px;
-      margin-top: 24px;
-      font-size: 15px;
-      line-height: 1.55;
-      color: var(--muted);
-    }
-
-    .side-note strong {
-      display: block;
-      margin-bottom: 8px;
-      color: var(--blue);
-      font-size: 16px;
-    }
-
-    .nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      padding: 18px 0 36px;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .nav a {
-      padding: 8px 12px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.74);
-      color: var(--blue-dark);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .nav a:hover {
-      border-color: var(--blue);
-      background: var(--blue-soft);
-      color: var(--blue-dark);
-    }
-
-    section {
-      padding: 48px 0;
-      border-top: 1px solid var(--line);
-    }
-
-    .story {
-      max-width: 820px;
-    }
-
-    .story p {
-      margin: 0 0 22px;
-    }
-
-    .callout {
-      margin: 34px 0;
-      padding: 26px 28px;
-      border-left: 6px solid var(--blue);
-      background: var(--blue-soft);
-      font-size: 22px;
-      line-height: 1.48;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 28px;
-    }
-
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 22px;
-      box-shadow: 0 8px 24px rgba(16, 23, 32, 0.08);
-    }
-
-    .card h3 {
-      color: var(--blue-dark);
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 15px;
-      line-height: 1.58;
-    }
-
-    .series {
-      counter-reset: post;
-      display: grid;
-      gap: 14px;
-      margin-top: 28px;
-    }
-
-    .post {
-      counter-increment: post;
-      display: grid;
-      grid-template-columns: 56px minmax(0, 1fr);
-      gap: 16px;
-      align-items: start;
-      padding: 20px;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      color: inherit;
-      text-decoration: none;
-      transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
-    }
-
-    .post:hover {
-      border-color: var(--blue);
-      box-shadow: 0 10px 28px rgba(17, 103, 216, 0.12);
-      transform: translateY(-1px);
-    }
-
-    .post::before {
-      content: counter(post, decimal-leading-zero);
-      display: grid;
-      place-items: center;
-      width: 48px;
-      height: 48px;
-      border-radius: 8px;
-      background: var(--code);
-      color: white;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 14px;
-      font-weight: 800;
-    }
-
-    .post h3 {
-      color: var(--ink);
-    }
-
-    .post p {
-      margin: 0;
-      color: var(--muted);
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-    }
-
-    .timeline {
-      display: grid;
-      gap: 16px;
-      margin-top: 28px;
-    }
-
-    .moment {
-      display: grid;
-      grid-template-columns: 120px minmax(0, 1fr);
-      gap: 20px;
-      padding-bottom: 16px;
-      border-bottom: 1px dashed var(--line);
-    }
-
-    .moment time {
-      color: var(--blue);
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 14px;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-
-    .moment p {
-      margin: 0;
-    }
-
-    .install {
-      padding: 24px;
-      background: var(--code);
-      border-radius: 8px;
-      color: #dce8ff;
-      overflow-x: auto;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    footer {
-      padding: 42px 0 58px;
-      color: var(--muted);
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 14px;
-    }
-
-    @media (max-width: 820px) {
-      .hero,
-      .grid,
-      .moment {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        gap: 24px;
-        padding-top: 34px;
-      }
-
-      .hero-media {
-        order: -1;
-      }
-
-      .post {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-title {
-        gap: 18px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
   <div class="page">
-    <header>
-      <div class="brand">
-        <img class="brand-logo" src="assets/yoda-light.svg" alt="Logotipo do YODA Framework" width="52" height="52">
-        <span>YAML-Oriented Documentation &amp; Agents</span>
+    <div class="topbar">
+      <a class="brand" href="index.html">
+        <img src="assets/yoda-light.svg" alt="" width="42" height="42">
+        YODA Framework
+      </a>
+      <div class="topbar-right">
+        <nav class="nav" aria-label="Navegação principal">
+          <a href="index.html" aria-current="page">Início</a>
+          <a href="instalacao.html">Instalação</a>
+          <a href="intake.html">Intake</a>
+          <a href="flow.html">Flow</a>
+          <a href="prep-flow.html">Prep Flow</a>
+          <a href="issues.html">Issues</a>
+          <a href="historia.html">História</a>
+        </nav>
+        <a class="repo" href="https://github.com/alexdundes/yoda"
+           title="Repositório do YODA Framework no GitHub">
+          <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path>
+          </svg>
+          GitHub
+        </a>
       </div>
+    </div>
 
-      <div class="hero">
+    <header class="hero">
+      <div class="hero-grid">
         <div>
-          <div class="hero-title">
-            <img class="hero-logo" src="assets/yoda-light.svg" alt="" width="132" height="132">
-            <h1>YODA Framework</h1>
-          </div>
+          <img class="hero-logo" src="assets/yoda-light.svg" alt="" width="104" height="104">
+          <h1>O combinado antes do código</h1>
           <p class="lead">
-            Uma tentativa, meio teimosa e meio desesperada, de fazer agentes de IA
-            trabalharem com menos adivinhação e mais combinado escrito.
+            YODA é um framework document-first para desenvolver com agentes de IA.
+            A documentação é a fonte de verdade operacional, scripts determinísticos
+            garantem o combinado, e cada fase do trabalho passa pela sua autorização.
           </p>
-
-          <aside class="side-note">
-            <strong>Pois é.</strong>
-            Eu só queria escrever um markdown, pedir para o agente implementar e seguir
-            a vida. Parecia simples. Como toda boa idéia simples, logo virou uma
-            pequena odisséia.
-          </aside>
+          <div class="cta-row">
+            <a class="btn" href="instalacao.html">Instalar</a>
+            <a class="btn secondary" href="flow.html">Como funciona o Flow</a>
+          </div>
         </div>
 
         <figure class="hero-media">
-          <img src="assets/yoda-odyssey.jpg" alt="Ilustração bem-humorada de um desenvolvedor segurando uma especificação enquanto um agente tenta correr para o código" width="1536" height="1024">
+          <img src="assets/yoda-odyssey.jpg" alt="Ilustração de um desenvolvedor segurando uma especificação enquanto um agente tenta correr direto para o código" width="1536" height="1024">
         </figure>
       </div>
-
-      <nav class="nav" aria-label="Navegação principal">
-        <a href="#framework">O framework</a>
-        <a href="#odisseia">A odisséia</a>
-        <a href="#serie">A série</a>
-        <a href="#linha-do-tempo">Linha do tempo</a>
-        <a href="#instalacao">Instalação</a>
-      </nav>
     </header>
 
     <main>
-      <section id="framework">
+      <section id="problema">
         <div class="story">
-          <h2>O combinado antes do código</h2>
+          <p class="kicker">O problema</p>
+          <h2>Contexto solto não governa trabalho</h2>
           <p>
-            O YODA Framework nasceu de uma dor besta. Besta nada, daquelas que
-            parecem pequenas e depois roubam o domingo inteiro.
+            Um agente de IA competente ainda pode escolher a issue errada, implementar
+            antes de entender, confundir intenção com autorização e terminar
+            tecnicamente certo mas fora do que foi combinado. Modelo melhor reduz a
+            frequência disso. Não elimina a categoria.
           </p>
           <p>
-            Eu queria trabalhar com agentes de IA sem precisar explicar tudo de novo
-            a cada conversa. Queria que o agente chegasse no projeto, respirasse
-            fundo, lesse os arquivos certos e entendesse o que tinha que fazer.
-            Sem chute. Sem aquela confiança esquisita de quem acabou de inventar um
-            caminho bonito para o lugar errado.
+            A causa raiz costuma ser a mesma: o contexto existe, mas não tem lugar.
+            Ele mora numa conversa que acaba, num prompt que se perde, na cabeça de
+            quem abriu a tarefa. Quando o contexto não está no repositório, em formato
+            estável, cada nova sessão recomeça do zero e cada agente reinterpreta o
+            combinado do seu jeito.
           </p>
-          <p>
-            Então veio a idéia: documentar primeiro. Criar uma issue em Markdown.
-            Colocar contexto, objetivo, escopo, critérios de aceite, riscos,
-            dependências. Só depois deixar o agente mexer no código.
-          </p>
-
           <div class="callout">
-            O YODA é isso: documentação como fonte de verdade, scripts como
-            guardiões do combinado e agentes trabalhando dentro de um fluxo que dá
-            para auditar depois.
+            Pedir para o agente “seguir o contexto” não é processo. É desejo.
+            Para virar processo, o contexto precisa ter lugar, ordem, entrada,
+            saída, critério e autorização.
           </div>
+        </div>
+      </section>
 
+      <section id="solucao">
+        <div class="story">
+          <p class="kicker">O que o YODA faz</p>
+          <h2>Transforma o combinado em artefato</h2>
           <p>
-            O nome ficou YODA: YAML-Oriented Documentation &amp; Agents. Bonitinho,
-            nerd, com cara de coisa pensada. Mas a verdade é que a história ficou
-            mais engraçada quando o projeto começou a descobrir que o Markdown era o
-            coração da brincadeira, e que o YAML tinha que parar de querer aparecer
-            tanto.
+            Antes de qualquer código, o trabalho vira uma issue em Markdown dentro do
+            repositório, com contexto, objetivo, escopo, critérios de aceite, riscos e
+            dependências. Essa issue é o contrato. O agente executa dentro dela, e o
+            que ele fez fica registrado no próprio arquivo.
           </p>
         </div>
 
-        <div class="grid" aria-label="Pilares do YODA Framework">
+        <div class="grid">
           <article class="card">
-            <h3>Intake</h3>
+            <span class="tag">fonte de verdade</span>
+            <h3>Documentação</h3>
             <p>
-              O momento em que uma idéia solta vira issue pronta. O agente pergunta,
-              organiza, compara com o backlog e transforma conversa em contrato.
+              A issue Markdown carrega metadado estruturado e contexto narrativo no
+              mesmo arquivo. Vive no repositório, versionada e revisável como código.
             </p>
           </article>
           <article class="card">
-            <h3>Flow</h3>
-            <p>
-              O ciclo Study, Document, Implement e Evaluate. Um passo por vez,
-              porque agente empolgado demais também precisa de freio.
-            </p>
-          </article>
-          <article class="card">
+            <span class="tag">árbitro</span>
             <h3>Scripts</h3>
             <p>
-              As regras que não podem depender de interpretação viram comandos.
-              Ajuda muito quando o entusiasmo quer atropelar o combinado.
+              Regra que não pode depender de interpretação vira comando determinístico:
+              qual issue vem agora, qual fase pode começar, o que fica registrado.
+            </p>
+          </article>
+          <article class="card">
+            <span class="tag">executor</span>
+            <h3>Agente</h3>
+            <p>
+              O agente lê o manual embarcado, segue o runbook que o script devolve e
+              para no fim de cada fase para você autorizar a próxima.
             </p>
           </article>
         </div>
       </section>
 
-      <section id="odisseia">
+      <section id="nome">
         <div class="story">
-          <h2>A odisséia</h2>
+          <p class="kicker">O nome</p>
+          <h2>YAML-Oriented Documentation &amp; Agents</h2>
           <p>
-            Esta página também é o começo de uma série de posts sobre a criação do
-            YODA Framework. Não vai ser uma documentação oficial engravatada. Já
-            temos arquivos suficientes para isso.
+            YODA é sigla de <strong>YAML-Oriented Documentation &amp; Agents</strong>,
+            e ela guarda uma reviravolta do próprio projeto.
           </p>
           <p>
-            A idéia aqui é contar a saga. Aquele tipo de saga que começa com:
-            “vou só organizar umas instruções para o agente”, e termina com
-            versionamento de schema, instalador, pacote, rollback, issue externa,
-            fluxo de preparação e um respeito renovado por qualquer pessoa que já
-            tentou explicar uma tarefa para uma máquina teimosa.
+            No começo, o YAML era a estrutura de organização. O backlog inteiro vivia
+            num arquivo <code>TODO.&lt;slug&gt;.yaml</code>, os registros de execução
+            ficavam em arquivos YAML separados, e o Markdown era só o texto ao lado.
+            Funcionava, e cobrava um preço: o estado de uma issue morava num arquivo,
+            a narrativa em outro, e manter os dois em sincronia era trabalho manual
+            que ninguém queria fazer. Quando divergiam, não havia como saber qual dos
+            dois estava certo.
           </p>
           <p>
-            Teve bootstrap. Teve conceito que nasceu bonito e morreu cedo. Teve YAML
-            querendo carregar o mundo nas costas. Teve Markdown entrando em campo
-            como quem não quer nada e virando titular absoluto. Teve script salvando
-            a pátria. Teve release. Teve ajuste. Teve “UFA!”.
+            Hoje o Markdown é a fonte de verdade operacional, e o YAML continua ali —
+            onde ele é bom. Ele mora no <strong>front matter</strong> da própria
+            issue. Metadado estruturado e contexto narrativo passaram a ocupar o mesmo
+            arquivo, e a pergunta “qual versão vale?” deixou de existir.
           </p>
+        </div>
+
+        <pre class="shell"><code><span class="comment"># yoda/project/issues/mynick-0042-corrigir-invalidacao-de-cache.md</span>
+---
+schema_version: '2.01'
+status: doing
+phase: study
+depends_on:
+  - mynick-0041
+title: Corrigir invalidação de cache na listagem de pedidos
+description: A listagem serve dados velhos depois de uma atualização de estoque.
+priority: 5
+extern_issue_file: ../extern_issues/github-87.json
+source_doc: docs/analise-cache.md
+created_at: '2026-09-02T09:14:00-03:00'
+updated_at: '2026-09-02T10:02:11-03:00'
+---
+
+# mynick-0042 - Corrigir invalidação de cache na listagem de pedidos
+
+## Summary
+...</code></pre>
+        <p class="caption">O YAML descreve o estado que os scripts leem. O Markdown abaixo dele carrega o contrato e o histórico.</p>
+
+        <div class="story">
           <p>
-            E teve, principalmente, a descoberta de que desenvolvimento com IA não é
-            só pedir melhor. É preparar melhor.
+            O nome ficou, e não por nostalgia. É o YAML do front matter que torna a
+            seleção determinística possível: é dele que saem status, fase,
+            dependências e prioridade, os dados que decidem qual issue vem agora sem
+            depender da leitura interpretativa de ninguém. Ele só parou de querer
+            carregar o projeto inteiro nas costas.
           </p>
         </div>
       </section>
 
-      <section id="serie">
-        <h2>A série da odisséia</h2>
-        <div class="series">
-          <a class="post" href="posts/01-eu-so-queria-que-o-agente-lesse-o-markdown.html">
-            <div>
-              <h3>Eu só queria que o agente lesse o markdown</h3>
-              <p>
-                A motivação inicial: por que spec driven development parece tão
-                óbvio quando dá certo e tão necessário quando dá errado.
-              </p>
-            </div>
-          </a>
+      <section id="porque">
+        <div class="story">
+          <p class="kicker">Por que resolve</p>
+          <h2>Quatro garantias que um prompt não dá</h2>
+        </div>
 
-          <a class="post" href="posts/02-o-bootstrap-do-bootstrap.html">
-            <div>
-              <h3>O bootstrap do bootstrap</h3>
-              <p>
-                A fase em que o framework ainda não existia, mas já precisava ser
-                usado para criar o próprio framework. Sim, a piada veio pronta.
-              </p>
-            </div>
-          </a>
+        <div class="grid two">
+          <article class="card">
+            <h3>Seleção determinística</h3>
+            <p>
+              Qual issue vem agora não é opinião do agente. É resultado de ordem
+              natural, dependências declaradas e estado registrado. O mesmo backlog
+              produz a mesma escolha, com qualquer agente.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Fronteira de fase</h3>
+            <p>
+              Uma fase por interação. O agente apresenta o entregável e para. Sem
+              autorização explícita, não avança. Isso corta o “já que estou aqui,
+              implemento também”.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Memória que sobrevive à sessão</h3>
+            <p>
+              Decisões, achados e transições ficam na issue, não no histórico do chat.
+              Amanhã, outro agente ou outra pessoa continua de onde parou.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Rastro auditável</h3>
+            <p>
+              Cada transição de fase entra no log da issue com data e resumo. Dá para
+              reconstruir depois o que foi decidido, quando, e com qual justificativa.
+            </p>
+          </article>
+        </div>
+      </section>
 
-          <a class="post" href="posts/03-um-agente-com-contexto-zero-entra-num-repositorio.html">
-            <div>
-              <h3>Um agente com contexto zero entra num repositório</h3>
-              <p>
-                A importância dos arquivos de entrada: onde o humano lê, onde o
-                agente lê e como evitar que todo mundo comece pelo lugar errado.
-              </p>
-            </div>
-          </a>
+      <section id="como-usar">
+        <div class="story">
+          <p class="kicker">Como você usa</p>
+          <h2>Você conversa. O agente executa.</h2>
+          <p>
+            Esta é a parte que mais confunde quem chega pela primeira vez, então vale
+            dizer sem rodeio: os scripts em <code>yoda/scripts/</code> são ferramentas
+            do agente, não da pessoa. Você não precisa decorar comando nenhum.
+          </p>
+          <p>
+            O seu trabalho é dizer o que quer, ler o que o agente apresenta no fim de
+            cada fase e autorizar o próximo passo. O agente cuida de descobrir qual
+            comando rodar, quando rodar e o que fazer com a saída.
+          </p>
+        </div>
 
-          <a class="post" href="posts/04-quando-a-issue-deixa-de-ser-lembrete-e-vira-contrato.html">
-            <div>
-              <h3>Quando a issue deixa de ser lembrete e vira contrato</h3>
-              <p>
-                Contexto, objetivo, escopo, critérios de aceite, riscos e logs. A
-                issue Markdown como o tênis amarrado antes da corrida.
-              </p>
-            </div>
-          </a>
+        <div class="say">
+          <span class="who">Você diz</span>
+          <p>“Vamos entrar no YODA Intake. Quero abrir uma issue para o problema de cache na listagem de pedidos.”</p>
+        </div>
 
-          <a class="post" href="posts/05-scripts-porque-prompt-nao-deveria-fazer-trabalho-de-juiz.html">
-            <div>
-              <h3>Scripts: porque prompt não deveria fazer trabalho de juiz</h3>
-              <p>
-                A chegada dos comandos que colocam ordem na casa: criar issue,
-                listar backlog, avançar fase, registrar log e atualizar estado.
-              </p>
-            </div>
-          </a>
+        <div class="does">
+          <span class="who">O agente faz</span>
+          <ol>
+            <li>Lê o manual embarcado em <code>yoda/yoda.md</code>.</li>
+            <li>Executa o script de Intake e segue o runbook devolvido por ele.</li>
+            <li>Revisa o backlog atual para não duplicar trabalho já previsto.</li>
+            <li>Pergunta o que faltar, traduz a conversa em issue estruturada e cria o arquivo.</li>
+            <li>Apresenta o resultado e para, esperando sua decisão.</li>
+          </ol>
+        </div>
 
-          <a class="post" href="posts/06-yoda-intake-ou-como-transformar-desabafo-em-backlog.html">
-            <div>
-              <h3>YODA Intake, ou como transformar desabafo em backlog</h3>
-              <p>
-                O ciclo que pega texto corrido, organiza a bagunça, consulta o que
-                já existe e entrega uma issue pronta para execução.
-              </p>
-            </div>
-          </a>
+        <div class="warn">
+          <strong>Uma exceção</strong>
+          O único comando que você digita é o instalador, uma vez por projeto. Tudo
+          depois disso passa pelo agente. Se um agente pedir para <em>você</em> rodar
+          um script do YODA, ele está fora do combinado — a única situação prevista é
+          uma falha de coleta de issue externa que dependa da sua sessão autenticada.
+        </div>
+      </section>
 
-          <a class="post" href="posts/07-study-document-implement-evaluate.html">
-            <div>
-              <h3>Study, Document, Implement, Evaluate</h3>
-              <p>
-                O Flow como antídoto contra a pressa. Primeiro entender, depois
-                documentar, só então implementar e avaliar.
-              </p>
-            </div>
-          </a>
+      <section id="instalar">
+        <div class="story">
+          <p class="kicker">Instalação</p>
+          <h2>Um comando, uma vez</h2>
+          <p>
+            O instalador baixa o pacote, valida o checksum e já inicializa a estrutura
+            com o seu <strong>developer slug</strong> — o identificador curto que vira
+            prefixo das suas issues, como <code>mynick-0001</code>.
+          </p>
+        </div>
 
-          <a class="post" href="posts/08-a-grande-virada-markdown-first.html">
-            <div>
-              <h3>A grande virada Markdown-first</h3>
-              <p>
-                O momento em que o YODA aceitou que o Markdown era a fonte de
-                verdade operacional e que o YAML deveria ser minimalista.
-              </p>
-            </div>
-          </a>
+        <pre class="shell"><code><span class="comment"># troque mynick pelo seu developer slug</span>
+curl -fsSL https://alexdundes.github.io/yoda/install/yoda-install.sh | sh -s -- --root . --dev mynick</code></pre>
+        <p class="caption">Executa um script remoto. Em ambiente sensível, revise antes e prefira a versão fixada.</p>
 
-          <a class="post" href="posts/09-empacotar-uma-teimosia.html">
-            <div>
-              <h3>Empacotar uma teimosia</h3>
-              <p>
-                Installer, checksum, latest.json, update, rollback e a tentativa de
-                levar o YODA para outros projetos sem levar junto a bagunça da sala.
-              </p>
-            </div>
-          </a>
+        <div class="story">
+          <p>
+            Falta um passo, e ele é o que faz o agente enxergar o YODA: aponte o
+            arquivo de entrada do seu agente para o manual embarcado. Em um projeto
+            com <code>CLAUDE.md</code>, <code>AGENTS.md</code> ou
+            <code>GEMINI.md</code> na raiz, acrescente:
+          </p>
+        </div>
 
-          <a class="post" href="posts/10-o-que-morreu-no-caminho.html">
-            <div>
-              <h3>O que morreu no caminho</h3>
-              <p>
-                Lightweight, metadata demais, entrypoints no YAML, init mexendo onde
-                não devia. Nem toda idéia merece sobreviver. Algumas só servem para
-                ensinar.
-              </p>
-            </div>
-          </a>
+        <pre class="shell"><code>## YODA Framework
 
-          <a class="post" href="posts/11-preparar-antes-de-executar.html">
-            <div>
-              <h3>Preparar antes de executar</h3>
-              <p>
-                O YODA Prep Flow e a descoberta de que às vezes o melhor trabalho é
-                só deixar a issue madura, sem sair implementando na mesma hora.
-              </p>
-            </div>
-          </a>
+Read in order:
 
-          <a class="post" href="posts/12-vamo-vamo-vamo.html">
-            <div>
-              <h3>Vamo, vamo, vamo</h3>
-              <p>
-                O fechamento da primeira temporada: o que essa odisséia ensinou
-                sobre agentes, documentação, paciência e vergonha na cara.
-              </p>
-            </div>
-          </a>
+1) yoda/yoda.md</code></pre>
 
-          <a class="post" href="posts/13-quando-a-issue-nao-e-o-comeco.html">
-            <div>
-              <h3>Quando a issue não é o começo</h3>
-              <p>
-                A issue passa a apontar para a documentação que a originou. No
-                caminho, o Study encontrou um campo que o YODA gravava havia meses
-                e nunca mostrava em nenhuma saída.
-              </p>
-            </div>
+        <div class="story">
+          <p>
+            O <code>init</code> nunca escreve nesses arquivos por conta própria. Ele
+            mexe apenas no que está sob <code>yoda/</code>, e a ligação com o seu
+            agente fica sob seu controle.
+          </p>
+          <p>
+            <a href="instalacao.html">Versão fixada, instalação manual, atualização e rollback →</a>
+          </p>
+        </div>
+      </section>
+
+      <section id="modos">
+        <div class="story">
+          <p class="kicker">Os três modos</p>
+          <h2>Cada modo tem uma postura</h2>
+          <p>
+            YODA não é um fluxo único. São três modos com objetivos distintos, e eles
+            não se misturam: entra-se e sai-se de cada um explicitamente. Você diz em
+            qual quer entrar, e o agente assume as restrições daquele modo.
+          </p>
+        </div>
+
+        <div class="grid">
+          <a class="card" href="intake.html">
+            <span class="tag">criar</span>
+            <h3>YODA Intake</h3>
+            <p>
+              Transforma demanda solta em issue executável. Revisa o backlog, coleta
+              issue externa quando existe, lê a documentação-base e fecha o escopo.
+              Nada é implementado aqui.
+            </p>
+          </a>
+          <a class="card" href="flow.html">
+            <span class="tag">executar</span>
+            <h3>YODA Flow</h3>
+            <p>
+              O ciclo de execução: Study, Document, Implement e Evaluate. Uma fase por
+              interação, com entregável apresentado e parada obrigatória no fim de
+              cada uma.
+            </p>
+          </a>
+          <a class="card" href="prep-flow.html">
+            <span class="tag">preparar</span>
+            <h3>YODA Prep Flow</h3>
+            <p>
+              Amadurece uma issue específica até o Document, sem autorizar
+              implementação. Útil quando o melhor trabalho de hoje é deixar a issue
+              menos nebulosa.
+            </p>
           </a>
         </div>
       </section>
 
-      <section id="linha-do-tempo">
-        <h2>Linha do tempo</h2>
-        <div class="timeline">
-          <div class="moment">
-            <time>Jan/2026</time>
-            <p>
-              As primeiras specs aparecem. O projeto começa como meta-implementação:
-              usar o YODA para construir o YODA. Meio ousado. Meio confuso. Bem útil.
-            </p>
-          </div>
-          <div class="moment">
-            <time>Jan/2026</time>
-            <p>
-              O bootstrap termina e vira histórico em <code>bootstrap-legacy/</code>.
-              Aquela caixa de lembranças que ninguém usa no dia a dia, mas que prova
-              que a bagunça teve método.
-            </p>
-          </div>
-          <div class="moment">
-            <time>Fev/2026</time>
-            <p>
-              Chegam pacote, init, instalador, update e README curto. O YODA começa
-              a parecer algo que pode sair de casa.
-            </p>
-          </div>
-          <div class="moment">
-            <time>Mar/2026</time>
-            <p>
-              A versão 0.3.0 consolida a virada Markdown-first, com fluxo
-              determinístico, logs embutidos e menos metadado carregando piano.
-            </p>
-          </div>
-          <div class="moment">
-            <time>Jun/2026</time>
-            <p>
-              A versão 0.4.0 traz o Prep Flow e deixa o init menos intrusivo. O
-              framework aprende a bater na porta antes de entrar na casa dos outros.
-            </p>
-          </div>
-          <div class="moment">
-            <time>Set/2026</time>
-            <p>
-              A versão 0.5.0 adiciona <code>source_doc</code>: a issue declara a
-              documentação que a originou, e os runbooks de Study e Document passam
-              a considerá-la. Junto vem a correção de um campo que era gravado e
-              nunca exibido, o fallback público para coleta de issues externas e o
-              schema 2.01 exigindo o que a 2.00 tolerava.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="instalacao">
+      <section id="proximo">
         <div class="story">
-          <h2>Quer testar?</h2>
-          <p>
-            O caminho mais rápido é o instalador. O caminho mais prudente é revisar
-            antes, escolher uma versão fixa e manter o projeto sob versionamento.
-            Porque aventura é bom, mas rollback também é carinho.
-          </p>
+          <p class="kicker">Onde continuar</p>
+          <h2>Leituras seguintes</h2>
         </div>
-        <pre class="install"><code>curl -fsSL https://alexdundes.github.io/yoda/install/yoda-install.sh | sh -s -- --root .</code></pre>
-
-        <div class="story">
-          <h3>Primeira execução</h3>
-          <p>
-            Antes do init, escolha seu <strong>developer slug</strong>: um
-            identificador curto e estável que vira o prefixo das suas issues,
-            como <code>mynick-0001</code>. Use letras ASCII minúsculas, números
-            e hífens, começando por uma letra. Exemplos válidos:
-            <code>mynick</code>, <code>fernando</code> e
-            <code>time-backend</code>. Exemplos inválidos:
-            <code>MeuNick</code>, <code>123fernando</code> e
-            <code>fernando_silva</code>.
-          </p>
-          <p>
-            Nos comandos da documentação, texto entre <code>&lt;...&gt;</code> é
-            um placeholder a substituir; os sinais não devem ser digitados.
-            O comando abaixo é concreto: troque <code>mynick</code> pelo seu
-            developer slug e reutilize o mesmo valor depois. O
-            <code>--root .</code> indica o diretório atual.
-          </p>
+        <div class="next">
+          <a class="card" href="issues.html">
+            <h3>A issue como contrato</h3>
+            <p>
+              O que vai no front matter, o que vai no corpo, e como documentação-base,
+              issue externa, dependências e entry points se distinguem.
+            </p>
+          </a>
+          <a class="card" href="historia.html">
+            <h3>A história do projeto</h3>
+            <p>
+              Como o YODA saiu de “eu só queria que o agente lesse o markdown” até
+              schema versionado, instalador e pacote. Com a série de posts completa.
+            </p>
+          </a>
         </div>
-        <pre class="install"><code>python3 yoda/scripts/init.py --dev mynick --root .</code></pre>
-        <div class="story">
-          <p>
-            Confira na saída os diretórios e arquivos criados, migrados,
-            reconciliados ou ignorados. Depois, inicie o YODA Intake para criar
-            a primeira issue:
-          </p>
-        </div>
-        <pre class="install"><code>python3 yoda/scripts/yoda_intake.py --dev mynick</code></pre>
       </section>
     </main>
 
     <footer>
+      <div class="foot-links">
+        <a href="instalacao.html">Instalação</a>
+        <a href="intake.html">Intake</a>
+        <a href="flow.html">Flow</a>
+        <a href="prep-flow.html">Prep Flow</a>
+        <a href="issues.html">Issues</a>
+        <a href="historia.html">História</a>
+        <a href="https://github.com/alexdundes/yoda">Repositório</a>
+      </div>
       <p>
-        YODA Framework. Documentar primeiro, implementar depois, respirar no meio.
+        YODA Framework — YAML-Oriented Documentation &amp; Agents.
+        Documentar primeiro, implementar depois.
       </p>
     </footer>
   </div>

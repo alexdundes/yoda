@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YODA Flow | YODA Framework</title>
+  <meta name="description" content="YODA Flow: o ciclo de execução em Study, Document, Implement e Evaluate, com uma fase por interação e autorização humana em cada fronteira.">
+  <link rel="icon" href="assets/yoda-light.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <div class="page">
+    <div class="topbar">
+      <a class="brand" href="index.html">
+        <img src="assets/yoda-light.svg" alt="" width="42" height="42">
+        YODA Framework
+      </a>
+      <div class="topbar-right">
+        <nav class="nav" aria-label="Navegação principal">
+          <a href="index.html">Início</a>
+          <a href="instalacao.html">Instalação</a>
+          <a href="intake.html">Intake</a>
+          <a href="flow.html" aria-current="page">Flow</a>
+          <a href="prep-flow.html">Prep Flow</a>
+          <a href="issues.html">Issues</a>
+          <a href="historia.html">História</a>
+        </nav>
+        <a class="repo" href="https://github.com/alexdundes/yoda"
+           title="Repositório do YODA Framework no GitHub">
+          <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path>
+          </svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <header class="hero">
+      <p class="kicker">Modo · executar</p>
+      <h1>YODA Flow</h1>
+      <p class="lead">O ciclo de execução de uma issue. Quatro fases, uma por interação, cada uma com entregável apresentado e parada obrigatória antes da próxima.</p>
+
+    </header>
+
+    <main>
+      <section id="fases">
+        <div class="story">
+          <h2>As quatro fases</h2>
+          <p>
+            O script decide qual issue entra em execução e qual fase começa agora.
+            Essa escolha é determinística: ela vem do estado registrado, das
+            dependências declaradas e da ordem natural do backlog, não da avaliação
+            do agente.
+          </p>
+        </div>
+
+        <div class="phases">
+          <div class="phase">
+            <span class="name">Study</span>
+            <p>
+              Levantar contexto e produzir achados, restrições e as decisões em aberto
+              que você precisa resolver. É a fase que confronta a intenção da issue
+              com o estado real do código, dos testes e da configuração. Quando a
+              issue tem documentação-base, ela é lida aqui como contexto qualificado,
+              não como verdade estabelecida.
+            </p>
+          </div>
+          <div class="phase">
+            <span class="name">Document</span>
+            <p>
+              Atualizar a issue com as decisões aprovadas e fechar o contrato. Depois
+              desta fase, o que vale é o que está escrito: o Implement não pode
+              introduzir decisão nova fora dele.
+            </p>
+          </div>
+          <div class="phase">
+            <span class="name">Implement</span>
+            <p>
+              Executar apenas o escopo aprovado, mantendo as mudanças alinhadas à
+              issue. O entregável inclui o que foi alterado e as verificações que
+              foram efetivamente rodadas.
+            </p>
+          </div>
+          <div class="phase">
+            <span class="name">Evaluate</span>
+            <p>
+              Validar os critérios de aceite um a um e preencher o
+              <code>Result log</code>. É a fase que separa “passou” de “eu conferi que
+              passou”, e onde achados remanescentes precisam ser ditos em vez de
+              arredondados.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="fronteira">
+        <div class="story">
+          <h2>A fronteira de fase</h2>
+          <p>
+            Esta é a regra central do modo, e a que mais protege o seu trabalho: uma
+            fase por interação humana, nunca uma fase por comando. O agente entra na
+            fase, executa apenas o trabalho dela, apresenta o entregável e para.
+          </p>
+        </div>
+
+        <div class="does">
+          <span class="who">Em cada fronteira, nesta ordem</span>
+          <ol>
+            <li>Você autoriza a próxima fase.</li>
+            <li>O agente aplica a transição — antes de fazer o trabalho, nunca depois.</li>
+            <li>O agente apresenta a você o runbook devolvido.</li>
+            <li>O agente executa apenas o trabalho daquela fase.</li>
+            <li>O agente apresenta o entregável e para.</li>
+          </ol>
+        </div>
+
+        <div class="story">
+          <p>
+            A ordem importa. A transição <em>inicia</em> a fase; ela não serve para
+            carimbar trabalho já feito. Um agente que executa primeiro e registra
+            depois produz um log que não corresponde ao que aconteceu.
+          </p>
+          <p>
+            Um “pode seguir” genérico autoriza a próxima fronteira, e só ela. Depois
+            de cada entregável, a pergunta se repete.
+          </p>
+        </div>
+
+        <div class="warn">
+          <strong>Sinais de que o combinado quebrou</strong>
+          O agente encadeou duas fases na mesma resposta; implementou algo que não
+          estava no escopo aprovado; ou escondeu a saída de um comando do YODA em vez
+          de te mostrar. O runbook é a instrução da fase, e ele é para você ver.
+        </div>
+      </section>
+
+      <section id="entregaveis">
+        <div class="story">
+          <h2>O que você recebe em cada fase</h2>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Fase</th><th>Entregável apresentado antes de continuar</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Study</strong></td><td>Achados, restrições e as decisões em aberto que dependem de você.</td></tr>
+              <tr><td><strong>Document</strong></td><td>A issue atualizada com as decisões aprovadas e o contrato fechado.</td></tr>
+              <tr><td><strong>Implement</strong></td><td>O código e os artefatos do escopo aprovado, com as verificações executadas.</td></tr>
+              <tr><td><strong>Evaluate</strong></td><td>Critérios conferidos, achados remanescentes e o <code>Result log</code> preenchido.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="rastro">
+        <div class="story">
+          <h2>O rastro que fica</h2>
+          <p>
+            Cada transição entra no <code>Flow log</code> da própria issue, com data e
+            um resumo curto do que foi fechado. No fim, o <code>Result log</code>
+            consolida o resultado num formato fixo, começando por uma linha de commit
+            convencional, seguida da descrição do que foi feito e das referências da
+            issue.
+          </p>
+          <p>
+            O efeito prático é que a issue concluída explica sozinha o que aconteceu,
+            sem depender do histórico de nenhuma conversa.
+          </p>
+        </div>
+
+        <div class="next">
+          <a class="card" href="issues.html">
+            <h3>O artefato</h3>
+            <p>O que a issue carrega, seção por seção.</p>
+          </a>
+          <a class="card" href="prep-flow.html">
+            <h3>Quando não é hora de implementar</h3>
+            <p>O Prep Flow prepara a issue sem autorizar execução.</p>
+          </a>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="foot-links">
+        <a href="instalacao.html">Instalação</a>
+        <a href="intake.html">Intake</a>
+        <a href="flow.html">Flow</a>
+        <a href="prep-flow.html">Prep Flow</a>
+        <a href="issues.html">Issues</a>
+        <a href="historia.html">História</a>
+        <a href="https://github.com/alexdundes/yoda">Repositório</a>
+      </div>
+      <p>
+        YODA Framework — YAML-Oriented Documentation &amp; Agents.
+        Documentar primeiro, implementar depois.
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

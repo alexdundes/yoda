@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A issue como contrato | YODA Framework</title>
+  <meta name="description" content="A anatomia de uma issue do YODA: front matter, seções do corpo, e a diferença entre documentação-base, issue externa, dependências e entry points.">
+  <link rel="icon" href="assets/yoda-light.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <div class="page">
+    <div class="topbar">
+      <a class="brand" href="index.html">
+        <img src="assets/yoda-light.svg" alt="" width="42" height="42">
+        YODA Framework
+      </a>
+      <div class="topbar-right">
+        <nav class="nav" aria-label="Navegação principal">
+          <a href="index.html">Início</a>
+          <a href="instalacao.html">Instalação</a>
+          <a href="intake.html">Intake</a>
+          <a href="flow.html">Flow</a>
+          <a href="prep-flow.html">Prep Flow</a>
+          <a href="issues.html" aria-current="page">Issues</a>
+          <a href="historia.html">História</a>
+        </nav>
+        <a class="repo" href="https://github.com/alexdundes/yoda"
+           title="Repositório do YODA Framework no GitHub">
+          <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path>
+          </svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <header class="hero">
+      <p class="kicker">O artefato</p>
+      <h1>A issue como contrato</h1>
+      <p class="lead">Uma issue do YODA é um arquivo Markdown que carrega metadado estruturado e contexto narrativo no mesmo lugar. É o que o agente lê, o que os scripts operam e o que sobra quando a conversa acaba.</p>
+
+    </header>
+
+    <main>
+      <section id="anatomia">
+        <div class="story">
+          <h2>Anatomia</h2>
+          <p>
+            As issues vivem em <code>yoda/project/issues/</code>, nomeadas como
+            <code>&lt;slug&gt;-&lt;NNNN&gt;-&lt;título-em-slug&gt;.md</code>. O ID é
+            derivado do nome do arquivo, e não duplicado no conteúdo.
+          </p>
+          <p>
+            O front matter carrega o estado operacional; o corpo carrega o contrato e
+            o histórico. Campos opcionais vazios são omitidos, e não escritos vazios.
+          </p>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Campo</th><th>Papel</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>status</code></td><td><code>to-do</code>, <code>doing</code>, <code>pending</code> ou <code>done</code>.</td></tr>
+              <tr><td><code>phase</code></td><td>Fase atual. Só existe enquanto o status é <code>doing</code>.</td></tr>
+              <tr><td><code>pending_reason</code></td><td>Obrigatório quando o status é <code>pending</code>. Sem ele, o carregamento falha.</td></tr>
+              <tr><td><code>depends_on</code></td><td>IDs de issues que precisam terminar antes desta.</td></tr>
+              <tr><td><code>priority</code></td><td>Inteiro de 0 a 10, com 5 como baseline. Ver a política no Intake.</td></tr>
+              <tr><td><code>extern_issue_file</code></td><td>Caminho para o JSON da issue externa associada.</td></tr>
+              <tr><td><code>source_doc</code></td><td>Caminho para a documentação-base do projeto que originou a demanda.</td></tr>
+              <tr><td><code>created_at</code> / <code>updated_at</code></td><td>ISO 8601 com offset explícito.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="story">
+          <p>
+            No corpo ficam Summary, Context, Objective, Scope, Out of scope,
+            Requirements, Acceptance criteria, Entry points, Implementation notes,
+            Tests e Risks. Ao longo da execução, somam-se o <code>Flow log</code>, com
+            uma linha por transição, e o <code>Result log</code>, preenchido no
+            Evaluate.
+          </p>
+        </div>
+      </section>
+
+      <section id="quatro-relacoes">
+        <div class="story">
+          <h2>Quatro relações que se parecem</h2>
+          <p>
+            Uma issue pode apontar para vários lugares, e a confusão entre esses
+            apontamentos é uma fonte real de erro. Cada um responde a uma pergunta
+            diferente.
+          </p>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Relação</th><th>Responde a</th><th>Não é</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>source_doc</code></td>
+                <td>Qual material já existente explica <em>por que</em> esta issue existe.</td>
+                <td>Um lugar para começar a mexer no código.</td>
+              </tr>
+              <tr>
+                <td><code>extern_issue_file</code></td>
+                <td>Onde está o pedido oficial, mantido em outro sistema.</td>
+                <td>Material local de contexto.</td>
+              </tr>
+              <tr>
+                <td><code>depends_on</code></td>
+                <td>O que precisa terminar antes, por precedência real.</td>
+                <td>Uma forma de organizar o backlog visualmente.</td>
+              </tr>
+              <tr>
+                <td><code>Entry points</code></td>
+                <td>Por onde começar a investigar e o que provavelmente será alterado.</td>
+                <td>A fonte que fundamentou a demanda.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="story">
+          <p>
+            Um mesmo arquivo pode exercer dois papéis num caso concreto — ser a
+            documentação-base e também um lugar por onde começar a investigar. Isso
+            não torna os conceitos equivalentes, e uma issue pode declarar
+            documentação-base e issue externa ao mesmo tempo, porque uma é o pedido e
+            a outra é a análise.
+          </p>
+        </div>
+      </section>
+
+      <section id="source-doc">
+        <div class="story">
+          <h2>Documentação-base</h2>
+          <p>
+            Existe um padrão de trabalho comum em que a documentação vem antes da
+            issue: você explora um problema, escreve sobre ele, e só então deriva daí
+            uma ou mais issues executáveis. O campo <code>source_doc</code> registra
+            essa origem em vez de deixá-la implícita.
+          </p>
+          <p>
+            A referência aceita um arquivo ou uma pasta, e não precisa ser Markdown:
+            pode ser uma planilha, um JSON, uma coleção de requisições, um diagrama ou
+            uma nota de reunião. O que importa é o papel que o material exerce, não o
+            formato.
+          </p>
+        </div>
+
+        <div class="grid two">
+          <article class="card">
+            <h3>Ao declarar</h3>
+            <p>
+              O caminho é normalizado para a forma relativa à raiz do projeto. Caminho
+              inexistente ou fora do projeto é recusado na hora — é o momento em que
+              você está ali para corrigir.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Depois, se o arquivo sumir</h3>
+            <p>
+              Nenhum comando falha. A saída mostra um alerta, para que uma fonte
+              declarada como importante não seja ignorada em silêncio nem derrube o
+              fluxo.
+            </p>
+          </article>
+        </div>
+
+        <div class="story">
+          <p>
+            Quando a issue tem documentação-base, os runbooks de Study e Document
+            passam a mencioná-la. O Study orienta lê-la como contexto qualificado e
+            confrontá-la com o estado atual do projeto. O Document orienta considerá-la
+            ao consolidar decisões, e diz explicitamente que a associação
+            <strong>não</strong> autoriza editá-la: um documento pode ser compartilhado
+            por várias issues, e alterá-lo por causa de uma delas antecipa decisão.
+          </p>
+        </div>
+      </section>
+
+      <section id="disciplina">
+        <div class="story">
+          <h2>Por que o metadado é rígido</h2>
+          <p>
+            O carregamento das issues é fail-fast: metadado fora do contrato
+            interrompe a leitura em vez de ser tolerado silenciosamente. Timestamp
+            sem offset é ambíguo entre máquinas; issue pendente sem motivo registrado
+            é uma decisão perdida.
+          </p>
+          <p>
+            A escolha é deliberada. Dado frouxo aceito hoje vira comportamento
+            imprevisível depois, e o custo aparece justamente quando alguém confia na
+            seleção automática para decidir o que fazer em seguida.
+          </p>
+        </div>
+
+        <div class="next">
+          <a class="card" href="intake.html">
+            <h3>Como a issue nasce</h3>
+            <p>O modo que traduz demanda em contrato.</p>
+          </a>
+          <a class="card" href="flow.html">
+            <h3>Como a issue é executada</h3>
+            <p>As quatro fases e o rastro que fica.</p>
+          </a>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="foot-links">
+        <a href="instalacao.html">Instalação</a>
+        <a href="intake.html">Intake</a>
+        <a href="flow.html">Flow</a>
+        <a href="prep-flow.html">Prep Flow</a>
+        <a href="issues.html">Issues</a>
+        <a href="historia.html">História</a>
+        <a href="https://github.com/alexdundes/yoda">Repositório</a>
+      </div>
+      <p>
+        YODA Framework — YAML-Oriented Documentation &amp; Agents.
+        Documentar primeiro, implementar depois.
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

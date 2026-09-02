@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Instalação | YODA Framework</title>
+  <meta name="description" content="Como instalar o YODA Framework em um projeto, ligar o agente ao manual embarcado, atualizar e voltar atrás.">
+  <link rel="icon" href="assets/yoda-light.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <div class="page">
+    <div class="topbar">
+      <a class="brand" href="index.html">
+        <img src="assets/yoda-light.svg" alt="" width="42" height="42">
+        YODA Framework
+      </a>
+      <div class="topbar-right">
+        <nav class="nav" aria-label="Navegação principal">
+          <a href="index.html">Início</a>
+          <a href="instalacao.html" aria-current="page">Instalação</a>
+          <a href="intake.html">Intake</a>
+          <a href="flow.html">Flow</a>
+          <a href="prep-flow.html">Prep Flow</a>
+          <a href="issues.html">Issues</a>
+          <a href="historia.html">História</a>
+        </nav>
+        <a class="repo" href="https://github.com/alexdundes/yoda"
+           title="Repositório do YODA Framework no GitHub">
+          <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path>
+          </svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <header class="hero">
+      <p class="kicker">Instalação</p>
+      <h1>Instalar e ligar ao agente</h1>
+      <p class="lead">São dois passos: rodar o instalador uma vez e apontar o arquivo de entrada do seu agente para o manual embarcado. Depois disso, tudo passa pelo agente.</p>
+
+    </header>
+
+    <main>
+      <section id="slug">
+        <div class="story">
+          <h2>Antes: escolha o developer slug</h2>
+          <p>
+            O <strong>developer slug</strong> é um identificador curto e estável que
+            vira o prefixo dos IDs das suas issues. O slug <code>mynick</code> produz
+            issues <code>mynick-0001</code>, <code>mynick-0002</code> e assim por
+            diante. Você vai reutilizar esse mesmo valor sempre.
+          </p>
+          <p>
+            Use letras ASCII minúsculas, dígitos e hífens, começando por uma letra.
+          </p>
+        </div>
+
+        <div class="grid two">
+          <article class="card">
+            <h3>Válidos</h3>
+            <p><code>mynick</code> &middot; <code>fernando</code> &middot; <code>time-backend</code></p>
+          </article>
+          <article class="card">
+            <h3>Inválidos</h3>
+            <p>
+              <code>MeuNick</code> (maiúscula) &middot;
+              <code>123fernando</code> (começa com dígito) &middot;
+              <code>fernando_silva</code> (underscore)
+            </p>
+          </article>
+        </div>
+
+        <div class="warn">
+          <strong>Placeholders</strong>
+          Nesta documentação, texto entre <code>&lt;...&gt;</code> é um placeholder a
+          substituir. Os sinais <code>&lt;</code> e <code>&gt;</code> não devem ser
+          digitados. Já <code>mynick</code> é um exemplo concreto: troque pelo seu slug.
+        </div>
+      </section>
+
+      <section id="instalador">
+        <div class="story">
+          <h2>Instalação em um comando</h2>
+          <p>
+            É o caminho mais rápido. O instalador resolve a versão mais recente,
+            baixa o pacote, confere o <code>sha256</code> declarado em
+            <code>latest.json</code>, extrai a árvore <code>yoda/</code> no projeto e
+            executa o init com o slug informado.
+          </p>
+        </div>
+
+        <pre class="shell"><code>curl -fsSL https://alexdundes.github.io/yoda/install/yoda-install.sh | sh -s -- --root . --dev mynick</code></pre>
+        <p class="caption">Executa um script remoto direto do shell. Use apenas se confiar na origem.</p>
+
+        <div class="story">
+          <h3>Fixando a versão</h3>
+          <p>
+            Em produção ou ambiente regulado, prefira fixar a versão esperada. O
+            comando falha se o <code>latest.json</code> publicado divergir do valor
+            informado, o que evita subir uma versão nova sem querer.
+          </p>
+        </div>
+
+        <pre class="shell"><code>curl -fsSL https://alexdundes.github.io/yoda/install/yoda-install.sh | sh -s -- --version &lt;semver+build&gt; --root . --dev mynick</code></pre>
+
+        <div class="story">
+          <h3>Instalação manual</h3>
+          <p>
+            Se preferir não executar script remoto, o caminho manual é: baixar o
+            <code>.tar.gz</code> e o <code>latest.json</code> da release, conferir o
+            <code>sha256</code>, extrair e copiar a subárvore <code>yoda/</code> para
+            a raiz do projeto. Preserve <code>yoda/project/issues/</code> e
+            <code>yoda/project/extern_issues/</code> se já existirem.
+          </p>
+          <p>
+            Depois de copiar os arquivos, peça a inicialização ao agente.
+          </p>
+        </div>
+
+        <div class="say">
+          <span class="who">Você diz</span>
+          <p>“Copiei o YODA para o projeto. Inicialize com o developer slug <code>mynick</code> na raiz.”</p>
+        </div>
+      </section>
+
+      <section id="ligar-agente">
+        <div class="story">
+          <h2>Ligar o agente ao manual</h2>
+          <p>
+            Este passo é o que faz o YODA existir para o agente, e ele é
+            deliberadamente manual. Acrescente ao arquivo de entrada do seu agente
+            — <code>CLAUDE.md</code>, <code>AGENTS.md</code> ou
+            <code>GEMINI.md</code> na raiz do projeto — uma referência ao manual
+            embarcado.
+          </p>
+        </div>
+
+        <pre class="shell"><code>## YODA Framework
+
+Read in order:
+
+1) yoda/yoda.md</code></pre>
+
+        <div class="story">
+          <p>
+            O <code>init</code> não cria nem edita esses arquivos, nem
+            <code>REPO_INTENT.md</code> ou <code>repo.intent.yaml</code>. Ele age
+            apenas dentro de <code>yoda/</code>. A decisão de apontar o seu agente
+            para o framework é sua, e nada acontece no seu projeto sem esse gesto.
+          </p>
+        </div>
+      </section>
+
+      <section id="o-que-init-faz">
+        <div class="story">
+          <h2>O que o init faz</h2>
+          <p>
+            Cria ou reconcilia a estrutura gerenciada pelo YODA e normaliza o
+            metadado compatível sob <code>yoda/</code>. Ao final, ele relata o que foi
+            criado, migrado, reconciliado ou ignorado — vale ler essa saída, porque é
+            ali que aparece qualquer issue com metadado fora do contrato.
+          </p>
+        </div>
+
+        <div class="grid two">
+          <article class="card">
+            <h3>Mexe em</h3>
+            <p>
+              Estrutura sob <code>yoda/</code>: diretórios de issues e issues externas,
+              front matter de issues já existentes, marcador de schema.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Não mexe em</h3>
+            <p>
+              Arquivos de agente do projeto hospedeiro, arquivos de intenção do repo,
+              e qualquer coisa fora de <code>yoda/</code>.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="atualizar">
+        <div class="story">
+          <h2>Atualizar e voltar atrás</h2>
+          <p>
+            A atualização substitui apenas os arquivos do framework sob
+            <code>yoda/</code> e preserva os dados do projeto. O YODA guarda a versão
+            anterior em <code>yoda/_previous/&lt;versão&gt;</code>, então voltar atrás
+            é restaurar aquela subárvore.
+          </p>
+          <p>
+            Como o resto, isso passa pelo agente. Existe um modo de verificação que
+            não altera nada, e ele avisa quando a versão alvo diverge em major ou
+            quando o alvo é mais antigo que o instalado.
+          </p>
+        </div>
+
+        <div class="say">
+          <span class="who">Você diz</span>
+          <p>“Verifique se há atualização do YODA disponível, sem aplicar nada.”</p>
+          <p>“Pode aplicar a atualização.”</p>
+        </div>
+
+        <div class="warn">
+          <strong>Antes de atualizar</strong>
+          Leia o <code>CHANGELOG.yaml</code> da versão alvo. Mudanças incompatíveis
+          aparecem em <code>breaking</code> com a remediação necessária, e algumas
+          exigem corrigir dados existentes antes do upgrade.
+        </div>
+      </section>
+
+      <section id="verificar">
+        <div class="story">
+          <h2>Conferir o que ficou instalado</h2>
+          <p>
+            Versão e build ficam em <code>yoda/PACKAGE_MANIFEST.yaml</code>. O
+            histórico de releases fica em <code>CHANGELOG.yaml</code>. A integridade
+            do pacote é validada contra o <code>sha256</code> de
+            <code>latest.json</code> no momento da instalação.
+          </p>
+          <p>
+            Para projetos embarcados, a fonte de verdade operacional é o próprio
+            pacote: as issues em <code>yoda/project/issues/</code>, o manual em
+            <code>yoda/yoda.md</code> e os runbooks que os scripts imprimem.
+          </p>
+        </div>
+
+        <div class="next">
+          <a class="card" href="intake.html">
+            <h3>Primeiro passo depois de instalar</h3>
+            <p>Entrar no YODA Intake e criar a primeira issue.</p>
+          </a>
+          <a class="card" href="issues.html">
+            <h3>Entender o artefato</h3>
+            <p>O que uma issue do YODA carrega e por quê.</p>
+          </a>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="foot-links">
+        <a href="instalacao.html">Instalação</a>
+        <a href="intake.html">Intake</a>
+        <a href="flow.html">Flow</a>
+        <a href="prep-flow.html">Prep Flow</a>
+        <a href="issues.html">Issues</a>
+        <a href="historia.html">História</a>
+        <a href="https://github.com/alexdundes/yoda">Repositório</a>
+      </div>
+      <p>
+        YODA Framework — YAML-Oriented Documentation &amp; Agents.
+        Documentar primeiro, implementar depois.
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

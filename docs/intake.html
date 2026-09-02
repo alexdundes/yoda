@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YODA Intake | YODA Framework</title>
+  <meta name="description" content="YODA Intake: o modo que transforma demanda solta em issue executável, com backlog revisado, issue externa e documentação-base.">
+  <link rel="icon" href="assets/yoda-light.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <div class="page">
+    <div class="topbar">
+      <a class="brand" href="index.html">
+        <img src="assets/yoda-light.svg" alt="" width="42" height="42">
+        YODA Framework
+      </a>
+      <div class="topbar-right">
+        <nav class="nav" aria-label="Navegação principal">
+          <a href="index.html">Início</a>
+          <a href="instalacao.html">Instalação</a>
+          <a href="intake.html" aria-current="page">Intake</a>
+          <a href="flow.html">Flow</a>
+          <a href="prep-flow.html">Prep Flow</a>
+          <a href="issues.html">Issues</a>
+          <a href="historia.html">História</a>
+        </nav>
+        <a class="repo" href="https://github.com/alexdundes/yoda"
+           title="Repositório do YODA Framework no GitHub">
+          <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path>
+          </svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <header class="hero">
+      <p class="kicker">Modo · criar</p>
+      <h1>YODA Intake</h1>
+      <p class="lead">O modo em que uma demanda solta vira uma issue executável. Aqui nada é implementado: o resultado é um contrato de trabalho fechado o suficiente para ser executado depois.</p>
+
+    </header>
+
+    <main>
+      <section id="quando">
+        <div class="story">
+          <h2>Quando usar</h2>
+          <p>
+            Sempre que existir trabalho a fazer e ainda não existir issue para ele.
+            Serve tanto para o pedido que chegou pronto quanto para o desabafo em
+            texto corrido — a tradução para estrutura é justamente o trabalho do
+            modo.
+          </p>
+        </div>
+
+        <div class="say">
+          <span class="who">Você diz</span>
+          <p>“Vamos entrar no YODA Intake.”</p>
+          <p>“Entra no Intake. A listagem de pedidos está lenta desde que ligamos o cache novo, e eu suspeito que a invalidação esteja errada.”</p>
+        </div>
+      </section>
+
+      <section id="fluxo">
+        <div class="story">
+          <h2>O que acontece</h2>
+          <p>
+            O agente executa o script de Intake e segue o runbook devolvido por ele.
+            O roteiro varia conforme exista ou não uma fonte externa, mas a espinha é
+            sempre a mesma.
+          </p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div>
+              <h3>Fonte externa</h3>
+              <p>
+                O agente pergunta se a demanda tem uma issue em outro sistema. Se
+                tiver, ele coleta o conteúdo e guarda um JSON local, informando qual
+                transporte foi usado.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <div>
+              <h3>Documentação-base</h3>
+              <p>
+                Pergunta se já existe documentação no projeto que fundamenta a
+                demanda. Pode ser um arquivo ou uma pasta, e pode ser qualquer
+                artefato: análise técnica, planilha, contrato, nota de reunião. Se
+                existir, o agente lê antes de fechar a issue.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <div>
+              <h3>Revisão do backlog</h3>
+              <p>
+                Antes de criar qualquer coisa, o agente olha o que já existe e aponta
+                o que a demanda tem de sobreposição com issues anteriores. Evita
+                duplicata e evita reabrir decisão já tomada.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <div>
+              <h3>Tradução em estrutura</h3>
+              <p>
+                A conversa vira Summary, Context, Objective, Scope, Out of scope,
+                Requirements, Acceptance criteria, Entry points, Tests e Risks. É
+                aqui que a demanda deixa de ser lembrete e vira contrato.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <div>
+              <h3>Criação e apresentação</h3>
+              <p>
+                O agente cria o arquivo, preenche as seções e apresenta o resultado.
+                Ao final, propõe entrar no YODA Flow — mas não entra sozinho.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="prioridade">
+        <div class="story">
+          <h2>Prioridade é exceção, não ranking</h2>
+          <p>
+            Toda issue nasce com prioridade 5, e o normal é que continue assim. A
+            ordem de execução vem da <strong>ordem natural</strong>: retoma a issue em
+            andamento, adia as que têm dependência não resolvida, e depois segue a
+            ordem estável dos IDs.
+          </p>
+          <p>
+            Prioridade só muda como exceção justificada: acima de 5 para rodar antes,
+            abaixo de 5 para rodar depois, sempre com o motivo relativo registrado na
+            própria issue. “É importante” não é motivo suficiente — quase tudo é.
+          </p>
+          <p>
+            Para sequência real de execução, o instrumento certo é
+            <code>depends_on</code>, e só quando uma issue de fato não pode ser
+            executada corretamente antes de outra. Dependência artificial para
+            organizar backlog atrapalha a seleção determinística.
+          </p>
+        </div>
+      </section>
+
+      <section id="limites">
+        <div class="story">
+          <h2>O que o Intake não faz</h2>
+        </div>
+        <div class="grid two">
+          <article class="card">
+            <h3>Não implementa</h3>
+            <p>
+              Nenhuma linha de código sai daqui. Se a conversa derivar para “já que
+              estamos nisso”, o modo está sendo violado.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Não decide sequência por prioridade</h3>
+            <p>
+              Criar um lote de issues com prioridades decrescentes para simular ordem
+              é uso errado do campo. A ordem vem da criação e das dependências reais.
+            </p>
+          </article>
+        </div>
+
+        <div class="next">
+          <a class="card" href="flow.html">
+            <h3>Depois do Intake</h3>
+            <p>Executar a issue pelo YODA Flow, uma fase por vez.</p>
+          </a>
+          <a class="card" href="prep-flow.html">
+            <h3>Ou apenas amadurecer</h3>
+            <p>Preparar a issue até o Document sem autorizar implementação.</p>
+          </a>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="foot-links">
+        <a href="instalacao.html">Instalação</a>
+        <a href="intake.html">Intake</a>
+        <a href="flow.html">Flow</a>
+        <a href="prep-flow.html">Prep Flow</a>
+        <a href="issues.html">Issues</a>
+        <a href="historia.html">História</a>
+        <a href="https://github.com/alexdundes/yoda">Repositório</a>
+      </div>
+      <p>
+        YODA Framework — YAML-Oriented Documentation &amp; Agents.
+        Documentar primeiro, implementar depois.
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
